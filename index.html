@@ -1,1949 +1,384 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FlightBot · Web Travel Assistant</title>
+  <title>FlightBot · Radar de Vuelos, Alertas y Hoteles Inteligentes</title>
+  <meta name="description" content="FlightBot es tu asistente personal en Telegram para rastrear vuelos baratos 24/7 y descubrir los mejores hoteles y alojamientos del mundo.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --primary-light: #eff6ff;
-      --bg-main: #f8fafc;
-      --bg-card: #ffffff;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
-      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.03);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    /* Layout Split View (28% Chat / 72% Visual Canvas) */
-    .app-container {
-      display: flex;
-      height: 100vh;
-      width: 100vw;
-    }
-
-    /* Columna Izquierda: Chatbox Resizable */
-    .chat-pane {
-      width: 380px;
-      min-width: 280px;
-      max-width: 650px;
-      background: var(--bg-card);
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      z-index: 10;
-      flex-shrink: 0;
-      position: relative;
-    }
-
-    /* Divisor arrastrable (Resizer Splitter) */
-    .resizer-handle {
-      width: 8px;
-      margin-left: -4px;
-      cursor: col-resize;
-      background: transparent;
-      z-index: 30;
-      position: relative;
-      transition: background 0.2s;
-      user-select: none;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .resizer-handle:hover, .resizer-handle.dragging {
-      background: rgba(37, 99, 235, 0.35);
-    }
-
-    .resizer-line {
-      width: 2px;
-      height: 36px;
-      background: #94a3b8;
-      border-radius: 2px;
-    }
-
-    .chat-header {
-      padding: 18px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #ffffff;
-    }
-
-    .chat-header .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand-icon {
-      font-size: 26px;
-      background: var(--primary-light);
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-    }
-
-    .brand-title {
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-    }
-
-    .brand-subtitle {
-      font-size: 12px;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--success);
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    .chat-messages {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      scrollbar-width: thin;
-      scrollbar-color: #cbd5e1 transparent;
-    }
-
-    .chat-messages::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .chat-messages::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 4px;
-    }
-
-    .message {
-      max-width: 90%;
-      padding: 12px 16px;
-      border-radius: 16px;
-      font-size: 13.5px;
-      line-height: 1.5;
-      word-break: break-word;
-    }
-
-    .message.bot {
-      background: #f1f5f9;
-      color: var(--text-main);
-      align-self: flex-start;
-      border-bottom-left-radius: 4px;
-    }
-
-    .message.user {
-      background: var(--primary);
-      color: #ffffff;
-      align-self: flex-end;
-      border-bottom-right-radius: 4px;
-    }
-
-    .chat-quick-actions {
-      padding: 10px 16px;
-      background: #fafafa;
-      border-top: 1px solid var(--border);
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      scrollbar-width: thin;
-      scrollbar-color: #cbd5e1 transparent;
-    }
-
-    .chat-quick-actions::-webkit-scrollbar {
-      height: 4px;
-    }
-
-    .chat-quick-actions::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 2px;
-    }
-
-    .quick-pill {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-muted);
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.15s ease;
-    }
-
-    .quick-pill:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: var(--primary-light);
-    }
-
-    .chat-input-area {
-      padding: 16px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      gap: 10px;
-      background: #ffffff;
-    }
-
-    .chat-input {
-      flex: 1;
-      border: 1px solid var(--border);
-      padding: 12px 16px;
-      border-radius: 24px;
-      font-size: 14px;
-      font-family: inherit;
-      outline: none;
-      transition: border 0.15s;
-    }
-
-    .chat-input:focus {
-      border-color: var(--primary);
-    }
-
-    .send-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      transition: background 0.15s, transform 0.1s;
-    }
-
-    .send-btn:hover { background: var(--primary-hover); transform: scale(1.03); }
-
-    /* Columna Derecha: Canvas Visual */
-    .canvas-pane {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      background: var(--bg-main);
-    }
-
-    .canvas-header {
-      padding: 20px 32px;
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 5;
-    }
-
-    .tabs-nav {
-      display: flex;
-      gap: 8px;
-    }
-
-    .tab-btn {
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    .tab-btn.active {
-      background: var(--primary-light);
-      color: var(--primary);
-    }
-
-    .filters-bar {
-      padding: 14px 32px;
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      overflow-x: auto;
-    }
-
-    .filter-btn {
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--text-main);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.15s;
-    }
-
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-    }
-
-    .canvas-content {
-      padding: 28px 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    /* Grid de Hoteles */
-    .hotels-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 22px;
-    }
-
-    .hotel-card {
-      background: #ffffff;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .hotel-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .hotel-img-wrap {
-      height: 190px;
-      position: relative;
-      background: #e2e8f0;
-    }
-
-    .hotel-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hotel-badge-score {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(15, 23, 42, 0.85);
-      color: white;
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-weight: 800;
-      font-size: 12px;
-      backdrop-filter: blur(4px);
-    }
-
-    .hotel-card-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      justify-content: space-between;
-    }
-
-    .hotel-title {
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 6px;
-    }
-
-    .hotel-location {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-
-    .hotel-services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
-
-    .service-tag {
-      background: #f1f5f9;
-      color: #334155;
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: 600;
-    }
-
-    .hotel-price-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      border-top: 1px solid #f1f5f9;
-      padding-top: 12px;
-    }
-
-    .price-value {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .price-ars {
-      font-size: 11.5px;
-      color: var(--text-muted);
-    }
-
-    .book-btn {
-      background: var(--text-main);
-      color: white;
-      text-decoration: none;
-      padding: 6px 10px;
-      border-radius: 7px;
-      font-size: 11.5px;
-      font-weight: 700;
-      transition: background 0.15s;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-    }
-
-    .book-btn:hover { background: var(--primary); }
-
-    .official-web-btn {
-      background: #f8fafc;
-      color: #0f172a;
-      border: 1px solid #cbd5e1;
-      padding: 6px 10px;
-      border-radius: 7px;
-      font-size: 11.5px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      transition: all 0.15s;
-      white-space: nowrap;
-    }
-
-    .official-web-btn:hover {
-      background: #0f172a;
-      color: #ffffff;
-      border-color: #0f172a;
-    }
-
-    .telegram-btn {
-      background: #eff6ff;
-      color: #0284c7;
-      border: 1px solid #bae6fd;
-      padding: 6px 12px;
-      border-radius: 7px;
-      font-size: 11.5px;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      transition: all 0.15s;
-      font-family: inherit;
-    }
-
-    .telegram-btn:hover {
-      background: #0284c7;
-      color: #ffffff;
-      border-color: #0284c7;
-    }
-
-    .telegram-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #f0fdf4;
-      color: #16a34a;
-      border: 1px solid #bbf7d0;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 11.5px;
-      font-weight: 700;
-    }
-
-    /* Google Reviews & Reputación en Tarjeta Hotel */
-    .google-rating-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 8px;
-      font-size: 12px;
-    }
-
-    .google-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      color: #1e293b;
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-weight: 600;
-    }
-
-    .google-maps-link {
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 11.5px;
-      transition: color 0.15s;
-    }
-
-    .google-maps-link:hover {
-      color: #1d4ed8;
-      text-decoration: underline;
-    }
-
-    .google-reviews-section {
-      margin-top: 6px;
-      margin-bottom: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .reviews-snippets-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .review-snippet-card {
-      background: #f8fafc;
-      border-left: 3px solid #3b82f6;
-      border-radius: 6px;
-      padding: 7px 10px;
-      font-size: 11.5px;
-      line-height: 1.35;
-    }
-
-    .review-snippet-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 3px;
-    }
-
-    .review-author {
-      font-weight: 700;
-      color: #334155;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .review-avatar {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: #cbd5e1;
-      color: #1e293b;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9.5px;
-      font-weight: 800;
-    }
-
-    .review-stars {
-      font-size: 9.5px;
-      letter-spacing: 0.5px;
-    }
-
-    .review-snippet-text {
-      color: #475569;
-      margin: 0;
-      font-style: italic;
-    }
-
-    .review-snippet-time {
-      font-size: 10px;
-      color: #94a3b8;
-      margin-top: 2px;
-      text-align: right;
-    }
-
-    .google-maps-btn {
-      background: #ffffff;
-      color: #1e293b;
-      border: 1px solid #cbd5e1;
-      padding: 6px 6px;
-      border-radius: 7px;
-      font-size: 11px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      transition: all 0.15s;
-      white-space: nowrap;
-    }
-
-    .google-maps-btn:hover {
-      background: #eff6ff;
-      border-color: #3b82f6;
-      color: #1d4ed8;
-    }
-
-
-    /* Badge del Escudo de Ciberseguridad WAF / IDS en tiempo real (Visible solo para Admin) */
-    .waf-badge {
-      display: none; /* Oculto por defecto para público general */
-      align-items: center;
-      gap: 8px;
-      background: #0f172a;
-      color: #f8fafc;
-      border: 1px solid #334155;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 11.5px;
-      font-weight: 700;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-      cursor: help;
-    }
-
-    .waf-pulse {
-      width: 8px;
-      height: 8px;
-      background: #10b981;
-      border-radius: 50%;
-      display: inline-block;
-      box-shadow: 0 0 0 rgba(16, 185, 129, 0.6);
-      animation: pulse-green 2s infinite;
-    }
-
-    @keyframes pulse-green {
-      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-      70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-    }
-
-    /* Tarjeta de Ahorro Económico con GNC */
-    .gnc-savings-card {
-      background: linear-gradient(135deg, #eff6ff 0%, #ecfdf5 100%);
-      border: 1px solid #a7f3d0;
-      border-left: 6px solid #059669;
-      border-radius: 12px;
-      padding: 16px 20px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .gnc-savings-card .gnc-icon {
-      font-size: 32px;
-      background: #ffffff;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-sm);
-      flex-shrink: 0;
-    }
-
-    .gnc-savings-card h4 {
-      font-size: 15px;
-      font-weight: 800;
-      color: #065f46;
-      margin-bottom: 3px;
-    }
-
-    .gnc-savings-card p {
-      font-size: 13px;
-      color: #047857;
-      line-height: 1.4;
-    }
-
-    /* Botones interactivos dentro del chatbox (Wizard) */
-    .interactive-bubble-btns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    .interactive-choice-btn {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      padding: 6px 12px;
-      border-radius: 14px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #1e293b;
-      cursor: pointer;
-      font-family: inherit;
-      transition: all 0.15s ease;
-    }
-
-    .interactive-choice-btn:hover {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-      transform: translateY(-1px);
-    }
-
-    .toast-notification {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: #0f172a;
-      color: #ffffff;
-      padding: 14px 22px;
-      border-radius: 12px;
-      font-size: 13.5px;
-      font-weight: 600;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      z-index: 1000;
-      transform: translateY(100px);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .toast-notification.show {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* Barra de Configuración de Viaje (Fechas + Banco) */
-    .travel-config-bar {
-      padding: 12px 32px;
-      background: #ffffff;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 16px;
-      font-size: 13px;
-    }
-
-    .config-group {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .config-label {
-      font-size: 11.5px;
-      font-weight: 800;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .date-input, .select-input {
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      padding: 6px 10px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-main);
-      font-family: inherit;
-      outline: none;
-      transition: all 0.15s;
-    }
-
-    .date-input:focus, .select-input:focus {
-      border-color: var(--primary);
-      background: #ffffff;
-    }
-
-    /* Banner de Promoción Bancaria Activa */
-    .promo-bank-banner {
-      background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
-      border: 1px solid #bfdbfe;
-      border-left: 5px solid var(--primary);
-      padding: 12px 20px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 6px;
-    }
-
-    .promo-bank-text {
-      color: #1e3a8a;
-      font-size: 13px;
-      font-weight: 600;
-      line-height: 1.4;
-    }
-
-    .promo-bank-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 7px 14px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.15s;
-      font-family: inherit;
-    }
-
-    .promo-bank-btn:hover {
-      background: var(--primary-hover);
-    }
-
-    /* Badge y Banner de Cupones */
-    .coupon-badge-card {
-      background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
-      border: 1px solid #fde68a;
-      border-left: 5px solid #d97706;
-      padding: 12px 20px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 10px;
-    }
-
-    .coupon-code-pill {
-      background: #ffffff;
-      border: 1px dashed #d97706;
-      color: #b45309;
-      padding: 5px 12px;
-      border-radius: 6px;
-      font-family: monospace;
-      font-size: 13.5px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      user-select: all;
-    }
-
-    .coupon-copy-btn {
-      background: #d97706;
-      color: white;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      transition: background 0.15s;
-      font-family: inherit;
-    }
-
-    .coupon-copy-btn:hover {
-      background: #b45309;
-    }
-
-    /* Barra de Transparencia de Afiliados (Legal / FTC Compliance) */
-    .affiliate-disclosure-bar {
-      margin-top: 26px;
-      padding: 14px 20px;
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      font-size: 11.5px;
-      color: #64748b;
-      line-height: 1.5;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .affiliate-link-btn {
-      color: var(--primary);
-      text-decoration: underline;
-      font-weight: 700;
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-family: inherit;
-      font-size: 11.5px;
-      white-space: nowrap;
-    }
-
-    /* Modal de Transparencia Legal */
-    .legal-modal-backdrop {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(4px);
-      z-index: 2000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .legal-modal-backdrop.open {
-      display: flex;
-    }
-
-    .legal-modal-card {
-      background: #ffffff;
-      border-radius: 16px;
-      max-width: 600px;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 28px 32px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      border: 1px solid var(--border);
-      position: relative;
-    }
-
-    .legal-modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 14px;
-      margin-bottom: 18px;
-    }
-
-    .legal-modal-title {
-      font-size: 17px;
-      font-weight: 800;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .legal-modal-close {
-      background: #f1f5f9;
-      border: none;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 700;
-      color: #64748b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.15s;
-    }
-
-    .legal-modal-close:hover {
-      background: #e2e8f0;
-      color: #0f172a;
-    }
-
-    .legal-modal-body {
-      font-size: 13px;
-      color: #334155;
-      line-height: 1.6;
-    }
-
-    .legal-modal-body h4 {
-      font-size: 14px;
-      font-weight: 800;
-      color: #0f172a;
-      margin: 16px 0 6px 0;
-    }
-
-    .legal-modal-body p {
-      margin-bottom: 10px;
-    }
-
-    /* Semáforo de Estado de Calzada */
-    .road-condition-card {
-      padding: 18px 22px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      line-height: 1.5;
-    }
-
-    .road-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 12.5px;
-      font-weight: 800;
-      color: white;
-      white-space: nowrap;
-    }
-
-    /* Tarjeta de Ruta y Paradores */
-    .route-dashboard {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .metric-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .metric-card {
-      background: #ffffff;
-      padding: 16px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-    }
-
-    .metric-title { font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; }
-    .metric-value { font-size: 20px; font-weight: 800; color: var(--text-main); }
-
-    .route-alert-box {
-      background: #fffbeb;
-      border: 1px solid #fde68a;
-      border-left: 4px solid var(--warning);
-      padding: 16px;
-      border-radius: 10px;
-      font-size: 13.5px;
-      line-height: 1.5;
-    }
-
-    .paradores-timeline {
-      background: #ffffff;
-      padding: 24px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-    }
-
-    .timeline-item {
-      display: flex;
-      gap: 18px;
-      padding-bottom: 22px;
-      position: relative;
-    }
-
-    .timeline-item:not(:last-child)::before {
-      content: '';
-      position: absolute;
-      left: 17px;
-      top: 36px;
-      bottom: 0;
-      width: 2px;
-      background: #e2e8f0;
-    }
-
-    .timeline-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--primary-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-
-    .timeline-content h4 { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
-    .timeline-content .km-badge { font-size: 11.5px; color: var(--primary); font-weight: 700; margin-bottom: 4px; }
-    .timeline-content p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
-
-    @media (max-width: 900px) {
-      .app-container { flex-direction: column; overflow-y: auto; }
-      .chat-pane { width: 100%; height: 50vh; }
-      .canvas-pane { width: 100%; height: 50vh; }
-      .metric-cards-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="app-container">
-
-    <!-- COLUMNA IZQUIERDA: CHATBOX ASISTENTE (RESIZABLE) -->
-    <aside class="chat-pane" id="chatPane">
-      <header class="chat-header">
-        <div class="brand">
-          <div class="brand-icon">🌴</div>
-          <div>
-            <div class="brand-title">FlightBot</div>
-            <div class="brand-subtitle"><span class="status-dot"></span> Asistente Activo</div>
-          </div>
-        </div>
-      </header>
-
-      <div class="chat-messages" id="chatMessages">
-        <div class="message bot">
-          👋 ¡Hola! Soy tu <b>FlightBot Web Assistant</b>.<br><br>
-          Probá escribir <b>Tandil</b>, <b>Mendoza</b>, <b>Bariloche</b>, <b>San Martín de los Andes</b> o <b>Punta Cana</b> para ver las rutas, paradores o los hoteles a la derecha.
-        </div>
-      </div>
-
-      <div class="chat-quick-actions">
-        <span class="quick-pill" onclick="enviarMensajeRapido('Tandil')">🚗 Tandil (Auto)</span>
-        <span class="quick-pill" onclick="enviarMensajeRapido('Mendoza')">🍷 Mendoza (Hoteles)</span>
-        <span class="quick-pill" onclick="enviarMensajeRapido('Bariloche')">🏔️ Bariloche</span>
-        <span class="quick-pill" onclick="enviarMensajeRapido('San Martin de los Andes')">🌲 San Martín</span>
-        <span class="quick-pill" onclick="enviarMensajeRapido('Punta Cana')">🏖️ Punta Cana</span>
-      </div>
-
-      <div class="chat-input-area">
-        <input type="text" class="chat-input" id="chatInput" placeholder="Consultá un destino o filtro..." onkeypress="manejarEnter(event)">
-        <button class="send-btn" onclick="enviarMensajeUsuario()">➔</button>
-      </div>
-    </aside>
-
-    <!-- DIVISOR ARRASTRABLE CON EL MOUSE (SPLITTER) -->
-    <div class="resizer-handle" id="dragResizer" title="Arrastrá para ajustar el ancho del chatbox">
-      <div class="resizer-line"></div>
-    </div>
-
-    <!-- COLUMNA DERECHA: INTERFAZ VISUAL CANVAS (72%) -->
-    <main class="canvas-pane">
-      <header class="canvas-header">
-        <div class="tabs-nav">
-          <button class="tab-btn active" id="tabHoteles" onclick="cambiarPestaña('hoteles')">🏨 Alojamientos y Hoteles</button>
-          <button class="tab-btn" id="tabRuta" onclick="cambiarPestaña('ruta')">🛣️ Guía de Ruta y Paradores</button>
-        </div>
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <!-- Badge del Escudo de Ciberseguridad WAF / IDS -->
-          <div id="wafBadge" class="waf-badge" title="Inspección activa OWASP Top 10 · Anti-SQLi, Anti-Command Injection, Anti-DoS">
-            <span class="waf-pulse"></span>
-            <span>🛡️ Escudo WAF: <b id="threatsCount">0</b> ataques repelidos</span>
-          </div>
-          <span class="telegram-badge" id="tgBadge" title="Sincronizado con Telegram Bot">
-            <span class="status-dot"></span> 📲 Telegram Conectado
-          </span>
-          <div style="font-size: 13px; font-weight: 700; color: var(--text-muted);" id="lblDestino">
-            Destino actual: <span style="color: var(--primary);">Mendoza</span>
-          </div>
-        </div>
-      </header>
-
-      <!-- Barra de Configuración de Viaje: Fechas, Pasajeros, Tarjeta Bancaria y Combustible -->
-      <div class="travel-config-bar">
-        <div class="config-group">
-          <span class="config-label">📅 Fechas:</span>
-          <input type="date" id="checkinInput" class="date-input" onchange="actualizarFechasYPromos()">
-          <span style="color: var(--text-muted); font-size: 11px;">al</span>
-          <input type="date" id="checkoutInput" class="date-input" onchange="actualizarFechasYPromos()">
-        </div>
-        <div class="config-group">
-          <span class="config-label">👥 Viajeros:</span>
-          <select id="adultosInput" class="select-input" onchange="actualizarFechasYPromos()">
-            <option value="2" selected>2 Adultos</option>
-            <option value="1">1 Adulto</option>
-            <option value="3">3 Adultos</option>
-            <option value="4">Familia (2 adultos + 2 niños)</option>
-          </select>
-        </div>
-        <div class="config-group">
-          <span class="config-label">🚗 Motor:</span>
-          <select id="combustibleInput" class="select-input" onchange="cambiarCombustible(this.value)">
-            <option value="nafta" selected>⛽ Nafta Súper</option>
-            <option value="diesel">🛢️ Diésel Premium</option>
-            <option value="gnc">🔵 GNC (Gas)</option>
-            <option value="electrico">⚡ Eléctrico / Híbrido</option>
-          </select>
-        </div>
-        <div class="config-group" style="margin-left: auto;">
-          <span class="config-label">💳 Tarjeta / Fintech:</span>
-          <select id="bancoInput" class="select-input" onchange="actualizarFechasYPromos()">
-            <option value="galicia" selected>Banco Galicia</option>
-            <option value="santander">Banco Santander</option>
-            <option value="bbva">Banco BBVA</option>
-            <option value="nacion">Banco Nación / BNA</option>
-            <option value="macro">Banco Macro</option>
-            <option value="naranja x">Naranja X</option>
-            <option value="amex directa">American Express Directa</option>
-            <option value="mercadopago">Mercado Pago (Fintech)</option>
-            <option value="uala">Ualá (Fintech)</option>
-            <option value="brubank">Brubank (Fintech)</option>
-            <option value="todos">Ver Todos</option>
-          </select>
-          <select id="marcaInput" class="select-input" onchange="actualizarFechasYPromos()">
-            <option value="visa" selected>Visa</option>
-            <option value="mastercard">Mastercard</option>
-            <option value="amex">Amex</option>
-            <option value="todas">Todas</option>
-          </select>
-          <select id="catInput" class="select-input" onchange="actualizarFechasYPromos()">
-            <option value="black" selected>Black / Signature</option>
-            <option value="platinum">Platinum</option>
-            <option value="gold">Gold</option>
-            <option value="clasica">Clásica</option>
-            <option value="todas">Cualquiera</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Barra de Filtros interactivos -->
-      <div class="filters-bar" id="filtersBar">
-        <button class="filter-btn active" onclick="filtrarHoteles('todos', this)">🌟 Todos</button>
-        <button class="filter-btn" onclick="filtrarHoteles('pileta', this)">🏊 Con Pileta Climatizada</button>
-        <button class="filter-btn" onclick="filtrarHoteles('desayuno', this)">🥐 Con Desayuno</button>
-        <button class="filter-btn" onclick="ordenarHotelesPrecio(this)">💵 Menor a Mayor</button>
-      </div>
-
-      <!-- Contenedor dinámico -->
-      <div class="canvas-content" id="canvasContent">
-        <!-- Renderizado dinámico vía JS -->
-      </div>
-    </main>
-
-  </div>
-
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    let hotelesActuales = [];
-    let rutaActual = null;
-    let pestañaActiva = 'hoteles';
-    let destinoActual = 'mendoza';
-    let combustibleActual = 'nafta';
-    let promosActivas = [];
-    let affiliateConfig = { booking_aid: '', tp_marker: '' };
-
-    // Inicializar fechas, destino, resizer y estado de Telegram/Admin
-    window.addEventListener('DOMContentLoaded', () => {
-      inicializarFechas();
-      inicializarResizer();
-      cargarDestino('mendoza');
-      verificarEstadoTelegram();
-    });
-
-    function inicializarResizer() {
-      const resizer = document.getElementById('dragResizer');
-      const chatPane = document.getElementById('chatPane');
-      if (!resizer || !chatPane) return;
-
-      const anchoGuardado = localStorage.getItem('flightbot_chat_width');
-      if (anchoGuardado) {
-        chatPane.style.width = `${anchoGuardado}px`;
-      }
-
-      let arrastrando = false;
-
-      resizer.addEventListener('mousedown', (e) => {
-        arrastrando = true;
-        resizer.classList.add('dragging');
-        document.body.style.cursor = 'col-resize';
-        document.body.style.userSelect = 'none';
-      });
-
-      window.addEventListener('mousemove', (e) => {
-        if (!arrastrando) return;
-        const nuevoAncho = Math.min(Math.max(e.clientX, 280), 650);
-        chatPane.style.width = `${nuevoAncho}px`;
-      });
-
-      window.addEventListener('mouseup', () => {
-        if (arrastrando) {
-          arrastrando = false;
-          resizer.classList.remove('dragging');
-          document.body.style.cursor = '';
-          document.body.style.userSelect = '';
-          localStorage.setItem('flightbot_chat_width', chatPane.offsetWidth);
-        }
-      });
-    }
-
-    function inicializarFechas() {
-      const hoy = new Date();
-      const checkin = new Date(hoy);
-      checkin.setDate(hoy.getDate() + 5);
-      const checkout = new Date(checkin);
-      checkout.setDate(checkin.getDate() + 3);
-
-      const formatYMD = (d) => d.toISOString().split('T')[0];
-      const inEl = document.getElementById('checkinInput');
-      const outEl = document.getElementById('checkoutInput');
-      if (inEl && !inEl.value) inEl.value = formatYMD(checkin);
-      if (outEl && !outEl.value) outEl.value = formatYMD(checkout);
-    }
-
-    async function consultarEstadisticasSeguridad() {
-      try {
-        const resp = await fetch('/api/security/stats');
-        const data = await resp.json();
-        const badge = document.getElementById('threatsCount');
-        if (badge && typeof data.total_threats_blocked !== 'undefined') {
-          badge.textContent = data.total_threats_blocked;
-        }
-      } catch (err) {
-        // En silencio para no interrumpir la navegación
-      }
-    }
-
-    function cambiarCombustible(nuevoCombustible) {
-      combustibleActual = nuevoCombustible.toLowerCase();
-      const select = document.getElementById('combustibleInput');
-      if (select && select.value !== combustibleActual) {
-        select.value = combustibleActual;
-      }
-      cargarDestino(destinoActual);
-    }
-
-    async function cargarDestino(destino) {
-      destinoActual = destino.toLowerCase();
-      document.getElementById('lblDestino').innerHTML = `Destino actual: <span style="color: var(--primary);">${destino.toUpperCase()}</span>`;
-      try {
-        const resp = await fetch(`/api/hoteles?destino=${encodeURIComponent(destino)}`);
-        const data = await resp.json();
-        hotelesActuales = data.hoteles || [];
-        if (data.affiliate) {
-          affiliateConfig = data.affiliate;
-        }
-
-        const respRuta = await fetch(`/api/ruta?destino=${encodeURIComponent(destino)}&combustible=${encodeURIComponent(combustibleActual)}`);
-        rutaActual = await respRuta.json();
-
-        await consultarPromocionesBancarias();
-        renderizarVista();
-      } catch (err) {
-        console.error("Error cargando destino:", err);
-      }
-    }
-
-    async function consultarPromocionesBancarias() {
-      const b = document.getElementById('bancoInput')?.value || 'galicia';
-      const m = document.getElementById('marcaInput')?.value || 'visa';
-      const c = document.getElementById('catInput')?.value || 'black';
-      try {
-        const url = `/api/promos_tarjetas?banco=${encodeURIComponent(b)}&marca=${encodeURIComponent(m)}&categoria=${encodeURIComponent(c)}&destino=${encodeURIComponent(destinoActual)}`;
-        const resp = await fetch(url);
-        const data = await resp.json();
-        promosActivas = data.promociones || [];
-      } catch (e) {
-        promosActivas = [];
-      }
-    }
-
-    async function actualizarFechasYPromos() {
-      await consultarPromocionesBancarias();
-      renderizarVista();
-    }
-
-    function construirBookingUrl(h) {
-      const ci = document.getElementById('checkinInput')?.value || '';
-      const co = document.getElementById('checkoutInput')?.value || '';
-      const ad = document.getElementById('adultosInput')?.value || '2';
-      // Buscador universal infalible de Booking: nunca arroja 404 y pasa checkin/checkout/pasajeros exactos
-      const querySearch = encodeURIComponent(`${h.nombre} ${destinoActual}`);
-      let url = `https://www.booking.com/searchresults.es.html?ss=${querySearch}&checkin=${ci}&checkout=${co}&group_adults=${ad}&no_rooms=1`;
-      if (affiliateConfig.booking_aid) {
-        url += `&aid=${encodeURIComponent(affiliateConfig.booking_aid)}`;
-      } else if (affiliateConfig.tp_marker) {
-        url = `https://tp.media/r?marker=${encodeURIComponent(affiliateConfig.tp_marker)}&p=4114&u=${encodeURIComponent(url)}`;
-      }
-      return url;
-    }
-
-    function construirWebOficialUrl(h) {
-      if (!h.web_oficial_url) return '';
-      const ci = document.getElementById('checkinInput')?.value || '';
-      const co = document.getElementById('checkoutInput')?.value || '';
-      const ad = document.getElementById('adultosInput')?.value || '2';
-      if (h.web_oficial_url.includes('bahia-principe')) {
-        return `https://www.bahia-principe.com/es/?checkin=${ci}&checkout=${co}&adults=${ad}`;
-      }
-      return h.web_oficial_url;
-    }
-
-    function activarAlertaTarjeta(banco, promoId) {
-      const b = banco || document.getElementById('bancoInput')?.value || 'galicia';
-      const c = document.getElementById('catInput')?.value || 'black';
-      const dest = destinoActual || 'mendoza';
-      const urlTg = `https://t.me/GnZFlightBot?start=alert_${encodeURIComponent(b)}_${encodeURIComponent(c)}_${encodeURIComponent(dest)}`;
-      mostrarToast(`🔔 ¡Alerta lista! Abriendo tu Telegram para confirmar...`);
-      window.open(urlTg, '_blank');
-    }
-
-    function renderizarVista() {
-      const container = document.getElementById('canvasContent');
-      const filtersBar = document.getElementById('filtersBar');
-
-      // Calcular cantidad de noches reales seleccionadas en el formulario
-      const ciVal = document.getElementById('checkinInput')?.value;
-      const coVal = document.getElementById('checkoutInput')?.value;
-      let cantidadNoches = 3; // Base por defecto si no hay fechas
-      if (ciVal && coVal) {
-        const dIn = new Date(ciVal);
-        const dOut = new Date(coVal);
-        const diffDias = Math.round((dOut - dIn) / (1000 * 60 * 60 * 24));
-        if (diffDias > 0) {
-          cantidadNoches = diffDias;
-        }
-      }
-
-      if (pestañaActiva === 'hoteles') {
-        filtersBar.style.display = 'flex';
-        if (!hotelesActuales.length) {
-          container.innerHTML = `<div style="text-align:center; padding: 60px; color: #94a3b8;">No se encontraron hoteles para este destino.</div>`;
-          return;
-        }
-
-        const promoPrincipal = promosActivas.length ? promosActivas[0] : null;
-        const cuponActivo = promosActivas.find(p => p.cupon);
-
-        container.innerHTML = `
-          ${cuponActivo ? `
-            <div class="coupon-badge-card">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="font-size: 20px;">🎟️</span>
-                <div>
-                  <div style="font-size: 13.5px; font-weight: 800; color: #92400e;">${escapeHtml(cuponActivo.beneficio)}</div>
-                  <div style="font-size: 12px; color: #b45309;">${escapeHtml(cuponActivo.descripcion)}</div>
-                </div>
-              </div>
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <code class="coupon-code-pill">${escapeHtml(cuponActivo.cupon)}</code>
-                <button class="coupon-copy-btn" onclick="copiarCupon('${escapeHtml(cuponActivo.cupon)}')">
-                  📋 Copiar
-                </button>
-              </div>
-            </div>
-          ` : ''}
-
-          ${promoPrincipal && (!cuponActivo || promoPrincipal.id !== cuponActivo.id) ? `
-            <div class="promo-bank-banner">
-              <div>
-                <span style="font-size: 16px;">${promoPrincipal.icono}</span>
-                <span class="promo-bank-text"><b>${promoPrincipal.beneficio}:</b> ${promoPrincipal.descripcion}</span>
-              </div>
-              <button class="promo-bank-btn" onclick="activarAlertaTarjeta('${promoPrincipal.banco}', '${promoPrincipal.id}')">
-                🔔 Avisarme en Telegram
-              </button>
-            </div>
-          ` : ''}
-
-          <div class="hotels-grid">
-            ${hotelesActuales.map(h => {
-              const urlBookingDirecta = construirBookingUrl(h);
-              const urlWebOficial = construirWebOficialUrl(h);
-              const urlGoogleMaps = h.google_maps_url || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.nombre + ' ' + destinoActual)}`;
-              const googleScore = h.google_score || (h.puntuacion ? (h.puntuacion / 2).toFixed(1) : '4.6');
-              const googleReviewsCount = (h.google_reviews_count || 1250).toLocaleString('es-AR');
-              const resenas = h.resenas_google || [];
-
-              // Cálculo dinámico de tarifa según la cantidad de noches seleccionadas
-              const precioNocheUsd = h.precio_noche_usd || Math.round(h.precio_total_usd / 3);
-              const totalUsd = precioNocheUsd * cantidadNoches;
-              const totalArs = totalUsd * 1250; // Cotización ARS
-
-              const cuotasTexto = promoPrincipal && promoPrincipal.beneficio.includes('12 cuotas')
-                ? `<div style="font-size: 11px; color: #16a34a; font-weight: 700; margin-top: 2px;">💳 12 cuotas fijas de $${Math.round(totalArs / 12).toLocaleString('es-AR')} ARS</div>`
-                : (promoPrincipal && promoPrincipal.beneficio.includes('6 cuotas')
-                  ? `<div style="font-size: 11px; color: #16a34a; font-weight: 700; margin-top: 2px;">💳 6 cuotas fijas de $${Math.round(totalArs / 6).toLocaleString('es-AR')} ARS</div>`
-                  : '');
-
-              return `
-              <div class="hotel-card">
-                <div class="hotel-img-wrap">
-                  <img src="${h.foto}" class="hotel-img" alt="${h.nombre}">
-                  <div class="hotel-badge-score">⭐ ${h.puntuacion} · ${h.calificacion}</div>
-                </div>
-                <div class="hotel-card-body">
-                  <div>
-                    <h3 class="hotel-title">${h.nombre}</h3>
-                    <div class="hotel-location">📍 ${h.ubicacion}</div>
-                    
-                    <div class="google-rating-row">
-                      <span class="google-pill" title="Puntuación promedio de viajeros en Google">
-                        <img src="https://www.google.com/favicon.ico" alt="G" style="width:13px; height:13px;">
-                        <strong>${googleScore}</strong> ⭐ · ${googleReviewsCount} opiniones
-                      </span>
-                      <a href="${urlGoogleMaps}" target="_blank" rel="noopener noreferrer" class="google-maps-link" title="Abrir ficha completa y fotos en Google Maps">
-                        Ver en Maps ↗
-                      </a>
-                    </div>
-
-                    <div class="hotel-services">
-                      ${h.servicios.map(s => `<span class="service-tag">${s}</span>`).join('')}
-                    </div>
-
-                    ${resenas.length > 0 ? `
-                      <div class="google-reviews-section">
-                        <div class="reviews-snippets-grid">
-                          ${resenas.slice(0, 3).map(r => `
-                            <div class="review-snippet-card">
-                              <div class="review-snippet-header">
-                                <span class="review-author"><span class="review-avatar">${(r.autor || 'U').charAt(0)}</span> ${r.autor || 'Huésped'}</span>
-                                <span class="review-stars">${'⭐'.repeat(r.estrellas || 5)}</span>
-                              </div>
-                              <p class="review-snippet-text">"${r.texto}"</p>
-                              <div class="review-snippet-time">${r.tiempo || 'Reciente'} · Google Reviews</div>
-                            </div>
-                          `).join('')}
-                        </div>
-                      </div>
-                    ` : ''}
-                  </div>
-                  <div class="hotel-price-row">
-                    <div>
-                      <div class="price-value">USD $${totalUsd.toLocaleString('es-AR')}</div>
-                      <div class="price-ars">≈ $${totalArs.toLocaleString('es-AR')} ARS total (${cantidadNoches} ${cantidadNoches === 1 ? 'noche' : 'noches'} · USD $${precioNocheUsd}/noche)</div>
-                      ${cuotasTexto}
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 6px; min-width: 210px;">
-                      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px; width: 100%;">
-                        <a href="${urlWebOficial || `https://www.google.com/search?q=${encodeURIComponent(h.nombre + ' ' + destinoActual)}`}" target="_blank" rel="noopener noreferrer" class="official-web-btn" style="text-align: center; padding: 6px 3px; font-size: 11px;" title="Ver tarifa y disponibilidad en la Web Oficial">
-                          Web Oficial ↗
-                        </a>
-                        <a href="${urlBookingDirecta}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="book-btn" style="text-align: center; padding: 6px 3px; font-size: 11px;" title="Buscar en Booking con tus fechas (Enlace de afiliado sin recargo)">
-                          Booking ↗
-                        </a>
-                        <a href="${urlGoogleMaps}" target="_blank" rel="noopener noreferrer" class="google-maps-btn" style="text-align: center; padding: 6px 3px; font-size: 11px;" title="Ver opiniones, fotos y ubicación en Google Maps">
-                          📍 Maps ↗
-                        </a>
-                      </div>
-                      <button onclick="sincronizarHotelATelegram(${h.id})" class="telegram-btn" style="width: 100%;" title="Enviar ficha del hotel a tu celular por Telegram">
-                        📲 Enviar al celular
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            `;}).join('')}
-          </div>
-
-          <div class="affiliate-disclosure-bar">
-            <div>
-              ⚖️ <b>Transparencia y Afiliados:</b> FlightBot participa en programas de afiliados autorizados (Booking.com, plataformas turísticas y aerolíneas). Si reservas a través de nuestros enlaces, podemos percibir una comisión <b>sin ningún costo extra para vos</b> (el precio final que pagas no se incrementa).
-            </div>
-            <button class="affiliate-link-btn" onclick="abrirModalTransparencia()">
-              Declaración de Transparencia ↗
-            </button>
-          </div>
-        `;
-      } else {
-        // Vista de Ruta y Paradores
-        filtersBar.style.display = 'none';
-        if (!rutaActual || rutaActual.error) {
-          container.innerHTML = `<div style="text-align:center; padding: 60px; color: #94a3b8;">No hay información de ruta terrestre para este destino.</div>`;
-          return;
-        }
-
-        const tieneGnc = rutaActual.tipo_combustible === 'gnc';
-        const ahorroGnc = rutaActual.ahorro_vs_nafta_ars || 0;
-
-        container.innerHTML = `
-          <div class="route-dashboard">
-            <!-- Semáforo de Estado de Calzada (4 Colores Claros) -->
-            ${rutaActual.estado_ruta ? `
-              <div class="road-condition-card" style="border-left: 6px solid ${rutaActual.estado_ruta.color_hex}; background: #ffffff;">
-                <div class="road-badge" style="background: ${rutaActual.estado_ruta.color_hex};">
-                  ${rutaActual.estado_ruta.icono} ${rutaActual.estado_ruta.etiqueta}
-                </div>
-                <div style="font-size: 13.5px; color: #334155;">
-                  <b>Estado actual del pavimento y calzada:</b> ${rutaActual.estado_ruta.descripcion}
-                </div>
-              </div>
-            ` : ''}
-
-            <!-- Tarjeta de Ahorro Económico si usa GNC -->
-            ${tieneGnc && ahorroGnc > 0 ? `
-              <div class="gnc-savings-card">
-                <div class="gnc-icon">💰</div>
-                <div>
-                  <h4>¡Ahorro Superior al 50% viajando con GNC!</h4>
-                  <p>En este viaje gastás aprox. <b>$${(rutaActual.costo_combustible_ars || 0).toLocaleString('es-AR')} ARS</b> en GNC.
-                  Comparado con hacer el mismo trayecto a nafta ($${((rutaActual.costo_combustible_ars || 0) + ahorroGnc).toLocaleString('es-AR')} ARS),
-                  <b>¡ahorrás ~$${ahorroGnc.toLocaleString('es-AR')} ARS (${rutaActual.ahorro_vs_nafta_pct}%) en combustible!</b></p>
-                </div>
-              </div>
-            ` : ''}
-
-            <!-- Métricas Clave de Viaje -->
-            <div class="metric-cards-grid">
-              <div class="metric-card">
-                <div class="metric-title">📏 Distancia (Ida)</div>
-                <div class="metric-value">${rutaActual.distancia_km} km</div>
-              </div>
-              <div class="metric-card">
-                <div class="metric-title">⏱️ Tiempo Manejo</div>
-                <div class="metric-value">${rutaActual.tiempo_estimado}</div>
-              </div>
-              <div class="metric-card">
-                <div class="metric-title">${rutaActual.combustible_icono || '⛽'} ${rutaActual.combustible_nombre || 'Combustible'}</div>
-                <div class="metric-value">$${(rutaActual.costo_combustible_ars || 0).toLocaleString('es-AR')}</div>
-                <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">~${rutaActual.consumo_unidades || 0} ${rutaActual.combustible_unidad || 'L'} (Ida y Vuelta)</div>
-              </div>
-              <div class="metric-card">
-                <div class="metric-title">💰 Gasto Total Ruta</div>
-                <div class="metric-value" style="color: var(--primary);">$${(rutaActual.costo_total_viaje_ars || 0).toLocaleString('es-AR')}</div>
-                <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">Incluye $${(rutaActual.peajes_ars || 0).toLocaleString('es-AR')} peajes</div>
-              </div>
-            </div>
-
-            <!-- Alertas Críticas de Tránsito / Desierto / Frontera / GNC -->
-            ${rutaActual.alerta_desierto ? `<div class="route-alert-box">${rutaActual.alerta_desierto}</div>` : ''}
-            ${tieneGnc && rutaActual.alerta_gnc ? `<div class="route-alert-box" style="border-left-color: #ea580c; background: #fff7ed;">${rutaActual.alerta_gnc}</div>` : ''}
-            ${rutaActual.alerta_frontera ? `<div class="route-alert-box" style="border-left-color: var(--danger); background: #fef2f2;">${rutaActual.alerta_frontera}</div>` : ''}
-
-            <!-- Paradores y Estaciones de Servicio Compatibles -->
-            <div class="paradores-timeline">
-              <h3 style="font-size: 17px; font-weight: 800; margin-bottom: 20px;">☕ Paradores y Estaciones Emblemáticas en el Camino</h3>
-              <div class="timeline-list">
-                ${(rutaActual.paradores || []).map(p => {
-                  const tagGnc = p.tiene_gnc ? '<span style="background: #e0f2fe; color: #0369a1; padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight: 700; margin-left: 6px;">🔵 Tiene GNC</span>' : '';
-                  const tagEv = p.cargador_electrico ? '<span style="background: #fef9c3; color: #854d0e; padding: 2px 7px; border-radius: 6px; font-size: 11px; font-weight: 700; margin-left: 6px;">⚡ Cargador EV</span>' : '';
-                  return `
-                  <div class="timeline-item">
-                    <div class="timeline-icon">${p.icono}</div>
-                    <div class="timeline-content">
-                      <div class="km-badge">${p.km} · ${p.tipo} ${tagGnc} ${tagEv}</div>
-                      <h4>${p.nombre}</h4>
-                      <p>${p.descripcion}</p>
-                    </div>
-                  </div>
-                `;}).join('')}
-              </div>
-              <div style="margin-top: 16px; border-top: 1px solid var(--border); padding-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
-                <button onclick="sincronizarRutaATelegram()" style="display: inline-flex; align-items: center; gap: 6px; background: #0284c7; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 13px; font-family: inherit; transition: background 0.15s;">
-                  📲 Enviar Hoja de Ruta y Paradores a mi Telegram
-                </button>
-                <a href="${escapeHtml(rutaActual.maps_url)}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: var(--primary); color: white; padding: 10px 18px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 13px;">
-                  🗺️ Abrir navegación directa en Google Maps
-                </a>
-              </div>
-            </div>
-
-            <div class="affiliate-disclosure-bar">
-              <div>
-                ⚖️ <b>Transparencia y Afiliados:</b> FlightBot sugiere paradores, combustibles y peajes de forma imparcial. Enlaces a servicios externos pueden generar comisiones de afiliación <b>sin costo extra para vos</b>.
-              </div>
-              <button class="affiliate-link-btn" onclick="abrirModalTransparencia()">
-                Declaración de Transparencia ↗
-              </button>
-            </div>
-          </div>
-        `;
-      }
-    }
-
-    function cambiarPestaña(tipo) {
-      pestañaActiva = tipo;
-      document.getElementById('tabHoteles').classList.toggle('active', tipo === 'hoteles');
-      document.getElementById('tabRuta').classList.toggle('active', tipo === 'ruta');
-      renderizarVista();
-    }
-
-    function filtrarHoteles(filtro, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      if (filtro === 'pileta') {
-        hotelesActuales = hotelesActuales.filter(h => h.tiene_pileta);
-      } else if (filtro === 'desayuno') {
-        hotelesActuales = hotelesActuales.filter(h => h.tiene_desayuno);
-      }
-      renderizarVista();
-    }
-
-    function ordenarHotelesPrecio(btn) {
-      hotelesActuales.sort((a, b) => a.precio_total_usd - b.precio_total_usd);
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderizarVista();
-    }
-
-    async function enviarMensajeUsuario(textoPredefinido) {
-      const input = document.getElementById('chatInput');
-      const texto = (typeof textoPredefinido === 'string' ? textoPredefinido : input.value).trim();
-      if (!texto) return;
-
-      agregarBurbuja(texto, 'user');
-      input.value = '';
-
-      try {
-        const resp = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ mensaje: texto, combustible: combustibleActual })
-        });
-        const data = await resp.json();
-
-        // Agregar respuesta del bot con botones interactivos si los trae
-        agregarBurbuja(data.respuesta, 'bot', data.quick_replies || []);
-
-        if (data.combustible_aplicado) {
-          combustibleActual = data.combustible_aplicado;
-          const select = document.getElementById('combustibleInput');
-          if (select) select.value = combustibleActual;
-        }
-
-        if (data.hoteles && data.hoteles.length) {
-          hotelesActuales = data.hoteles;
-        }
-        if (data.datos_ruta) {
-          rutaActual = data.datos_ruta;
-        }
-        if (data.vista) {
-          cambiarPestaña(data.vista === 'ruta' ? 'ruta' : 'hoteles');
-        }
-      } catch (err) {
-        agregarBurbuja("⚠️ Error conectando con el servidor web local.", 'bot');
-      }
-    }
-
-    function enviarMensajeRapido(dest) {
-      // Si el texto rápido es un combustible o un hotel
-      const dMin = dest.toLowerCase();
-      if (dMin.includes("nafta")) {
-        cambiarCombustible("nafta");
-      } else if (dMin.includes("gnc") || dMin.includes("gas")) {
-        cambiarCombustible("gnc");
-      } else if (dMin.includes("diesel")) {
-        cambiarCombustible("diesel");
-      } else if (dMin.includes("electrico")) {
-        cambiarCombustible("electrico");
-      }
-
-      enviarMensajeUsuario(dest);
-
-      // Si es un destino conocido, actualizar el canvas derecho
-      for (const k of ["tandil", "mendoza", "bariloche", "punta cana"]) {
-        if (dMin.includes(k)) {
-          cargarDestino(k);
-          break;
-        }
-      }
-    }
-
-    function manejarEnter(e) {
-      if (e.key === 'Enter') enviarMensajeUsuario();
-    }
-
-    function agregarBurbuja(htmlText, remitente, quickReplies = []) {
-      const chat = document.getElementById('chatMessages');
-      const div = document.createElement('div');
-      div.className = `message ${remitente}`;
-
-      // El texto del usuario NUNCA es HTML de confianza: se escapa. El HTML del bot proviene del servidor.
-      let content = remitente === 'user' ? escapeHtml(htmlText) : htmlText;
-      if (quickReplies && quickReplies.length) {
-        const btnsHtml = quickReplies.map(qr => `
-          <button class="interactive-choice-btn" onclick="enviarMensajeRapido('${escapeHtml(String(qr).replace(/\\/g, '\\\\').replace(/'/g, "\\'"))}')">
-            ${escapeHtml(String(qr))}
-          </button>
-        `).join('');
-        content += `<div class="interactive-bubble-btns">${btnsHtml}</div>`;
-      }
-
-      div.innerHTML = content;
-      chat.appendChild(div);
-      chat.scrollTop = chat.scrollHeight;
-    }
-
-    async function sincronizarHotelATelegram(hotelId) {
-      mostrarToast("📲 Enviando hotel a tu celular...");
-      try {
-        const resp = await fetch('/api/telegram/sync_hotel', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ hotel_id: hotelId })
-        });
-        const data = await resp.json();
-        if (data.ok) {
-          mostrarToast(data.mensaje);
-          agregarBurbuja(`📲 <b>¡Sincronizado!</b> Te envié la ficha del hotel a tu Telegram. Revisá tu celular.`, 'bot');
-        } else {
-          mostrarToast("⚠️ " + (data.mensaje || data.error));
-        }
-      } catch (err) {
-        mostrarToast("⚠️ Error conectando con el servidor web.");
-      }
-    }
-
-    async function sincronizarRutaATelegram(destino) {
-      const destFinal = destino || (rutaActual ? rutaActual.destino : 'Tandil');
-      mostrarToast("🚗 Enviando hoja de ruta a tu celular...");
-      try {
-        const resp = await fetch('/api/telegram/sync_ruta', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ destino: destFinal, combustible: combustibleActual })
-        });
-        const data = await resp.json();
-        if (data.ok) {
-          mostrarToast(data.mensaje);
-          agregarBurbuja(`🚗 <b>¡Ruta enviada!</b> Te mandé la hoja de viaje a ${destFinal} (${combustibleActual.toUpperCase()}) con paradores y link de Google Maps a tu celular.`, 'bot');
-        } else {
-          mostrarToast("⚠️ " + (data.mensaje || data.error));
-        }
-      } catch (err) {
-        mostrarToast("⚠️ Error conectando con el servidor web.");
-      }
-    }
-
-    function mostrarToast(mensaje) {
-      let toast = document.getElementById('toastNotification');
-      if (!toast) {
-        toast = document.createElement('div');
-        toast.id = 'toastNotification';
-        toast.className = 'toast-notification';
-        document.body.appendChild(toast);
-      }
-      toast.innerHTML = mensaje;
-      toast.classList.add('show');
-      clearTimeout(toast._timeout);
-      toast._timeout = setTimeout(() => {
-        toast.classList.remove('show');
-      }, 4000);
-    }
-
-    async function verificarEstadoTelegram() {
-      try {
-        const resp = await fetch('/api/telegram/status');
-        const data = await resp.json();
-
-        // Control estricto de visibilidad del Escudo WAF: Exclusivo para el Administrador sincronizado
-        const wafEl = document.getElementById('wafBadge');
-        if (wafEl) {
-          if (data && data.is_admin) {
-            wafEl.style.display = 'inline-flex';
-            consultarEstadisticasSeguridad();
-            setInterval(consultarEstadisticasSeguridad, 8000);
-          } else {
-            wafEl.style.display = 'none';
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#1e3a8a',
+            }
           }
         }
-
-        const badge = document.getElementById('tgBadge');
-        if (badge) {
-          if (data && data.activo && data.is_admin) {
-            badge.innerHTML = `<span class="status-dot"></span> 📲 Telegram Sincronizado (@${data.bot_username || 'GnZFlightBot'})`;
-            badge.title = `Conectado a chat ${data.chat_id_conectado || ''}`;
-            badge.style.display = 'inline-flex';
-          } else {
-            badge.style.display = 'none';
-          }
-        }
-      } catch (e) {
-        const wafEl = document.getElementById('wafBadge');
-        if (wafEl) wafEl.style.display = 'none';
-      }
-    }
-
-    function abrirModalTransparencia() {
-      const modal = document.getElementById('legalModalBackdrop');
-      if (modal) modal.classList.add('open');
-    }
-
-    function cerrarModalTransparencia(e) {
-      if (!e || e.target.id === 'legalModalBackdrop' || e.type === 'click') {
-        const modal = document.getElementById('legalModalBackdrop');
-        if (modal) modal.classList.remove('open');
-      }
-    }
-
-    function copiarCupon(codigo) {
-      if (!codigo) return;
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(codigo).then(() => {
-          mostrarToast(`🎟️ ¡Cupón <b>${codigo}</b> copiado al portapapeles! Pegalo al momento del pago.`);
-        }).catch(() => {
-          mostrarToast(`🎟️ Cupón: ${codigo} (copialo manualmente)`);
-        });
-      } else {
-        mostrarToast(`🎟️ Cupón: ${codigo} (copialo manualmente)`);
       }
     }
   </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white">
 
-  <!-- MODAL DE TRANSPARENCIA LEGAL Y AFILIADOS (FTC 16 CFR Part 255 & Ley de Defensa del Consumidor) -->
-  <div id="legalModalBackdrop" class="legal-modal-backdrop" onclick="cerrarModalTransparencia(event)">
-    <div class="legal-modal-card" onclick="event.stopPropagation()">
-      <div class="legal-modal-header">
-        <div class="legal-modal-title">
-          <span>⚖️</span>
-          <span>Declaración de Transparencia & Afiliados</span>
+  <!-- Encabezado / Navegación -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+          </svg>
         </div>
-        <button class="legal-modal-close" onclick="cerrarModalTransparencia(event)">&times;</button>
+        <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+          FlightBot
+        </span>
       </div>
-      <div class="legal-modal-body">
-        <p>En <b>FlightBot</b> sostenemos un compromiso absoluto con la transparencia, la honestidad y la independencia hacia nuestra comunidad de viajeros.</p>
-        
-        <h4>1. ¿Cómo se financia FlightBot?</h4>
-        <p>FlightBot ofrece sus herramientas de búsqueda, cotización inteligente, cálculo de combustible y rastreo de promociones bancarias de forma 100% gratuita.</p>
-        <p>Para financiar los costos operativos (servidores, scrapers automatizados, APIs de mapas y modelos de inteligencia artificial), participamos en <b>programas de afiliados verificados</b> (incluyendo redes como Travelpayouts, convenios con Booking.com Partner Hub y plataformas de aerolíneas o seguros de viaje).</p>
 
-        <h4>2. Garantía de Cero Sobrecosto (Mismo Precio Garantizado)</h4>
-        <p>Cuando hacés clic en un enlace de reserva de hotel o vuelo hacia un proveedor externo y concretás una compra, dicho proveedor puede acreditarnos una comisión por la derivación.</p>
-        <p><b>Esta comisión jamás aumenta el precio final que abonás.</b> Pagás exactamente la misma tarifa oficial (o incluso menor si aplicás cupones de descuento o promociones bancarias vigentes).</p>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#como-funciona" class="hover:text-white transition-colors">Cómo Funciona</a>
+        <a href="guias/index.html" class="text-blue-400 hover:text-blue-300 transition-colors font-semibold">Guías de Viaje</a>
+        <a href="#destinos" class="hover:text-white transition-colors">Destinos & Hoteles</a>
+        <a href="#faq" class="hover:text-white transition-colors">Preguntas Frecuentes</a>
+      </nav>
 
-        <h4>3. Independencia Editorial y Objetividad Algorítmica</h4>
-        <p>Las recomendaciones de alojamientos, rutas y tarjetas se ordenan exclusivamente por conveniencia para el usuario, precio más competitivo y reputación en Google Reviews. Ningún establecimiento ni aerolínea puede pagar para alterar el orden o las respuestas de la IA.</p>
+      <div>
+        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
+          </svg>
+          Probar en Telegram
+        </a>
+      </div>
+    </div>
+  </header>
 
-        <h4>4. Cumplimiento Normativo Internacional</h4>
-        <p>Esta declaración cumple con las pautas de divulgación de la Comisión Federal de Comercio (FTC de Estados Unidos, 16 CFR § 255.5) y las regulaciones de defensa del consumidor y lealtad comercial en comercio electrónico.</p>
+  <!-- Hero Section -->
+  <section class="relative pt-16 pb-24 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-slate-950 to-slate-950 pointer-events-none"></div>
 
-        <div style="margin-top: 22px; text-align: right;">
-          <button onclick="cerrarModalTransparencia(event)" style="background: var(--primary); color: white; border: none; padding: 9px 20px; border-radius: 8px; font-weight: 700; cursor: pointer; font-family: inherit;">
-            Comprendido
-          </button>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-8">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Radar 24/7 de Tarifas Aéreas y Alojamientos
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-8">
+        Viaja al mejor precio con alertas en <span class="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">tiempo real</span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        FlightBot rastrea automáticamente vuelos baratos, caídas repentinas de precios y te recomienda los mejores alojamientos verificados en destinos top del mundo.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
+           class="w-full sm:w-auto px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-base transition-all shadow-xl shadow-blue-600/30 flex items-center justify-center gap-3">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
+          </svg>
+          Iniciar Bot Gratis en Telegram
+        </a>
+        <a href="#destinos" 
+           class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-base transition-all">
+          Ver Destinos y Hoteles
+        </a>
+      </div>
+
+      <!-- Métricas destacadas -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 pt-12 border-t border-slate-800/80">
+        <div>
+          <div class="text-3xl font-extrabold text-white">48h</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase font-semibold">Cadencia Radar Activo</div>
+        </div>
+        <div>
+          <div class="text-3xl font-extrabold text-blue-400">100%</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase font-semibold">Gratis para Usuarios</div>
+        </div>
+        <div>
+          <div class="text-3xl font-extrabold text-emerald-400">0s</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase font-semibold">Alertas Inmediatas</div>
+        </div>
+        <div>
+          <div class="text-3xl font-extrabold text-indigo-400">+50k</div>
+          <div class="text-xs text-slate-400 mt-1 uppercase font-semibold">Opciones de Alojamiento</div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Sección: Cómo Funciona -->
+  <section id="como-funciona" class="py-20 bg-slate-900/50 border-y border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">¿Cómo funciona FlightBot?</h2>
+        <p class="text-slate-400">Un flujo pensado para viajeros que quieren ahorrar tiempo y maximizar su presupuesto sin complicaciones técnicas.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 relative">
+          <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 font-extrabold text-xl flex items-center justify-center mb-6">
+            1
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Programa tu Ruta</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Elige tu origen, destino y ventana de fechas directamente conversando con el bot de Telegram o fijando tus límites presupuestarios.
+          </p>
+        </div>
+
+        <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 relative">
+          <div class="w-12 h-12 rounded-xl bg-indigo-600/10 border border-indigo-500/20 text-indigo-400 font-extrabold text-xl flex items-center justify-center mb-6">
+            2
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Vigilancia Continua</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Nuestro motor escanea las variaciones de tarifas cada 48 horas en las principales aerolíneas y plataformas de viaje.
+          </p>
+        </div>
+
+        <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 relative">
+          <div class="w-12 h-12 rounded-xl bg-emerald-600/10 border border-emerald-500/20 text-emerald-400 font-extrabold text-xl flex items-center justify-center mb-6">
+            3
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Alerta y Reserva Directa</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Apenas detectamos una caída o precio récord, recibes una notificación con enlaces directos para reservar tu vuelo y hotel con confirmación oficial.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Destinos & Alojamientos Recomendados (Especial para Booking.com) -->
+  <section id="destinos" class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div>
+          <div class="text-blue-500 font-semibold text-sm uppercase tracking-wider mb-2">Guías de Hospedaje & Destinos 2026</div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Alojamientos y guías para tu próxima escapada</h2>
+        </div>
+        <div>
+          <a href="guias/index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors">
+            Ver las 10 Guías Completas &rarr;
+          </a>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <!-- Tarjeta 1: Madrid -->
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=600&q=80" 
+                 alt="Madrid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+              🇪🇸 España
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-1">Madrid, España</h3>
+              <p class="text-xs text-slate-400 mb-4">Gran Vía · Salamanca · Malasaña</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                Hub de alta velocidad y puerta a Europa. Guía de barrios seguros, trenes Iryo/Ouigo y hoteles boutique.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-400">Desde <strong class="text-white text-sm">€65/noche</strong></span>
+              <a href="guias/madrid.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Ver Guía &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Río de Janeiro -->
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=600&q=80" 
+                 alt="Río de Janeiro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">
+              🇧🇷 Brasil
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-1">Río de Janeiro, Brasil</h3>
+              <p class="text-xs text-slate-400 mb-4">Ipanema · Copacabana · Leblon</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                Playas cariocas y escapadas a Arraial do Cabo y Búzios. Los mejores hoteles frente al mar y consejos de seguridad.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-400">Desde <strong class="text-white text-sm">R$210/noche</strong></span>
+              <a href="guias/rio-de-janeiro.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Ver Guía &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Miami / Florida -->
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=600&q=80" 
+                 alt="Miami" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-amber-400 px-3 py-1 rounded-full border border-amber-500/20">
+              🇺🇸 USA
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-1">Miami & Sur de Florida</h3>
+              <p class="text-xs text-slate-400 mb-4">South Beach · Brickell · Key West</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                Playas, tren rápido Brightline a Orlando, ruta a los Cayos y cruceros por el Caribe.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-400">Desde <strong class="text-white text-sm">$95/noche</strong></span>
+              <a href="guias/miami.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Ver Guía &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 4: Roma, Italia -->
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=80" 
+                 alt="Roma" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-purple-400 px-3 py-1 rounded-full border border-purple-500/20">
+              🇮🇹 Italia
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-1">Roma, Italia</h3>
+              <p class="text-xs text-slate-400 mb-4">Monti · Prati · Trastevere</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                La Ciudad Eterna y trenes de alta velocidad Frecciarossa a Florencia (1h 32m) y Nápoles. Alojamientos con encanto.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-400">Desde <strong class="text-white text-sm">€70/noche</strong></span>
+              <a href="guias/roma.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Ver Guía &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner con acceso a los 10 Destinos Monitoreados -->
+      <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <h4 class="text-lg font-bold text-white mb-1">Explora las 10 Guías Turísticas Oficiales</h4>
+          <p class="text-slate-400 text-sm">
+            Bariloche, Mendoza, Iguazú, Cancún, Punta Cana, Aruba, Madrid, Río, Miami y Roma.
+          </p>
+        </div>
+        <div class="flex gap-3 flex-wrap">
+          <a href="guias/index.html" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30">
+            Ver Índice de Guías 2026 &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección: Preguntas Frecuentes -->
+  <section id="faq" class="py-20 bg-slate-900/40 border-t border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold text-white text-center mb-12">Preguntas Frecuentes</h2>
+
+      <div class="space-y-6">
+        <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+          <h4 class="text-lg font-bold text-white mb-2">¿FlightBot es completamente gratis?</h4>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Sí. Nuestro asistente en Telegram es 100% gratuito para los viajeros. Puedes configurar tus rutas, monitorear precios y recibir alertas directas sin pagar suscripciones ni comisiones.
+          </p>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+          <h4 class="text-lg font-bold text-white mb-2">¿Cómo se gestionan las reservas de hoteles y vuelos?</h4>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            FlightBot no vende boletos directamente. Cuando encuentras una oferta que te interesa, te redirigimos a los proveedores oficiales y líderes de la industria (como Booking.com, aerolíneas y plataformas asociadas) para que reserves de forma segura con confirmación inmediata.
+          </p>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+          <h4 class="text-lg font-bold text-white mb-2">¿Con qué frecuencia se actualizan los precios?</h4>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            El radar de rutas activas se ejecuta de manera inteligente cada 48 horas para rastrear fluctuaciones reales del mercado y avisarte en el momento exacto en que una tarifa baja significativamente.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de página y Descargo de Afiliación (Affiliate Disclosure Requerido) -->
+  <footer class="py-12 bg-slate-950 border-t border-slate-800 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-slate-800">
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xs">F</div>
+            <span class="text-base font-bold text-white">FlightBot</span>
+          </div>
+          <p class="text-slate-400 leading-relaxed">
+            Plataforma y asistente de inteligencia de viajes. Automatizamos la detección de ofertas en vuelos y alojamientos para viajeros de todo el mundo.
+          </p>
+        </div>
+
+        <div>
+          <h5 class="text-white font-semibold text-sm mb-3">Canales de Contacto</h5>
+          <ul class="space-y-2">
+            <li>Telegram Oficial: <a href="https://t.me/GnZFlightBot" target="_blank" class="text-blue-400 hover:underline">@GnZFlightBot</a></li>
+            <li>Soporte y Consultas: <a href="mailto:soporte.flightbot@gmail.com" class="text-blue-400 hover:underline">soporte.flightbot@gmail.com</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-white font-semibold text-sm mb-3">Políticas y Términos</h5>
+          <p class="text-slate-400 leading-relaxed mb-2">
+            Priorizamos la privacidad de nuestros usuarios y la transparencia en la información de viaje.
+          </p>
+          <span class="text-slate-500">Última actualización: 2026</span>
+        </div>
+      </div>
+
+      <!-- Aviso Legal y Divulgación de Afiliación para Travelpayouts / Booking -->
+      <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800/80 mb-6">
+        <p class="text-slate-400 leading-relaxed">
+          <strong class="text-slate-300">Divulgación de Afiliación (Affiliate Disclosure):</strong> 
+          FlightBot participa en programas de marketing de afiliados, incluyendo Travelpayouts y Booking.com. Algunos de los enlaces que recomendamos pueden generar una comisión para nuestro proyecto si decides realizar una reserva, sin que esto implique ningún coste adicional para ti. Toda recomendación se basa en criterios objetivos de calidad, seguridad y valor para el viajero.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
+        <div>&copy; 2026 FlightBot. Todos los derechos reservados.</div>
+        <div class="flex gap-4">
+          <a href="guias/index.html" class="text-blue-400 hover:text-blue-300 font-medium">Guías de Viaje 2026</a>
+          <a href="#" class="hover:text-slate-400">Privacidad</a>
+          <a href="#" class="hover:text-slate-400">Términos de Uso</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

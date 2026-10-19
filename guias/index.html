@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guías Turísticas y Destinos 2026 · FlightBot</title>
+  <meta name="description" content="Catálogo completo de guías de viaje de FlightBot: transporte, trenes de alta velocidad, puntos turísticos y hoteles en los 10 destinos monitoreados.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white">
+
+  <!-- Navegación Superior -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+            </svg>
+          </div>
+          <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+            FlightBot
+          </span>
+        </a>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <a href="../index.html" class="hover:text-white transition-colors">Inicio</a>
+        <a href="index.html" class="text-blue-400 font-semibold">Guías de Viaje</a>
+        <a href="../index.html#destinos" class="hover:text-white transition-colors">Destinos & Hoteles</a>
+        <a href="../index.html#faq" class="hover:text-white transition-colors">Preguntas Frecuentes</a>
+      </nav>
+
+      <div>
+        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-lg shadow-blue-600/30">
+          Probar Bot en Telegram
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-4">
+        Contenido Editorial de Viajes 2026
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-6">
+        Guías Turísticas & Rutas Monitoreadas
+      </h1>
+      <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+        Explora nuestros informes sobre los 10 destinos estratégicos de FlightBot: conexiones en tren bala, excursiones imperdibles, comparativas de transporte y las mejores zonas para hospedarte con reservas seguras.
+      </p>
+    </div>
+
+    <!-- Rejilla de Destinos -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=80" alt="Río de Janeiro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+              🇧🇷 Brasil
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Río de Janeiro</h3>
+              <p class="text-xs text-slate-400 mb-3">Aeropuertos: GIG (Galeão) / SDU (Santos Dumont)</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                Playas legendarias, naturaleza exuberante y puerta de entrada a la paradisíaca Región de los Lagos de Brasil....
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-mono">/rio</span>
+              <a href="rio-de-janeiro.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Leer Guía Completa &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1200&q=80" alt="Roma" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+              🇮🇹 Italia
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Roma</h3>
+              <p class="text-xs text-slate-400 mb-3">Aeropuertos: FCO (Fiumicino) / CIA (Ciampino)</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                La Ciudad Eterna: 3.000 años de historia, gastronomía de culto y el mayor hub de trenes de alta velocidad de Europa del Sur....
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-mono">/roma</span>
+              <a href="roma.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Leer Guía Completa &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80" alt="Madrid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+              🇪🇸 España
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Madrid</h3>
+              <p class="text-xs text-slate-400 mb-3">Aeropuertos: MAD (Adolfo Suárez Barajas)</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                Capital viva de la cultura y la gastronomía, con la red de trenes de alta velocidad más competitiva y el mayor puente aéreo low-co...
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-mono">/madrid</span>
+              <a href="madrid.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Leer Guía Completa &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=1200&q=80" alt="Miami & Sur de Florida" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+              🇺🇸 Estados Unidos
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Miami & Sur de Florida</h3>
+              <p class="text-xs text-slate-400 mb-3">Aeropuertos: MIA (Miami Intl) / FLL (Fort Lauderdale)</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                Clima tropical, playas de arena blanca, shopping internacional y el epicentro de trenes modernos, cruceros y parques temáticos....
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-mono">/miami</span>
+              <a href="miami.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Leer Guía Completa &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1510097467424-192d713fd8b2?auto=format&fit=crop&w=1200&q=80" alt="Cancún & Riviera Maya" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+              🇲🇽 México
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Cancún & Riviera Maya</h3>
+              <p class="text-xs text-slate-400 mb-3">Aeropuertos: CUN (Cancún Internacional)</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                El mar Caribe en su máxima pureza, milenarios templos mayas, cenotes sagrados y una gastronomía declarada Patrimonio de la Humanid...
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-mono">/cancun</span>
+              <a href="cancun-riviera-maya.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Leer Guía Completa &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=80" alt="Punta Cana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+              🇩🇴 República Dominicana
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Punta Cana</h3>
+              <p class="text-xs text-slate-400 mb-3">Aeropuertos: PUJ (Punta Cana Internacional)</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                El epicentro del descanso caribeño: resorts all inclusive de primer nivel, cocoteros infinitos y excursiones náuticas inolvidables...
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-mono">/puntacana</span>
+              <a href="punta-cana.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Leer Guía Completa &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=1200&q=80" alt="Aruba (Caribe Holandés)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+              🇦🇼 Reino de los Países Bajos
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Aruba (Caribe Holandés)</h3>
+              <p class="text-xs text-slate-400 mb-3">Aeropuertos: AUA (Queen Beatrix Intl)</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                La 'Isla Feliz': seguridad total, fuera de la ruta de huracanes, sol garantizado todo el año y playas de ranking mundial....
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-mono">/aruba</span>
+              <a href="aruba.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Leer Guía Completa &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?auto=format&fit=crop&w=1200&q=80" alt="Bariloche & Región de los Lagos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+              🏔️ Argentina
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Bariloche & Región de los Lagos</h3>
+              <p class="text-xs text-slate-400 mb-3">Aeropuertos: BRC (Teniente Luis Candelaria)</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                Capital nacional del turismo aventura, majestuosos lagos glaciares, bosques andinos, centros de esquí y el circuito de chocolaterí...
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-mono">/bariloche</span>
+              <a href="bariloche-patagonia.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Leer Guía Completa &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=80" alt="Mendoza & Valle de Uco" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+              🍷 Argentina
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Mendoza & Valle de Uco</h3>
+              <p class="text-xs text-slate-400 mb-3">Aeropuertos: MDZ (El Plumerillo)</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                Capital internacional del vino, bodegas de arquitectura vanguardista al pie de los Andes y la imponente pared sur del Cerro Aconca...
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-mono">/mendoza</span>
+              <a href="mendoza-valle-de-uco.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Leer Guía Completa &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+          <div class="h-48 bg-slate-800 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?auto=format&fit=crop&w=1200&q=80" alt="Puerto Iguazú & Triple Frontera" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+              🌊 Argentina / Brasil / Paraguay
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Puerto Iguazú & Triple Frontera</h3>
+              <p class="text-xs text-slate-400 mb-3">Aeropuertos: IGR (Cataratas del Iguazú) / IGU (Foz do Iguaçu)</p>
+              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+                Una de las 7 Maravillas Naturales del Mundo, selva paranaense subtropical y el dinamismo cultural y comercial de la Triple Fronter...
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-500 font-mono">/iguazu</span>
+              <a href="puerto-iguazu-cataratas.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Leer Guía Completa &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </main>
+
+  <footer class="py-12 bg-slate-950 border-t border-slate-800 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800/80 mb-6">
+        <p class="text-slate-400 leading-relaxed">
+          <strong class="text-slate-300">Divulgación de Afiliación (Affiliate Disclosure):</strong> 
+          FlightBot participa en programas de marketing de afiliados, incluyendo Travelpayouts y Booking.com. Algunos de los enlaces que recomendamos pueden generar una comisión para nuestro proyecto si decides realizar una reserva, sin que esto implique ningún coste adicional para ti.
+        </p>
+      </div>
+      <div class="flex justify-between items-center text-slate-500">
+        <div>&copy; 2026 FlightBot. Todos los derechos reservados.</div>
+        <div class="flex gap-4">
+          <a href="../index.html" class="hover:text-slate-400">Inicio</a>
+          <a href="https://t.me/GnZFlightBot" class="hover:text-slate-400">Telegram</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
