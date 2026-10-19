@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth dark" data-color="ruby">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,56 +11,110 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
-          colors: {
-            brand: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              900: '#1e3a8a',
-            }
-          }
         }
       }
-    }
-  </script>
-</head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white">
+    };
 
-  <!-- Encabezado / Navegación -->
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+    // Inicialización inmediata antes del renderizado para evitar FOUC (parpadeos)
+    (function() {
+      const savedColor = localStorage.getItem('fb_theme_color') || 'ruby';
+      const savedMode = localStorage.getItem('fb_theme_mode') || 'dark';
+      document.documentElement.setAttribute('data-color', savedColor);
+      if (savedMode === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+  <style>
+    /* Variables de Acento Cromático Dinámicas (Rojo Rubí por defecto absoluto) */
+    :root, html, html[data-color="ruby"] {
+      --brand-primary: #e11d48; /* rose-600 */
+      --brand-hover: #be123c;   /* rose-700 */
+      --brand-text: #fb7185;    /* rose-400 */
+      --brand-text-light: #e11d48;
+      --brand-subtle: rgba(225, 29, 72, 0.12);
+      --brand-border: rgba(225, 29, 72, 0.25);
+      --brand-glow: rgba(225, 29, 72, 0.35);
+      --brand-gradient: linear-gradient(135deg, #e11d48 0%, #ef4444 100%);
+    }
+    html[data-color="blue"] {
+      --brand-primary: #2563eb; /* blue-600 */
+      --brand-hover: #1d4ed8;   /* blue-700 */
+      --brand-text: #60a5fa;    /* blue-400 */
+      --brand-text-light: #2563eb;
+      --brand-subtle: rgba(37, 99, 235, 0.12);
+      --brand-border: rgba(37, 99, 235, 0.25);
+      --brand-glow: rgba(37, 99, 235, 0.35);
+      --brand-gradient: linear-gradient(135deg, #2563eb 0%, #6366f1 100%);
+    }
+
+    .theme-transition {
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .brand-gradient-text {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition">
+
+  <!-- Encabezado / Navegación Superior -->
+  <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/80 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
+        <div id="brand-logo" class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition" style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
           <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
           </svg>
         </div>
-        <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+        <span class="text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">
           FlightBot
         </span>
       </div>
 
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#como-funciona" class="hover:text-white transition-colors">Cómo Funciona</a>
-        <a href="guias/index.html" class="text-blue-400 hover:text-blue-300 transition-colors font-semibold">Guías de Viaje</a>
-        <a href="#destinos" class="hover:text-white transition-colors">Destinos & Hoteles</a>
-        <a href="#faq" class="hover:text-white transition-colors">Preguntas Frecuentes</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium dark:text-slate-300 text-slate-600 theme-transition">
+        <a href="#como-funciona" class="hover:text-rose-500 transition-colors">Cómo Funciona</a>
+        <a href="guias/index.html" class="font-bold transition-colors" style="color: var(--brand-primary);">Guías de Viaje</a>
+        <a href="#destinos" class="hover:text-rose-500 transition-colors">Destinos & Hoteles</a>
+        <a href="#faq" class="hover:text-rose-500 transition-colors">Preguntas Frecuentes</a>
       </nav>
 
-      <div>
+      <div class="flex items-center gap-3">
+        <!-- Control Dual de Personalización (Color + Modo Claro/Oscuro) -->
+        <div class="flex items-center gap-1.5 p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-sm theme-transition">
+          <!-- Switcher de Color (Rojo Rubí vs Azul) -->
+          <div class="flex items-center gap-1 px-1">
+            <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Tema Rojo Rubí" aria-label="Tema Rojo Rubí"
+                    class="w-5 h-5 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-sm"></button>
+            <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Tema Azul Océano" aria-label="Tema Azul Océano"
+                    class="w-5 h-5 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100"></button>
+          </div>
+          <div class="w-[1px] h-3.5 dark:bg-slate-700 bg-slate-300 mx-0.5"></div>
+          <!-- Switcher de Modo (Claro / Oscuro) -->
+          <button onclick="toggleThemeMode()" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro" aria-label="Alternar Modo Claro / Oscuro"
+                  class="w-6 h-6 rounded-full flex items-center justify-center text-xs dark:text-amber-400 text-slate-700 hover:bg-slate-800/40 dark:hover:bg-slate-800 transition-all">
+            <span id="theme-mode-icon">🌙</span>
+          </button>
+        </div>
+
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40">
+           class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-white font-semibold text-xs sm:text-sm transition-all shadow-lg hover:brightness-110"
+           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
           </svg>
-          Probar en Telegram
+          <span class="hidden sm:inline">Probar en Telegram</span>
+          <span class="sm:hidden">Bot</span>
         </a>
       </div>
     </div>
@@ -68,93 +122,95 @@
 
   <!-- Hero Section -->
   <section class="relative pt-16 pb-24 overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-slate-950 to-slate-950 pointer-events-none"></div>
-
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-8">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-semibold uppercase tracking-wider mb-8 theme-transition"
+           style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
         Radar 24/7 de Tarifas Aéreas y Alojamientos
       </div>
 
-      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-8">
-        Viaja al mejor precio con alertas en <span class="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">tiempo real</span>
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-8 dark:text-white text-slate-900 theme-transition">
+        Viaja al mejor precio con alertas en <span class="brand-gradient-text">tiempo real</span>
       </h1>
 
-      <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+      <p class="text-lg sm:text-xl dark:text-slate-400 text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed theme-transition">
         FlightBot rastrea automáticamente vuelos baratos, caídas repentinas de precios y te recomienda los mejores alojamientos verificados en destinos top del mundo.
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-           class="w-full sm:w-auto px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-base transition-all shadow-xl shadow-blue-600/30 flex items-center justify-center gap-3">
+           class="w-full sm:w-auto px-8 py-4 rounded-xl text-white font-bold text-base transition-all flex items-center justify-center gap-3 hover:brightness-110"
+           style="background-color: var(--brand-primary); box-shadow: 0 15px 30px -5px var(--brand-glow);">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
           </svg>
           Iniciar Bot Gratis en Telegram
         </a>
         <a href="#destinos" 
-           class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold text-base transition-all">
-          Ver Destinos y Hoteles
+           class="w-full sm:w-auto px-8 py-4 rounded-xl dark:bg-slate-900 bg-white hover:dark:bg-slate-800 hover:bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800 font-semibold text-base transition-all shadow-sm">
+          Ver Destinos y Guías
         </a>
       </div>
 
       <!-- Métricas destacadas -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 pt-12 border-t border-slate-800/80">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 pt-12 border-t dark:border-slate-800/80 border-slate-200">
         <div>
-          <div class="text-3xl font-extrabold text-white">48h</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase font-semibold">Cadencia Radar Activo</div>
+          <div class="text-3xl font-extrabold dark:text-white text-slate-900">48h</div>
+          <div class="text-xs dark:text-slate-400 text-slate-500 mt-1 uppercase font-semibold">Cadencia Radar Activo</div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold text-blue-400">100%</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase font-semibold">Gratis para Usuarios</div>
+          <div class="text-3xl font-extrabold" style="color: var(--brand-primary);">100%</div>
+          <div class="text-xs dark:text-slate-400 text-slate-500 mt-1 uppercase font-semibold">Gratis para Usuarios</div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold text-emerald-400">0s</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase font-semibold">Alertas Inmediatas</div>
+          <div class="text-3xl font-extrabold text-emerald-500">0s</div>
+          <div class="text-xs dark:text-slate-400 text-slate-500 mt-1 uppercase font-semibold">Alertas Inmediatas</div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold text-indigo-400">+50k</div>
-          <div class="text-xs text-slate-400 mt-1 uppercase font-semibold">Opciones de Alojamiento</div>
+          <div class="text-3xl font-extrabold" style="color: var(--brand-primary);">+50k</div>
+          <div class="text-xs dark:text-slate-400 text-slate-500 mt-1 uppercase font-semibold">Opciones de Alojamiento</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Sección: Cómo Funciona -->
-  <section id="como-funciona" class="py-20 bg-slate-900/50 border-y border-slate-800">
+  <section id="como-funciona" class="py-20 dark:bg-slate-900/40 bg-slate-100/70 border-y dark:border-slate-800 border-slate-200 theme-transition">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">¿Cómo funciona FlightBot?</h2>
-        <p class="text-slate-400">Un flujo pensado para viajeros que quieren ahorrar tiempo y maximizar su presupuesto sin complicaciones técnicas.</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold dark:text-white text-slate-900 mb-4 theme-transition">¿Cómo funciona FlightBot?</h2>
+        <p class="dark:text-slate-400 text-slate-600 theme-transition">Un flujo pensado para viajeros que quieren ahorrar tiempo y maximizar su presupuesto sin complicaciones técnicas.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 relative">
-          <div class="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-400 font-extrabold text-xl flex items-center justify-center mb-6">
+        <div class="dark:bg-slate-950 bg-white p-8 rounded-2xl border dark:border-slate-800 border-slate-200 shadow-sm theme-transition relative">
+          <div class="w-12 h-12 rounded-xl border font-extrabold text-xl flex items-center justify-center mb-6"
+               style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
             1
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">Programa tu Ruta</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
+          <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-3 theme-transition">Programa tu Ruta</h3>
+          <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed theme-transition">
             Elige tu origen, destino y ventana de fechas directamente conversando con el bot de Telegram o fijando tus límites presupuestarios.
           </p>
         </div>
 
-        <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 relative">
-          <div class="w-12 h-12 rounded-xl bg-indigo-600/10 border border-indigo-500/20 text-indigo-400 font-extrabold text-xl flex items-center justify-center mb-6">
+        <div class="dark:bg-slate-950 bg-white p-8 rounded-2xl border dark:border-slate-800 border-slate-200 shadow-sm theme-transition relative">
+          <div class="w-12 h-12 rounded-xl border font-extrabold text-xl flex items-center justify-center mb-6"
+               style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
             2
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">Vigilancia Continua</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
+          <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-3 theme-transition">Vigilancia Continua</h3>
+          <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed theme-transition">
             Nuestro motor escanea las variaciones de tarifas cada 48 horas en las principales aerolíneas y plataformas de viaje.
           </p>
         </div>
 
-        <div class="bg-slate-950 p-8 rounded-2xl border border-slate-800 relative">
-          <div class="w-12 h-12 rounded-xl bg-emerald-600/10 border border-emerald-500/20 text-emerald-400 font-extrabold text-xl flex items-center justify-center mb-6">
+        <div class="dark:bg-slate-950 bg-white p-8 rounded-2xl border dark:border-slate-800 border-slate-200 shadow-sm theme-transition relative">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 font-extrabold text-xl flex items-center justify-center mb-6">
             3
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">Alerta y Reserva Directa</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">
+          <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-3 theme-transition">Alerta y Reserva Directa</h3>
+          <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed theme-transition">
             Apenas detectamos una caída o precio récord, recibes una notificación con enlaces directos para reservar tu vuelo y hotel con confirmación oficial.
           </p>
         </div>
@@ -162,16 +218,16 @@
     </div>
   </section>
 
-  <!-- Sección: Destinos & Alojamientos Recomendados (Especial para Booking.com) -->
+  <!-- Sección: Destinos & Alojamientos Recomendados -->
   <section id="destinos" class="py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
         <div>
-          <div class="text-blue-500 font-semibold text-sm uppercase tracking-wider mb-2">Guías de Hospedaje & Destinos 2026</div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Alojamientos y guías para tu próxima escapada</h2>
+          <div class="font-semibold text-sm uppercase tracking-wider mb-2 font-mono" style="color: var(--brand-primary);">Guías de Hospedaje & Destinos 2026</div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold dark:text-white text-slate-900 theme-transition">Alojamientos y guías para tu próxima escapada</h2>
         </div>
         <div>
-          <a href="guias/index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors">
+          <a href="guias/index.html" class="inline-flex items-center gap-2 text-sm font-bold transition-colors hover:underline" style="color: var(--brand-primary);">
             Ver las 10 Guías Completas &rarr;
           </a>
         </div>
@@ -179,25 +235,25 @@
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         <!-- Tarjeta 1: Madrid -->
-        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+        <div class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all flex flex-col theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=600&q=80" 
                  alt="Madrid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/20">
               🇪🇸 España
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
             <div>
-              <h3 class="text-xl font-bold text-white mb-1">Madrid, España</h3>
-              <p class="text-xs text-slate-400 mb-4">Gran Vía · Salamanca · Malasaña</p>
-              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 theme-transition">Madrid, España</h3>
+              <p class="text-xs dark:text-slate-400 text-slate-500 mb-4 theme-transition">Gran Vía · Salamanca · Malasaña</p>
+              <p class="text-sm dark:text-slate-300 text-slate-600 leading-relaxed mb-4 theme-transition">
                 Hub de alta velocidad y puerta a Europa. Guía de barrios seguros, trenes Iryo/Ouigo y hoteles boutique.
               </p>
             </div>
-            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-              <span class="text-xs text-slate-400">Desde <strong class="text-white text-sm">€65/noche</strong></span>
-              <a href="guias/madrid.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
+              <span class="text-xs dark:text-slate-400 text-slate-500">Desde <strong class="font-bold text-sm" style="color: var(--brand-primary);">€65/noche</strong></span>
+              <a href="guias/madrid.html" class="text-xs font-bold transition-colors hover:underline" style="color: var(--brand-primary);">
                 Ver Guía &rarr;
               </a>
             </div>
@@ -205,25 +261,25 @@
         </div>
 
         <!-- Tarjeta 2: Río de Janeiro -->
-        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+        <div class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all flex flex-col theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=600&q=80" 
                  alt="Río de Janeiro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/20">
               🇧🇷 Brasil
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
             <div>
-              <h3 class="text-xl font-bold text-white mb-1">Río de Janeiro, Brasil</h3>
-              <p class="text-xs text-slate-400 mb-4">Ipanema · Copacabana · Leblon</p>
-              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 theme-transition">Río de Janeiro, Brasil</h3>
+              <p class="text-xs dark:text-slate-400 text-slate-500 mb-4 theme-transition">Ipanema · Copacabana · Leblon</p>
+              <p class="text-sm dark:text-slate-300 text-slate-600 leading-relaxed mb-4 theme-transition">
                 Playas cariocas y escapadas a Arraial do Cabo y Búzios. Los mejores hoteles frente al mar y consejos de seguridad.
               </p>
             </div>
-            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-              <span class="text-xs text-slate-400">Desde <strong class="text-white text-sm">R$210/noche</strong></span>
-              <a href="guias/rio-de-janeiro.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
+              <span class="text-xs dark:text-slate-400 text-slate-500">Desde <strong class="font-bold text-sm" style="color: var(--brand-primary);">R$210/noche</strong></span>
+              <a href="guias/rio-de-janeiro.html" class="text-xs font-bold transition-colors hover:underline" style="color: var(--brand-primary);">
                 Ver Guía &rarr;
               </a>
             </div>
@@ -231,25 +287,25 @@
         </div>
 
         <!-- Tarjeta 3: Miami / Florida -->
-        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+        <div class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all flex flex-col theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=600&q=80" 
                  alt="Miami" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-amber-400 px-3 py-1 rounded-full border border-amber-500/20">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/20">
               🇺🇸 USA
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
             <div>
-              <h3 class="text-xl font-bold text-white mb-1">Miami & Sur de Florida</h3>
-              <p class="text-xs text-slate-400 mb-4">South Beach · Brickell · Key West</p>
-              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 theme-transition">Miami & Sur de Florida</h3>
+              <p class="text-xs dark:text-slate-400 text-slate-500 mb-4 theme-transition">South Beach · Brickell · Key West</p>
+              <p class="text-sm dark:text-slate-300 text-slate-600 leading-relaxed mb-4 theme-transition">
                 Playas, tren rápido Brightline a Orlando, ruta a los Cayos y cruceros por el Caribe.
               </p>
             </div>
-            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-              <span class="text-xs text-slate-400">Desde <strong class="text-white text-sm">$95/noche</strong></span>
-              <a href="guias/miami.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
+              <span class="text-xs dark:text-slate-400 text-slate-500">Desde <strong class="font-bold text-sm" style="color: var(--brand-primary);">$95/noche</strong></span>
+              <a href="guias/miami.html" class="text-xs font-bold transition-colors hover:underline" style="color: var(--brand-primary);">
                 Ver Guía &rarr;
               </a>
             </div>
@@ -257,25 +313,25 @@
         </div>
 
         <!-- Tarjeta 4: Roma, Italia -->
-        <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition-all flex flex-col">
+        <div class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-lg transition-all flex flex-col theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=80" 
                  alt="Roma" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-purple-400 px-3 py-1 rounded-full border border-purple-500/20">
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/20">
               🇮🇹 Italia
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
             <div>
-              <h3 class="text-xl font-bold text-white mb-1">Roma, Italia</h3>
-              <p class="text-xs text-slate-400 mb-4">Monti · Prati · Trastevere</p>
-              <p class="text-sm text-slate-300 leading-relaxed mb-4">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 theme-transition">Roma, Italia</h3>
+              <p class="text-xs dark:text-slate-400 text-slate-500 mb-4 theme-transition">Monti · Prati · Trastevere</p>
+              <p class="text-sm dark:text-slate-300 text-slate-600 leading-relaxed mb-4 theme-transition">
                 La Ciudad Eterna y trenes de alta velocidad Frecciarossa a Florencia (1h 32m) y Nápoles. Alojamientos con encanto.
               </p>
             </div>
-            <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-              <span class="text-xs text-slate-400">Desde <strong class="text-white text-sm">€70/noche</strong></span>
-              <a href="guias/roma.html" class="text-xs font-bold text-blue-400 hover:text-blue-300 transition-colors">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
+              <span class="text-xs dark:text-slate-400 text-slate-500">Desde <strong class="font-bold text-sm" style="color: var(--brand-primary);">€70/noche</strong></span>
+              <a href="guias/roma.html" class="text-xs font-bold transition-colors hover:underline" style="color: var(--brand-primary);">
                 Ver Guía &rarr;
               </a>
             </div>
@@ -284,15 +340,16 @@
       </div>
 
       <!-- Banner con acceso a los 10 Destinos Monitoreados -->
-      <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm theme-transition">
         <div>
-          <h4 class="text-lg font-bold text-white mb-1">Explora las 10 Guías Turísticas Oficiales</h4>
-          <p class="text-slate-400 text-sm">
+          <h4 class="text-lg font-bold dark:text-white text-slate-900 mb-1 theme-transition">Explora las 10 Guías Turísticas Oficiales</h4>
+          <p class="dark:text-slate-400 text-slate-600 text-sm theme-transition">
             Bariloche, Mendoza, Iguazú, Cancún, Punta Cana, Aruba, Madrid, Río, Miami y Roma.
           </p>
         </div>
         <div class="flex gap-3 flex-wrap">
-          <a href="guias/index.html" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-all shadow-lg shadow-blue-600/30">
+          <a href="guias/index.html" class="px-6 py-3 rounded-xl text-white font-bold text-sm transition-all hover:brightness-110 shadow-md"
+             style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
             Ver Índice de Guías 2026 &rarr;
           </a>
         </div>
@@ -301,28 +358,28 @@
   </section>
 
   <!-- Sección: Preguntas Frecuentes -->
-  <section id="faq" class="py-20 bg-slate-900/40 border-t border-slate-800">
+  <section id="faq" class="py-20 dark:bg-slate-900/40 bg-slate-100/70 border-t dark:border-slate-800 border-slate-200 theme-transition">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-extrabold text-white text-center mb-12">Preguntas Frecuentes</h2>
+      <h2 class="text-3xl font-extrabold dark:text-white text-slate-900 text-center mb-12 theme-transition">Preguntas Frecuentes</h2>
 
       <div class="space-y-6">
-        <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
-          <h4 class="text-lg font-bold text-white mb-2">¿FlightBot es completamente gratis?</h4>
-          <p class="text-slate-400 text-sm leading-relaxed">
+        <div class="dark:bg-slate-900 bg-white p-6 rounded-xl border dark:border-slate-800 border-slate-200 shadow-sm theme-transition">
+          <h4 class="text-lg font-bold dark:text-white text-slate-900 mb-2 theme-transition">¿FlightBot es completamente gratis?</h4>
+          <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed theme-transition">
             Sí. Nuestro asistente en Telegram es 100% gratuito para los viajeros. Puedes configurar tus rutas, monitorear precios y recibir alertas directas sin pagar suscripciones ni comisiones.
           </p>
         </div>
 
-        <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
-          <h4 class="text-lg font-bold text-white mb-2">¿Cómo se gestionan las reservas de hoteles y vuelos?</h4>
-          <p class="text-slate-400 text-sm leading-relaxed">
+        <div class="dark:bg-slate-900 bg-white p-6 rounded-xl border dark:border-slate-800 border-slate-200 shadow-sm theme-transition">
+          <h4 class="text-lg font-bold dark:text-white text-slate-900 mb-2 theme-transition">¿Cómo se gestionan las reservas de hoteles y vuelos?</h4>
+          <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed theme-transition">
             FlightBot no vende boletos directamente. Cuando encuentras una oferta que te interesa, te redirigimos a los proveedores oficiales y líderes de la industria (como Booking.com, aerolíneas y plataformas asociadas) para que reserves de forma segura con confirmación inmediata.
           </p>
         </div>
 
-        <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
-          <h4 class="text-lg font-bold text-white mb-2">¿Con qué frecuencia se actualizan los precios?</h4>
-          <p class="text-slate-400 text-sm leading-relaxed">
+        <div class="dark:bg-slate-900 bg-white p-6 rounded-xl border dark:border-slate-800 border-slate-200 shadow-sm theme-transition">
+          <h4 class="text-lg font-bold dark:text-white text-slate-900 mb-2 theme-transition">¿Con qué frecuencia se actualizan los precios?</h4>
+          <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed theme-transition">
             El radar de rutas activas se ejecuta de manera inteligente cada 48 horas para rastrear fluctuaciones reales del mercado y avisarte en el momento exacto en que una tarifa baja significativamente.
           </p>
         </div>
@@ -330,55 +387,99 @@
     </div>
   </section>
 
-  <!-- Pie de página y Descargo de Afiliación (Affiliate Disclosure Requerido) -->
-  <footer class="py-12 bg-slate-950 border-t border-slate-800 text-xs text-slate-400">
+  <!-- Pie de página y Descargo de Afiliación -->
+  <footer class="py-12 dark:bg-slate-950 bg-slate-100 border-t dark:border-slate-800 border-slate-200 text-xs dark:text-slate-400 text-slate-600 theme-transition">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-slate-800">
+      <div class="grid md:grid-cols-3 gap-8 mb-8 pb-8 border-b dark:border-slate-800 border-slate-200">
         <div>
           <div class="flex items-center gap-2 mb-3">
-            <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xs">F</div>
-            <span class="text-base font-bold text-white">FlightBot</span>
+            <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold text-xs" style="background-color: var(--brand-primary);">F</div>
+            <span class="text-base font-bold dark:text-white text-slate-900">FlightBot</span>
           </div>
-          <p class="text-slate-400 leading-relaxed">
+          <p class="dark:text-slate-400 text-slate-600 leading-relaxed">
             Plataforma y asistente de inteligencia de viajes. Automatizamos la detección de ofertas en vuelos y alojamientos para viajeros de todo el mundo.
           </p>
         </div>
 
         <div>
-          <h5 class="text-white font-semibold text-sm mb-3">Canales de Contacto</h5>
+          <h5 class="dark:text-white text-slate-900 font-semibold text-sm mb-3">Canales de Contacto</h5>
           <ul class="space-y-2">
-            <li>Telegram Oficial: <a href="https://t.me/GnZFlightBot" target="_blank" class="text-blue-400 hover:underline">@GnZFlightBot</a></li>
-            <li>Soporte y Consultas: <a href="mailto:soporte.flightbot@gmail.com" class="text-blue-400 hover:underline">soporte.flightbot@gmail.com</a></li>
+            <li>Telegram Oficial: <a href="https://t.me/GnZFlightBot" target="_blank" class="hover:underline font-semibold" style="color: var(--brand-primary);">@GnZFlightBot</a></li>
+            <li>Soporte y Consultas: <a href="mailto:soporte.flightbot@gmail.com" class="hover:underline font-semibold" style="color: var(--brand-primary);">soporte.flightbot@gmail.com</a></li>
           </ul>
         </div>
 
         <div>
-          <h5 class="text-white font-semibold text-sm mb-3">Políticas y Términos</h5>
-          <p class="text-slate-400 leading-relaxed mb-2">
+          <h5 class="dark:text-white text-slate-900 font-semibold text-sm mb-3">Políticas y Términos</h5>
+          <p class="dark:text-slate-400 text-slate-600 leading-relaxed mb-2">
             Priorizamos la privacidad de nuestros usuarios y la transparencia en la información de viaje.
           </p>
-          <span class="text-slate-500">Última actualización: 2026</span>
+          <span class="dark:text-slate-500 text-slate-400">Última actualización: 2026</span>
         </div>
       </div>
 
       <!-- Aviso Legal y Divulgación de Afiliación para Travelpayouts / Booking -->
-      <div class="bg-slate-900/70 p-4 rounded-xl border border-slate-800/80 mb-6">
-        <p class="text-slate-400 leading-relaxed">
-          <strong class="text-slate-300">Divulgación de Afiliación (Affiliate Disclosure):</strong> 
+      <div class="dark:bg-slate-900/70 bg-white p-4 rounded-xl border dark:border-slate-800/80 border-slate-200 mb-6 shadow-sm theme-transition">
+        <p class="dark:text-slate-400 text-slate-600 leading-relaxed">
+          <strong class="dark:text-slate-300 text-slate-700">Divulgación de Afiliación (Affiliate Disclosure):</strong> 
           FlightBot participa en programas de marketing de afiliados, incluyendo Travelpayouts y Booking.com. Algunos de los enlaces que recomendamos pueden generar una comisión para nuestro proyecto si decides realizar una reserva, sin que esto implique ningún coste adicional para ti. Toda recomendación se basa en criterios objetivos de calidad, seguridad y valor para el viajero.
         </p>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between dark:text-slate-500 text-slate-500 gap-4">
         <div>&copy; 2026 FlightBot. Todos los derechos reservados.</div>
         <div class="flex gap-4">
-          <a href="guias/index.html" class="text-blue-400 hover:text-blue-300 font-medium">Guías de Viaje 2026</a>
-          <a href="#" class="hover:text-slate-400">Privacidad</a>
-          <a href="#" class="hover:text-slate-400">Términos de Uso</a>
+          <a href="guias/index.html" class="font-medium hover:underline" style="color: var(--brand-primary);">Guías de Viaje 2026</a>
+          <a href="#" class="hover:underline">Privacidad</a>
+          <a href="#" class="hover:underline">Términos de Uso</a>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Script del Motor de Temas Dual (Color + Modo) -->
+  <script>
+    function setThemeColor(col) {
+      document.documentElement.setAttribute('data-color', col);
+      localStorage.setItem('fb_theme_color', col);
+      updateThemeControls();
+    }
+
+    function toggleThemeMode() {
+      const isDark = document.documentElement.classList.contains('dark');
+      if (isDark) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('fb_theme_mode', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('fb_theme_mode', 'dark');
+      }
+      updateThemeControls();
+    }
+
+    function updateThemeControls() {
+      const col = document.documentElement.getAttribute('data-color') || 'ruby';
+      const isDark = document.documentElement.classList.contains('dark');
+      const btnR = document.getElementById('theme-btn-ruby');
+      const btnB = document.getElementById('theme-btn-blue');
+      const modeIcon = document.getElementById('theme-mode-icon');
+
+      if (btnR && btnB) {
+        if (col === 'ruby') {
+          btnR.className = "w-5 h-5 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-sm";
+          btnB.className = "w-5 h-5 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100";
+        } else {
+          btnB.className = "w-5 h-5 rounded-full bg-blue-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-sm";
+          btnR.className = "w-5 h-5 rounded-full bg-rose-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100";
+        }
+      }
+      if (modeIcon) {
+        modeIcon.textContent = isDark ? '🌙' : '☀️';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', updateThemeControls);
+  </script>
 
 </body>
 </html>
