@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://flightbot-landing.vercel.app/sitemap.xml

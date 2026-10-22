@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FlightBot · Radar de Vuelos, Alertas y Hoteles Inteligentes</title>
   <meta name="description" content="FlightBot es tu asistente personal en Telegram para rastrear vuelos baratos 24/7 y descubrir los mejores hoteles y alojamientos del mundo.">
+  <link rel="canonical" href="https://flightbot-landing.vercel.app/">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4672,8 +4674,32 @@
         const bookingCityUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(dest.ciudad)}`;
         const tgCmd = (dest.comando_tg || '').replace('/', '');
         const tgAlertUrl = `https://t.me/GnZFlightBot?start=${encodeURIComponent(tgCmd)}`;
+        const kiwiAffilId = 'travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785';
 
-        const vuelosHtml = dest.vuelos.map(v => `
+        function parseFechasKiwi(fechasStr) {
+          if (!fechasStr) return { dep: '', ret: '' };
+          const meses = {
+            ene: '01', feb: '02', mar: '03', abr: '04', may: '05', jun: '06',
+            jul: '07', ago: '08', sep: '09', oct: '10', nov: '11', dic: '12'
+          };
+          const m = fechasStr.match(/(\d{2})\s+([a-zA-Z]{3})\s*-\s*(\d{2})\s+([a-zA-Z]{3})\s+(\d{4})/);
+          if (m) {
+            const dep = `${m[5]}-${meses[m[2].toLowerCase()] || '11'}-${m[1]}`;
+            const ret = `${m[5]}-${meses[m[4].toLowerCase()] || '11'}-${m[3]}`;
+            return { dep, ret };
+          }
+          return { dep: '', ret: '' };
+        }
+
+        const vuelosHtml = dest.vuelos.map(v => {
+          const { dep, ret } = parseFechasKiwi(v.fechas);
+          const kiwiCurrency = dest.es_cabotaje ? 'ARS' : 'USD';
+          let kiwiUrl = `https://www.kiwi.com/deep?from=BUE&to=${dest.iata}&currency=${kiwiCurrency}`;
+          if (dep) kiwiUrl += `&departure=${dep}`;
+          if (ret) kiwiUrl += `&return=${ret}`;
+          kiwiUrl += `&affilid=${kiwiAffilId}`;
+
+          return `
           <div class="dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl p-4 shadow-sm hover:border-rose-500/40 transition-all flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between mb-2">
@@ -4716,27 +4742,33 @@
                   <span>Ver / Comparar en:</span>
                   <span class="text-[10px] text-slate-400 font-normal">Portales Oficiales</span>
                 </div>
-                <div class="grid grid-cols-3 gap-1.5">
+                <div class="grid grid-cols-2 gap-1.5">
                   <a href="${despegarUrl}" target="_blank" rel="noopener noreferrer"
-                     class="px-1.5 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 hover:bg-purple-500/15 dark:text-slate-200 text-slate-700 hover:text-purple-400 border dark:border-slate-700 border-slate-200 transition-all text-center flex items-center justify-center gap-1 hover:scale-105"
-                     title="Cotizar vuelos a ${dest.ciudad} en Despegar">
+                     class="px-2 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 hover:bg-purple-500/15 dark:text-slate-200 text-slate-700 hover:text-purple-400 border dark:border-slate-700 border-slate-200 transition-all text-center flex items-center justify-center gap-1.5 hover:scale-[1.02]"
+                     title="Cotizar en Despegar (Cuotas en Argentina)">
                     <span class="w-1.5 h-1.5 rounded-full bg-purple-500 flex-shrink-0"></span> Despegar
                   </a>
                   <a href="${almundoUrl}" target="_blank" rel="noopener noreferrer"
-                     class="px-1.5 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 hover:bg-sky-500/15 dark:text-slate-200 text-slate-700 hover:text-sky-400 border dark:border-slate-700 border-slate-200 transition-all text-center flex items-center justify-center gap-1 hover:scale-105"
-                     title="Cotizar vuelos a ${dest.ciudad} en Almundo">
+                     class="px-2 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 hover:bg-sky-500/15 dark:text-slate-200 text-slate-700 hover:text-sky-400 border dark:border-slate-700 border-slate-200 transition-all text-center flex items-center justify-center gap-1.5 hover:scale-[1.02]"
+                     title="Cotizar en Almundo (Promos bancarias)">
                     <span class="w-1.5 h-1.5 rounded-full bg-sky-400 flex-shrink-0"></span> Almundo
                   </a>
+                  <a href="${kiwiUrl}" target="_blank" rel="noopener noreferrer"
+                     class="px-2 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 hover:bg-emerald-500/15 dark:text-slate-200 text-slate-700 hover:text-emerald-400 border dark:border-slate-700 border-slate-200 transition-all text-center flex items-center justify-center gap-1.5 hover:scale-[1.02]"
+                     title="Cotizar en Kiwi.com (Afiliado Oficial)">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0"></span> Kiwi.com ↗
+                  </a>
                   <a href="${bookingCityUrl}" target="_blank" rel="noopener noreferrer"
-                     class="px-1.5 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 hover:bg-blue-500/15 dark:text-slate-200 text-slate-700 hover:text-blue-400 border dark:border-slate-700 border-slate-200 transition-all text-center flex items-center justify-center gap-1 hover:scale-105"
+                     class="px-2 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 hover:bg-blue-500/15 dark:text-slate-200 text-slate-700 hover:text-blue-400 border dark:border-slate-700 border-slate-200 transition-all text-center flex items-center justify-center gap-1.5 hover:scale-[1.02]"
                      title="Ver hoteles en ${dest.ciudad} en Booking.com">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span> Booking
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span> Booking ↗
                   </a>
                 </div>
               </div>
             </div>
           </div>
-        `).join('');
+        `;
+        }).join('');
 
         const hotelesHtml = dest.hoteles.map(h => `
           <div class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
