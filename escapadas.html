@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark" data-color="ruby">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escapadas en Auto & Road Trips · FlightBot</title>
+  <meta name="description" content="Guías de escapadas de fin de semana, finde largo y vacaciones en auto desde Buenos Aires. Semáforo vial, peajes, costos de nafta y comparador vs. avión.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23e11d48'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='22'%3E%F0%9F%9A%97%3C/text%3E%3C/svg%3E">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --brand-primary: #e11d48;
+      --brand-primary-hover: #be123c;
+      --brand-glow: rgba(225, 29, 72, 0.35);
+      --brand-subtle: rgba(225, 29, 72, 0.1);
+      --brand-border: rgba(225, 29, 72, 0.25);
+      --brand-gradient: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+    }
+
+    [data-color="blue"] {
+      --brand-primary: #2563eb;
+      --brand-primary-hover: #1d4ed8;
+      --brand-glow: rgba(37, 99, 235, 0.35);
+      --brand-subtle: rgba(37, 99, 235, 0.1);
+      --brand-border: rgba(37, 99, 235, 0.25);
+      --brand-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    }
+
+    .brand-gradient-text {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .theme-transition {
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .card-glass {
+      backdrop-filter: blur(12px);
+    }
+  </style>
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('fb_theme_mode') || 'dark';
+      const savedColor = localStorage.getItem('fb_theme_color') || 'ruby';
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      document.documentElement.setAttribute('data-color', savedColor);
+    })();
+  </script>
+</head>
+<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Barra de Navegación -->
+  <header class="sticky top-0 z-40 backdrop-blur-md dark:bg-slate-950/85 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Logo FlightBot -->
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="index.html" class="flex items-center gap-3 group" title="Volver a Vuelos y Radares de FlightBot">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition p-1"
+               style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
+            <span class="text-xl">🚗</span>
+          </div>
+          <div>
+            <span class="text-xl font-extrabold tracking-tight brand-gradient-text">FlightBot</span>
+            <span class="block text-[10px] font-bold uppercase tracking-wider text-slate-400">Escapadas &amp; Rutas</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Menú de Navegación Central -->
+      <nav class="hidden lg:flex items-center p-1 rounded-full dark:bg-slate-900/80 bg-slate-100/90 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-1">
+        <a href="index.html" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 border border-transparent transition-all flex items-center gap-1.5">
+          <span>✈️</span> Vuelos
+        </a>
+        <a href="index.html#destinos" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 border border-transparent transition-all flex items-center gap-1.5">
+          <span>🏨</span> Destinos
+        </a>
+        <a href="escapadas.html" class="px-3.5 py-1.5 rounded-full text-xs font-bold border transition-all flex items-center gap-1.5 shadow-xs" style="color: var(--brand-primary); background-color: var(--brand-subtle); border-color: var(--brand-border);">
+          <span>🚗</span> Escapadas en Auto
+        </a>
+        <a href="#planificador-ruta" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 border border-transparent transition-all flex items-center gap-1.5">
+          <span>🚦</span> Semáforo Vial
+        </a>
+        <a href="#comparador-auto-avion" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 border border-transparent transition-all flex items-center gap-1.5">
+          <span>⚖️</span> Auto vs. Avión
+        </a>
+        <a href="billetera.html" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 border border-transparent transition-all flex items-center gap-1.5">
+          <span>🧳</span> Billetera
+        </a>
+      </nav>
+
+      <!-- Botón Bot de Telegram -->
+      <div class="flex items-center gap-3">
+        <a href="https://t.me/TuFlightBot" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold text-white shadow-md transition-all active:scale-95"
+           style="background: var(--brand-gradient); box-shadow: 0 4px 14px var(--brand-glow);">
+          <span>📱</span>
+          <span class="hidden sm:inline">Abrir en Telegram</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero de Escapadas -->
+  <section class="relative pt-12 pb-16 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border shadow-sm"
+           style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
+        <span>🚗</span> Turismo Rutero Argentino 2026
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight dark:text-white text-slate-900 max-w-4xl mx-auto mb-4">
+        Guías de Escapadas en Auto &amp; Road Trips
+      </h1>
+      <p class="text-base sm:text-lg dark:text-slate-400 text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Descubrí pueblos de campo, sierras, lagunas y playas bonaerenses con base en Buenos Aires. 
+        Calculá presupuesto real con <b>nafta Shell ($2.200)</b>, peajes exactos, tramos rotos y <b>ahorro por Ley Patagónica</b>.
+      </p>
+
+      <!-- Selector de Filtros por Tiempo -->
+      <div class="flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto mb-12">
+        <button type="button" onclick="window.filtrarEscapadas('todas')" id="btn-filtro-todas"
+                class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-extrabold border transition-all shadow-sm"
+                style="background-color: var(--brand-primary); color: #ffffff; border-color: var(--brand-primary);">
+          🌟 Todas las Escapadas (12)
+        </button>
+        <button type="button" onclick="window.filtrarEscapadas('finde_corto')" id="btn-filtro-finde_corto"
+                class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
+          🟢 Finde Corto (&lt; 3.5 hs · hasta 250 km)
+        </button>
+        <button type="button" onclick="window.filtrarEscapadas('finde_largo')" id="btn-filtro-finde_largo"
+                class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
+          🟡 Finde Largo (4 a 6.5 hs · 350-550 km)
+        </button>
+        <button type="button" onclick="window.filtrarEscapadas('vacaciones_semana')" id="btn-filtro-vacaciones_semana"
+                class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
+          🔵 Vacaciones 1 Semana (7 a 11 hs · 600-950 km)
+        </button>
+        <button type="button" onclick="window.filtrarEscapadas('gran_ruta')" id="btn-filtro-gran_ruta"
+                class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
+          🟣 Grandes Rutas (+1000 km)
+        </button>
+      </div>
+    </div>
+
+    <!-- Grilla de Cards de Escapadas -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="escapadas-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_corto">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" alt="San Antonio de Areco" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
+                  <span>🐴</span> Fin de Semana Corto (1-2 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 1h 45m · 120 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                San Antonio de Areco
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Cuna de la tradición gauchesca, pulperías y asado de campo
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                El pueblo tradicional por excelencia a menos de dos horas de Capital. Calles adoquinadas, platería criolla, talleres de artesanos, pulperías centenarias y estancias de campo con asado al asador y merienda criolla.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Pasear por la Plaza Ruiz de Arellano y visitar el Museo Gauchesco Ricardo Güiraldes.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Tomar un vermut o picada en el histórico Boliche de Bessonart (esquina de 1800).</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Cruzar el Puente Viejo sobre el Río Areco y recorrer la costanera arbolada.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 50 (Pilar): Shell Select o YPF para café rápido en autopista.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 100 (Solís): Parador de campo con tortas fritas antes del acceso a Areco.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$54,400 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$13,600 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('san antonio de areco')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_corto">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Chascomús y Laguna" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
+                  <span>🚣</span> Fin de Semana Corto (1-2 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 1h 40m · 125 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Chascomús y Laguna
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Vuelta a la laguna en auto, atardeceres y medialunas de Atalaya
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                La escapada clásica junto al agua. El circuito perimetral de la laguna (30 km) se recorre en auto o bici bordeando balnearios, veleros y clubes náuticos. Casco histórico con calles de adoquín y la famosa Capilla de los Negros.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Vuelta completa a la laguna al atardecer para ver la puesta de sol en el agua.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Visitar la Capilla de los Negros (Monumento Histórico Nacional) y el Museo Pampeano.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Almorzar pejerrey fresco en los restaurantes de la costanera ribereña.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 113 (Chascomús): Parador Atalaya clásico para medialunas calientes y café.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$67,800 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$16,950 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('chascomus')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_corto">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Tomás Jofré & Mercedes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
+                  <span>🍝</span> Fin de Semana Corto (1-2 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 1h 30m · 105 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Tomás Jofré & Mercedes
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Polo gastronómico bonaerense, pastas y salame quintero
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                Pueblo rural convertido en la meca del almuerzo de campo de domingo. Más de 20 restaurantes con menú tenedor libre de fiambres mercedinos, pastas caseras amasadas a la vista y parrillada, en torno a la plaza de artesanos.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Almorzar en las casonas de campo tradicionales (Silvano, La Casona, Santa Victoria).</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Comprar salame quintero mercedino con denominación de origen y queso de campo.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Pasear por la feria de artesanos y dulces caseros en la plaza principal.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 65 (Luján): Acceso y empalme de RN 5 con estaciones YPF Full.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$47,800 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$11,950 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('tomas jofre')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_corto">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" alt="San Pedro & Vuelta de Obligado" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
+                  <span>🍊</span> Fin de Semana Corto (1-2 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 2h 00m · 170 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                San Pedro & Vuelta de Obligado
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Barrancas sobre el Río Paraná, ensaimadas y reserva histórica
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                Ciudad ribereña sobre las barrancas del Río Paraná. Famosa por sus viveros, cultivos de duraznos y naranjas, la ensaimada mallorquina tradicional y el Parque Histórico Nacional Vuelta de Obligado con sus cadenas defensivas.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Caminar por las barrancas del Parque Costero con vista panorámica al delta del Paraná.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Visitar el Parque Histórico y Museo de Sitio de la Batalla de Vuelta de Obligado (a 18 km).</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Comprar ensaimada rellena de dulce de leche o crema pastelera en La Perla o Roma.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 85 (Zárate): Cruce del puente y parador con café.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 155 (Río Tala): Puestos de fruta fresca y naranjas en la banquina.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$74,200 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$18,550 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('san pedro')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_largo">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Partido de La Costa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
+                  <span>🌊</span> Fin de Semana Largo (3-4 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 4h 00m · 345 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Partido de La Costa
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Mar del Tuyú, San Bernardo y Mar de Ajó en 20 km de playas
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                El corredor playero más accesible en auto desde Buenos Aires. Tres propuestas complementarias: Mar del Tuyú con su muelle de madera y ambiente tranquilo; San Bernardo con su peatonal Chiozza repleta de comercios, teatros y bares nocturnos; y Mar de Ajó con sus playas kilométricas, su imponente muelle de 250 metros y el histórico barco hundido 'La Margarita'.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Pescar o pasear por los tradicionales Muelles de Madera de Mar del Tuyú y Mar de Ajó.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Recorrer de noche la animada peatonal Chiozza de San Bernardo con sus heladerías y bares.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Caminar por las amplias playas de arena dorada ideales para tejo, mate y juegos familiares.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 113 (Autovía 2 · Chascomús): Parador Atalaya (medialunas calientes recién horneadas).</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 204 (Dolores · Empalme RP 63): Carga en YPF Full o Shell antes de entrar a la RP 11.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$151,300 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$37,825 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('san bernardo')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_largo">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80" alt="Mar del Plata & Chapadmalal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
+                  <span>🏖️</span> Fin de Semana Largo (3-4 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 4h 30m · 415 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Mar del Plata & Chapadmalal
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                La Feliz, acantilados del sur, surf, gastronomía de puerto y cervezas
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                La capital del turismo argentino. Autovía 100% doble mano y rápida. Combina la infraestructura de gran ciudad con los acantilados agrestes de Chapadmalal, el puerto con sus lobos marinos y mariscos, y el circuito cervecero artesanal de calle Güemes y Olavarría.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Caminar por la Rambla del Casino, los lobos marinos de piedra y la Playa Bristol.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Almorzar rabas y cazuela en los restaurantes del Centro Comercial del Puerto.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Escapada hacia el sur por RP 11: acantilados, surf y bodegas marítimas de Chapadmalal.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 113 (Chascomús): Atalaya clásico.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 184 (Castelli): Parador Minotauro con restaurante y parque.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$177,700 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$44,425 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('mar del plata')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_largo">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80" alt="Pinamar, Cariló & Villa Gesell" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
+                  <span>🌲</span> Fin de Semana Largo (3-4 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 4h 10m · 365 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Pinamar, Cariló & Villa Gesell
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Bosques sobre la arena, casas de té y paseos comerciales exclusivos
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                El encanto del pinar atlántico. Cariló y Mar de las Pampas destacan por su arquitectura en madera, calles de arena sin asfalto y casas de té. Pinamar ofrece médanos para travesías 4x4 y una vibrante oferta gastronómica en Bunge; Villa Gesell suma playas juveniles y ambiente bohemio.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Pasear por el centro comercial a cielo abierto de Cariló entre pinos y faroles.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Travesía en médanos hacia La Frontera (norte de Pinamar) en 4x4 o cuatriciclo.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Tomar el té con tortas centroeuropeas en las aldeas peatonales de Mar de las Pampas.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 113 (Chascomús): Medialunas Atalaya.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 204 (Dolores): Carga de nafta antes de encarar RP 63 y RP 56.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$157,900 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$39,475 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('pinamar')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_largo">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" alt="Tandil & Sierras del Tandil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
+                  <span>⛰️</span> Fin de Semana Largo (3-4 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 4h 15m · 360 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Tandil & Sierras del Tandil
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Picadas de campo, quesos de época, trekking y cerros milenarios
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                La capital del salame y el queso banquete. Sierras de más de 2.000 millones de años, diques, miradores y gastronomía de bodegón. Un destino ideal para desconectar caminando por las cumbres o disfrutando de una picada gigante al aire libre.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Subir al Cerro El Centinela en aerosilla y caminar por los senderos de granito.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Conocer la réplica de la Piedra Movediza y el Parque Lítico.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Comer una tabla de fiambres en Época de Quesos o Syquet.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>Por Autovía 2: Atalaya en Chascomús (km 113) y YPF Las Armas (km 299).</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>Por RN 3: San Miguel del Monte (km 110) y paradores de queso en Azul (km 300).</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$150,200 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$37,550 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('tandil')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_largo">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=800&q=80" alt="Sierra de la Ventana & Villa Ventana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
+                  <span>🥾</span> Fin de Semana Largo (3-4 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 6h 30m · 560 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Sierra de la Ventana & Villa Ventana
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Trekking al Cerro Tres Picos, bosques alpinos y arroyos cristalinos
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                El sistema de Ventania ofrece las cumbres más altas de la Provincia de Buenos Aires (Tres Picos, 1.239 m). Villa Ventana es una aldea alpina inmersa en un bosque frondoso de coníferas con arroyos. Saldungaray sorprende con el imponente portal del cementerio y la obra del arquitecto Salamone.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Trekking al hueco natural de la Ventana en el Parque Provincial Ernesto Tornquist.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Ascenso al Cerro Tres Picos (requiere registro previo y buen calzado).</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Descansar junto a los arroyos San Bernardo y Las Piedras en Villa Ventana.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 110 (RN 3 · Monte): Carga de combustible.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 300 (RN 3 · Azul): Parada de almuerzo o café en YPF Full cruce RP 226.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$221,000 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$55,250 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('sierra de la ventana')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_largo">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1512353087810-25dfcd100962?auto=format&fit=crop&w=800&q=80" alt="Colón & Parque El Palmar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
+                  <span>🌴</span> Fin de Semana Largo (3-4 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 3h 45m · 330 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Colón & Parque El Palmar
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Playas de arena sobre el Río Uruguay, aguas termales y palmeras yatay
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                El litoral entrerriano más pintoresco. Colón cuenta con extensos bancos de arena blanca sobre el Río Uruguay, un moderno complejo termal frente al río y la cercanía al Parque Nacional El Palmar (a 50 km), una reserva única de palmeras yatay centenarias, carpinchos y zorros.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Pasar el día en el Parque Nacional El Palmar: senderos, ruinas históricas y fauna autóctona.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Relajarse en el Complejo Termas Colón con piscinas termales y vista abierta al río.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Disfrutar de las playas fluviales (Playa Norte, Inkier) y paseos en lancha a los bancos de arena.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 85 (RN 9 · Zárate): Acceso a los imponentes puentes Zárate-Brazo Largo.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 160 (RN 12 · Ceibas): Bifurcación clave hacia la RN 14 (Autovía del Mercosur).</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$134,200 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$33,550 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('colon')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="vacaciones_semana">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80" alt="Córdoba: Valle de Calamuchita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-sky-500/10 text-sky-400 border-sky-500/20 backdrop-blur-md">
+                  <span>🏞️</span> Vacaciones de 1 Semana
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 7h 45m · 720 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Córdoba: Valle de Calamuchita
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Villa General Belgrano, La Cumbrecita alpina, Santa Rosa y ríos dorados
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                El paraíso del turismo en auto familiar. Autopista doble mano casi hasta las sierras. En Calamuchita tenés tu base para moverte a diario: La Cumbrecita (pueblo alpino 100% peatonal sin autos), Villa General Belgrano con sus cervecerías y repostería europea, los ríos de aguas templadas de Santa Rosa y las travesías serranas al Cerro Champaquí desde Villa Yacanto.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Pasar el día en La Cumbrecita: caminar hasta La Olla, la Cascada Grande y el bosque de abedules.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Cerveza artesanal tirada y goulash con spätzle en el centro de Villa General Belgrano.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Bañarse en las playas de río de Santa Rosa de Calamuchita o Los Reartes.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 280 (Rosario / Alvear): Estación Shell Select o YPF Full para café y carga.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 500 (Bell Ville / Villa María): Parador cordobés con quesos de la cuenca láctea.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$286,400 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$71,600 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('villa general belgrano')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="vacaciones_semana">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Córdoba: Valle de Traslasierra" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-sky-500/10 text-sky-400 border-sky-500/20 backdrop-blur-md">
+                  <span>🦅</span> Vacaciones de 1 Semana
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 9h 30m · 830 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Córdoba: Valle de Traslasierra
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Mina Clavero, Nono, el Camino de las Altas Cumbres y el Museo Rocsen
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                El valle más agreste y auténtico de Córdoba. El cruce por las Altas Cumbres es uno de los caminos de montaña más impactantes del país (avistaje de cóndores). Abajo te esperan los ríos dorados de Mina Clavero (Río de los Sauces), los balnearios de Nono bajo los cerros de Los Nonos, y las ferias de productores agroecológicos al pie del Cerro Champaquí.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Manejar por el Camino de las Altas Cumbres parando en los miradores de El Cóndor.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Bañarse en los piletones naturales del Río Mina Clavero (una de las 7 Maravillas Naturales de Argentina).</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Visitar el asombroso Museo Polifacético Rocsen en Nono (más de 60.000 piezas históricas).</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 300 (Rosario): Parada intermedia de desayuno.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 550 (Villa María): Parada técnica de almuerzo.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$330,200 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$82,550 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('mina clavero')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="vacaciones_semana">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Monte Hermoso & Pehuen Có" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-sky-500/10 text-sky-400 border-sky-500/20 backdrop-blur-md">
+                  <span>🌅</span> Vacaciones de 1 Semana
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 7h 30m · 630 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Monte Hermoso & Pehuen Có
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Playas de aguas cálidas, donde el sol nace y se pone sobre el mar
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                Un tesoro de la costa sur bonaerense. Por su orientación geográfica de este a oeste, es la única playa del país donde podés ver tanto la salida como la puesta del sol sobre el agua. Sus aguas son hasta 5°C más cálidas que en Mar del Plata gracias a corrientes oceánicas. A pocos kilómetros se encuentra la laguna Sauce Grande y el bosque fósil de Pehuen Có.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Quedarse en la playa hasta las 21:00 hs para contemplar el sol cayendo sobre el horizonte marítimo.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Visitar el Faro Recalada (67 metros de altura, el más alto de estructura abierta de Sudamérica).</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Pescar o navegar en kayak en la Laguna Sauce Grande.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 110 (Monte): Estación de servicio y café.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 300 (Azul): YPF Full cruce RP 226 para almorzar.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$247,400 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$61,850 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('monte hermoso')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="vacaciones_semana">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80" alt="Villa de Merlo (San Luis)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-sky-500/10 text-sky-400 border-sky-500/20 backdrop-blur-md">
+                  <span>☀️</span> Vacaciones de 1 Semana
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 8h 30m · 780 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Villa de Merlo (San Luis)
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Tercer microclima del mundo, miradores a 2.200 msnm y quebradas
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                Ubicada al pie de la Sierra de los Comechingones, es reconocida mundialmente por su microclima que brinda más de 300 días de sol al año y un aire purificado libre de contaminación. Subir en auto al Filo Serrano a 2.200 metros ofrece vistas impactantes de todo el Valle del Conlara.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Subir en auto hasta el Mirador del Filo Serrano y el Mirador del Sol para ver el atardecer.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Trekking a la Cascada Salto del Tabaquillo o Salto de la Estancita.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Comer chivito puntano a las brasas en los restaurantes típicos de montaña.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 220 (Pergamino): YPF Full para desayunar sobre la RN 8.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 400 (Venado Tuerto): Estación Shell Select y almuerzo rápido.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$306,600 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$76,650 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('merlo')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="gran_ruta">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80" alt="Bariloche & Ruta de los 7 Lagos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-purple-500/10 text-purple-400 border-purple-500/20 backdrop-blur-md">
+                  <span>🏔️</span> Grandes Rutas (+1000 km)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 18h 35m · 1580 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Bariloche & Ruta de los 7 Lagos
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                La meca del road trip: lagos turquesas, cordillera y nafta patagónica exenta
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                El gran clásico rutero argentino. Tener auto propio en Bariloche es el mayor ahorro de tu vida: alquilar allá en temporada es carísimo y el auto te permite recorrer sin límites la Ruta de los 7 Lagos, el Circuito Chico, subir al Cerro Catedral y parar en playas vírgenes. ¡Al sur del Río Colorado el combustible está exento de ICL/IDC y cuesta hasta un 20% menos!
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Recorrer la legendaria Ruta de los 7 Lagos (RN 40) entre Villa La Angostura y San Martín de los Andes.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Hacer el Circuito Chico parando en Punto Panorámico, Bahía López y Colonia Suiza.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Bajar a las playas del Lago Nahuel Huapi, Moreno, Gutiérrez y Mascardi.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 605 (Santa Rosa): Hotel y descanso diurno.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 720 (General Acha): Desvío obligado por RP 20 (evitar RN 152 destruida).</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$554,500 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$138,625 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('bariloche')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="gran_ruta">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=800&q=80" alt="Mendoza: Valle de Uco & Alta Montaña" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-purple-500/10 text-purple-400 border-purple-500/20 backdrop-blur-md">
+                  <span>🍷</span> Grandes Rutas (+1000 km)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 12h 30m · 1050 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Mendoza: Valle de Uco & Alta Montaña
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Ruta del Vino al pie de la cordillera, bodegas, Potrerillos y Cañón del Atuel
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                El viaje en auto que combina vinos de nivel mundial con la imponente Cordillera de los Andes. Moverte en tu auto por los caminos de viñedos del Valle de Uco (RP 89 y RP 92) es una experiencia inigualable. Podés llegar hasta el dique Potrerillos, Uspallata y el Puente del Inca por RN 7.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Visitar bodegas boutique con degustación y almuerzo en pasos en Valle de Uco y Luján de Cuyo.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Pasear por el Dique Potrerillos y navegar en kayak o contemplar el lago azul entre montañas.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Subir por la RN 7 de Alta Montaña hacia el Puente del Inca y mirador del Aconcagua.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 260 (Junín): Parada en Shell Select o YPF autopista.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 480 (Laboulaye / Rufino): Almuerzo rápido.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$406,600 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$101,650 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('mendoza')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/TuFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Planificador y Semáforo Vial -->
+  <section id="planificador-ruta" class="py-20 dark:bg-slate-900/60 bg-slate-100/70 border-t dark:border-slate-800 border-slate-200 theme-transition">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3 border shadow-sm"
+             style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
+          <span>🚦</span> Semáforo Vial &amp; Presupuesto en Vivo
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold dark:text-white text-slate-900 tracking-tight mb-3">
+          Planificador de Cualquier Punto a Punto de Argentina
+        </h2>
+        <p class="text-sm sm:text-base dark:text-slate-400 text-slate-600 leading-relaxed">
+          Escribí tu origen y destino para calcular consumo exacto, peajes, tramos rotos y exención impositiva de combustibles.
+        </p>
+      </div>
+
+      <!-- Card Buscador -->
+      <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl max-w-4xl mx-auto mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 mb-4">
+          <div class="md:col-span-5">
+            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              🛫 Origen
+            </label>
+            <input id="road-origen-input" type="text" value="Buenos Aires"
+                   class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500">
+          </div>
+          <div class="md:col-span-5">
+            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              📍 Destino
+            </label>
+            <input id="road-destino-input" type="text" value="San Bernardo"
+                   class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500">
+          </div>
+          <div class="md:col-span-2 flex items-end">
+            <button type="button" onclick="window.calcularRutaWeb()"
+                    class="w-full h-[46px] px-4 py-3 rounded-xl text-sm font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all flex items-center justify-center gap-2 shadow-md shadow-sky-600/25">
+              <span>🔍</span> Calcular
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              ⛽ Combustible
+            </label>
+            <select id="road-fuel-select" onchange="window.calcularRutaWeb()"
+                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300">
+              <option value="nafta" selected>⛽ Nafta Súper ($2.200 Ref. Shell)</option>
+              <option value="premium">🚀 Nafta Premium ($2.520 Shell V-Power)</option>
+              <option value="diesel">🛢️ Diésel ($2.380 Shell Evolux)</option>
+              <option value="gnc">🔵 GNC ($920 / m³)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              🚘 Vehículo
+            </label>
+            <select id="road-veh-select" onchange="window.calcularRutaWeb()"
+                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300">
+              <option value="compacto">🚗 Compacto / Hatch (-15%)</option>
+              <option value="sedan" selected>🚘 Sedán / Familiar (Base)</option>
+              <option value="suv">🚙 SUV / Rural (+18%)</option>
+              <option value="pickup">🛻 Pickup 4x4 (+38%)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              👥 Pasajeros
+            </label>
+            <select id="road-pax-select" onchange="window.calcularRutaWeb()"
+                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300">
+              <option value="1">1 Viajero</option>
+              <option value="2">2 Viajeros</option>
+              <option value="3">3 Viajeros</option>
+              <option value="4" selected>4 Viajeros (Familia)</option>
+              <option value="5">5 Viajeros</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Chips Rápidos -->
+        <div class="mt-4 pt-3 border-t dark:border-slate-800 border-slate-200 flex items-center gap-2 overflow-x-auto text-xs pb-1">
+          <span class="text-slate-400 font-bold whitespace-nowrap">Rutas frecuentes:</span>
+          <button type="button" onclick="window.cargarRutaEnBuscador('San Bernardo')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🌊 La Costa</button>
+          <button type="button" onclick="window.cargarRutaEnBuscador('Mar del Plata')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🏖️ Mar del Plata</button>
+          <button type="button" onclick="window.cargarRutaEnBuscador('Tandil')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">⛰️ Tandil</button>
+          <button type="button" onclick="window.cargarRutaEnBuscador('Colón')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">♨️ Colón</button>
+          <button type="button" onclick="window.cargarRutaEnBuscador('Villa General Belgrano')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🏞️ Calamuchita</button>
+          <button type="button" onclick="window.cargarRutaEnBuscador('Monte Hermoso')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🌅 Monte Hermoso</button>
+          <button type="button" onclick="window.cargarRutaEnBuscador('Bariloche')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🏔️ Bariloche</button>
+        </div>
+      </div>
+
+      <!-- Reporte Resultado Dinámico -->
+      <div id="road-resultado-container" class="max-w-4xl mx-auto dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b dark:border-slate-800 border-slate-200">
+          <div>
+            <span id="res-corredor-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-sky-500/10 text-sky-400 border border-sky-500/20 mb-2">
+              🛣️ Autovía 2 ➔ RP 63 ➔ RP 11
+            </span>
+            <h3 id="res-titulo-trayecto" class="text-2xl font-extrabold dark:text-white text-slate-900">
+              Buenos Aires ➔ San Bernardo (Partido de La Costa)
+            </h3>
+            <p id="res-subtitulo-vial" class="text-xs text-slate-400 mt-1">
+              Distancia: ~345 km por tramo (690 km Ida y Vuelta) · Manejo neto estimado: ~4h 00m
+            </p>
+          </div>
+          <div class="text-right">
+            <span class="block text-xs uppercase font-bold text-slate-400">Gasto Total I/V</span>
+            <span id="res-total-ars" class="text-3xl font-extrabold text-emerald-500 font-mono">$ 151.300</span>
+            <span id="res-pax-ars" class="block text-xs text-slate-500 font-bold">$ 37.825 c/u (4 pax)</span>
+          </div>
+        </div>
+
+        <!-- Semáforo Vial -->
+        <div id="res-semaforo-box" class="mt-6 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3">
+          <span class="text-2xl">🟢</span>
+          <div>
+            <div class="text-sm font-extrabold text-emerald-400">Verde · Doble Mano y Asfalto en Buen Estado</div>
+            <p class="text-xs text-slate-300 mt-1">Autovía 2 y RP 11 con calzada doble mano y servicios 24 hs continuos. Precaución con radares de velocidad en zonas urbanas (Chascomús, Castelli, Dolores).</p>
+          </div>
+        </div>
+
+        <!-- Alerta Patagónica (oculta por defecto, se enciende en Bariloche/sur) -->
+        <div id="res-pata-box" class="hidden mt-4 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3">
+          <span class="text-2xl">⛽</span>
+          <div>
+            <div class="text-sm font-extrabold text-amber-400">Tarifa Patagónica de Combustible (Ley 23.966 / 27.209)</div>
+            <p class="text-xs text-slate-300 mt-1">Al sur del Río Colorado el combustible está <b>exento de ICL e IDC (-19% a -26%)</b>. ⚠️ <b>Tip de oro:</b> No cargues tanque lleno en Bahía Blanca o La Pampa; esperá a cruzar a Río Colorado o Viedma para cargar más barato.</p>
+          </div>
+        </div>
+
+        <!-- Desglose de Gastos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+          <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+            <div class="text-xs uppercase font-bold text-slate-400 mb-1">⛽ Combustible I/V</div>
+            <div id="res-comb-detalle" class="text-lg font-extrabold dark:text-white text-slate-900 font-mono">~$129.800 ARS</div>
+            <div class="text-xs text-slate-500 mt-1">~59 Litros (8.5 L/100km a $2.200 Ref. Shell)</div>
+          </div>
+          <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+            <div class="text-xs uppercase font-bold text-slate-400 mb-1">🎟️ Peajes I/V (AUBASA)</div>
+            <div id="res-peajes-detalle" class="text-lg font-extrabold dark:text-white text-slate-900 font-mono">~$21.500 ARS</div>
+            <div class="text-xs text-slate-500 mt-1">Samborombón + Maipú / La Huella RP 11</div>
+          </div>
+        </div>
+
+        <!-- Paradas y Google Maps -->
+        <div class="mt-6 pt-6 border-t dark:border-slate-800 border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="text-xs text-slate-400">
+            💡 <b>Parada Clásica:</b> Parador Atalaya (km 113 Chascomús) · YPF Full Dolores (km 204).
+          </div>
+          <a id="res-maps-btn" href="https://www.google.com/maps/dir/?api=1&origin=Buenos+Aires&destination=San+Bernardo&travelmode=driving" target="_blank"
+             class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-extrabold text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all">
+            <span>🗺️</span> Abrir en Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950 bg-white theme-transition">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="flex items-center justify-center gap-2 mb-3">
+        <span class="text-2xl font-extrabold brand-gradient-text">FlightBot</span>
+        <span class="text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-slate-800 text-slate-300">Escapadas</span>
+      </div>
+      <p class="text-xs text-slate-500 max-w-md mx-auto mb-6">
+        Diseñado para viajeros que disfrutan de la ruta. Precios actualizados en tiempo real y cálculo impositivo federal.
+      </p>
+      <div class="flex items-center justify-center gap-4 text-xs font-bold text-slate-400">
+        <a href="index.html" class="hover:text-white transition-colors">✈️ Vuelos</a>
+        <span>•</span>
+        <a href="billetera.html" class="hover:text-white transition-colors">🧳 Billetera</a>
+        <span>•</span>
+        <a href="guias/index.html" class="hover:text-white transition-colors">📖 Guías</a>
+        <span>•</span>
+        <a href="https://t.me/TuFlightBot" target="_blank" class="hover:text-white transition-colors">📱 Telegram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Filtro interactivo de escapadas
+    window.filtrarEscapadas = function(cat) {
+      const cards = document.querySelectorAll('.esc-card');
+      const btns = document.querySelectorAll('.esc-filtro-btn');
+      
+      btns.forEach(b => {
+        b.style.backgroundColor = '';
+        b.style.color = '';
+        b.style.borderColor = '';
+      });
+
+      const activeBtn = document.getElementById(`btn-filtro-${cat}`);
+      if (activeBtn) {
+        activeBtn.style.backgroundColor = 'var(--brand-primary)';
+        activeBtn.style.color = '#ffffff';
+        activeBtn.style.borderColor = 'var(--brand-primary)';
+      }
+
+      cards.forEach(card => {
+        if (cat === 'todas' || card.getAttribute('data-cat') === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    };
+
+    // Carga rápida en el buscador de ruta
+    window.cargarRutaEnBuscador = function(destino) {
+      const input = document.getElementById('road-destino-input');
+      if (input) {
+        input.value = destino;
+        window.calcularRutaWeb();
+        const sec = document.getElementById('planificador-ruta');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    // Cálculo dinámico en el buscador web
+    window.calcularRutaWeb = function() {
+      const origen = (document.getElementById('road-origen-input').value || 'Buenos Aires').trim();
+      const destino = (document.getElementById('road-destino-input').value || 'San Bernardo').trim();
+      const fuel = document.getElementById('road-fuel-select').value || 'nafta';
+      const veh = document.getElementById('road-veh-select').value || 'sedan';
+      const pax = parseInt(document.getElementById('road-pax-select').value || '4');
+
+      const destLower = destino.toLowerCase();
+      let km = 350;
+      let peajes = 21500;
+      let traza = 'Autovía 2 ➔ RP 63 ➔ RP 11';
+      let esPata = false;
+
+      if (destLower.includes('tuyu') || destLower.includes('mar del tuyu') || destLower.includes('bernardo') || destLower.includes('ajo') || destLower.includes('costa')) {
+        km = 345;
+        peajes = 21500;
+        traza = 'Autovía 2 (Dolores) ➔ RP 63 ➔ RP 11 Interbalnearia';
+      } else if (destLower.includes('plata') || destLower.includes('chapadmalal')) {
+        km = 415;
+        peajes = 21500;
+        traza = 'Autovía 2 directa a Mar del Plata';
+      } else if (destLower.includes('pinamar') || destLower.includes('gesell') || destLower.includes('carilo')) {
+        km = 365;
+        peajes = 21500;
+        traza = 'Autovía 2 ➔ RP 63 ➔ RP 11 ➔ RP 56 ➔ RP 74';
+      } else if (destLower.includes('tandil')) {
+        km = 360;
+        peajes = 16000;
+        traza = 'Autovía 2 (km 299 Las Armas) ➔ RP 74';
+      } else if (destLower.includes('colon') || destLower.includes('palmar')) {
+        km = 330;
+        peajes = 11000;
+        traza = 'RN 9 ➔ Zárate-Brazo Largo ➔ RN 12 ➔ RN 14';
+      } else if (destLower.includes('belgrano') || destLower.includes('calamuchita') || destLower.includes('cumbrecita')) {
+        km = 720;
+        peajes = 18000;
+        traza = 'Autopista RN 9 (Rosario - Córdoba) ➔ RP C45 ➔ RP 5';
+      } else if (destLower.includes('monte hermoso')) {
+        km = 630;
+        peajes = 12000;
+        traza = 'RN 3 (Azul - Dorrego) ➔ RP 78';
+      } else if (destLower.includes('bariloche') || destLower.includes('angostura')) {
+        km = 1580;
+        peajes = 19000;
+        traza = 'RN 5 ➔ RP 20 (Desierto) ➔ RN 151 ➔ RN 237';
+        esPata = true;
+      } else if (destLower.includes('mendoza') || destLower.includes('uco')) {
+        km = 1050;
+        peajes = 15000;
+        traza = 'RN 7 directa a Mendoza y Valle de Uco';
+      }
+
+      // Precios de nafta Shell y factores
+      const factorVeh = { compacto: 0.85, sedan: 1.0, suv: 1.18, pickup: 1.38 }[veh] || 1.0;
+      let precioUnidad = 2200; // Nafta Súper Ref. Shell
+      let consumo100 = 8.5 * factorVeh;
+
+      if (fuel === 'premium') {
+        precioUnidad = 2520; // Shell V-Power
+        consumo100 = 8.2 * factorVeh;
+      } else if (fuel === 'diesel') {
+        precioUnidad = 2380; // Shell Evolux
+        consumo100 = 7.2 * factorVeh;
+      } else if (fuel === 'gnc') {
+        precioUnidad = 920;
+        consumo100 = 9.5 * factorVeh;
+      }
+
+      if (esPata && fuel !== 'gnc') {
+        precioUnidad = Math.round(precioUnidad * 0.90); // Tarifa ponderada con exención ICL patagónica
+      }
+
+      const litrosIV = Math.round(((km * 2) / 100) * consumo100);
+      const costoComb = litrosIV * precioUnidad;
+      const totalViaje = costoComb + peajes;
+      const costoPax = Math.round(totalViaje / pax);
+
+      document.getElementById('res-titulo-trayecto').innerText = `${origen} ➔ ${destino}`;
+      document.getElementById('res-corredor-badge').innerText = `🛣️ ${traza}`;
+      document.getElementById('res-subtitulo-vial').innerText = `Distancia: ~${km} km por tramo (${km*2} km Ida y Vuelta) · Manejo estimado: ~${Math.floor(km/85)}h ${Math.round((km%85)/85*60)}m`;
+      document.getElementById('res-total-ars').innerText = `$ ${totalViaje.toLocaleString('es-AR')}`;
+      document.getElementById('res-pax-ars').innerText = `$ ${costoPax.toLocaleString('es-AR')} c/u (${pax} pax)`;
+      document.getElementById('res-comb-detalle').innerText = `~$ ${costoComb.toLocaleString('es-AR')} ARS`;
+      document.getElementById('res-peajes-detalle').innerText = `~$ ${peajes.toLocaleString('es-AR')} ARS`;
+
+      const pataBox = document.getElementById('res-pata-box');
+      if (pataBox) {
+        pataBox.classList.toggle('hidden', !esPata);
+      }
+
+      const mapsBtn = document.getElementById('res-maps-btn');
+      if (mapsBtn) {
+        mapsBtn.href = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origen)}&destination=${encodeURIComponent(destino)}&travelmode=driving`;
+      }
+    };
+  </script>
+</body>
+</html>

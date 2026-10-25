@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="es" class="dark" data-color="ruby">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billetera de Documentos & Itinerario · FlightBot</title>
+  <meta name="description" content="Tus boarding passes, vouchers de hotel y pólizas médicas organizados en tiempo real. Disponible 100% offline para aeropuertos y modo avión.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23e11d48'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='22'%3E%F0%9F%A7%B3%3C/text%3E%3C/svg%3E">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --brand-primary: #e11d48;
+      --brand-primary-hover: #be123c;
+      --brand-glow: rgba(225, 29, 72, 0.35);
+      --brand-subtle: rgba(225, 29, 72, 0.1);
+      --brand-border: rgba(225, 29, 72, 0.25);
+      --brand-gradient: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+    }
+
+    [data-color="blue"] {
+      --brand-primary: #2563eb;
+      --brand-primary-hover: #1d4ed8;
+      --brand-glow: rgba(37, 99, 235, 0.35);
+      --brand-subtle: rgba(37, 99, 235, 0.1);
+      --brand-border: rgba(37, 99, 235, 0.25);
+      --brand-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    }
+
+    .brand-gradient-text {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .theme-transition {
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+  
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+  </style>
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('fb_theme_mode') || 'dark';
+      const savedColor = localStorage.getItem('fb_theme_color') || 'ruby';
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      document.documentElement.setAttribute('data-color', savedColor);
+    })();
+  </script>
+</head>
+<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition min-h-screen flex flex-col justify-between">
+
+  <!-- Encabezado / Navegación Superior -->
+  <header class="sticky top-0 z-40 backdrop-blur-md dark:bg-slate-950/85 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo con F-Bot Rolli -->
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="index.html" class="flex items-center gap-3 group" title="Volver al inicio de FlightBot">
+          <div id="brand-logo" class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition p-1"
+               title="Mascota tech redondeada que sostiene su propia valija carry-on rígida con ruedas 360°. La antena superior emite pulsos de alertas cuando encuentra una tarifa baja."
+               style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
+            <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
+              <rect x="23" y="19" width="12" height="16" rx="3" fill="url(#fbSuitcaseAlwaysRedWallet)" stroke="#ffffff" stroke-width="0.8"/>
+              <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <line x1="25" y1="27" x2="33" y2="27" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <line x1="25" y1="31" x2="33" y2="31" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <circle cx="25.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
+              <circle cx="32.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
+              <path d="M26 19 V13 H32 V19" stroke="#cbd5e1" stroke-width="1.1" stroke-linecap="round"/>
+              <rect x="27" y="11.5" width="4" height="1.8" rx="0.9" fill="#ffffff"/>
+              <path d="M17 24 Q22 20 27 13" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="7" y="17" width="14" height="16" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="0.8"/>
+              <rect x="10" y="22" width="8" height="6" rx="2" fill="#0f172a"/>
+              <path d="M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25" stroke="#10b981" stroke-width="0.8" stroke-linecap="round"/>
+              <rect x="5.5" y="6" width="17" height="13" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+              <line x1="14" y1="6" x2="14" y2="2" stroke="#94a3b8" stroke-width="1.1" stroke-linecap="round"/>
+              <circle cx="14" cy="1.8" r="1.6" fill="#e11d48"/>
+              <circle cx="14" cy="1.8" r="3.2" stroke="#ffffff" stroke-width="0.5" stroke-dasharray="1 1" opacity="0.8"/>
+              <rect x="8" y="9" width="12" height="6.5" rx="2.5" fill="#0f172a"/>
+              <circle cx="11" cy="12.2" r="1.2" fill="#38bdf8"/>
+              <circle cx="17" cy="12.2" r="1.2" fill="#38bdf8"/>
+              <path d="M7 23 Q2 19 3 14" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="fbSuitcaseAlwaysRedWallet" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#e11d48"/>
+                  <stop offset="100%" stop-color="#be123c"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div>
+            <span class="text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">
+              FlightBot
+            </span>
+            <span class="ml-2 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+              Bóveda 🧳
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Enlaces Centrales -->
+      <nav class="hidden md:flex items-center gap-1.5 p-1 rounded-full dark:bg-slate-900/80 bg-slate-100/90 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm">
+        <a href="index.html#radar-vuelos" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-1.5">
+          <span>✈️</span> Radar Vuelos
+        </a>
+        <a href="billetera.html" class="px-3 py-1.5 rounded-full text-xs font-bold border transition-all flex items-center gap-1.5 shadow-xs" style="color: var(--brand-primary); background-color: var(--brand-subtle); border-color: var(--brand-border);">
+          <span>🧳</span> Mi Billetera
+        </a>
+        <a href="guias/index.html" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-1.5">
+          <span>📖</span> Guías (45)
+        </a>
+        <a href="index.html#promos-portales" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-1.5">
+          <span>🏦</span> Portales & Cuotas
+        </a>
+      </nav>
+
+      <!-- Controles: Switcher Pixel-Perfect + Botón Telegram -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Control Dual de Personalización - Centrado Óptico y Milimétrico Absoluto -->
+        <div class="flex items-center p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-xs theme-transition">
+          <div class="flex items-center gap-1.5 pl-1.5 pr-2">
+            <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Tema Rojo Rubí" aria-label="Tema Rojo Rubí"
+                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0"></button>
+            <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Tema Azul Océano" aria-label="Tema Azul Océano"
+                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0"></button>
+          </div>
+          <div class="w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
+          <div class="flex items-center pl-1 pr-1.5">
+            <button onclick="toggleThemeMode()" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro" aria-label="Alternar Modo Claro / Oscuro"
+                    class="w-4.5 h-4.5 rounded-full flex items-center justify-center text-xs dark:text-amber-400 text-slate-700 hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
+              <span id="theme-mode-icon" class="leading-none select-none inline-flex items-center justify-center -translate-y-[1px]">🌙</span>
+            </button>
+          </div>
+        </div>
+
+        <a href="https://t.me/GnZFlightBot?start=billetera" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-white font-semibold text-xs transition-all shadow-md hover:brightness-110"
+           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
+          <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
+          </svg>
+          <span class="hidden sm:inline">Sincronizar Bot</span>
+          <span class="sm:hidden">Bot</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full space-y-10">
+
+    <!-- Encabezado de la Billetera -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b dark:border-slate-800 border-slate-200">
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider border shadow-xs"
+             style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Bóveda Segura Local-First · Modo Offline Activo
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight dark:text-white text-slate-900">
+          Mi Billetera de Viaje &amp; Itinerario
+        </h1>
+        <p class="text-sm sm:text-base dark:text-slate-400 text-slate-600 max-w-2xl leading-relaxed">
+          Tus pasajes aéreos, vouchers de hotel y números de emergencia médica centralizados en un único lugar. Podés consultarlos sin conexión a internet en aeropuertos y durante el vuelo.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <button type="button" onclick="window.abrirModalSubida()"
+                class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white transition-all shadow-md hover:brightness-110 flex items-center gap-2"
+                style="background: var(--brand-gradient);">
+          <span>➕</span> Cargar Documento
+        </button>
+        <button type="button" onclick="window.abrirModalSyncTelegram()"
+                class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold dark:bg-slate-900 bg-white hover:dark:bg-slate-800 hover:bg-slate-100 border dark:border-slate-700 border-slate-300 dark:text-slate-200 text-slate-800 transition-all shadow-xs flex items-center gap-2">
+          <span>📲</span> ¿Cómo Sincronizar?
+        </button>
+      </div>
+    </div>
+
+    <!-- Métricas Resumen del Itinerario -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="p-5 rounded-2xl dark:bg-slate-900/70 bg-white border dark:border-slate-800 border-slate-200 shadow-xs space-y-1">
+        <div class="text-[11px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500">Próximo Vuelo</div>
+        <div class="text-2xl font-extrabold" style="color: var(--brand-primary);" id="metric-dias">En 22 días</div>
+        <div class="text-xs dark:text-slate-400 text-slate-600 font-medium">EZE ➔ CDG (Air France)</div>
+      </div>
+      <div class="p-5 rounded-2xl dark:bg-slate-900/70 bg-white border dark:border-slate-800 border-slate-200 shadow-xs space-y-1">
+        <div class="text-[11px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500">Documentos Guardados</div>
+        <div class="text-2xl font-extrabold dark:text-white text-slate-900" id="metric-total">4 archivos</div>
+        <div class="text-xs text-emerald-500 font-semibold flex items-center gap-1">
+          <span>✓</span> Verificados con OCR IA
+        </div>
+      </div>
+      <div class="p-5 rounded-2xl dark:bg-slate-900/70 bg-white border dark:border-slate-800 border-slate-200 shadow-xs space-y-1">
+        <div class="text-[11px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500">Alojamientos</div>
+        <div class="text-2xl font-extrabold dark:text-white text-slate-900" id="metric-hoteles">1 reserva</div>
+        <div class="text-xs dark:text-slate-400 text-slate-600 font-medium">CitizenM París (7 noches)</div>
+      </div>
+      <div class="p-5 rounded-2xl dark:bg-slate-900/70 bg-white border dark:border-slate-800 border-slate-200 shadow-xs space-y-1">
+        <div class="text-[11px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500">Seguridad Bóveda</div>
+        <div class="text-2xl font-extrabold text-emerald-500">Cifrada</div>
+        <div class="text-xs dark:text-slate-400 text-slate-600 font-medium">Aislamiento por usuario</div>
+      </div>
+    </div>
+
+    <!-- Barra de Filtros y Búsqueda -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0" id="category-tabs">
+        <button type="button" onclick="window.filtrarCategoria('todos')" id="tab-todos"
+                class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all text-white shadow-xs"
+                style="background: var(--brand-gradient);">
+          Todos (4)
+        </button>
+        <button type="button" onclick="window.filtrarCategoria('vuelo')" id="tab-vuelo"
+                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">
+          ✈️ Vuelos (2)
+        </button>
+        <button type="button" onclick="window.filtrarCategoria('hotel')" id="tab-hotel"
+                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">
+          🏨 Hoteles (1)
+        </button>
+        <button type="button" onclick="window.filtrarCategoria('asistencia')" id="tab-asistencia"
+                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">
+          🩺 Asistencia Médica (1)
+        </button>
+      </div>
+
+      <div class="w-full sm:w-72 relative">
+        <input type="text" id="wallet-search" oninput="window.filtrarBusqueda(this.value)"
+               placeholder="Buscar PNR, aerolínea, hotel..."
+               class="w-full pl-9 pr-4 py-2 rounded-xl text-xs dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 dark:text-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2"
+               style="--tw-ring-color: var(--brand-primary);" />
+        <span class="absolute left-3 top-2.5 text-xs text-slate-400">🔍</span>
+      </div>
+    </div>
+
+    <!-- Lista de Documentos en la Billetera -->
+    <div id="wallet-cards-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Se inyecta dinámicamente con JavaScript -->
+    </div>
+
+    <!-- Banner de Sincronización con Telegram y Explicación -->
+    <div class="p-6 sm:p-8 rounded-3xl border dark:border-slate-800 border-slate-200 dark:bg-slate-900/60 bg-white shadow-sm space-y-4 relative overflow-hidden">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="space-y-1.5 max-w-2xl">
+          <div class="text-xs font-bold uppercase text-emerald-400">⚡ Sincronización Automática con IA</div>
+          <h3 class="text-xl font-extrabold dark:text-white text-slate-900">
+            ¿Cómo cargar tus pasajes y reservas en segundos?
+          </h3>
+          <p class="text-xs sm:text-sm dark:text-slate-400 text-slate-600 leading-relaxed">
+            No necesitas cargar formularios manualmente. Abre <b>@GnZFlightBot</b> en Telegram y reenvía el PDF de tu pasaje, boarding pass o voucher. Nuestro lector OCR multimodal con IA extraerá automáticamente fechas, códigos PNR y asientos para reflejarlos aquí.
+          </p>
+        </div>
+        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
+           class="px-5 py-3 rounded-xl text-xs sm:text-sm font-extrabold text-white shadow-lg transition-all hover:brightness-110 flex items-center justify-center gap-2 shrink-0"
+           style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
+          <span>📲</span> Abrir @GnZFlightBot
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal de Visualización de Boarding Pass / QR -->
+  <div id="modal-boarding-pass" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="dark:bg-slate-900 bg-white rounded-3xl border dark:border-slate-800 border-slate-200 max-w-lg w-full overflow-hidden shadow-2xl space-y-6 p-6 sm:p-8 relative">
+      <button type="button" onclick="window.cerrarModalBoardingPass()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-lg font-bold">✕</button>
+
+      <div class="flex items-center justify-between border-b dark:border-slate-800 border-slate-200 pb-4">
+        <div>
+          <div class="text-xs font-bold uppercase tracking-wider text-rose-500">Pase de Abordar Digital</div>
+          <h4 id="bp-modal-airline" class="text-xl font-extrabold dark:text-white text-slate-900">Air France</h4>
+        </div>
+        <div class="text-right">
+          <div class="text-[10px] uppercase font-bold text-slate-400">Vuelo</div>
+          <div id="bp-modal-flight" class="text-lg font-mono font-extrabold dark:text-white text-slate-900">AF 229</div>
+        </div>
+      </div>
+
+      <!-- Ruta y Horario -->
+      <div class="grid grid-cols-3 items-center text-center py-2">
+        <div>
+          <div id="bp-modal-origin-iata" class="text-3xl font-black font-mono" style="color: var(--brand-primary);">EZE</div>
+          <div id="bp-modal-origin-city" class="text-xs dark:text-slate-400 text-slate-600">Buenos Aires</div>
+        </div>
+        <div class="text-slate-400 flex flex-col items-center">
+          <span class="text-xs font-bold">Directo</span>
+          <span class="text-lg">✈️ ➔</span>
+          <span id="bp-modal-date" class="text-[11px] font-mono">14 Nov 2026</span>
+        </div>
+        <div>
+          <div id="bp-modal-dest-iata" class="text-3xl font-black font-mono" style="color: var(--brand-primary);">CDG</div>
+          <div id="bp-modal-dest-city" class="text-xs dark:text-slate-400 text-slate-600">París</div>
+        </div>
+      </div>
+
+      <!-- Detalles del Pasajero -->
+      <div class="grid grid-cols-3 gap-3 p-4 rounded-2xl dark:bg-slate-950 bg-slate-100 text-xs font-mono">
+        <div>
+          <span class="text-slate-400 text-[10px] block">PASAJERO</span>
+          <strong id="bp-modal-passenger" class="dark:text-white text-slate-900">Gonzalo M.</strong>
+        </div>
+        <div>
+          <span class="text-slate-400 text-[10px] block">ASIENTO</span>
+          <strong id="bp-modal-seat" class="text-emerald-500 font-bold">18K (Ventana)</strong>
+        </div>
+        <div>
+          <span class="text-slate-400 text-[10px] block">LOCALIZADOR</span>
+          <strong id="bp-modal-pnr" style="color: var(--brand-primary);">AF89KJ</strong>
+        </div>
+      </div>
+
+      <!-- Código QR SVG para escáner de aeropuerto (100% Offline) -->
+      <div class="flex flex-col items-center justify-center p-6 rounded-2xl bg-white border border-slate-200 text-slate-900 space-y-2">
+        <svg viewBox="0 0 120 120" class="w-36 h-36">
+          <rect width="120" height="120" fill="#ffffff"/>
+          <!-- Marcador Superior Izq -->
+          <rect x="10" y="10" width="30" height="30" fill="#0f172a"/>
+          <rect x="15" y="15" width="20" height="20" fill="#ffffff"/>
+          <rect x="20" y="20" width="10" height="10" fill="#0f172a"/>
+          <!-- Marcador Superior Der -->
+          <rect x="80" y="10" width="30" height="30" fill="#0f172a"/>
+          <rect x="85" y="15" width="20" height="20" fill="#ffffff"/>
+          <rect x="90" y="20" width="10" height="10" fill="#0f172a"/>
+          <!-- Marcador Inferior Izq -->
+          <rect x="10" y="80" width="30" height="30" fill="#0f172a"/>
+          <rect x="15" y="85" width="20" height="20" fill="#ffffff"/>
+          <rect x="20" y="90" width="10" height="10" fill="#0f172a"/>
+          <!-- Datos ficticios de alta fidelidad -->
+          <rect x="50" y="15" width="8" height="8" fill="#0f172a"/>
+          <rect x="65" y="15" width="8" height="8" fill="#0f172a"/>
+          <rect x="50" y="30" width="8" height="8" fill="#0f172a"/>
+          <rect x="50" y="50" width="15" height="15" fill="#0f172a"/>
+          <rect x="75" y="50" width="10" height="25" fill="#0f172a"/>
+          <rect x="25" y="55" width="15" height="10" fill="#0f172a"/>
+          <rect x="55" y="80" width="12" height="12" fill="#0f172a"/>
+          <rect x="80" y="85" width="25" height="10" fill="#0f172a"/>
+          <rect x="95" y="70" width="10" height="10" fill="#0f172a"/>
+        </svg>
+        <span class="text-[11px] font-mono text-slate-500 uppercase tracking-wider">E-Ticket Barcode · Listo para Molinete</span>
+      </div>
+
+      <div class="flex items-center justify-between gap-3 pt-2">
+        <button type="button" onclick="window.print()" class="w-full py-2.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-all">
+          🖨️ Imprimir / Guardar PDF
+        </button>
+        <button type="button" onclick="window.cerrarModalBoardingPass()" class="w-full py-2.5 rounded-xl text-xs font-bold text-white transition-all hover:brightness-110" style="background: var(--brand-gradient);">
+          Listo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Cargar Documento Manualmente -->
+  <div id="modal-subida" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="dark:bg-slate-900 bg-white rounded-3xl border dark:border-slate-800 border-slate-200 max-w-md w-full p-6 sm:p-8 space-y-5 relative shadow-2xl">
+      <button type="button" onclick="window.cerrarModalSubida()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-lg font-bold">✕</button>
+
+      <div class="space-y-1">
+        <h4 class="text-xl font-extrabold dark:text-white text-slate-900">Agregar a Mi Billetera</h4>
+        <p class="text-xs dark:text-slate-400 text-slate-600">Ingresá los datos o subí tu comprobante para guardarlo offline.</p>
+      </div>
+
+      <form id="form-nuevo-doc" onsubmit="window.guardarDocumentoManual(event)" class="space-y-3.5 text-xs">
+        <div>
+          <label class="block font-bold mb-1 dark:text-slate-300 text-slate-700">Tipo de Documento</label>
+          <select id="doc-tipo" class="w-full p-2.5 rounded-xl dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 dark:text-white text-slate-900 font-semibold focus:outline-none">
+            <option value="vuelo">✈️ Pasaje o Boarding Pass</option>
+            <option value="hotel">🏨 Reserva de Hotel</option>
+            <option value="asistencia">🩺 Asistencia al Viajero / Seguro</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block font-bold mb-1 dark:text-slate-300 text-slate-700">Título / Aerolínea / Empresa</label>
+          <input type="text" id="doc-titulo" required placeholder="Ej: Vuelo Madrid - Iberia IB 6844"
+                 class="w-full p-2.5 rounded-xl dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 dark:text-white text-slate-900 focus:outline-none" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold mb-1 dark:text-slate-300 text-slate-700">Código PNR / Reserva</label>
+            <input type="text" id="doc-pnr" required placeholder="Ej: Y89PLQ"
+                   class="w-full p-2.5 rounded-xl dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 dark:text-white text-slate-900 font-mono uppercase focus:outline-none" />
+          </div>
+          <div>
+            <label class="block font-bold mb-1 dark:text-slate-300 text-slate-700">Fecha de Salida</label>
+            <input type="date" id="doc-fecha" required
+                   class="w-full p-2.5 rounded-xl dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 dark:text-white text-slate-900 focus:outline-none" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-bold mb-1 dark:text-slate-300 text-slate-700">Detalles adicionales</label>
+          <input type="text" id="doc-detalles" placeholder="Ej: Terminal 1, Asiento 24A, Equipaje incluido"
+                 class="w-full p-2.5 rounded-xl dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 dark:text-white text-slate-900 focus:outline-none" />
+        </div>
+
+        <div class="pt-2 flex items-center gap-3">
+          <button type="button" onclick="window.cerrarModalSubida()" class="w-1/2 py-2.5 rounded-xl font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300">
+            Cancelar
+          </button>
+          <button type="submit" class="w-1/2 py-2.5 rounded-xl font-bold text-white shadow-md hover:brightness-110" style="background: var(--brand-gradient);">
+            Guardar en Bóveda
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de Sincronización con Telegram -->
+  <div id="modal-sync" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="dark:bg-slate-900 bg-white rounded-3xl border dark:border-slate-800 border-slate-200 max-w-md w-full p-6 sm:p-8 space-y-5 relative shadow-2xl">
+      <button type="button" onclick="window.cerrarModalSyncTelegram()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-lg font-bold">✕</button>
+
+      <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl text-white shadow-md" style="background: var(--brand-gradient);">
+        📲
+      </div>
+
+      <div class="space-y-1.5">
+        <h4 class="text-xl font-extrabold dark:text-white text-slate-900">Sincronización Directa Telegram</h4>
+        <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
+          Tus documentos viajan cifrados y se procesan con OCR de Gemini Flash en nuestro servidor.
+        </p>
+      </div>
+
+      <div class="space-y-3 text-xs dark:text-slate-300 text-slate-700">
+        <div class="flex items-start gap-3 p-3 rounded-xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+          <span class="font-bold text-rose-500">1.</span>
+          <div>Escribí <code class="font-mono text-rose-400">/billetera</code> o <code class="font-mono text-rose-400">/miviaje</code> en <b>@GnZFlightBot</b>.</div>
+        </div>
+        <div class="flex items-start gap-3 p-3 rounded-xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+          <span class="font-bold text-rose-500">2.</span>
+          <div>Enviá el PDF de tu pasaje o boarding pass.</div>
+        </div>
+        <div class="flex items-start gap-3 p-3 rounded-xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+          <span class="font-bold text-rose-500">3.</span>
+          <div>La IA extraerá todos los campos y te entregará tu enlace privado para verlo en la computadora.</div>
+        </div>
+      </div>
+
+      <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
+         class="w-full py-3 rounded-xl text-xs font-bold text-white transition-all shadow-md hover:brightness-110 flex items-center justify-center gap-2"
+         style="background: var(--brand-gradient);">
+        <span>Abrir Bot en Telegram</span> &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- Pie de Página -->
+  <footer class="border-t dark:border-slate-800 border-slate-200 py-8 dark:bg-slate-950 bg-slate-50 theme-transition text-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 dark:text-slate-500 text-slate-600">
+      <div>&copy; 2026 FlightBot · Bóveda de Documentos & Itinerario Inteligente</div>
+      <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
+        <a href="index.html" class="hover:underline font-bold" style="color: var(--brand-primary);">Inicio FlightBot</a>
+        <a href="guias/index.html" class="hover:underline">Blog & Guías</a>
+        <a href="javascript:void(0)" onclick="openPrivacyModal('privacy')" class="hover:underline">Privacidad</a>
+        <a href="javascript:void(0)" onclick="openPrivacyModal('cookies')" class="hover:underline">Cookies</a>
+        <a href="javascript:void(0)" onclick="openPrivacyModal('terms')" class="hover:underline">Términos</a>
+        <a href="javascript:void(0)" onclick="window.borrarDatosBilletera()" class="text-rose-500 hover:underline">Restablecer Bóveda Local</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lógica de Billetera y Motor de Temas -->
+  <script>
+    // Datos iniciales de demostración de alta fidelidad
+    const DEFAULT_WALLET_DOCS = [
+      {
+        id: "doc_1",
+        tipo: "vuelo",
+        titulo: "Air France · EZE ➔ CDG (Vuelo AF 229)",
+        categoria: "✈️ Pasajes y Vuelos",
+        pnr: "AF89KJ",
+        aerolinea: "Air France",
+        vuelo_num: "AF 229",
+        origen_iata: "EZE",
+        origen_ciudad: "Buenos Aires (Ezeiza)",
+        dest_iata: "CDG",
+        dest_ciudad: "París (Charles de Gaulle)",
+        fecha: "2026-11-14",
+        fecha_display: "14 Nov 2026 · 23:55 hs",
+        asiento: "18K (Ventana)",
+        pasajeros: ["Gonzalo M."],
+        resumen: "Vuelo internacional nocturno directo de 13h 20m. Terminal 1 de Ezeiza. Equipaje de 23 kg despachado incluido."
+      },
+      {
+        id: "doc_2",
+        tipo: "vuelo",
+        titulo: "JetSMART · AEP ➔ BRC (Vuelo WJ 3410)",
+        categoria: "✈️ Pasajes y Vuelos",
+        pnr: "JS7702",
+        aerolinea: "JetSMART",
+        vuelo_num: "WJ 3410",
+        origen_iata: "AEP",
+        origen_ciudad: "Buenos Aires (Aeroparque)",
+        dest_iata: "BRC",
+        dest_ciudad: "Bariloche",
+        fecha: "2026-12-12",
+        fecha_display: "12 Dic 2026 · 06:40 hs",
+        asiento: "04A",
+        pasajeros: ["Gonzalo M."],
+        resumen: "Vuelo directo de cabotaje de 2h 20m. Salida temprana desde Aeroparque. Carry-on incluido."
+      },
+      {
+        id: "doc_3",
+        tipo: "hotel",
+        titulo: "CitizenM Paris Gare de Lyon · 7 Noches",
+        categoria: "🏨 Reservas de Hotel",
+        pnr: "BK-9912048",
+        hotel_nombre: "CitizenM Paris Gare de Lyon",
+        direccion: "Rue de Van Gogh, 12e Arrondissement, París, Francia",
+        fecha: "2026-11-15",
+        fecha_display: "15 Nov 2026 ➔ 22 Nov 2026",
+        resumen: "Habitación King con domótica y vista a la estación. Desayuno buffet incluido y cancelación gratuita."
+      },
+      {
+        id: "doc_4",
+        tipo: "asistencia",
+        titulo: "Assist Card Cobertura Internacional US$ 150.000",
+        categoria: "🩺 Asistencia al Viajero",
+        pnr: "AC-8839210-AR",
+        empresa: "Assist Card",
+        telefono_emergencia: "+1 (800) 874-2823",
+        whatsapp: "+54 9 11 3988-2020",
+        fecha: "2026-11-14",
+        fecha_display: "Vigencia: 14 Nov - 30 Nov 2026",
+        resumen: "Cobertura médica integral por enfermedad y accidente, pérdida de equipaje y repatriación sin deducible."
+      }
+    ];
+
+    let walletDocs = [];
+    let currentCategoria = 'todos';
+
+    function cargarDocumentos() {
+      const stored = localStorage.getItem('fb_wallet_docs');
+      if (stored) {
+        try {
+          walletDocs = JSON.parse(stored);
+        } catch (e) {
+          walletDocs = [...DEFAULT_WALLET_DOCS];
+        }
+      } else {
+        walletDocs = [...DEFAULT_WALLET_DOCS];
+        localStorage.setItem('fb_wallet_docs', JSON.stringify(walletDocs));
+      }
+      renderizarDocumentos();
+      actualizarMetricas();
+    }
+
+    function renderizarDocumentos(filtroTexto = '') {
+      const container = document.getElementById('wallet-cards-container');
+      if (!container) return;
+
+      const q = filtroTexto.toLowerCase().trim();
+      const filtrados = walletDocs.filter(d => {
+        const matchesCat = currentCategoria === 'todos' || d.tipo === currentCategoria;
+        const matchesSearch = !q || (
+          (d.titulo && d.titulo.toLowerCase().includes(q)) ||
+          (d.pnr && d.pnr.toLowerCase().includes(q)) ||
+          (d.resumen && d.resumen.toLowerCase().includes(q)) ||
+          (d.aerolinea && d.aerolinea.toLowerCase().includes(q)) ||
+          (d.hotel_nombre && d.hotel_nombre.toLowerCase().includes(q))
+        );
+        return matchesCat && matchesSearch;
+      });
+
+      if (filtrados.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-1 md:col-span-2 text-center py-16 px-4 rounded-3xl border border-dashed dark:border-slate-800 border-slate-300">
+            <div class="text-4xl mb-3">🧳</div>
+            <h4 class="text-lg font-bold dark:text-white text-slate-900 mb-1">No se encontraron documentos</h4>
+            <p class="text-xs dark:text-slate-400 text-slate-500 max-w-sm mx-auto mb-4">No hay comprobantes guardados bajo esta categoría o búsqueda.</p>
+            <button type="button" onclick="window.abrirModalSubida()" class="px-4 py-2 rounded-xl text-xs font-bold text-white shadow-xs" style="background: var(--brand-gradient);">
+              Cargar un Documento
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtrados.map(d => {
+        if (d.tipo === 'vuelo') {
+          return `
+            <div class="p-6 rounded-3xl border dark:border-slate-800 border-slate-200 dark:bg-slate-900 bg-white shadow-xs hover:border-rose-500/40 transition-all flex flex-col justify-between space-y-4">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-rose-500/15 text-rose-500 border border-rose-500/25">
+                    ✈️ Pasaje Confirmado
+                  </span>
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-mono text-slate-400 font-bold">PNR:</span>
+                    <button type="button" onclick="window.copiarAlPortapapeles('${d.pnr}', this)"
+                            class="px-2 py-0.5 rounded-lg text-xs font-mono font-bold dark:bg-slate-800 bg-slate-100 hover:text-rose-500 border dark:border-slate-700 border-slate-200 transition-all" title="Copiar código de reserva">
+                      ${d.pnr} 📋
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="text-lg font-extrabold dark:text-white text-slate-900">${d.titulo}</h3>
+                  <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
+                    📅 ${d.fecha_display} · Asiento ${d.asiento}
+                  </div>
+                </div>
+
+                <div class="p-3 rounded-2xl dark:bg-slate-950/80 bg-slate-50 border dark:border-slate-800/80 border-slate-200 flex items-center justify-between text-xs">
+                  <div>
+                    <span class="text-[10px] uppercase text-slate-400 block font-bold">Origen</span>
+                    <strong class="font-mono text-base dark:text-white text-slate-900">${d.origen_iata}</strong>
+                  </div>
+                  <div class="text-slate-400 font-mono text-xs">➔ ➔ ➔</div>
+                  <div class="text-right">
+                    <span class="text-[10px] uppercase text-slate-400 block font-bold">Destino</span>
+                    <strong class="font-mono text-base dark:text-white text-slate-900">${d.dest_iata}</strong>
+                  </div>
+                </div>
+
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">${d.resumen}</p>
+              </div>
+
+              <div class="pt-3 border-t dark:border-slate-800 border-slate-100 flex items-center justify-between gap-2">
+                <button type="button" onclick="window.mostrarModalBoardingPass('${d.id}')"
+                        class="px-4 py-2 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center gap-1.5"
+                        style="background: var(--brand-gradient);">
+                  <span>🎫</span> Ver Boarding Pass / QR
+                </button>
+                <a href="https://www.google.com/travel/flights?q=Flights%20to%20${d.dest_iata}%20from%20${d.origen_iata}&hl=es" target="_blank"
+                   class="px-3 py-2 rounded-xl text-xs font-semibold dark:bg-slate-800 bg-slate-100 hover:text-rose-500 transition-all border dark:border-slate-700 border-slate-200">
+                  Google Flights ↗
+                </a>
+              </div>
+            </div>
+          `;
+        } else if (d.tipo === 'hotel') {
+          return `
+            <div class="p-6 rounded-3xl border dark:border-slate-800 border-slate-200 dark:bg-slate-900 bg-white shadow-xs hover:border-blue-500/40 transition-all flex flex-col justify-between space-y-4">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-blue-500/15 text-blue-500 border border-blue-500/25">
+                    🏨 Alojamiento Confirmado
+                  </span>
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-mono text-slate-400 font-bold">Reserva:</span>
+                    <button type="button" onclick="window.copiarAlPortapapeles('${d.pnr}', this)"
+                            class="px-2 py-0.5 rounded-lg text-xs font-mono font-bold dark:bg-slate-800 bg-slate-100 hover:text-blue-500 border dark:border-slate-700 border-slate-200 transition-all" title="Copiar número de reserva">
+                      ${d.pnr} 📋
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="text-lg font-extrabold dark:text-white text-slate-900">${d.hotel_nombre}</h3>
+                  <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
+                    📅 ${d.fecha_display}
+                  </div>
+                </div>
+
+                <div class="p-3 rounded-2xl dark:bg-slate-950/80 bg-slate-50 border dark:border-slate-800/80 border-slate-200 text-xs">
+                  <span class="text-[10px] uppercase text-slate-400 block font-bold mb-0.5">Dirección</span>
+                  <div class="dark:text-slate-300 text-slate-700">${d.direccion}</div>
+                </div>
+
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">${d.resumen}</p>
+              </div>
+
+              <div class="pt-3 border-t dark:border-slate-800 border-slate-100 flex items-center justify-between gap-2">
+                <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.hotel_nombre + ' ' + d.direccion)}" target="_blank"
+                   class="px-4 py-2 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center gap-1.5"
+                   style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">
+                  <span>📍</span> Abrir en Maps
+                </a>
+                <span class="text-[11px] text-slate-400 font-medium">Check-in 15:00 hs</span>
+              </div>
+            </div>
+          `;
+        } else if (d.tipo === 'asistencia') {
+          return `
+            <div class="p-6 rounded-3xl border dark:border-slate-800 border-slate-200 dark:bg-slate-900 bg-white shadow-xs hover:border-emerald-500/40 transition-all flex flex-col justify-between space-y-4">
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-emerald-500/15 text-emerald-500 border border-emerald-500/25">
+                    🩺 Asistencia al Viajero
+                  </span>
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-mono text-slate-400 font-bold">Póliza:</span>
+                    <button type="button" onclick="window.copiarAlPortapapeles('${d.pnr}', this)"
+                            class="px-2 py-0.5 rounded-lg text-xs font-mono font-bold dark:bg-slate-800 bg-slate-100 hover:text-emerald-500 border dark:border-slate-700 border-slate-200 transition-all" title="Copiar número de póliza">
+                      ${d.pnr} 📋
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="text-lg font-extrabold dark:text-white text-slate-900">${d.titulo}</h3>
+                  <div class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
+                    📅 ${d.fecha_display}
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 p-3 rounded-2xl dark:bg-slate-950/80 bg-slate-50 border dark:border-slate-800/80 border-slate-200 text-xs">
+                  <div>
+                    <span class="text-[10px] uppercase text-slate-400 block font-bold">Teléfono 24/7</span>
+                    <a href="tel:${d.telefono_emergencia}" class="text-emerald-500 font-bold font-mono hover:underline">${d.telefono_emergencia}</a>
+                  </div>
+                  <div>
+                    <span class="text-[10px] uppercase text-slate-400 block font-bold">WhatsApp Directo</span>
+                    <span class="font-mono text-slate-400 font-semibold">${d.whatsapp}</span>
+                  </div>
+                </div>
+
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">${d.resumen}</p>
+              </div>
+
+              <div class="pt-3 border-t dark:border-slate-800 border-slate-100 flex items-center justify-between gap-2">
+                <a href="tel:${d.telefono_emergencia}"
+                   class="px-4 py-2 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center gap-1.5"
+                   style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                  <span>📞</span> Llamar Emergencia
+                </a>
+                <span class="text-[11px] text-emerald-500 font-bold">Sin deducible</span>
+              </div>
+            </div>
+          `;
+        }
+        return '';
+      }).join('');
+    }
+
+    function actualizarMetricas() {
+      const metricTotal = document.getElementById('metric-total');
+      const metricHoteles = document.getElementById('metric-hoteles');
+      if (metricTotal) metricTotal.textContent = `${walletDocs.length} archivo${walletDocs.length === 1 ? '' : 's'}`;
+      if (metricHoteles) {
+        const countH = walletDocs.filter(d => d.tipo === 'hotel').length;
+        metricHoteles.textContent = `${countH} reserva${countH === 1 ? '' : 's'}`;
+      }
+    }
+
+    window.filtrarCategoria = function(cat) {
+      currentCategoria = cat;
+      const tabs = ['todos', 'vuelo', 'hotel', 'asistencia'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-${t}`);
+        if (!btn) return;
+        if (t === cat) {
+          btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold transition-all text-white shadow-xs";
+          btn.style.background = "var(--brand-gradient)";
+        } else {
+          btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all";
+          btn.style.background = "";
+        }
+      });
+      renderizarDocumentos(document.getElementById('wallet-search')?.value || '');
+    };
+
+    window.filtrarBusqueda = function(val) {
+      renderizarDocumentos(val);
+    };
+
+    window.copiarAlPortapapeles = function(texto, btn) {
+      navigator.clipboard.writeText(texto).then(() => {
+        const orig = btn.innerHTML;
+        btn.innerHTML = `${texto} ✓`;
+        setTimeout(() => btn.innerHTML = orig, 1800);
+      });
+    };
+
+    window.mostrarModalBoardingPass = function(docId) {
+      const doc = walletDocs.find(d => d.id === docId);
+      if (!doc) return;
+
+      document.getElementById('bp-modal-airline').textContent = doc.aerolinea || 'Aerolínea Oficial';
+      document.getElementById('bp-modal-flight').textContent = doc.vuelo_num || 'VUELO';
+      document.getElementById('bp-modal-origin-iata').textContent = doc.origen_iata || 'EZE';
+      document.getElementById('bp-modal-origin-city').textContent = doc.origen_ciudad || 'Buenos Aires';
+      document.getElementById('bp-modal-dest-iata').textContent = doc.dest_iata || 'CDG';
+      document.getElementById('bp-modal-dest-city').textContent = doc.dest_ciudad || 'Destino';
+      document.getElementById('bp-modal-date').textContent = doc.fecha_display.split('·')[0].trim();
+      document.getElementById('bp-modal-passenger').textContent = (doc.pasajeros && doc.pasajeros[0]) || 'Viajero Titular';
+      document.getElementById('bp-modal-seat').textContent = doc.asiento || '01A';
+      document.getElementById('bp-modal-pnr').textContent = doc.pnr;
+
+      const m = document.getElementById('modal-boarding-pass');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    };
+
+    window.cerrarModalBoardingPass = function() {
+      const m = document.getElementById('modal-boarding-pass');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    };
+
+    window.abrirModalSubida = function() {
+      const m = document.getElementById('modal-subida');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    };
+
+    window.cerrarModalSubida = function() {
+      const m = document.getElementById('modal-subida');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    };
+
+    window.abrirModalSyncTelegram = function() {
+      const m = document.getElementById('modal-sync');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    };
+
+    window.cerrarModalSyncTelegram = function() {
+      const m = document.getElementById('modal-sync');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    };
+
+    window.guardarDocumentoManual = function(e) {
+      e.preventDefault();
+      const tipo = document.getElementById('doc-tipo').value;
+      const titulo = document.getElementById('doc-titulo').value;
+      const pnr = document.getElementById('doc-pnr').value.toUpperCase();
+      const fecha = document.getElementById('doc-fecha').value;
+      const detalles = document.getElementById('doc-detalles').value;
+
+      const nuevo = {
+        id: 'doc_' + Date.now(),
+        tipo: tipo,
+        titulo: titulo,
+        pnr: pnr,
+        fecha: fecha,
+        fecha_display: fecha,
+        asiento: "General",
+        resumen: detalles || "Documento cargado manualmente en la bóveda local.",
+        origen_iata: "BUE",
+        dest_iata: "DEST",
+        aerolinea: titulo,
+        hotel_nombre: titulo,
+        direccion: detalles || "Consultar voucher"
+      };
+
+      walletDocs.unshift(nuevo);
+      localStorage.setItem('fb_wallet_docs', JSON.stringify(walletDocs));
+      window.cerrarModalSubida();
+      renderizarDocumentos();
+      actualizarMetricas();
+      document.getElementById('form-nuevo-doc').reset();
+    };
+
+    window.borrarDatosBilletera = function() {
+      if (confirm('¿Deseas restablecer los documentos de prueba de la billetera local?')) {
+        localStorage.removeItem('fb_wallet_docs');
+        cargarDocumentos();
+      }
+    };
+
+    // Funciones del Motor de Temas
+    function setThemeColor(col) {
+      document.documentElement.setAttribute('data-color', col);
+      localStorage.setItem('fb_theme_color', col);
+      updateThemeControls();
+    }
+
+    function toggleThemeMode() {
+      const isDark = document.documentElement.classList.contains('dark');
+      if (isDark) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('fb_theme_mode', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('fb_theme_mode', 'dark');
+      }
+      updateThemeControls();
+    }
+
+    function updateThemeControls() {
+      const col = document.documentElement.getAttribute('data-color') || 'ruby';
+      const isDark = document.documentElement.classList.contains('dark');
+      const btnR = document.getElementById('theme-btn-ruby');
+      const btnB = document.getElementById('theme-btn-blue');
+      const modeIcon = document.getElementById('theme-mode-icon');
+
+      if (btnR && btnB) {
+        if (col === 'ruby') {
+          btnR.className = "w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
+          btnB.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
+        } else {
+          btnB.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
+          btnR.className = "w-4 h-4 rounded-full bg-rose-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
+        }
+      }
+      if (modeIcon) {
+        modeIcon.textContent = isDark ? '🌙' : '☀️';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      cargarDocumentos();
+      updateThemeControls();
+    });
+  </script>
+
+  <!-- ==========================================================================
+       BANNER DE CONSENTIMIENTO DE COOKIES (GDPR / CCPA / ePrivacy Compliant)
+       ========================================================================== -->
+  <div id="fb-cookie-banner" 
+       class="fixed bottom-4 left-4 z-50 max-w-sm sm:max-w-md p-4 sm:p-5 rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl transition-all duration-300 transform translate-y-8 opacity-0 pointer-events-none theme-transition" 
+       role="region" aria-label="Aviso de Cookies y Privacidad">
+    <div class="flex items-start gap-3.5">
+      <div class="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 text-xl shadow-sm text-white" 
+           style="background: var(--brand-gradient);">
+        🍪
+      </div>
+      <div class="space-y-2 flex-1">
+        <div class="flex items-center justify-between">
+          <h4 class="text-sm font-bold dark:text-white text-slate-900 tracking-tight">Privacidad y Cookies</h4>
+          <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/25">Zero-Trust</span>
+        </div>
+        <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
+          En FlightBot priorizamos tu privacidad local-first. Guardamos tus preferencias de tema y tu <b>Billetera de Viaje</b> directamente en tu navegador (cero datos personales en servidores). Enlaces asociados a Booking y Travelpayouts utilizan identificadores técnicos de atribución sin costo adicional.
+        </p>
+        <div class="flex flex-wrap items-center gap-2 pt-1">
+          <button type="button" onclick="setCookieConsent('all')" 
+                  class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-white transition-all shadow-xs hover:brightness-110 cursor-pointer" 
+                  style="background-color: var(--brand-primary);">
+            Aceptar Todo
+          </button>
+          <button type="button" onclick="setCookieConsent('essential')" 
+                  class="px-3 py-1.5 rounded-xl text-xs font-semibold dark:bg-slate-800 bg-slate-100 hover:dark:bg-slate-700 hover:bg-slate-200 dark:text-slate-200 text-slate-700 border dark:border-slate-700 border-slate-300 transition-colors cursor-pointer">
+            Solo Esenciales
+          </button>
+          <button type="button" onclick="openPrivacyModal('cookies')" 
+                  class="text-xs font-semibold underline underline-offset-2 dark:text-slate-400 text-slate-500 hover:dark:text-white hover:text-slate-900 ml-auto transition-colors cursor-pointer">
+            Preferencias
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL: CENTRO DE PRIVACIDAD, TÉRMINOS Y CONTROL DE DATOS
+       ========================================================================== -->
+  <div id="fb-privacy-modal" 
+       class="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-xs hidden items-center justify-center p-4 transition-opacity duration-200" 
+       role="dialog" aria-modal="true" aria-labelledby="fb-privacy-modal-title">
+    <div class="dark:bg-slate-900 bg-white rounded-3xl border dark:border-slate-800 border-slate-200 max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden theme-transition">
+      <!-- Encabezado del Modal -->
+      <div class="p-5 sm:p-6 border-b dark:border-slate-800 border-slate-200 flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl flex items-center justify-center text-xl text-white shadow-sm" 
+               style="background: var(--brand-gradient);">
+            🛡️
+          </div>
+          <div>
+            <h3 id="fb-privacy-modal-title" class="text-base sm:text-lg font-bold dark:text-white text-slate-900">Centro de Privacidad &amp; Términos</h3>
+            <p class="text-xs dark:text-slate-400 text-slate-500">Transparencia absoluta, arquitectura Zero-Trust y control de tus datos</p>
+          </div>
+        </div>
+        <button type="button" onclick="closePrivacyModal()" 
+                class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer" 
+                aria-label="Cerrar modal">
+          ✕
+        </button>
+      </div>
+
+      <!-- Barra de Pestañas -->
+      <div class="flex border-b dark:border-slate-800 border-slate-200 px-6 gap-2 text-xs font-bold overflow-x-auto no-scrollbar shrink-0 bg-slate-50/50 dark:bg-slate-950/40" style="scrollbar-width: none; -ms-overflow-style: none;">
+        <button type="button" onclick="switchPrivacyTab('cookies')" id="fb-tab-btn-cookies" 
+                class="py-3 px-3 border-b-2 border-transparent transition-all whitespace-nowrap text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer">
+          🍪 Cookies &amp; Almacenamiento
+        </button>
+        <button type="button" onclick="switchPrivacyTab('privacy')" id="fb-tab-btn-privacy" 
+                class="py-3 px-3 border-b-2 border-transparent transition-all whitespace-nowrap text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer">
+          🔒 Privacidad &amp; Billetera
+        </button>
+        <button type="button" onclick="switchPrivacyTab('affiliate')" id="fb-tab-btn-affiliate" 
+                class="py-3 px-3 border-b-2 border-transparent transition-all whitespace-nowrap text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer">
+          💼 Afiliación &amp; Alianzas
+        </button>
+        <button type="button" onclick="switchPrivacyTab('terms')" id="fb-tab-btn-terms" 
+                class="py-3 px-3 border-b-2 border-transparent transition-all whitespace-nowrap text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer">
+          📜 Términos de Servicio
+        </button>
+      </div>
+
+      <!-- Contenido de las Pestañas -->
+      <div class="p-6 overflow-y-auto space-y-4 text-xs dark:text-slate-300 text-slate-600 leading-relaxed">
+        <!-- Pestaña 1: Cookies -->
+        <div id="fb-tab-content-cookies" class="space-y-4">
+          <h4 class="text-sm font-bold dark:text-white text-slate-900">Control de Cookies y Almacenamiento en tu Navegador</h4>
+          <p>
+            En FlightBot respetamos tu privacidad por diseño. No utilizamos cookies de rastreo invasivas ni vendemos tu historial. A continuación detallamos cada elemento guardado en tu dispositivo:
+          </p>
+          
+          <div class="space-y-2.5">
+            <div class="p-3.5 rounded-2xl dark:bg-slate-800/60 bg-slate-100 border dark:border-slate-700/60 border-slate-200">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold dark:text-white text-slate-900">Almacenamiento Esencial (Técnico)</span>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">Siempre Activo</span>
+              </div>
+              <p class="text-[11px] dark:text-slate-400 text-slate-500 mb-2">
+                Indispensable para el funcionamiento de la web. Recuerda tu paleta visual (<code class="text-rose-500 font-mono">fb_theme_color</code>), modo claro/oscuro (<code class="text-rose-500 font-mono">fb_theme_mode</code>) y tu consentimiento.
+              </p>
+              <div class="text-[10px] text-slate-400 font-mono">Persistencia: localStorage (controlable por el usuario)</div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl dark:bg-slate-800/60 bg-slate-100 border dark:border-slate-700/60 border-slate-200">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold dark:text-white text-slate-900">Billetera de Documentos Local-First</span>
+                <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">Privado &amp; Offline</span>
+              </div>
+              <p class="text-[11px] dark:text-slate-400 text-slate-500 mb-2">
+                Tus tarjetas de embarque, PNRs de vuelo, vouchers y pólizas se guardan de forma cifrada en el almacenamiento local de tu navegador (<code class="text-rose-500 font-mono">fb_wallet_docs</code>). Nunca viajan a servidores sin tu acción explícita.
+              </p>
+              <div class="text-[10px] text-slate-400 font-mono">Ubicación: Exclusivamente en tu navegador</div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl dark:bg-slate-800/60 bg-slate-100 border dark:border-slate-700/60 border-slate-200">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold dark:text-white text-slate-900">Atribución de Afiliados (Booking &amp; Travelpayouts)</span>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" id="pref-cookie-affiliate" class="sr-only peer" checked>
+                  <div class="w-9 h-5 bg-slate-300 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-slate-600 peer-checked:bg-emerald-500"></div>
+                </label>
+              </div>
+              <p class="text-[11px] dark:text-slate-400 text-slate-500 mb-2">
+                Al hacer clic en enlaces de reserva a plataformas asociadas, se generan tokens técnicos anónimos para atribuir la comisión a FlightBot sin que pagues un centavo más.
+              </p>
+              <div class="text-[10px] text-slate-400 font-mono">Proveedores: Travelpayouts, Booking.com, Google Flights</div>
+            </div>
+          </div>
+
+          <div class="flex justify-end gap-2 pt-2">
+            <button type="button" onclick="saveCookiePreferences()" 
+                    class="px-4 py-2 rounded-xl text-xs font-bold text-white transition-all shadow-xs hover:brightness-110 cursor-pointer" 
+                    style="background-color: var(--brand-primary);">
+              Guardar Preferencias
+            </button>
+          </div>
+        </div>
+
+        <!-- Pestaña 2: Privacidad y Billetera -->
+        <div id="fb-tab-content-privacy" class="hidden space-y-3">
+          <h4 class="text-sm font-bold dark:text-white text-slate-900">Arquitectura Zero-Trust y Protección de tu Billetera</h4>
+          <p>
+            En FlightBot aplicamos estándares de seguridad de nivel bancario (OWASP Top 10) para proteger cada interacción:
+          </p>
+          <ul class="list-disc pl-5 space-y-1.5">
+            <li><strong>Zero PII en Servidores:</strong> No requerimos registro con tarjeta de crédito, número de pasaporte ni datos personales para explorar ofertas.</li>
+            <li><strong>Billetera Offline Segura:</strong> Tus documentos e itinerarios residen en el <code class="text-rose-500 font-mono">localStorage</code> de tu navegador. Tienes el control total para borrarlos con un solo clic.</li>
+            <li><strong>Sincronización Opcional con Telegram:</strong> La comunicación con el bot de Telegram se realiza a través de la API oficial cifrada de Telegram (TLS 1.3), con tokens efímeros y sin intermediarios.</li>
+            <li><strong>Cero Venta de Información:</strong> Jamás vendemos, alquilamos ni compartimos tus búsquedas de vuelos con anunciantes ni bases de datos de terceros.</li>
+          </ul>
+        </div>
+
+        <!-- Pestaña 3: Afiliación & Alianzas -->
+        <div id="fb-tab-content-affiliate" class="hidden space-y-3">
+          <h4 class="text-sm font-bold dark:text-white text-slate-900">Transparencia Editorial y Enlaces de Afiliados</h4>
+          <p>
+            FlightBot es un proyecto independiente creado por viajeros para viajeros. Nuestro radar de precios y la infraestructura de servidores 24/7 se financian mediante programas de afiliados transparentes:
+          </p>
+          <ul class="list-disc pl-5 space-y-1.5">
+            <li><strong>Booking.com &amp; Travelpayouts:</strong> Cuando reservas un hotel o paquete haciendo clic en nuestros enlaces, recibimos una pequeña comisión por parte de la plataforma asociada.</li>
+            <li><strong>Cero Costo Adicional:</strong> El precio final que pagas en Booking o en la aerolínea es exactamente el mismo (o menor con promociones de descuento) que si entraras directamente.</li>
+            <li><strong>Independencia Editorial:</strong> Los radares y alertas no están condicionados por aerolíneas comerciales; recomendamos siempre la tarifa más económica o conveniente del mercado. Excluimos activamente operadores con problemas legales o contingencias graves (ej. Flybondi en concurso preventivo).</li>
+          </ul>
+        </div>
+
+        <!-- Pestaña 4: Términos de Servicio -->
+        <div id="fb-tab-content-terms" class="hidden space-y-3">
+          <h4 class="text-sm font-bold dark:text-white text-slate-900">Términos y Condiciones de Uso</h4>
+          <p>
+            Al utilizar FlightBot (en la web o en Telegram), aceptas los siguientes términos de servicio:
+          </p>
+          <ul class="list-disc pl-5 space-y-1.5">
+            <li><strong>Carácter Informativo:</strong> FlightBot es una herramienta de inteligencia y monitoreo de tarifas en tiempo real. No somos una agencia de viajes ni vendemos boletos directamente.</li>
+            <li><strong>Precios Dinámicos:</strong> Las tarifas aéreas varían minuto a minuto según la oferta y demanda de las aerolíneas. La tarifa final vinculante es la emitida por la aerolínea o agencia autorizada al momento del pago.</li>
+            <li><strong>Documentación y Visados:</strong> El viajero es el único responsable de contar con pasaporte vigente, visados correspondientes, seguro médico y cumplir las normativas migratorias de cada destino.</li>
+            <li><strong>Disponibilidad del Servicio:</strong> Trabajamos 24/7 con radares automáticos (cadencia de 48 hs con caché local), pero no nos responsabilizamos por caídas técnicas de servicios de terceros (APIs de Google Flights, Booking, Telegram).</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Modal -->
+      <div class="p-4 sm:p-5 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between shrink-0 bg-slate-50 dark:bg-slate-950/60">
+        <span class="text-[11px] dark:text-slate-400 text-slate-500">Última actualización: Octubre 2026</span>
+        <button type="button" onclick="closePrivacyModal()" 
+                class="px-4 py-2 rounded-xl text-xs font-semibold dark:bg-slate-800 bg-slate-200 dark:text-white text-slate-900 hover:opacity-90 transition-opacity cursor-pointer">
+          Entendido
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script del Motor de Consentimiento de Cookies y Privacidad -->
+  <script>
+    (function() {
+      function initCookieBanner() {
+        const consent = localStorage.getItem('fb_cookie_consent');
+        const banner = document.getElementById('fb-cookie-banner');
+        if (!banner) return;
+        if (!consent) {
+          setTimeout(function() {
+            banner.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
+            banner.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+          }, 1000);
+        }
+      }
+
+      window.setCookieConsent = function(level) {
+        localStorage.setItem('fb_cookie_consent', level);
+        const banner = document.getElementById('fb-cookie-banner');
+        if (banner) {
+          banner.classList.add('translate-y-8', 'opacity-0', 'pointer-events-none');
+          banner.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
+        }
+      };
+
+      window.openCookieBanner = function() {
+        const banner = document.getElementById('fb-cookie-banner');
+        if (!banner) return;
+        banner.classList.remove('translate-y-8', 'opacity-0', 'pointer-events-none');
+        banner.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
+      };
+
+      window.openPrivacyModal = function(tab) {
+        const modal = document.getElementById('fb-privacy-modal');
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        window.switchPrivacyTab(tab || 'cookies');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closePrivacyModal = function() {
+        const modal = document.getElementById('fb-privacy-modal');
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      };
+
+      window.switchPrivacyTab = function(tabId) {
+        const tabs = ['cookies', 'privacy', 'affiliate', 'terms'];
+        tabs.forEach(function(t) {
+          const content = document.getElementById('fb-tab-content-' + t);
+          const btn = document.getElementById('fb-tab-btn-' + t);
+          if (content) {
+            if (t === tabId) {
+              content.classList.remove('hidden');
+            } else {
+              content.classList.add('hidden');
+            }
+          }
+          if (btn) {
+            if (t === tabId) {
+              btn.classList.add('dark:text-white', 'text-slate-900', 'border-b-2');
+              btn.classList.remove('border-transparent', 'text-slate-500', 'dark:text-slate-400');
+              btn.style.borderColor = 'var(--brand-primary)';
+            } else {
+              btn.classList.remove('dark:text-white', 'text-slate-900', 'border-b-2');
+              btn.classList.add('border-transparent', 'text-slate-500', 'dark:text-slate-400');
+              btn.style.borderColor = 'transparent';
+            }
+          }
+        });
+      };
+
+      window.saveCookiePreferences = function() {
+        const affCheck = document.getElementById('pref-cookie-affiliate');
+        const level = (affCheck && affCheck.checked) ? 'all' : 'essential';
+        window.setCookieConsent(level);
+        window.closePrivacyModal();
+      };
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          window.closePrivacyModal();
+        }
+      });
+
+      document.addEventListener('DOMContentLoaded', initCookieBanner);
+    })();
+  </script>
+
+
+</body>
+</html>
