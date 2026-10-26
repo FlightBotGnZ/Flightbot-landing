@@ -245,6 +245,111 @@ const CORREDORES_VIALES_KB = {
       desc: "Ruta troncal rápida doble mano hasta el acceso a San Pedro."
     },
     paradas: "💡 <b>Paradas Clásicas:</b> Campana (km 75) · Baradero (km 145)."
+  },
+  vicentelopez: {
+    nombre: "Costanera Vicente López & Olivos",
+    km: 18,
+    peajes: 1500,
+    peajesDesc: "Autopista Illia / Paseo del Bajo (opcional)",
+    traza: "Av. Lugones / Av. del Libertador ➔ Av. Gral Paz ➔ Paseo de la Costa",
+    esPata: false,
+    semaforo: {
+      nivel: "verde",
+      icono: "🟢",
+      titulo: "Verde · Acceso Ribereño Ágil",
+      desc: "Vialidad urbana fluida los domingos por la mañana. Se aconseja llegar antes de las 14:00 hs para conseguir estacionamiento fácil frente al río."
+    },
+    paradas: "💡 <b>Puntos Clave:</b> Paseo de la Costa (Av. San Martín y Río) · Puerto de Olivos (Av. Corrientes y Río)."
+  },
+  carloskeen: {
+    nombre: "Carlos Keen & Luján",
+    km: 80,
+    peajes: 6000,
+    peajesDesc: "Acceso Oeste RN 7 (Ituzaingó + Luján)",
+    traza: "Acceso Oeste (RN 7) ➔ Empalme camino asfaltado a Carlos Keen",
+    esPata: false,
+    semaforo: {
+      nivel: "verde",
+      icono: "🟢",
+      titulo: "Verde · Autopista Acceso Oeste Doble Mano",
+      desc: "Autopista rápida con múltiples carriles hasta Luján. El camino de acceso a Carlos Keen está pavimentado. Tránsito cargado al regreso los domingos después de las 18 hs."
+    },
+    paradas: "💡 <b>Paradas Clásicas:</b> km 65 Luján (YPF Full) · Puestos rurales de pastelitos en el acceso."
+  },
+  lobos: {
+    nombre: "Lobos & Laguna de Lobos",
+    km: 100,
+    peajes: 6500,
+    peajesDesc: "Autopista Riccheri + Ezeiza-Cañuelas + RN 205",
+    traza: "Autopista Ezeiza-Cañuelas ➔ RN 205 directo a Lobos",
+    esPata: false,
+    semaforo: {
+      nivel: "verde",
+      icono: "🟢",
+      titulo: "Verde · Corredor Sur RN 205",
+      desc: "Autopista hasta Cañuelas y luego RN 205 de mano única con buen asfalto. Respetar velocidades máximas en cruces urbanos de Cañuelas y Uribelarrea."
+    },
+    paradas: "💡 <b>Paradas Clásicas:</b> km 64 Cañuelas · Paradores de artículos de pesca y carnada en RP 41."
+  },
+  uribelarrea: {
+    nombre: "Uribelarrea (Cañuelas)",
+    km: 85,
+    peajes: 5500,
+    peajesDesc: "Autopista Riccheri + Ezeiza-Cañuelas",
+    traza: "Autopista Ezeiza-Cañuelas ➔ RN 205 (km 82.5)",
+    esPata: false,
+    semaforo: {
+      nivel: "verde",
+      icono: "🟢",
+      titulo: "Verde · Acceso Directo por Autopista",
+      desc: "Autopista fluida hasta Cañuelas. Acceso asfaltado flanqueado por eucaliptos. Calles internas de tierra consolidadas transitables para cualquier vehículo."
+    },
+    paradas: "💡 <b>Paradas Clásicas:</b> km 64 Cañuelas · Escuela Agrotécnica Don Bosco."
+  },
+  gualeguaychu: {
+    nombre: "Gualeguaychú & Playas de Río",
+    km: 230,
+    peajes: 8000,
+    peajesDesc: "Zárate-Brazo Largo + RN 14 (Autovía Artigas)",
+    traza: "RN 9 Panamericana ➔ Complejo Zárate-Brazo Largo ➔ RN 12 ➔ RN 14",
+    esPata: false,
+    semaforo: {
+      nivel: "verde",
+      icono: "🟢",
+      titulo: "Verde · Autovía Mercosur Doble Vía",
+      desc: "Excelente corredor autovía 100% doble carril. Precaución con viento lateral sobre los puentes del complejo Zárate-Brazo Largo."
+    },
+    paradas: "💡 <b>Paradas Clásicas:</b> km 85 Zárate (YPF Full) · km 145 Ceibas (parador de nueces y cítricos)."
+  },
+  rosario: {
+    nombre: "Rosario & Costanera del Paraná",
+    km: 300,
+    peajes: 9500,
+    peajesDesc: "Panamericana RN 9 (Zárate, Baradero, San Nicolás, Gral. Lagos)",
+    traza: "Autopista Panamericana RN 9 directa Buenos Aires - Rosario",
+    esPata: false,
+    semaforo: {
+      nivel: "verde",
+      icono: "🟢",
+      titulo: "Verde · Autopista Doble Mano Rápida",
+      desc: "Autopista troncal nacional en buen estado con estaciones y servicios cada 30-40 km. Tránsito fluido con camiones por carril derecho."
+    },
+    paradas: "💡 <b>Paradas Clásicas:</b> km 153 San Pedro (ensaimadas) · km 225 San Nicolás (Santuario de la Virgen)."
+  },
+  necochea: {
+    nombre: "Necochea & Quequén",
+    km: 510,
+    peajes: 18500,
+    peajesDesc: "Samborombón + Maipú (Autovía 2) + RP 74 / RP 86",
+    traza: "Autovía 2 hasta Las Armas ➔ RP 74 (Tandil/Juárez) ➔ RP 86 hasta Necochea",
+    esPata: false,
+    semaforo: {
+      nivel: "amarillo",
+      icono: "🟡",
+      titulo: "Precaución · Tramo de Ruta Provincial Simple",
+      desc: "Autovía 2 excelente hasta km 299. La RP 74 y RP 86 son de mano única: circular de día con luces bajas encendidas y adelantarse con precaución."
+    },
+    paradas: "💡 <b>Paradas Clásicas:</b> km 113 Chascomús (Atalaya) · km 299 Las Armas · Benito Juárez."
   }
 };
 
@@ -285,6 +390,20 @@ function obtenerCorredorVial(destinoTexto) {
     return CORREDORES_VIALES_KB.jofre;
   } else if (d.includes('san pedro') || d.includes('obligado')) {
     return CORREDORES_VIALES_KB.sanpedro;
+  } else if (d.includes('vicente lopez') || d.includes('olivos')) {
+    return CORREDORES_VIALES_KB.vicentelopez;
+  } else if (d.includes('carlos keen') || d.includes('keen')) {
+    return CORREDORES_VIALES_KB.carloskeen;
+  } else if (d.includes('lobos')) {
+    return CORREDORES_VIALES_KB.lobos;
+  } else if (d.includes('uribelarrea') || d.includes('uribe')) {
+    return CORREDORES_VIALES_KB.uribelarrea;
+  } else if (d.includes('gualeguaychu') || d.includes('nandubaysal')) {
+    return CORREDORES_VIALES_KB.gualeguaychu;
+  } else if (d.includes('rosario')) {
+    return CORREDORES_VIALES_KB.rosario;
+  } else if (d.includes('necochea') || d.includes('quequen')) {
+    return CORREDORES_VIALES_KB.necochea;
   }
 
   // Fallback seguro

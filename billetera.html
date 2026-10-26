@@ -63,6 +63,43 @@
       scrollbar-width: none;
     }
 
+  
+    /* Botones de Barra de Navegación Píldora */
+    .nav-dock-btn {
+      padding: 0.375rem 0.625rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: rgb(71 85 105);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .dark .nav-dock-btn {
+      color: rgb(203 213 225);
+    }
+    .nav-dock-btn:hover {
+      color: rgb(15 23 42);
+      background-color: #ffffff;
+    }
+    .dark .nav-dock-btn:hover {
+      color: #ffffff;
+      background-color: rgb(30 41 59);
+    }
+    /* Estado Presionado / Activo */
+    .nav-dock-btn.is-active {
+      color: var(--brand-primary) !important;
+      background-color: var(--brand-subtle) !important;
+      border-color: var(--brand-border) !important;
+      font-weight: 700 !important;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+    }
+
   </style>
 
   <script>
@@ -82,7 +119,7 @@
 
   <!-- Encabezado / Navegación Superior -->
   <header class="sticky top-0 z-40 backdrop-blur-md dark:bg-slate-950/85 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
       
       <!-- Brand Logo con F-Bot Rolli -->
       <div class="flex items-center gap-3 shrink-0">
@@ -131,24 +168,36 @@
         </a>
       </div>
 
-      <!-- Enlaces Centrales -->
-      <nav class="hidden md:flex items-center gap-1.5 p-1 rounded-full dark:bg-slate-900/80 bg-slate-100/90 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm">
-        <a href="index.html#radar-vuelos" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-1.5">
-          <span>✈️</span> Radar Vuelos
+            <!-- Barra de Navegación Central Simétrica (Dock Centrado Matemáticamente) -->
+      <nav class="hidden lg:flex items-center p-1 rounded-full dark:bg-slate-900/80 bg-slate-100/90 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-0.5 xl:gap-1 mx-auto">
+        <a href="index.html#radar-vuelos" class="nav-dock-btn">
+          <span>✈️</span> Vuelos
         </a>
-        <a href="billetera.html" class="px-3 py-1.5 rounded-full text-xs font-bold border transition-all flex items-center gap-1.5 shadow-xs" style="color: var(--brand-primary); background-color: var(--brand-subtle); border-color: var(--brand-border);">
-          <span>🧳</span> Mi Billetera
+        <a href="index.html#destinos" class="nav-dock-btn">
+          <span>🏨</span> Destinos
         </a>
-        <a href="guias/index.html" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-1.5">
-          <span>📖</span> Guías (45)
+        <a href="escapadas.html" class="nav-dock-btn">
+          <span>🚗</span> Escapadas
         </a>
-        <a href="index.html#promos-portales" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-1.5">
-          <span>🏦</span> Portales & Cuotas
+        <a href="index.html#promos-portales" class="nav-dock-btn">
+          <span>🏦</span> Portales
+        </a>
+        <a href="index.html#promociones" class="nav-dock-btn">
+          <span>💳</span> Promos
+        </a>
+        <a href="billetera.html" class="nav-dock-btn is-active">
+          <span>🧳</span> Billetera
+        </a>
+        <a href="guias/index.html" class="nav-dock-btn">
+          <span>📖</span> Guías
+        </a>
+        <a href="index.html#faq" class="nav-dock-btn">
+          <span>❓</span> FAQ
         </a>
       </nav>
 
-      <!-- Controles: Switcher Pixel-Perfect + Botón Telegram -->
-      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+            <!-- Controles: Switcher Pixel-Perfect + Botón Telegram -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0 z-10">
         <!-- Control Dual de Personalización - Centrado Óptico y Milimétrico Absoluto -->
         <div class="flex items-center p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-xs theme-transition">
           <div class="flex items-center gap-1.5 pl-1.5 pr-2">
@@ -165,6 +214,59 @@
             </button>
           </div>
         </div>
+
+        <a href="https://t.me/GnZFlightBot?start=billetera" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-white font-semibold text-xs transition-all shadow-md hover:brightness-110"
+           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
+          <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
+          </svg>
+          <span class="hidden sm:inline">Sincronizar Bot</span>
+          <span class="sm:hidden">Bot</span>
+        </a>
+
+        <!-- Botón Menú Móvil (< lg) -->
+        <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
+                class="lg:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
+          <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="nav-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="index.html#radar-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>✈️</span> Vuelos
+        </a>
+        <a href="index.html#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🏨</span> Destinos
+        </a>
+        <a href="escapadas.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🚗</span> Escapadas
+        </a>
+        <a href="index.html#promos-portales" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🏦</span> Portales
+        </a>
+        <a href="index.html#promociones" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>💳</span> Promos
+        </a>
+        <a href="billetera.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-bold" style="color: var(--brand-primary);">
+          <span>🧳</span> Billetera
+        </a>
+        <a href="guias/index.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>📖</span> Guías
+        </a>
+        <a href="index.html#faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>❓</span> FAQ
+        </a>
+      </div>
+    </div>
 
         <a href="https://t.me/GnZFlightBot?start=billetera" target="_blank" rel="noopener noreferrer" 
            class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-white font-semibold text-xs transition-all shadow-md hover:brightness-110"
@@ -890,6 +992,25 @@
     };
 
     // Funciones del Motor de Temas
+    
+  function toggleMobileNav(force) {
+    const drawer = document.getElementById('mobile-nav-drawer');
+    const iconMenu = document.getElementById('nav-icon-menu');
+    const iconClose = document.getElementById('nav-icon-close');
+    if (!drawer) return;
+    const isClosed = drawer.classList.contains('hidden');
+    const open = force !== undefined ? force : isClosed;
+    if (open) {
+      drawer.classList.remove('hidden');
+      if (iconMenu) iconMenu.classList.add('hidden');
+      if (iconClose) iconClose.classList.remove('hidden');
+    } else {
+      drawer.classList.add('hidden');
+      if (iconMenu) iconMenu.classList.remove('hidden');
+      if (iconClose) iconClose.classList.add('hidden');
+    }
+  }
+
     function setThemeColor(col) {
       document.documentElement.setAttribute('data-color', col);
       localStorage.setItem('fb_theme_color', col);

@@ -58,6 +58,43 @@
     .card-glass {
       backdrop-filter: blur(12px);
     }
+  
+    /* Botones de Barra de Navegación Píldora */
+    .nav-dock-btn {
+      padding: 0.375rem 0.625rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: rgb(71 85 105);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .dark .nav-dock-btn {
+      color: rgb(203 213 225);
+    }
+    .nav-dock-btn:hover {
+      color: rgb(15 23 42);
+      background-color: #ffffff;
+    }
+    .dark .nav-dock-btn:hover {
+      color: #ffffff;
+      background-color: rgb(30 41 59);
+    }
+    /* Estado Presionado / Activo */
+    .nav-dock-btn.is-active {
+      color: var(--brand-primary) !important;
+      background-color: var(--brand-subtle) !important;
+      border-color: var(--brand-border) !important;
+      font-weight: 700 !important;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+    }
+
   </style>
 
   <script>
@@ -76,52 +113,152 @@
 <body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition min-h-screen flex flex-col justify-between">
 
   <!-- Header / Barra de Navegación -->
-  <header class="sticky top-0 z-40 backdrop-blur-md dark:bg-slate-950/85 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+  <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/80 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
       
-      <!-- Logo FlightBot -->
-      <div class="flex items-center gap-3 shrink-0">
+      <!-- Marca / Logotipo -->
+      <div class="flex items-center gap-3 shrink-0 z-10 mr-3 xl:mr-5">
         <a href="index.html" class="flex items-center gap-3 group" title="Volver a Vuelos y Radares de FlightBot">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition p-1"
+          <div id="brand-logo" class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition cursor-pointer p-1 group-hover:scale-105 transition-transform"
+               title="Mascota tech redondeada que sostiene su propia valija carry-on rígida con ruedas 360°. La antena superior emite pulsos de alertas cuando encuentra una tarifa baja."
                style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
-            <span class="text-xl">🚗</span>
+            <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
+              <!-- Valija Carry-On SIEMPRE ROJA (No cambia con el theme) -->
+              <rect x="23" y="19" width="12" height="16" rx="3" fill="url(#fbSuitcaseAlwaysRedEsc)" stroke="#ffffff" stroke-width="0.8"/>
+              <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <line x1="25" y1="27" x2="33" y2="27" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <line x1="25" y1="31" x2="33" y2="31" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <circle cx="25.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
+              <circle cx="32.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
+              <path d="M26 19 V13 H32 V19" stroke="#cbd5e1" stroke-width="1.1" stroke-linecap="round"/>
+              <rect x="27" y="11.5" width="4" height="1.8" rx="0.9" fill="#ffffff"/>
+              <path d="M17 24 Q22 20 27 13" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="7" y="17" width="14" height="16" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="0.8"/>
+              <rect x="10" y="22" width="8" height="6" rx="2" fill="#0f172a"/>
+              <path d="M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25" stroke="#10b981" stroke-width="0.8" stroke-linecap="round"/>
+              <rect x="5.5" y="6" width="17" height="13" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+              <line x1="14" y1="6" x2="14" y2="2" stroke="#94a3b8" stroke-width="1.1" stroke-linecap="round"/>
+              <circle cx="14" cy="1.8" r="1.6" fill="#e11d48"/>
+              <circle cx="14" cy="1.8" r="3.2" stroke="#ffffff" stroke-width="0.5" stroke-dasharray="1 1" opacity="0.8"/>
+              <rect x="8" y="9" width="12" height="6.5" rx="2.5" fill="#0f172a"/>
+              <circle cx="11" cy="12.2" r="1.2" fill="#38bdf8"/>
+              <circle cx="17" cy="12.2" r="1.2" fill="#38bdf8"/>
+              <path d="M7 23 Q2 19 3 14" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="fbSuitcaseAlwaysRedEsc" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#e11d48"/>
+                  <stop offset="100%" stop-color="#be123c"/>
+                </linearGradient>
+              </defs>
+            </svg>
           </div>
-          <div>
-            <span class="text-xl font-extrabold tracking-tight brand-gradient-text">FlightBot</span>
-            <span class="block text-[10px] font-bold uppercase tracking-wider text-slate-400">Escapadas &amp; Rutas</span>
-          </div>
+          <span class="text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">
+            FlightBot
+          </span>
         </a>
       </div>
 
-      <!-- Menú de Navegación Central -->
-      <nav class="hidden lg:flex items-center p-1 rounded-full dark:bg-slate-900/80 bg-slate-100/90 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-1">
-        <a href="index.html" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 border border-transparent transition-all flex items-center gap-1.5">
+            <!-- Barra de Navegación Central Simétrica (Dock Centrado Matemáticamente) -->
+      <nav class="hidden lg:flex items-center p-1 rounded-full dark:bg-slate-900/80 bg-slate-100/90 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-0.5 xl:gap-1 mx-auto">
+        <a href="index.html#radar-vuelos" class="nav-dock-btn">
           <span>✈️</span> Vuelos
         </a>
-        <a href="index.html#destinos" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 border border-transparent transition-all flex items-center gap-1.5">
+        <a href="index.html#destinos" class="nav-dock-btn">
           <span>🏨</span> Destinos
         </a>
-        <a href="escapadas.html" class="px-3.5 py-1.5 rounded-full text-xs font-bold border transition-all flex items-center gap-1.5 shadow-xs" style="color: var(--brand-primary); background-color: var(--brand-subtle); border-color: var(--brand-border);">
-          <span>🚗</span> Escapadas en Auto
+        <a href="escapadas.html" class="nav-dock-btn is-active">
+          <span>🚗</span> Escapadas
         </a>
-        <a href="#planificador-ruta" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 border border-transparent transition-all flex items-center gap-1.5">
-          <span>🚦</span> Semáforo Vial
+        <a href="index.html#promos-portales" class="nav-dock-btn">
+          <span>🏦</span> Portales
         </a>
-        <a href="#comparador-auto-avion" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 border border-transparent transition-all flex items-center gap-1.5">
-          <span>⚖️</span> Auto vs. Avión
+        <a href="index.html#promociones" class="nav-dock-btn">
+          <span>💳</span> Promos
         </a>
-        <a href="billetera.html" class="px-3 py-1.5 rounded-full text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white dark:hover:bg-slate-800 border border-transparent transition-all flex items-center gap-1.5">
+        <a href="billetera.html" class="nav-dock-btn">
           <span>🧳</span> Billetera
+        </a>
+        <a href="guias/index.html" class="nav-dock-btn">
+          <span>📖</span> Guías
+        </a>
+        <a href="index.html#faq" class="nav-dock-btn">
+          <span>❓</span> FAQ
         </a>
       </nav>
 
-      <!-- Botón Bot de Telegram -->
-      <div class="flex items-center gap-3">
-        <a href="https://t.me/TuFlightBot" target="_blank" rel="noopener noreferrer"
-           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold text-white shadow-md transition-all active:scale-95"
-           style="background: var(--brand-gradient); box-shadow: 0 4px 14px var(--brand-glow);">
-          <span>📱</span>
-          <span class="hidden sm:inline">Abrir en Telegram</span>
+      <!-- Controles de Personalización y Acciones -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0 z-10">
+        <!-- Control Dual de Personalización (Color + Modo Claro/Oscuro) - Centrado Óptico y Milimétrico Absoluto -->
+        <div class="flex items-center p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-xs theme-transition">
+          <!-- Switcher de Color (Rojo Rubí vs Azul) -->
+          <div class="flex items-center gap-1.5 pl-1.5 pr-2">
+            <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Tema Rojo Rubí" aria-label="Tema Rojo Rubí"
+                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0"></button>
+            <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Tema Azul Océano" aria-label="Tema Azul Océano"
+                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0"></button>
+          </div>
+          <!-- Separador Vertical Centrado y Proporcional -->
+          <div class="w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
+          <!-- Switcher de Modo (Claro / Oscuro) - Ópticamente equilibrado a la barra y centrado verticalmente -->
+          <div class="flex items-center pl-1 pr-1.5">
+            <button onclick="toggleThemeMode()" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro" aria-label="Alternar Modo Claro / Oscuro"
+                    class="w-4.5 h-4.5 rounded-full flex items-center justify-center text-xs dark:text-amber-400 text-slate-700 hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
+              <span id="theme-mode-icon" class="leading-none select-none inline-flex items-center justify-center -translate-y-[1px]">🌙</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Botón CTA Telegram -->
+        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-white font-semibold text-xs sm:text-sm transition-all shadow-lg hover:brightness-110"
+           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
+          <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
+          </svg>
+          <span class="hidden sm:inline">Probar en Telegram</span>
+          <span class="sm:hidden">Bot</span>
+        </a>
+
+        <!-- Botón Menú Móvil (< lg) -->
+        <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
+                class="lg:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
+          <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="nav-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+        <!-- Menú Móvil Desplegable -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="index.html#radar-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>✈️</span> Vuelos
+        </a>
+        <a href="index.html#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🏨</span> Destinos
+        </a>
+        <a href="escapadas.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-bold" style="color: var(--brand-primary);">
+          <span>🚗</span> Escapadas
+        </a>
+        <a href="index.html#promos-portales" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🏦</span> Portales
+        </a>
+        <a href="index.html#promociones" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>💳</span> Promos
+        </a>
+        <a href="billetera.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🧳</span> Billetera
+        </a>
+        <a href="guias/index.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>📖</span> Guías
+        </a>
+        <a href="index.html#faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>❓</span> FAQ
         </a>
       </div>
     </div>
@@ -147,7 +284,7 @@
         <button type="button" onclick="window.filtrarEscapadas('todas')" id="btn-filtro-todas"
                 class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-extrabold border transition-all shadow-sm"
                 style="background-color: var(--brand-primary); color: #ffffff; border-color: var(--brand-primary);">
-          🌟 Todas las Escapadas (12)
+          🌟 Todas las Escapadas (23)
         </button>
         <button type="button" onclick="window.filtrarEscapadas('finde_corto')" id="btn-filtro-finde_corto"
                 class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
@@ -176,7 +313,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=800&q=80" alt="San Antonio de Areco" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/San_Antonio_de_Areco%2C_Atardecer_en_Puente_Viejo_01.jpg/960px-San_Antonio_de_Areco%2C_Atardecer_en_Puente_Viejo_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="San Antonio de Areco" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -234,7 +371,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -247,7 +384,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=800&q=80" alt="Chascomús y Laguna" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1760918347920-a750a13b1e6d?auto=format&fit=crop&w=800&q=80" alt="Chascomús y Laguna" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -305,7 +442,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -318,7 +455,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=800&q=80" alt="Tomás Jofré & Mercedes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1673491100948-8ef540ceedf4?auto=format&fit=crop&w=800&q=80" alt="Tomás Jofré & Mercedes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -376,7 +513,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -389,7 +526,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" alt="San Pedro & Vuelta de Obligado" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1532665469716-ef45431df414?auto=format&fit=crop&w=800&q=80" alt="San Pedro & Vuelta de Obligado" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -447,7 +584,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -460,7 +597,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&w=800&q=80" alt="Partido de La Costa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1518847076759-2c8d95183cc7?auto=format&fit=crop&w=800&q=80" alt="Partido de La Costa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -518,7 +655,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -531,7 +668,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=800&q=80" alt="Mar del Plata & Chapadmalal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1561816646-b5b12a9b92ed?auto=format&fit=crop&w=800&q=80" alt="Mar del Plata & Chapadmalal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -589,7 +726,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -602,7 +739,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80" alt="Pinamar, Cariló & Villa Gesell" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Bajada_a_Playa_de_Pinamar_-_panoramio.jpg/960px-Bajada_a_Playa_de_Pinamar_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Pinamar, Cariló & Villa Gesell" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -660,7 +797,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -673,7 +810,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" alt="Tandil & Sierras del Tandil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1583720799149-783a9d4145e3?auto=format&fit=crop&w=800&q=80" alt="Tandil & Sierras del Tandil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -731,7 +868,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -744,7 +881,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1544198365-f5d60b6d8190?auto=format&fit=crop&w=800&q=80" alt="Sierra de la Ventana & Villa Ventana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1787095661274-39f70febc685?auto=format&fit=crop&w=800&q=80" alt="Sierra de la Ventana & Villa Ventana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -802,7 +939,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -815,7 +952,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Colón & Parque El Palmar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1578104462680-8274c2bf96b4?auto=format&fit=crop&w=800&q=80" alt="Colón & Parque El Palmar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -873,7 +1010,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -886,7 +1023,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80" alt="Córdoba: Valle de Calamuchita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1561916579-94d08e12a094?auto=format&fit=crop&w=800&q=80" alt="Córdoba: Valle de Calamuchita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-sky-500/10 text-sky-400 border-sky-500/20 backdrop-blur-md">
@@ -944,7 +1081,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -957,7 +1094,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80" alt="Córdoba: Valle de Traslasierra" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1708145179897-1008406599d7?auto=format&fit=crop&w=800&q=80" alt="Córdoba: Valle de Traslasierra" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-sky-500/10 text-sky-400 border-sky-500/20 backdrop-blur-md">
@@ -1015,7 +1152,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -1028,7 +1165,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&w=800&q=80" alt="Monte Hermoso & Pehuen Có" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Monte_Hermoso%2C_playa_01.jpg/960px-Monte_Hermoso%2C_playa_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Monte Hermoso & Pehuen Có" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-sky-500/10 text-sky-400 border-sky-500/20 backdrop-blur-md">
@@ -1086,7 +1223,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -1099,7 +1236,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=800&q=80" alt="Villa de Merlo (San Luis)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Mirador_del_Sol.jpg/960px-Mirador_del_Sol.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Villa de Merlo (San Luis)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-sky-500/10 text-sky-400 border-sky-500/20 backdrop-blur-md">
@@ -1157,7 +1294,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -1170,7 +1307,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80" alt="Bariloche & Ruta de los 7 Lagos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1657523955071-61f1f771f466?auto=format&fit=crop&w=800&q=80" alt="Bariloche & Ruta de los 7 Lagos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-purple-500/10 text-purple-400 border-purple-500/20 backdrop-blur-md">
@@ -1228,7 +1365,7 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -1299,7 +1436,504 @@
                       class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
                 <span>🚦</span> Hoja de Ruta
               </button>
-                <a href="https://t.me/TuFlightBot" target="_blank"
+                <a href="https://t.me/GnZFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_corto">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Paseo_de_la_Costa_de_Vicente_L%C3%B3pez.jpg/960px-Paseo_de_la_Costa_de_Vicente_L%C3%B3pez.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Costanera Vicente López & Olivos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
+                  <span>🌊</span> Fin de Semana Corto (1-2 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 35m · 18 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Costanera Vicente López & Olivos
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Paseo de domingo frente al río, picnic, food trucks y Puerto de Olivos
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                La escapada de domingo por excelencia para quienes buscan sol, río y aire libre sin salir del Gran Buenos Aires. El Paseo de la Costa ofrece amplios parques con césped frente al Río de la Plata, bicisendas ininterrumpidas, ferias de artesanos y el polo gastronómico del Puerto de Olivos con cafés y restaurantes frente a los veleros.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Caminar, patinar o andar en bici por el Paseo de la Costa bordeando el Río de la Plata.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Tomar mate en el césped frente al río y disfrutar de los food trucks gastronómicos.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Recorrer el Puerto de Olivos y sus cafeterías náuticas con vista a las amarras y veleros.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>Acceso Av. San Martín y Río: Entrada principal con estacionamiento vigilado y bicicleteros.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>Puerto de Olivos (Av. Corrientes y Río): Polo gastronómico con cafeterías de especialidad y heladerías.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$10.300 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$2.575 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('vicente lopez')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/GnZFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_corto">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Carlos_Keen%2C_entorno_de_la_estaci%C3%B3n.jpg/960px-Carlos_Keen%2C_entorno_de_la_estaci%C3%B3n.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Carlos Keen & Luján" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
+                  <span>🍗</span> Fin de Semana Corto (1-2 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 1h 15m · 80 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Carlos Keen & Luján
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Almuerzo de campo en galpones ferroviarios, asado a la cruz y Basílica
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                Pueblo rural y polo gastronómico icónico a solo 80 km de Buenos Aires. Famoso por sus almuerzos de campo en antiguos galpones de acopio de trigo reciclados, con empanadas fritas, asado al asador, pastas amasadas a mano y meriendas criollas con tortas fritas.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Almorzar menú de campo libre en los galpones históricos (El Nene de Keen, La Casa de la Ñata, Los Girasoles).</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Recorrer la vieja estación de tren de 1879 y la feria artesanal alrededor del predio ferroviario.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Comprar miel pura de eucalipto, quesos de tambo, salamines caseros y conservas locales.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 65 (Luján): Estaciones YPF Full y empalme de RN 7 con autopista RN 5.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>Acceso a Carlos Keen: Puestos rurales con pastelería casera y pastelitos de membrillo.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$39.000 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$9.750 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('carlos keen')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/GnZFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_corto">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Atardecer_en_la_Laguna_de_Lobos_%28Villa_Log%C3%BCercio%29.jpg/960px-Atardecer_en_la_Laguna_de_Lobos_%28Villa_Log%C3%BCercio%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Lobos & Laguna de Lobos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
+                  <span>🎣</span> Fin de Semana Corto (1-2 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 1h 30m · 100 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Lobos & Laguna de Lobos
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Costanera de la laguna, pesca de pejerrey, aeroclub y asado de campo
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                Una de las lagunas más tradicionales de la provincia de Buenos Aires. Ofrece alquiler de botes de pesca y kayaks, costanera arbolada para pasar el día y hacer picnic, más un casco histórico con arquitectura neogótica y el aeroclub más activo del país para saltos en paracaídas.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Pasear por la Costanera Municipal de la Laguna de Lobos y alquilar kayaks o botes de remo.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Almorzar en las parrillas y bodegones del Club de Pesca o en la villa de la laguna.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Conocer el Aeroclub Fortín Lobos para ver saltos de paracaidismo deportivo o hacer un vuelo de bautismo.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 64 (Cañuelas): Rotonda de acceso con paradores de medialunas, café y estaciones de servicio.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>Acceso a la Laguna (RP 41): Puestos de carnada viva, artículos náuticos y pan casero de campo.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$46.100 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$11.525 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('lobos')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/GnZFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_corto">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Parroquia_Nuestra_Se%C3%B1ora_de_Luj%C3%A1n_en_Uribelarrea_Ca%C3%B1uelas_01.JPG/960px-Parroquia_Nuestra_Se%C3%B1ora_de_Luj%C3%A1n_en_Uribelarrea_Ca%C3%B1uelas_01.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Uribelarrea (Cañuelas)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
+                  <span>🧀</span> Fin de Semana Corto (1-2 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 1h 15m · 85 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Uribelarrea (Cañuelas)
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Pueblo de película, picadas de campo, cervecerías artesanales y queserías
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                Pueblo rural detenido en el tiempo con casonas de ladrillo visto de fines del siglo XIX que sirvieron de locación para películas de renombre internacional. Meca de las picadas bonaerenses con quesos de tambo, chacinados artesanales y cervecerías de campo con patios arbolados.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Degustar una picada completa con embutidos artesanales y queso de campo en El Palenque o La Uribeña.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Visitar la Escuela Agrotécnica Salesiana Don Bosco para comprar su célebre queso Don Bosco y dulce de leche.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Pasear por la Plaza Centenario de trazado octogonal y la Iglesia Nuestra Señora de Luján (1890).</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 65 (Cañuelas): Estaciones de servicio YPF y Shell sobre RN 205.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>Entrada a Uribelarrea: Callejón de eucaliptos centenarios ideal para tomar fotos del auto.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$40.700 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$10.175 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('uribelarrea')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/GnZFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_corto">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Camping_%C3%91andubaysal_-_panoramio.jpg/960px-Camping_%C3%91andubaysal_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Gualeguaychú & Playas de Río" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
+                  <span>🏖️</span> Fin de Semana Corto (1-2 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 2h 45m · 230 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Gualeguaychú & Playas de Río
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Playas de arena blanca en Ñandubaysal, termas y cruce Zárate-Brazo Largo
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                La puerta de entrada al litoral entrerriano a menos de tres horas de viaje. Combina la inmensa playa de arena blanca del balneario Ñandubaysal sobre el río Uruguay, dos complejos de aguas termales mineromedicinales, paseos en lancha y rica gastronomía de río.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Pasar la tarde en la playa de arena y bosque de tipas de Ñandubaysal frente al río Uruguay.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Sumergirse en las piscinas minerales de Termas de Gualeguaychú o Termas del Guaychú.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Pasear por la Costanera del río Gualeguaychú, el Parque Unzué y cruzar el histórico puente Méndez Casariego.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 85 (Zárate): Estación YPF Full antes de subir al primer puente de Zárate-Brazo Largo.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 145 (Ceibas): Empalme de RN 12 y RN 14 con paradores de cítricos, miel y nueces pecán.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$100.400 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$25.100 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('gualeguaychu')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/GnZFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_largo">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Rosario_National_Flag_Memorial-20110510-RM-142842.jpg/960px-Rosario_National_Flag_Memorial-20110510-RM-142842.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Rosario & Costanera del Paraná" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
+                  <span>🚢</span> Fin de Semana Largo (3-4 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 3h 15m · 300 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Rosario & Costanera del Paraná
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Monumento a la Bandera, cruce a las islas, río y polo gastronómico de Pichincha
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                La gran metrópolis ribereña sobre el imponente Río Paraná conectada 100% por autopista. Ofrece kilómetros de parques costaneros arbolados, el Monumento Nacional a la Bandera, cruces en lancha hacia las islas del Delta y una vibrante escena de cervecerías, bodegones y coctelería.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Visitar el Monumento Nacional a la Bandera, la Cripta y subir a la torre para vista panorámica del Paraná.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Caminar por el Parque España y la Costanera Central hasta los coloridos silos del Museo Macro.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Tomar una lancha taxi desde La Fluvial para almorzar o pasar la tarde en los paradores isleños.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 153 (San Pedro): Parador La Campiña o paradores de la autopista para ensaimadas y café.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 225 (San Nicolás): Santuario de la Virgen de San Nicolás y área de servicios de autopista.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$130.500 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$32.625 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('rosario')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/GnZFlightBot" target="_blank"
+                 class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
+                <span>📱</span> Telegram
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-card dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-lg flex flex-col justify-between theme-transition hover:border-slate-600 group" data-cat="finde_largo">
+          <div>
+            <!-- Foto de Portada del Destino -->
+            <div class="relative h-44 w-full overflow-hidden">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Playa_de_Necochea_%28Argentina%29.JPG/960px-Playa_de_Necochea_%28Argentina%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Necochea & Quequén" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
+                  <span>🏄</span> Fin de Semana Largo (3-4 días)
+                </span>
+              </div>
+              <div class="absolute bottom-3 right-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900/80 text-white backdrop-blur-md">
+                  ⏱️ 5h 45m · 510 km
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="text-xl font-extrabold dark:text-white text-slate-900 mb-1">
+                Necochea & Quequén
+              </h3>
+              <p class="text-xs font-semibold text-rose-500 dark:text-rose-400 mb-3">
+                Playas más anchas de Argentina, surf en Quequén, médanos 4x4 y Parque Miguel Lillo
+              </p>
+
+              <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+                El destino de mar con las playas más extensas y agrestes de la costa atlántica (hasta 300 metros de ancho). Quequén es la meca del surf con olas de calidad internacional y bares bohemios, complementada con el gigantesco Parque Miguel Lillo de pinos marítimos y dunas colosales para travesías 4x4 hacia Médano Blanco.
+              </p>
+
+              <div class="mb-4 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">📍 Qué recorrer:</div>
+                <ul class="space-y-1.5 mb-3">
+                  <li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Disfrutar de las amplias playas de arena suave con espacio garantizado incluso en temporada alta.</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Tomar clases de surf o ver las maniobras de los surfistas en las playas de Quequén (Monte Pasubio).</span></li><li class='text-xs dark:text-slate-300 text-slate-700 flex items-start gap-1.5'><span class='text-emerald-500'>✔</span><span>Recorrer las 640 hectáreas de bosque y senderos del Parque Miguel Lillo en auto, bicicleta o a pie.</span></li>
+                </ul>
+
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">☕ Paradas intermedias:</div>
+                <ul class="space-y-1.5">
+                  <li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 113 (Chascomús): Parador Atalaya clásico para medialunas calientes y estirar las piernas.</span></li><li class='text-xs dark:text-slate-400 text-slate-600 flex items-start gap-1.5'><span>☕</span><span>km 299 (Las Armas): Empalme de Autovía 2 con RP 74, con estaciones de servicio y cafetería.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200">
+              <div class="flex items-center justify-between text-xs mb-3">
+                <div>
+                  <span class="block text-[11px] text-slate-400">Presupuesto I/V:</span>
+                  <span class="text-base font-extrabold dark:text-white text-slate-900 font-mono">$219.700 ARS</span>
+                </div>
+                <div class="text-right">
+                  <span class="block text-[11px] text-slate-400">4 personas:</span>
+                  <span class="text-sm font-bold text-emerald-500 font-mono">$54.925 c/u</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="window.cargarRutaEnBuscador('necochea')"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all text-center flex items-center justify-center gap-1.5 shadow-sm">
+                <span>🚦</span> Hoja de Ruta
+              </button>
+                <a href="https://t.me/GnZFlightBot" target="_blank"
                  class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 transition-all text-center flex items-center justify-center gap-1">
                 <span>📱</span> Telegram
               </a>
@@ -1490,11 +2124,72 @@
         <span>•</span>
         <a href="guias/index.html" class="hover:text-white transition-colors">📖 Guías</a>
         <span>•</span>
-        <a href="https://t.me/TuFlightBot" target="_blank" class="hover:text-white transition-colors">📱 Telegram</a>
+        <a href="https://t.me/GnZFlightBot" target="_blank" class="hover:text-white transition-colors">📱 Telegram</a>
       </div>
     </div>
   </footer>
-<!-- Motor Unificado de Cálculo de Rutas y Escapadas (Single Source of Truth) -->
+  <!-- Scripts de Control de Tema y Menú Móvil -->
+  <script>
+    function toggleMobileNav(force) {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const iconMenu = document.getElementById('nav-icon-menu');
+      const iconClose = document.getElementById('nav-icon-close');
+      if (!drawer) return;
+      const isClosed = drawer.classList.contains('hidden');
+      const open = force !== undefined ? force : isClosed;
+      if (open) {
+        drawer.classList.remove('hidden');
+        if (iconMenu) iconMenu.classList.add('hidden');
+        if (iconClose) iconClose.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+        if (iconMenu) iconMenu.classList.remove('hidden');
+        if (iconClose) iconClose.classList.add('hidden');
+      }
+    }
+
+    function setThemeColor(color) {
+      document.documentElement.setAttribute('data-color', color);
+      localStorage.setItem('fb_theme_color', color);
+      const btnRuby = document.getElementById('theme-btn-ruby');
+      const btnBlue = document.getElementById('theme-btn-blue');
+      if (btnRuby && btnBlue) {
+        if (color === 'ruby') {
+          btnRuby.classList.add('scale-110', 'border-white', 'dark:border-slate-900');
+          btnRuby.classList.remove('opacity-50', 'border-transparent');
+          btnBlue.classList.add('opacity-50', 'border-transparent');
+          btnBlue.classList.remove('scale-110', 'border-white', 'dark:border-slate-900');
+        } else {
+          btnBlue.classList.add('scale-110', 'border-white', 'dark:border-slate-900');
+          btnBlue.classList.remove('opacity-50', 'border-transparent');
+          btnRuby.classList.add('opacity-50', 'border-transparent');
+          btnRuby.classList.remove('scale-110', 'border-white', 'dark:border-slate-900');
+        }
+      }
+    }
+
+    function toggleThemeMode() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('fb_theme_mode', isDark ? 'dark' : 'light');
+      const icon = document.getElementById('theme-mode-icon');
+      if (icon) {
+        icon.textContent = isDark ? '🌙' : '☀️';
+      }
+    }
+
+    // Sincronizar estado visual de los controles de tema al cargar
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedTheme = localStorage.getItem('fb_theme_mode') || 'dark';
+      const savedColor = localStorage.getItem('fb_theme_color') || 'ruby';
+      setThemeColor(savedColor);
+      const icon = document.getElementById('theme-mode-icon');
+      if (icon) {
+        icon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+      }
+    });
+  </script>
+
+  <!-- Motor Unificado de Cálculo de Rutas y Escapadas (Single Source of Truth) -->
   <script src="js/road-planner.js"></script>
 </body>
 </html>

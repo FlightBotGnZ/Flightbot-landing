@@ -1,0 +1,4710 @@
+/* ==========================================================================
+   FLIGHTBOT - CATÁLOGO MASTER DE DESTINOS, HOTELES Y MONITOREO DE RADAR
+   Modularizado para alto rendimiento y carga asíncrona diferida (defer).
+   ========================================================================== */
+(function() {
+      window.RADAR_DATA = [
+  {
+    "id": "bariloche",
+    "ciudad": "Bariloche & Región de los Lagos",
+    "pais": "Argentina",
+    "bandera": "🏔️",
+    "iata": "BRC",
+    "tipo_ruta": "Cabotaje Nacional",
+    "es_cabotaje": true,
+    "precio_desde": "$ 112.500 ARS (US$ 98)",
+    "comando_tg": "/bariloche",
+    "resena": "Capital nacional del turismo de aventura: majestuosos lagos glaciares, el Cerro Campanario con una de las 7 mejores vistas del planeta, circuito de chocolaterías y el inicio de la Ruta de los 7 Lagos.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP/EZE ➔ BRC)",
+        "fechas": "14 Oct - 20 Oct 2026",
+        "noches": 6,
+        "precio": "$ 112.500 ARS (US$ 98 oficial)",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ BRC)",
+        "fechas": "21 Oct - 28 Oct 2026",
+        "noches": 7,
+        "precio": "$ 126.800 ARS (US$ 110 oficial)",
+        "destacado": "Salidas directas desde Aeroparque"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ BRC)",
+        "fechas": "07 Oct - 13 Oct 2026",
+        "noches": 6,
+        "precio": "$ 148.000 ARS (US$ 128 oficial)",
+        "destacado": "Múltiples frecuencias diarias"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Llao Llao Resort, Golf-Spa",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.4",
+        "calificacion": "Excepcional (4.500 reseñas)",
+        "zona": "Villa Llao Llao / Circuito Chico",
+        "precio_noche": "$ 320.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El resort de montaña más prestigioso de la Patagonia argentina: campo de golf de 18 hoyos, piscina climatizada con vista al Nahuel Huapi y gastronomía de autor.",
+        "booking_url": "https://www.booking.com/hotel/ar/llao-llao-resort-golf-spa.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Hotel Cacique Inacayal Lake & Spa",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (3.620 reseñas)",
+        "zona": "Costanera San Martín (a 4 cuadras del Cívico)",
+        "precio_noche": "$ 145.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Ubicación ideal sobre la costa del lago para salir a cenar y caminar por la calle Mitre. Piscina cubierta climatizada y spa con vista panorámica.",
+        "booking_url": "https://www.booking.com/hotel/ar/cacique-inacayal-lake-spa.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Hostería Villa Huinid Pioneros",
+        "estrellas": "⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Excelente (2.410 reseñas)",
+        "zona": "Av. Bustillo Km 2,6",
+        "precio_noche": "$ 78.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Entorno de bosque nativo a solo 5 minutos del centro. Desayuno buffet artesanal casero, piscina climatizada y excelente relación precio/servicio.",
+        "booking_url": "https://www.booking.com/hotel/ar/villa-huinid-pioneros.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 20,
+      "rango_min": "$ 120.000 ARS",
+      "rango_max": "$ 185.000 ARS",
+      "mensaje": "¡Tarifa récord de cabotaje! El precio actual está en el 20% más económico de la temporada.",
+      "texto_pin": "$ 112.500 ARS es una tarifa récord baja",
+      "consejo": "JetSMART directo desde Aeroparque. Al haber purgado a Flybondi por concurso, JetSMART lidera las tarifas más confiables con flota A320neo.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        168000,
+        152000,
+        138000,
+        124000,
+        112500
+      ],
+      "historial_formato": "$ "
+    },
+    "codigo_pais": "ar",
+    "categoria_region": "cabotaje"
+  },
+  {
+    "id": "cordoba",
+    "ciudad": "Córdoba & Sierras",
+    "pais": "Argentina",
+    "bandera": "🌄",
+    "iata": "COR",
+    "tipo_ruta": "Cabotaje Nacional",
+    "es_cabotaje": true,
+    "categoria_region": "cabotaje",
+    "precio_desde": "$ 64.500 ARS (US$ 56)",
+    "comando_tg": "/cordoba",
+    "resena": "Segundo polo urbano de Argentina con la Manzana Jesuítica, barrios bohemios como Güemes y escapadas inmediatas a las sierras de Calamuchita, Punilla y Traslasierra.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ COR)",
+        "fechas": "16 Oct - 19 Oct 2026",
+        "noches": 3,
+        "precio": "$ 64.500 ARS (US$ 56 oficial)",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ COR)",
+        "fechas": "23 Oct - 26 Oct 2026",
+        "noches": 3,
+        "precio": "$ 72.000 ARS (US$ 63 oficial)",
+        "destacado": "Vuelo directo de 1h 15m"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ COR)",
+        "fechas": "09 Oct - 12 Oct 2026",
+        "noches": 3,
+        "precio": "$ 84.000 ARS (US$ 73 oficial)",
+        "destacado": "Puente aéreo frecuente"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Azur Real Hotel Boutique",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.6",
+        "calificacion": "Excepcional (1.850 reseñas)",
+        "zona": "Centro Histórico / Manzana Jesuítica",
+        "precio_noche": "$ 165.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Boutique premiado internacionalmente con baños subterráneos de aguas termales inspirados en termas romanas.",
+        "booking_url": "https://www.booking.com/hotel/ar/azur-real.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Windsor Hotel & Tower",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (2.900 reseñas)",
+        "zona": "Centro Histórico",
+        "precio_noche": "$ 95.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Piscina climatizada en la terraza con vistas panorámicas, spa y el célebre restaurante Sibaris.",
+        "booking_url": "https://www.booking.com/hotel/ar/windsor-tower.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Holiday Inn Córdoba",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.8",
+        "calificacion": "Muy Bueno (1.750 reseñas)",
+        "zona": "Barrio Poeta Lugones / Zona Norte",
+        "precio_noche": "$ 62.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Gran parque con piscina exterior, estacionamiento gratuito y acceso rápido tanto al aeropuerto como a las sierras.",
+        "booking_url": "https://www.booking.com/hotel/ar/holiday-inn-cordoba.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 22,
+      "rango_min": "$ 60.000 ARS",
+      "rango_max": "$ 110.000 ARS",
+      "mensaje": "¡Tarifa imbatible para una escapada rápida a Córdoba!",
+      "texto_pin": "$ 64.500 ARS es una tarifa súper económica",
+      "consejo": "Vuelo de solo 1h 15m ideal para fin de semana largo o turismo corporativo.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        105000,
+        94000,
+        84000,
+        72000,
+        64500
+      ],
+      "historial_formato": "$ "
+    },
+    "codigo_pais": "ar"
+  },
+  {
+    "id": "calafate",
+    "ciudad": "El Calafate & Glaciares",
+    "pais": "Argentina",
+    "bandera": "🧊",
+    "iata": "FTE",
+    "tipo_ruta": "Cabotaje Nacional",
+    "es_cabotaje": true,
+    "categoria_region": "cabotaje",
+    "precio_desde": "$ 148.000 ARS (US$ 129)",
+    "comando_tg": "/calafate",
+    "resena": "Portal de entrada al imponente Glaciar Perito Moreno y sus estruendosos desprendimientos de hielo. Minitrekking sobre el glaciar, estancias gauchas y navegación entre témpanos.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ FTE)",
+        "fechas": "14 Oct - 20 Oct 2026",
+        "noches": 6,
+        "precio": "$ 148.000 ARS (US$ 129 oficial)",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ FTE)",
+        "fechas": "21 Oct - 27 Oct 2026",
+        "noches": 6,
+        "precio": "$ 162.000 ARS (US$ 141 oficial)",
+        "destacado": "Vuelo directo de 3h 15m"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ FTE)",
+        "fechas": "07 Oct - 13 Oct 2026",
+        "noches": 6,
+        "precio": "$ 182.000 ARS (US$ 158 oficial)",
+        "destacado": "Múltiples frecuencias"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Posada Los Álamos",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.3",
+        "calificacion": "Excepcional (2.800 reseñas)",
+        "zona": "Centro / Campo de Golf Privado",
+        "precio_noche": "$ 310.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Resort tradicional patagónico con campo de golf par 3, spa de nivel internacional y asador criollo de cordero.",
+        "booking_url": "https://www.booking.com/hotel/ar/posada-los-alamos.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Xelena Hotel & Suites",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (2.400 reseñas)",
+        "zona": "Costanera Lago Argentino",
+        "precio_noche": "$ 210.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Piscina in-out climatizada con vistas panorámicas al Lago Argentino y diseño contemporáneo de alta gama.",
+        "booking_url": "https://www.booking.com/hotel/ar/xelena-deluxe-suites.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Kosten Aike",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (1.950 reseñas)",
+        "zona": "Centro de El Calafate",
+        "precio_noche": "$ 88.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Decorado con motivos tehuelches, sauna, gimnasio y excelente ubicación a 2 cuadras de la avenida principal.",
+        "booking_url": "https://www.booking.com/hotel/ar/kosten-aike.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 25,
+      "rango_min": "$ 145.000 ARS",
+      "rango_max": "$ 235.000 ARS",
+      "mensaje": "¡Tarifa baja confirmada para visitar los Glaciares!",
+      "texto_pin": "$ 148.000 ARS es una tarifa de oportunidad",
+      "consejo": "Octubre y noviembre ofrecen clima ideal y pasarelas con menos concurrencia masiva.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        228000,
+        208000,
+        185000,
+        165000,
+        148000
+      ],
+      "historial_formato": "$ "
+    },
+    "codigo_pais": "ar"
+  },
+  {
+    "id": "jujuy",
+    "ciudad": "Jujuy & Quebrada de Humahuaca",
+    "pais": "Argentina",
+    "bandera": "🌵",
+    "iata": "JUJ",
+    "tipo_ruta": "Cabotaje Nacional",
+    "es_cabotaje": true,
+    "categoria_region": "cabotaje",
+    "precio_desde": "$ 98.500 ARS (US$ 86)",
+    "comando_tg": "/jujuy",
+    "resena": "El Cerro de los Siete Colores en Purmamarca, Tilcara y las serranías del Hornocal. Patrimonio de la Humanidad con cultura andina milenaria viva y salares infinitos.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ JUJ)",
+        "fechas": "15 Oct - 20 Oct 2026",
+        "noches": 5,
+        "precio": "$ 98.500 ARS (US$ 86 oficial)",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ JUJ)",
+        "fechas": "22 Oct - 27 Oct 2026",
+        "noches": 5,
+        "precio": "$ 108.000 ARS (US$ 94 oficial)",
+        "destacado": "Vuelo directo de 2h 15m"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ JUJ)",
+        "fechas": "08 Oct - 13 Oct 2026",
+        "noches": 5,
+        "precio": "$ 126.500 ARS (US$ 110 oficial)",
+        "destacado": "Excelente puntualidad"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "El Manantial del Silencio",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.4",
+        "calificacion": "Excepcional (1.280 reseñas)",
+        "zona": "Purmamarca (Paseo de los Colorados)",
+        "precio_noche": "$ 260.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Boutique de arquitectura neocolonial construido en adobe frente a los cerros de Purmamarca, piscina y spa.",
+        "booking_url": "https://www.booking.com/hotel/ar/el-manantial-del-silencio.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Hotel Huacalera",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (1.640 reseñas)",
+        "zona": "Huacalera (Trópico de Capricornio)",
+        "precio_noche": "$ 140.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Finca histórica restaurada con huerta orgánica propia, piscina al aire libre y gastronomía de autor.",
+        "booking_url": "https://www.booking.com/hotel/ar/hotel-huacalera.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Altos de la Viña Hotel",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.8",
+        "calificacion": "Muy Bueno (1.920 reseñas)",
+        "zona": "San Salvador de Jujuy (Colina Panorámica)",
+        "precio_noche": "$ 72.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Vistas panorámicas a la ciudad y a la quebrada, piscina descubierta y fácil acceso a la Ruta 9.",
+        "booking_url": "https://www.booking.com/hotel/ar/altos-de-la-vina.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 24,
+      "rango_min": "$ 95.000 ARS",
+      "rango_max": "$ 155.000 ARS",
+      "mensaje": "¡Precio bajo para explorar la Quebrada de Humahuaca!",
+      "texto_pin": "$ 98.500 ARS es una tarifa de oportunidad",
+      "consejo": "Combinar vuelo a Jujuy con regreso desde Salta permite recorrer toda la quebrada en auto alquilado sin retroceder.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        148000,
+        136000,
+        122000,
+        110000,
+        98500
+      ],
+      "historial_formato": "$ "
+    },
+    "codigo_pais": "ar"
+  },
+  {
+    "id": "mendoza",
+    "ciudad": "Mendoza & Valle de Uco",
+    "pais": "Argentina",
+    "bandera": "🍷",
+    "iata": "MDZ",
+    "tipo_ruta": "Cabotaje Nacional",
+    "es_cabotaje": true,
+    "precio_desde": "$ 89.400 ARS (US$ 78)",
+    "comando_tg": "/mendoza",
+    "resena": "Capital internacional del vino y los viñedos al pie de la cordillera de los Andes. Bodegas futuristas en Valle de Uco con menús de pasos maridados, la noche de calle Arístides y el imponente Cerro Aconcagua.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ MDZ)",
+        "fechas": "15 Oct - 20 Oct 2026",
+        "noches": 5,
+        "precio": "$ 89.400 ARS (US$ 78 oficial)",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP/EZE ➔ MDZ)",
+        "fechas": "22 Oct - 28 Oct 2026",
+        "noches": 6,
+        "precio": "$ 96.200 ARS (US$ 84 oficial)",
+        "destacado": "Equipaje de mano estándar"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ MDZ)",
+        "fechas": "08 Oct - 13 Oct 2026",
+        "noches": 5,
+        "precio": "$ 118.500 ARS (US$ 103 oficial)",
+        "destacado": "Gran disponibilidad de horarios"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "The Vines Resort & Spa",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.6",
+        "calificacion": "Excepcional (1.290 reseñas)",
+        "zona": "Valle de Uco (Los Chacayes)",
+        "precio_noche": "$ 490.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El wine resort más exclusivo de Argentina: villas privadas rodeadas de viñedos y el restaurante 'Siete Fuegos' de Francis Mallmann frente a la cordillera.",
+        "booking_url": "https://www.booking.com/hotel/ar/the-vines-resort-spa.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Park Hyatt Mendoza Hotel, Casino & Spa",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Fantástico (3.120 reseñas)",
+        "zona": "Plaza Independencia (Pleno Centro)",
+        "precio_noche": "$ 220.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Fachada neoclásica del siglo XIX frente a la plaza principal. Piscina descubierta climatizada, spa Kaua y los mejores restaurantes a pasos caminando.",
+        "booking_url": "https://www.booking.com/hotel/ar/park-hyatt-mendoza.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Huentala Hotel Boutique",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (2.560 reseñas)",
+        "zona": "Centro Histórico (a 1 cuadra de Peatonal)",
+        "precio_noche": "$ 72.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Boutique de arte con cava propia de degustación de vinos, piscina al aire libre, desayuno buffet incluido y tarifas accesibles sin sobreprecios.",
+        "booking_url": "https://www.booking.com/hotel/ar/huentala.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 18,
+      "rango_min": "$ 95.000 ARS",
+      "rango_max": "$ 155.000 ARS",
+      "mensaje": "¡Oportunidad destacada! Menos de $90.000 ARS ida y vuelta a la capital del vino.",
+      "texto_pin": "$ 89.400 ARS es una tarifa súper baja",
+      "consejo": "Tarifa ideal para escapadas de enoturismo a bodegas de Valle de Uco. Aerolíneas Argentinas y JetSMART compiten fuerte en este corredor.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        148000,
+        132000,
+        118000,
+        102000,
+        89400
+      ],
+      "historial_formato": "$ "
+    },
+    "codigo_pais": "ar",
+    "categoria_region": "cabotaje"
+  },
+  {
+    "id": "neuquen",
+    "ciudad": "Neuquén & Alto Valle",
+    "pais": "Argentina",
+    "bandera": "🦕",
+    "iata": "NQN",
+    "tipo_ruta": "Cabotaje Nacional",
+    "es_cabotaje": true,
+    "categoria_region": "cabotaje",
+    "precio_desde": "$ 88.000 ARS (US$ 77)",
+    "comando_tg": "/neuquen",
+    "resena": "Corazón energético y productivo de la Patagonia Norte: ruta del vino en San Patricio del Chañar, museos con los dinosaurios más gigantes del planeta en Villa El Chocón y río Limay.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ NQN)",
+        "fechas": "15 Oct - 19 Oct 2026",
+        "noches": 4,
+        "precio": "$ 88.000 ARS (US$ 77 oficial)",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ NQN)",
+        "fechas": "22 Oct - 26 Oct 2026",
+        "noches": 4,
+        "precio": "$ 96.000 ARS (US$ 83 oficial)",
+        "destacado": "Vuelo directo de 1h 50m"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ NQN)",
+        "fechas": "08 Oct - 12 Oct 2026",
+        "noches": 4,
+        "precio": "$ 112.000 ARS (US$ 97 oficial)",
+        "destacado": "Gran cantidad de frecuencias"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Hotel Casino Magic",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Excepcional (2.200 reseñas)",
+        "zona": "Parque Aeropuerto / Zona Oeste",
+        "precio_noche": "$ 180.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Complejo 5 estrellas con piscina al aire libre climatizada, espectáculos en vivo, casino y spa de primer nivel.",
+        "booking_url": "https://www.booking.com/hotel/ar/casino-magic.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Hilton Garden Inn Neuquén",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (2.600 reseñas)",
+        "zona": "Torre Dr. Ramón / Alto Comahue",
+        "precio_noche": "$ 135.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Edificio vanguardista conectado al shopping Alto Comahue con piscina cubierta, spa y restaurante internacional.",
+        "booking_url": "https://www.booking.com/hotel/ar/hilton-garden-inn-neuquen.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Cyan Soho Neuquén Hotel",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.8",
+        "calificacion": "Muy Bueno (1.950 reseñas)",
+        "zona": "Centro Urbano de Neuquén",
+        "precio_noche": "$ 72.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Hotel moderno de estilo urbano céntrico con excelente desayuno buffet y conexión rápida al corredor petrolero.",
+        "booking_url": "https://www.booking.com/hotel/ar/cyan-soho-neuquen.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 24,
+      "rango_min": "$ 85.000 ARS",
+      "rango_max": "$ 140.000 ARS",
+      "mensaje": "¡Precio conveniente para volar al Alto Valle!",
+      "texto_pin": "$ 88.000 ARS es una tarifa de oportunidad",
+      "consejo": "Excelente base para conectar con el circuito de bodegas de San Patricio del Chañar a 45 minutos.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        138000,
+        124000,
+        112000,
+        99000,
+        88000
+      ],
+      "historial_formato": "$ "
+    },
+    "codigo_pais": "ar"
+  },
+  {
+    "id": "iguazu",
+    "ciudad": "Puerto Iguazú & Triple Frontera",
+    "pais": "Argentina / Brasil",
+    "bandera": "🌊",
+    "iata": "IGR",
+    "tipo_ruta": "Cabotaje Nacional",
+    "es_cabotaje": true,
+    "precio_desde": "$ 82.600 ARS (US$ 72)",
+    "comando_tg": "/iguazu",
+    "resena": "Una de las 7 Maravillas Naturales del Mundo: el estruendo de la Garganta del Diablo, pasarelas entre la selva subtropical misionera y la confluencia de los ríos Iguazú y Paraná en el Hito 3 Fronteras.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP/EZE ➔ IGR)",
+        "fechas": "15 Oct - 19 Oct 2026",
+        "noches": 4,
+        "precio": "$ 82.600 ARS (US$ 72 oficial)",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ IGR)",
+        "fechas": "22 Oct - 26 Oct 2026",
+        "noches": 4,
+        "precio": "$ 91.000 ARS (US$ 79 oficial)",
+        "destacado": "Vuelo directo de 1h 50m"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ IGR)",
+        "fechas": "08 Oct - 13 Oct 2026",
+        "noches": 5,
+        "precio": "$ 109.800 ARS (US$ 95 oficial)",
+        "destacado": "Llega al Parque Nacional a tiempo"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Gran Meliá Iguazú",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.3",
+        "calificacion": "Excepcional (3.200 reseñas)",
+        "zona": "Dentro del Parque Nacional Iguazú",
+        "precio_noche": "$ 440.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El único hotel con vista frontal directa a la Garganta del Diablo. Piscina infinita de 50 metros frente a los saltos y acceso exclusivo a pie antes que abra el parque.",
+        "booking_url": "https://www.booking.com/hotel/ar/gran-melia-iguazu.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Loi Suites Iguazú Hotel",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Fantástico (4.100 reseñas)",
+        "zona": "Selva Iryapú (Reserva Ecológica)",
+        "precio_noche": "$ 185.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Construido en plena selva misionera con puentes colgantes entre la vegetación, piscinas estilo laguna natural y gastronomía internacional.",
+        "booking_url": "https://www.booking.com/hotel/ar/loi-suites-iguazu.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "O2 Hotel Iguazú",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Excelente (2.280 reseñas)",
+        "zona": "Centro Urbano de Puerto Iguazú",
+        "precio_noche": "$ 65.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Hotel moderno y sustentable en el centro con terraza rooftop panorámica, piscina, sauna, cercanía a restaurantes y precio muy accesible.",
+        "booking_url": "https://www.booking.com/hotel/ar/o2-hotel-iguazu.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "estandar",
+      "posicion_pct": 36,
+      "rango_min": "$ 80.000 ARS",
+      "rango_max": "$ 138.000 ARS",
+      "mensaje": "Por el momento, se mantienen precios estándar para visitar las Cataratas del Iguazú.",
+      "texto_pin": "$ 82.600 ARS es un precio estándar cercano al piso",
+      "consejo": "Excelente momento para comprar tickets de primavera. Horarios ideales saliendo de mañana temprano desde Aeroparque.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        128000,
+        115000,
+        102000,
+        92000,
+        82600
+      ],
+      "historial_formato": "$ "
+    },
+    "codigo_pais": "ar",
+    "categoria_region": "cabotaje"
+  },
+  {
+    "id": "madryn",
+    "ciudad": "Puerto Madryn & Península Valdés",
+    "pais": "Argentina",
+    "bandera": "🐋",
+    "iata": "REL",
+    "tipo_ruta": "Cabotaje Nacional",
+    "es_cabotaje": true,
+    "categoria_region": "cabotaje",
+    "precio_desde": "$ 108.000 ARS (US$ 94)",
+    "comando_tg": "/madryn",
+    "resena": "Santuario mundial de fauna marina: avistaje de Ballenas Francas Australes desde la playa El Doradillo y lanchas en Puerto Pirámides, buceo con lobos marinos y pingüinos en Punta Tombo.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ REL)",
+        "fechas": "15 Oct - 19 Oct 2026",
+        "noches": 4,
+        "precio": "$ 108.000 ARS (US$ 94 oficial)",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ REL)",
+        "fechas": "22 Oct - 26 Oct 2026",
+        "noches": 4,
+        "precio": "$ 118.000 ARS (US$ 103 oficial)",
+        "destacado": "Vuelo directo de 2h"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ REL/PMY)",
+        "fechas": "08 Oct - 13 Oct 2026",
+        "noches": 5,
+        "precio": "$ 136.000 ARS (US$ 118 oficial)",
+        "destacado": "Opción aeropuerto directo PMY"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Hotel Territorio",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.3",
+        "calificacion": "Excepcional (1.450 reseñas)",
+        "zona": "Punta Cuevas / Frente al Mar",
+        "precio_noche": "$ 240.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Boutique de arquitectura contemporánea frente a las aguas del Golfo Nuevo con vista directa al paso de ballenas.",
+        "booking_url": "https://www.booking.com/hotel/ar/territorio.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Rayentray Puerto Madryn",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Fantástico (2.800 reseñas)",
+        "zona": "Costanera Sur / Playa",
+        "precio_noche": "$ 160.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Todas sus habitaciones tienen balcón con vista panorámica al mar. Casino, piscina cubierta climatizada y spa.",
+        "booking_url": "https://www.booking.com/hotel/ar/rayentray-puerto-madryn.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Dazzler by Wyndham Puerto Madryn",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.8",
+        "calificacion": "Muy Bueno (2.100 reseñas)",
+        "zona": "Centro / Frente a la Bahía",
+        "precio_noche": "$ 82.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Frente al mar en el centro de Madryn con gimnasio, sauna y excelente restaurante con cocina de mar.",
+        "booking_url": "https://www.booking.com/hotel/ar/dazzler-puerto-madryn.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 24,
+      "rango_min": "$ 105.000 ARS",
+      "rango_max": "$ 170.000 ARS",
+      "mensaje": "¡Temporada alta de ballenas con tarifa de oportunidad!",
+      "texto_pin": "$ 108.000 ARS es una tarifa muy conveniente",
+      "consejo": "Octubre y noviembre es el pico máximo de avistaje de ballenas con sus crías en el Golfo Nuevo.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        165000,
+        150000,
+        134000,
+        120000,
+        108000
+      ],
+      "historial_formato": "$ "
+    },
+    "codigo_pais": "ar"
+  },
+  {
+    "id": "salta",
+    "ciudad": "Salta & Valles Calchaquíes",
+    "pais": "Argentina",
+    "bandera": "⛰️",
+    "iata": "SLA",
+    "tipo_ruta": "Cabotaje Nacional",
+    "es_cabotaje": true,
+    "categoria_region": "cabotaje",
+    "precio_desde": "$ 94.200 ARS (US$ 82)",
+    "comando_tg": "/salta",
+    "resena": "La Linda colonial: arquitectura virreinal intacta, peñas folklóricas y punto de partida estratégico hacia los viñedos de altura de Cafayate, Cachi y las Salinas Grandes.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ SLA)",
+        "fechas": "14 Oct - 19 Oct 2026",
+        "noches": 5,
+        "precio": "$ 94.200 ARS (US$ 82 oficial)",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ SLA)",
+        "fechas": "21 Oct - 27 Oct 2026",
+        "noches": 6,
+        "precio": "$ 104.500 ARS (US$ 91 oficial)",
+        "destacado": "Vuelo directo de 2h 10m"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ SLA)",
+        "fechas": "07 Oct - 12 Oct 2026",
+        "noches": 5,
+        "precio": "$ 122.000 ARS (US$ 106 oficial)",
+        "destacado": "Múltiples horarios diarios"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "House of Jasmines Relais & Châteaux",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.5",
+        "calificacion": "Excepcional (1.450 reseñas)",
+        "zona": "Valle de Lerma / Finca Histórica",
+        "precio_noche": "$ 285.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Estancia centenaria al pie de los Andes con parque arbolado de eucaliptos, spa andino y alta gastronomía norteña.",
+        "booking_url": "https://www.booking.com/hotel/ar/house-of-jasmines.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Hotel Alejandro I",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (3.200 reseñas)",
+        "zona": "Plaza Belgrano (Centro)",
+        "precio_noche": "$ 138.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Hotel 5 estrellas frente a la plaza con piscina cubierta climatizada, vistas panorámicas al Valle de Lerma y gastronomía regional.",
+        "booking_url": "https://www.booking.com/hotel/ar/alejandro-i.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Design Suites Salta",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (2.350 reseñas)",
+        "zona": "Paseo Güemes / Centro Histórico",
+        "precio_noche": "$ 76.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Diseño contemporáneo en el centro histórico, piscina en la azotea y excelente relación costo/beneficio para recorrer peñas a pie.",
+        "booking_url": "https://www.booking.com/hotel/ar/design-suites-salta.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 22,
+      "rango_min": "$ 92.000 ARS",
+      "rango_max": "$ 148.000 ARS",
+      "mensaje": "¡Oportunidad en el Norte Argentino! Precios en el segmento más bajo de la temporada.",
+      "texto_pin": "$ 94.200 ARS es una tarifa baja récord",
+      "consejo": "JetSMART ofrece tarifas imbatibles para primavera. Salidas ideales desde Aeroparque.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        142000,
+        131000,
+        118000,
+        105000,
+        94200
+      ],
+      "historial_formato": "$ "
+    },
+    "codigo_pais": "ar"
+  },
+  {
+    "id": "sanmartin",
+    "ciudad": "San Martín de los Andes & Chapelco",
+    "pais": "Argentina",
+    "bandera": "🌲",
+    "iata": "CPC",
+    "tipo_ruta": "Cabotaje Nacional",
+    "es_cabotaje": true,
+    "categoria_region": "cabotaje",
+    "precio_desde": "$ 128.000 ARS (US$ 111)",
+    "comando_tg": "/sanmartin",
+    "resena": "Paraíso patagónico a orillas del Lago Lácar y cabecera de la mítica Ruta de los 7 Lagos. Bosques andinos milenarios, esquí en Cerro Chapelco y aldea de estilo alpino.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ CPC)",
+        "fechas": "14 Oct - 19 Oct 2026",
+        "noches": 5,
+        "precio": "$ 128.000 ARS (US$ 111 oficial)",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ CPC)",
+        "fechas": "21 Oct - 26 Oct 2026",
+        "noches": 5,
+        "precio": "$ 144.000 ARS (US$ 125 oficial)",
+        "destacado": "Vuelo directo de 2h 20m"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (EZE ➔ CPC)",
+        "fechas": "07 Oct - 12 Oct 2026",
+        "noches": 5,
+        "precio": "$ 165.000 ARS (US$ 143 oficial)",
+        "destacado": "Excelente disponibilidad"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Loi Suites Chapelco Resort",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.4",
+        "calificacion": "Excepcional (2.600 reseñas)",
+        "zona": "Chapelco Golf & Resort",
+        "precio_noche": "$ 290.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Resort 5 estrellas enclavado en la cordillera con el único campo de golf co-diseñado por Jack Nicklaus en Argentina.",
+        "booking_url": "https://www.booking.com/hotel/ar/loi-suites-chapelco.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Le Village Hotel",
+        "estrellas": "⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Fantástico (2.100 reseñas)",
+        "zona": "Centro de San Martín (Av. San Martín)",
+        "precio_noche": "$ 120.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Estilo montañés con jardín arbolado, sauna, hidromasaje y ubicación inmejorable para caminar por el centro.",
+        "booking_url": "https://www.booking.com/hotel/ar/le-village.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Apart Hotel Rincón de los Andes",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.8",
+        "calificacion": "Muy Bueno (1.800 reseñas)",
+        "zona": "Al pie de la montaña / Río Pocahullo",
+        "precio_noche": "$ 86.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Cabañas y departamentos de madera con chimenea a leña, piscina climatizada y ambiente familiar sereno.",
+        "booking_url": "https://www.booking.com/hotel/ar/rincon-de-los-andes.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 26,
+      "rango_min": "$ 125.000 ARS",
+      "rango_max": "$ 195.000 ARS",
+      "mensaje": "¡Precio bajo para volar directo a Chapelco!",
+      "texto_pin": "$ 128.000 ARS es una tarifa de oportunidad",
+      "consejo": "Aterrizar en el aeropuerto Chapelco ahorra 3 horas de transfer terrestre respecto a volar vía Bariloche.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        190000,
+        172000,
+        155000,
+        139000,
+        128000
+      ],
+      "historial_formato": "$ "
+    },
+    "codigo_pais": "ar"
+  },
+  {
+    "id": "ushuaia",
+    "ciudad": "Ushuaia & Tierra del Fuego",
+    "pais": "Argentina",
+    "bandera": "🐧",
+    "iata": "USH",
+    "tipo_ruta": "Cabotaje Nacional",
+    "es_cabotaje": true,
+    "categoria_region": "cabotaje",
+    "precio_desde": "$ 154.000 ARS (US$ 134)",
+    "comando_tg": "/ushuaia",
+    "resena": "La ciudad más austral del mundo: navegaciones por el Canal Beagle hacia el Faro Les Éclaireurs, Parque Nacional Tierra del Fuego, esquí en Cerro Castor y la mejor centolla fresca.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ USH)",
+        "fechas": "12 Oct - 18 Oct 2026",
+        "noches": 6,
+        "precio": "$ 154.000 ARS (US$ 134 oficial)",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ USH)",
+        "fechas": "19 Oct - 26 Oct 2026",
+        "noches": 7,
+        "precio": "$ 172.000 ARS (US$ 149 oficial)",
+        "destacado": "Vuelo directo de 3h 35m"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (EZE ➔ USH)",
+        "fechas": "05 Oct - 12 Oct 2026",
+        "noches": 7,
+        "precio": "$ 188.000 ARS (US$ 163 oficial)",
+        "destacado": "Sale desde Ezeiza"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Arakur Ushuaia Resort & Spa",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.5",
+        "calificacion": "Excepcional (3.800 reseñas)",
+        "zona": "Reserva Natural Alarkén",
+        "precio_noche": "$ 360.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Resort de lujo sobre la cima del cerro con piscinas infinitas climatizadas al aire libre mirando al Canal Beagle.",
+        "booking_url": "https://www.booking.com/hotel/ar/arakur-ushuaia-resort-spa.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Los Cauquenes Resort & Spa",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Fantástico (2.950 reseñas)",
+        "zona": "Playa sobre el Canal Beagle",
+        "precio_noche": "$ 240.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El único hotel 5 estrellas situado directamente sobre la playa del Canal Beagle con muelle privado y spa.",
+        "booking_url": "https://www.booking.com/hotel/ar/los-cauquenes-resort-spa.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Fueguino Hotel Patagónico",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (2.100 reseñas)",
+        "zona": "Centro de Ushuaia / Puerto",
+        "precio_noche": "$ 98.000 ARS / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Excelente ubicación céntrica para recorrer la Av. San Martín a pie y embarcarse en catamaranes.",
+        "booking_url": "https://www.booking.com/hotel/ar/fueguino.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 24,
+      "rango_min": "$ 150.000 ARS",
+      "rango_max": "$ 245.000 ARS",
+      "mensaje": "¡Gran oportunidad de vuelo al Fin del Mundo!",
+      "texto_pin": "$ 154.000 ARS es una tarifa baja de temporada",
+      "consejo": "Para Ushuaia esta tarifa en vuelo directo representa un ahorro de más del 30% respecto al promedio habitual.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        235000,
+        215000,
+        192000,
+        175000,
+        154000
+      ],
+      "historial_formato": "$ "
+    },
+    "codigo_pais": "ar"
+  },
+  {
+    "id": "florianopolis",
+    "ciudad": "Florianópolis & Ilha da Magia",
+    "pais": "Brasil",
+    "bandera": "🏖️",
+    "iata": "FLN",
+    "tipo_ruta": "Internacional / Regional",
+    "es_cabotaje": false,
+    "categoria_region": "brasil",
+    "precio_desde": "US$ 245",
+    "comando_tg": "/florianopolis",
+    "resena": "La 'Ilha da Magia': más de 40 playas espectaculares que combinan surf de primer nivel en Joaquina y Mole con la exclusiva vida nocturna y paradores de Jurerê Internacional.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (EZE/AEP ➔ FLN)",
+        "fechas": "15 Oct - 22 Oct 2026",
+        "noches": 7,
+        "precio": "US$ 245",
+        "destacado": "Tarifa récord regional"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "GOL Linhas Aéreas",
+        "escalas": "Directo (AEP ➔ FLN)",
+        "fechas": "22 Oct - 29 Oct 2026",
+        "noches": 7,
+        "precio": "US$ 275",
+        "destacado": "Vuelo directo de 2h 05m"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ FLN)",
+        "fechas": "10 Oct - 17 Oct 2026",
+        "noches": 7,
+        "precio": "US$ 310",
+        "destacado": "Equipaje y atención directa"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Costão do Santinho Resort",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Excepcional (4.500 reseñas)",
+        "zona": "Praia do Santinho (All Inclusive)",
+        "precio_noche": "US$ 310 / noche",
+        "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Mega resort all-inclusive frente al mar rodeado de dunas y reservas arqueológicas, con complejo de 9 piscinas y spa.",
+        "booking_url": "https://www.booking.com/hotel/br/costao-do-santinho-resort-all-inclusive.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "IL Campanario Villaggio Resort",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (3.200 reseñas)",
+        "zona": "Jurerê Internacional",
+        "precio_noche": "US$ 160 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "En el corazón de Jurerê a pasos de los paradores gastronómicos más exclusivos, piscinas climatizadas y saunas.",
+        "booking_url": "https://www.booking.com/hotel/br/il-campanario-villaggio-resort.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Majestic Palace Hotel",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (2.800 reseñas)",
+        "zona": "Av. Beira-Mar Norte",
+        "precio_noche": "US$ 88 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Piscina infinita con vistas a la bahía norte, excelente restaurante en azotea y conexión rápida a las playas del norte y sur.",
+        "booking_url": "https://www.booking.com/hotel/br/majestic-palace.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 22,
+      "rango_min": "US$ 240",
+      "rango_max": "US$ 380",
+      "mensaje": "¡Tarifa baja histórica para viajar a las playas de Florianópolis!",
+      "texto_pin": "US$ 245 es una tarifa récord baja",
+      "consejo": "Vuelo directo con JetSMART por menos de US$ 250 ida y vuelta es ideal para anticipar compras de verano.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        360,
+        330,
+        295,
+        265,
+        245
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "br"
+  },
+  {
+    "id": "maceio",
+    "ciudad": "Maceió & Maragogi (Caribe Brasileño)",
+    "pais": "Brasil",
+    "bandera": "🌴",
+    "iata": "MCZ",
+    "tipo_ruta": "Internacional / Regional",
+    "es_cabotaje": false,
+    "categoria_region": "brasil",
+    "precio_desde": "US$ 395",
+    "comando_tg": "/maceio",
+    "resena": "El auténtico 'Caribe Brasileño': las Galés de Maragogi con arrecifes marinos a kilómetros de la orilla, playas bordeadas de cocoteros y lagunas de aguas cálidas todo el año.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "LATAM Airlines",
+        "escalas": "1 escala corta (GRU)",
+        "fechas": "14 Nov - 22 Nov 2026",
+        "noches": 8,
+        "precio": "US$ 395",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "GOL Linhas Aéreas",
+        "escalas": "1 escala (GIG)",
+        "fechas": "07 Nov - 16 Nov 2026",
+        "noches": 9,
+        "precio": "US$ 425",
+        "destacado": "Conexión ágil"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Azul Linhas Aéreas",
+        "escalas": "1 escala (VCP)",
+        "fechas": "20 Nov - 28 Nov 2026",
+        "noches": 8,
+        "precio": "US$ 470",
+        "destacado": "Snacks y pantallas a bordo"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Salinas Maragogi All Inclusive Resort",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.5",
+        "calificacion": "Excepcional (4.800 reseñas)",
+        "zona": "Maragogi (Primerísima Línea)",
+        "precio_noche": "US$ 390 / noche",
+        "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El resort all inclusive más premiado de Sudamérica en TripAdvisor: río interior con kayaks, piscinas y playa de aguas calmas.",
+        "booking_url": "https://www.booking.com/hotel/br/salinas-do-maragogi-all-inclusive-resort.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Jatiúca Hotel & Resort",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (3.500 reseñas)",
+        "zona": "Praia de Jatiúca (Maceió)",
+        "precio_noche": "US$ 180 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El único resort dentro de la zona urbana de Maceió frente a la playa con 62.000 m² de parque tropical, lagunas y piscinas.",
+        "booking_url": "https://www.booking.com/hotel/br/jatiuca-resort.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Best Western Premier Maceió",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Excelente (3.100 reseñas)",
+        "zona": "Praia de Pajuçara (Maceió)",
+        "precio_noche": "US$ 85 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Frente a las piscinas naturales de Pajuçara donde salen las jangadas, piscina en terraza panorámica y precio sumamente accesible.",
+        "booking_url": "https://www.booking.com/hotel/br/best-western-premier-maceio.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 28,
+      "rango_min": "US$ 390",
+      "rango_max": "US$ 560",
+      "mensaje": "¡Precio récord para el paraíso de Maragogi y Maceió!",
+      "texto_pin": "US$ 395 es un precio bajo de oportunidad",
+      "consejo": "Para visitar las piscinas naturales de Maragogi se recomienda viajar con tabla de mareas en luna nueva o llena.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        530,
+        485,
+        450,
+        420,
+        395
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "br"
+  },
+  {
+    "id": "natal",
+    "ciudad": "Natal & Praia da Pipa",
+    "pais": "Brasil",
+    "bandera": "🐬",
+    "iata": "NAT",
+    "tipo_ruta": "Internacional / Regional",
+    "es_cabotaje": false,
+    "categoria_region": "brasil",
+    "precio_desde": "US$ 410",
+    "comando_tg": "/natal",
+    "resena": "Dunas gigantescas de arena dorada en Genipabu para paseos en buggy y la magia de Praia da Pipa con acantilados rojizos donde se observan delfines nadando junto a la playa.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "LATAM Airlines",
+        "escalas": "1 escala corta (GRU)",
+        "fechas": "12 Nov - 21 Nov 2026",
+        "noches": 9,
+        "precio": "US$ 410",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "GOL Linhas Aéreas",
+        "escalas": "1 escala (GIG)",
+        "fechas": "05 Nov - 14 Nov 2026",
+        "noches": 9,
+        "precio": "US$ 440",
+        "destacado": "Equipaje de mano estándar"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Escala o directo estacional",
+        "fechas": "18 Nov - 27 Nov 2026",
+        "noches": 9,
+        "precio": "US$ 490",
+        "destacado": "Atención personalizada"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Hotel Sombra e Água Fresca",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.4",
+        "calificacion": "Excepcional (2.200 reseñas)",
+        "zona": "Praia do Amor (Praia da Pipa)",
+        "precio_noche": "US$ 240 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Sobre el punto más alto de Pipa frente a la Praia do Amor con 3 piscinas panorámicas, vista al mar y bosque atlántico.",
+        "booking_url": "https://www.booking.com/hotel/br/sombra-e-agua-fresca.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Wish Natal",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Fantástico (3.800 reseñas)",
+        "zona": "Via Costeira (Natal)",
+        "precio_noche": "US$ 145 / noche",
+        "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Resort frente al mar en la Via Costeira con parque acuático infantil, spa y vistas privilegiadas al Morro do Careca.",
+        "booking_url": "https://www.booking.com/hotel/br/wish-natal.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Serhs Natal Grand Hotel & Resort",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (3.400 reseñas)",
+        "zona": "Ponta Negra / Via Costeira",
+        "precio_noche": "US$ 98 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Gran complejo resort con 4 piscinas al aire libre, parque acuático, 5 restaurantes y precio imbatible por noche.",
+        "booking_url": "https://www.booking.com/hotel/br/serhs-natal-grand.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 28,
+      "rango_min": "US$ 400",
+      "rango_max": "US$ 580",
+      "mensaje": "¡Gran precio para viajar a Natal y los acantilados de Pipa!",
+      "texto_pin": "US$ 410 es una tarifa más baja de lo habitual",
+      "consejo": "Pipa se ubica a 1h 15m del aeropuerto de Natal; se recomienda transfer directo para alojarse en la villa.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        550,
+        510,
+        465,
+        435,
+        410
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "br"
+  },
+  {
+    "id": "recife",
+    "ciudad": "Recife & Porto de Galinhas",
+    "pais": "Brasil",
+    "bandera": "🐠",
+    "iata": "REC",
+    "tipo_ruta": "Internacional / Regional",
+    "es_cabotaje": false,
+    "categoria_region": "brasil",
+    "precio_desde": "US$ 385",
+    "comando_tg": "/recife",
+    "resena": "Las célebres piscinas naturales de aguas cristalinas de Porto de Galinhas, corales vivos, paseos en jangada tradicional y el encanto arquitectónico virreinal de Olinda.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "GOL Linhas Aéreas",
+        "escalas": "1 escala corta (GRU)",
+        "fechas": "10 Nov - 19 Nov 2026",
+        "noches": 9,
+        "precio": "US$ 385",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "LATAM Airlines",
+        "escalas": "1 escala (GIG)",
+        "fechas": "15 Nov - 23 Nov 2026",
+        "noches": 8,
+        "precio": "US$ 415",
+        "destacado": "Equipaje carry-on incluido"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Azul Linhas Aéreas",
+        "escalas": "Directo o escala VCP",
+        "fechas": "06 Nov - 15 Nov 2026",
+        "noches": 9,
+        "precio": "US$ 460",
+        "destacado": "Hub principal en Recife"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Nannai Muro Alto Resort",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.6",
+        "calificacion": "Excepcional (2.900 reseñas)",
+        "zona": "Praia de Muro Alto / Porto de Galinhas",
+        "precio_noche": "US$ 480 / noche",
+        "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Bungalows sobre el agua estilo polinesio con piscinas privadas en una laguna natural de aguas calmas sin olas.",
+        "booking_url": "https://www.booking.com/hotel/br/nannai-beach-resort.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "The Westin Porto de Galinhas",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Fantástico (2.400 reseñas)",
+        "zona": "Porto de Galinhas (Frente al Mar)",
+        "precio_noche": "US$ 260 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Resort todo incluido de primera línea frente al mar con servicio de playa de lujo, spa Heavenly y gastronomía gourmet.",
+        "booking_url": "https://www.booking.com/hotel/br/the-westin-porto-de-galinhas.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Grand Mercure Recife Boa Viagem",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.8",
+        "calificacion": "Muy Bueno (2.800 reseñas)",
+        "zona": "Praia de Boa Viagem (Recife)",
+        "precio_noche": "US$ 75 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Frente a la playa de Boa Viagem, piscina, desayuno buffet incluido y punto de partida económico hacia Olinda y Porto de Galinhas.",
+        "booking_url": "https://www.booking.com/hotel/br/grand-mercure-recife-boa-viagem.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 27,
+      "rango_min": "US$ 370",
+      "rango_max": "US$ 540",
+      "mensaje": "¡Tarifa baja confirmada para Porto de Galinhas!",
+      "texto_pin": "US$ 385 es una tarifa económica récord",
+      "consejo": "Porto de Galinhas queda a solo 50 minutos por autopista del aeropuerto de Recife.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        510,
+        470,
+        435,
+        405,
+        385
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "br"
+  },
+  {
+    "id": "rio",
+    "ciudad": "Río de Janeiro",
+    "pais": "Brasil",
+    "bandera": "🇧🇷",
+    "iata": "GIG",
+    "tipo_ruta": "Internacional / Regional",
+    "es_cabotaje": false,
+    "precio_desde": "US$ 295",
+    "comando_tg": "/rio",
+    "resena": "El Cristo Redentor, el teleférico del Pan de Azúcar y las playas míticas de Ipanema y Copacabana. A solo 2h 40m de los paraísos caribeños brasileños de Arraial do Cabo y Búzios.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (EZE/AEP ➔ GIG)",
+        "fechas": "15 Oct - 22 Oct 2026",
+        "noches": 7,
+        "precio": "US$ 295",
+        "destacado": "Tarifa récord regional"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (EZE ➔ GIG)",
+        "fechas": "22 Oct - 29 Oct 2026",
+        "noches": 7,
+        "precio": "US$ 310",
+        "destacado": "Flota de aviones modernos"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (AEP ➔ GIG)",
+        "fechas": "10 Oct - 18 Oct 2026",
+        "noches": 8,
+        "precio": "US$ 370",
+        "destacado": "Sale desde Aeroparque"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Copacabana Palace, A Belmond Hotel",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.5",
+        "calificacion": "Excepcional (2.650 reseñas)",
+        "zona": "Copacabana frente al mar",
+        "precio_noche": "US$ 450 / noche",
+        "foto": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El palacio más legendario de Sudamérica. Piscina semiolímpica histórica, restaurante con estrella Michelin (Mee) y servicio 5 estrellas superior.",
+        "booking_url": "https://www.booking.com/hotel/br/copacabana-palace.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Miramar Hotel by Windsor",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (4.200 reseñas)",
+        "zona": "Av. Atlântica / Posto 5",
+        "precio_noche": "US$ 160 / noche",
+        "foto": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Hotel de diseño frente a la playa con piscina infinita de granito verde en la terraza, servicio de mayordomo y desayuno buffet premiado.",
+        "booking_url": "https://www.booking.com/hotel/br/miramar-by-windsor.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Ipanema Inn Hotel",
+        "estrellas": "⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Excelente (2.890 reseñas)",
+        "zona": "Barrio Ipanema (a 100m de la playa)",
+        "precio_noche": "US$ 98 / noche",
+        "foto": "https://images.unsplash.com/photo-1568495248636-6432b97bd949?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Ubicado en la calle más segura y arbolada de Ipanema, a pasos de restaurantes de autor. Desayuno artesanal y servicio de playa sin costos extra.",
+        "booking_url": "https://www.booking.com/hotel/br/ipanema-inn.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "estandar",
+      "posicion_pct": 42,
+      "rango_min": "US$ 280",
+      "rango_max": "US$ 420",
+      "mensaje": "Por el momento, se mantienen los precios estándar para volar a Río de Janeiro.",
+      "texto_pin": "US$ 295 es un precio estándar competitivo",
+      "consejo": "Vuelo directo con JetSMART saliendo de Aeroparque. Para fines de semana largos, esta tarifa suele duplicarse.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        390,
+        360,
+        330,
+        310,
+        295
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "br",
+    "categoria_region": "brasil"
+  },
+  {
+    "id": "salvador",
+    "ciudad": "Salvador de Bahía & Costa dos Coqueiros",
+    "pais": "Brasil",
+    "bandera": "🥁",
+    "iata": "SSA",
+    "tipo_ruta": "Internacional / Regional",
+    "es_cabotaje": false,
+    "categoria_region": "brasil",
+    "precio_desde": "US$ 365",
+    "comando_tg": "/salvador",
+    "resena": "Epicentro de la cultura afrobrasileña con las fachadas coloniales del Pelourinho, ritmo de Olodum y excursiones a las playas idílicas y piscinas naturales de Praia do Forte.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "GOL Linhas Aéreas",
+        "escalas": "1 escala corta (GIG)",
+        "fechas": "12 Nov - 20 Nov 2026",
+        "noches": 8,
+        "precio": "US$ 365",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "LATAM Airlines",
+        "escalas": "1 escala (GRU)",
+        "fechas": "05 Nov - 13 Nov 2026",
+        "noches": 8,
+        "precio": "US$ 395",
+        "destacado": "Conexión eficiente"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo de temporada (AEP ➔ SSA)",
+        "fechas": "18 Nov - 26 Nov 2026",
+        "noches": 8,
+        "precio": "US$ 450",
+        "destacado": "Vuelo directo sin escalas"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Fera Palace Hotel",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.4",
+        "calificacion": "Excepcional (2.100 reseñas)",
+        "zona": "Centro Histórico / Rua Chile",
+        "precio_noche": "US$ 230 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Edificio Art Déco de 1934 completamente restaurado. Piscina infinita en la terraza frente a la Bahía de Todos los Santos.",
+        "booking_url": "https://www.booking.com/hotel/br/fera-palace.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Tivoli Ecoresort Praia do Forte",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.3",
+        "calificacion": "Fantástico (3.600 reseñas)",
+        "zona": "Praia do Forte (Costa dos Coqueiros)",
+        "precio_noche": "US$ 340 / noche",
+        "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Ecoresort de lujo en plena naturaleza tropical con media pensión incluida, spa talasoterapia y acceso directo a la playa.",
+        "booking_url": "https://www.booking.com/hotel/br/tivoli-ecoresort-praia-do-forte.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Wish Hotel da Bahia",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "8.8",
+        "calificacion": "Muy Bueno (3.100 reseñas)",
+        "zona": "Campo Grande / Corredor da Vitória",
+        "precio_noche": "$ 78 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Monumento histórico con más de 350 obras de arte brasileñas, dos piscinas al aire libre y spa en una zona muy arbolada.",
+        "booking_url": "https://www.booking.com/hotel/br/wish-hotel-da-bahia.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 25,
+      "rango_min": "US$ 350",
+      "rango_max": "US$ 520",
+      "mensaje": "¡Precio bajo detectado para Bahía y playas del Nordeste!",
+      "texto_pin": "US$ 365 es una tarifa baja de oportunidad",
+      "consejo": "Tarifa excelente con escala breve en Río. Permite combinar cultura colonial con el relax de Praia do Forte.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        490,
+        450,
+        410,
+        385,
+        365
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "br"
+  },
+  {
+    "id": "santiago",
+    "ciudad": "Santiago de Chile & Cordillera",
+    "pais": "Chile",
+    "bandera": "🇨🇱",
+    "iata": "SCL",
+    "tipo_ruta": "Internacional / Regional",
+    "es_cabotaje": false,
+    "categoria_region": "caribe_usa",
+    "precio_desde": "US$ 155",
+    "comando_tg": "/santiago",
+    "resena": "Cruce exprés de los Andes en 2 horas: polo comercial y tecnológico de vanguardia, bodegas de renombre en Valle del Maipo y centros de nieve como Valle Nevado a solo 1 hora.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "SKY Airline",
+        "escalas": "Directo (AEP ➔ SCL)",
+        "fechas": "15 Oct - 19 Oct 2026",
+        "noches": 4,
+        "precio": "US$ 155",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "JetSMART",
+        "escalas": "Directo (AEP ➔ SCL)",
+        "fechas": "22 Oct - 26 Oct 2026",
+        "noches": 4,
+        "precio": "US$ 168",
+        "destacado": "Vuelo directo de 2h 10m"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "LATAM Airlines",
+        "escalas": "Directo (AEP/EZE ➔ SCL)",
+        "fechas": "08 Oct - 12 Oct 2026",
+        "noches": 4,
+        "precio": "US$ 195",
+        "destacado": "Múltiples vuelos al día"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "The Singular Santiago",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.4",
+        "calificacion": "Excepcional (2.400 reseñas)",
+        "zona": "Barrio Lastarria",
+        "precio_noche": "US$ 210 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Hotel de diseño clásico refinado en el barrio más bohemio y seguro, rooftop con piscina y bar mirando al Parque Forestal.",
+        "booking_url": "https://www.booking.com/hotel/cl/the-singular-santiago.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Mandarin Oriental Santiago",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (3.200 reseñas)",
+        "zona": "Las Condes (Sector Financiero)",
+        "precio_noche": "US$ 190 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Piscina estilo laguna con cascada rodeada de jardines, alta gastronomía y cercanía inmediata a Parque Arauco.",
+        "booking_url": "https://www.booking.com/hotel/cl/mandarin-oriental-santiago.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Hotel Magnolia Santiago",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Excelente (1.900 reseñas)",
+        "zona": "Cerro Santa Lucía / Centro",
+        "precio_noche": "US$ 115 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Mansión patrimonial de 1929 restaurada con diseño vanguardista, terraza con vista panorámica y atención personalizada.",
+        "booking_url": "https://www.booking.com/hotel/cl/magnolia.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 20,
+      "rango_min": "US$ 145",
+      "rango_max": "US$ 240",
+      "mensaje": "¡Tarifa mínima para una escapada de compras a Chile!",
+      "texto_pin": "US$ 155 es una tarifa récord",
+      "consejo": "SKY Airline y JetSMART compiten agresivamente en este corredor directo de apenas 2 horas.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        230,
+        205,
+        185,
+        168,
+        155
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "cl"
+  },
+  {
+    "id": "sanandres",
+    "ciudad": "San Andrés & Mar de 7 Colores",
+    "pais": "Colombia",
+    "bandera": "🇨🇴",
+    "iata": "ADZ",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "caribe_usa",
+    "precio_desde": "US$ 520",
+    "comando_tg": "/sanandres",
+    "resena": "Reserva de Biósfera Seaflower con su inconfundible 'Mar de los Siete Colores'. Excursiones a Johnny Cay, cayo Acuario con mantarrayas y arrecifes coralinos a 29°C constantes.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Copa Airlines",
+        "escalas": "1 escala corta (PTY)",
+        "fechas": "08 Nov - 16 Nov 2026",
+        "noches": 8,
+        "precio": "US$ 520",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Avianca",
+        "escalas": "1 escala (BOG)",
+        "fechas": "15 Nov - 23 Nov 2026",
+        "noches": 8,
+        "precio": "US$ 550",
+        "destacado": "Conexión ágil en Bogotá"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "LATAM Airlines",
+        "escalas": "1 escala (LIM)",
+        "fechas": "22 Nov - 30 Nov 2026",
+        "noches": 8,
+        "precio": "US$ 590",
+        "destacado": "Excelente equipaje"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Decameron Isleño All Inclusive",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Excepcional (3.100 reseñas)",
+        "zona": "Spratt Bight (Frente al Mar)",
+        "precio_noche": "US$ 240 / noche",
+        "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Resort todo incluido en la mejor zona de playa de San Andrés, arquitectura caribeña moderna y club de playa.",
+        "booking_url": "https://www.booking.com/hotel/co/decameron-isleno.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Hotel Casablanca San Andrés",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Fantástico (2.800 reseñas)",
+        "zona": "Peatonal Spratt Bight",
+        "precio_noche": "US$ 160 / noche",
+        "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Sobre el paseo peatonal frente a la playa con 4 restaurantes gourmet reconocidos, piscina al aire libre y cócteles.",
+        "booking_url": "https://www.booking.com/hotel/co/hotel-casablanca-san-andres.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Aquamare Hotel",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (2.200 reseñas)",
+        "zona": "Centro Comercial y Turístico",
+        "precio_noche": "US$ 95 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Hotel boutique moderno inaugurado recientemente con piscina, desayuno buffet incluido y ubicación céntrica.",
+        "booking_url": "https://www.booking.com/hotel/co/aquamare.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 24,
+      "rango_min": "US$ 490",
+      "rango_max": "US$ 720",
+      "mensaje": "¡Oportunidad récord en el Caribe Colombiano!",
+      "texto_pin": "US$ 520 es una tarifa baja destacada",
+      "consejo": "Copa vía Panamá ofrece una escala muy corta y permite llevar valija carry-on de 10 kg.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        680,
+        630,
+        590,
+        550,
+        520
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "co"
+  },
+  {
+    "id": "cusco",
+    "ciudad": "Cusco & Machu Picchu",
+    "pais": "Perú",
+    "bandera": "🇵🇪",
+    "iata": "CUZ",
+    "tipo_ruta": "Sudamérica & Cultura Andina",
+    "es_cabotaje": false,
+    "categoria_region": "caribe_usa",
+    "precio_desde": "US$ 285",
+    "comando_tg": "/cusco",
+    "codigo_pais": "pe",
+    "resena": "Capital arqueológica de América: templos incas milenarios, Valle Sagrado y el misterio celestial de Machu Picchu.",
+    "vuelos": [
+      {
+        "puesto": "Top 1 Económico",
+        "aerolinea": "LATAM Airlines",
+        "fechas": "08 May ➔ 16 May 2026 (8 noches)",
+        "escalas": "1 escala en Lima (LIM)",
+        "precio": "US$ 285"
+      },
+      {
+        "puesto": "Top 2 Rápido",
+        "aerolinea": "Sky Airline",
+        "fechas": "14 Jun ➔ 22 Jun 2026 (8 noches)",
+        "escalas": "1 escala breve en Santiago / Lima",
+        "precio": "US$ 310"
+      },
+      {
+        "puesto": "Top 3 Confort",
+        "aerolinea": "Avianca",
+        "fechas": "10 Jul ➔ 19 Jul 2026 (9 noches)",
+        "escalas": "1 escala en Bogotá (BOG)",
+        "precio": "US$ 340"
+      }
+    ],
+    "hoteles": [
+      {
+        "nombre": "Antigua Casona San Blas",
+        "estrellas": "4 estrellas · 9.6 Excepcional",
+        "precio_noche": "US$ 85 / noche",
+        "zona": "Barrio San Blas",
+        "comentario": "Casona colonial restaurada con chimenea central, patio andino y servicio de té de coca de cortesía."
+      },
+      {
+        "nombre": "Casa Andina Standard Cusco Plaza",
+        "estrellas": "3 estrellas · 9.0 Fantástico",
+        "precio_noche": "US$ 58 / noche",
+        "zona": "Centro Histórico",
+        "comentario": "A 1 cuadra de la Plaza de Armas; habitaciones confortables con calefacción y desayuno buffet andino."
+      },
+      {
+        "nombre": "Tierra Viva Cusco Saphi",
+        "estrellas": "3 estrellas · 8.9 Fabuloso",
+        "precio_noche": "US$ 62 / noche",
+        "zona": "Calle Saphi",
+        "comentario": "Posada boutique tranquila cerca de la catedral; personal sumamente atento y oxígeno disponible."
+      }
+    ],
+    "termometro": {
+      "nivel": "oportunidad",
+      "posicion_pct": 32,
+      "rango_min": "US$ 260",
+      "rango_max": "US$ 440",
+      "mensaje": "Tarifa muy ventajosa para volar a los Andes peruanos en temporada seca.",
+      "texto_pin": "Tarifa destacada US$ 285",
+      "consejo": "Excelente oportunidad para reservar la excursión a Machu Picchu con tren panorámico y entradas oficiales.",
+      "historial_valores": [
+        400,
+        365,
+        340,
+        305,
+        285
+      ],
+      "historial_formato": "US$ "
+    }
+  },
+  {
+    "id": "newyork",
+    "ciudad": "Nueva York (Manhattan & Broadway)",
+    "pais": "Estados Unidos",
+    "bandera": "🇺🇸",
+    "iata": "JFK / EWR",
+    "tipo_ruta": "Internacional Directo / 1 Escala",
+    "es_cabotaje": false,
+    "categoria_region": "caribe_usa",
+    "precio_desde": "US$ 870",
+    "comando_tg": "/newyork",
+    "resena": "La Gran Manzana: rascacielos infinitos, luces de Broadway, Central Park, el Puente de Brooklyn y museos legendarios.",
+    "vuelos": [
+      {
+        "puesto": "Top 1",
+        "aerolinea": "American Airlines (Directo)",
+        "escalas": "Directo sin escalas (10h 45m)",
+        "fechas": "12 Mayo - 24 Mayo 2026",
+        "noches": 12,
+        "precio": "US$ 870",
+        "destacado": true
+      },
+      {
+        "puesto": "Top 2",
+        "aerolinea": "Delta Air Lines (Directo)",
+        "escalas": "Directo sin escalas (10h 50m)",
+        "fechas": "04 Junio - 18 Junio 2026",
+        "noches": 14,
+        "precio": "US$ 915",
+        "destacado": false
+      },
+      {
+        "puesto": "Top 3",
+        "aerolinea": "Copa Airlines (1 Escala PTY)",
+        "escalas": "1 escala rápida en Panamá (13h 20m)",
+        "fechas": "08 Septiembre - 22 Septiembre 2026",
+        "noches": 14,
+        "precio": "US$ 840",
+        "destacado": false
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "Económico Inteligente",
+        "badge": "Calidad - Precio",
+        "nombre": "Pod Times Square Hotel",
+        "estrellas": 4,
+        "puntuacion": 8.6,
+        "calificacion": "Fabuloso",
+        "zona": "Midtown West (a 3 cuadras de Times Square)",
+        "precio_noche": "US$ 145/noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80",
+        "descripcion": "Habitaciones modernas estilo cápsula chic con baño privado y terraza rooftop con vistas al skyline.",
+        "booking_url": "https://www.booking.com/hotel/us/pod-times-square.html"
+      },
+      {
+        "categoria": "Recomendado",
+        "badge": "Mejor Ubicación",
+        "nombre": "Arlo Midtown Manhattan",
+        "estrellas": 4,
+        "puntuacion": 8.9,
+        "calificacion": "Excelente",
+        "zona": "Hell's Kitchen / Hudson Yards",
+        "precio_noche": "US$ 210/noche",
+        "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80",
+        "descripcion": "Diseño vanguardista, camas premium y fácil acceso a The High Line, Broadway y Penn Station.",
+        "booking_url": "https://www.booking.com/hotel/us/arlo-midtown.html"
+      },
+      {
+        "categoria": "Alta Gama",
+        "badge": "Vistas Panorámicas",
+        "nombre": "1 Hotel Brooklyn Bridge",
+        "estrellas": 5,
+        "puntuacion": 9.2,
+        "calificacion": "Excepcional",
+        "zona": "DUMBO (Frente al East River y Manhattan)",
+        "precio_noche": "US$ 390/noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=600&q=80",
+        "descripcion": "Lujo sustentable frente al Puente de Brooklyn con piscina infinita en la terraza frente a los rascacielos.",
+        "booking_url": "https://www.booking.com/hotel/us/1-brooklyn-bridge.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "Oportunidad Rara",
+      "posicion_pct": 22,
+      "rango_min": "US$ 820",
+      "rango_max": "US$ 1.350",
+      "mensaje": "Tarifa muy conveniente para volar directo a Nueva York (US$ 870 vs promedio de US$ 1.150).",
+      "texto_pin": "Tarifa Actual: US$ 870",
+      "consejo": "Los vuelos directos por debajo de US$ 900 son escasos; conviene asegurar la reserva con 90 días de anticipación.",
+      "historial_dias": [
+        "Hace 20d",
+        "Hace 15d",
+        "Hace 10d",
+        "Hace 5d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1120,
+        1080,
+        990,
+        895,
+        870
+      ],
+      "historial_formato": "US$ {val}"
+    },
+    "codigo_pais": "us"
+  },
+  {
+    "id": "miami",
+    "ciudad": "Miami & Sur de Florida",
+    "pais": "Estados Unidos",
+    "bandera": "🇺🇸",
+    "iata": "MIA",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "precio_desde": "US$ 690",
+    "comando_tg": "/miami",
+    "resena": "Playas turquesas, distritos de diseño como Wynwood y el centro financiero de Brickell. Punto de partida estratégico para conectar con Orlando en el tren de alta velocidad Brightline (3h 30m) o recorrer los cayos por la Overseas Highway.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Avianca / Copa Airlines",
+        "escalas": "1 escala corta",
+        "fechas": "11 Nov - 21 Nov 2026",
+        "noches": 10,
+        "precio": "US$ 690",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "American Airlines",
+        "escalas": "Directo (EZE ➔ MIA)",
+        "fechas": "04 Nov - 14 Nov 2026",
+        "noches": 10,
+        "precio": "US$ 890",
+        "destacado": "Vuelo directo nocturno"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
+        "escalas": "Directo (EZE ➔ MIA)",
+        "fechas": "08 Nov - 20 Nov 2026",
+        "noches": 12,
+        "precio": "US$ 920",
+        "destacado": "Atención en español y valijas"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "1 Hotel South Beach",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Excepcional (2.890 reseñas)",
+        "zona": "Collins Ave / South Beach",
+        "precio_noche": "US$ 490 / noche",
+        "foto": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El resort de lujo sustentable por excelencia en Miami: 4 piscinas al aire libre, club de playa privado y diseño orgánico frente al océano.",
+        "booking_url": "https://www.booking.com/hotel/us/1-south-beach.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "The Palms Hotel & Spa",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.8",
+        "calificacion": "Muy Bueno (3.410 reseñas)",
+        "zona": "Mid-Beach / Collins Ave",
+        "precio_noche": "US$ 210 / noche",
+        "foto": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Oasis tropical sereno frente a la playa con jardín botánico, restaurante farm-to-table y acceso directo al paseo marítimo de South Beach.",
+        "booking_url": "https://www.booking.com/hotel/us/the-palms-spa.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "CitizenM Miami Brickell",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (2.120 reseñas)",
+        "zona": "Brickell / Downtown Financiero",
+        "precio_noche": "US$ 135 / noche",
+        "foto": "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Habitaciones inteligentes con domótica, camas XL comodísimas, piscina rooftop y ubicación privilegiada junto al tren Brightline y Metromover.",
+        "booking_url": "https://www.booking.com/hotel/us/citizenm-miami-brickell.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "estandar",
+      "posicion_pct": 38,
+      "rango_min": "US$ 680",
+      "rango_max": "US$ 950",
+      "mensaje": "Por el momento, se mantienen los precios estándar para tu búsqueda a Miami.",
+      "texto_pin": "US$ 690 es un precio estándar",
+      "consejo": "Tarifa de ida y vuelta muy competitiva con 1 escala corta (Avianca / Copa). Se ubica cerca del piso habitual de los últimos 60 días.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        890,
+        840,
+        780,
+        720,
+        690
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "us",
+    "categoria_region": "caribe_usa"
+  },
+  {
+    "id": "orlando",
+    "ciudad": "Orlando (Disney & Universal)",
+    "pais": "Estados Unidos",
+    "bandera": "🏰",
+    "iata": "MCO",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "caribe_usa",
+    "precio_desde": "US$ 710",
+    "comando_tg": "/orlando",
+    "resena": "La meca universal del entretenimiento y parques temáticos: Magic Kingdom, Epcot, Universal Studios, el nuevo Epic Universe y conexión veloz con Miami vía tren Brightline.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Copa Airlines",
+        "escalas": "1 escala corta (PTY)",
+        "fechas": "04 Nov - 14 Nov 2026",
+        "noches": 10,
+        "precio": "US$ 710",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Avianca",
+        "escalas": "1 escala (BOG)",
+        "fechas": "11 Nov - 21 Nov 2026",
+        "noches": 10,
+        "precio": "US$ 740",
+        "destacado": "Escala rápida"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "American Airlines / LATAM",
+        "escalas": "1 escala (MIA)",
+        "fechas": "18 Nov - 28 Nov 2026",
+        "noches": 10,
+        "precio": "US$ 820",
+        "destacado": "Equipaje y millas"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Disney's Grand Floridian Resort & Spa",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Excepcional (3.400 reseñas)",
+        "zona": "Monorail Disney / Magic Kingdom",
+        "precio_noche": "US$ 640 / noche",
+        "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El resort insignia de estilo victoriano de Walt Disney World: acceso directo en monorriel y vista a los fuegos artificiales.",
+        "booking_url": "https://www.booking.com/hotel/us/disney-s-grand-floridian-resort-spa.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Loews Portofino Bay Hotel at Universal",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Fantástico (4.100 reseñas)",
+        "zona": "Universal Orlando Resort",
+        "precio_noche": "US$ 390 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Inspirado en el pueblo costero italiano de Portofino, incluye pases Universal Express Unlimited gratuitos para saltar filas.",
+        "booking_url": "https://www.booking.com/hotel/us/loews-portofino-bay-at-universal-orlando.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Hyatt Regency Orlando",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (3.900 reseñas)",
+        "zona": "International Drive",
+        "precio_noche": "US$ 145 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Piscina estilo resort con tobogán y cascadas, spa y ubicación privilegiada sobre I-Drive a minutos de los parques.",
+        "booking_url": "https://www.booking.com/hotel/us/hyatt-regency-orlando.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 28,
+      "rango_min": "US$ 690",
+      "rango_max": "US$ 960",
+      "mensaje": "¡Precio muy competitivo para viajar a los parques de Orlando!",
+      "texto_pin": "US$ 710 es una tarifa de oportunidad",
+      "consejo": "Copa Airlines vía Panamá permite llegar a Orlando sin pasar por la aduana congestionada de Miami.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        920,
+        860,
+        810,
+        750,
+        710
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "us"
+  },
+  {
+    "id": "cancun",
+    "ciudad": "Cancún & Riviera Maya",
+    "pais": "México",
+    "bandera": "🇲🇽",
+    "iata": "CUN",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "precio_desde": "US$ 580",
+    "comando_tg": "/cancun",
+    "resena": "El mar Caribe mexicano en su máxima pureza: arenas coralinas blancas, cenotes sagrados, la zona arqueológica maya de Tulum y el acceso rápido a Isla Mujeres en ferry panorámico.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Arajet",
+        "escalas": "1 escala corta (SDQ)",
+        "fechas": "12 Nov - 21 Nov 2026",
+        "noches": 9,
+        "precio": "US$ 580",
+        "destacado": "Tarifa récord Caribe"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Copa Airlines",
+        "escalas": "1 escala corta (PTY)",
+        "fechas": "06 Nov - 16 Nov 2026",
+        "noches": 10,
+        "precio": "US$ 690",
+        "destacado": "Conexión eficiente Hub de las Américas"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Aeroméxico",
+        "escalas": "1 escala (MEX)",
+        "fechas": "15 Nov - 23 Nov 2026",
+        "noches": 8,
+        "precio": "US$ 730",
+        "destacado": "Aerolínea de bandera mexicana"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Hotel Xcaret Arte (All-Fun Inclusive)",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.6",
+        "calificacion": "Excepcional (3.100 reseñas)",
+        "zona": "Playa del Carmen / Riviera Maya",
+        "precio_noche": "US$ 620 / noche",
+        "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El concepto todo incluido más premiado del Caribe: acceso ilimitado a todos los parques y cenotes de Grupo Xcaret con traslados incluidos.",
+        "booking_url": "https://www.booking.com/hotel/mx/hotel-xcaret-arte.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "The Grand at Moon Palace",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Fantástico (4.800 reseñas)",
+        "zona": "Cancún Sur / Zona Privada",
+        "precio_noche": "US$ 380 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Mega resort familiar todo incluido con parque acuático privado, simulador de surf FlowRider, 10 restaurantes temáticos y club de niños.",
+        "booking_url": "https://www.booking.com/hotel/mx/the-grand-at-moon-palace.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Aloft Cancun",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.8",
+        "calificacion": "Muy Bueno (2.350 reseñas)",
+        "zona": "Punta Cancún / Zona Hotelera",
+        "precio_noche": "US$ 85 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "En el centro neurálgico de la Zona Hotelera, a pasos de la playa y restaurantes. Piscina en azotea con vista panorámica a la laguna sin pagar tarifas de resort.",
+        "booking_url": "https://www.booking.com/hotel/mx/aloft-cancun.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 25,
+      "rango_min": "US$ 660",
+      "rango_max": "US$ 890",
+      "mensaje": "¡Tarifa baja confirmada! Los precios actuales están en el segmento más económico para Cancún.",
+      "texto_pin": "US$ 580 es una tarifa baja de oportunidad",
+      "consejo": "Arajet y Copa tienen asientos en clase promo para viajar al Caribe. Excelente oportunidad para anticipar compras.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        880,
+        810,
+        750,
+        680,
+        580
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "mx",
+    "categoria_region": "caribe_usa"
+  },
+  {
+    "id": "puntacana",
+    "ciudad": "Punta Cana",
+    "pais": "República Dominicana",
+    "bandera": "🇩🇴",
+    "iata": "PUJ",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "precio_desde": "US$ 590",
+    "comando_tg": "/puntacana",
+    "resena": "El epicentro del descanso tropical caribeño: kilómetros de arena blanca fina, cocoteros infinitos, aguas protegidas por barrera de coral y excursiones inolvidables a Isla Saona.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Arajet",
+        "escalas": "Directo o escala corta",
+        "fechas": "10 Nov - 18 Nov 2026",
+        "noches": 8,
+        "precio": "US$ 590",
+        "destacado": "Tarifa récord sin escalas"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Avianca",
+        "escalas": "1 escala (BOG)",
+        "fechas": "20 Nov - 27 Nov 2026",
+        "noches": 7,
+        "precio": "US$ 680",
+        "destacado": "Excelente servicio a bordo"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Copa Airlines",
+        "escalas": "1 escala (PTY)",
+        "fechas": "14 Nov - 23 Nov 2026",
+        "noches": 9,
+        "precio": "US$ 710",
+        "destacado": "Puntualidad líder en América"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Hard Rock Hotel & Casino Punta Cana",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (5.200 reseñas)",
+        "zona": "Playa Macao / Bávaro",
+        "precio_noche": "US$ 420 / noche",
+        "foto": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El resort todo incluido de temática musical más emblemático: 13 piscinas con toboganes, casino de clase mundial y campo de golf Jack Nicklaus.",
+        "booking_url": "https://www.booking.com/hotel/do/hard-rock-and-casino-punta-cana.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Lopesan Costa Bávaro Resort & Spa",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Fantástico (4.150 reseñas)",
+        "zona": "Playa Bávaro (Primerísima Línea)",
+        "precio_noche": "US$ 270 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Arquitectura moderna frente al mar con 6 piscinas (incluyendo una infinita de dos niveles), bulevar gastronómico temático y spa de hidroterapia.",
+        "booking_url": "https://www.booking.com/hotel/do/lopesan-costa-bavaro-resort-spa-casino.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Serenade Punta Cana Beach & Spa",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (2.980 reseñas)",
+        "zona": "Playa Cabeza de Toro",
+        "precio_noche": "US$ 165 / noche",
+        "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Resort todo incluido recientemente inaugurado con habitaciones impecables, gastronomía gourmet a la carta sin reserva previa y excelente tarifa.",
+        "booking_url": "https://www.booking.com/hotel/do/serenade-punta-cana-beach-spa-resort.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 22,
+      "rango_min": "US$ 640",
+      "rango_max": "US$ 880",
+      "mensaje": "¡Oportunidad récord! Vuelo al Caribe por debajo de los valores promedio habituales.",
+      "texto_pin": "US$ 590 es un precio bajo de oportunidad",
+      "consejo": "Arajet vía Santo Domingo ofrece la tarifa más económica del año con 1 valija carry-on incluida.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        840,
+        790,
+        720,
+        660,
+        590
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "do",
+    "categoria_region": "caribe_usa"
+  },
+  {
+    "id": "aruba",
+    "ciudad": "Aruba (Caribe Holandés)",
+    "pais": "Reino de los Países Bajos",
+    "bandera": "🇦🇼",
+    "iata": "AUA",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "precio_desde": "US$ 660",
+    "comando_tg": "/aruba",
+    "resena": "La 'Isla Feliz': fuera de la franja de huracanes, sol constante los 365 días del año, máxima seguridad para caminar de noche y playas de ranking mundial como Eagle Beach y Palm Beach.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Avianca",
+        "escalas": "1 escala corta (BOG)",
+        "fechas": "05 Nov - 13 Nov 2026",
+        "noches": 8,
+        "precio": "US$ 660",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "LATAM / Arajet",
+        "escalas": "1 escala técnica",
+        "fechas": "19 Nov - 26 Nov 2026",
+        "noches": 7,
+        "precio": "US$ 710",
+        "destacado": "Equipaje carry-on incluido"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Copa Airlines",
+        "escalas": "1 escala (PTY)",
+        "fechas": "12 Nov - 21 Nov 2026",
+        "noches": 9,
+        "precio": "US$ 740",
+        "destacado": "Conexión ágil sin cambios de terminal"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Bucuti & Tara Beach Resort",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.8",
+        "calificacion": "Excepcional (3.800 reseñas)",
+        "zona": "Eagle Beach (Frente al Mar)",
+        "precio_noche": "US$ 510 / noche",
+        "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Elegido repetidamente el hotel #1 del Caribe para parejas y romance. Solo adultos, máxima tranquilidad y compromiso ecológico de carbono neutral.",
+        "booking_url": "https://www.booking.com/hotel/aw/bucuti-beach-resort-aruba.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Hyatt Regency Aruba Resort Spa",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (3.240 reseñas)",
+        "zona": "Palm Beach (Zona High-Rise)",
+        "precio_noche": "US$ 360 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Resort frente al mar con complejo de piscinas de varios niveles, laguna con cisnes negros, casino y cercanía a pie a todos los shoppings.",
+        "booking_url": "https://www.booking.com/hotel/aw/hyatt-regency-aruba-resort-and-casino.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "MVC Eagle Beach",
+        "estrellas": "⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (1.450 reseñas)",
+        "zona": "Eagle Beach (Frente al Mar)",
+        "precio_noche": "US$ 145 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Boutique acogedor justo al otro lado de la calle de la mejor playa de Aruba. Ambiente relajado, piscina de inmersión y precio muy competitivo.",
+        "booking_url": "https://www.booking.com/hotel/aw/mvc-eagle-beach.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 28,
+      "rango_min": "US$ 680",
+      "rango_max": "US$ 910",
+      "mensaje": "¡Precio bajo de temporada detectado para volar a la 'Isla Feliz'!",
+      "texto_pin": "US$ 660 es una tarifa más baja de lo habitual",
+      "consejo": "Avianca vía Bogotá perforó los US$ 700. Quedan pocos cupos con esta tarifa para primavera/otoño fuera de huracanes.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        890,
+        830,
+        770,
+        710,
+        660
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "aw",
+    "categoria_region": "caribe_usa"
+  },
+  {
+    "id": "madrid",
+    "ciudad": "Madrid",
+    "pais": "España",
+    "bandera": "🇪🇸",
+    "iata": "MAD",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "precio_desde": "€ 915",
+    "comando_tg": "/madrid",
+    "resena": "Capital europea de la cultura y la gastronomía, con el hub de trenes de alta velocidad más competitivo de Europa (Iryo, Ouigo y AVE a Barcelona por €9). Ideal para recorrer el Triángulo del Arte y hacer base para escapadas a Toledo y Segovia.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "LATAM Airlines",
+        "escalas": "1 escala corta (GRU)",
+        "fechas": "05 Nov - 20 Nov 2026",
+        "noches": 15,
+        "precio": "€ 915",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Iberia",
+        "escalas": "Directo (EZE ➔ MAD)",
+        "fechas": "18 Nov - 02 Dic 2026",
+        "noches": 14,
+        "precio": "€ 1.085",
+        "destacado": "Vuelo directo más veloz"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Air Europa",
+        "escalas": "Directo (EZE ➔ MAD)",
+        "fechas": "10 Nov - 24 Nov 2026",
+        "noches": 14,
+        "precio": "€ 1.140",
+        "destacado": "Excelente equipaje incluido"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Gran Hotel Inglés - The Leading Hotels",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.4",
+        "calificacion": "Excepcional (1.420 reseñas)",
+        "zona": "Barrio de las Letras (Céntrico / Peatonal)",
+        "precio_noche": "€ 360 / noche",
+        "foto": "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El hotel de lujo en activo más antiguo de Madrid, totalmente restaurado en estilo Art Déco. A pasos de la Puerta del Sol y los mejores wine bars.",
+        "booking_url": "https://www.booking.com/hotel/es/gran-ingles.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Only YOU Hotel Atocha",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (3.850 reseñas)",
+        "zona": "Paseo de la Infanta Isabel / Estación Atocha",
+        "precio_noche": "€ 170 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Diseño cosmopolita frente a la estación de alta velocidad y el Parque del Retiro. Rooftop con vistas panorámicas y cafetería de especialidad.",
+        "booking_url": "https://www.booking.com/hotel/es/only-you-atocha.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Room Mate Alicia",
+        "estrellas": "⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Excelente (2.190 reseñas)",
+        "zona": "Plaza Santa Ana / Barrio de las Letras",
+        "precio_noche": "€ 105 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Edificio histórico del siglo XX decorado por Pascua Ortega. Ubicación insuperable para recorrer todo a pie sin sobreprecios abusivos.",
+        "booking_url": "https://www.booking.com/hotel/es/room-mate-alicia.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "estandar",
+      "posicion_pct": 38,
+      "rango_min": "€ 890",
+      "rango_max": "€ 1.250",
+      "mensaje": "Por el momento, se mantienen los precios estándar para tu búsqueda a Madrid.",
+      "texto_pin": "€ 915 es un precio estándar",
+      "consejo": "Tarifa muy competitiva para vuelo con 1 escala corta en San Pablo. Se ubica cerca del piso histórico de los últimos 60 días.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1180,
+        1120,
+        1050,
+        975,
+        915
+      ],
+      "historial_formato": "€ "
+    },
+    "codigo_pais": "es",
+    "categoria_region": "europa_mundo"
+  },
+  {
+    "id": "barcelona",
+    "ciudad": "Barcelona & Costa Brava",
+    "pais": "España",
+    "bandera": "🇪🇸",
+    "iata": "BCN",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "€ 880",
+    "comando_tg": "/barcelona",
+    "resena": "Modernismo deslumbrante de Gaudí con la Sagrada Familia y Park Güell, callejones del Barrio Gótico, gastronomía catalana y trenes de alta velocidad AVE a Madrid en solo 2h 30m.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Level",
+        "escalas": "Directo (EZE ➔ BCN)",
+        "fechas": "06 Nov - 20 Nov 2026",
+        "noches": 14,
+        "precio": "€ 880",
+        "destacado": "Vuelo directo más veloz"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Iberia",
+        "escalas": "1 escala corta (MAD)",
+        "fechas": "13 Nov - 27 Nov 2026",
+        "noches": 14,
+        "precio": "€ 940",
+        "destacado": "Excelente servicio a bordo"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Air Europa",
+        "escalas": "1 escala (MAD)",
+        "fechas": "18 Nov - 02 Dic 2026",
+        "noches": 14,
+        "precio": "€ 975",
+        "destacado": "Equipaje carry-on incluido"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Hotel Arts Barcelona (The Ritz-Carlton)",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Excepcional (2.800 reseñas)",
+        "zona": "Port Olímpic / Frente al Mar",
+        "precio_noche": "€ 385 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Rascacielos icónico sobre la playa con 2 estrellas Michelin (Enoteca Paco Pérez), jardines y piscinas infinitas.",
+        "booking_url": "https://www.booking.com/hotel/es/arts-barcelona.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Cotton House Hotel, Autograph Collection",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.3",
+        "calificacion": "Fantástico (2.100 reseñas)",
+        "zona": "Gran Vía / Eixample",
+        "precio_noche": "€ 240 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Antigua sede gremial de hiladores de algodón del siglo XIX con escalinata suspendida histórica y terraza ajardinada.",
+        "booking_url": "https://www.booking.com/hotel/es/cotton-house-barcelona.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Room Mate Gerard",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Excelente (2.450 reseñas)",
+        "zona": "Eixample Dret (a 3 cuadras de P. de Gràcia)",
+        "precio_noche": "€ 115 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Diseño vanguardista de Jaime Beriestain, piscina en la azotea y ubicación estratégica para recorrer todo caminando.",
+        "booking_url": "https://www.booking.com/hotel/es/room-mate-gerard.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 26,
+      "rango_min": "€ 870",
+      "rango_max": "€ 1.230",
+      "mensaje": "¡Tarifa baja confirmada para volar a Barcelona!",
+      "texto_pin": "€ 880 es una tarifa más baja de lo habitual",
+      "consejo": "Level ofrece el único vuelo directo sin escalas desde Ezeiza perforando los US$ 1.000.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1150,
+        1080,
+        990,
+        930,
+        880
+      ],
+      "historial_formato": "€ "
+    },
+    "codigo_pais": "es"
+  },
+  {
+    "id": "roma",
+    "ciudad": "Roma",
+    "pais": "Italia",
+    "bandera": "🇮🇹",
+    "iata": "FCO",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "precio_desde": "€ 965",
+    "comando_tg": "/roma",
+    "resena": "La Ciudad Eterna deslumbra con 3.000 años de historia viva. Desde el Coliseo y los Museos Vaticanos hasta las trattorias de Trastevere, Roma es además el gran nodo ferroviario con trenes bala Frecciarossa a Florencia en solo 1h 32m.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Air Europa",
+        "escalas": "1 escala corta (MAD)",
+        "fechas": "03 Nov - 19 Nov 2026",
+        "noches": 16,
+        "precio": "€ 965",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Iberia",
+        "escalas": "1 escala corta (MAD)",
+        "fechas": "17 Nov - 01 Dic 2026",
+        "noches": 14,
+        "precio": "€ 1.000",
+        "destacado": "Escala rápida de 2 horas"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "ITA Airways",
+        "escalas": "Directo (EZE ➔ FCO)",
+        "fechas": "12 Nov - 26 Nov 2026",
+        "noches": 14,
+        "precio": "€ 1.110",
+        "destacado": "Vuelo directo sin escalas"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Hotel de Russie, Rocco Forte Hotel",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.4",
+        "calificacion": "Excepcional (1.180 reseñas)",
+        "zona": "Via del Babuino / Piazza del Popolo",
+        "precio_noche": "€ 625 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El legendario hotel favorito de aristócratas y artistas. Jardines secretos aterrazados diseñados por Giuseppe Valadier y spa de lujo.",
+        "booking_url": "https://www.booking.com/hotel/it/hotel-de-russie.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "NH Collection Roma Fori Imperiali",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Fantástico (2.420 reseñas)",
+        "zona": "Fori Imperiali / Rione Monti",
+        "precio_noche": "€ 220 / noche",
+        "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Boutique de primer nivel con una de las mejores terrazas rooftop de Roma con vista directa al Foro Romano y al Monumento a Víctor Manuel II.",
+        "booking_url": "https://www.booking.com/hotel/it/nh-collection-roma-fori-imperiali.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "The Hoxton, Rome",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (1.950 reseñas)",
+        "zona": "Barrio Salario / Parioli",
+        "precio_noche": "€ 120 / noche",
+        "foto": "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Diseño mid-century impecable, ambiente moderno y luminoso, gastronomía italiana contemporánea y precio imbatible en una zona residencial segura.",
+        "booking_url": "https://www.booking.com/hotel/it/the-hoxton-rome.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 24,
+      "rango_min": "€ 1.000",
+      "rango_max": "€ 1.360",
+      "mensaje": "¡Los precios actuales son más bajos de lo habitual para volar a Roma!",
+      "texto_pin": "€ 965 es un precio bajo de oportunidad",
+      "consejo": "Tarifa récord para viajar a Italia con Air Europa. Se ubica US$ 250 por debajo del promedio histórico habitual.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1260,
+        1190,
+        1100,
+        1020,
+        965
+      ],
+      "historial_formato": "€ "
+    },
+    "codigo_pais": "it",
+    "categoria_region": "europa_mundo"
+  },
+  {
+    "id": "paris",
+    "ciudad": "París & Île-de-France",
+    "pais": "Francia",
+    "bandera": "🇫🇷",
+    "iata": "CDG",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "€ 900",
+    "comando_tg": "/paris",
+    "resena": "La Ciudad de la Luz: Museo del Louvre, Torre Eiffel, paseos por el Sena, elegancia de Saint-Germain y epicentro de trenes TGV y Eurostar hacia toda Europa.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Air France",
+        "escalas": "Directo (EZE ➔ CDG)",
+        "fechas": "04 Nov - 19 Nov 2026",
+        "noches": 15,
+        "precio": "€ 900",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Iberia",
+        "escalas": "1 escala corta (MAD)",
+        "fechas": "11 Nov - 25 Nov 2026",
+        "noches": 14,
+        "precio": "€ 955",
+        "destacado": "Conexión eficiente"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Air Europa",
+        "escalas": "1 escala (MAD)",
+        "fechas": "18 Nov - 02 Dic 2026",
+        "noches": 14,
+        "precio": "€ 995",
+        "destacado": "Llega a aeropuerto Orly (ORY)"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Le Meurice - Dorchester Collection",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.5",
+        "calificacion": "Excepcional (1.900 reseñas)",
+        "zona": "Rue de Rivoli / Jardines de las Tullerías",
+        "precio_noche": "€ 820 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Palacio parisino de 1835 decorado por Philippe Starck con restaurante 2 estrellas Michelin de Alain Ducasse.",
+        "booking_url": "https://www.booking.com/hotel/fr/le-meurice.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Hôtel Madame Rêve",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Fantástico (2.300 reseñas)",
+        "zona": "Louvre / Bourse (1er Arrondissement)",
+        "precio_noche": "€ 350 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Emplazado en el edificio histórico de correos con terraza en la azotea y vistas panorámicas de 360° a toda la ciudad.",
+        "booking_url": "https://www.booking.com/hotel/fr/madame-reve.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "CitizenM Paris Gare de Lyon",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (3.600 reseñas)",
+        "zona": "Gare de Lyon / Bastille",
+        "precio_noche": "€ 135 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Habitaciones inteligentes con tecnología domótica, camas king XL y ubicación insuperable frente a la estación de trenes.",
+        "booking_url": "https://www.booking.com/hotel/fr/citizenm-paris-gare-de-lyon.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 27,
+      "rango_min": "€ 890",
+      "rango_max": "€ 1.270",
+      "mensaje": "¡Precio bajo para viajar a la Ciudad de la Luz!",
+      "texto_pin": "€ 900 es un precio bajo de oportunidad",
+      "consejo": "Air France ofrece vuelo nocturno directo de 13 horas que permite llegar descansado a la mañana a París.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1230,
+        1150,
+        1070,
+        975,
+        900
+      ],
+      "historial_formato": "€ "
+    },
+    "codigo_pais": "fr"
+  },
+  {
+    "id": "londres",
+    "ciudad": "Londres",
+    "pais": "Reino Unido",
+    "bandera": "🇬🇧",
+    "iata": "LHR",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "€ 935",
+    "comando_tg": "/londres",
+    "resena": "Capital cosmopolita del Támesis: British Museum, Big Ben, teatros del West End y conexión en tren submarino Eurostar a París y Bruselas en poco más de 2 horas.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "British Airways",
+        "escalas": "Directo (EZE ➔ LHR)",
+        "fechas": "05 Nov - 19 Nov 2026",
+        "noches": 14,
+        "precio": "€ 935",
+        "destacado": "Vuelo directo más veloz"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "LATAM Airlines",
+        "escalas": "1 escala corta (GRU)",
+        "fechas": "12 Nov - 26 Nov 2026",
+        "noches": 14,
+        "precio": "€ 985",
+        "destacado": "Excelente servicio"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Iberia",
+        "escalas": "1 escala (MAD)",
+        "fechas": "19 Nov - 03 Dic 2026",
+        "noches": 14,
+        "precio": "€ 1.020",
+        "destacado": "Equipaje incluido"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "The Savoy London",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.4",
+        "calificacion": "Excepcional (2.600 reseñas)",
+        "zona": "The Strand / Covent Garden",
+        "precio_noche": "€ 600 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El hotel histórico más emblemático del Reino Unido a orillas del Támesis, con el legendario American Bar y servicio de mayordomo.",
+        "booking_url": "https://www.booking.com/hotel/gb/the-savoy.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "The Hoxton, Shoreditch",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (3.800 reseñas)",
+        "zona": "Shoreditch / East End",
+        "precio_noche": "€ 200 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Diseño industrial chic en el epicentro de la moda y arte callejero londinense, chimeneas y ambiente cosmopolita.",
+        "booking_url": "https://www.booking.com/hotel/gb/the-hoxton-hotel.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Treehouse Hotel London",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (2.400 reseñas)",
+        "zona": "Marylebone / Oxford Circus",
+        "precio_noche": "€ 150 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Concepto lúdico y sustentable inspirado en casas de árbol, rooftop bar con vistas a la torre BT y Regent Street.",
+        "booking_url": "https://www.booking.com/hotel/gb/treehouse-london.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "estandar",
+      "posicion_pct": 34,
+      "rango_min": "€ 910",
+      "rango_max": "€ 1.300",
+      "mensaje": "Tarifa estándar competitiva para viajar al Reino Unido.",
+      "texto_pin": "€ 935 es un precio estándar",
+      "consejo": "British Airways en vuelo directo evita trasbordos y permite llegar al hub principal de Heathrow.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1210,
+        1140,
+        1060,
+        990,
+        935
+      ],
+      "historial_formato": "€ "
+    },
+    "codigo_pais": "gb"
+  },
+  {
+    "id": "berlin",
+    "ciudad": "Berlín & Cultura Vanguardista",
+    "pais": "Alemania",
+    "bandera": "🇩🇪",
+    "iata": "BER",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "€ 945",
+    "comando_tg": "/berlin",
+    "resena": "Capital histórica y creativa: Puerta de Brandeburgo, Muro de Berlín, Isla de los Museos y la escena cultural y de música electrónica más innovadora de Europa.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Air France",
+        "escalas": "1 escala corta (CDG)",
+        "fechas": "06 Nov - 20 Nov 2026",
+        "noches": 14,
+        "precio": "€ 945",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Iberia",
+        "escalas": "1 escala (MAD)",
+        "fechas": "13 Nov - 27 Nov 2026",
+        "noches": 14,
+        "precio": "€ 975",
+        "destacado": "Conexión eficiente"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Lufthansa",
+        "escalas": "1 escala (FRA)",
+        "fechas": "20 Nov - 04 Dic 2026",
+        "noches": 14,
+        "precio": "€ 1.000",
+        "destacado": "Llega al aeropuerto BER"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Hotel Adlon Kempinski Berlin",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.3",
+        "calificacion": "Excepcional (4.100 reseñas)",
+        "zona": "Pariser Platz / Puerta de Brandeburgo",
+        "precio_noche": "€ 350 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El hotel legendario más célebre de Alemania frente a la Puerta de Brandeburgo, spa de 9.000 m² y restaurante 2 estrellas Michelin.",
+        "booking_url": "https://www.booking.com/hotel/de/hotel-adlon-kempinski.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "The Ritz-Carlton, Berlin",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Fantástico (2.800 reseñas)",
+        "zona": "Potsdamer Platz",
+        "precio_noche": "€ 220 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Decoración inspirada en los años dorados de Berlín de 1920, bar de cócteles Fragrances galardonado y servicio de guante blanco.",
+        "booking_url": "https://www.booking.com/hotel/de/the-ritz-carlton-berlin.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Michelberger Hotel",
+        "estrellas": "⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (3.200 reseñas)",
+        "zona": "Friedrichshain / East Side Gallery",
+        "precio_noche": "€ 100 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Ambiente indie y bohemio junto al río Spree y el Muro de Berlín, restaurante con productos de su propia granja biológica.",
+        "booking_url": "https://www.booking.com/hotel/de/michelberger.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "estandar",
+      "posicion_pct": 35,
+      "rango_min": "€ 900",
+      "rango_max": "€ 1.300",
+      "mensaje": "Tarifa estándar competitiva para conocer Berlín.",
+      "texto_pin": "€ 945 es un precio estándar",
+      "consejo": "Excelente opción para disfrutar de los famosos mercados navideños alemanes que abren a finales de noviembre.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1220,
+        1150,
+        1080,
+        1010,
+        945
+      ],
+      "historial_formato": "€ "
+    },
+    "codigo_pais": "de"
+  },
+  {
+    "id": "frankfurt",
+    "ciudad": "Frankfurt (Hub Alemania)",
+    "pais": "Alemania",
+    "bandera": "🇩🇪",
+    "iata": "FRA",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "€ 955",
+    "comando_tg": "/frankfurt",
+    "resena": "El mayor nodo de aviación y trenes ICE de Europa Central. Ideal como puerta de entrada para recorrer Alemania, el Valle del Rin y la Selva Negra con tarifas competitivas.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Lufthansa",
+        "escalas": "Directo (EZE ➔ FRA)",
+        "fechas": "03 Nov - 18 Nov 2026",
+        "noches": 15,
+        "precio": "€ 955",
+        "destacado": "Vuelo directo más veloz"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "LATAM Airlines",
+        "escalas": "1 escala corta (GRU)",
+        "fechas": "10 Nov - 25 Nov 2026",
+        "noches": 15,
+        "precio": "€ 990",
+        "destacado": "Equipaje carry-on incluido"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Air Europa",
+        "escalas": "1 escala (MAD)",
+        "fechas": "17 Nov - 01 Dic 2026",
+        "noches": 14,
+        "precio": "€ 1.030",
+        "destacado": "Atención en español"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Sofitel Frankfurt Opera",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Excepcional (2.100 reseñas)",
+        "zona": "Opernplatz (Plaza de la Ópera)",
+        "precio_noche": "€ 295 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Palacio de estilo hôtel particulier francés con vistas directas a la Ópera Antigua, spa de lujo y restaurante Schönemann.",
+        "booking_url": "https://www.booking.com/hotel/de/sofitel-frankfurt-opera.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Steigenberger Icon Frankfurter Hof",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Fantástico (3.400 reseñas)",
+        "zona": "Altstadt / Centro Histórico",
+        "precio_noche": "€ 180 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Hotel legendario fundado en 1876, arquitectura imperial tradicional a pasos de la plaza Römerberg y el río Meno.",
+        "booking_url": "https://www.booking.com/hotel/de/steigenberger-frankfurter-hof.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "25hours Hotel The Goldman",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.8",
+        "calificacion": "Muy Bueno (2.300 reseñas)",
+        "zona": "Ostend / Barrio Creativo",
+        "precio_noche": "€ 90 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Diseño creativo inspirado en personalidades históricas, bicicletas de cortesía y tranvía en la puerta al centro.",
+        "booking_url": "https://www.booking.com/hotel/de/25hours-the-goldman.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "estandar",
+      "posicion_pct": 36,
+      "rango_min": "€ 910",
+      "rango_max": "€ 1.330",
+      "mensaje": "Precios estándar vigentes para conectar con el corazón de Europa.",
+      "texto_pin": "€ 955 es un precio estándar",
+      "consejo": "La estación de trenes del aeropuerto (Fernbahnhof) permite conectar en trenes de alta velocidad ICE a Colonia, Múnich o Zúrich.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1240,
+        1170,
+        1090,
+        1020,
+        955
+      ],
+      "historial_formato": "€ "
+    },
+    "codigo_pais": "de"
+  },
+  {
+    "id": "amsterdam",
+    "ciudad": "Ámsterdam",
+    "pais": "Países Bajos",
+    "bandera": "🇳🇱",
+    "iata": "AMS",
+    "tipo_ruta": "Europa & Canales del Norte",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "€ 1.085",
+    "comando_tg": "/amsterdam",
+    "codigo_pais": "nl",
+    "resena": "Canales concéntricos Patrimonio UNESCO, bicicletas, museos de Van Gogh y Rembrandt, y el animado barrio Jordaan.",
+    "vuelos": [
+      {
+        "puesto": "Top 1 Directo KLM",
+        "aerolinea": "KLM Royal Dutch Airlines",
+        "fechas": "06 May ➔ 21 May 2026 (15 noches)",
+        "escalas": "Vuelo Directo nocturno",
+        "precio": "€ 1.085"
+      },
+      {
+        "puesto": "Top 2 SkyTeam",
+        "aerolinea": "Air France",
+        "fechas": "12 Jun ➔ 27 Jun 2026 (15 noches)",
+        "escalas": "1 escala en París (CDG)",
+        "precio": "€ 1.005"
+      },
+      {
+        "puesto": "Top 3 OneWorld",
+        "aerolinea": "Iberia",
+        "fechas": "08 Sep ➔ 23 Sep 2026 (15 noches)",
+        "escalas": "1 escala en Madrid (MAD)",
+        "precio": "€ 1.050"
+      }
+    ],
+    "hoteles": [
+      {
+        "nombre": "CitizenM Amstel Amsterdam",
+        "estrellas": "4 estrellas · 9.1 Fantástico",
+        "precio_noche": "€ 135 / noche",
+        "zona": "Amstel / Weesperplein",
+        "comentario": "Diseño contemporáneo holandés, camas king size ultramodernas y a 3 paradas de metro de Centraal Station."
+      },
+      {
+        "nombre": "Hotel Notting Hill",
+        "estrellas": "4 estrellas · 8.8 Fabuloso",
+        "precio_noche": "€ 150 / noche",
+        "zona": "De Pijp / Museumplein",
+        "comentario": "Frente al canal Singelgracht, a pasos de los museos de Van Gogh y el mercado Albert Cuyp."
+      },
+      {
+        "nombre": "Motel One Amsterdam-Waterlooplein",
+        "estrellas": "3 estrellas · 8.9 Fabuloso",
+        "precio_noche": "€ 115 / noche",
+        "zona": "Waterlooplein",
+        "comentario": "Ubicación céntrica fantástica para recorrer caminando la Casa de Rembrandt y el Jardín Botánico."
+      }
+    ],
+    "termometro": {
+      "nivel": "tarifa_habitual",
+      "posicion_pct": 44,
+      "rango_min": "€ 900",
+      "rango_max": "€ 1.520",
+      "mensaje": "Tarifa competitiva de media estación con vuelo directo de KLM.",
+      "texto_pin": "Tarifa media € 1.085",
+      "consejo": "Mayo y septiembre ofrecen el mejor balance de horas de luz, tulipanes y clima templado para pedalear.",
+      "historial_valores": [
+        1360,
+        1280,
+        1210,
+        1140,
+        1085
+      ],
+      "historial_formato": "€ "
+    }
+  },
+  {
+    "id": "atenas",
+    "ciudad": "Atenas & Islas Griegas",
+    "pais": "Grecia",
+    "bandera": "🇬🇷",
+    "iata": "ATH",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "€ 990",
+    "comando_tg": "/atenas",
+    "resena": "Cuna milenaria de la civilización con el Partenón y la Acrópolis dominando la ciudad. Puerto de El Pireo a minutos para conectar en ferries a Santorini, Mykonos y Creta.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "ITA Airways",
+        "escalas": "1 escala corta (FCO)",
+        "fechas": "04 Nov - 19 Nov 2026",
+        "noches": 15,
+        "precio": "€ 990",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Turkish Airlines",
+        "escalas": "1 escala (IST)",
+        "fechas": "11 Nov - 26 Nov 2026",
+        "noches": 15,
+        "precio": "€ 1.030",
+        "destacado": "Excelente catering a bordo"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Iberia",
+        "escalas": "1 escala (MAD)",
+        "fechas": "18 Nov - 03 Dic 2026",
+        "noches": 15,
+        "precio": "€ 1.065",
+        "destacado": "Equipaje carry-on incluido"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Hotel Grande Bretagne, Luxury Collection",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.4",
+        "calificacion": "Excepcional (2.900 reseñas)",
+        "zona": "Plaza Syntagma",
+        "precio_noche": "€ 415 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Palacio histórico neoclásico fundado en 1874 con la terraza rooftop más célebre de Atenas con vista frontal al Partenón.",
+        "booking_url": "https://www.booking.com/hotel/gr/hotel-grande-bretagne-a-luxury-collection-hotel-athens.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Electra Metropolis Athens",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Fantástico (3.600 reseñas)",
+        "zona": "Barrio Plaka / Mitropoleos",
+        "precio_noche": "€ 195 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Piscina en la azotea con vista directa a la Acrópolis iluminada, spa con piscina cubierta y gastronomía mediterránea.",
+        "booking_url": "https://www.booking.com/hotel/gr/electra-metropolis.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Ergon House Athens",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Excelente (2.400 reseñas)",
+        "zona": "Monastiraki / Plaka",
+        "precio_noche": "€ 125 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Hotel boutique para foodies con huerta vertical, mercado gastronómico tradicional y terraza con cócteles mirando a la colina.",
+        "booking_url": "https://www.booking.com/hotel/gr/ergon-house.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "estandar",
+      "posicion_pct": 38,
+      "rango_min": "€ 965",
+      "rango_max": "€ 1.400",
+      "mensaje": "Precios estándar vigentes para Grecia y el Egeo.",
+      "texto_pin": "€ 990 es un precio estándar",
+      "consejo": "ITA Airways vía Roma ofrece las conexiones más rápidas para volar al Mediterráneo oriental.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1280,
+        1200,
+        1130,
+        1060,
+        990
+      ],
+      "historial_formato": "€ "
+    },
+    "codigo_pais": "gr"
+  },
+  {
+    "id": "oslo",
+    "ciudad": "Oslo & Fiordos Noruegos",
+    "pais": "Noruega",
+    "bandera": "🇳🇴",
+    "iata": "OSL",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "€ 955",
+    "comando_tg": "/oslo",
+    "resena": "Capital de la vanguardia escandinava con la Ópera de Oslo y el Museo Munch. Punto de partida para el célebre tren de Bergen y los majestuosos fiordos noruegos declarados Patrimonio UNESCO.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "KLM / Air France",
+        "escalas": "1 escala (AMS/CDG)",
+        "fechas": "05 Nov - 19 Nov 2026",
+        "noches": 14,
+        "precio": "€ 955",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Lufthansa",
+        "escalas": "1 escala (FRA)",
+        "fechas": "12 Nov - 26 Nov 2026",
+        "noches": 14,
+        "precio": "€ 990",
+        "destacado": "Conexión eficiente"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Iberia / SAS",
+        "escalas": "1 escala (MAD)",
+        "fechas": "19 Nov - 03 Dic 2026",
+        "noches": 14,
+        "precio": "€ 1.030",
+        "destacado": "Equipaje carry-on incluido"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "The Thief",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.3",
+        "calificacion": "Excepcional (2.400 reseñas)",
+        "zona": "Tjuvholmen / Fiordo de Oslo",
+        "precio_noche": "€ 350 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Hotel de diseño en el exclusivo islote de arte Tjuvholmen con spa nórdico, terraza rooftop sobre el fiordo y obras de arte contemporáneo.",
+        "booking_url": "https://www.booking.com/hotel/no/the-thief.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Grand Hotel Oslo",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (3.100 reseñas)",
+        "zona": "Karl Johans gate / Centro Histórico",
+        "precio_noche": "€ 210 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El legendario hotel donde se alojan los laureados del Premio Nobel de la Paz, spa de lujo y gastronomía noruega de autor.",
+        "booking_url": "https://www.booking.com/hotel/no/grand-oslo.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Clarion Hotel The Hub",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (4.200 reseñas)",
+        "zona": "Jernbanetorget / Estación Central",
+        "precio_noche": "€ 115 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Hotel sustentable con huerta en la azotea, piscina de inmersión, sauna y conexión directa al tren Flytoget al aeropuerto.",
+        "booking_url": "https://www.booking.com/hotel/no/clarion-the-hub.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "estandar",
+      "posicion_pct": 34,
+      "rango_min": "€ 910",
+      "rango_max": "€ 1.330",
+      "mensaje": "Precios estándar competitivos para volar a los fiordos de Noruega.",
+      "texto_pin": "€ 955 es un precio estándar",
+      "consejo": "El tren rápido Flytoget conecta el aeropuerto de Gardermoen con el centro de Oslo en apenas 19 minutos.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1240,
+        1160,
+        1090,
+        1020,
+        955
+      ],
+      "historial_formato": "€ "
+    },
+    "codigo_pais": "no"
+  },
+  {
+    "id": "reikiavik",
+    "ciudad": "Reikiavik & Auroras Boreales",
+    "pais": "Islandia",
+    "bandera": "🇮🇸",
+    "iata": "KEF",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "€ 1.050",
+    "comando_tg": "/reikiavik",
+    "resena": "Tierra de fuego y hielo: auroras boreales danzantes en el cielo ártico, el Círculo Dorado con géiseres activos, cascadas atronadoras de Gullfoss y termas geotérmicas de la Blue Lagoon.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Iberia / Play",
+        "escalas": "1 escala (MAD/BCN)",
+        "fechas": "06 Nov - 20 Nov 2026",
+        "noches": 14,
+        "precio": "€ 1.050",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "British / Icelandair",
+        "escalas": "1 escala (LHR)",
+        "fechas": "13 Nov - 27 Nov 2026",
+        "noches": 14,
+        "precio": "€ 1.095",
+        "destacado": "Conexión eficiente"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Air France / Play",
+        "escalas": "1 escala (CDG)",
+        "fechas": "20 Nov - 04 Dic 2026",
+        "noches": 14,
+        "precio": "€ 1.150",
+        "destacado": "Temporada alta de auroras"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "The Retreat at Blue Lagoon Iceland",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.6",
+        "calificacion": "Excepcional (1.600 reseñas)",
+        "zona": "Grindavík / Blue Lagoon Privada",
+        "precio_noche": "€ 1.090 / noche",
+        "foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Camping_%C3%91andubaysal_-_panoramio.jpg/960px-Camping_%C3%91andubaysal_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "descripcion": "Resort de ultra lujo esculpido en campos de lava volcánica con acceso ilimitado a laguna geotérmica privada y spa subterráneo.",
+        "booking_url": "https://www.booking.com/hotel/is/the-retreat-at-blue-lagoon-iceland.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "ION Adventure Hotel",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (2.100 reseñas)",
+        "zona": "Nesjavellir / Círculo Dorado",
+        "precio_noche": "€ 315 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Hotel de arquitectura suspendida frente al volcán Hengill, piscina geotérmica exterior con bar Northern Lights para ver auroras.",
+        "booking_url": "https://www.booking.com/hotel/is/ion-luxury-adventure.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Exeter Hotel Reykjavik",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Excelente (2.800 reseñas)",
+        "zona": "Puerto Viejo de Reikiavik",
+        "precio_noche": "€ 150 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Diseño industrial contemporáneo en el animado puerto histórico, sauna nórdica y a pasos de los mejores restaurantes de mariscos.",
+        "booking_url": "https://www.booking.com/hotel/is/exeter.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 26,
+      "rango_min": "€ 1.030",
+      "rango_max": "€ 1.545",
+      "mensaje": "¡Precio bajo detectado para viajar a la tierra de las auroras boreales!",
+      "texto_pin": "€ 1.050 es una tarifa de oportunidad",
+      "consejo": "Noviembre y febrero son meses pico para avistar auroras boreales con noches largas y clima activo.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1380,
+        1290,
+        1210,
+        1130,
+        1050
+      ],
+      "historial_formato": "€ "
+    },
+    "codigo_pais": "is"
+  },
+  {
+    "id": "estambul",
+    "ciudad": "Estambul",
+    "pais": "Turquía",
+    "bandera": "🇹🇷",
+    "iata": "IST",
+    "tipo_ruta": "Puente Europa & Asia",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "US$ 1.120",
+    "comando_tg": "/estambul",
+    "codigo_pais": "tr",
+    "resena": "Encrucijada imperial entre dos continentes: mezquitas colosales, Gran Bazar milenario y atardeceres sobre el Bósforo.",
+    "vuelos": [
+      {
+        "puesto": "Top 1 Turkish",
+        "aerolinea": "Turkish Airlines",
+        "fechas": "04 May ➔ 19 May 2026 (15 noches)",
+        "escalas": "Escala técnica en San Pablo (mismo avión)",
+        "precio": "US$ 1.120"
+      },
+      {
+        "puesto": "Top 2 Qatar Airways",
+        "aerolinea": "Qatar Airways",
+        "fechas": "10 Jun ➔ 25 Jun 2026 (15 noches)",
+        "escalas": "1 escala en Doha (DOH)",
+        "precio": "US$ 1.190"
+      },
+      {
+        "puesto": "Top 3 Star Alliance",
+        "aerolinea": "Lufthansa",
+        "fechas": "15 Sep ➔ 30 Sep 2026 (15 noches)",
+        "escalas": "1 escala en Frankfurt (FRA)",
+        "precio": "US$ 1.230"
+      }
+    ],
+    "hoteles": [
+      {
+        "nombre": "Romance Istanbul Hotel",
+        "estrellas": "4 estrellas · 9.5 Excepcional",
+        "precio_noche": "US$ 110 / noche",
+        "zona": "Sultanahmet",
+        "comentario": "A pasos de Santa Sofía y Topkapi, con piscina cubierta, spa turco tradicional y atención de primer nivel."
+      },
+      {
+        "nombre": "The Wings Hotel Bosphorus",
+        "estrellas": "4 estrellas · 9.2 Fantástico",
+        "precio_noche": "US$ 125 / noche",
+        "zona": "Karaköy",
+        "comentario": "Rooftop con vista directa al Bósforo y la Torre Gálata; rodeado de cafés modernos y arte urbano."
+      },
+      {
+        "nombre": "Ada Hotel Istanbul",
+        "estrellas": "3 estrellas · 8.9 Fabuloso",
+        "precio_noche": "US$ 75 / noche",
+        "zona": "Sultanahmet Centro",
+        "comentario": "Terraza panorámica a la Mezquita Azul y al mar de Mármara; excelente relación precio-calidad."
+      }
+    ],
+    "termometro": {
+      "nivel": "oportunidad",
+      "posicion_pct": 35,
+      "rango_min": "US$ 990",
+      "rango_max": "US$ 1.580",
+      "mensaje": "Tarifa muy conveniente para volar con servicio premium de Turkish Airlines.",
+      "texto_pin": "Tarifa oferta US$ 1.120",
+      "consejo": "Turkish Airlines permite stopover gratuito con noche de hotel bonificada en Estambul si combinas con otros destinos.",
+      "historial_valores": [
+        1480,
+        1390,
+        1280,
+        1190,
+        1120
+      ]
+    }
+  },
+  {
+    "id": "dubai",
+    "ciudad": "Dubái",
+    "pais": "Emiratos Árabes Unidos",
+    "bandera": "🇦🇪",
+    "iata": "DXB",
+    "tipo_ruta": "Medio Oriente & Vanguardia",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "US$ 1.250",
+    "comando_tg": "/dubai",
+    "codigo_pais": "ae",
+    "resena": "Metrópolis futurista en el desierto: rascacielos récord, islas en forma de palmera, safaris entre dunas y zocos de especias.",
+    "vuelos": [
+      {
+        "puesto": "Top 1 Emirates",
+        "aerolinea": "Emirates",
+        "fechas": "15 May ➔ 30 May 2026 (15 noches)",
+        "escalas": "Vuelo directo con escala en Río (GIG)",
+        "precio": "US$ 1.250"
+      },
+      {
+        "puesto": "Top 2 Qatar Airways",
+        "aerolinea": "Qatar Airways",
+        "fechas": "05 Jun ➔ 20 Jun 2026 (15 noches)",
+        "escalas": "1 escala en Doha (DOH)",
+        "precio": "US$ 1.210"
+      },
+      {
+        "puesto": "Top 3 Star Alliance",
+        "aerolinea": "Ethiopian Airlines",
+        "fechas": "10 Oct ➔ 25 Oct 2026 (15 noches)",
+        "escalas": "1 escala en Adís Abeba (ADD)",
+        "precio": "US$ 1.080"
+      }
+    ],
+    "hoteles": [
+      {
+        "nombre": "Rove Downtown",
+        "estrellas": "3 estrellas · 9.2 Fantástico",
+        "precio_noche": "US$ 95 / noche",
+        "zona": "Downtown Dubai",
+        "comentario": "Piscina infinita con vistas frontales directas al Burj Khalifa; a 5 minutos a pie de Dubai Mall."
+      },
+      {
+        "nombre": "Millennium Place Dubai Marina",
+        "estrellas": "4 estrellas · 9.0 Fantástico",
+        "precio_noche": "US$ 130 / noche",
+        "zona": "Dubai Marina",
+        "comentario": "Junto al paseo marítimo de la Marina y la estación de metro; excelente conectividad y restaurantes."
+      },
+      {
+        "nombre": "Aloft Palm Jumeirah",
+        "estrellas": "4 estrellas · 8.8 Fabuloso",
+        "precio_noche": "US$ 145 / noche",
+        "zona": "The Palm Jumeirah",
+        "comentario": "Sobre el arco exterior de The Palm con acceso a playa privada, terraza lounge y vistas al golfo."
+      }
+    ],
+    "termometro": {
+      "nivel": "oportunidad",
+      "posicion_pct": 38,
+      "rango_min": "US$ 1.050",
+      "rango_max": "US$ 1.720",
+      "mensaje": "Tarifa muy competitiva para viajar al hub más moderno de Oriente Medio.",
+      "texto_pin": "Tarifa promo US$ 1.250",
+      "consejo": "Ideal para combinar con Abu Dhabi en tren o tour de día completo a solo 1h de viaje.",
+      "historial_valores": [
+        1650,
+        1540,
+        1420,
+        1330,
+        1250
+      ]
+    }
+  },
+  {
+    "id": "bangkok",
+    "ciudad": "Bangkok",
+    "pais": "Tailandia",
+    "bandera": "🇹🇭",
+    "iata": "BKK",
+    "tipo_ruta": "Sudeste Asiático & Templos",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "US$ 1.340",
+    "comando_tg": "/bangkok",
+    "codigo_pais": "th",
+    "resena": "La Ciudad de los Ángeles: templos dorados sobre el río Chao Phraya, mercados flotantes y meca culinaria callejera.",
+    "vuelos": [
+      {
+        "puesto": "Top 1 Emirates",
+        "aerolinea": "Emirates",
+        "fechas": "08 May ➔ 24 May 2026 (16 noches)",
+        "escalas": "1 escala en Dubái (DXB)",
+        "precio": "US$ 1.340"
+      },
+      {
+        "puesto": "Top 2 Qatar Airways",
+        "aerolinea": "Qatar Airways",
+        "fechas": "12 Jun ➔ 28 Jun 2026 (16 noches)",
+        "escalas": "1 escala en Doha (DOH)",
+        "precio": "US$ 1.320"
+      },
+      {
+        "puesto": "Top 3 Turkish",
+        "aerolinea": "Turkish Airlines",
+        "fechas": "05 Oct ➔ 21 Oct 2026 (16 noches)",
+        "escalas": "1 escala en Estambul (IST)",
+        "precio": "US$ 1.380"
+      }
+    ],
+    "hoteles": [
+      {
+        "nombre": "Riva Surya Bangkok",
+        "estrellas": "4 estrellas · 9.2 Fantástico",
+        "precio_noche": "US$ 85 / noche",
+        "zona": "Riverside / Chao Phraya",
+        "comentario": "Piscina sobre el río, habitaciones con balcón al agua y a minutos a pie del Gran Palacio Real."
+      },
+      {
+        "nombre": "Eastin Grand Hotel Sathorn",
+        "estrellas": "5 estrellas · 9.4 Excepcional",
+        "precio_noche": "US$ 115 / noche",
+        "zona": "Sathorn / Silom",
+        "comentario": "Pasarela privada directa a la estación del Skytrain BTS, piscina infinita en piso 14 y gastronomía estelar."
+      },
+      {
+        "nombre": "Lub d Bangkok Siam",
+        "estrellas": "3 estrellas · 9.0 Fantástico",
+        "precio_noche": "US$ 45 / noche",
+        "zona": "Siam / MBK",
+        "comentario": "Frente al Skytrain National Stadium; perfecto para compras, museos y viajeros jóvenes."
+      }
+    ],
+    "termometro": {
+      "nivel": "oportunidad",
+      "posicion_pct": 36,
+      "rango_min": "US$ 1.150",
+      "rango_max": "US$ 1.850",
+      "mensaje": "Gran tarifa para cruzar el planeta hacia la capital tailandesa.",
+      "texto_pin": "Tarifa destacada US$ 1.340",
+      "consejo": "Una vez en Bangkok, los vuelos domésticos a Phuket, Chiang Mai o Krabi cuestan desde US$ 30.",
+      "historial_valores": [
+        1780,
+        1620,
+        1510,
+        1420,
+        1340
+      ]
+    }
+  },
+  {
+    "id": "tokio",
+    "ciudad": "Tokio (Narita / Haneda)",
+    "pais": "Japón",
+    "bandera": "🇯🇵",
+    "iata": "NRT",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "US$ 1.320",
+    "comando_tg": "/tokio",
+    "resena": "La megalópolis más cautivante de Asia: contraste entre templos sintoístas de Asakusa y rascacielos de Shinjuku, cruce de Shibuya y tren bala Shinkansen a Kioto.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "United Airlines",
+        "escalas": "1 escala técnica (USA)",
+        "fechas": "03 Nov - 20 Nov 2026",
+        "noches": 17,
+        "precio": "US$ 1.320",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "ANA / Turkish",
+        "escalas": "1 escala (IST)",
+        "fechas": "10 Nov - 26 Nov 2026",
+        "noches": 16,
+        "precio": "US$ 1.410",
+        "destacado": "No requiere visa de EE.UU."
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Ethiopian Airlines",
+        "escalas": "Conexión ADD / NRT",
+        "fechas": "17 Nov - 03 Dic 2026",
+        "noches": 16,
+        "precio": "US$ 1.480",
+        "destacado": "2 valijas de 23 kg incluidas"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Aman Tokyo",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.6",
+        "calificacion": "Excepcional (1.400 reseñas)",
+        "zona": "Otemachi / Torre Otemachi",
+        "precio_noche": "US$ 950 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Santuario urbano de arquitectura zen con vistas panorámicas al Palacio Imperial y al Monte Fuji, piscina de piedra negra de 30 metros.",
+        "booking_url": "https://www.booking.com/hotel/jp/aman-tokyo.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Park Hyatt Tokyo",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.3",
+        "calificacion": "Fantástico (2.800 reseñas)",
+        "zona": "Shinjuku Park Tower",
+        "precio_noche": "US$ 480 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El legendario hotel de 'Lost in Translation', New York Bar en el piso 52 con jazz en vivo y horizonte infinito de Tokio.",
+        "booking_url": "https://www.booking.com/hotel/jp/park-hyatt-tokyo.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Cerulean Tower Tokyu Hotel",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Excelente (3.600 reseñas)",
+        "zona": "Shibuya (a 5 min del Cruce)",
+        "precio_noche": "US$ 210 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Habitaciones espaciosas a partir del piso 19 con vistas al cruce de Shibuya, servicio impecable y acceso directo al tren Narita Express.",
+        "booking_url": "https://www.booking.com/hotel/jp/cerulean-tower-tokyu.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "estandar",
+      "posicion_pct": 36,
+      "rango_min": "US$ 1.280",
+      "rango_max": "US$ 1.790",
+      "mensaje": "Tarifa muy competitiva para viajar al corazón de Japón.",
+      "texto_pin": "US$ 1.320 es un precio estándar competitivo",
+      "consejo": "Para viajeros sin visa estadounidense, Turkish o Ethiopian vía África/Europa son las alternativas directas más buscadas.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1720,
+        1610,
+        1500,
+        1410,
+        1320
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "jp"
+  },
+  {
+    "id": "shanghai",
+    "ciudad": "Shanghái (El Bund & Pudong)",
+    "pais": "China",
+    "bandera": "🇨🇳",
+    "iata": "PVG / SHA",
+    "tipo_ruta": "Intercontinental 1 Escala",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "US$ 1.380",
+    "comando_tg": "/shanghai",
+    "resena": "Megaciudad futurista de Asia: arquitectura colonial en El Bund, skyline cibernético de Pudong y tren Maglev a 430 km/h.",
+    "vuelos": [
+      {
+        "puesto": "Top 1",
+        "aerolinea": "Emirates (1 Escala DXB)",
+        "escalas": "1 escala en Dubái (26h 15m)",
+        "fechas": "15 Mayo - 02 Junio 2026",
+        "noches": 18,
+        "precio": "US$ 1.380",
+        "destacado": true
+      },
+      {
+        "puesto": "Top 2",
+        "aerolinea": "Qatar Airways (1 Escala DOH)",
+        "escalas": "1 escala en Doha (27h 30m)",
+        "fechas": "05 Septiembre - 24 Septiembre 2026",
+        "noches": 19,
+        "precio": "US$ 1.420",
+        "destacado": false
+      },
+      {
+        "puesto": "Top 3",
+        "aerolinea": "Air France (1 Escala CDG)",
+        "escalas": "1 escala en París (28h 10m)",
+        "fechas": "10 Octubre - 28 Octubre 2026",
+        "noches": 18,
+        "precio": "US$ 1.460",
+        "destacado": false
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "Económico Inteligente",
+        "badge": "Calidad - Precio",
+        "nombre": "Campanile Shanghai Natural History Museum",
+        "estrellas": 4,
+        "puntuacion": 8.7,
+        "calificacion": "Fabuloso",
+        "zona": "Jing'an (a 2 estaciones de People's Square)",
+        "precio_noche": "US$ 65/noche",
+        "foto": "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80",
+        "descripcion": "Estilo bistró francés con diseño contemporáneo, excelente desayuno y metro a 150 metros.",
+        "booking_url": "https://www.booking.com/hotel/cn/campanile-shanghai-natural-history-museum.html"
+      },
+      {
+        "categoria": "Recomendado",
+        "badge": "Mejor Ubicación",
+        "nombre": "Radisson Blu Hotel Shanghai New World",
+        "estrellas": 5,
+        "puntuacion": 8.9,
+        "calificacion": "Excelente",
+        "zona": "People's Square / Nanjing Road",
+        "precio_noche": "US$ 120/noche",
+        "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=80",
+        "descripcion": "Rascacielos icónico coronado por un platillo volador con restaurante giratorio sobre People's Square.",
+        "booking_url": "https://www.booking.com/hotel/cn/radisson-blu-new-world.html"
+      },
+      {
+        "categoria": "Alta Gama",
+        "badge": "Vistas al Bund",
+        "nombre": "The Peninsula Shanghai",
+        "estrellas": 5,
+        "puntuacion": 9.4,
+        "calificacion": "Excepcional",
+        "zona": "El Bund histórico",
+        "precio_noche": "US$ 320/noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=600&q=80",
+        "descripcion": "Elegancia Art Déco de la década de 1920 con vistas directas a los rascacielos iluminados de Pudong.",
+        "booking_url": "https://www.booking.com/hotel/cn/the-peninsula-shanghai.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "Precio Habitual",
+      "posicion_pct": 32,
+      "rango_min": "US$ 1.250",
+      "rango_max": "US$ 1.950",
+      "mensaje": "Tarifa muy competitiva para volar a Asia Oriental con equipaje en bodega incluido.",
+      "texto_pin": "Tarifa Actual: US$ 1.380",
+      "consejo": "Para viajes de larga distancia a China conviene reservar con al menos 60 a 90 días de anticipación.",
+      "historial_dias": [
+        "Hace 20d",
+        "Hace 15d",
+        "Hace 10d",
+        "Hace 5d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1520,
+        1480,
+        1430,
+        1390,
+        1380
+      ],
+      "historial_formato": "US$ {val}"
+    },
+    "codigo_pais": "cn"
+  },
+  {
+    "id": "elcairo",
+    "ciudad": "El Cairo & Pirámides de Giza",
+    "pais": "Egipto",
+    "bandera": "🇪🇬",
+    "iata": "CAI",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "US$ 1.120",
+    "comando_tg": "/elcairo",
+    "resena": "Las Pirámides de Giza y la Gran Esfinge, el nuevo Gran Museo Egipcio (GEM), bazares de Khan el-Khalili y base para cruceros fluviales por el histórico río Nilo.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Turkish Airlines",
+        "escalas": "1 escala corta (IST)",
+        "fechas": "06 Nov - 20 Nov 2026",
+        "noches": 14,
+        "precio": "US$ 1.120",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "ITA Airways",
+        "escalas": "1 escala (FCO)",
+        "fechas": "13 Nov - 27 Nov 2026",
+        "noches": 14,
+        "precio": "US$ 1.170",
+        "destacado": "Conexión ágil en Roma"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Air France",
+        "escalas": "1 escala (CDG)",
+        "fechas": "20 Nov - 04 Dic 2026",
+        "noches": 14,
+        "precio": "US$ 1.240",
+        "destacado": "Excelente franquicia de equipaje"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "Marriott Mena House, Cairo",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.2",
+        "calificacion": "Excepcional (3.800 reseñas)",
+        "zona": "Giza (Frente a las Pirámides)",
+        "precio_noche": "US$ 340 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Palacio real de 1869 situado a solo 700 metros de la Gran Pirámide de Keops con jardines perfumados y piscina con vista directa a los monumentos.",
+        "booking_url": "https://www.booking.com/hotel/eg/marriott-mena-house-cairo.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Four Seasons Hotel Cairo at Nile Plaza",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.1",
+        "calificacion": "Fantástico (2.900 reseñas)",
+        "zona": "Garden City / Frente al Nilo",
+        "precio_noche": "US$ 290 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "En el prestigioso barrio diplomático de Garden City con vistas al río Nilo y a la isla de Zamalek, spa y 9 restaurantes internacionales.",
+        "booking_url": "https://www.booking.com/hotel/eg/four-seasons-cairo-at-nile-plaza.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Sofitel Cairo Nile El Gezirah",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "8.9",
+        "calificacion": "Excelente (3.500 reseñas)",
+        "zona": "Isla de Zamalek (Sobre el Río Nilo)",
+        "precio_noche": "US$ 160 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Piscina infinita flotante sobre las aguas del Nilo, terraza panorámica para cenar y ambiente seguro en la isla residencial de Zamalek.",
+        "booking_url": "https://www.booking.com/hotel/eg/sofitel-cairo-nile-el-gezirah.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "estandar",
+      "posicion_pct": 37,
+      "rango_min": "US$ 1.090",
+      "rango_max": "US$ 1.580",
+      "mensaje": "Precios estándar para viajar a la tierra de los Faraones.",
+      "texto_pin": "US$ 1.120 es un precio estándar",
+      "consejo": "Noviembre y diciembre son los mejores meses del año para visitar Egipto por sus temperaturas moderadas de 24°C.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1510,
+        1410,
+        1310,
+        1210,
+        1120
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "eg"
+  },
+  {
+    "id": "marrakech",
+    "ciudad": "Marrakech & Atlas",
+    "pais": "Marruecos",
+    "bandera": "🇲🇦",
+    "iata": "RAK",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "US$ 960",
+    "comando_tg": "/marrakech",
+    "resena": "La mística 'Ciudad Roja': la plaza Jemaa el-Fna, jardines Majorelle, zocos aromáticos de la Medina medieval y excursiones al desierto del Sahara y cordillera del Atlas.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Iberia",
+        "escalas": "1 escala corta (MAD)",
+        "fechas": "07 Nov - 21 Nov 2026",
+        "noches": 14,
+        "precio": "US$ 960",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "Air Europa",
+        "escalas": "1 escala (MAD)",
+        "fechas": "14 Nov - 28 Nov 2026",
+        "noches": 14,
+        "precio": "US$ 1.010",
+        "destacado": "Conexión eficiente"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "TAP Air Portugal",
+        "escalas": "1 escala (LIS)",
+        "fechas": "21 Nov - 05 Dic 2026",
+        "noches": 14,
+        "precio": "US$ 1.060",
+        "destacado": "Opción de stopover en Lisboa"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "La Mamounia Marrakech",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.5",
+        "calificacion": "Excepcional (3.200 reseñas)",
+        "zona": "Hivernage / Murallas de la Medina",
+        "precio_noche": "US$ 620 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Palacio árabe-andalusí legendario de 1923 elegido entre los mejores hoteles del mundo, jardines de 8 hectáreas y spa suntuoso.",
+        "booking_url": "https://www.booking.com/hotel/ma/la-mamounia.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Royal Mansour Marrakech",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.6",
+        "calificacion": "Fantástico (1.800 reseñas)",
+        "zona": "Medina Histórica",
+        "precio_noche": "US$ 890 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Diseñado por artesanos reales marroquíes con riads privados individuales de varios pisos, piscinas privadas y túneles subterráneos de servicio.",
+        "booking_url": "https://www.booking.com/hotel/ma/royal-mansour-marrakech.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Riad Kniza",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.4",
+        "calificacion": "Excelente (1.950 reseñas)",
+        "zona": "Bab Doukkala (Entrada Medina)",
+        "precio_noche": "US$ 145 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Riad del siglo XVIII restaurado por expertos en antigüedades con patio andaluz tradicional, fuente, solárium y atención familiar cálida.",
+        "booking_url": "https://www.booking.com/hotel/ma/riad-kniza.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "bajo",
+      "posicion_pct": 25,
+      "rango_min": "US$ 940",
+      "rango_max": "US$ 1.390",
+      "mensaje": "¡Precio de oportunidad para sumergirse en la magia de Marruecos!",
+      "texto_pin": "US$ 960 es una tarifa baja récord",
+      "consejo": "Vía Madrid el vuelo a Marrakech dura solo 2 horas más, permitiendo volar al norte de África por menos de US$ 1.000.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1340,
+        1240,
+        1140,
+        1040,
+        960
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "ma"
+  },
+  {
+    "id": "ciudaddelcabo",
+    "ciudad": "Ciudad del Cabo (Cape Town)",
+    "pais": "Sudáfrica",
+    "bandera": "🇿🇦",
+    "iata": "CPT",
+    "tipo_ruta": "Internacional",
+    "es_cabotaje": false,
+    "categoria_region": "europa_mundo",
+    "precio_desde": "US$ 1.070",
+    "comando_tg": "/ciudaddelcabo",
+    "resena": "La imponente Table Mountain, pingüinos en Boulders Beach, viñedos de Stellenbosch y el Cabo de Buena Esperanza donde se abrazan el Atlántico y el Índico.",
+    "vuelos": [
+      {
+        "puesto": "🥇",
+        "aerolinea": "Ethiopian Airlines",
+        "escalas": "1 escala corta (ADD)",
+        "fechas": "05 Nov - 19 Nov 2026",
+        "noches": 14,
+        "precio": "US$ 1.070",
+        "destacado": "Tarifa récord más baja"
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "South African / LATAM",
+        "escalas": "1 escala (GRU)",
+        "fechas": "12 Nov - 26 Nov 2026",
+        "noches": 14,
+        "precio": "US$ 1.150",
+        "destacado": "Ruta transatlántica directa"
+      },
+      {
+        "puesto": "🥉",
+        "aerolinea": "Emirates / Qatar",
+        "escalas": "1 escala",
+        "fechas": "19 Nov - 03 Dic 2026",
+        "noches": 14,
+        "precio": "US$ 1.250",
+        "destacado": "Servicio de 5 estrellas"
+      }
+    ],
+    "hoteles": [
+      {
+        "categoria": "icon",
+        "badge": "👑 Más Solicitado · Ícono Exclusivo",
+        "nombre": "The Silo Hotel",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.6",
+        "calificacion": "Excepcional (1.200 reseñas)",
+        "zona": "V&A Waterfront / Silo District",
+        "precio_noche": "US$ 780 / noche",
+        "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Obra maestra arquitectónica de Thomas Heatherwick construida en un silo de grano histórico sobre el museo Zeitz MOCAA con piscina en la azotea.",
+        "booking_url": "https://www.booking.com/hotel/za/the-silo.es.html"
+      },
+      {
+        "categoria": "favorite",
+        "badge": "❤️ Más Solicitado · Favorito de Huéspedes",
+        "nombre": "Mount Nelson, A Belmond Hotel",
+        "estrellas": "⭐⭐⭐⭐⭐",
+        "puntuacion": "9.3",
+        "calificacion": "Fantástico (2.400 reseñas)",
+        "zona": "Gardens / Pie de Table Mountain",
+        "precio_noche": "US$ 420 / noche",
+        "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "El legendario 'Palacio Rosa' fundado en 1899, jardines exuberantes de 3 hectáreas, célebre Afternoon Tea y servicio Belmond de excelencia.",
+        "booking_url": "https://www.booking.com/hotel/za/belmond-mount-nelson.es.html"
+      },
+      {
+        "categoria": "value",
+        "badge": "💎 Mejor Relación Calidad-Precio",
+        "nombre": "Radisson RED Hotel Cape Town",
+        "estrellas": "⭐⭐⭐⭐",
+        "puntuacion": "9.0",
+        "calificacion": "Excelente (3.100 reseñas)",
+        "zona": "V&A Waterfront",
+        "precio_noche": "US$ 130 / noche",
+        "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "descripcion": "Diseño moderno y vibrante en pleno Waterfront turístico y seguro, piscina en la azotea con vistas directas a Table Mountain.",
+        "booking_url": "https://www.booking.com/hotel/za/radisson-red-hotel-v-a-waterfront-cape-town.es.html"
+      }
+    ],
+    "termometro": {
+      "nivel": "estandar",
+      "posicion_pct": 35,
+      "rango_min": "US$ 1.050",
+      "rango_max": "US$ 1.540",
+      "mensaje": "Precios estándar para descubrir los paisajes de Sudáfrica.",
+      "texto_pin": "US$ 1.070 es un precio estándar",
+      "consejo": "Noviembre coincide con el inicio de la primavera sudafricana, ideal para combinar Ciudad del Cabo con la Ruta Jardín o safaris.",
+      "historial_dias": [
+        "Hace 52 d",
+        "Hace 38 d",
+        "Hace 24 d",
+        "Hace 10 d",
+        "Hoy"
+      ],
+      "historial_valores": [
+        1480,
+        1370,
+        1260,
+        1160,
+        1070
+      ],
+      "historial_formato": "US$ "
+    },
+    "codigo_pais": "za"
+  }
+];
+})();
