@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Gradiente de fondo del badge moderno -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+
+    <!-- Gradiente de brillo sutil de marca -->
+    <radialGradient id="badgeGlow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#e11d48" stop-opacity="0.25"/>
+      <stop offset="70%" stop-color="#e11d48" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Gradiente rojo exclusivo de la valija de Rolli -->
+    <linearGradient id="suitcaseRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="40%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#9f1239"/>
+    </linearGradient>
+
+    <!-- Gradiente blanco cerámico del robot -->
+    <linearGradient id="robotBodyWhite" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+
+    <!-- Sombra suave para elementos vectoriales -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+
+    <!-- Resplandor neón cyan de los ojos -->
+    <filter id="cyanGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#38bdf8" flood-opacity="0.8"/>
+    </filter>
+
+    <!-- Resplandor neón verde de la pantalla de radar -->
+    <filter id="emeraldGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#10b981" flood-opacity="0.8"/>
+    </filter>
+
+    <!-- Resplandor de la antena roja -->
+    <filter id="antennaGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#e11d48" flood-opacity="0.9"/>
+    </filter>
+  </defs>
+
+  <!-- Fondo: Badge circular / squircle redondeado con borde tecnológico -->
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="url(#bgGradient)" stroke="#334155" stroke-width="4"/>
+  <rect x="24" y="24" width="464" height="464" rx="88" fill="url(#badgeGlow)"/>
+
+  <!-- Sombra proyectada en el suelo debajo del personaje -->
+  <ellipse cx="256" cy="428" rx="170" ry="24" fill="#000000" opacity="0.5"/>
+  <ellipse cx="256" cy="428" rx="130" ry="16" fill="#000000" opacity="0.3"/>
+
+  <!-- GRUPO PRINCIPAL: ROLLI + VALIJA -->
+  <g id="rolli-character" filter="url(#softShadow)">
+
+    <!-- 1. VALIJA CARRY-ON RÍGIDA ROJA 360° -->
+    <g id="valija">
+      <!-- Ruedas dobles giratorias 360° -->
+      <g id="ruedas">
+        <circle cx="320" cy="414" r="16" fill="#090d16" stroke="#94a3b8" stroke-width="4"/>
+        <circle cx="320" cy="414" r="6" fill="#cbd5e1"/>
+        <circle cx="396" cy="414" r="16" fill="#090d16" stroke="#94a3b8" stroke-width="4"/>
+        <circle cx="396" cy="414" r="6" fill="#cbd5e1"/>
+      </g>
+
+      <!-- Manija telescópica extendida de aluminio -->
+      <g id="manija-telescopica">
+        <line x1="328" y1="230" x2="328" y2="152" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+        <line x1="388" y1="230" x2="388" y2="152" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+        <!-- Agarre superior de la manija -->
+        <rect x="316" y="140" width="84" height="18" rx="8" fill="#1e293b" stroke="#cbd5e1" stroke-width="3"/>
+        <rect x="334" y="148" width="48" height="6" rx="3" fill="#ffffff" opacity="0.8"/>
+      </g>
+
+      <!-- Cuerpo principal de la valija -->
+      <rect x="296" y="220" width="124" height="180" rx="32" fill="url(#suitcaseRed)" stroke="#ffffff" stroke-width="6"/>
+
+      <!-- Refuerzos de esquinas en aluminio cepillado -->
+      <path d="M 302 248 A 26 26 0 0 1 328 222 L 328 230 A 18 18 0 0 0 310 248 Z" fill="#ffffff" opacity="0.4"/>
+      <path d="M 414 248 A 26 26 0 0 0 388 222 L 388 230 A 18 18 0 0 1 406 248 Z" fill="#ffffff" opacity="0.4"/>
+
+      <!-- Nervaduras horizontales de refuerzo rígido -->
+      <line x1="316" y1="265" x2="400" y2="265" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+      <line x1="316" y1="310" x2="400" y2="310" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+      <line x1="316" y1="355" x2="400" y2="355" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.6"/>
+
+      <!-- Pequeño detalle de cerradura TSA central -->
+      <circle cx="358" cy="236" r="4" fill="#ffffff" opacity="0.8"/>
+    </g>
+
+    <!-- Brazo izquierdo sosteniendo la manija telescópica -->
+    <path d="M 230 270 Q 284 218 334 154" fill="none" stroke="#e2e8f0" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="334" cy="154" r="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+
+    <!-- 2. CUERPO DE ROLLI (Blanco cerámico con forma de cápsula) -->
+    <g id="cuerpo-robot">
+      <rect x="120" y="200" width="144" height="180" rx="72" fill="url(#robotBodyWhite)" stroke="#cbd5e1" stroke-width="6"/>
+
+      <!-- Pantalla / monitor del pecho -->
+      <rect x="144" y="246" width="96" height="68" rx="20" fill="#090d16" stroke="#334155" stroke-width="3"/>
+
+      <!-- Onda de pulso de radar / frecuencia cardíaca tech -->
+      <path d="M 154 280 L 170 280 L 180 262 L 194 298 L 206 270 L 216 280 L 230 280"
+            fill="none" stroke="#10b981" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
+            filter="url(#emeraldGlow)"/>
+    </g>
+
+    <!-- Brazo derecho saludando alegremente hacia la izquierda -->
+    <path d="M 124 258 Q 70 216 78 160" fill="none" stroke="#e2e8f0" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="78" cy="160" r="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3"/>
+
+    <!-- 3. CABEZA DE ROLLI -->
+    <g id="cabeza-robot">
+      <!-- Antena de radar superior -->
+      <line x1="192" y1="94" x2="192" y2="42" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+
+      <!-- Anillos concéntricos de pulso de radar emitidos por la antena -->
+      <circle cx="192" cy="38" r="34" fill="none" stroke="#e11d48" stroke-width="3" stroke-dasharray="4 6" opacity="0.4"/>
+      <circle cx="192" cy="38" r="22" fill="none" stroke="#e11d48" stroke-width="3" stroke-dasharray="3 5" opacity="0.7"/>
+
+      <!-- Esfera emisora roja rubí de alerta -->
+      <circle cx="192" cy="38" r="14" fill="#e11d48" filter="url(#antennaGlow)"/>
+      <circle cx="188" cy="34" r="4" fill="#ffffff" opacity="0.8"/>
+
+      <!-- Estructura de la cabeza redondeada -->
+      <rect x="100" y="86" width="184" height="136" rx="48" fill="url(#robotBodyWhite)" stroke="#cbd5e1" stroke-width="6"/>
+
+      <!-- Visor frontal oscuro de policarbonato -->
+      <rect x="122" y="112" width="140" height="74" rx="30" fill="#090d16" stroke="#1e293b" stroke-width="4"/>
+
+      <!-- Ojos LED Cyan luminosos y expresivos -->
+      <ellipse cx="156" cy="149" rx="14" ry="16" fill="#38bdf8" filter="url(#cyanGlow)"/>
+      <ellipse cx="228" cy="149" rx="14" ry="16" fill="#38bdf8" filter="url(#cyanGlow)"/>
+      <!-- Brillo en la mirada de los ojos -->
+      <circle cx="160" cy="144" r="5" fill="#ffffff"/>
+      <circle cx="232" cy="144" r="5" fill="#ffffff"/>
+      
+      <!-- Sonrisa sutil tech en el visor -->
+      <path d="M 184 168 Q 192 174 200 168" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+    </g>
+
+  </g>
+
+  <!-- Tipografía / Firma de Identidad de Marca -->
+  <text x="256" y="476" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="18" font-weight="800" fill="#94a3b8" letter-spacing="3">
+    F-BOT ROLLI · FLIGHTBOT
+  </text>
+</svg>

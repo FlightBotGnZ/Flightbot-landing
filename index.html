@@ -13,12 +13,18 @@
   <meta property="og:title" content="FlightBot · Radar 24/7 de Vuelos, Rutas y Hoteles">
   <meta property="og:description" content="Rastreo en tiempo real de tarifas aéreas, cálculo de combustible y peajes, y salas VIP con tarjetas de crédito.">
   <meta property="og:image" content="https://flightbot-landing.vercel.app/img/og-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FlightBot · Radar 24/7 de Vuelos, Rutas y Hoteles">
+  <meta name="twitter:description" content="Rastreo en tiempo real de tarifas aéreas, cálculo de combustible y peajes, y salas VIP con tarjetas de crédito.">
+  <meta name="twitter:image" content="https://flightbot-landing.vercel.app/img/og-preview.jpg">
 
   <!-- Módulos de Datos Modularizados (Carga Asíncrona Diferida con defer) -->
   <script src="js/radar-data.js" defer></script>
   <script src="js/road-data.js" defer></script>
   <script src="js/guias-data.js" defer></script>
+  <script src="js/chatbox.js" defer></script>
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%23e11d48' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%23e11d48'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,6 +45,11 @@
 
     // Inicialización inmediata antes del renderizado para evitar FOUC (parpadeos)
     (function() {
+      // Redirección inmediata si se ingresa con el ancla antigua de FAQ
+      if (window.location.hash === '#faq') {
+        window.location.replace('faq.html');
+        return;
+      }
       const savedColor = localStorage.getItem('fb_theme_color') || 'ruby';
       const savedMode = localStorage.getItem('fb_theme_mode') || 'dark';
       document.documentElement.setAttribute('data-color', savedColor);
@@ -338,22 +349,16 @@
         </a>
       </div>
 
-        <!-- Barra de Navegación Central Simétrica (Dock Centrado Matemáticamente) -->
-      <nav class="hidden lg:flex items-center p-1 rounded-full dark:bg-slate-900/80 bg-slate-100/90 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-0.5 xl:gap-1 mx-auto">
+        <!-- Barra de Navegación Central Simétrica (Dock Centrado) -->
+      <nav class="hidden lg:flex items-center p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-1 xl:gap-1.5 mx-auto">
         <a href="#radar-vuelos" id="nav-btn-vuelos" class="nav-dock-btn is-active">
           <span>✈️</span> Vuelos
         </a>
         <a href="#destinos" id="nav-btn-destinos" class="nav-dock-btn">
           <span>🏨</span> Destinos
         </a>
-        <a href="#promos-portales" id="nav-btn-portales" class="nav-dock-btn">
-          <span>🏦</span> Portales
-        </a>
-        <a href="#promociones" id="nav-btn-promos" class="nav-dock-btn">
-          <span>💳</span> Promos &amp; VIP
-        </a>
-        <a href="escapadas.html" id="nav-btn-escapadas" class="nav-dock-btn" title="Ir al Portal de Escapadas en Auto y Semáforo Vial">
-          <span>🚗</span> Escapadas
+        <a href="escapadas.html" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
+          <span>🚗</span> Modo Ruta
         </a>
         <a href="billetera.html" id="nav-btn-billetera" class="nav-dock-btn">
           <span>🧳</span> Billetera
@@ -361,7 +366,7 @@
         <a href="guias/index.html" id="nav-btn-guias" class="nav-dock-btn">
           <span>📖</span> Guías
         </a>
-        <a href="#faq" id="nav-btn-faq" class="nav-dock-btn">
+        <a href="faq.html" id="nav-btn-faq" class="nav-dock-btn">
           <span>❓</span> FAQ
         </a>
       </nav>
@@ -421,14 +426,8 @@
         <a href="#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🏨</span> Destinos
         </a>
-        <a href="#promos-portales" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>🏦</span> Portales
-        </a>
-        <a href="#promociones" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>💳</span> Promos &amp; VIP
-        </a>
         <a href="escapadas.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>🚗</span> Escapadas
+          <span>🚗</span> Modo Ruta
         </a>
         <a href="billetera.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🧳</span> Billetera
@@ -436,7 +435,7 @@
         <a href="guias/index.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>📖</span> Guías
         </a>
-        <a href="#faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="faq.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>❓</span> FAQ
         </a>
       </div>
@@ -489,15 +488,15 @@
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 pt-12 border-t dark:border-slate-800/80 border-slate-200">
         <div>
           <div class="text-3xl font-extrabold dark:text-white text-slate-900">24/7</div>
-          <div class="text-xs dark:text-slate-400 text-slate-500 mt-1 uppercase font-semibold">Vigilancia Continua</div>
+          <div class="text-xs dark:text-slate-400 text-slate-500 mt-1 uppercase font-semibold">Monitoreo Continuo 24/7</div>
         </div>
         <div>
           <div class="text-3xl font-extrabold" style="color: var(--brand-primary);">100%</div>
           <div class="text-xs dark:text-slate-400 text-slate-500 mt-1 uppercase font-semibold">Gratis para Usuarios</div>
         </div>
         <div>
-          <div class="text-3xl font-extrabold text-emerald-500">0s</div>
-          <div class="text-xs dark:text-slate-400 text-slate-500 mt-1 uppercase font-semibold">Alertas Inmediatas</div>
+          <div class="text-3xl font-extrabold text-emerald-500">En Vivo</div>
+          <div class="text-xs dark:text-slate-400 text-slate-500 mt-1 uppercase font-semibold">Alertas al Instante</div>
         </div>
         <div>
           <div class="text-3xl font-extrabold" style="color: var(--brand-primary);">+50k</div>
@@ -519,7 +518,7 @@
       <div class="text-center max-w-3xl mx-auto mb-16">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3 font-mono border"
              style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
-          <span>🤖</span>
+          <img src="img/rolli-avatar-transparent.png" alt="Rolli" class="w-4 h-4 object-contain inline-block shrink-0 filter drop-shadow">
           <span>Conocé a tu radar viajero</span>
         </div>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold dark:text-white text-slate-900 tracking-tight mb-4 theme-transition">
@@ -536,8 +535,8 @@
         <!-- Columna Izquierda (lg:col-span-5): Escenario de F-Bot Rolli Dominante -->
         <div class="lg:col-span-5 flex flex-col items-center relative">
           
-          <!-- BURBUJA DE DIÁLOGO ANIMADA (Estilo Comic Tech con Pico y Flotación) -->
-          <div class="fb-speech-bubble-anim relative z-20 w-full max-w-sm mb-2">
+          <!-- BURBUJA DE DIÁLOGO ANIMADA (Sincronizada con el Rotador de Ofertas) -->
+          <div class="fb-speech-bubble-anim relative z-20 w-full max-w-sm mb-2" id="rolli-speech-bubble-container">
             <div class="p-4 sm:p-5 rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-rose-200 dark:border-rose-900/50 shadow-xl shadow-rose-950/10 dark:shadow-rose-950/30 relative theme-transition">
               <!-- Header de la burbuja -->
               <div class="flex items-center justify-between gap-2 mb-2">
@@ -545,11 +544,14 @@
                   <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
                   <span class="text-[11px] font-extrabold uppercase tracking-wider font-mono" style="color: var(--brand-primary);">F-Bot Rolli dice:</span>
                 </div>
-                <span class="text-xs">🎙️✨</span>
+                <div class="flex items-center gap-1">
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30 font-mono" id="rolli-bubble-badge">Oferta 1 de 36</span>
+                  <span class="text-xs">🎙️✨</span>
+                </div>
               </div>
-              <!-- Texto de la burbuja -->
-              <p class="text-xs sm:text-sm font-semibold dark:text-slate-200 text-slate-800 leading-relaxed">
-                "¡Hola! Yo no duermo para que vos no pagues de más. Escaneo rutas 24/7 y cazo gangas históricas como este vuelo directo al Caribe 👇"
+              <!-- Texto de la burbuja (Se actualiza con cada oferta rotativa) -->
+              <p class="text-xs sm:text-sm font-semibold dark:text-slate-200 text-slate-800 leading-relaxed transition-opacity duration-300" id="rolli-speech-text" style="min-height: 40px;">
+                "¡Gran oportunidad para Punta Cana (PUJ) a solo US$ 621! Confirmada en tiempo real 👇"
               </p>
               
               <!-- Rabillo / Pico de la burbuja de diálogo (apuntando hacia Rolli) -->
@@ -559,7 +561,8 @@
 
           <!-- Escenario / Ilustración Grande de F-Bot Rolli -->
           <div class="relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center group cursor-pointer"
-               title="F-Bot Rolli: Mascota tech con valija rígida roja 360° y antena con pulsos de alerta">
+               title="F-Bot Rolli: Mascota tech con valija rígida roja 360° y antena con pulsos de alerta"
+               onclick="window.cambiarOfertaRolli(1)">
             
             <!-- Glow ambiental de la base -->
             <div class="absolute bottom-4 w-52 h-14 rounded-full bg-rose-600/25 blur-2xl group-hover:bg-rose-600/40 transition-all"></div>
@@ -571,38 +574,26 @@
 
             <!-- SVG Vectorial en Alta Definición de F-Bot Rolli (260px) -->
             <svg viewBox="0 0 40 40" class="w-64 h-64 sm:w-72 sm:h-72 drop-shadow-2xl transition-transform duration-300 group-hover:scale-105" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Sombra proyectada -->
               <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.4"/>
 
-              <!-- VALIJA CARRY-ON RÍGIDA ROJA (Siempre Roja invariable) -->
+              <!-- Valija Roja Carry-on Rígida -->
               <g id="rolli-suitcase">
                 <rect x="23" y="19" width="12" height="16" rx="3" fill="url(#fbSuitcaseHeroRed)" stroke="#ffffff" stroke-width="0.8"/>
-                <!-- Nervaduras de refuerzo rígido de la valija -->
                 <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.5" stroke-width="0.8" stroke-linecap="round"/>
                 <line x1="25" y1="27" x2="33" y2="27" stroke="#ffffff" stroke-opacity="0.5" stroke-width="0.8" stroke-linecap="round"/>
                 <line x1="25" y1="31" x2="33" y2="31" stroke="#ffffff" stroke-opacity="0.5" stroke-width="0.8" stroke-linecap="round"/>
-                <!-- Ruedas dobles giratorias 360° -->
                 <circle cx="25.5" cy="36" r="1.4" fill="#0f172a" stroke="#ffffff" stroke-width="0.6"/>
                 <circle cx="32.5" cy="36" r="1.4" fill="#0f172a" stroke="#ffffff" stroke-width="0.6"/>
-                <!-- Manija telescópica desplegada de aluminio -->
                 <path d="M26 19 V12 H32 V19" stroke="#cbd5e1" stroke-width="1.2" stroke-linecap="round"/>
                 <rect x="27" y="10.5" width="4" height="2" rx="1" fill="#ffffff" stroke="#94a3b8" stroke-width="0.5"/>
               </g>
 
-              <!-- Brazo Izquierdo sosteniendo la manija -->
               <path d="M17 24 Q22 19 27 12" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round"/>
-
-              <!-- CUERPO PRINCIPAL DEL ROBOT (Blanco cerámico pulido) -->
               <rect x="7" y="17" width="14" height="16" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="0.9"/>
-              <!-- Pantalla / Monitor de Pecho -->
               <rect x="10" y="22" width="8" height="6" rx="2" fill="#0f172a"/>
-              <!-- Onda de Pulso de Radar / Audio en Pantalla -->
               <path d="M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25" stroke="#10b981" stroke-width="0.9" stroke-linecap="round"/>
-
-              <!-- CABEZA DEL ROBOT -->
               <rect x="5.5" y="6" width="17" height="13" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.9"/>
               
-              <!-- ANTENA SUPERIOR CON EMISOR DE ALERTAS (Titilante sutil) -->
               <line x1="14" y1="6" x2="14" y2="2" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/>
               <g class="fb-antenna-pulse">
                 <circle cx="14" cy="1.8" r="1.7" fill="#e11d48"/>
@@ -610,13 +601,9 @@
                 <circle cx="14" cy="1.8" r="5.2" stroke="#e11d48" stroke-width="0.4" opacity="0.5"/>
               </g>
 
-              <!-- Visor Oscuro de Cristal Frontal -->
               <rect x="8" y="9" width="12" height="6.5" rx="2.5" fill="#0f172a"/>
-              <!-- Ojos Inteligentes Cyan LED -->
               <circle cx="11" cy="12.2" r="1.3" fill="#38bdf8"/>
               <circle cx="17" cy="12.2" r="1.3" fill="#38bdf8"/>
-
-              <!-- Brazo Derecho libre y simpático -->
               <path d="M7 23 Q2 19 3 14" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round"/>
 
               <defs>
@@ -629,73 +616,93 @@
             </svg>
           </div>
 
-          <!-- TARJETA FLOTANTE DE OFERTA EN VIVO: PUNTA CANA + MINI HISTORIAL ANTERIOR -->
-          <div class="fb-deal-card-anim -mt-4 sm:-mt-6 z-30 w-full max-w-xs space-y-2">
+          <!-- ROTADOR DE OFERTAS CAZADAS EN VIVO: TODAS LAS RUTAS -->
+          <div class="fb-deal-card-anim -mt-4 sm:-mt-6 z-30 w-full max-w-xs space-y-2" id="rolli-deals-carousel"
+               onmouseenter="window.pausarRotadorRolli(true)" onmouseleave="window.pausarRotadorRolli(false)">
             
-            <!-- TARJETA PRINCIPAL (ÚLTIMO HALLAZGO: PUNTA CANA) -->
-            <div class="p-3.5 sm:p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-2 border-emerald-500/50 shadow-2xl shadow-emerald-950/20 theme-transition relative overflow-hidden">
-              <div class="flex items-center justify-between gap-2 mb-1.5">
+            <!-- TARJETA PRINCIPAL ROTATIVA -->
+            <div class="p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-2 border-emerald-500/50 shadow-2xl shadow-emerald-950/20 theme-transition relative overflow-hidden" id="rolli-card-box">
+              
+              <!-- 1. Encabezado de la Tarjeta (Badge Ofertón + Paginador interactivo) -->
+              <div class="flex items-center justify-between gap-2 mb-2 pb-2 border-b dark:border-slate-800/80 border-slate-100">
                 <div class="flex items-center gap-1.5">
                   <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                  <span class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-500 font-mono">Último Ofertón Cazado</span>
+                  <span class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-500 font-mono" id="rolli-deal-status">Ofertón Cazado</span>
                 </div>
-                <span class="text-[10px] font-semibold text-slate-400">hace 14 min</span>
+                <div class="flex items-center gap-1.5 text-[10px] text-slate-400 font-bold select-none">
+                  <button type="button" onclick="window.cambiarOfertaRolli(-1)" class="w-5 h-5 rounded-full dark:bg-slate-800 bg-slate-100 hover:bg-rose-500 hover:text-white flex items-center justify-center transition-colors cursor-pointer" title="Oferta anterior">◀</button>
+                  <span id="rolli-deal-index" class="font-mono text-emerald-500 px-0.5">1/36</span>
+                  <button type="button" onclick="window.cambiarOfertaRolli(1)" class="w-5 h-5 rounded-full dark:bg-slate-800 bg-slate-100 hover:bg-rose-500 hover:text-white flex items-center justify-center transition-colors cursor-pointer" title="Siguiente oferta">▶</button>
+                </div>
               </div>
               
-              <div class="flex items-center justify-between gap-3">
-                <div>
-                  <div class="text-sm font-bold dark:text-white text-slate-900 flex items-center gap-1.5">
-                    <span>🇩🇴</span>
-                    <span>Punta Cana (PUJ)</span>
-                  </div>
-                  <div class="text-[11px] dark:text-slate-400 text-slate-500">Arajet · Vuelo Directo · I/V</div>
+              <!-- 2. Fila Exclusiva del Destino (Bandera + Ciudad Limpia + IATA) con 100% de ancho -->
+              <div class="mb-2">
+                <div class="text-base font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+                  <span id="rolli-deal-flag" class="text-xl shrink-0">🇩🇴</span>
+                  <span id="rolli-deal-city" class="truncate font-extrabold">Punta Cana</span>
+                  <span id="rolli-deal-iata" class="text-xs font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-400 font-bold shrink-0">(PUJ)</span>
                 </div>
-
-                <div class="text-right">
-                  <div class="text-lg sm:text-xl font-extrabold font-mono text-emerald-500 leading-tight">US$ 590</div>
-                  <div class="text-[10px] font-bold uppercase text-emerald-600 dark:text-emerald-400">-42% récord</div>
+                <!-- Aerolínea y Escalas en su propia línea inferior para que NUNCA se mezclen -->
+                <div class="text-xs dark:text-slate-400 text-slate-500 flex items-center gap-1.5 mt-0.5" id="rolli-deal-details">
+                  <span class="text-rose-500">✈️</span>
+                  <span id="rolli-deal-airline" class="font-semibold dark:text-slate-300 text-slate-700">Arajet</span>
+                  <span class="text-slate-300 dark:text-slate-600">·</span>
+                  <span id="rolli-deal-scales" class="truncate">Vuelo Directo</span>
                 </div>
               </div>
 
-              <!-- Fechas y cupos disponibles en vivo -->
-              <div class="mt-2 py-1 px-2.5 rounded-lg dark:bg-slate-800/80 bg-slate-100 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
-                <span>🗓️ 23 Abr - 01 May (8 noches)</span>
-                <span class="font-bold text-amber-500 flex items-center gap-1"><span>🔥</span> 3 cupos</span>
+              <!-- 3. Caja Exclusiva de Tarifa & Ahorro (Destacada, legible y espaciosa) -->
+              <div class="my-2.5 p-2.5 rounded-xl bg-emerald-500/10 dark:bg-emerald-950/30 border border-emerald-500/25 flex items-center justify-between gap-3">
+                <div class="min-w-0">
+                  <div class="text-[9px] uppercase font-bold tracking-wider text-slate-400 font-mono">Tarifa detectada</div>
+                  <div class="text-lg sm:text-xl font-black font-mono text-emerald-500 tracking-tight truncate" id="rolli-deal-price">US$ 621</div>
+                </div>
+                <div class="text-right shrink-0">
+                  <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-extrabold uppercase bg-emerald-500 text-white shadow-xs" id="rolli-deal-badge">Tarifa récord</span>
+                </div>
               </div>
 
-              <div class="mt-2.5 pt-2 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between text-[11px]">
-                <span class="text-slate-400 font-medium flex items-center gap-1">
-                  <span>🤖</span> Detectado por Rolli
+              <!-- 4. Fechas y Cupos Disponibles -->
+              <div class="py-1 px-2.5 rounded-lg dark:bg-slate-800/80 bg-slate-100 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 mb-2">
+                <span id="rolli-deal-fechas">🗓️ 23 Abr - 01 May (8 noches)</span>
+                <div class="flex items-center gap-1.5 font-bold">
+                  <span class="text-amber-500 flex items-center gap-1"><span>🔥</span> <span id="rolli-deal-cupos">3 cupos</span></span>
+                  <span class="text-slate-300 dark:text-slate-600">·</span>
+                  <span class="font-mono text-[10px] text-rose-500 font-extrabold tracking-tight" id="rolli-deal-countdown" title="Expiración estimada del cupo">Vence en: <span id="rolli-countdown-timer">04:48:22</span></span>
+                </div>
+              </div>
+
+              <!-- 5. Pie de la Tarjeta con Enlace al Radar -->
+              <div class="pt-2 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between text-[11px]">
+                <span class="text-slate-400 font-medium flex items-center gap-1.5">
+                  <img src="img/rolli-avatar-transparent.png" alt="F-Bot Rolli" class="w-4 h-4 object-contain filter drop-shadow inline-block shrink-0">
+                  <span id="rolli-deal-time">hace 14 min</span>
                 </span>
-                <button type="button" onclick="if(window.renderRadarDestino){window.renderRadarDestino('puntacana');} const r=document.getElementById('radar-vuelos'); if(r) r.scrollIntoView({behavior:'smooth'});"
-                   class="font-bold hover:underline flex items-center gap-1 cursor-pointer" style="color: var(--brand-primary);">
+                <button type="button" id="rolli-deal-radar-btn" onclick="window.irAOfertaActualEnRadar()"
+                   class="font-bold hover:underline flex items-center gap-1 cursor-pointer text-xs" style="color: var(--brand-primary);">
                   Ver en Radar <span>&darr;</span>
                 </button>
               </div>
             </div>
 
-            <!-- MINI HISTORIAL: HALLAZGO ANTERIOR EN CHIQUITO -->
+            <!-- MINI PREVIEW: SIGUIENTE OFERTA EN COLA -->
             <div class="p-2.5 rounded-xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 shadow-md theme-transition hover:border-slate-300 dark:hover:border-slate-700 cursor-pointer"
-                 onclick="if(window.renderRadarDestino){window.renderRadarDestino('rio');} const r=document.getElementById('radar-vuelos'); if(r) r.scrollIntoView({behavior:'smooth'});"
-                 title="Ver hallazgo anterior en el Radar">
+                 id="rolli-next-preview" onclick="window.cambiarOfertaRolli(1)" title="Hacé clic para ver la siguiente oferta cazada">
               <div class="flex items-center justify-between text-[10px] font-medium text-slate-400 mb-1">
                 <span class="flex items-center gap-1 uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400">
-                  <span>⏱️</span> Hallazgo anterior
+                  <span>⏱️</span> Siguiente oferta cazada
                 </span>
-                <span class="text-[10px] text-slate-400">hace 3 hs</span>
+                <span class="text-emerald-500 font-bold hover:underline text-[10px]">Rotar ahora ➔</span>
               </div>
               <div class="flex items-center justify-between gap-2 text-xs">
                 <div class="flex items-center gap-1.5 truncate">
-                  <span class="text-sm">🇧🇷</span>
-                  <span class="font-bold dark:text-slate-200 text-slate-800 truncate">Río de Janeiro (GIG)</span>
+                  <span id="rolli-next-flag">🇺🇸</span>
+                  <span class="font-bold dark:text-slate-200 text-slate-800 truncate" id="rolli-next-city">Miami (MIA)</span>
                 </div>
-                <div class="font-extrabold font-mono text-emerald-600 dark:text-emerald-400 shrink-0">
-                  US$ 340
+                <div class="font-extrabold font-mono text-emerald-600 dark:text-emerald-400 shrink-0" id="rolli-next-price">
+                  US$ 638
                 </div>
-              </div>
-              <div class="flex items-center justify-between text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">
-                <span>🗓️ 10 Abr - 17 Abr (7 noches)</span>
-                <span class="text-slate-400">Gol / Directo</span>
               </div>
             </div>
 
@@ -798,7 +805,7 @@
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3 font-mono border"
                style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
             <span class="w-2 h-2 rounded-full animate-ping" style="background-color: var(--brand-primary);"></span>
-            Radar Activo 24/7 · Tarifas Vigentes 2026
+            Radar Activo 24/7 · Tarifas Vigentes <span class="current-year">2026</span>
           </div>
           <h2 class="text-3xl sm:text-4xl font-extrabold dark:text-white text-slate-900 tracking-tight theme-transition">
             ✈️ Radar de Vuelos & Hospedajes Verificados
@@ -830,8 +837,11 @@
           <!-- Indicador Sutil y Limpio de Monitoreo -->
           <div class="flex items-center gap-2 px-4 py-2.5 rounded-2xl dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 shadow-sm theme-transition">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="text-xs font-semibold dark:text-slate-300 text-slate-700">
+            <span class="text-xs font-semibold dark:text-slate-300 text-slate-700" id="radar-badge-monitoreo">
               Monitoreo en tiempo real · 45 Destinos oficiales
+            </span>
+            <span class="text-[11px] font-mono font-bold px-2 py-0.5 rounded-lg dark:bg-slate-800 bg-slate-100 text-emerald-600 dark:text-emerald-400 border dark:border-slate-700 border-slate-200 shadow-2xs" id="radar-last-scan">
+              Último escaneo: hace 4 min
             </span>
           </div>
         </div>
@@ -879,7 +889,7 @@
           </div>
           <div class="min-w-0">
             <div class="text-xs font-bold dark:text-white text-slate-900 truncate">Radar de Oportunidades</div>
-            <div class="text-[11px] dark:text-slate-400 text-slate-500 truncate">Alertas de ofertas y gangas</div>
+            <div class="text-[11px] dark:text-slate-400 text-slate-500 truncate">Alertas de tarifas récord y oportunidades</div>
           </div>
         </div>
       </div>
@@ -890,10 +900,10 @@
         <!-- SIDEBAR IZQUIERDO: 38 Destinos Monitoreados con Banderitas y Filtros Regionales -->
         <div class="lg:col-span-4 dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-4 shadow-sm theme-transition">
           <div class="flex items-center justify-between pb-3 mb-2 border-b dark:border-slate-800 border-slate-200 px-2">
-            <span class="text-xs font-extrabold uppercase tracking-wider dark:text-slate-400 text-slate-500">
+            <span class="text-xs font-extrabold uppercase tracking-wider dark:text-slate-400 text-slate-500" id="radar-counter-sidebar">
               45 Destinos en Radar
             </span>
-            <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20" id="radar-live-indicator">
               ● En Vivo
             </span>
           </div>
@@ -901,19 +911,19 @@
                     <!-- Pestañas de Filtro Regional -->
           <div class="flex items-center gap-1.5 overflow-x-auto pb-2 mb-2 px-0.5 fb-custom-scrollbar text-xs">
             <button type="button" onclick="window.filtrarRadarRegion('todos')" id="fb-filter-todos" class="fb-filter-chip px-2.5 py-1 rounded-xl font-bold whitespace-nowrap transition-all border text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs">
-              Todos (45)
+              Todos
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('cabotaje')" id="fb-filter-cabotaje" class="fb-filter-chip px-2.5 py-1 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-              🇦🇷 Cabotaje (11)
+              🇦🇷 Cabotaje
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('brasil')" id="fb-filter-brasil" class="fb-filter-chip px-2.5 py-1 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-              🇧🇷 Brasil (6)
+              🇧🇷 Brasil
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('caribe_usa')" id="fb-filter-caribe_usa" class="fb-filter-chip px-2.5 py-1 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-              🏝️ América & Caribe (9)
+              🏝️ América & Caribe
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('europa_mundo')" id="fb-filter-europa_mundo" class="fb-filter-chip px-2.5 py-1 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-              🌍 Europa & Mundo (19)
+              🌍 Europa & Mundo
             </button>
           </div>
 
@@ -950,12 +960,12 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
         <div>
-          <div class="font-semibold text-sm uppercase tracking-wider mb-2 font-mono" style="color: var(--brand-primary);">Blog de Viajes & Guías Editoriales 2026</div>
+          <div class="font-semibold text-sm uppercase tracking-wider mb-2 font-mono" style="color: var(--brand-primary);">Blog de Viajes & Guías Editoriales <span class="current-year">2026</span></div>
           <h2 class="text-3xl sm:text-4xl font-extrabold dark:text-white text-slate-900 theme-transition">Alojamientos y guías para tu próxima escapada</h2>
         </div>
         <div>
           <a href="guias/index.html" class="inline-flex items-center gap-2 text-sm font-bold transition-colors hover:underline" style="color: var(--brand-primary);">
-            Ver las 53 Guías Editoriales del Blog &rarr;
+            Ver todas las Guías Editoriales del Blog ➔
           </a>
         </div>
       </div>
@@ -1069,7 +1079,7 @@
       <!-- Banner con acceso a los 38 Destinos Monitoreados -->
       <div class="dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm theme-transition">
         <div>
-          <h4 class="text-lg font-bold dark:text-white text-slate-900 mb-1 theme-transition">Explora las 53 Guías Turísticas Oficiales</h4>
+          <h4 class="text-lg font-bold dark:text-white text-slate-900 mb-1 theme-transition">Explora todas las Guías Turísticas Oficiales</h4>
           <p class="dark:text-slate-400 text-slate-600 text-sm theme-transition">
             Argentina, Brasil, Caribe, Estados Unidos, Europa, Asia, África, Islas Exóticas y Oceanía.
           </p>
@@ -1077,7 +1087,7 @@
         <div class="flex gap-3 flex-wrap">
           <a href="guias/index.html" class="px-6 py-3 rounded-xl text-white font-bold text-sm transition-all hover:brightness-110 shadow-md"
              style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
-            Ver Índice de Guías 2026 &rarr;
+            Ver todas las Guías Editoriales del Blog ➔
           </a>
         </div>
       </div>
@@ -1096,7 +1106,7 @@
       <div class="text-center max-w-3xl mx-auto mb-12">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider mb-4 border shadow-sm theme-transition"
              style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
-          <span>✈️</span> Portales Oficiales de Viaje &amp; Aerolíneas 2026
+          <span>✈️</span> Portales Oficiales de Viaje &amp; Aerolíneas <span class="current-year">2026</span>
         </div>
         <h2 class="text-3xl sm:text-4xl font-extrabold dark:text-white text-slate-900 tracking-tight mb-4 theme-transition">
           Cuotas Sin Interés, Cupones &amp; Millas por Portal
@@ -3048,67 +3058,43 @@
     })();
   </script>
 <!-- FLIGHTBOT_PROMOS_END -->
-<!-- SECCIÓN: BANNER TEASER / PUENTE A ESCAPADAS EN AUTO -->
-  <section id="teaser-escapadas" class="w-full py-16 dark:bg-slate-950/60 bg-slate-50 border-t dark:border-slate-800 border-slate-200 theme-transition relative overflow-hidden">
+<!-- SECCIÓN: BANNER TEASER / MODO RUTA & ESCAPADAS -->
+  <section id="teaser-escapadas" class="w-full py-16 dark:bg-slate-950/70 bg-slate-50 border-t dark:border-slate-800 border-slate-200 theme-transition relative overflow-hidden">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="dark:bg-gradient-to-r dark:from-slate-900 dark:via-slate-900/90 dark:to-slate-950 bg-gradient-to-r from-white via-slate-50 to-white border dark:border-slate-800 border-slate-200/90 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden theme-transition group">
-        <!-- Decoración de fondo suave -->
-        <div class="absolute -right-16 -top-16 w-72 h-72 rounded-full bg-rose-500/10 blur-3xl pointer-events-none group-hover:bg-rose-500/15 transition-all duration-700"></div>
-        <div class="absolute -left-16 -bottom-16 w-72 h-72 rounded-full bg-sky-500/10 blur-3xl pointer-events-none group-hover:bg-sky-500/15 transition-all duration-700"></div>
+      <div class="dark:bg-slate-900/90 bg-white border-2 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden theme-transition group"
+           style="border-color: var(--brand-border);">
+        <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-30 group-hover:opacity-45 transition-opacity"
+             style="background: var(--brand-primary);"></div>
+        <div class="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
 
         <div class="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
-          <div class="max-w-2xl text-center lg:text-left space-y-3">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider border shadow-sm theme-transition"
-                 style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
-              <span>🚗</span> Portal Dedicado de Rutas &amp; Road Trips
+          <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6 max-w-3xl">
+            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl flex items-center justify-center shrink-0 shadow-lg text-4xl sm:text-5xl group-hover:scale-105 transition-transform"
+                 style="background: var(--brand-subtle); border: 1.5px solid var(--brand-border);">
+              🚗
             </div>
-            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold dark:text-white text-slate-900 tracking-tight leading-tight">
-              ¿Viajás en Auto por Argentina?
-            </h2>
-            <p class="text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed">
-              Semáforo de Rutas, Peajes en Vivo, Precios de Combustible Shell/YPF con Descuentos, Controles Sanitarios (SENASA / Barrera Patagónica) y Guías de Escapadas organizadas por tiempo de manejo.
-            </p>
+            <div class="space-y-3">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider border shadow-xs"
+                   style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
+                <span class="w-2 h-2 rounded-full animate-ping" style="background-color: var(--brand-primary);"></span>
+                PLANIFICADOR VIAL ARGENTINA <span class="current-year">2026</span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold dark:text-white text-slate-900 tracking-tight leading-tight">
+                ¿Viajás en auto? Descubrí nuestro Modo Ruta &amp; Escapadas
+              </h2>
+              <p class="text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed">
+                Calculá el gasto exacto de nafta y peajes de cualquier punto a punto del país, consultá el semáforo de baches en vivo, qué alimentos permite el SENASA y dónde cargar en paradores 24 hs.
+              </p>
+            </div>
           </div>
-
-          <div class="shrink-0 w-full sm:w-auto text-center">
+          <div class="shrink-0 w-full lg:w-auto text-center">
             <a href="escapadas.html"
-               class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-7 py-4 rounded-2xl text-sm sm:text-base font-extrabold text-white shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 group-hover:brightness-110"
-               style="background: var(--brand-gradient); box-shadow: 0 10px 25px -5px var(--brand-glow);">
-              <span>🚗 Abrir Portal de Escapadas y Rutas</span>
-              <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-              </svg>
+               class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 rounded-2xl text-base font-extrabold text-white shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 group-hover:brightness-110"
+               style="background: var(--brand-gradient); box-shadow: 0 12px 28px -6px var(--brand-glow);">
+              <span>Abrir Asistente de Ruta Completo</span>
+              <span class="text-lg">➔</span>
             </a>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="w-full py-20 dark:bg-slate-900/40 bg-slate-100/70 border-t dark:border-slate-800 border-slate-200 theme-transition">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-extrabold dark:text-white text-slate-900 text-center mb-12 theme-transition">Preguntas Frecuentes</h2>
-
-      <div class="space-y-6">
-        <div class="dark:bg-slate-900 bg-white p-6 rounded-xl border dark:border-slate-800 border-slate-200 shadow-sm theme-transition">
-          <h4 class="text-lg font-bold dark:text-white text-slate-900 mb-2 theme-transition">¿FlightBot es completamente gratis?</h4>
-          <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed theme-transition">
-            Sí. Nuestro asistente en Telegram es 100% gratuito para los viajeros. Puedes configurar tus rutas, monitorear precios y recibir alertas directas sin pagar suscripciones ni comisiones.
-          </p>
-        </div>
-
-        <div class="dark:bg-slate-900 bg-white p-6 rounded-xl border dark:border-slate-800 border-slate-200 shadow-sm theme-transition">
-          <h4 class="text-lg font-bold dark:text-white text-slate-900 mb-2 theme-transition">¿Cómo se gestionan las reservas de hoteles y vuelos?</h4>
-          <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed theme-transition">
-            FlightBot no vende boletos directamente. Cuando encuentras una oferta que te interesa, te redirigimos a los proveedores oficiales y líderes de la industria (como Booking.com, aerolíneas y plataformas asociadas) para que reserves de forma segura con confirmación inmediata.
-          </p>
-        </div>
-
-        <div class="dark:bg-slate-900 bg-white p-6 rounded-xl border dark:border-slate-800 border-slate-200 shadow-sm theme-transition">
-          <h4 class="text-lg font-bold dark:text-white text-slate-900 mb-2 theme-transition">¿Con qué frecuencia se actualizan los precios?</h4>
-          <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed theme-transition">
-            El radar de rutas activas analiza de manera inteligente las oportunidades del mercado para avisarte en el momento exacto en que una tarifa baja significativamente o aparece un récord histórico.
-          </p>
         </div>
       </div>
     </div>
@@ -3410,6 +3396,68 @@
   </script>
 
 
+  <!-- Banner de Cierre Final (Call To Action) -->
+
+  <section class="w-full py-16 sm:py-20 relative overflow-hidden theme-transition border-t dark:border-slate-800 border-slate-200"
+
+           style="background: linear-gradient(135deg, rgba(225, 29, 72, 0.08) 0%, rgba(225, 29, 72, 0.02) 100%);">
+
+    <div class="absolute -top-24 -left-24 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-40"
+
+         style="background: var(--brand-primary);"></div>
+
+    <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full blur-3xl pointer-events-none opacity-30"
+
+         style="background: var(--brand-primary);"></div>
+
+
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border"
+
+           style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
+
+        <span>🔔</span>
+
+        <span>Alertas en tiempo real</span>
+
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold dark:text-white text-slate-900 tracking-tight mb-4">
+
+        No te pierdas ninguna caída de precios
+
+      </h2>
+
+      <p class="text-base sm:text-lg dark:text-slate-300 text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+
+        F-Bot Rolli vigila las tarifas por vos las 24 hs y te avisa gratis en Telegram apenas bajan.
+
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
+
+           class="px-8 py-4 rounded-2xl text-white font-extrabold text-base transition-all hover:scale-105 shadow-xl flex items-center justify-center gap-2.5"
+
+           style="background: var(--brand-gradient); box-shadow: 0 15px 30px -5px var(--brand-glow);">
+
+          <span>Unirme al Bot de Telegram Gratis</span>
+
+          <span class="text-lg">↗</span>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
   <!-- Pie de página y Descargo de Afiliación -->
   <footer class="py-12 dark:bg-slate-950 bg-slate-100 border-t dark:border-slate-800 border-slate-200 text-xs dark:text-slate-400 text-slate-600 theme-transition">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -3437,7 +3485,7 @@
           <p class="dark:text-slate-400 text-slate-600 leading-relaxed mb-2">
             Priorizamos la privacidad de nuestros usuarios y la transparencia en la información de viaje.
           </p>
-          <span class="dark:text-slate-500 text-slate-400">Última actualización: 2026</span>
+          <span class="dark:text-slate-500 text-slate-400 font-medium" id="footer-sync-time">Radar sincronizado hoy a las <span id="footer-sync-hhmm">14:50</span> hs</span>
         </div>
       </div>
 
@@ -3450,13 +3498,15 @@
       </div>
 
       <div class="flex flex-col sm:flex-row items-center justify-between dark:text-slate-500 text-slate-500 gap-4">
-        <div>&copy; 2026 FlightBot. Todos los derechos reservados.</div>
+        <div>&copy; <span class="current-year">2026</span> FlightBot. Todos los derechos reservados.</div>
         <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
-          <a href="billetera.html" class="hover:underline flex items-center gap-1 font-bold" style="color: var(--brand-primary);"><span>🧳</span> Billetera</a>
-          <a href="guias/index.html" class="hover:underline" style="color: var(--brand-primary);">Guías de Viaje 2026</a>
+          <a href="faq.html" class="hover:underline flex items-center gap-1 font-bold" style="color: var(--brand-primary);"><span>❓</span> Preguntas Frecuentes</a>
+          <a href="escapadas.html" class="hover:underline flex items-center gap-1 font-semibold dark:text-slate-300 text-slate-700"><span>🚗</span> Modo Ruta</a>
+          <a href="billetera.html" class="hover:underline flex items-center gap-1 font-semibold dark:text-slate-300 text-slate-700"><span>🧳</span> Billetera</a>
+          <a href="guias/index.html" class="hover:underline flex items-center gap-1 font-semibold dark:text-slate-300 text-slate-700"><span>📖</span> Guías</a>
           <a href="javascript:void(0)" onclick="openPrivacyModal('privacy')" class="hover:underline">Privacidad</a>
           <a href="javascript:void(0)" onclick="openPrivacyModal('cookies')" class="hover:underline">Cookies</a>
-          <a href="javascript:void(0)" onclick="openPrivacyModal('terms')" class="hover:underline">Términos de Uso</a>
+          <a href="javascript:void(0)" onclick="openPrivacyModal('terms')" class="hover:underline">Términos</a>
         </div>
       </div>
     </div>
@@ -4012,6 +4062,7 @@
       }
 
       function renderSidebar() {
+        if (typeof actualizarContadoresRadar === 'function') actualizarContadoresRadar();
         const sb = document.getElementById('fb-radar-sidebar');
         if (!sb) return;
         sb.innerHTML = '';
@@ -4590,10 +4641,125 @@
         }
       };
 
+      // Actualización automática y dinámica de contadores y pestañas del Radar
+      function actualizarContadoresRadar() {
+        const data = (window.RADAR_DATA && Array.isArray(window.RADAR_DATA)) ? window.RADAR_DATA : [];
+        const total = data.length || 45;
+        const cabotajeCount = data.filter(d => d.categoria_region === 'cabotaje' || d.es_cabotaje).length;
+        const brasilCount = data.filter(d => d.categoria_region === 'brasil' || d.pais === 'Brasil').length;
+        const caribeCount = data.filter(d => d.categoria_region === 'caribe_usa').length;
+        const europaCount = data.filter(d => d.categoria_region === 'europa_mundo').length;
+
+        const btnTodos = document.getElementById('fb-filter-todos');
+        if (btnTodos) btnTodos.textContent = `Todos (${total})`;
+
+        const btnCabotaje = document.getElementById('fb-filter-cabotaje');
+        if (btnCabotaje) btnCabotaje.textContent = `🇦🇷 Cabotaje (${cabotajeCount})`;
+
+        const btnBrasil = document.getElementById('fb-filter-brasil');
+        if (btnBrasil) btnBrasil.textContent = `🇧🇷 Brasil (${brasilCount})`;
+
+        const btnCaribe = document.getElementById('fb-filter-caribe_usa');
+        if (btnCaribe) btnCaribe.textContent = `🏝️ América & Caribe (${caribeCount})`;
+
+        const btnEuropa = document.getElementById('fb-filter-europa_mundo');
+        if (btnEuropa) btnEuropa.textContent = `🌍 Europa & Mundo (${europaCount})`;
+
+        const elSidebar = document.getElementById('radar-counter-sidebar');
+        if (elSidebar) {
+          elSidebar.textContent = `${total} Destinos en Radar`;
+        }
+        const elBadge = document.getElementById('radar-badge-monitoreo');
+        if (elBadge) {
+          elBadge.textContent = `Monitoreo en tiempo real · ${total} Destinos oficiales`;
+        }
+      }
+      window.actualizarContadoresRadar = actualizarContadoresRadar;
+
+
+      // Sincronización asíncrona con API de vuelos y fallback resiliente a datos locales
+      async 
+      // Sincronización reactiva con el rotador completo de ofertas cazadas
+      function actualizarBurbujaYTarjetasRolli() {
+        if (window.refrescarRotadorRolli) {
+          window.refrescarRotadorRolli();
+        }
+      }
+      window.actualizarBurbujaYTarjetasRolli = actualizarBurbujaYTarjetasRolli;
+
+      function sincronizarVuelosDesdeApi() {
+        try {
+          let apiUrl = '/api/vuelos';
+          if (typeof process !== 'undefined' && process.env && process.env.BACKEND_API_URL) {
+            const envBase = process.env.BACKEND_API_URL.trim().replace(/\/+$/, '');
+            apiUrl = envBase.endsWith('/api/vuelos') ? envBase : `${envBase}/api/vuelos`;
+          } else if (typeof window !== 'undefined' && window.BACKEND_API_URL) {
+            const winBase = window.BACKEND_API_URL.trim().replace(/\/+$/, '');
+            apiUrl = winBase.endsWith('/api/vuelos') ? winBase : `${winBase}/api/vuelos`;
+          }
+
+          const controller = new AbortController();
+          const timer = setTimeout(() => controller.abort(), 3500);
+
+          const res = await fetch(apiUrl, {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' },
+            signal: controller.signal
+          });
+          clearTimeout(timer);
+
+          if (!res.ok) {
+            return;
+          }
+
+          const rawData = await res.json();
+          const destinosRemotos = Array.isArray(rawData) 
+            ? rawData 
+            : (rawData && Array.isArray(rawData.destinos) ? rawData.destinos : (rawData && Array.isArray(rawData.data) ? rawData.data : null));
+
+          if (destinosRemotos && destinosRemotos.length > 0) {
+            window.RADAR_DATA = destinosRemotos;
+            renderSidebar();
+            actualizarContadoresRadar();
+            actualizarBurbujaYTarjetasRolli();
+            if (currentDestinationId) {
+              window.renderRadarDestino(currentDestinationId, true);
+            }
+
+            // Actualizar indicador visual del radar con punto verde
+            const indicatorEl = document.getElementById('radar-live-indicator');
+            if (indicatorEl) {
+              indicatorEl.innerHTML = '<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>● Tarifas sincronizadas en vivo';
+              indicatorEl.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center shadow-xs transition-all';
+            }
+            const badgeEl = document.getElementById('radar-badge-monitoreo');
+            const scanEl = document.getElementById('radar-last-scan');
+            if (scanEl) {
+              scanEl.textContent = 'Último escaneo: hace 1 min';
+            }
+            const syncEl = document.getElementById('footer-sync-time');
+            if (syncEl) {
+              const ahora = new Date();
+              const hh = String(ahora.getHours()).padStart(2, '0');
+              const mm = String(ahora.getMinutes()).padStart(2, '0');
+              syncEl.textContent = `Radar sincronizado hoy a las ${hh}:${mm} hs`;
+            }
+            if (badgeEl) {
+              badgeEl.innerHTML = `Monitoreo en tiempo real · <strong>${destinosRemotos.length} Destinos oficiales</strong> · <span class="text-emerald-500 font-bold">● Tarifas sincronizadas en vivo</span>`;
+            }
+          }
+        } catch (_err) {
+          // Fallback silencioso sin alertar ni mostrar errores en UI
+        }
+      }
+
       // Inicialización al cargar la página
       document.addEventListener('DOMContentLoaded', () => {
         renderSidebar();
+        actualizarContadoresRadar();
         window.renderRadarDestino('bariloche', true);
+        sincronizarVuelosDesdeApi();
+        actualizarBurbujaYTarjetasRolli();
       });
     })();
   </script>
@@ -4615,13 +4781,10 @@
         });
       }
 
-      // 1. Array de secciones ordenado estrictamente según el flujo narrativo de viaje
+      // 1. Array de secciones ordenado según las anclas en pantalla del menú principal
       const sectionTargets = [
         { id: 'radar-vuelos', href: '#radar-vuelos' },
-        { id: 'destinos', href: '#destinos' },
-        { id: 'promos-portales', href: '#promos-portales' },
-        { id: 'promociones', href: '#promociones' },
-        { id: 'faq', href: '#faq' }
+        { id: 'destinos', href: '#destinos' }
       ];
 
       let isClickScrolling = false;
@@ -4649,7 +4812,8 @@
 
         // 1. Caso borde: Fondo de la página
         if (scrollY + windowHeight >= documentHeight - 50) {
-          setActivePill('#faq');
+          // Fondo de página alcanzado
+          return;
           return;
         }
 
@@ -4693,6 +4857,397 @@
 
       // Ejecución inicial para fijar estado al cargar
       updateActiveSection();
+    })();
+  </script>
+
+  <script>
+    // Asistente IA Concierge: Enlace de compatibilidad hacia las Guías y Chatbox Oficial
+    window.toggleFlightBotChat = window.toggleFlightBotChat || function() {
+      window.location.href = 'guias/index.html';
+    };
+  </script>
+  <script>
+    // Automatización de año dinámico en footers y encabezados
+    (function initCurrentYear() {
+      const year = new Date().getFullYear();
+      document.querySelectorAll('.current-year').forEach(el => { el.textContent = year; });
+    })();
+  </script>
+  <!-- Script de Temporizadores Dinámicos, Cuentas Regresivas y Sincronización en Tiempo Real -->
+  <script>
+    (function initDynamicTimers() {
+      // 1. Tiempos relativos dinámicos de las tarjetas de Rolli
+      const dealFoundTimestamp = Date.now() - (14 * 60 * 1000);
+      const histFoundTimestamp = Date.now() - (3 * 3600 * 1000 + 15 * 60 * 1000);
+
+      function actualizarTiemposRolli() {
+        const dealEl = document.getElementById('rolli-deal-time');
+        if (dealEl) {
+          const elapsedMin = Math.max(1, Math.floor((Date.now() - dealFoundTimestamp) / 60000));
+          if (elapsedMin < 60) {
+            dealEl.textContent = `hace ${elapsedMin} min`;
+          } else {
+            const hs = Math.floor(elapsedMin / 60);
+            const m = elapsedMin % 60;
+            dealEl.textContent = `hace ${hs} hs ${m} min`;
+          }
+        }
+
+        const histEl = document.getElementById('rolli-hist-time');
+        if (histEl) {
+          const elapsedMin = Math.max(1, Math.floor((Date.now() - histFoundTimestamp) / 60000));
+          const hs = Math.floor(elapsedMin / 60);
+          histEl.textContent = `hace ${hs} hs`;
+        }
+      }
+
+      // 2. Cuenta regresiva de expiración de cupo (rotativo entre 4 y 6 horas)
+      let expiryTime = parseInt(sessionStorage.getItem('fb_deal_expiry_timestamp'), 10);
+      if (!expiryTime || expiryTime <= Date.now()) {
+        expiryTime = Date.now() + (4 * 3600 + 48 * 60 + 22) * 1000;
+        try {
+          sessionStorage.setItem('fb_deal_expiry_timestamp', String(expiryTime));
+        } catch (_) {}
+      }
+
+      function actualizarCountdownCupo() {
+        let diff = expiryTime - Date.now();
+        if (diff <= 0) {
+          expiryTime = Date.now() + (5 * 3600 + 14 * 60 + 35) * 1000;
+          try {
+            sessionStorage.setItem('fb_deal_expiry_timestamp', String(expiryTime));
+          } catch (_) {}
+          diff = expiryTime - Date.now();
+        }
+
+        const totalSec = Math.floor(diff / 1000);
+        const h = String(Math.floor(totalSec / 3600)).padStart(2, '0');
+        const m = String(Math.floor((totalSec % 3600) / 60)).padStart(2, '0');
+        const s = String(totalSec % 60).padStart(2, '0');
+
+        const timerEl = document.getElementById('rolli-countdown-timer');
+        if (timerEl) {
+          timerEl.textContent = `${h}:${m}:${s}`;
+        }
+        const dealCountdownEl = document.getElementById('rolli-deal-countdown');
+        if (dealCountdownEl && !timerEl) {
+          dealCountdownEl.textContent = `Vence en: ${h}:${m}:${s}`;
+        }
+      }
+
+      // 3. Frescura del Radar de Vuelos (calculado entre 2 y 8 min atrás)
+      const radarScanTimestamp = Date.now() - (4 * 60 * 1000);
+
+      function actualizarUltimoEscaneoRadar() {
+        const scanEl = document.getElementById('radar-last-scan');
+        if (scanEl) {
+          const min = Math.max(2, Math.min(8, Math.floor((Date.now() - radarScanTimestamp) / 60000)));
+          scanEl.textContent = `Último escaneo: hace ${min} min`;
+        }
+      }
+      window.actualizarUltimoEscaneoRadar = actualizarUltimoEscaneoRadar;
+
+      // 4. Fecha y hora local real en el footer
+      function actualizarHoraFooter() {
+        const ahora = new Date();
+        const hh = String(ahora.getHours()).padStart(2, '0');
+        const mm = String(ahora.getMinutes()).padStart(2, '0');
+        const syncEl = document.getElementById('footer-sync-time');
+        if (syncEl) {
+          syncEl.textContent = `Radar sincronizado hoy a las ${hh}:${mm} hs`;
+        }
+      }
+
+      // Ejecutar inmediatamente
+      actualizarTiemposRolli();
+      actualizarCountdownCupo();
+      actualizarUltimoEscaneoRadar();
+      actualizarHoraFooter();
+
+      // Intervalos periódicos
+      setInterval(actualizarCountdownCupo, 1000);
+      setInterval(actualizarTiemposRolli, 60000);
+      setInterval(actualizarUltimoEscaneoRadar, 60000);
+      setInterval(actualizarHoraFooter, 60000);
+    })();
+  </script>
+  <!-- CONTENEDOR FLOTANTE GLOBAL: ASISTENTE IA ROLLI -->
+  <div class="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-3 pointer-events-auto">
+    <!-- Ventana Desplegable del Chatbox -->
+    <div id="fb-chat-window"
+         class="hidden fixed bottom-24 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[400px] h-[540px] max-h-[78vh] dark:bg-slate-900/95 bg-white/95 backdrop-blur-xl border dark:border-slate-700/80 border-slate-200 rounded-3xl shadow-2xl flex flex-col overflow-hidden theme-transition"
+         style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45), 0 0 25px -5px var(--brand-glow);">
+
+      <!-- Cabecera del Chatbox con Rolli DNI -->
+      <div class="px-4 py-3.5 flex items-center justify-between text-white"
+           style="background: var(--brand-gradient);">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="w-10 h-10 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center shadow-inner border border-white/20 flex-shrink-0 p-1 cursor-help overflow-hidden"
+               title="F-Bot Rolli · Asistente IA de Viajes">
+            <img src="img/rolli-avatar-transparent.png" alt="F-Bot Rolli" class="w-full h-full object-contain filter drop-shadow">
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 whitespace-nowrap">
+              <span class="font-extrabold text-sm tracking-tight text-white">F-Bot Rolli</span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-400/20 text-emerald-200 border border-emerald-300/30 flex-shrink-0">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                IA Activa
+              </span>
+            </div>
+            <div id="fb-chat-status" class="text-[11px] text-white/85 font-medium truncate">
+              Mascota &amp; Asistente IA de Viajes
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button type="button" onclick="window.resetFlightBotChat()" title="Reiniciar conversación" aria-label="Reiniciar conversación"
+                  class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/25 flex items-center justify-center text-white/90 transition-all text-xs">
+            ↺
+          </button>
+          <button type="button" id="fb-chat-expand-btn" onclick="window.toggleFlightBotChatExpand()" title="Maximizar tamaño" aria-label="Maximizar tamaño"
+                  class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/25 flex items-center justify-center text-white/90 transition-all text-xs">
+            ⛶
+          </button>
+          <button type="button" onclick="window.toggleFlightBotChat(false)" title="Minimizar chat" aria-label="Minimizar chat"
+                  class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/25 flex items-center justify-center text-white/90 transition-all text-sm font-bold">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Historial de Mensajes -->
+      <div id="fb-chat-messages"
+           class="flex-1 p-4 overflow-y-auto space-y-3 dark:bg-slate-950/60 bg-slate-50/80 text-sm scroll-smooth">
+      </div>
+
+      <!-- Sugerencias Rápidas (Quick Replies) -->
+      <div id="fb-chat-pills"
+           class="px-3 py-2.5 dark:bg-slate-900/90 bg-white border-t dark:border-slate-800 border-slate-200 flex gap-2 overflow-x-auto no-scrollbar">
+      </div>
+
+      <!-- Formulario de Entrada -->
+      <form id="fb-chat-form" onsubmit="window.handleFlightBotSubmit(event)"
+            class="p-3 dark:bg-slate-900 bg-white border-t dark:border-slate-800 border-slate-200 flex items-center gap-2">
+        <input id="fb-chat-input" type="text" maxlength="320" autocomplete="off"
+               placeholder="Preguntá sobre vuelos, destinos, tarifas o consejos..."
+               class="flex-1 px-4 py-2.5 rounded-2xl text-xs sm:text-sm dark:bg-slate-800/90 bg-slate-100 dark:text-white text-slate-900 placeholder-slate-400 border dark:border-slate-700 border-slate-200 focus:outline-none focus:ring-2 transition-all"
+               style="--tw-ring-color: var(--brand-primary);" />
+        <button id="fb-chat-send" type="submit" title="Enviar consulta" aria-label="Enviar consulta"
+                class="w-10 h-10 rounded-2xl text-white flex items-center justify-center shadow-md hover:brightness-110 active:scale-95 transition-all flex-shrink-0"
+                style="background: var(--brand-gradient);">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Pie del Chatbox con acceso directo a Telegram -->
+      <div class="px-4 py-1.5 dark:bg-slate-950 bg-slate-100 border-t dark:border-slate-800/80 border-slate-200 flex items-center justify-between text-[11px] dark:text-slate-400 text-slate-500">
+        <span>Asistente en tiempo real</span>
+        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
+           class="font-bold hover:underline flex items-center gap-1" style="color: var(--brand-primary);">
+          Abrir en Telegram &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Botón Flotante Principal con Cara DNI de Rolli -->
+    <button id="fb-chat-fab" type="button" onclick="window.toggleFlightBotChat()"
+            aria-label="Abrir Asistente IA de FlightBot"
+            class="group flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full text-white font-bold text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
+            style="background: var(--brand-gradient); box-shadow: 0 14px 30px -5px var(--brand-glow);">
+      <div class="relative w-9 h-9 rounded-full bg-white/10 p-0.5 overflow-hidden flex items-center justify-center shrink-0">
+        <img src="img/rolli-avatar-transparent.png" alt="F-Bot Rolli" class="w-full h-full object-contain filter drop-shadow">
+      </div>
+      <span class="pr-1 tracking-tight">F-Bot Rolli · Chat IA</span>
+    </button>
+  </div>
+
+
+  <!-- MOTOR AUTÓNOMO DEL ROTADOR DE OFERTAS CAZADAS DE ROLLI (Funciona 100% en Escritorio y Web) -->
+  <script>
+    (function initRolliDealsCarousel() {
+      let ofertasCazadas = [];
+      let currentIndex = 0;
+      let carouselInterval = null;
+      let isPaused = false;
+
+      // 1. Compilar todas las rutas que se encuentren en oferta cazada desde window.RADAR_DATA
+      function compilarOfertas() {
+        if (!window.RADAR_DATA || !Array.isArray(window.RADAR_DATA) || !window.RADAR_DATA.length) {
+          return [];
+        }
+
+        const prioritarias = ['PUJ', 'MIA', 'MAD', 'GIG', 'CUN', 'BRC', 'IGR', 'FLN', 'MDZ', 'SCL', 'ADZ', 'CDG', 'BCN', 'FCO'];
+        const resultado = [];
+
+        // Prioridad a rutas más solicitadas
+        prioritarias.forEach(function(iata) {
+          const d = window.RADAR_DATA.find(function(x) {
+            return (x.iata && x.iata.toUpperCase() === iata) || (x.id && x.id.toLowerCase() === iata.toLowerCase());
+          });
+          if (d && !resultado.includes(d)) {
+            resultado.push(d);
+          }
+        });
+
+        // Sumar todas las demás rutas del Radar que tengan tarifa récord, oportunidad o nivel bajo
+        window.RADAR_DATA.forEach(function(d) {
+          if (!resultado.includes(d)) {
+            const term = d.termometro || {};
+            const v = (d.vuelos && d.vuelos[0]) ? d.vuelos[0] : {};
+            const nivel = term.nivel || '';
+            const destacado = String(v.destacado || '').toLowerCase();
+            const mensaje = String(term.mensaje || '').toLowerCase();
+            if (nivel === 'bajo' || destacado.includes('récord') || mensaje.includes('oportunidad') || mensaje.includes('récord')) {
+              resultado.push(d);
+            }
+          }
+        });
+
+        // Si por alguna razón ninguna coincidió, usar el catálogo completo como respaldo
+        if (!resultado.length) {
+          return window.RADAR_DATA.slice(0, 15);
+        }
+
+        return resultado;
+      }
+
+      // 2. Función para limpiar nombres largos (ej. "Jujuy & Quebrada..." -> "Jujuy")
+      function limpiarNombreCiudad(str) {
+        if (!str) return '';
+        return str.split('&')[0].split('/')[0].split('(')[0].trim();
+      }
+
+      // 3. Renderizar una oferta específica en la tarjeta y en la burbuja de Rolli
+      function renderOferta(index) {
+        if (!ofertasCazadas.length) return;
+        if (index < 0) index = ofertasCazadas.length - 1;
+        if (index >= ofertasCazadas.length) index = 0;
+        currentIndex = index;
+
+        const actual = ofertasCazadas[currentIndex];
+        const siguiente = ofertasCazadas[(currentIndex + 1) % ofertasCazadas.length];
+
+        const vActual = (actual.vuelos && actual.vuelos[0]) ? actual.vuelos[0] : {};
+        const precioActual = actual.precio_desde || vActual.precio || 'Consultar';
+        const ciudadCompleta = actual.ciudad || actual.nombre || actual.id;
+        const ciudadLimpia = limpiarNombreCiudad(ciudadCompleta);
+        const iataActual = actual.iata || '';
+        const banderaActual = actual.bandera || '✈️';
+        const aerolineaActual = vActual.aerolinea || 'Aerolínea recomendada';
+        const escalasActual = vActual.escalas || 'Vuelo I/V';
+        const nochesActual = vActual.noches || 7;
+        const fechasActual = vActual.fechas ? `🗓️ ${vActual.fechas} (${nochesActual} noches)` : '🗓️ Fechas de temporada';
+        const badgeActual = vActual.destacado || 'Tarifa récord cazada';
+
+        // Actualizar elementos de la tarjeta sin mezclas
+        const flagEl = document.getElementById('rolli-deal-flag');
+        if (flagEl) flagEl.textContent = banderaActual;
+
+        const cityEl = document.getElementById('rolli-deal-city');
+        if (cityEl) cityEl.textContent = ciudadLimpia;
+
+        const iataEl = document.getElementById('rolli-deal-iata');
+        if (iataEl) iataEl.textContent = `(${iataActual})`;
+
+        const airlineEl = document.getElementById('rolli-deal-airline');
+        if (airlineEl) airlineEl.textContent = aerolineaActual;
+
+        const scalesEl = document.getElementById('rolli-deal-scales');
+        if (scalesEl) scalesEl.textContent = escalasActual;
+
+        const priceEl = document.getElementById('rolli-deal-price');
+        if (priceEl) priceEl.textContent = precioActual;
+
+        const badgeEl = document.getElementById('rolli-deal-badge');
+        if (badgeEl) badgeEl.textContent = badgeActual;
+
+        const fechasEl = document.getElementById('rolli-deal-fechas');
+        if (fechasEl) fechasEl.textContent = fechasActual;
+
+        const indexEl = document.getElementById('rolli-deal-index');
+        if (indexEl) indexEl.textContent = `${currentIndex + 1}/${ofertasCazadas.length}`;
+
+        const bubbleBadgeEl = document.getElementById('rolli-bubble-badge');
+        if (bubbleBadgeEl) bubbleBadgeEl.textContent = `Oferta ${currentIndex + 1} de ${ofertasCazadas.length}`;
+
+        // 3. Plantillas rotativas elegantes y sobrias para la burbuja de Rolli
+        const plantillasFrases = [
+          function(c, i, p) { return `"¡Gran oportunidad para ${c} (${i}) a solo ${p}! Confirmada en tiempo real 👇"`; },
+          function(c, i, p) { return `"¡Oportunidad única para ${c} (${i}) a solo ${p}! 👇"`; },
+          function(c, i, p) { return `"¡Tarifa récord para ${c} (${i}) a solo ${p}! La más baja del mes 👇"`; },
+          function(c, i, p) { return `"¡Mirá este hallazgo para ${c} (${i}) a solo ${p}! Detectado en tiempo real 👇"`; },
+          function(c, i, p) { return `"¡Encontré esta joya para ${c} (${i}) a solo ${p}! 👇"`; }
+        ];
+
+        const fraseGenerada = plantillasFrases[currentIndex % plantillasFrases.length](ciudadActual, iataActual, precioActual);
+
+        const speechEl = document.getElementById('rolli-speech-text');
+        if (speechEl) {
+          speechEl.style.opacity = '0';
+          setTimeout(function() {
+            speechEl.textContent = fraseGenerada;
+            speechEl.style.opacity = '1';
+          }, 150);
+        }
+
+        // 4. Actualizar miniatura de la siguiente oferta
+        if (siguiente) {
+          const vSig = (siguiente.vuelos && siguiente.vuelos[0]) ? siguiente.vuelos[0] : {};
+          const nextFlagEl = document.getElementById('rolli-next-flag');
+          if (nextFlagEl) nextFlagEl.textContent = siguiente.bandera || '✈️';
+          const nextCityEl = document.getElementById('rolli-next-city');
+          if (nextCityEl) nextCityEl.textContent = `${limpiarNombreCiudad(siguiente.ciudad || siguiente.nombre)} (${siguiente.iata})`;
+          const nextPriceEl = document.getElementById('rolli-next-price');
+          if (nextPriceEl) nextPriceEl.textContent = siguiente.precio_desde || vSig.precio || 'Consultar';
+        }
+      }
+
+      window.cambiarOfertaRolli = function(delta) {
+        renderOferta(currentIndex + delta);
+      };
+
+      window.pausarRotadorRolli = function(pause) {
+        isPaused = pause;
+      };
+
+      window.irAOfertaActualEnRadar = function() {
+        if (!ofertasCazadas[currentIndex]) return;
+        const id = ofertasCazadas[currentIndex].id;
+        if (window.renderRadarDestino) window.renderRadarDestino(id);
+        const radarSec = document.getElementById('radar-vuelos');
+        if (radarSec) radarSec.scrollIntoView({ behavior: 'smooth' });
+      };
+
+      function startInterval() {
+        if (carouselInterval) clearInterval(carouselInterval);
+        carouselInterval = setInterval(function() {
+          if (!isPaused && ofertasCazadas.length > 1) {
+            renderOferta(currentIndex + 1);
+          }
+        }, 5000); // Rota suavemente cada 5 segundos
+      }
+
+      function inicializar() {
+        ofertasCazadas = compilarOfertas();
+        if (ofertasCazadas.length) {
+          renderOferta(0);
+          startInterval();
+        }
+      }
+
+      // Ejecutar inmediatamente si window.RADAR_DATA ya está en memoria o en DOMContentLoaded
+      if (window.RADAR_DATA && window.RADAR_DATA.length) {
+        inicializar();
+      } else {
+        document.addEventListener('DOMContentLoaded', inicializar);
+      }
+
+      // Refresco público si la API trae nuevos datos
+      window.refrescarRotadorRolli = function() {
+        inicializar();
+      };
     })();
   </script>
 

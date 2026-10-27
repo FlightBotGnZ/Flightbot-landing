@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es" class="dark" data-color="ruby">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas Frecuentes & Centro de Ayuda · FlightBot</title>
+  <meta name="description" content="Respuestas a todas tus dudas sobre el Radar 24/7 de vuelos, hoteles sin comisiones, la billetera offline y el Modo Ruta de FlightBot.">
+  
+  <!-- Open Graph y Twitter Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://flightbot-landing.vercel.app/faq.html">
+  <meta property="og:title" content="Preguntas Frecuentes & Centro de Ayuda · FlightBot">
+  <meta property="og:description" content="Respuestas a todas tus dudas sobre el Radar 24/7 de vuelos, hoteles sin comisiones, la billetera offline y el Modo Ruta.">
+  <meta property="og:image" content="https://flightbot-landing.vercel.app/img/og-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Preguntas Frecuentes & Centro de Ayuda · FlightBot">
+  <meta name="twitter:description" content="Todo lo que necesitás saber sobre el funcionamiento de FlightBot, las alertas y tus reservas.">
+  <meta name="twitter:image" content="https://flightbot-landing.vercel.app/img/og-preview.jpg">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23e11d48'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='22'%3E%E2%9D%93%3C/text%3E%3C/svg%3E">
+  
+  <!-- Fuentes e Iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --brand-primary: #e11d48;
+      --brand-primary-hover: #be123c;
+      --brand-glow: rgba(225, 29, 72, 0.35);
+      --brand-subtle: rgba(225, 29, 72, 0.1);
+      --brand-border: rgba(225, 29, 72, 0.25);
+      --brand-gradient: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+    }
+
+    [data-color="blue"] {
+      --brand-primary: #2563eb;
+      --brand-primary-hover: #1d4ed8;
+      --brand-glow: rgba(37, 99, 235, 0.35);
+      --brand-subtle: rgba(37, 99, 235, 0.1);
+      --brand-border: rgba(37, 99, 235, 0.25);
+      --brand-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    }
+
+    .brand-gradient-text {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .theme-transition {
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-dock-btn {
+      padding: 0.375rem 0.625rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: rgb(71 85 105);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .dark .nav-dock-btn {
+      color: rgb(203 213 225);
+    }
+    .nav-dock-btn:hover {
+      color: rgb(15 23 42);
+      background-color: #ffffff;
+    }
+    .dark .nav-dock-btn:hover {
+      color: #ffffff;
+      background-color: rgb(30 41 59);
+    }
+    .nav-dock-btn.is-active {
+      color: var(--brand-primary) !important;
+      background-color: var(--brand-subtle) !important;
+      border-color: var(--brand-border) !important;
+      font-weight: 700 !important;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    /* Píldoras de Filtro FAQ */
+    .faq-filter-btn {
+      padding: 0.45rem 0.9rem;
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 150ms ease;
+      cursor: pointer;
+    }
+    .faq-filter-btn.active {
+      background-color: var(--brand-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px var(--brand-glow);
+    }
+    .faq-filter-btn:not(.active) {
+      background-color: rgba(148, 163, 184, 0.12);
+      color: rgb(100 116 139);
+    }
+    .dark .faq-filter-btn:not(.active) {
+      background-color: rgba(30, 41, 59, 0.6);
+      color: rgb(148 163 184);
+    }
+    .faq-filter-btn:not(.active):hover {
+      background-color: rgba(148, 163, 184, 0.25);
+      color: rgb(15 23 42);
+    }
+    .dark .faq-filter-btn:not(.active):hover {
+      background-color: rgba(51, 65, 85, 0.8);
+      color: #ffffff;
+    }
+
+    mark {
+      background-color: rgba(244, 63, 94, 0.25);
+      color: inherit;
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+  </style>
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('fb_theme_mode') || 'dark';
+      const savedColor = localStorage.getItem('fb_theme_color') || 'ruby';
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      document.documentElement.setAttribute('data-color', savedColor);
+    })();
+  </script>
+  <script src="js/guias-data.js" defer></script>
+  <script src="js/chatbox.js" defer></script>
+
+  <!-- Schema Estructurado JSON-LD FAQPage para Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿FlightBot es completamente gratis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, 100% gratuito. Podés activar alertas en Telegram, consultar el radar en vivo, planificar tus rutas en auto y usar la Billetera sin suscripciones ni comisiones ocultas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo se gestionan las reservas de pasajes y hoteles?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FlightBot no vende pasajes ni cobra tarifas directas. Te conectamos directamente mediante enlaces limpios a las aerolíneas oficiales y portales líderes (como Google Flights, Booking.com, Despegar y Kiwi) para que emitas al precio más bajo con confirmación inmediata."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Con qué frecuencia se actualizan las tarifas y alertas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El radar opera con un sondeo escalonado: las 8 rutas de mayor demanda se escanean cada 6 horas y el catálogo extendido cada 24 horas. Si una tarifa cae por debajo de su umbral récord, el bot dispara la alerta al instante."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Mis datos y tarjetas en la Billetera están seguros?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Totalmente. La Billetera funciona en modo Offline-First con almacenamiento exclusivamente local en tu navegador (LocalStorage). FlightBot jamás envía ni almacena números de tarjeta, CVV ni datos bancarios en servidores externos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué es el 'Modo Ruta' y el semáforo vial?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Es nuestro portal de viajes terrestres por Argentina. Incluye calculadora exacta de nafta y peajes en tiempo real, advertencias viales de calzadas (ej. baches y desvíos en RN 151/152), controles sanitarios de SENASA e ISCAMEN, y comparador de costo Auto vs. Avión."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition min-h-screen flex flex-col justify-between">
+
+  <!-- Encabezado / Navegación Superior -->
+  <header class="sticky top-0 z-40 backdrop-blur-md dark:bg-slate-950/85 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
+      
+      <!-- Brand Logo con F-Bot Rolli -->
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="index.html" class="flex items-center gap-3 group" title="Volver al inicio de FlightBot">
+          <div id="brand-logo" class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition p-1"
+               style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
+            <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
+              <rect x="23" y="19" width="12" height="16" rx="3" fill="#e11d48" stroke="#ffffff" stroke-width="0.8"/>
+              <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <line x1="25" y1="27" x2="33" y2="27" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <line x1="25" y1="31" x2="33" y2="31" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <circle cx="25.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
+              <circle cx="32.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
+              <path d="M26 19 V13 H32 V19" stroke="#cbd5e1" stroke-width="1.1" stroke-linecap="round"/>
+              <rect x="27" y="11.5" width="4" height="1.8" rx="0.9" fill="#ffffff"/>
+              <path d="M17 24 Q22 20 27 13" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="7" y="17" width="14" height="16" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="0.8"/>
+              <rect x="10" y="22" width="8" height="6" rx="2" fill="#0f172a"/>
+              <path d="M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25" stroke="#10b981" stroke-width="0.8" stroke-linecap="round"/>
+              <rect x="5.5" y="6" width="17" height="13" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+              <line x1="14" y1="6" x2="14" y2="2" stroke="#94a3b8" stroke-width="1.1" stroke-linecap="round"/>
+              <circle cx="14" cy="1.8" r="1.6" fill="#e11d48"/>
+              <circle cx="14" cy="1.8" r="3.2" stroke="#ffffff" stroke-width="0.5" stroke-dasharray="1 1" opacity="0.8"/>
+              <rect x="8" y="9" width="12" height="6.5" rx="2.5" fill="#0f172a"/>
+              <circle cx="11" cy="12.2" r="1.2" fill="#38bdf8"/>
+              <circle cx="17" cy="12.2" r="1.2" fill="#38bdf8"/>
+              <path d="M7 23 Q2 19 3 14" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <span class="text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">
+              FlightBot
+            </span>
+            <span class="ml-2 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-400 border border-rose-500/30">
+              Ayuda ❓
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Barra de Navegación Central Simétrica -->
+      <nav class="hidden lg:flex items-center p-1 rounded-full dark:bg-slate-900/80 bg-slate-100/90 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-0.5 xl:gap-1 mx-auto">
+        <a href="index.html#radar-vuelos" class="nav-dock-btn">
+          <span>✈️</span> Vuelos
+        </a>
+        <a href="index.html#destinos" class="nav-dock-btn">
+          <span>🏨</span> Destinos
+        </a>
+        <a href="escapadas.html" class="nav-dock-btn">
+          <span>🚗</span> Modo Ruta
+        </a>
+        <a href="billetera.html" class="nav-dock-btn">
+          <span>🧳</span> Billetera
+        </a>
+        <a href="guias/index.html" class="nav-dock-btn">
+          <span>📖</span> Guías
+        </a>
+        <a href="faq.html" class="nav-dock-btn is-active">
+          <span>❓</span> FAQ
+        </a>
+      </nav>
+
+      <!-- Controles: Selector de Color/Modo + Botón Telegram -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0 z-10">
+        <div class="flex items-center p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-xs theme-transition">
+          <div class="flex items-center gap-1.5 pl-1.5 pr-2">
+            <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Tema Rojo Rubí" aria-label="Tema Rojo Rubí"
+                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0"></button>
+            <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Tema Azul Océano" aria-label="Tema Azul Océano"
+                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0"></button>
+          </div>
+          <div class="w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
+          <div class="flex items-center pl-1 pr-1.5">
+            <button onclick="toggleThemeMode()" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro" aria-label="Alternar Modo Claro / Oscuro"
+                    class="w-4.5 h-4.5 rounded-full flex items-center justify-center text-xs dark:text-amber-400 text-slate-700 hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
+              <span id="theme-mode-icon" class="leading-none select-none inline-flex items-center justify-center -translate-y-[1px]">🌙</span>
+            </button>
+          </div>
+        </div>
+
+        <a href="https://t.me/GnZFlightBot?start=faq" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-white font-semibold text-xs transition-all shadow-md hover:brightness-110"
+           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
+          <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
+          </svg>
+          <span class="hidden sm:inline">Hablar con Rolli</span>
+          <span class="sm:hidden">Bot</span>
+        </a>
+
+        <!-- Botón Menú Móvil -->
+        <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
+                class="lg:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
+          <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="nav-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="index.html#radar-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>✈️</span> Vuelos
+        </a>
+        <a href="index.html#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🏨</span> Destinos
+        </a>
+        <a href="escapadas.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🚗</span> Modo Ruta
+        </a>
+        <a href="billetera.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🧳</span> Billetera
+        </a>
+        <a href="guias/index.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>📖</span> 53 Guías
+        </a>
+        <a href="faq.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white" style="background-color: var(--brand-primary);">
+          <span>❓</span> FAQ
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main class="flex-1 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    
+    <!-- Hero / Encabezado -->
+    <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 font-mono border"
+           style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
+        <span>❓</span>
+        <span>Centro de Respuestas & Transparencia</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold dark:text-white text-slate-900 tracking-tight mb-4">
+        Preguntas Frecuentes
+      </h1>
+      <p class="text-base sm:text-lg dark:text-slate-400 text-slate-600 leading-relaxed">
+        Todo sobre cómo funciona FlightBot: rastreo de pasajes, seguridad de tu información, cálculo vial y emisión directa sin comisiones ocultas.
+      </p>
+    </div>
+
+    <!-- Buscador Reactivo en Vivo -->
+    <div class="max-w-2xl mx-auto mb-8">
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+        <input type="text" id="faq-search-input" 
+               placeholder="Buscá por palabra clave (ej: equipaje, gratis, telegram, billetera, flybondi)..."
+               class="w-full pl-11 pr-24 py-3.5 rounded-2xl dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200/90 shadow-sm text-sm dark:text-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all">
+        <button id="faq-search-clear" onclick="clearFaqSearch()" 
+                class="hidden absolute inset-y-0 right-0 pr-4 flex items-center text-xs font-semibold text-rose-500 hover:text-rose-600 transition-colors">
+          Limpiar
+        </button>
+      </div>
+      <div class="flex items-center justify-between mt-2.5 px-2 text-xs dark:text-slate-400 text-slate-500">
+        <span id="faq-count-indicator">Mostrando 10 preguntas</span>
+        <span>Tip: las respuestas coincidentes se expanden solas</span>
+      </div>
+    </div>
+
+    <!-- Pestañas de Filtrado por Categoría -->
+    <div class="flex items-center justify-center gap-2 flex-wrap mb-10" id="faq-category-filters">
+      <button onclick="filterFaqCategory('todas', this)" class="faq-filter-btn active">
+        🌟 Todas (10)
+      </button>
+      <button onclick="filterFaqCategory('radar', this)" class="faq-filter-btn">
+        ✈️ Radar & Vuelos (3)
+      </button>
+      <button onclick="filterFaqCategory('reservas', this)" class="faq-filter-btn">
+        🏨 Hoteles & Emisión (2)
+      </button>
+      <button onclick="filterFaqCategory('billetera', this)" class="faq-filter-btn">
+        🧳 Billetera & Privacidad (2)
+      </button>
+      <button onclick="filterFaqCategory('modoruta', this)" class="faq-filter-btn">
+        🚗 Modo Ruta & Viajes (2)
+      </button>
+      <button onclick="filterFaqCategory('pagos', this)" class="faq-filter-btn">
+        💳 Impuestos & VIP (1)
+      </button>
+    </div>
+
+    <!-- Lista de Preguntas Frecuentes (Acordeón) -->
+    <div class="space-y-4" id="faq-accordion-container">
+      
+      <!-- FAQ 1: Gratuidad -->
+      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="radar" open>
+        <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
+          <span class="flex items-center gap-3">
+            <span class="text-rose-500 font-mono text-sm">01.</span>
+            <span class="faq-question">¿FlightBot es completamente gratis o tiene costos ocultos?</span>
+          </span>
+          <span class="w-8 h-8 rounded-full dark:bg-slate-800 bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+          </span>
+        </summary>
+        <div class="faq-answer px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed border-t dark:border-slate-800/80 border-slate-100">
+          <p>
+            <strong>Sí, 100% gratuito.</strong> Podés activar alertas en Telegram, consultar el radar de tarifas en tiempo real, calcular costos en Modo Ruta y almacenar tus pasajes en la Billetera sin suscripciones ni cobros ocultos.
+          </p>
+          <p class="mt-2 text-xs dark:text-slate-400 text-slate-500">
+            El proyecto se financia mediante enlaces transparentes de afiliados oficiales (Booking.com y Travelpayouts), lo cual no incrementa en un solo centavo el costo de tus reservas.
+          </p>
+        </div>
+      </details>
+
+      <!-- FAQ 2: Emisión y Reservas -->
+      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="reservas">
+        <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
+          <span class="flex items-center gap-3">
+            <span class="text-rose-500 font-mono text-sm">02.</span>
+            <span class="faq-question">¿Cómo se gestionan las reservas de pasajes y hoteles?</span>
+          </span>
+          <span class="w-8 h-8 rounded-full dark:bg-slate-800 bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+          </span>
+        </summary>
+        <div class="faq-answer px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed border-t dark:border-slate-800/80 border-slate-100">
+          FlightBot no vende boletos ni intermedia pagos. Te proporcionamos enlaces limpios hacia las aerolíneas oficiales y portales consolidados (Google Flights, Booking.com, Despegar, Kiwi y aerolíneas directas). La compra final y emisión del billete se realiza directamente con el proveedor oficial con confirmación inmediata y garantía de emisión.
+        </div>
+      </details>
+
+      <!-- FAQ 3: Sondeo y Alertas -->
+      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="radar">
+        <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
+          <span class="flex items-center gap-3">
+            <span class="text-rose-500 font-mono text-sm">03.</span>
+            <span class="faq-question">¿Con qué frecuencia se actualizan las tarifas y alertas?</span>
+          </span>
+          <span class="w-8 h-8 rounded-full dark:bg-slate-800 bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+          </span>
+        </summary>
+        <div class="faq-answer px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed border-t dark:border-slate-800/80 border-slate-100">
+          El radar utiliza una arquitectura de sondeo escalonado:
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li><strong>Top 8 Rutas de Alta Demanda:</strong> Escaneadas cada 6 horas (Bariloche, Río de Janeiro, Miami, Madrid, Mendoza, Iguazú, Cancún y Punta Cana).</li>
+            <li><strong>Catálogo Extendido:</strong> Las restantes 37 rutas secundarias y de largo radio se sincronizan cada 24 horas.</li>
+            <li><strong>Caché Inteligente de 48 hs:</strong> Protege la velocidad de carga para que las consultas de usuarios abran en milisegundos.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- FAQ 4: Seguridad y Billetera -->
+      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="billetera">
+        <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
+          <span class="flex items-center gap-3">
+            <span class="text-rose-500 font-mono text-sm">04.</span>
+            <span class="faq-question">¿Mis pasajes y datos en la Billetera Offline están seguros?</span>
+          </span>
+          <span class="w-8 h-8 rounded-full dark:bg-slate-800 bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+          </span>
+        </summary>
+        <div class="faq-answer px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed border-t dark:border-slate-800/80 border-slate-100">
+          <strong>100% privados y locales.</strong> La Billetera funciona bajo arquitectura <em>Offline-First</em> utilizando el almacenamiento local (LocalStorage) de tu propio dispositivo. FlightBot jamás envía ni almacena tus números de reserva, códigos PNR, pasaportes ni tarjetas en servidores externos. Funciona sin internet incluso en pleno vuelo o en zonas de aeropuerto sin señal.
+        </div>
+      </details>
+
+      <!-- FAQ 5: Modo Ruta -->
+      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="modoruta">
+        <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
+          <span class="flex items-center gap-3">
+            <span class="text-rose-500 font-mono text-sm">05.</span>
+            <span class="faq-question">¿Qué es el "Modo Ruta" y el semáforo vial de calzadas?</span>
+          </span>
+          <span class="w-8 h-8 rounded-full dark:bg-slate-800 bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+          </span>
+        </summary>
+        <div class="faq-answer px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed border-t dark:border-slate-800/80 border-slate-100">
+          Es el módulo de viajes terrestres por Argentina. Incluye:
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li>Calculadora exacta de litros de combustible y costo de peajes en tiempo real.</li>
+            <li>Semáforo vial con alertas de pozos, desvíos y calzadas deterioradas (ej. RN 151/152 en La Pampa/Río Negro).</li>
+            <li>Controles fitosanitarios de SENASA e ISCAMEN para evitar multas o demoras con frutas y carnes.</li>
+            <li>Comparador directo de presupuesto entre viajar en auto particular vs. avión.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- FAQ 6: Telegram -->
+      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="radar">
+        <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
+          <span class="flex items-center gap-3">
+            <span class="text-rose-500 font-mono text-sm">06.</span>
+            <span class="faq-question">¿Cómo activo las alertas instantáneas en Telegram?</span>
+          </span>
+          <span class="w-8 h-8 rounded-full dark:bg-slate-800 bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+          </span>
+        </summary>
+        <div class="faq-answer px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed border-t dark:border-slate-800/80 border-slate-100">
+          Solo necesitás abrir Telegram y buscar el bot oficial <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" class="text-rose-500 hover:underline font-bold">@GnZFlightBot</a>. Al presionar <em>Iniciar</em>, podés configurar tus destinos preferidos, definir un techo máximo de precio y el bot te enviará una notificación instantánea al celular únicamente cuando el radar detecte una tarifa récord o un error de tarifa.
+        </div>
+      </details>
+
+      <!-- FAQ 7: Flybondi -->
+      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="reservas">
+        <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
+          <span class="flex items-center gap-3">
+            <span class="text-rose-500 font-mono text-sm">07.</span>
+            <span class="faq-question">¿Por qué algunas tarifas de Flybondi no aparecen en el radar?</span>
+          </span>
+          <span class="w-8 h-8 rounded-full dark:bg-slate-800 bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+          </span>
+        </summary>
+        <div class="faq-answer px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed border-t dark:border-slate-800/80 border-slate-100">
+          Por estricta política de protección y seguridad al viajero: debido a la situación de concurso preventivo de acreedores de la aerolínea, sus vuelos se encuentran excluidos temporalmente del motor de alertas principales de FlightBot para evitar cancelaciones imprevistas o contingencias operativas.
+        </div>
+      </details>
+
+      <!-- FAQ 8: Guías de Viaje -->
+      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="modoruta">
+        <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
+          <span class="flex items-center gap-3">
+            <span class="text-rose-500 font-mono text-sm">08.</span>
+            <span class="faq-question">¿Qué información incluyen las 53 guías editoriales del Blog?</span>
+          </span>
+          <span class="w-8 h-8 rounded-full dark:bg-slate-800 bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+          </span>
+        </summary>
+        <div class="faq-answer px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed border-t dark:border-slate-800/80 border-slate-100">
+          Cada una de las <a href="guias/index.html" class="text-rose-500 hover:underline font-bold">53 guías de destino</a> está redactada por expertos locales e incluye: análisis de microclimas mes a mes, presupuesto diario estimado por persona (mochilero, medio y confort), transporte desde el aeropuerto, requisitos migratorios, mejores barrios para alojarse y consejos indispensables de seguridad.
+        </div>
+      </details>
+
+      <!-- FAQ 9: Salas VIP y Tarjetas -->
+      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="pagos">
+        <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
+          <span class="flex items-center gap-3">
+            <span class="text-rose-500 font-mono text-sm">09.</span>
+            <span class="faq-question">¿Cómo sé si mi tarjeta de crédito me permite entrar gratis a salas VIP de aeropuertos?</span>
+          </span>
+          <span class="w-8 h-8 rounded-full dark:bg-slate-800 bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+          </span>
+        </summary>
+        <div class="faq-answer px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed border-t dark:border-slate-800/80 border-slate-100">
+          En nuestra sección de <a href="index.html#promociones" class="text-rose-500 hover:underline font-bold">Promos &amp; Salas VIP</a> detallamos los programas vigentes para Argentina (Visa Airport Companion, DragonPass, Mastercard Airport Experiences y Priority Pass). Encontrarás qué bancos otorgan pases bonificados anuales (ej: Santander Black, Galicia Eminent, BBVA Premium World) y qué costo tiene invitar acompañantes.
+        </div>
+      </details>
+
+      <!-- FAQ 10: Impuestos y Cotizaciones -->
+      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="billetera">
+        <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
+          <span class="flex items-center gap-3">
+            <span class="text-rose-500 font-mono text-sm">10.</span>
+            <span class="faq-question">¿Los precios mostrados en el Radar incluyen impuestos argentinos?</span>
+          </span>
+          <span class="w-8 h-8 rounded-full dark:bg-slate-800 bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 group-open:rotate-180 transition-transform duration-200">
+            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+          </span>
+        </summary>
+        <div class="faq-answer px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed border-t dark:border-slate-800/80 border-slate-100">
+          Las tarifas aéreas internacionales se cotizan en dólares estadounidenses oficiales con referencia a su equivalente en pesos para emisión local, considerando las percepciones fiscales vigentes. Te mostramos siempre la tarifa final transparente para que no te encuentres con sorpresas desagradables al momento de pagar en la aerolínea.
+        </div>
+      </details>
+
+    </div>
+
+    <!-- Banner de Soporte / Preguntas no resueltas -->
+    <div class="mt-14 sm:mt-16 rounded-3xl p-8 sm:p-10 border dark:border-slate-800 border-slate-200/90 dark:bg-slate-900/60 bg-white text-center relative overflow-hidden shadow-sm">
+      <div class="max-w-2xl mx-auto relative z-10">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl shadow-md text-white"
+             style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
+          💬
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold dark:text-white text-slate-900 mb-3">
+          ¿Tenés alguna consulta que no figure acá?
+        </h2>
+        <p class="text-sm sm:text-base dark:text-slate-400 text-slate-600 mb-6 leading-relaxed">
+          Escribinos directamente al canal de Telegram de la comunidad o dejanos tu sugerencia para seguir mejorando las funciones del Radar.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold text-sm transition-all shadow-lg hover:brightness-110"
+             style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
+            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
+            </svg>
+            Contactar vía Telegram
+          </a>
+          <a href="index.html#feedback-comunidad" 
+             class="inline-flex items-center gap-2 px-6 py-3 rounded-full dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 font-bold text-sm transition-colors dark:text-slate-200 text-slate-800 border dark:border-slate-700 border-slate-300">
+            Dejar una Sugerencia ✍️
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Pie de Página -->
+  <footer class="border-t dark:border-slate-800 border-slate-200 py-8 dark:bg-slate-950 bg-slate-50 theme-transition text-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 dark:text-slate-500 text-slate-600">
+      <div>&copy; <span class="current-year">2026</span> FlightBot · Centro de Respuestas & Transparencia</div>
+      <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
+        <a href="index.html" class="hover:underline font-bold" style="color: var(--brand-primary);">Inicio FlightBot</a>
+        <a href="escapadas.html" class="hover:underline">Modo Ruta</a>
+        <a href="billetera.html" class="hover:underline">Billetera</a>
+        <a href="guias/index.html" class="hover:underline">Blog & Guías</a>
+        <a href="javascript:void(0)" onclick="openPrivacyModal('privacy')" class="hover:underline">Privacidad</a>
+        <a href="javascript:void(0)" onclick="openPrivacyModal('cookies')" class="hover:underline">Cookies</a>
+        <a href="javascript:void(0)" onclick="openPrivacyModal('terms')" class="hover:underline">Términos</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal de Privacidad / Cookies / Términos -->
+  <div id="fb-privacy-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+    <div class="bg-white dark:bg-slate-900 border dark:border-slate-800 border-slate-200 rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+      <div class="p-6 border-b dark:border-slate-800 border-slate-200 flex items-center justify-between">
+        <h3 class="text-lg font-bold dark:text-white text-slate-900">Políticas y Privacidad</h3>
+        <button onclick="closePrivacyModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm dark:text-slate-300 text-slate-600 space-y-4">
+        <p>FlightBot es una plataforma de código abierto y herramientas para viajeros. No comercializamos datos personales con terceros.</p>
+        <p>La Billetera offline almacena tus datos única y exclusivamente en tu propio dispositivo mediante el almacenamiento local del navegador (LocalStorage).</p>
+        <p>Los enlaces hacia aerolíneas y alojamientos utilizan enlaces de afiliados de Booking.com y Travelpayouts que pueden generar una comisión sin costo extra para vos.</p>
+      </div>
+      <div class="p-4 border-t dark:border-slate-800 border-slate-200 bg-slate-50 dark:bg-slate-950 flex justify-end">
+        <button onclick="closePrivacyModal()" class="px-4 py-2 rounded-xl text-white text-xs font-bold" style="background-color: var(--brand-primary);">Entendido</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts de Interactividad, Buscador y Temas -->
+  <script>
+    let activeCategory = 'todas';
+
+    // Buscador reactivo
+    const searchInput = document.getElementById('faq-search-input');
+    const searchClear = document.getElementById('faq-search-clear');
+    const countIndicator = document.getElementById('faq-count-indicator');
+    const items = document.querySelectorAll('.faq-item');
+
+    function filterFaq() {
+      const query = (searchInput.value || '').toLowerCase().trim();
+      let visibleCount = 0;
+
+      if (query.length > 0) {
+        searchClear.classList.remove('hidden');
+      } else {
+        searchClear.classList.add('hidden');
+      }
+
+      items.forEach(item => {
+        const cat = item.getAttribute('data-category');
+        const matchCategory = (activeCategory === 'todas' || cat === activeCategory);
+
+        const questionEl = item.querySelector('.faq-question');
+        const answerEl = item.querySelector('.faq-answer');
+        const text = (questionEl.textContent + ' ' + answerEl.textContent).toLowerCase();
+
+        const matchQuery = (query === '' || text.includes(query));
+
+        if (matchCategory && matchQuery) {
+          item.classList.remove('hidden');
+          visibleCount++;
+          // Si el usuario buscó una palabra, expandir para mostrar la respuesta
+          if (query.length > 2) {
+            item.setAttribute('open', '');
+          }
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      countIndicator.textContent = `Mostrando ${visibleCount} de ${items.length} preguntas`;
+    }
+
+    function clearFaqSearch() {
+      searchInput.value = '';
+      filterFaq();
+      searchInput.focus();
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', filterFaq);
+    }
+
+    function filterFaqCategory(cat, btn) {
+      activeCategory = cat;
+      document.querySelectorAll('.faq-filter-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      filterFaq();
+    }
+
+    // Modal de Privacidad
+    window.openPrivacyModal = function() {
+      const modal = document.getElementById('fb-privacy-modal');
+      if (modal) modal.classList.remove('hidden'), modal.classList.add('flex');
+    };
+    window.closePrivacyModal = function() {
+      const modal = document.getElementById('fb-privacy-modal');
+      if (modal) modal.classList.add('hidden'), modal.classList.remove('flex');
+    };
+
+    // Motor de Temas
+    function toggleMobileNav(force) {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const iconMenu = document.getElementById('nav-icon-menu');
+      const iconClose = document.getElementById('nav-icon-close');
+      if (!drawer) return;
+      const isClosed = drawer.classList.contains('hidden');
+      const open = force !== undefined ? force : isClosed;
+      if (open) {
+        drawer.classList.remove('hidden');
+        if (iconMenu) iconMenu.classList.add('hidden');
+        if (iconClose) iconClose.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+        if (iconMenu) iconMenu.classList.remove('hidden');
+        if (iconClose) iconClose.classList.add('hidden');
+      }
+    }
+
+    function setThemeColor(col) {
+      document.documentElement.setAttribute('data-color', col);
+      localStorage.setItem('fb_theme_color', col);
+      updateThemeControls();
+    }
+
+    function toggleThemeMode() {
+      const isDark = document.documentElement.classList.contains('dark');
+      if (isDark) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('fb_theme_mode', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('fb_theme_mode', 'dark');
+      }
+      updateThemeControls();
+    }
+
+    function updateThemeControls() {
+      const col = document.documentElement.getAttribute('data-color') || 'ruby';
+      const isDark = document.documentElement.classList.contains('dark');
+      const btnR = document.getElementById('theme-btn-ruby');
+      const btnB = document.getElementById('theme-btn-blue');
+      const modeIcon = document.getElementById('theme-mode-icon');
+
+      if (btnR && btnB) {
+        if (col === 'ruby') {
+          btnR.className = "w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
+          btnB.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
+        } else {
+          btnB.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
+          btnR.className = "w-4 h-4 rounded-full bg-rose-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
+        }
+      }
+      if (modeIcon) {
+        modeIcon.textContent = isDark ? '🌙' : '☀️';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateThemeControls();
+      const year = new Date().getFullYear();
+      document.querySelectorAll('.current-year').forEach(el => { el.textContent = year; });
+    });
+  </script>
+</body>
+</html>

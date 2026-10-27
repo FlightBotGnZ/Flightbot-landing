@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://flightbot-landing.vercel.app/escapadas.html">
+  <meta property="og:title" content="Escapadas de Fin de Semana · FlightBot">
+  <meta property="og:description" content="Cálculo de peajes, nafta y mejores rutas para escapadas desde Buenos Aires.">
+  <meta property="og:image" content="https://flightbot-landing.vercel.app/img/og-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://flightbot-landing.vercel.app/img/og-preview.jpg">
   <title>Escapadas en Auto & Road Trips · FlightBot</title>
   <meta name="description" content="Guías de escapadas de fin de semana, finde largo y vacaciones en auto desde Buenos Aires. Semáforo vial, peajes, costos de nafta y comparador vs. avión.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23e11d48'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='22'%3E%F0%9F%9A%97%3C/text%3E%3C/svg%3E">
@@ -11,6 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <script src="js/road-data.js" defer></script>
+  <script src="js/road-planner.js" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   
   <script>
@@ -110,6 +118,8 @@
       document.documentElement.setAttribute('data-color', savedColor);
     })();
   </script>
+  <script src="js/guias-data.js" defer></script>
+  <script src="js/chatbox.js" defer></script>
 </head>
 <body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition min-h-screen flex flex-col justify-between">
 
@@ -183,7 +193,7 @@
         <a href="guias/index.html" class="nav-dock-btn">
           <span>📖</span> Guías
         </a>
-        <a href="index.html#faq" class="nav-dock-btn">
+        <a href="faq.html" class="nav-dock-btn">
           <span>❓</span> FAQ
         </a>
       </nav>
@@ -258,7 +268,7 @@
         <a href="guias/index.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>📖</span> Guías
         </a>
-        <a href="index.html#faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="faq.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>❓</span> FAQ
         </a>
       </div>
@@ -270,36 +280,36 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border shadow-sm"
            style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
-        <span>🚗</span> Turismo Rutero Argentino 2026
+        <span>🚗</span> Turismo Rutero Argentino <span class="current-year">2026</span>
       </div>
       <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight dark:text-white text-slate-900 max-w-4xl mx-auto mb-4">
         Guías de Escapadas en Auto &amp; Road Trips
       </h1>
-      <p class="text-base sm:text-lg dark:text-slate-400 text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
-        Descubrí pueblos de campo, sierras, lagunas y playas bonaerenses con base en Buenos Aires. 
+      <p id="escapadas-header-subtitle" class="text-base sm:text-lg dark:text-slate-400 text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Explorá las <span id="escapadas-total-count">23</span> guías organizadas en 4 anillos con base en Buenos Aires. 
         Calculá presupuesto real con <b>nafta Shell ($2.200)</b>, peajes exactos, tramos rotos y <b>ahorro por Ley Patagónica</b>.
       </p>
 
       <!-- Selector de Filtros por Tiempo -->
       <div class="flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto mb-12">
-        <button type="button" onclick="window.filtrarEscapadas('todas')" id="btn-filtro-todas"
+        <button type="button" onclick="window.filtrarEscapadas('todas')" id="btn-filtro-todas" data-cat="todas"
                 class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-extrabold border transition-all shadow-sm"
                 style="background-color: var(--brand-primary); color: #ffffff; border-color: var(--brand-primary);">
-          🌟 Todas las Escapadas (23)
+          🌟 Todas las Guías
         </button>
-        <button type="button" onclick="window.filtrarEscapadas('finde_corto')" id="btn-filtro-finde_corto"
+        <button type="button" onclick="window.filtrarEscapadas('finde_corto')" id="btn-filtro-finde_corto" data-cat="finde_corto"
                 class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
           🟢 Finde Corto (&lt; 3.5 hs · hasta 250 km)
         </button>
-        <button type="button" onclick="window.filtrarEscapadas('finde_largo')" id="btn-filtro-finde_largo"
+        <button type="button" onclick="window.filtrarEscapadas('finde_largo')" id="btn-filtro-finde_largo" data-cat="finde_largo"
                 class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
           🟡 Finde Largo (4 a 6.5 hs · 350-550 km)
         </button>
-        <button type="button" onclick="window.filtrarEscapadas('vacaciones_semana')" id="btn-filtro-vacaciones_semana"
+        <button type="button" onclick="window.filtrarEscapadas('vacaciones_semana')" id="btn-filtro-vacaciones_semana" data-cat="vacaciones_semana"
                 class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
           🔵 Vacaciones 1 Semana (7 a 11 hs · 600-950 km)
         </button>
-        <button type="button" onclick="window.filtrarEscapadas('gran_ruta')" id="btn-filtro-gran_ruta"
+        <button type="button" onclick="window.filtrarEscapadas('gran_ruta')" id="btn-filtro-gran_ruta" data-cat="gran_ruta"
                 class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
           🟣 Grandes Rutas (+1000 km)
         </button>
@@ -3713,6 +3723,7 @@
         <span>•</span>
         <a href="https://t.me/GnZFlightBot" target="_blank" class="hover:text-white transition-colors">📱 Telegram</a>
       </div>
+      <div class="text-[11px] text-slate-500 mt-6">&copy; <span class="current-year">2026</span> FlightBot. Todos los derechos reservados.</div>
     </div>
   </footer>
   <!-- Scripts de Control de Tema y Menú Móvil -->
@@ -3775,9 +3786,6 @@
       }
     });
   </script>
-
-  <!-- Motor Unificado de Cálculo de Rutas y Escapadas (Single Source of Truth) -->
-  <script src="js/road-planner.js"></script>
 
   <!-- Motor de Lógica del Comparador "¿Auto o Avión?" -->
   <script>
@@ -3947,6 +3955,9 @@
       };
 
       document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.actualizarContadoresEscapadas === 'function') {
+          window.actualizarContadoresEscapadas();
+        }
         if (typeof window.recalcularComparadorAutoAvion === 'function') {
           window.recalcularComparadorAutoAvion();
         }
@@ -3954,5 +3965,11 @@
     })();
   </script>
 
+  <script>
+    (function initCurrentYear() {
+      const year = new Date().getFullYear();
+      document.querySelectorAll('.current-year').forEach(el => { el.textContent = year; });
+    })();
+  </script>
 </body>
 </html>

@@ -3,6 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://flightbot-landing.vercel.app/billetera.html">
+  <meta property="og:title" content="Billetera de Viaje Offline · FlightBot">
+  <meta property="og:description" content="Bóveda local cifrada para pasajes, reservas y PNRs sin conexión a internet.">
+  <meta property="og:image" content="https://flightbot-landing.vercel.app/img/og-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://flightbot-landing.vercel.app/img/og-preview.jpg">
   <title>Billetera de Documentos & Itinerario · FlightBot</title>
   <meta name="description" content="Tus boarding passes, vouchers de hotel y pólizas médicas organizados en tiempo real. Disponible 100% offline para aeropuertos y modo avión.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23e11d48'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='22'%3E%F0%9F%A7%B3%3C/text%3E%3C/svg%3E">
@@ -114,6 +121,8 @@
       document.documentElement.setAttribute('data-color', savedColor);
     })();
   </script>
+  <script src="js/guias-data.js" defer></script>
+  <script src="js/chatbox.js" defer></script>
 </head>
 <body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition min-h-screen flex flex-col justify-between">
 
@@ -191,7 +200,7 @@
         <a href="guias/index.html" class="nav-dock-btn">
           <span>📖</span> Guías
         </a>
-        <a href="index.html#faq" class="nav-dock-btn">
+        <a href="faq.html" class="nav-dock-btn">
           <span>❓</span> FAQ
         </a>
       </nav>
@@ -262,20 +271,8 @@
         <a href="guias/index.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>📖</span> Guías
         </a>
-        <a href="index.html#faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="faq.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>❓</span> FAQ
-        </a>
-      </div>
-    </div>
-
-        <a href="https://t.me/GnZFlightBot?start=billetera" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full text-white font-semibold text-xs transition-all shadow-md hover:brightness-110"
-           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
-          <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
-          </svg>
-          <span class="hidden sm:inline">Sincronizar Bot</span>
-          <span class="sm:hidden">Bot</span>
         </a>
       </div>
     </div>
@@ -586,10 +583,11 @@
   <!-- Pie de Página -->
   <footer class="border-t dark:border-slate-800 border-slate-200 py-8 dark:bg-slate-950 bg-slate-50 theme-transition text-xs">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 dark:text-slate-500 text-slate-600">
-      <div>&copy; 2026 FlightBot · Bóveda de Documentos & Itinerario Inteligente</div>
+      <div>&copy; <span class="current-year">2026</span> FlightBot · Bóveda de Documentos & Itinerario Inteligente</div>
       <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
         <a href="index.html" class="hover:underline font-bold" style="color: var(--brand-primary);">Inicio FlightBot</a>
         <a href="guias/index.html" class="hover:underline">Blog & Guías</a>
+        <a href="faq.html" class="hover:underline">FAQ</a>
         <a href="javascript:void(0)" onclick="openPrivacyModal('privacy')" class="hover:underline">Privacidad</a>
         <a href="javascript:void(0)" onclick="openPrivacyModal('cookies')" class="hover:underline">Cookies</a>
         <a href="javascript:void(0)" onclick="openPrivacyModal('terms')" class="hover:underline">Términos</a>
@@ -1240,7 +1238,7 @@
 
       <!-- Footer Modal -->
       <div class="p-4 sm:p-5 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between shrink-0 bg-slate-50 dark:bg-slate-950/60">
-        <span class="text-[11px] dark:text-slate-400 text-slate-500">Última actualización: Octubre 2026</span>
+        <span class="text-[11px] dark:text-slate-400 text-slate-500">Última actualización: Octubre <span class="current-year">2026</span></span>
         <button type="button" onclick="closePrivacyModal()" 
                 class="px-4 py-2 rounded-xl text-xs font-semibold dark:bg-slate-800 bg-slate-200 dark:text-white text-slate-900 hover:opacity-90 transition-opacity cursor-pointer">
           Entendido
@@ -1341,5 +1339,11 @@
   </script>
 
 
+  <script>
+    (function initCurrentYear() {
+      const year = new Date().getFullYear();
+      document.querySelectorAll('.current-year').forEach(el => { el.textContent = year; });
+    })();
+  </script>
 </body>
 </html>
