@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script src="js/road-data.js" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   
   <script>
@@ -167,14 +168,14 @@
         <a href="index.html#destinos" class="nav-dock-btn">
           <span>🏨</span> Destinos
         </a>
-        <a href="escapadas.html" class="nav-dock-btn is-active">
-          <span>🚗</span> Escapadas
-        </a>
         <a href="index.html#promos-portales" class="nav-dock-btn">
           <span>🏦</span> Portales
         </a>
         <a href="index.html#promociones" class="nav-dock-btn">
-          <span>💳</span> Promos
+          <span>💳</span> Promos &amp; VIP
+        </a>
+        <a href="escapadas.html" class="nav-dock-btn is-active">
+          <span>🚗</span> Escapadas
         </a>
         <a href="billetera.html" class="nav-dock-btn">
           <span>🧳</span> Billetera
@@ -242,14 +243,14 @@
         <a href="index.html#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🏨</span> Destinos
         </a>
-        <a href="escapadas.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-bold" style="color: var(--brand-primary);">
-          <span>🚗</span> Escapadas
-        </a>
         <a href="index.html#promos-portales" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🏦</span> Portales
         </a>
         <a href="index.html#promociones" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>💳</span> Promos
+          <span>💳</span> Promos &amp; VIP
+        </a>
+        <a href="escapadas.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-bold" style="color: var(--brand-primary);">
+          <span>🚗</span> Escapadas
         </a>
         <a href="billetera.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🧳</span> Billetera
@@ -1946,166 +1947,1752 @@
     </div>
   </section>
 
-  <!-- Sección Planificador y Semáforo Vial -->
-  <section id="planificador-ruta" class="py-20 dark:bg-slate-900/60 bg-slate-100/70 border-t dark:border-slate-800 border-slate-200 theme-transition">
+  <!-- SECCIÓN COMPARADOR DINÁMICO: ¿CONVIENE AUTO O AVIÓN? (Sugerencia 5) -->
+  <section id="comparador-auto-avion" class="py-16 dark:bg-slate-950 bg-slate-50 border-t dark:border-slate-800 border-slate-200 theme-transition relative">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3 border shadow-sm"
+      
+      <!-- Encabezado del Comparador -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3 border shadow-sm theme-transition"
              style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
-          <span>🚦</span> Semáforo Vial &amp; Presupuesto en Vivo
+          <span>⚖️</span> Comparador Inteligente de Transporte
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold dark:text-white text-slate-900 tracking-tight mb-3">
-          Planificador de Cualquier Punto a Punto de Argentina
+        <h2 class="text-3xl sm:text-4xl font-extrabold dark:text-white text-slate-900 tracking-tight mb-3 theme-transition">
+          ¿Conviene viajar en Auto o en Avión?
         </h2>
-        <p class="text-sm sm:text-base dark:text-slate-400 text-slate-600 leading-relaxed">
-          Escribí tu origen y destino para calcular consumo exacto, peajes, tramos rotos y exención impositiva de combustibles.
+        <p class="text-sm sm:text-base dark:text-slate-400 text-slate-600 leading-relaxed theme-transition">
+          Analizá la ecuación real de tu viaje: <b>ahorro en plata vs tiempo invertido en ruta</b> según la cantidad de personas que viajan.
         </p>
       </div>
 
-      <!-- Card Buscador -->
-      <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl max-w-4xl mx-auto mb-10">
+      <!-- Card Central del Comparador -->
+      <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl max-w-5xl mx-auto theme-transition">
+        
+        <!-- Fila de Controles: Selector de Destino y Pasajeros -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-8 pb-6 border-b dark:border-slate-800 border-slate-200">
+          
+          <!-- Selector de Destino de Cabotaje -->
+          <div class="md:col-span-7">
+            <label for="comp-destino-select" class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              📍 Destino Nacional de Cabotaje
+            </label>
+            <select id="comp-destino-select" onchange="window.recalcularComparadorAutoAvion()"
+                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all cursor-pointer">
+              <option value="lacosta">Partido de La Costa (Mar del Tuyú / San Bernardo / Mar de Ajó)</option>
+              <option value="mardel">Mar del Plata & Chapadmalal (Autovía 2)</option>
+              <option value="bariloche" selected>San Carlos de Bariloche (RN 5 + Desierto + RN 237)</option>
+              <option value="mendoza">Mendoza Capital & Valle de Uco (RN 7)</option>
+              <option value="cordoba">Córdoba & Sierras (Autopista Rosario - Córdoba)</option>
+              <option value="iguazu">Puerto Iguazú & Cataratas (RN 14 Mercosur)</option>
+              <option value="salta">Salta & Valles Calchaquíes (RN 9 + RN 34)</option>
+              <option value="madryn">Puerto Madryn & Península Valdés (RN 3)</option>
+              <option value="sanmartin">San Martín de los Andes & Chapelco (RN 5 + RN 237 + RN 40)</option>
+              <option value="ushuaia">Ushuaia & Tierra del Fuego (RN 3 + Barcaza Magallanes)</option>
+            </select>
+          </div>
+
+          <!-- Selector de Cantidad de Pasajeros -->
+          <div class="md:col-span-5">
+            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              👥 Cantidad de Pasajeros
+            </label>
+            <div class="grid grid-cols-5 gap-1.5" id="comp-pasajeros-container">
+              <button type="button" onclick="window.setComparadorPasajeros(1)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">1</button>
+              <button type="button" onclick="window.setComparadorPasajeros(2)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs">2</button>
+              <button type="button" onclick="window.setComparadorPasajeros(3)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">3</button>
+              <button type="button" onclick="window.setComparadorPasajeros(4)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">4</button>
+              <button type="button" onclick="window.setComparadorPasajeros(5)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">5</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Selector de Movilidad en Destino al viajar en Avión (Novedad Alquiler vs Uber) -->
+        <div class="mt-4 pt-4 border-t dark:border-slate-800 border-slate-200">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span class="block text-xs font-bold uppercase tracking-wider dark:text-slate-300 text-slate-700">
+                🚕 ¿Cómo te vas a mover en destino si viajás en Avión?
+              </span>
+              <span class="text-[11px] dark:text-slate-400 text-slate-500">
+                En auto propio ya tenés tu movilidad cubierta ($0 extra). Si vas en avión, sumá el costo real:
+              </span>
+            </div>
+            <div class="flex items-center gap-1.5 flex-wrap" id="comp-movilidad-container">
+              <button type="button" onclick="window.setComparadorMovilidad('uber')" id="comp-mov-uber"
+                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs">
+                🚕 Uber / Traslados (~$85.000)
+              </button>
+              <button type="button" onclick="window.setComparadorMovilidad('alquiler')" id="comp-mov-alquiler"
+                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
+                🚗 Alquilar Auto 7 días (~$420.000)
+              </button>
+              <button type="button" onclick="window.setComparadorMovilidad('ninguna')" id="comp-mov-ninguna"
+                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
+                🚶 A pie / Centro ($0)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fila de Resultados Dinámicos: Tarjeta Auto vs Tarjeta Avión -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          
+          <!-- Columna Auto -->
+          <div class="p-5 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-blue-500/10 text-blue-500 border border-blue-500/20">
+                  🚗 Viaje en Auto Familiar
+                </span>
+                <span id="comp-auto-distancia" class="text-xs font-mono dark:text-slate-400 text-slate-500">1.580 km (ida)</span>
+              </div>
+              <div class="space-y-2 mb-4">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="dark:text-slate-400 text-slate-600">Combustible ida y vuelta:</span>
+                  <span id="comp-auto-combustible" class="font-bold dark:text-slate-200 text-slate-800">$ 523.770</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="dark:text-slate-400 text-slate-600">Peajes ida y vuelta:</span>
+                  <span id="comp-auto-peajes" class="font-bold dark:text-slate-200 text-slate-800">$ 19.000</span>
+                </div>
+                <div class="flex items-center justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                  <span>Movilidad en destino:</span>
+                  <span>✅ Tu auto en destino ($0 extra)</span>
+                </div>
+                <div class="pt-2 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between">
+                  <span class="text-xs font-bold dark:text-slate-300 text-slate-700">Costo Total Vehículo:</span>
+                  <span id="comp-auto-total" class="text-base font-extrabold text-blue-500">$ 542.770</span>
+                </div>
+                <div class="flex items-center justify-between text-xs text-slate-500">
+                  <span>Costo por persona (<span id="comp-auto-pax-label">2 pax</span>):</span>
+                  <span id="comp-auto-por-persona" class="font-semibold text-slate-600 dark:text-slate-400">$ 271.385 c/u</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Tiempo en Auto -->
+            <div class="p-3 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 flex items-center gap-3">
+              <span class="text-2xl">⏱️</span>
+              <div>
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Tiempo en Ruta (Ida)</div>
+                <div id="comp-auto-tiempo" class="text-sm font-extrabold dark:text-white text-slate-900">18h 35m de manejo</div>
+                <div class="text-[10px] dark:text-slate-400 text-slate-500">Requiere parada técnica y descanso</div>
+              </div>
+            </div>
+
+            <!-- Tip de Ahorro Patagónico (Ley 23.966) -->
+            <div id="comp-auto-pata-tip" class="mt-2 p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-600 dark:text-amber-300 flex items-start gap-2">
+              <span class="text-sm">⛽</span>
+              <div>
+                <b>Régimen Patagónico (Ley 23.966):</b> En destinos al sur del Río Colorado el combustible está exento de ICL/IDC (-19% a -26%). Calculamos tarifa ponderada real.
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Avión -->
+          <div class="p-5 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-rose-500/10 text-rose-500 border border-rose-500/20">
+                  ✈️ Vuelo Directo Radar
+                </span>
+                <span id="comp-avion-tarifa-base" class="text-xs font-mono dark:text-slate-400 text-slate-500">Tarifa: $ 89.000 i/v</span>
+              </div>
+              <div class="space-y-2 mb-4">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="dark:text-slate-400 text-slate-600">Pasajes ida y vuelta (<span id="comp-avion-pax-count">2</span> pers):</span>
+                  <span id="comp-avion-pasajes-total" class="font-bold dark:text-slate-200 text-slate-800">$ 178.000</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="dark:text-slate-400 text-slate-600">Equipaje de mano y tasas:</span>
+                  <span class="font-bold text-emerald-500">Incluido base</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="dark:text-slate-400 text-slate-600" id="comp-avion-mov-label">Movilidad en destino (Uber/Semana):</span>
+                  <span id="comp-avion-mov-costo" class="font-bold text-amber-500">+$ 85.000</span>
+                </div>
+                <div class="pt-2 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between">
+                  <span class="text-xs font-bold dark:text-slate-300 text-slate-700">Costo Total Grupo:</span>
+                  <span id="comp-avion-total" class="text-base font-extrabold" style="color: var(--brand-primary);">$ 178.000</span>
+                </div>
+                <div class="flex items-center justify-between text-xs text-slate-500">
+                  <span>Costo por persona:</span>
+                  <span id="comp-avion-por-persona" class="font-semibold text-slate-600 dark:text-slate-400">$ 89.000 c/u</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tiempo en Avión -->
+            <div class="p-3 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 flex items-center gap-3">
+              <span class="text-2xl">⚡</span>
+              <div>
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Tiempo Total de Viaje (Ida)</div>
+                <div id="comp-avion-tiempo" class="text-sm font-extrabold dark:text-white text-slate-900">4h 15m (vuelo + trámites)</div>
+                <div class="text-[10px] dark:text-slate-400 text-slate-500">2h 15m aire + 2h aeropuerto</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Veredicto Final: Ahorro en Plata VS Tiempo en Ruta -->
+        <div id="comp-veredicto-card" class="p-5 sm:p-6 rounded-2xl dark:bg-slate-950 bg-slate-100 border dark:border-slate-800 border-slate-200 transition-all">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span id="comp-veredicto-icono" class="text-xl">✈️</span>
+                <span id="comp-veredicto-titulo" class="text-sm sm:text-base font-extrabold dark:text-white text-slate-900">
+                  Conviene Avión: Ahorrás $ 364.770 y ganás 14h 20m de vida
+                </span>
+              </div>
+              <p id="comp-veredicto-detalle" class="text-xs sm:text-sm dark:text-slate-400 text-slate-600 leading-relaxed">
+                Para 2 pasajeros, el avión es $ 364.770 más barato que mover el auto y te ahorrás 14 horas de manejo en ruta.
+              </p>
+            </div>
+            <a href="#radar-vuelos" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white transition-all hover:scale-105 flex-shrink-0 text-center shadow-md"
+               style="background: var(--brand-gradient);">
+              Ver Vuelos Disponibles &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  
+
+
+  
+
+  <!-- SECCIÓN: FEEDBACK Y EXPERIENCIA DE LA COMUNIDAD -->
+
+  <!-- FLIGHTBOT_ROAD_PLANNER_START -->
+  <!-- Datalist de Ciudades y Nodos Viales de Argentina -->
+  <datalist id="fb-road-ciudades-list">
+    <option value="9 De Julio"></option><option value="Alta Gracia"></option><option value="Azul"></option><option value="Bahia Blanca"></option><option value="Balneario Camboriu"></option><option value="Bariloche"></option><option value="Barreal"></option><option value="Bombinhas"></option><option value="Buenos Aires"></option><option value="Caba"></option><option value="Cachi"></option><option value="Cafayate"></option><option value="Calafate"></option><option value="Calamuchita"></option><option value="Camboriu"></option><option value="Campana"></option><option value="Canuelas"></option><option value="Capilla Del Monte"></option><option value="Capital Federal"></option><option value="Carilo"></option><option value="Carlos Paz"></option><option value="Catamarca"></option><option value="Cataratas"></option><option value="Cataratas Del Iguazu"></option><option value="Caviahue"></option><option value="Chajari"></option><option value="Chalten"></option><option value="Chapadmalal"></option><option value="Chascomus"></option><option value="Chilecito"></option><option value="Chivilcoy"></option><option value="Cipolletti"></option><option value="Colon"></option><option value="Comodoro Rivadavia"></option><option value="Concepcion Del Uruguay"></option><option value="Concordia"></option><option value="Cordoba"></option><option value="Corrientes"></option><option value="Cosquin"></option><option value="Dolores"></option><option value="El Bolson"></option><option value="El Calafate"></option><option value="El Chalten"></option><option value="Epuyen"></option><option value="Esquel"></option><option value="Esteros Del Ibera"></option><option value="Federacion"></option><option value="Florianopolis"></option><option value="General Acha"></option><option value="General Roca"></option><option value="Gramado"></option><option value="Gualeguaychu"></option><option value="Humahuaca"></option><option value="Iguazu"></option><option value="Jesus Maria"></option><option value="Jujuy"></option><option value="Junin"></option><option value="Junin De Los Andes"></option><option value="La Cumbre"></option><option value="La Cumbrecita"></option><option value="La Falda"></option><option value="La Plata"></option><option value="La Rioja"></option><option value="Lago Puelo"></option><option value="Las Gaviotas"></option><option value="Las Grutas"></option><option value="Las Lenas"></option><option value="Leones"></option><option value="Lujan"></option><option value="Lujan De Cuyo"></option><option value="Madryn"></option><option value="Malargue"></option><option value="Mar Azul"></option><option value="Mar Chiquita"></option><option value="Mar De Ajo"></option><option value="Mar De Las Pampas"></option><option value="Mar Del Plata"></option><option value="Mendoza"></option><option value="Merlo"></option><option value="Mina Clavero"></option><option value="Miramar"></option><option value="Monte Hermoso"></option><option value="Necochea"></option><option value="Neuquen"></option><option value="Nono"></option><option value="Obera"></option><option value="Olavarria"></option><option value="Parana"></option><option value="Paso De Los Libres"></option><option value="Pehuajo"></option><option value="Pergamino"></option><option value="Pilar"></option><option value="Pinamar"></option><option value="Posadas"></option><option value="Potrerillos"></option><option value="Potrero De Los Funes"></option><option value="Puerto Iguazu"></option><option value="Puerto Madryn"></option><option value="Puerto San Julian"></option><option value="Purmamarca"></option><option value="Rafaela"></option><option value="Resistencia"></option><option value="Rio Cuarto"></option><option value="Rio Gallegos"></option><option value="Rio Grande"></option><option value="Rio Negro"></option><option value="Rosario"></option><option value="Salta"></option><option value="San Antonio De Areco"></option><option value="San Bernardo"></option><option value="San Carlos De Bariloche"></option><option value="San Clemente"></option><option value="San Clemente Del Tuyu"></option><option value="San Juan"></option><option value="San Luis"></option><option value="San Martin"></option><option value="San Martin De Los Andes"></option><option value="San Miguel De Tucuman"></option><option value="San Nicolas"></option><option value="San Pedro"></option><option value="San Rafael"></option><option value="San Salvador De Jujuy"></option><option value="Santa Fe"></option><option value="Santa Rosa"></option><option value="Santa Rosa De Calamuchita"></option><option value="Santa Teresita"></option><option value="Santiago Del Estero"></option><option value="Sierra De La Ventana"></option><option value="Tafi Del Valle"></option><option value="Tandil"></option><option value="Termas De Rio Hondo"></option><option value="Tilcara"></option><option value="Torres"></option><option value="Trelew"></option><option value="Trenque Lauquen"></option><option value="Tres Arroyos"></option><option value="Trevelin"></option><option value="Tucuman"></option><option value="Tunuyan"></option><option value="Ushuaia"></option><option value="Uspallata"></option><option value="Valeria Del Mar"></option><option value="Valle De Uco"></option><option value="Valle Fertil"></option><option value="Venado Tuerto"></option><option value="Victoria"></option><option value="Viedma"></option><option value="Villa Carlos Paz"></option><option value="Villa De Merlo"></option><option value="Villa Dolores"></option><option value="Villa General Belgrano"></option><option value="Villa Gesell"></option><option value="Villa La Angostura"></option><option value="Villa Maria"></option><option value="Villa Mercedes"></option><option value="Villa Pehuenia"></option><option value="Villa Traful"></option><option value="Villa Ventana"></option><option value="Villa Yacanto"></option><option value="Zarate"></option>
+  </datalist>
+
+  <!-- Sección Interactiva: Viajar en Ruta, Semáforo de Calzadas, Peajes, Barrera Sanitaria y Mascotas -->
+  <section id="rutas-auto" class="mb-16 pt-8 border-t dark:border-slate-800 border-slate-200 theme-transition">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="flex items-center justify-center gap-2 mb-4 flex-wrap">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider theme-transition"
+               style="background-color: var(--brand-subtle); border: 1px solid var(--brand-border); color: var(--brand-primary);">
+            🚗 Inteligencia Vial &amp; Hoja de Ruta 2026
+          </div>
+          <span id="fb-radar-followers-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-sky-500/15 text-sky-400 border border-sky-500/30">
+            👥 +1.480 viajeros siguen el Radar en vivo
+          </span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold dark:text-white text-slate-900 tracking-tight mb-4 theme-transition">
+          ¿Viajás en auto? Semáforo de Rutas, Peajes, Horarios y Controles
+        </h2>
+        <p class="dark:text-slate-400 text-slate-600 text-sm sm:text-base leading-relaxed theme-transition">
+          Calculá el presupuesto real de combustible y peajes de cualquier punto a punto de Argentina, qué rutas están destruidas y cómo esquivarlas, a qué hora salir por las estaciones 24 hs, qué alimentos prohíbe la barrera sanitaria (SENASA / FUNBAPA / ISCAMEN) y qué papeles llevar si viajás con mascotas.
+        </p>
+      </div>
+
+            <!-- Anchor de enlace planificador -->
+      <div id="planificador-ruta"></div>
+
+      <!-- Barra de Controles Interactivos -->
+      <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl mb-8 theme-transition">
+        <!-- Fila 1: Origen, Destino y Botón Buscar Hoja de Ruta -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-3 mb-4">
+          <!-- 1. Selector de Origen (Cualquier Ciudad) -->
           <div class="md:col-span-5">
-            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
-              🛫 Origen
+            <label for="fb-road-origin" class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              🛫 Origen (Cualquier Ciudad)
             </label>
-            <input id="road-origen-input" type="text" value="Buenos Aires"
-                   class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500">
+            <input id="fb-road-origin" type="text" list="fb-road-ciudades-list" value="Buenos Aires"
+                   onkeydown="if(event.key === 'Enter') { event.preventDefault(); window.triggerRoadSearch(); }"
+                   placeholder="Ej: Buenos Aires, Pellegrini 1500 Rosario, Córdoba..."
+                   class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
           </div>
+
+          <!-- 2. Selector de Destino (Cualquier Ciudad o Pueblo) -->
           <div class="md:col-span-5">
-            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
-              📍 Destino
+            <label for="fb-road-dest" class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              📍 Destino (Cualquier Ciudad o Pueblo)
             </label>
-            <input id="road-destino-input" type="text" value="San Bernardo"
-                   class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500">
+            <input id="fb-road-dest" type="text" list="fb-road-ciudades-list" value="Bariloche"
+                   onkeydown="if(event.key === 'Enter') { event.preventDefault(); window.triggerRoadSearch(); }"
+                   placeholder="Ej: Bariloche, Bustillo km 5 Bariloche, Villa Gral. Belgrano..."
+                   class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
           </div>
+
+          <!-- 3. Botón de Búsqueda y Actualización de Hoja de Ruta -->
           <div class="md:col-span-2 flex items-end">
-            <button type="button" onclick="window.calcularRutaWeb()"
-                    class="w-full h-[46px] px-4 py-3 rounded-xl text-sm font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 transition-all flex items-center justify-center gap-2 shadow-md shadow-sky-600/25">
-              <span>🔍</span> Calcular
+            <button id="fb-road-search-btn" type="button" onclick="window.triggerRoadSearch()"
+                    class="w-full h-[46px] px-4 py-3 rounded-xl text-sm font-extrabold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 active:scale-95 shadow-md shadow-sky-600/25 flex items-center justify-center gap-2 transition-all cursor-pointer">
+              <span>🔍</span>
+              <span>Buscar</span>
             </button>
           </div>
         </div>
 
+        <!-- Fila 2: Parámetros del Vehículo y Gastos -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <!-- Combustible / Motor -->
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
-              ⛽ Combustible
+            <label for="fb-road-fuel" class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              ⛽ Combustible / Motor
             </label>
-            <select id="road-fuel-select" onchange="window.calcularRutaWeb()"
-                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300">
-              <option value="nafta" selected>⛽ Nafta Súper ($2.200 Ref. Shell)</option>
-              <option value="premium">🚀 Nafta Premium ($2.520 Shell V-Power)</option>
-              <option value="diesel">🛢️ Diésel ($2.380 Shell Evolux)</option>
-              <option value="gnc">🔵 GNC ($920 / m³)</option>
+            <select id="fb-road-fuel" onchange="window.triggerRoadSearch()"
+                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
+              <option value="nafta">⛽ Nafta Súper / Infinia</option>
+              <option value="diesel">🛢️ Diésel Premium</option>
+              <option value="gnc">🔵 GNC (Gas Natural)</option>
+              <option value="electrico">⚡ Eléctrico / Híbrido</option>
             </select>
           </div>
+
+          <!-- Tipo de Vehículo -->
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
-              🚘 Vehículo
+            <label for="fb-road-veh" class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              🚘 Tipo de Vehículo
             </label>
-            <select id="road-veh-select" onchange="window.calcularRutaWeb()"
-                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300">
-              <option value="compacto">🚗 Compacto / Hatch (-15%)</option>
-              <option value="sedan" selected>🚘 Sedán / Familiar (Base)</option>
+            <select id="fb-road-veh" onchange="window.triggerRoadSearch()"
+                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
+              <option value="compacto">🚗 Auto Compacto (-15%)</option>
+              <option value="sedan" selected="selected">🚘 Sedán / Mediano</option>
               <option value="suv">🚙 SUV / Rural (+18%)</option>
-              <option value="pickup">🛻 Pickup 4x4 (+38%)</option>
+              <option value="pickup">🛻 Pickup / 4x4 (+38%)</option>
             </select>
           </div>
+
+          <!-- Cantidad de Viajeros -->
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
-              👥 Pasajeros
+            <label for="fb-road-pax" class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              👥 Dividir Gastos
             </label>
-            <select id="road-pax-select" onchange="window.calcularRutaWeb()"
-                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300">
-              <option value="1">1 Viajero</option>
-              <option value="2">2 Viajeros</option>
+            <select id="fb-road-pax" onchange="window.triggerRoadSearch()"
+                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
+              <option value="1">1 Viajero (Solo)</option>
+              <option value="2" selected="selected">2 Viajeros (Pareja)</option>
               <option value="3">3 Viajeros</option>
-              <option value="4" selected>4 Viajeros (Familia)</option>
-              <option value="5">5 Viajeros</option>
+              <option value="4">4 Viajeros (Familia)</option>
+              <option value="5">5 Viajeros (Auto lleno)</option>
             </select>
           </div>
         </div>
 
-        <!-- Chips Rápidos -->
+        <!-- Chips de Acceso Rápido a Destinos Frecuentes -->
         <div class="mt-4 pt-3 border-t dark:border-slate-800 border-slate-200 flex items-center gap-2 overflow-x-auto text-xs pb-1">
-          <span class="text-slate-400 font-bold whitespace-nowrap">Rutas frecuentes:</span>
-          <button type="button" onclick="window.cargarRutaEnBuscador('San Bernardo')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🌊 La Costa</button>
-          <button type="button" onclick="window.cargarRutaEnBuscador('Mar del Plata')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🏖️ Mar del Plata</button>
-          <button type="button" onclick="window.cargarRutaEnBuscador('Tandil')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">⛰️ Tandil</button>
-          <button type="button" onclick="window.cargarRutaEnBuscador('Colón')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">♨️ Colón</button>
-          <button type="button" onclick="window.cargarRutaEnBuscador('Villa General Belgrano')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🏞️ Calamuchita</button>
-          <button type="button" onclick="window.cargarRutaEnBuscador('Monte Hermoso')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🌅 Monte Hermoso</button>
-          <button type="button" onclick="window.cargarRutaEnBuscador('Bariloche')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🏔️ Bariloche</button>
+          <span class="text-slate-400 font-bold whitespace-nowrap">Rutas rápidas:</span>
+          <button type="button" onclick="window.setQuickDest('Bariloche')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🏔️ Bariloche</button>
+          <button type="button" onclick="window.setQuickDest('Villa General Belgrano')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🏞️ Villa Gral. Belgrano</button>
+          <button type="button" onclick="window.setQuickDest('Mendoza')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🍷 Mendoza</button>
+          <button type="button" onclick="window.setQuickDest('Mar del Plata')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🏖️ Mar del Plata</button>
+          <button type="button" onclick="window.setQuickDest('Tandil')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">⛰️ Tandil</button>
+          <button type="button" onclick="window.setQuickDest('San Martín de los Andes')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🌲 San Martín</button>
+          <button type="button" onclick="window.setQuickDest('Puerto Iguazú')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🌴 Cataratas</button>
+          <button type="button" onclick="window.setQuickDest('Florianópolis')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🇧🇷 Florianópolis</button>
+        </div>
+
+        <!-- Contenedor con Efecto Escénico Discreto al Buscar -->
+        <div id="fb-road-results-container" class="transition-all duration-300 ease-out">
+          <!-- Cabecera Dinámica del Corredor y Semáforo Vial -->
+        <div id="fb-road-semaforo-box" class="mt-6 p-5 rounded-2xl border transition-all">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-3">
+            <div>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <span id="fb-road-semaforo-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wide text-white shadow-sm">
+                  🔴 Semáforo Vial
+                </span>
+                <span id="fb-road-corredor-title" class="text-sm sm:text-base font-extrabold dark:text-white text-slate-900">
+                  Corredor Vial
+                </span>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 text-xs sm:text-sm font-bold dark:text-slate-200 text-slate-800 flex-wrap">
+              <span id="fb-road-dist-badge" class="px-3 py-1.5 rounded-xl dark:bg-slate-900/90 bg-white border dark:border-slate-700 border-slate-200">
+                📏 ~1.580 km (Ida)
+              </span>
+              <span id="fb-road-time-badge" class="px-3 py-1.5 rounded-xl dark:bg-slate-900/90 bg-white border dark:border-slate-700 border-slate-200">
+                ⏱️ ~18h 35m de manejo
+              </span>
+            </div>
+          </div>
+          <p id="fb-road-semaforo-desc" class="text-xs sm:text-sm dark:text-slate-200 text-slate-700 leading-relaxed"></p>
+          <div id="fb-road-alertas-criticas" class="mt-3 space-y-2 text-xs sm:text-sm"></div>
+        </div>
+
+        <!-- Termómetro Comunitario de Asfalto (Un billar / Buena / Baches / Destruida) -->
+        <div id="fb-road-community-box" class="mt-6 p-6 rounded-3xl dark:bg-slate-950/80 bg-slate-50 border dark:border-slate-800 border-slate-200 transition-all">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1 flex-wrap">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wide bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">
+                  🗣️ Termómetro Comunitario
+                </span>
+                <span id="fb-road-comm-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                  Cargando reportes...
+                </span>
+              </div>
+              <h4 class="text-base sm:text-lg font-extrabold dark:text-white text-slate-900">
+                ¿Cómo está el asfalto según los conductores que viajaron?
+              </h4>
+              <p id="fb-road-comm-desc" class="text-xs sm:text-sm dark:text-slate-400 text-slate-600 mt-0.5">
+                Votos reales de la comunidad: si la ruta es un billar o está hecha pelota.
+              </p>
+            </div>
+
+            <!-- Botones de Voto Rápido 1-Touch -->
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-xs font-bold text-slate-400 mr-1 hidden sm:inline">Tu voto:</span>
+              <button type="button" onclick="window.submitRoadFeedbackQuick('billar')" title="Asfalto impecable"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold dark:bg-slate-900 bg-white hover:bg-emerald-500/20 hover:text-emerald-500 border dark:border-slate-700 border-slate-200 transition-all flex items-center gap-1.5 shadow-sm">
+                <span>🎱</span><span>Un billar</span>
+              </button>
+              <button type="button" onclick="window.submitRoadFeedbackQuick('buena')" title="Transitable normal"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold dark:bg-slate-900 bg-white hover:bg-green-500/20 hover:text-green-500 border dark:border-slate-700 border-slate-200 transition-all flex items-center gap-1.5 shadow-sm">
+                <span>🟢</span><span>Buena</span>
+              </button>
+              <button type="button" onclick="window.submitRoadFeedbackQuick('precaucion')" title="Baches aislados / Obras"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold dark:bg-slate-900 bg-white hover:bg-amber-500/20 hover:text-amber-500 border dark:border-slate-700 border-slate-200 transition-all flex items-center gap-1.5 shadow-sm">
+                <span>🟡</span><span>Baches</span>
+              </button>
+              <button type="button" onclick="window.submitRoadFeedbackQuick('destruida')" title="Cráteres / Destruida"
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold dark:bg-slate-900 bg-white hover:bg-rose-500/20 hover:text-rose-500 border dark:border-slate-700 border-slate-200 transition-all flex items-center gap-1.5 shadow-sm">
+                <span>💥</span><span>Destruida</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Barra de distribución porcentual -->
+          <div class="space-y-1.5 mb-4">
+            <div class="w-full h-3 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden flex">
+              <div id="fb-bar-billar" class="bg-emerald-500 h-full transition-all" style="width: 50%" title="Un billar"></div>
+              <div id="fb-bar-buena" class="bg-green-500 h-full transition-all" style="width: 25%" title="Buena"></div>
+              <div id="fb-bar-precaucion" class="bg-amber-500 h-full transition-all" style="width: 15%" title="Precaución"></div>
+              <div id="fb-bar-destruida" class="bg-rose-500 h-full transition-all" style="width: 10%" title="Destruida"></div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] font-bold dark:text-slate-400 text-slate-500 flex-wrap gap-2">
+              <span class="text-emerald-500">🎱 Billar: <span id="fb-pct-billar">0%</span></span>
+              <span class="text-green-500">🟢 Buena: <span id="fb-pct-buena">0%</span></span>
+              <span class="text-amber-500">🟡 Baches: <span id="fb-pct-precaucion">0%</span></span>
+              <span class="text-rose-500">💥 Destruida: <span id="fb-pct-destruida">0%</span></span>
+              <span class="text-slate-400">Total: <span id="fb-total-votos">0</span> votos</span>
+            </div>
+          </div>
+
+          <!-- Mini formulario para advertencia o comentario puntual -->
+          <div id="fb-road-comment-form" class="p-3.5 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 mb-3">
+            <div class="flex flex-col sm:flex-row gap-2">
+              <input id="fb-comm-input-text" type="text" maxlength="240"
+                     placeholder="¿Querés sumar una advertencia puntual? Ej: 'Km 140 pozos en mano norte' (Opcional)"
+                     class="flex-1 px-3.5 py-2 rounded-xl text-xs dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none">
+              <input id="fb-comm-input-autor" type="text" maxlength="30"
+                     placeholder="Tu nombre / Auto (Opcional)"
+                     class="w-full sm:w-48 px-3.5 py-2 rounded-xl text-xs dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none">
+              <button type="button" onclick="window.submitRoadCommentWithCurrentVote()"
+                      class="px-4 py-2 rounded-xl text-xs font-bold text-white shadow transition-all hover:brightness-110 whitespace-nowrap"
+                      style="background-color: var(--brand-primary);">
+                Enviar Reseña 🚀
+              </button>
+            </div>
+            <div id="fb-comm-msg" class="hidden text-xs font-semibold mt-2"></div>
+          </div>
+
+          <!-- Muro de Reseñas de Conductores Recientes -->
+          <div id="fb-road-reviews-list" class="space-y-2 text-xs"></div>
         </div>
       </div>
 
-      <!-- Reporte Resultado Dinámico -->
-      <div id="road-resultado-container" class="max-w-4xl mx-auto dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b dark:border-slate-800 border-slate-200">
+      <!-- Rejilla Principal de Información Vial (Presupuesto + Horarios 24hs + Barrera Sanitaria + Mascotas) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+
+        <!-- Tarjeta 1: Presupuesto de Combustible, Peajes y Ahorro -->
+        <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-7 shadow-sm flex flex-col justify-between theme-transition">
           <div>
-            <span id="res-corredor-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-sky-500/10 text-sky-400 border border-sky-500/20 mb-2">
-              🛣️ Autovía 2 ➔ RP 63 ➔ RP 11
-            </span>
-            <h3 id="res-titulo-trayecto" class="text-2xl font-extrabold dark:text-white text-slate-900">
-              Buenos Aires ➔ San Bernardo (Partido de La Costa)
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+                <span>💵</span>
+                <span>Presupuesto Estimado (Ida y Vuelta)</span>
+              </h3>
+              <span id="fb-road-saving-pill" class="hidden text-xs font-extrabold px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">
+                Ahorro GNC
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
+              <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+                <div class="text-[11px] uppercase font-bold text-slate-500" id="fb-road-fuel-label">⛽ Combustible (I/V)</div>
+                <div class="text-xl font-extrabold dark:text-white text-slate-900 mt-1" id="fb-road-fuel-cost">$0 ARS</div>
+                <div class="text-xs dark:text-slate-400 text-slate-500 mt-0.5" id="fb-road-fuel-units">0 Litros</div>
+              </div>
+              <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+                <div class="text-[11px] uppercase font-bold text-slate-500">🎟️ Peajes (Ida y Vuelta)</div>
+                <div class="text-xl font-extrabold dark:text-white text-slate-900 mt-1" id="fb-road-tolls-cost">$0 ARS</div>
+                <div class="text-xs dark:text-slate-400 text-slate-500 mt-0.5" id="fb-road-tolls-oneway">$0 por tramo</div>
+              </div>
+              <div class="p-4 rounded-2xl border" style="background-color: var(--brand-subtle); border-color: var(--brand-border);">
+                <div class="text-[11px] uppercase font-bold" style="color: var(--brand-primary);">💰 Costo por Persona</div>
+                <div class="text-xl font-extrabold dark:text-white text-slate-900 mt-1" id="fb-road-per-person">$0 ARS</div>
+                <div class="text-xs dark:text-slate-300 text-slate-600 mt-0.5" id="fb-road-total-cost">Total: $0 ARS</div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 text-xs sm:text-sm dark:text-slate-300 text-slate-600 leading-relaxed">
+              <div class="font-bold dark:text-white text-slate-900 mb-1">🎟️ Detalle de Peajes y TelePASE en este Corredor:</div>
+              <p id="fb-road-tolls-detail"></p>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-4 border-t dark:border-slate-800 border-slate-200 flex flex-col sm:flex-row gap-3">
+            <a id="fb-road-maps-btn" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer"
+               class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-white font-bold text-xs sm:text-sm transition-all shadow-md hover:brightness-110"
+               style="background-color: var(--brand-primary);">
+              <span>🗺️</span>
+              <span>Navegación GPS Puerta a Puerta (Google Maps / Waze)</span>
+            </a>
+            <button type="button" onclick="window.onSyncRoadTripClick()"
+                    class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl dark:bg-slate-800 bg-slate-100 hover:dark:bg-slate-700 hover:bg-slate-200 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 font-bold text-xs sm:text-sm transition-all">
+              <span>📲</span>
+              <span id="fb-road-sync-label">Enviar Hoja de Ruta a mi Telegram</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Horario Ideal de Salida, Estaciones 24 hs y Dónde Hacer Noche -->
+        <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-7 shadow-sm flex flex-col justify-between theme-transition">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+                <span>⏰</span>
+                <span>Horario Ideal de Salida &amp; Estaciones 24 hs</span>
+              </h3>
+              <span id="fb-road-departure-badge" class="px-3 py-1 rounded-full text-xs font-extrabold bg-amber-500/15 text-amber-500 border border-amber-500/30">
+                04:30 hs
+              </span>
+            </div>
+
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 text-xs sm:text-sm leading-relaxed">
+              <div class="font-bold dark:text-white text-slate-900 mb-1">🌅 ¿Por qué salir en este horario?</div>
+              <p id="fb-road-departure-reason" class="dark:text-slate-300 text-slate-600"></p>
+            </div>
+
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 text-xs sm:text-sm leading-relaxed">
+              <div class="font-bold dark:text-white text-slate-900 mb-1">⛽ Disponibilidad 24 hs de Estaciones de Servicio:</div>
+              <p id="fb-road-stations-24h" class="dark:text-slate-300 text-slate-600"></p>
+            </div>
+
+            <div id="fb-road-overnight-box" class="hidden p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/25 text-xs sm:text-sm leading-relaxed">
+              <div class="font-bold text-indigo-400 mb-1" id="fb-road-overnight-title">🛏️ Dónde Conviene Hacer Noche:</div>
+              <p id="fb-road-overnight-desc" class="dark:text-slate-200 text-slate-700"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Barrera Sanitaria (Alimentos Prohibidos vs Permitidos) -->
+        <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-7 shadow-sm theme-transition">
+          <div class="flex items-center justify-between gap-2 mb-4 flex-wrap">
+            <h3 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+              <span>🍎</span>
+              <span>Barrera Sanitaria y Alimentos en Ruta</span>
             </h3>
-            <p id="res-subtitulo-vial" class="text-xs text-slate-400 mt-1">
-              Distancia: ~345 km por tramo (690 km Ida y Vuelta) · Manejo neto estimado: ~4h 00m
+            <span id="fb-road-food-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30">
+              SENASA / FUNBAPA
+            </span>
+          </div>
+          <div class="space-y-3 text-xs sm:text-sm leading-relaxed">
+            <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 dark:text-slate-200 text-slate-800" id="fb-road-food-prohibited"></div>
+            <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 dark:text-slate-200 text-slate-800" id="fb-road-food-allowed"></div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 4: Viajar con Mascotas (Vacunas, Libreta Sanitaria, Río Negro y Parques) -->
+        <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-7 shadow-sm theme-transition">
+          <div class="flex items-center justify-between gap-2 mb-4 flex-wrap">
+            <h3 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+              <span>🐾</span>
+              <span>Viajar con Mascotas (Vacunas y Controles)</span>
+            </h3>
+            <span id="fb-road-pets-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-sky-500/15 text-sky-400 border border-sky-500/30">
+              Requisitos Viales
+            </span>
+          </div>
+          <div class="space-y-3 text-xs sm:text-sm leading-relaxed">
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800" id="fb-road-pets-docs"></div>
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-600" id="fb-road-pets-rules"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paradores y Estaciones Recomendadas con Km e Indicadores 24 hs / GNC / EV -->
+      <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm theme-transition">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+          <div>
+            <h3 class="text-xl font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+              <span>☕</span>
+              <span>Paradores y Estaciones Estratégicas en el Camino</span>
+            </h3>
+            <p class="text-xs sm:text-sm dark:text-slate-400 text-slate-500 mt-1">
+              Paradas verificadas con baños limpios, tienda de descanso, disponibilidad 24 hs, GNC y cargadores eléctricos.
             </p>
           </div>
-          <div class="text-right">
-            <span class="block text-xs uppercase font-bold text-slate-400">Gasto Total I/V</span>
-            <span id="res-total-ars" class="text-3xl font-extrabold text-emerald-500 font-mono">$ 151.300</span>
-            <span id="res-pax-ars" class="block text-xs text-slate-500 font-bold">$ 37.825 c/u (4 pax)</span>
-          </div>
         </div>
+        <div id="fb-road-stops-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      </div>
 
-        <!-- Semáforo Vial Dinámico -->
-        <div id="res-semaforo-box" class="mt-6 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3 transition-all">
-          <span id="res-semaforo-icon" class="text-2xl">🟢</span>
+      <!-- Puntos de Referencia YPF Full por Cartel de Ruta (Pueblo · Ruta · Km) -->
+      <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm mb-8 theme-transition">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
           <div>
-            <div id="res-semaforo-title" class="text-sm font-extrabold text-emerald-400">Verde · Doble Mano y Asfalto en Buen Estado</div>
-            <p id="res-semaforo-desc" class="text-xs text-slate-300 mt-1">Autovía 2 y RP 11 con calzada doble mano y servicios 24 hs continuos. Precaución con radares de velocidad en zonas urbanas (Chascomús, Castelli, Dolores).</p>
+            <h3 class="text-xl font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+              <span>🪧</span>
+              <span>Puntos de Referencia YPF Full en Cartelera (Pueblo · Ruta · Km)</span>
+            </h3>
+            <p class="text-xs sm:text-sm dark:text-slate-400 text-slate-500 mt-1">
+              Guía táctica para el conductor: cuando veas en los carteles verdes de la ruta cuántos kilómetros faltan para estos pueblos, sabés con certeza que ahí tenés una YPF Full / ACA 24 hs sobre la traza.
+            </p>
           </div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-sky-500/15 text-sky-400 border border-sky-500/30 whitespace-nowrap self-start sm:self-auto">
+            ⛽ Red 24 hs &amp; Baños
+          </span>
+        </div>
+        <div id="fb-road-ypf-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+        </div> <!-- Fin fb-road-results-container -->
+      </div>
+
+      <!-- Descuentos y Promociones en Combustible y Tiendas: 3 Pestañitas Interactivas -->
+      <div id="promos-combustible" class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm mb-8 theme-transition">
+        <div class="mb-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+            💳 Ahorro en Surtidor y Cafetería 2026
+          </div>
+          <h3 class="text-xl sm:text-2xl font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+            <span>🏷️</span>
+            <span>Promociones por Marca: YPF + Full, Shell + Select y Axion + Spot!</span>
+          </h3>
+          <p class="text-xs sm:text-sm dark:text-slate-400 text-slate-500 mt-1">
+            Tocá la flechita de cada bandera para desglosar sus descuentos en nafta/diésel, reintegros bancarios y combos de cafetería en ruta:
+          </p>
         </div>
 
-        <!-- Alerta Patagónica (oculta por defecto, se enciende en Bariloche/sur) -->
-        <div id="res-pata-box" class="hidden mt-4 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3">
-          <span class="text-2xl">⛽</span>
+        <script>
+          window.toggleFuelAccordion = function(brandId) {
+            var content = document.getElementById('fuel-content-' + brandId);
+            var arrow = document.getElementById('fuel-arrow-' + brandId);
+            if (!content) return;
+            var isHidden = content.classList.contains('hidden');
+            if (isHidden) {
+              content.classList.remove('hidden');
+              if (arrow) arrow.style.transform = 'rotate(180deg)';
+            } else {
+              content.classList.add('hidden');
+              if (arrow) arrow.style.transform = 'rotate(0deg)';
+            }
+          };
+        </script>
+
+        <div class="space-y-4">
+          
+          <!-- Pestaña 1: YPF + Full -->
+          <div class="rounded-2xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-sm dark:bg-slate-950/60 bg-slate-50 theme-transition">
+            <button type="button" onclick="window.toggleFuelAccordion('ypf')"
+                    class="w-full px-5 py-4 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
+                    style="background: linear-gradient(135deg, #0284c7 0%, #1e3a8a 100%);">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">⛽</span>
+                <div>
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h4 class="text-base sm:text-lg font-extrabold">YPF + Full</h4>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-white/20 text-white border border-white/30">
+                      App YPF 15% • Serviclub • Banco Santander &amp; Macro
+                    </span>
+                  </div>
+                  <p class="text-xs text-white/85">Descuentos en Infinia, Infinia Diésel, GNC y combos de cafetería Full 24 hs.</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 flex-shrink-0 ml-2">
+                <span class="text-xs font-bold bg-white/15 px-2.5 py-1 rounded-lg hidden sm:inline">Desglosar</span>
+                <span id="fuel-arrow-ypf" class="text-base font-bold transition-transform duration-300" style="transform: rotate(180deg);">▼</span>
+              </div>
+            </button>
+            <div id="fuel-content-ypf" class="p-5 space-y-3">
+              <div id="fuel-grid-ypf" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+            </div>
+          </div>
+
+          <!-- Pestaña 2: Shell + Select -->
+          <div class="rounded-2xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-sm dark:bg-slate-950/60 bg-slate-50 theme-transition">
+            <button type="button" onclick="window.toggleFuelAccordion('shell')"
+                    class="w-full px-5 py-4 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
+                    style="background: linear-gradient(135deg, #eab308 0%, #dc2626 100%);">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🐚</span>
+                <div>
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h4 class="text-base sm:text-lg font-extrabold">Shell + Select</h4>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-white/20 text-white border border-white/30">
+                      Shell BOX 10% • V-Power • Cencosud &amp; BNA
+                    </span>
+                  </div>
+                  <p class="text-xs text-white/85">Combustibles premium V-Power, café de especialidad y paradores Select en autopista.</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 flex-shrink-0 ml-2">
+                <span class="text-xs font-bold bg-white/15 px-2.5 py-1 rounded-lg hidden sm:inline">Desglosar</span>
+                <span id="fuel-arrow-shell" class="text-base font-bold transition-transform duration-300">▼</span>
+              </div>
+            </button>
+            <div id="fuel-content-shell" class="hidden p-5 space-y-3">
+              <div id="fuel-grid-shell" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+            </div>
+          </div>
+
+          <!-- Pestaña 3: Axion + Spot! -->
+          <div class="rounded-2xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-sm dark:bg-slate-950/60 bg-slate-50 theme-transition">
+            <button type="button" onclick="window.toggleFuelAccordion('axion')"
+                    class="w-full px-5 py-4 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
+                    style="background: linear-gradient(135deg, #701a75 0%, #e11d48 100%);">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">🔴</span>
+                <div>
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h4 class="text-base sm:text-lg font-extrabold">Axion + Spot!</h4>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-white/20 text-white border border-white/30">
+                      App ON • Quantium • Modo &amp; Banco del Sol
+                    </span>
+                  </div>
+                  <p class="text-xs text-white/85">Combustibles Quantium con Castrol, paradas gastronómicas Spot! y carga rápida.</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 flex-shrink-0 ml-2">
+                <span class="text-xs font-bold bg-white/15 px-2.5 py-1 rounded-lg hidden sm:inline">Desglosar</span>
+                <span id="fuel-arrow-axion" class="text-base font-bold transition-transform duration-300">▼</span>
+              </div>
+            </button>
+            <div id="fuel-content-axion" class="hidden p-5 space-y-3">
+              <div id="fuel-grid-axion" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Elegante de Personalización de Hoja de Ruta (Nombre + Edad) -->
+    <div id="fb-profile-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm transition-all">
+      <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-7 max-w-sm w-full shadow-2xl">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-base sm:text-lg font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+            <span>👤</span><span>Personalizá tu Hoja de Ruta</span>
+          </h3>
+          <button type="button" onclick="window.closeProfileModal()" class="text-slate-400 hover:text-white text-lg font-bold leading-none">&times;</button>
+        </div>
+        <p class="text-xs dark:text-slate-400 text-slate-600 mb-4 leading-relaxed">
+          ¿A nombre de quién emitimos tu hoja de ruta? Tu edad nos permite sugerirte beneficios etarios de combustible y seguros al volante.
+        </p>
+        <div class="space-y-3 mb-4">
           <div>
-            <div class="text-sm font-extrabold text-amber-400">Tarifa Patagónica de Combustible (Ley 23.966 / 27.209)</div>
-            <p class="text-xs text-slate-300 mt-1">Al sur del Río Colorado el combustible está <b>exento de ICL e IDC (-19% a -26%)</b>. ⚠️ <b>Tip de oro:</b> No cargues tanque lleno en Bahía Blanca o La Pampa; esperá a cruzar a Río Colorado o Viedma para cargar más barato.</p>
+            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Nombre Completo</label>
+            <input id="fb-prof-modal-nombre" type="text" maxlength="50" placeholder="Ej: Gonzalo Pérez"
+                   class="w-full px-3.5 py-2.5 rounded-xl text-xs dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Edad (Años)</label>
+            <input id="fb-prof-modal-edad" type="number" min="12" max="100" placeholder="Ej: 34"
+                   class="w-full px-3.5 py-2.5 rounded-xl text-xs dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none">
           </div>
         </div>
-
-        <!-- Desglose de Gastos -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-          <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
-            <div class="text-xs uppercase font-bold text-slate-400 mb-1">⛽ Combustible I/V</div>
-            <div id="res-comb-detalle" class="text-lg font-extrabold dark:text-white text-slate-900 font-mono">~$129.800 ARS</div>
-            <div id="res-comb-litros" class="text-xs text-slate-500 mt-1">~59 Litros (8.5 L/100km a $2.200 Ref. Shell)</div>
-          </div>
-          <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
-            <div class="text-xs uppercase font-bold text-slate-400 mb-1">🎟️ Peajes I/V</div>
-            <div id="res-peajes-detalle" class="text-lg font-extrabold dark:text-white text-slate-900 font-mono">~$21.500 ARS</div>
-            <div id="res-peajes-desc" class="text-xs text-slate-500 mt-1">Samborombón + Maipú / La Huella RP 11</div>
-          </div>
-        </div>
-
-        <!-- Paradas y Google Maps -->
-        <div class="mt-6 pt-6 border-t dark:border-slate-800 border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div id="res-parada-clasica" class="text-xs text-slate-400">
-            💡 <b>Parada Clásica:</b> Parador Atalaya (km 113 Chascomús) · YPF Full Dolores (km 204).
-          </div>
-          <a id="res-maps-btn" href="https://www.google.com/maps/dir/?api=1&origin=Buenos+Aires&destination=San+Bernardo&travelmode=driving" target="_blank"
-             class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-extrabold text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 transition-all">
-            <span>🗺️</span> Abrir en Google Maps
-          </a>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="window.submitProfileAndSync()"
+                  class="flex-1 py-3 rounded-xl text-xs font-bold text-white shadow hover:brightness-110 transition-all"
+                  style="background-color: var(--brand-primary);">
+            Emitir y Sincronizar 🚀
+          </button>
+          <button type="button" onclick="window.skipProfileAndSync()"
+                  class="px-3 py-3 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+            Omitir
+          </button>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    (function() {
+      // Referencia a la base de conocimiento vial modularizada (js/road-data.js)
+      const FB_ROAD_KB = new Proxy({}, {
+        get(_, prop) {
+          return (window.FB_ROAD_KB || {})[prop];
+        }
+      });
+      let _currentPromoBrand = 'todas';
+      let _currentPromoType = 'todos';
+
+      function fmtARS(n) {
+        return '$' + Math.round(Number(n || 0)).toLocaleString('es-AR') + ' ARS';
+      }
+
+      window.setPromoBrandFilter = function(b) {
+        _currentPromoBrand = b;
+        ['todas', 'ypf', 'shell', 'axion'].forEach(x => {
+          const btn = document.getElementById('pfilter-b-' + x);
+          if (btn) {
+            if (x === b) {
+              btn.className = 'px-3 py-1.5 rounded-lg transition-all dark:bg-slate-800 bg-white shadow-sm dark:text-white text-slate-900';
+            } else {
+              btn.className = 'px-3 py-1.5 rounded-lg transition-all dark:text-slate-400 text-slate-600 hover:text-white';
+            }
+          }
+        });
+        window.renderRoadPromos();
+      };
+
+      window.setPromoTypeFilter = function(t) {
+        _currentPromoType = t;
+        ['todos', 'combustible', 'tienda'].forEach(x => {
+          const btn = document.getElementById('pfilter-t-' + x);
+          if (btn) {
+            if (x === t) {
+              btn.className = 'px-3 py-1.5 rounded-lg transition-all dark:bg-slate-800 bg-white shadow-sm dark:text-white text-slate-900';
+            } else {
+              btn.className = 'px-3 py-1.5 rounded-lg transition-all dark:text-slate-400 text-slate-600 hover:text-white';
+            }
+          }
+        });
+        window.renderRoadPromos();
+      };
+
+      window.renderRoadPromos = function() {
+        const ypfGrid = document.getElementById('fuel-grid-ypf');
+        const shellGrid = document.getElementById('fuel-grid-shell');
+        const axionGrid = document.getElementById('fuel-grid-axion');
+        if (ypfGrid) ypfGrid.innerHTML = '';
+        if (shellGrid) shellGrid.innerHTML = '';
+        if (axionGrid) axionGrid.innerHTML = '';
+
+        const promos = (typeof FB_ROAD_KB !== 'undefined' && FB_ROAD_KB.promociones_combustible) ? FB_ROAD_KB.promociones_combustible : [];
+        promos.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between gap-3 hover:border-slate-700 transition-all';
+          const iconoMarca = p.marca_petrolera === 'YPF' ? '⛽' : (p.marca_petrolera === 'Shell' ? '🐚' : '🔴');
+          const colorBadge = p.marca_petrolera === 'YPF' ? 'bg-sky-500/15 text-sky-400 border-sky-500/30' : (p.marca_petrolera === 'Shell' ? 'bg-amber-500/15 text-amber-400 border-amber-500/30' : 'bg-rose-500/15 text-rose-400 border-rose-500/30');
+          const catBadge = p.categoria === 'combustible' ? '🛢️ Combustible' : ('☕ ' + (p.tienda_nombre || 'Tienda'));
+          const dias = Array.isArray(p.dias_vigencia) ? p.dias_vigencia.join(', ') : (p.dias_vigencia || 'Todos los días');
+          card.innerHTML =
+            '<div>' +
+              '<div class="flex items-center justify-between gap-2 mb-2">' +
+                '<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold border ' + colorBadge + '">' + iconoMarca + ' ' + p.marca_petrolera + '</span>' +
+                '<span class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">' + catBadge + '</span>' +
+              '</div>' +
+              '<div class="font-bold text-sm dark:text-white text-slate-900 mb-1">' + p.entidad + '</div>' +
+              '<div class="text-xs font-semibold text-emerald-500 dark:text-emerald-400 mb-2">' + p.descuento_texto + ' · ' + dias + '</div>' +
+              '<div class="p-2.5 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 mb-2.5">' +
+                '<div class="text-[11px] font-bold text-rose-500 dark:text-rose-400 uppercase tracking-wide">🛡️ ' + p.tope_texto + '</div>' +
+                '<div class="text-[11px] dark:text-slate-400 text-slate-500 mt-0.5">' + p.medio_pago + '</div>' +
+              '</div>' +
+              '<p class="text-xs dark:text-slate-300 text-slate-600 leading-relaxed mb-2">' + p.descripcion_corta + '</p>' +
+            '</div>' +
+            '<div class="text-[11px] p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400">💡 <strong>Tip:</strong> ' + p.tip_viajero + '</div>';
+
+          const brand = (p.marca_petrolera || '').toLowerCase();
+          if (brand === 'ypf' && ypfGrid) ypfGrid.appendChild(card);
+          else if (brand === 'shell' && shellGrid) shellGrid.appendChild(card);
+          else if (brand === 'axion' && axionGrid) axionGrid.appendChild(card);
+        });
+      };
+
+      window.triggerRoadSearch = async function() {
+        const btn = document.getElementById('fb-road-search-btn');
+        const container = document.getElementById('fb-road-results-container');
+        if (btn) {
+          btn.disabled = true;
+          btn.innerHTML = '<span class="inline-block animate-pulse">⏳</span><span>Buscando...</span>';
+        }
+        if (container) {
+          container.style.opacity = '0.25';
+          container.style.transform = 'translateY(6px)';
+          container.style.filter = 'blur(1px)';
+          container.style.pointerEvents = 'none';
+        }
+
+        // Retardo escénico discreto (~220ms) para percibir el recálculo fluido
+        await new Promise(r => setTimeout(r, 220));
+
+        try {
+          await window.updateFlightBotRoadPlanner();
+        } finally {
+          if (container) {
+            container.style.opacity = '1';
+            container.style.transform = 'translateY(0)';
+            container.style.filter = 'none';
+            container.style.pointerEvents = 'auto';
+          }
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = '<span>🔍</span><span>Buscar</span>';
+          }
+        }
+      };
+
+      window.debouncedUpdateRoadPlanner = function() {
+        window.updateFlightBotRoadPlanner();
+      };
+
+      window.setQuickDest = function(destName) {
+        const destInp = document.getElementById('fb-road-dest');
+        if (destInp) {
+          destInp.value = destName;
+          window.triggerRoadSearch();
+        }
+      };
+
+      function _normalizarStr(s) {
+        return (s || '')
+          .normalize('NFKD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          .replace(/[,.;:()\[\]"']/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+
+      function _buscarNodoCliente(nombre) {
+        if (!nombre || !FB_ROAD_KB.nodos) return null;
+        let t = _normalizarStr(nombre);
+        t = t.replace(/^(?:ir a|viajar a|ruta a|camino a|hacia|hasta|para)\s+/, '').trim();
+        if (FB_ROAD_KB.nodos[t]) return FB_ROAD_KB.nodos[t];
+
+        // 1. Si el usuario ingresó una dirección con coma o barra ("Pellegrini 1500, Rosario")
+        const partes = nombre.split(/[,/]/).map(p => _normalizarStr(p)).filter(Boolean);
+        if (partes.length > 1) {
+          const ult = partes[partes.length - 1];
+          if (FB_ROAD_KB.nodos[ult]) return FB_ROAD_KB.nodos[ult];
+          for (let k in FB_ROAD_KB.nodos) {
+            if (k.length >= 4 && (k === ult || ult.includes(k))) {
+              return FB_ROAD_KB.nodos[k];
+            }
+          }
+        }
+
+        // 2. Si tiene sufijo provincial (solo si el resto es un nodo o si la provincia es capital)
+        const sufijos = ['buenos aires', 'cordoba', 'santa fe', 'mendoza', 'rio negro', 'neuquen', 'salta', 'jujuy', 'misiones', 'entre rios', 'chubut'];
+        for (let prov of sufijos) {
+          if (t.endsWith(' ' + prov) && t !== prov) {
+            const cand = t.substring(0, t.length - prov.length).trim();
+            if (FB_ROAD_KB.nodos[cand]) return FB_ROAD_KB.nodos[cand];
+            if (FB_ROAD_KB.nodos[prov]) return FB_ROAD_KB.nodos[prov];
+          }
+        }
+
+        // 3. Coincidencia por palabra completa de nodos conocidos
+        const keys = Object.keys(FB_ROAD_KB.nodos).sort((a,b) => b.length - a.length);
+        for (let k of keys) {
+          if (k.length >= 4) {
+            const regex = new RegExp('\b' + k + '\b');
+            if (regex.test(t)) {
+              return FB_ROAD_KB.nodos[k];
+            }
+          }
+        }
+        for (let k of keys) {
+          if (k.length >= 4 && (k.includes(t) || (t.length >= 4 && t.includes(k)))) {
+            return FB_ROAD_KB.nodos[k];
+          }
+        }
+        return null;
+      }
+
+      function _distanciaVialClientSide(nOrig, nDest) {
+        const rad = Math.PI / 180.0;
+        const lat1 = nOrig.lat * rad, lon1 = nOrig.lon * rad;
+        const lat2 = nDest.lat * rad, lon2 = nDest.lon * rad;
+        const dlat = lat2 - lat1, dlon = lon2 - lon1;
+        const a = Math.sin(dlat/2)**2 + Math.cos(lat1)*Math.cos(lat2)*Math.sin(dlon/2)**2;
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        const dRecta = 6371.0 * c;
+        if (dRecta < 15) return 20;
+        const mont = ['cordillera_sur', 'norte_noa', 'patagonia_sur'];
+        const esMontana = mont.includes(nOrig.corredor) || mont.includes(nDest.corredor);
+        let factor = 1.20;
+        if (dRecta >= 800) {
+          factor = esMontana ? 1.14 : 1.18;
+        } else if (esMontana) {
+          factor = 1.25;
+        }
+        return Math.round((dRecta * factor) / 5.0) * 5;
+      }
+
+      window.updateFlightBotRoadPlanner = async function() {
+        const origInp = document.getElementById('fb-road-origin');
+        const destInp = document.getElementById('fb-road-dest');
+        const fuelSel = document.getElementById('fb-road-fuel');
+        const vehSel = document.getElementById('fb-road-veh');
+        const paxSel = document.getElementById('fb-road-pax');
+        if (!destInp || !fuelSel || !vehSel || !paxSel) return;
+
+        const origStr = (origInp && origInp.value) ? origInp.value.trim() : 'Buenos Aires';
+        const destStr = destInp.value.trim() || 'Bariloche';
+        const fuelKey = fuelSel.value || 'nafta';
+        const vehKey = vehSel.value || 'sedan';
+        const pax = Math.max(1, parseInt(paxSel.value || '2', 10));
+
+        let base = null;
+
+        // 1. Intento de consulta en vivo al backend de FlightBot (/api/ruta)
+        if (window.location.protocol.startsWith('http')) {
+          try {
+            const apiUrl = '/api/ruta?origen=' + encodeURIComponent(origStr) +
+                           '&destino=' + encodeURIComponent(destStr) +
+                           '&combustible=' + encodeURIComponent(fuelKey) +
+                           '&vehiculo=' + encodeURIComponent(vehKey) +
+                           '&pasajeros=' + pax;
+            const res = await fetch(apiUrl);
+            if (res.ok) {
+              const data = await res.json();
+              if (data && !data.error && data.distancia_km) {
+                base = data;
+              }
+            }
+          } catch (_) {}
+        }
+
+        // 2. Fallback dinámico client-side (offline o file:///)
+        if (!base) {
+          const destNorm = _normalizarStr(destStr);
+          const origNorm = _normalizarStr(origStr);
+          const nOrig = _buscarNodoCliente(origStr);
+          const nDest = _buscarNodoCliente(destStr);
+
+          // Identificar el corredor vial correspondiente al destino (o buscar en la KB de corredores)
+          let cKey = (nDest && nDest.corredor) ? nDest.corredor : null;
+          if (!cKey && FB_ROAD_KB.corredores) {
+            for (let ck in FB_ROAD_KB.corredores) {
+              const corr = FB_ROAD_KB.corredores[ck];
+              if (corr.nombres && corr.nombres.some(n => destNorm.includes(n) || n.includes(destNorm))) {
+                cKey = ck;
+                break;
+              }
+            }
+          }
+
+          // Buscar plantilla en destinos registrados
+          let plantilla = null;
+          for (let k in FB_ROAD_KB.destinos) {
+            if (destNorm.includes(k) || k.includes(destNorm)) {
+              plantilla = FB_ROAD_KB.destinos[k];
+              if (!cKey) cKey = plantilla.corredor_id;
+              break;
+            }
+          }
+
+          if (!cKey) {
+            cKey = (nOrig && nOrig.corredor) ? nOrig.corredor : 'centro_norte';
+          }
+
+          // Si no hubo plantilla directa, buscar una plantilla representativa del mismo corredor
+          if (!plantilla) {
+            for (let k in FB_ROAD_KB.destinos) {
+              if (FB_ROAD_KB.destinos[k].corredor_id === cKey) {
+                plantilla = FB_ROAD_KB.destinos[k];
+                break;
+              }
+            }
+          }
+          if (!plantilla) plantilla = FB_ROAD_KB.destinos['bariloche'] || {};
+
+          const corrData = (FB_ROAD_KB.corredores && FB_ROAD_KB.corredores[cKey]) ? FB_ROAD_KB.corredores[cKey] : null;
+
+          let distIda = 450;
+          if (nOrig && nDest) {
+            distIda = _distanciaVialClientSide(nOrig, nDest);
+          } else if (origNorm === 'buenos aires' || origNorm === 'caba') {
+            distIda = Number(plantilla.distancia_km || 450);
+          }
+
+          const fuelInfo = FB_ROAD_KB.combustibles[fuelKey] || FB_ROAD_KB.combustibles['nafta'];
+          const naftaInfo = FB_ROAD_KB.combustibles['nafta'];
+          const vehInfo = FB_ROAD_KB.vehiculos[vehKey] || FB_ROAD_KB.vehiculos['sedan'];
+
+          const consumo100 = Math.round(fuelInfo.consumo_100 * vehInfo.factor_consumo * 10) / 10;
+          const unidadesTotal = Math.round(((distIda / 100.0) * consumo100 * 2) * 10) / 10;
+          const costoCombustible = Math.round(unidadesTotal * fuelInfo.precio_unidad);
+
+          const naftaConsumo100 = naftaInfo.consumo_100 * vehInfo.factor_consumo;
+          const naftaCostoTotal = ((distIda / 100.0) * naftaConsumo100 * 2) * naftaInfo.precio_unidad;
+          const ahorroArs = Math.max(0, Math.round(naftaCostoTotal - costoCombustible));
+          const ahorroPct = naftaCostoTotal > 0 ? Math.round((ahorroArs / naftaCostoTotal) * 100) : 0;
+
+          // Adaptación contextual según el punto de partida real y el corredor de destino
+          let rutaNombre = (corrData && corrData.ruta_principal) ? corrData.ruta_principal : (plantilla.ruta_nombre || 'Rutas Nacionales principales');
+          let peajesDetalle = (corrData && corrData.peajes_detalle) ? corrData.peajes_detalle : (plantilla.peajes_detalle || '');
+          let peajesIda = (corrData && corrData.peajes_estimados_ida) ? Number(corrData.peajes_estimados_ida) : Math.max(1500, Math.round((distIda / 400.0) * 3000));
+          let hitosYpf = (plantilla.hitos_ypf_cartel && plantilla.hitos_ypf_cartel.length > 0)
+            ? plantilla.hitos_ypf_cartel
+            : ((corrData && corrData.hitos_ypf_cartel) ? corrData.hitos_ypf_cartel : []);
+          let paradores = (plantilla.paradores && plantilla.paradores.length > 0)
+            ? plantilla.paradores
+            : ((corrData && corrData.paradores) ? corrData.paradores : []);
+          let estadoRuta = (corrData && corrData.estado_ruta) ? Object.assign({}, corrData.estado_ruta) : Object.assign({}, plantilla.estado_ruta || {});
+          let controlAlimentos = (corrData && corrData.control_alimentos) ? corrData.control_alimentos : (plantilla.control_alimentos || {});
+          let requisitosMascotas = (corrData && corrData.requisitos_mascotas) ? corrData.requisitos_mascotas : (plantilla.requisitos_mascotas || {});
+          let alertaDesierto = (corrData && corrData.alerta_desierto !== undefined) ? corrData.alerta_desierto : plantilla.alerta_desierto;
+          let alertaFrontera = (corrData && corrData.alerta_frontera !== undefined) ? corrData.alerta_frontera : plantilla.alerta_frontera;
+          let alertaGnc = (corrData && corrData.alerta_gnc !== undefined) ? corrData.alerta_gnc : plantilla.alerta_gnc;
+          let horarioSalida = (corrData && corrData.horario_salida) ? corrData.horario_salida : (plantilla.horario_salida || {});
+          let paradaNoche = (corrData && corrData.parada_noche !== undefined) ? corrData.parada_noche : plantilla.parada_noche;
+
+          const esAmba = ['buenos aires', 'caba', 'capital federal', 'la plata', 'pilar', 'lujan', 'canuelas', 'campana', 'zarate'].includes(origNorm);
+          const provOrig = (nOrig && nOrig.prov) ? nOrig.prov : '';
+          const esSantaFe = provOrig === 'Santa Fe' || ['rosario', 'santa fe', 'rafaela', 'venado tuerto', 'firmat', 'casilda'].includes(origNorm);
+          const esCordoba = provOrig === 'Córdoba' || ['cordoba', 'villa carlos paz', 'carlos paz', 'rio cuarto', 'villa maria', 'leones'].includes(origNorm);
+
+          const esConsultaTramo152 = destNorm.includes('152') || destNorm.includes('casa de piedra') || origNorm.includes('152');
+          if (esConsultaTramo152) {
+            estadoRuta = {
+              nivel: 'rojo',
+              codigo_color: 'rojo',
+              color_hex: '#dc2626',
+              etiqueta: 'Rojo · RN 152 Colapsada (Desvío Obligatorio RP 20)',
+              icono: '🔴',
+              descripcion: 'El tramo de la RN 152 entre General Acha y Casa de Piedra se encuentra colapsado con cráteres profundos. Desvío obligatorio en Gral. Acha por RN 143 y RP 20 (Ruta del Desierto).'
+            };
+          } else if (cKey === 'cordillera_sur') {
+            estadoRuta = {
+              nivel: 'amarillo',
+              codigo_color: 'amarillo',
+              color_hex: '#ca8a04',
+              etiqueta: 'Amarillo · Transitable con Precaución / Traza Recomendada por RP 20',
+              icono: '🟡',
+              descripcion: "Traza recomendada asfaltada y transitable por RP 20 ('Ruta del Desierto'). ⚠️ Desvío obligatorio: en General Acha evitar la RN 152 por Casa de Piedra (asfalto colapsado con cráteres); tomar RN 143 y RP 20 hacia 25 de Mayo. En RN 151 (Catriel a Barda del Medio, Río Negro) circular de día y a velocidad moderada (80 km/h) por baches y camiones petroleros. Desde Neuquén a Bariloche/SMA por RN 237 la calzada está en muy buen estado."
+            };
+          }
+
+          if (!esAmba) {
+            if (esSantaFe) {
+              if (cKey === 'cordillera_sur') {
+                rutaNombre = 'RN 33 (Venado Tuerto - Rufino - Trenque Lauquen) ➔ RN 5 (Santa Rosa) ➔ RN 143 + RP 20 (Ruta del Desierto) ➔ RN 151 ➔ RN 22 / RN 237';
+                peajesIda = 5000;
+                peajesDetalle = 'RN 33 Corredores Viales (Venado Tuerto: ~$1.500) + RN 5 Trenque Lauquen ($1.500) + Cipolletti/Neuquén (~$2.000). Total estimado por tramo: ~$5.000 ARS (sin cabinas de peaje de Buenos Aires/AMBA).';
+                hitosYpf = [
+                  { pueblo_cartel: 'Venado Tuerto', nombre_estacion: 'YPF Full Venado Tuerto', ruta: 'RN 33 y RN 8', km_cartel: 'Km 170', gnc: true, ev: true },
+                  { pueblo_cartel: 'Rufino', nombre_estacion: 'YPF Full Rufino', ruta: 'RN 33 y RN 7', km_cartel: 'Km 265', gnc: true, ev: false },
+                  { pueblo_cartel: 'Trenque Lauquen', nombre_estacion: 'YPF Full Trenque Lauquen', ruta: 'RN 33 y RN 5', km_cartel: 'Km 490', gnc: true, ev: true },
+                  { pueblo_cartel: 'Santa Rosa (La Pampa)', nombre_estacion: 'YPF Full / ACA Santa Rosa', ruta: 'RN 5', km_cartel: 'Km 650', gnc: true, ev: true },
+                  { pueblo_cartel: 'General Acha (ANTES DEL DESIERTO)', nombre_estacion: 'YPF Full General Acha', ruta: 'RN 152 · Km 29', km_cartel: 'Km 765', gnc: true, ev: false },
+                  { pueblo_cartel: 'Chacharramendi', nombre_estacion: 'YPF ACA Chacharramendi', ruta: 'RN 143 / RP 20', km_cartel: 'Km 845', gnc: false, ev: false },
+                  { pueblo_cartel: '25 de Mayo / Catriel', nombre_estacion: 'YPF Full 25 de Mayo / Catriel', ruta: 'RP 20 / RN 151', km_cartel: 'Km 1040', gnc: false, ev: false },
+                  { pueblo_cartel: 'Cipolletti / Neuquén', nombre_estacion: 'YPF Full Cipolletti / Neuquén', ruta: 'RN 22', km_cartel: 'Km 1190', gnc: true, ev: true },
+                  { pueblo_cartel: 'Piedra del Águila', nombre_estacion: 'YPF Full Piedra del Águila', ruta: 'RN 237', km_cartel: 'Km 1445', gnc: false, ev: false }
+                ];
+                paradores = [
+                  { nombre: 'YPF Full Venado Tuerto (Santa Fe)', pueblo_cartel: 'Venado Tuerto', km: 'Km 170 (RN 33)', tipo: '☕ Primera Parada y GNC 24hs', icono: '🥐', abierto_24hs: true, tiene_gnc: true, cargador_electrico: true, descripcion: 'Estación moderna sobre la RN 33 con tienda Full 24 hs y descanso ágil.' },
+                  { nombre: 'Hotel ACA Santa Rosa + YPF Full (La Pampa)', pueblo_cartel: 'Santa Rosa', km: 'Km 650 del viaje', tipo: '🏨 Ideal para Hacer Noche', icono: '🛏️', abierto_24hs: true, tiene_gnc: true, cargador_electrico: true, descripcion: 'El punto clásico para almorzar o hacer noche a mitad de camino.' },
+                  { nombre: 'YPF Full General Acha (Antes del Desierto)', pueblo_cartel: 'General Acha', km: 'Km 765 del viaje', tipo: '🚨 Carga Obligatoria al 100%', icono: '⛽', abierto_24hs: true, tiene_gnc: true, cargador_electrico: false, descripcion: 'Llená el tanque acá antes de encarar la RP 20.' },
+                  { nombre: 'Puesto Barrera Sanitaria 25 de Mayo / Catriel', pueblo_cartel: '25 de Mayo', km: 'Km 1040 del viaje', tipo: '🛂 Barrera Sanitaria y Descuento Patagónico', icono: '🛡️', abierto_24hs: true, tiene_gnc: false, cargador_electrico: false, descripcion: 'Control fitosanitario al ingresar a Río Negro/Neuquén y nafta más barata.' },
+                  { nombre: 'Piedra del Águila (YPF Full / Shell Select)', pueblo_cartel: 'Piedra del Águila', km: 'Km 1445 del viaje', tipo: '🏔️ Portal de la Cordillera', icono: '☕', abierto_24hs: true, tiene_gnc: false, cargador_electrico: false, descripcion: 'Parada estratégica sobre la RN 237 antes de entrar a Bariloche o SMA.' }
+                ];
+              } else if (cKey === 'centro_norte') {
+                const esVGB = ['belgrano', 'calamuchita', 'reartes', 'cumbrecita'].some(w => destNorm.includes(w));
+                rutaNombre = esVGB ? 'Autopista Rosario - Córdoba (RN 9) ➔ RP C-45 / Autovía RP 5 (Valle de Calamuchita)' : 'Autopista Rosario - Córdoba (RN 9)';
+                peajesIda = 3500;
+                peajesDetalle = 'RN 9 Corredores Viales (Carcarañá ~$1.500, James Craik ~$1.500) + Red de Accesos a Córdoba RAC (~$1.500). Sin peajes de Buenos Aires/AMBA. Total ida: ~$3.500 ARS.';
+                hitosYpf = [
+                  { pueblo_cartel: 'Carcarañá', nombre_estacion: 'YPF Full Carcarañá', ruta: 'Autopista RN 9', km_cartel: 'Km 48', gnc: false, ev: true },
+                  { pueblo_cartel: 'Leones', nombre_estacion: 'YPF Full Leones (Megaparador)', ruta: 'Autopista RN 9', km_cartel: 'Km 155', gnc: true, ev: true },
+                  { pueblo_cartel: 'Villa María', nombre_estacion: 'YPF Full Villa María', ruta: 'Autopista RN 9', km_cartel: 'Km 255', gnc: true, ev: true },
+                  { pueblo_cartel: 'Río Segundo / Pilar', nombre_estacion: 'YPF Full Río Segundo / Pilar', ruta: 'Autopista RN 9', km_cartel: 'Km 355', gnc: true, ev: false },
+                  { pueblo_cartel: 'Alta Gracia', nombre_estacion: 'YPF Full Alta Gracia', ruta: 'Autovía RP 5', km_cartel: 'Km 395', gnc: true, ev: false }
+                ];
+                paradores = (plantilla.paradores || []).filter(p => !p.pueblo_cartel || (!p.pueblo_cartel.includes('San Pedro') && !p.ruta_corta.includes('Panamericana')));
+              } else if (cKey === 'cuyo') {
+                rutaNombre = 'RN 33 (hacia Rufino) ➔ RN 7 (Autopista Serranías Puntanas hacia San Luis y Mendoza)';
+                peajesIda = 5500;
+                peajesDetalle = 'RN 33 (Venado Tuerto: ~$1.500) + RN 7 (Vicuña Mackenna: ~$1.500) + Peajes San Luis y Desaguadero (~$2.500). Total ida: ~$5.500 ARS (sin cabinas de peaje de Buenos Aires/AMBA).';
+                hitosYpf = (plantilla.hitos_ypf_cartel || []).filter(h => !h.pueblo_cartel.includes('Areco') && !h.pueblo_cartel.includes('Junín'));
+                paradores = (plantilla.paradores || []).filter(p => !p.pueblo_cartel.includes('Junín'));
+              }
+            } else if (esCordoba && cKey === 'cordillera_sur') {
+              rutaNombre = 'RN 36 (Autovía Córdoba - Río Cuarto) ➔ RN 35 (Vicuña Mackenna - Realicó - Santa Rosa) ➔ RN 143 + RP 20 (Ruta del Desierto) ➔ RN 151 / RN 22 ➔ RN 237';
+              peajesIda = 4500;
+              peajesDetalle = 'Caminos de las Sierras (RN 36: ~$1.500) + Corredor RN 35 + Cipolletti/Neuquén (~$2.000). Sin peajes de PBA/AMBA. Total estimado por tramo: ~$4.500 ARS.';
+              hitosYpf = [
+                { pueblo_cartel: 'Río Cuarto', nombre_estacion: 'YPF Full Río Cuarto', ruta: 'Autovía RN 36', km_cartel: 'Km 215', gnc: true, ev: true },
+                { pueblo_cartel: 'Vicuña Mackenna', nombre_estacion: 'YPF Full Vicuña Mackenna', ruta: 'RN 35 y RN 7', km_cartel: 'Km 310', gnc: true, ev: false },
+                { pueblo_cartel: 'Santa Rosa (La Pampa)', nombre_estacion: 'YPF Full / ACA Santa Rosa', ruta: 'RN 35 y RN 5', km_cartel: 'Km 570', gnc: true, ev: true },
+                { pueblo_cartel: 'General Acha (ANTES DEL DESIERTO)', nombre_estacion: 'YPF Full General Acha', ruta: 'RN 152 · Km 29', km_cartel: 'Km 685', gnc: true, ev: false },
+                { pueblo_cartel: '25 de Mayo / Catriel', nombre_estacion: 'YPF Full 25 de Mayo', ruta: 'RP 20 / RN 151', km_cartel: 'Km 960', gnc: false, ev: false },
+                { pueblo_cartel: 'Cipolletti / Neuquén', nombre_estacion: 'YPF Full Cipolletti / Neuquén', ruta: 'RN 22', km_cartel: 'Km 1110', gnc: true, ev: true },
+                { pueblo_cartel: 'Piedra del Águila', nombre_estacion: 'YPF Full Piedra del Águila', ruta: 'RN 237', km_cartel: 'Km 1365', gnc: false, ev: false }
+              ];
+              paradores = [
+                { nombre: 'YPF Full Río Cuarto (Córdoba)', pueblo_cartel: 'Río Cuarto', km: 'Km 215 (RN 36)', tipo: '☕ Primera Parada y GNC 24hs', icono: '🥐', abierto_24hs: true, tiene_gnc: true, cargador_electrico: true, descripcion: 'Circunvalación de Río Cuarto antes de bajar hacia La Pampa por RN 35.' },
+                { nombre: 'Hotel ACA Santa Rosa (La Pampa)', pueblo_cartel: 'Santa Rosa', km: 'Km 570 del viaje', tipo: '🏨 Ideal para Hacer Noche', icono: '🛏️', abierto_24hs: true, tiene_gnc: true, cargador_electrico: true, descripcion: 'Parada para descansar a mitad de camino Córdoba-Bariloche.' },
+                { nombre: 'YPF Full General Acha (Antes del Desierto)', pueblo_cartel: 'General Acha', km: 'Km 685 del viaje', tipo: '🚨 Carga Obligatoria al 100%', icono: '⛽', abierto_24hs: true, tiene_gnc: true, cargador_electrico: false, descripcion: 'Llená el tanque acá antes de encarar la RP 20.' },
+                { nombre: 'Puesto Barrera Sanitaria 25 de Mayo', pueblo_cartel: '25 de Mayo', km: 'Km 960 del viaje', tipo: '🛂 Barrera Sanitaria y Descuento', icono: '🛡️', abierto_24hs: true, tiene_gnc: false, cargador_electrico: false, descripcion: 'Control fitosanitario de ingreso a Patagonia.' },
+                { nombre: 'Piedra del Águila (YPF Full / Shell)', pueblo_cartel: 'Piedra del Águila', km: 'Km 1365 del viaje', tipo: '🏔️ Portal de la Cordillera', icono: '☕', abierto_24hs: true, tiene_gnc: false, cargador_electrico: false, descripcion: 'Última gran parada antes de llegar a Bariloche.' }
+              ];
+            } else {
+              let rutaLimpia = (plantilla.ruta_nombre || '');
+              ['Acceso Oeste ➔ ', 'Autopista Panamericana (RN 9) ➔ ', 'Autopista Bs.As.-La Plata ➔ '].forEach(m => {
+                rutaLimpia = rutaLimpia.replace(m, '');
+              });
+              const origNombre = nOrig ? nOrig.nombre : origStr;
+              const destNombre = nDest ? nDest.nombre : destStr;
+              rutaNombre = 'Tramo ' + origNombre + ' ➔ ' + destNombre + ' (' + rutaLimpia + ')';
+              peajesIda = Math.max(1500, Math.round((distIda / 800.0) * 4500));
+              peajesDetalle = 'Cabinas troncales de peaje en ruta (~$' + peajesIda.toLocaleString('es-AR') + ' ARS por tramo). Sin peajes de CABA/AMBA.';
+              hitosYpf = (plantilla.hitos_ypf_cartel || []).filter(h => !h.pueblo_cartel || !['Chivilcoy', '9 de Julio', 'Pehuajó', 'Chascomús', 'San Pedro', 'Zárate'].some(ex => h.pueblo_cartel.includes(ex)));
+              paradores = (plantilla.paradores || []).filter(p => !p.pueblo_cartel || !['Chivilcoy', '9 de Julio', 'Pehuajó', 'Chascomús', 'San Pedro', 'Zárate'].some(ex => p.pueblo_cartel.includes(ex)));
+            }
+          } else {
+            peajesIda = Number(plantilla.peajes_ida_ars || 4500);
+            peajesDetalle = plantilla.peajes_detalle || '';
+            rutaNombre = plantilla.ruta_nombre || '';
+          }
+
+          const peajesTotal = peajesIda * 2;
+          const costoTotal = costoCombustible + peajesTotal;
+          const costoPorPersona = Math.round(costoTotal / pax);
+
+          const horasTot = distIda / 85.0;
+          const hEnt = Math.floor(horasTot);
+          const mEnt = Math.round((horasTot - hEnt) * 60);
+
+          base = Object.assign({}, plantilla, {
+            origen: nOrig ? nOrig.nombre : origStr,
+            destino: nDest ? nDest.nombre : destStr,
+            corredor_id: cKey,
+            ruta_nombre: rutaNombre,
+            peajes_detalle: peajesDetalle,
+            hitos_ypf_cartel: hitosYpf,
+            paradores: paradores,
+            estado_ruta: estadoRuta,
+            control_alimentos: controlAlimentos,
+            requisitos_mascotas: requisitosMascotas,
+            alerta_desierto: alertaDesierto,
+            alerta_frontera: alertaFrontera,
+            alerta_gnc: alertaGnc,
+            horario_salida: horarioSalida,
+            parada_noche: paradaNoche,
+            distancia_km: distIda,
+            distancia_total_iv_km: distIda * 2,
+            tiempo_estimado: hEnt + 'h ' + mEnt + 'm',
+            costo_combustible_ars: costoCombustible,
+            unidades_combustible_total: unidadesTotal,
+            consumo_100_ajustado: consumo100,
+            peajes_ida_ars: peajesIda,
+            peajes_total_ars: peajesTotal,
+            costo_total_ars: costoTotal,
+            costo_por_persona_ars: costoPorPersona,
+            ahorro_vs_nafta_ars: ahorroArs,
+            ahorro_pct: ahorroPct,
+            maps_url: 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(origStr.toLowerCase().includes('argentina') || origStr.toLowerCase().includes('brasil') ? origStr : (origStr + ', Argentina')) + '&destination=' + encodeURIComponent(destStr.toLowerCase().includes('argentina') || destStr.toLowerCase().includes('brasil') ? destStr : (destStr + ', Argentina')) + '&travelmode=driving',
+          });
+        }
+
+        const fuelInfo = FB_ROAD_KB.combustibles[fuelKey] || FB_ROAD_KB.combustibles['nafta'];
+        const vehInfo = FB_ROAD_KB.vehiculos[vehKey] || FB_ROAD_KB.vehiculos['sedan'];
+
+        const distIda = Number(base.distancia_km || 400);
+        const distTotal = Number(base.distancia_total_iv_km || (distIda * 2));
+        const costoCombustible = Number(base.costo_combustible_ars || 0);
+        const unidadesTotal = Number(base.unidades_combustible_total || 0);
+        const consumo100 = Number(base.consumo_100_ajustado || (fuelInfo.consumo_100 * vehInfo.factor_consumo));
+        const peajesIda = Number(base.peajes_ida_ars || 0);
+        const peajesTotal = Number(base.peajes_total_ars || (peajesIda * 2));
+        const costoTotal = Number(base.costo_total_ars || (costoCombustible + peajesTotal));
+        const costoPorPersona = Number(base.costo_por_persona_ars || Math.round(costoTotal / pax));
+        const ahorroArs = Number(base.ahorro_vs_nafta_ars || 0);
+        const ahorroPct = Number(base.ahorro_pct || 0);
+
+        // 1. Actualizar Semáforo Vial
+        const est = base.estado_ruta || {};
+        const semBox = document.getElementById('fb-road-semaforo-box');
+        const semBadge = document.getElementById('fb-road-semaforo-badge');
+        const corredorTitle = document.getElementById('fb-road-corredor-title');
+        const distBadge = document.getElementById('fb-road-dist-badge');
+        const timeBadge = document.getElementById('fb-road-time-badge');
+        const semDesc = document.getElementById('fb-road-semaforo-desc');
+        const alertasBox = document.getElementById('fb-road-alertas-criticas');
+
+        const colorStyles = {
+          rojo: { bg: 'rgba(220, 38, 38, 0.10)', border: 'rgba(220, 38, 38, 0.35)', badge: '#dc2626' },
+          naranja: { bg: 'rgba(234, 88, 12, 0.10)', border: 'rgba(234, 88, 12, 0.35)', badge: '#ea580c' },
+          amarillo: { bg: 'rgba(202, 138, 4, 0.10)', border: 'rgba(202, 138, 4, 0.35)', badge: '#ca8a04' },
+          verde: { bg: 'rgba(22, 163, 74, 0.10)', border: 'rgba(22, 163, 74, 0.35)', badge: '#16a34a' }
+        };
+        const st = colorStyles[est.codigo_color] || colorStyles.verde;
+        if (semBox) {
+          semBox.style.backgroundColor = st.bg;
+          semBox.style.borderColor = st.border;
+        }
+        if (semBadge) {
+          semBadge.style.backgroundColor = st.badge;
+          semBadge.textContent = (est.icono || '🚦') + ' ' + (est.etiqueta || 'Estado Vial');
+        }
+        if (corredorTitle) corredorTitle.textContent = '🛣️ ' + (base.ruta_nombre || '');
+        if (distBadge) distBadge.textContent = '📏 ~' + distIda.toLocaleString('es-AR') + ' km ida (' + distTotal.toLocaleString('es-AR') + ' km I/V)';
+        if (timeBadge) timeBadge.textContent = '⏱️ ~' + (base.tiempo_estimado || '') + ' por tramo';
+        if (semDesc) semDesc.textContent = est.descripcion || '';
+
+        if (alertasBox) {
+          let alertasHtml = '';
+          if (base.alerta_desierto) {
+            alertasHtml += '<div class="p-3.5 rounded-xl dark:bg-slate-950/85 bg-white/90 border dark:border-slate-800 border-slate-200 leading-relaxed">' + base.alerta_desierto + '</div>';
+          }
+          if (base.alerta_frontera) {
+            alertasHtml += '<div class="p-3.5 rounded-xl dark:bg-slate-950/85 bg-white/90 border dark:border-slate-800 border-slate-200 leading-relaxed">' + base.alerta_frontera + '</div>';
+          }
+          if (base.alerta_gnc && (fuelKey === 'gnc' || base.alerta_gnc.indexOf('ATENCIÓN GNC') !== -1 || base.alerta_gnc.indexOf('SIN GNC') !== -1)) {
+            alertasHtml += '<div class="p-3.5 rounded-xl dark:bg-slate-950/85 bg-white/90 border dark:border-slate-800 border-slate-200 leading-relaxed">' + base.alerta_gnc + '</div>';
+          }
+          alertasBox.innerHTML = alertasHtml;
+        }
+
+        // 2. Actualizar Presupuesto
+        const fuelLabel = document.getElementById('fb-road-fuel-label');
+        const fuelCostEl = document.getElementById('fb-road-fuel-cost');
+        const fuelUnitsEl = document.getElementById('fb-road-fuel-units');
+        const tollsCostEl = document.getElementById('fb-road-tolls-cost');
+        const tollsOnewayEl = document.getElementById('fb-road-tolls-oneway');
+        const tollsDetailEl = document.getElementById('fb-road-tolls-detail');
+        const perPersonEl = document.getElementById('fb-road-per-person');
+        const totalCostEl = document.getElementById('fb-road-total-cost');
+        const savingPill = document.getElementById('fb-road-saving-pill');
+        const mapsBtn = document.getElementById('fb-road-maps-btn');
+
+        if (fuelLabel) fuelLabel.textContent = fuelInfo.icono + ' ' + fuelInfo.nombre;
+        if (fuelCostEl) fuelCostEl.textContent = fmtARS(costoCombustible);
+        if (fuelUnitsEl) fuelUnitsEl.textContent = '~' + unidadesTotal + ' ' + fuelInfo.unidad + ' (' + consumo100 + ' ' + fuelInfo.unidad + '/100km)';
+        if (tollsCostEl) tollsCostEl.textContent = fmtARS(peajesTotal);
+        if (tollsOnewayEl) tollsOnewayEl.textContent = fmtARS(peajesIda) + ' por tramo';
+        if (tollsDetailEl) tollsDetailEl.textContent = base.peajes_detalle || '';
+        if (perPersonEl) perPersonEl.textContent = fmtARS(costoPorPersona);
+        if (totalCostEl) totalCostEl.textContent = 'Total I/V: ' + fmtARS(costoTotal) + ' (' + pax + (pax === 1 ? ' viajero' : ' viajeros') + ')';
+        if (savingPill) {
+          if (ahorroArs > 0 && fuelKey !== 'nafta') {
+            savingPill.classList.remove('hidden');
+            savingPill.textContent = '💰 Ahorrás ' + fmtARS(ahorroArs) + ' (-' + ahorroPct + '% vs Nafta)';
+          } else {
+            savingPill.classList.add('hidden');
+          }
+        }
+        if (mapsBtn && base.maps_url) mapsBtn.href = base.maps_url;
+
+        // 3. Actualizar Horario Ideal y Estaciones 24 hs
+        const hs = base.horario_salida || {};
+        const depBadge = document.getElementById('fb-road-departure-badge');
+        const depReason = document.getElementById('fb-road-departure-reason');
+        const st24h = document.getElementById('fb-road-stations-24h');
+        const overnightBox = document.getElementById('fb-road-overnight-box');
+        const overnightTitle = document.getElementById('fb-road-overnight-title');
+        const overnightDesc = document.getElementById('fb-road-overnight-desc');
+
+        if (depBadge) depBadge.textContent = '⏰ Salir ' + (hs.hora_recomendada || '04:30 hs');
+        if (depReason) depReason.textContent = hs.motivo || '';
+        if (st24h) st24h.textContent = hs.estaciones_24hs_info || '';
+        if (overnightBox) {
+          if (base.parada_noche && distIda >= 750) {
+            overnightBox.classList.remove('hidden');
+            if (overnightTitle) overnightTitle.textContent = '🛏️ Dónde Hacer Noche (' + (base.parada_noche.km_desde_origen || '') + '): ' + (base.parada_noche.ciudad_recomendada || '');
+            if (overnightDesc) overnightDesc.textContent = base.parada_noche.consejo || '';
+          } else {
+            overnightBox.classList.add('hidden');
+          }
+        }
+
+        // 4. Actualizar Barrera Sanitaria (Alimentos)
+        const ca = base.control_alimentos || {};
+        const foodBadge = document.getElementById('fb-road-food-badge');
+        const foodProh = document.getElementById('fb-road-food-prohibited');
+        const foodAllow = document.getElementById('fb-road-food-allowed');
+        if (foodBadge) {
+          foodBadge.textContent = ca.tiene_barrera ? '🛂 Barrera Sanitaria Activa' : '✅ Sin Decomiso de Alimentos';
+          foodBadge.className = ca.tiene_barrera
+            ? 'px-3 py-1 rounded-full text-xs font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30'
+            : 'px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30';
+        }
+        if (foodProh) foodProh.innerHTML = '<strong>Organismo:</strong> ' + (ca.organismo || '') + '<br><br>' + (ca.prohibidos || '');
+        if (foodAllow) foodAllow.innerHTML = ca.permitidos || '';
+
+        // 5. Actualizar Mascotas
+        const rm = base.requisitos_mascotas || {};
+        const petsBadge = document.getElementById('fb-road-pets-badge');
+        const petsDocs = document.getElementById('fb-road-pets-docs');
+        const petsRules = document.getElementById('fb-road-pets-rules');
+        if (petsBadge) petsBadge.textContent = rm.exigencia || 'Controles Viales';
+        if (petsDocs) petsDocs.innerHTML = rm.documentacion || '';
+        if (petsRules) petsRules.innerHTML = rm.transporte_y_playas || '';
+
+        // 6. Actualizar Paradores
+        const stopsGrid = document.getElementById('fb-road-stops-grid');
+        if (stopsGrid) {
+          stopsGrid.innerHTML = '';
+          (base.paradores || []).forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between gap-2';
+            let badges = '';
+            if (p.abierto_24hs) {
+              badges += '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">🕒 24 hs</span>';
+            } else if (p.horario_atencion) {
+              badges += '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30">🕒 ' + p.horario_atencion + '</span>';
+            }
+            if (p.tiene_gnc) {
+              badges += '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-sky-500/15 text-sky-400 border border-sky-500/30">🔵 GNC</span>';
+            }
+            if (p.cargador_electrico) {
+              badges += '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-purple-500/15 text-purple-400 border border-purple-500/30">⚡ Carga EV</span>';
+            }
+            card.innerHTML =
+              '<div>' +
+                '<div class="flex items-start justify-between gap-2 mb-1">' +
+                  '<div class="font-bold text-sm dark:text-white text-slate-900">' + (p.icono || '⛽') + ' ' + (p.nombre || '') + '</div>' +
+                  '<span class="text-xs font-mono font-semibold dark:text-slate-400 text-slate-500 whitespace-nowrap">' + (p.km || '') + '</span>' +
+                '</div>' +
+                '<div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">' + (p.tipo || '') + '</div>' +
+                '<p class="text-xs dark:text-slate-300 text-slate-600 leading-relaxed mb-3">' + (p.descripcion || '') + '</p>' +
+              '</div>' +
+              '<div class="flex items-center gap-1.5 flex-wrap">' + badges + '</div>';
+            stopsGrid.appendChild(card);
+          });
+        }
+
+        // 7. Actualizar Puntos de Referencia YPF Full por Cartel de Ruta
+        const ypfGrid = document.getElementById('fb-road-ypf-grid');
+        if (ypfGrid) {
+          ypfGrid.innerHTML = '';
+          const hitos = base.hitos_ypf_cartel || [];
+          if (hitos.length === 0) {
+            ypfGrid.innerHTML = '<div class="text-xs text-slate-500 italic p-3 col-span-full">Paradas YPF Full disponibles a lo largo de toda la traza troncal.</div>';
+          } else {
+            hitos.forEach(h => {
+              const pill = document.createElement('a');
+              const stNombre = h.nombre_estacion || h.estacion || 'YPF Full';
+              const kmTexto = h.km_cartel || (h.km ? ('Km ' + h.km) : '');
+              const qMap = encodeURIComponent(stNombre + ' ' + (h.pueblo_cartel || ''));
+              pill.href = 'https://www.google.com/maps/search/?api=1&query=' + qMap;
+              pill.target = '_blank';
+              pill.rel = 'noopener noreferrer';
+              pill.className = 'flex items-center gap-2.5 p-3.5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 hover:border-sky-500/50 hover:dark:bg-slate-900 transition-all text-xs';
+              let extras = '';
+              if (h.gnc) extras += '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-sky-500/15 text-sky-400">GNC</span>';
+              if (h.ev) extras += '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/15 text-purple-400">EV</span>';
+              pill.innerHTML =
+                '<div class="w-2.5 h-2.5 rounded-full bg-sky-500 flex-shrink-0"></div>' +
+                '<div class="flex-1 min-w-0">' +
+                  '<div class="font-bold dark:text-white text-slate-900 flex items-center justify-between gap-1">' +
+                    '<span class="truncate">' + (h.pueblo_cartel || '') + '</span>' +
+                    '<span class="text-sky-500 font-mono text-[11px] flex-shrink-0">' + kmTexto + '</span>' +
+                  '</div>' +
+                  '<div class="text-[11px] dark:text-slate-400 text-slate-500 truncate mt-0.5">' + stNombre + ' · ' + (h.ruta || '') + ' ' + extras + '</div>' +
+                '</div>';
+              ypfGrid.appendChild(pill);
+            });
+          }
+        }
+
+        // 8. Actualizar Termómetro Comunitario y Reseñas de Asfalto
+        window.loadRoadCommunityFeedback(origStr, destStr);
+      };
+
+      let _currentRoadRating = 'billar';
+
+      window.loadRoadCommunityFeedback = async function(orig, dest) {
+        const commBadge = document.getElementById('fb-road-comm-badge');
+        const commDesc = document.getElementById('fb-road-comm-desc');
+        const barBillar = document.getElementById('fb-bar-billar');
+        const barBuena = document.getElementById('fb-bar-buena');
+        const barPrec = document.getElementById('fb-bar-precaucion');
+        const barDest = document.getElementById('fb-bar-destruida');
+        const pctBillar = document.getElementById('fb-pct-billar');
+        const pctBuena = document.getElementById('fb-pct-buena');
+        const pctPrec = document.getElementById('fb-pct-precaucion');
+        const pctDest = document.getElementById('fb-pct-destruida');
+        const totalVotosEl = document.getElementById('fb-total-votos');
+        const reviewsList = document.getElementById('fb-road-reviews-list');
+
+        let data = null;
+        if (window.location.protocol.startsWith('http')) {
+          try {
+            const res = await fetch('/api/ruta/feedback?origen=' + encodeURIComponent(orig) + '&destino=' + encodeURIComponent(dest));
+            if (res.ok) {
+              data = await res.json();
+            }
+          } catch (_) {}
+        }
+
+        if (!data) {
+          data = {
+            total_votos: 12,
+            porcentajes: { billar: 55, buena: 25, precaucion: 15, destruida: 5 },
+            semaforo_comunitario: {
+              icono: '🎱',
+              etiqueta: 'Comunidad: ¡Un Billar!',
+              descripcion: 'El 55% de los conductores reporta asfalto óptimo para circular.',
+              color_hex: '#10b981'
+            },
+            comentarios: [
+              { icono: '🎱', autor: 'Conductor Verificado', fecha_relativa: 'ayer', comentario: 'Asfalto en excelente estado, sin pozos y banquinas limpias.' },
+              { icono: '🟡', autor: 'Viajero Rutero', fecha_relativa: 'hace 3 días', comentario: 'Atención a reducciones de velocidad en empalmes.' }
+            ]
+          };
+        }
+
+        const sem = data.semaforo_comunitario || {};
+        const pct = data.porcentajes || { billar: 0, buena: 0, precaucion: 0, destruida: 0 };
+        const total = data.total_votos || 0;
+
+        if (commBadge) {
+          commBadge.textContent = (sem.icono || '🛣️') + ' ' + (sem.etiqueta || 'Termómetro Activo');
+          commBadge.style.color = sem.color_hex || '#10b981';
+        }
+        if (commDesc) {
+          commDesc.textContent = sem.descripcion || 'Opiniones en tiempo real de la comunidad.';
+        }
+        if (barBillar) barBillar.style.width = (pct.billar || 0) + '%';
+        if (barBuena) barBuena.style.width = (pct.buena || 0) + '%';
+        if (barPrec) barPrec.style.width = (pct.precaucion || 0) + '%';
+        if (barDest) barDest.style.width = (pct.destruida || 0) + '%';
+
+        if (pctBillar) pctBillar.textContent = (pct.billar || 0) + '%';
+        if (pctBuena) pctBuena.textContent = (pct.buena || 0) + '%';
+        if (pctPrec) pctPrec.textContent = (pct.precaucion || 0) + '%';
+        if (pctDest) pctDest.textContent = (pct.destruida || 0) + '%';
+        if (totalVotosEl) totalVotosEl.textContent = total;
+
+        if (reviewsList) {
+          reviewsList.innerHTML = '';
+          const comms = data.comentarios || [];
+          if (comms.length === 0) {
+            reviewsList.innerHTML = '<div class="text-slate-400 italic py-1">Sin reseñas escritas aún para este tramo. ¡Sé el primero en dejar una!</div>';
+          } else {
+            comms.forEach(c => {
+              const row = document.createElement('div');
+              row.className = 'p-2.5 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 flex items-start gap-2.5';
+              row.innerHTML =
+                '<span class="text-base flex-shrink-0">' + (c.icono || '💬') + '</span>' +
+                '<div class="flex-1 min-w-0 leading-relaxed">' +
+                  '<div class="flex items-center justify-between gap-1 text-[11px] mb-0.5">' +
+                    '<span class="font-bold dark:text-slate-200 text-slate-800 truncate">' + (c.autor || 'Conductor') + '</span>' +
+                    '<span class="text-slate-400 flex-shrink-0 font-mono">' + (c.fecha_relativa || '') + '</span>' +
+                  '</div>' +
+                  '<p class="dark:text-slate-300 text-slate-600 break-words">' + (c.comentario || '') + '</p>' +
+                '</div>';
+              reviewsList.appendChild(row);
+            });
+          }
+        }
+      };
+
+      window.submitRoadFeedbackQuick = async function(calif) {
+        _currentRoadRating = calif;
+        const origInp = document.getElementById('fb-road-origin');
+        const destInp = document.getElementById('fb-road-dest');
+        const orig = (origInp && origInp.value) ? origInp.value.trim() : 'Buenos Aires';
+        const dest = (destInp && destInp.value) ? destInp.value.trim() : 'Bariloche';
+        const msgEl = document.getElementById('fb-comm-msg');
+
+        const califNombres = { billar: '¡Un billar! 🎱', buena: 'Buena / Normal 🟢', precaucion: 'Precaución / Baches 🟡', destruida: 'Hecha pelota 💥' };
+        const nombreCalif = califNombres[calif] || calif;
+
+        if (window.location.protocol.startsWith('http')) {
+          try {
+            const res = await fetch('/api/ruta/feedback', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ origen: orig, destino: dest, calificacion: calif })
+            });
+            const resData = await res.json();
+            if (msgEl) {
+              msgEl.classList.remove('hidden');
+              if (res.ok) {
+                msgEl.className = 'text-xs font-semibold text-emerald-500 mt-2';
+                msgEl.textContent = '✅ ¡Voto registrado como ' + nombreCalif + '! Podés sumar una advertencia puntual abajo.';
+              } else {
+                msgEl.className = 'text-xs font-semibold text-amber-500 mt-2';
+                msgEl.textContent = resData.error || 'Aviso de voto.';
+              }
+              setTimeout(() => { if (msgEl) msgEl.classList.add('hidden'); }, 4500);
+            }
+          } catch (_) {}
+        } else if (msgEl) {
+          msgEl.classList.remove('hidden');
+          msgEl.className = 'text-xs font-semibold text-emerald-500 mt-2';
+          msgEl.textContent = '✅ ¡Voto registrado como ' + nombreCalif + '! (Modo local)';
+          setTimeout(() => { if (msgEl) msgEl.classList.add('hidden'); }, 3500);
+        }
+
+        window.loadRoadCommunityFeedback(orig, dest);
+      };
+
+      window.submitRoadCommentWithCurrentVote = async function() {
+        const origInp = document.getElementById('fb-road-origin');
+        const destInp = document.getElementById('fb-road-dest');
+        const textInp = document.getElementById('fb-comm-input-text');
+        const autorInp = document.getElementById('fb-comm-input-autor');
+        const msgEl = document.getElementById('fb-comm-msg');
+
+        const orig = (origInp && origInp.value) ? origInp.value.trim() : 'Buenos Aires';
+        const dest = (destInp && destInp.value) ? destInp.value.trim() : 'Bariloche';
+        const texto = textInp ? textInp.value.trim() : '';
+        const autor = autorInp ? autorInp.value.trim() : '';
+
+        if (!texto) {
+          if (msgEl) {
+            msgEl.classList.remove('hidden');
+            msgEl.className = 'text-xs font-semibold text-amber-500 mt-2';
+            msgEl.textContent = '⚠️ Por favor escribí un breve comentario o advertencia de la ruta.';
+            setTimeout(() => { if (msgEl) msgEl.classList.add('hidden'); }, 3000);
+          }
+          return;
+        }
+
+        if (window.location.protocol.startsWith('http')) {
+          try {
+            const res = await fetch('/api/ruta/feedback', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                origen: orig,
+                destino: dest,
+                calificacion: _currentRoadRating || 'buena',
+                comentario: texto,
+                autor: autor || 'Conductor'
+              })
+            });
+            const resData = await res.json();
+            if (msgEl) {
+              msgEl.classList.remove('hidden');
+              if (res.ok) {
+                msgEl.className = 'text-xs font-semibold text-emerald-500 mt-2';
+                msgEl.textContent = '🚀 ¡Reseña vial publicada con éxito en el muro!';
+                if (textInp) textInp.value = '';
+                if (autorInp) autorInp.value = '';
+              } else {
+                msgEl.className = 'text-xs font-semibold text-amber-500 mt-2';
+                msgEl.textContent = resData.error || 'No se pudo publicar la reseña.';
+              }
+              setTimeout(() => { if (msgEl) msgEl.classList.add('hidden'); }, 4500);
+            }
+          } catch (_) {}
+        } else if (msgEl) {
+          msgEl.classList.remove('hidden');
+          msgEl.className = 'text-xs font-semibold text-emerald-500 mt-2';
+          msgEl.textContent = '🚀 ¡Reseña simulada con éxito! (Modo local)';
+          if (textInp) textInp.value = '';
+          setTimeout(() => { if (msgEl) msgEl.classList.add('hidden'); }, 3500);
+        }
+
+        window.loadRoadCommunityFeedback(orig, dest);
+      };
+
+      window.onSyncRoadTripClick = function() {
+        const guardadoNom = localStorage.getItem('fb_viajero_nombre');
+        const guardadoEdad = localStorage.getItem('fb_viajero_edad');
+        if (guardadoNom && guardadoEdad) {
+          window.syncRoadTripToTelegram(guardadoNom, guardadoEdad);
+        } else {
+          const modal = document.getElementById('fb-profile-modal');
+          if (modal) modal.classList.remove('hidden');
+          else window.syncRoadTripToTelegram();
+        }
+      };
+
+      window.closeProfileModal = function() {
+        const modal = document.getElementById('fb-profile-modal');
+        if (modal) modal.classList.add('hidden');
+      };
+
+      window.submitProfileAndSync = function() {
+        const nomInp = document.getElementById('fb-prof-modal-nombre');
+        const edadInp = document.getElementById('fb-prof-modal-edad');
+        const nom = nomInp ? nomInp.value.trim() : '';
+        const edad = edadInp ? parseInt(edadInp.value, 10) : 30;
+
+        if (nom) localStorage.setItem('fb_viajero_nombre', nom);
+        if (edad) localStorage.setItem('fb_viajero_edad', edad);
+
+        window.closeProfileModal();
+        window.syncRoadTripToTelegram(nom, edad);
+      };
+
+      window.skipProfileAndSync = function() {
+        window.closeProfileModal();
+        window.syncRoadTripToTelegram();
+      };
+
+      window.syncRoadTripToTelegram = async function(nombreViajero, edadViajero) {
+        const origInp = document.getElementById('fb-road-origin');
+        const destInp = document.getElementById('fb-road-dest');
+        const fuelSel = document.getElementById('fb-road-fuel');
+        const vehSel = document.getElementById('fb-road-veh');
+        const paxSel = document.getElementById('fb-road-pax');
+        const lbl = document.getElementById('fb-road-sync-label');
+        const orig = (origInp && origInp.value) ? origInp.value.trim() : 'Buenos Aires';
+        const dest = (destInp && destInp.value) ? destInp.value.trim() : 'Bariloche';
+        const fuel = fuelSel ? fuelSel.value : 'nafta';
+        const veh = vehSel ? vehSel.value : 'sedan';
+        const pax = paxSel ? parseInt(paxSel.value || '2', 10) : 2;
+
+        const nom = nombreViajero || localStorage.getItem('fb_viajero_nombre') || '';
+        const edad = edadViajero || localStorage.getItem('fb_viajero_edad') || '';
+
+        if (window.location.protocol !== 'file:') {
+          try {
+            if (lbl) lbl.textContent = 'Enviando a Telegram...';
+            const res = await fetch('/api/telegram/sync_ruta', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                destino: dest,
+                origen: orig,
+                combustible: fuel,
+                vehiculo: veh,
+                pasajeros: pax,
+                nombre_viajero: nom,
+                edad_viajero: edad
+              })
+            });
+            if (res.ok) {
+              const data = await res.json();
+              if (data && data.ok) {
+                if (lbl) lbl.textContent = '¡Enviado a tu Telegram! ✅';
+                setTimeout(() => { if (lbl) lbl.textContent = 'Enviar Hoja de Ruta a mi Telegram'; }, 3500);
+                return;
+              }
+            }
+          } catch (_) {}
+        }
+        if (lbl) lbl.textContent = 'Enviar Hoja de Ruta a mi Telegram';
+        const slugRuta = encodeURIComponent((orig + ' a ' + dest).replace(/\s+/g, '_'));
+        window.open('https://t.me/GnZFlightBot?start=ruta_' + slugRuta, '_blank', 'noopener,noreferrer');
+      };
+
+      window.loadRadarFollowersCounter = async function() {
+        const badge = document.getElementById('fb-radar-followers-badge');
+        if (!badge) return;
+        if (window.location.protocol.startsWith('http')) {
+          try {
+            const res = await fetch('/api/radar/stats');
+            if (res.ok) {
+              const data = await res.json();
+              if (data && data.texto_social_proof) {
+                badge.textContent = data.texto_social_proof;
+              }
+            }
+          } catch (_) {}
+        }
+      };
+
+      document.addEventListener('DOMContentLoaded', function() {
+        window.updateFlightBotRoadPlanner();
+        window.renderRoadPromos();
+        window.loadRadarFollowersCounter();
+      });
+    })();
+  </script>
+<!-- FLIGHTBOT_ROAD_PLANNER_END -->
 
   <!-- Footer -->
   <footer class="py-12 border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950 bg-white theme-transition">
@@ -2191,5 +3778,181 @@
 
   <!-- Motor Unificado de Cálculo de Rutas y Escapadas (Single Source of Truth) -->
   <script src="js/road-planner.js"></script>
+
+  <!-- Motor de Lógica del Comparador "¿Auto o Avión?" -->
+  <script>
+    (function() {
+      window.formatearPrecioMoneda = window.formatearPrecioMoneda || function(val) {
+        if (typeof val === 'number') return '$ ' + Math.round(val).toLocaleString('es-AR') + ' ARS';
+        return String(val || '');
+      };
+
+      // Sugerencia 5: Lógica del Comparador "¿Auto o Avión?" con Alquiler de Auto vs Uber
+    const COMPARADOR_KB = {
+      lacosta: { nombre: 'Partido de La Costa (Sanber / Ajó / Tuyú)', km: 345, autoCombustible: 128000, autoPeajes: 21500, tiempoAutoHs: 4.0, tiempoAutoTexto: '4h 00m', tiempoAvionTexto: 'No hay vuelo regular (Auto/Micro)', tiempoAvionHs: 5.0, precioAvionBase: 110000, costoAlquiler7d: 280000, costoUber: 50000 },
+      mardel: { nombre: 'Mar del Plata & Chapadmalal', km: 415, autoCombustible: 155000, autoPeajes: 21500, tiempoAutoHs: 4.75, tiempoAutoTexto: '4h 45m', tiempoAvionTexto: '3h 15m', tiempoAvionHs: 3.25, precioAvionBase: 72000, costoAlquiler7d: 320000, costoUber: 55000 },
+      bariloche: { nombre: 'Bariloche', km: 1580, autoCombustible: 535588, autoPeajes: 19000, tiempoAutoHs: 18.5, tiempoAutoTexto: '18h 35m', tiempoAvionTexto: '4h 15m', tiempoAvionHs: 4.25, precioAvionBase: 89000, costoAlquiler7d: 420000, costoUber: 85000 },
+      mendoza: { nombre: 'Mendoza', km: 1050, autoCombustible: 365000, autoPeajes: 15000, tiempoAutoHs: 12.5, tiempoAutoTexto: '12h 30m', tiempoAvionTexto: '3h 50m', tiempoAvionHs: 3.8, precioAvionBase: 78000, costoAlquiler7d: 380000, costoUber: 75000 },
+      cordoba: { nombre: 'Córdoba', km: 710, autoCombustible: 240000, autoPeajes: 12000, tiempoAutoHs: 8.25, tiempoAutoTexto: '8h 15m', tiempoAvionTexto: '3h 20m', tiempoAvionHs: 3.3, precioAvionBase: 65000, costoAlquiler7d: 340000, costoUber: 65000 },
+      iguazu: { nombre: 'Puerto Iguazú', km: 1320, autoCombustible: 420000, autoPeajes: 16000, tiempoAutoHs: 16.3, tiempoAutoTexto: '16h 20m', tiempoAvionTexto: '3h 55m', tiempoAvionHs: 3.9, precioAvionBase: 82000, costoAlquiler7d: 390000, costoUber: 70000 },
+      salta: { nombre: 'Salta', km: 1490, autoCombustible: 510000, autoPeajes: 14000, tiempoAutoHs: 18.1, tiempoAutoTexto: '18h 10m', tiempoAvionTexto: '4h 10m', tiempoAvionHs: 4.15, precioAvionBase: 88000, costoAlquiler7d: 440000, costoUber: 70000 },
+      madryn: { nombre: 'Puerto Madryn', km: 1300, autoCombustible: 430000, autoPeajes: 14000, tiempoAutoHs: 14.75, tiempoAutoTexto: '14h 45m', tiempoAvionTexto: '4h 00m', tiempoAvionHs: 4.0, precioAvionBase: 95000, costoAlquiler7d: 430000, costoUber: 65000 },
+      sanmartin: { nombre: 'San Martín de los Andes', km: 1570, autoCombustible: 530000, autoPeajes: 19000, tiempoAutoHs: 19.0, tiempoAutoTexto: '19h 00m', tiempoAvionTexto: '4h 25m', tiempoAvionHs: 4.4, precioAvionBase: 92000, costoAlquiler7d: 440000, costoUber: 75000 },
+      ushuaia: { nombre: 'Ushuaia', km: 3100, autoCombustible: 920000, autoPeajes: 60000, tiempoAutoHs: 38.0, tiempoAutoTexto: '38h 00m (con balsa)', tiempoAvionTexto: '5h 35m', tiempoAvionHs: 5.6, precioAvionBase: 135000, costoAlquiler7d: 480000, costoUber: 80000 },
+    };
+
+    let compPasajeros = 2;
+    let compMovilidad = 'uber'; // 'uber', 'alquiler', 'ninguna'
+
+    window.setComparadorPasajeros = function(n) {
+      compPasajeros = n;
+      document.querySelectorAll('.comp-pax-btn').forEach((btn, idx) => {
+        if (idx + 1 === n) {
+          btn.className = 'comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs';
+        } else {
+          btn.className = 'comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200';
+        }
+      });
+      window.recalcularComparadorAutoAvion();
+    };
+
+    window.setComparadorMovilidad = function(tipo) {
+      compMovilidad = tipo;
+      ['uber', 'alquiler', 'ninguna'].forEach(k => {
+        const btn = document.getElementById('comp-mov-' + k);
+        if (!btn) return;
+        if (k === tipo) {
+          btn.className = 'comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs';
+        } else {
+          btn.className = 'comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200';
+        }
+      });
+      window.recalcularComparadorAutoAvion();
+    };
+
+    window.recalcularComparadorAutoAvion = function() {
+      const select = document.getElementById('comp-destino-select');
+      if (!select) return;
+      const destId = select.value || 'bariloche';
+      const data = COMPARADOR_KB[destId] || COMPARADOR_KB.bariloche;
+
+      const autoTotalArs = data.autoCombustible + data.autoPeajes;
+      const autoPorPersonaArs = Math.round(autoTotalArs / compPasajeros);
+
+      // Costo de movilidad local si viaja en avión
+      let costoMovilidadArs = 0;
+      let labelMovilidad = 'Movilidad local:';
+      if (compMovilidad === 'alquiler') {
+        costoMovilidadArs = data.costoAlquiler7d || 420000;
+        labelMovilidad = 'Alquiler auto (7 días):';
+      } else if (compMovilidad === 'uber') {
+        costoMovilidadArs = data.costoUber || 85000;
+        labelMovilidad = 'Uber / Traslados semana:';
+      } else {
+        costoMovilidadArs = 0;
+        labelMovilidad = 'Movilidad extra (a pie):';
+      }
+
+      const pasajesTotalArs = data.precioAvionBase * compPasajeros;
+      const avionTotalArs = pasajesTotalArs + costoMovilidadArs;
+      const avionPorPersonaArs = Math.round(avionTotalArs / compPasajeros);
+
+      // Actualizar DOM Columna Auto
+      const elDist = document.getElementById('comp-auto-distancia');
+      const elComb = document.getElementById('comp-auto-combustible');
+      const elPeajes = document.getElementById('comp-auto-peajes');
+      const elAutoTotal = document.getElementById('comp-auto-total');
+      const elAutoPaxLabel = document.getElementById('comp-auto-pax-label');
+      const elAutoPax = document.getElementById('comp-auto-por-persona');
+      const elAutoTiempo = document.getElementById('comp-auto-tiempo');
+
+      if (elDist) elDist.innerText = `${data.km} km (ida)`;
+      if (elComb) elComb.innerText = window.formatearPrecioMoneda(`$ ${data.autoCombustible}`);
+      if (elPeajes) elPeajes.innerText = window.formatearPrecioMoneda(`$ ${data.autoPeajes}`);
+      if (elAutoTotal) elAutoTotal.innerText = window.formatearPrecioMoneda(`$ ${autoTotalArs}`);
+      if (elAutoPaxLabel) elAutoPaxLabel.innerText = `${compPasajeros} pax`;
+      if (elAutoPax) elAutoPax.innerText = `${window.formatearPrecioMoneda(`$ ${autoPorPersonaArs}`)} c/u`;
+      if (elAutoTiempo) elAutoTiempo.innerText = `${data.tiempoAutoTexto} de manejo`;
+
+      const elPataTip = document.getElementById('comp-auto-pata-tip');
+      if (elPataTip) {
+        const esPatagonia = ['bariloche', 'madryn', 'sanmartin', 'ushuaia'].includes(destId);
+        elPataTip.style.display = esPatagonia ? 'flex' : 'none';
+      }
+
+      // Actualizar DOM Columna Avión
+      const elTarifaBase = document.getElementById('comp-avion-tarifa-base');
+      const elAvionPaxCount = document.getElementById('comp-avion-pax-count');
+      const elAvionTotal = document.getElementById('comp-avion-total');
+      const elAvionPasajesTotal = document.getElementById('comp-avion-pasajes-total');
+      const elAvionPax = document.getElementById('comp-avion-por-persona');
+      const elAvionTiempo = document.getElementById('comp-avion-tiempo');
+      const elMovLabel = document.getElementById('comp-avion-mov-label');
+      const elMovCosto = document.getElementById('comp-avion-mov-costo');
+
+      if (elTarifaBase) elTarifaBase.innerText = `Tarifa: ${window.formatearPrecioMoneda(`$ ${data.precioAvionBase}`)} i/v`;
+      if (elAvionPaxCount) elAvionPaxCount.innerText = String(compPasajeros);
+      if (elAvionPasajesTotal) elAvionPasajesTotal.innerText = window.formatearPrecioMoneda(`$ ${pasajesTotalArs}`);
+      if (elMovLabel) elMovLabel.innerText = labelMovilidad;
+      if (elMovCosto) elMovCosto.innerText = costoMovilidadArs > 0 ? `+${window.formatearPrecioMoneda(`$ ${costoMovilidadArs}`)}` : '$ 0 (Sin extra)';
+      if (elAvionTotal) elAvionTotal.innerText = window.formatearPrecioMoneda(`$ ${avionTotalArs}`);
+      if (elAvionPax) elAvionPax.innerText = `${window.formatearPrecioMoneda(`$ ${avionPorPersonaArs}`)} c/u`;
+      if (elAvionTiempo) elAvionTiempo.innerText = `${data.tiempoAvionTexto} (vuelo + trámites)`;
+
+      // Diferencia de Tiempo y Dinero (El factor clave)
+      const diffHs = (data.tiempoAutoHs - data.tiempoAvionHs).toFixed(1);
+      const diffPlata = Math.abs(autoTotalArs - avionTotalArs);
+      const diffPlataFmt = window.formatearPrecioMoneda(`$ ${diffPlata}`);
+
+      const elVerIcono = document.getElementById('comp-veredicto-icono');
+      const elVerTitulo = document.getElementById('comp-veredicto-titulo');
+      const elVerDetalle = document.getElementById('comp-veredicto-detalle');
+
+      if (avionTotalArs < autoTotalArs) {
+        // Conviene Avión
+        if (elVerIcono) elVerIcono.innerText = '✈️';
+        if (elVerTitulo) elVerTitulo.innerText = `Conviene Avión: Ahorrás ${diffPlataFmt} y te ahorrás ${diffHs} horas de ruta agotadora`;
+        if (elVerDetalle) {
+          const detalleMov = compMovilidad === 'alquiler' 
+            ? `Incluso sumando el alquiler de auto en destino (+${window.formatearPrecioMoneda(`$ ${costoMovilidadArs}`)}), `
+            : (compMovilidad === 'uber' ? `Contemplando traslados locales en Uber/remís (+${window.formatearPrecioMoneda(`$ ${costoMovilidadArs}`)}), ` : '');
+          elVerDetalle.innerText = `${detalleMov}para ${compPasajeros} pasajero(s) volar es ${diffPlataFmt} más económico que mover el vehículo particular y ganás ${diffHs} horas de vida evitando el desgaste de manejar en ruta.`;
+        }
+      } else {
+        // Conviene Auto en plata, pero tarda más
+        const ahorroPct = Math.round((diffPlata / avionTotalArs) * 100);
+        if (elVerIcono) elVerIcono.innerText = '🚗';
+        if (elVerTitulo) elVerTitulo.innerText = `En Auto ahorrás ${diffPlataFmt} (-${ahorroPct}%), pero tardás +${diffHs} horas más en llegar`;
+        if (elVerDetalle) {
+          const motivoAlquiler = compMovilidad === 'alquiler'
+            ? `Al contemplar alquilar un auto en destino (+${window.formatearPrecioMoneda(`$ ${costoMovilidadArs}`)} por 7 días), llevar tu propio auto amortiza fuertemente el viaje al tener vehículo gratis para recorrer. Sin embargo, requiere manejar ${diffHs} horas más.`
+            : `El auto ahorra ${diffPlataFmt} en total para el grupo de ${compPasajeros} pasajeros, pero demanda ${diffHs} horas adicionales de manejo. Es la opción ideal para familias que disfrutan el roadtrip y paran a descansar.`;
+          elVerDetalle.innerText = motivoAlquiler;
+        }
+      }
+    };
+
+      // Conexión rápida desde las cards de escapadas hacia el motor de cálculo
+      const _origCargarRuta = window.cargarRutaEnBuscador;
+      window.cargarRutaEnBuscador = function(destino) {
+        if (typeof window.setQuickDest === 'function') {
+          window.setQuickDest(destino);
+        } else {
+          const inp = document.getElementById('fb-road-dest') || document.getElementById('road-destino-input');
+          if (inp) inp.value = destino;
+          if (typeof window.triggerRoadSearch === 'function') window.triggerRoadSearch();
+        }
+        const sec = document.getElementById('rutas-auto') || document.getElementById('planificador-ruta');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+      };
+
+      document.addEventListener('DOMContentLoaded', function() {
+        if (typeof window.recalcularComparadorAutoAvion === 'function') {
+          window.recalcularComparadorAutoAvion();
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>

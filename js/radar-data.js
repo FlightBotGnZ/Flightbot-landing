@@ -20,7 +20,7 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP/EZE ➔ BRC)",
-        "fechas": "14 Oct - 20 Oct 2026",
+        "fechas": "13 Feb - 19 Feb 2027",
         "noches": 6,
         "precio": "$ 112.500 ARS (US$ 98 oficial)",
         "destacado": "Tarifa récord más baja"
@@ -29,7 +29,7 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ BRC)",
-        "fechas": "21 Oct - 28 Oct 2026",
+        "fechas": "20 Feb - 27 Feb 2027",
         "noches": 7,
         "precio": "$ 126.800 ARS (US$ 110 oficial)",
         "destacado": "Salidas directas desde Aeroparque"
@@ -38,7 +38,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ BRC)",
-        "fechas": "07 Oct - 13 Oct 2026",
+        "fechas": "05 Mar - 11 Mar 2027",
         "noches": 6,
         "precio": "$ 148.000 ARS (US$ 128 oficial)",
         "destacado": "Múltiples frecuencias diarias"
@@ -129,7 +129,7 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ COR)",
-        "fechas": "16 Oct - 19 Oct 2026",
+        "fechas": "08 Ene - 11 Ene 2027",
         "noches": 3,
         "precio": "$ 64.500 ARS (US$ 56 oficial)",
         "destacado": "Tarifa récord más baja"
@@ -138,7 +138,7 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ COR)",
-        "fechas": "23 Oct - 26 Oct 2026",
+        "fechas": "15 Ene - 18 Ene 2027",
         "noches": 3,
         "precio": "$ 72.000 ARS (US$ 63 oficial)",
         "destacado": "Vuelo directo de 1h 15m"
@@ -147,7 +147,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ COR)",
-        "fechas": "09 Oct - 12 Oct 2026",
+        "fechas": "01 Ene - 04 Ene 2027",
         "noches": 3,
         "precio": "$ 84.000 ARS (US$ 73 oficial)",
         "destacado": "Puente aéreo frecuente"
@@ -237,7 +237,7 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ FTE)",
-        "fechas": "14 Oct - 20 Oct 2026",
+        "fechas": "06 Ene - 12 Ene 2027",
         "noches": 6,
         "precio": "$ 148.000 ARS (US$ 129 oficial)",
         "destacado": "Tarifa récord más baja"
@@ -246,7 +246,7 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ FTE)",
-        "fechas": "21 Oct - 27 Oct 2026",
+        "fechas": "13 Ene - 19 Ene 2027",
         "noches": 6,
         "precio": "$ 162.000 ARS (US$ 141 oficial)",
         "destacado": "Vuelo directo de 3h 15m"
@@ -255,7 +255,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ FTE)",
-        "fechas": "07 Oct - 13 Oct 2026",
+        "fechas": "30 Dic - 05 Ene 2028",
         "noches": 6,
         "precio": "$ 182.000 ARS (US$ 158 oficial)",
         "destacado": "Múltiples frecuencias"
@@ -345,7 +345,7 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ JUJ)",
-        "fechas": "15 Oct - 20 Oct 2026",
+        "fechas": "07 Ene - 12 Ene 2027",
         "noches": 5,
         "precio": "$ 98.500 ARS (US$ 86 oficial)",
         "destacado": "Tarifa récord más baja"
@@ -354,7 +354,7 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ JUJ)",
-        "fechas": "22 Oct - 27 Oct 2026",
+        "fechas": "14 Ene - 19 Ene 2027",
         "noches": 5,
         "precio": "$ 108.000 ARS (US$ 94 oficial)",
         "destacado": "Vuelo directo de 2h 15m"
@@ -363,7 +363,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ JUJ)",
-        "fechas": "08 Oct - 13 Oct 2026",
+        "fechas": "31 Dic - 05 Ene 2028",
         "noches": 5,
         "precio": "$ 126.500 ARS (US$ 110 oficial)",
         "destacado": "Excelente puntualidad"
@@ -452,8 +452,8 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ MDZ)",
-        "fechas": "15 Oct - 20 Oct 2026",
-        "noches": 5,
+        "fechas": "18 Mar - 24 Mar 2027",
+        "noches": 6,
         "precio": "$ 89.400 ARS (US$ 78 oficial)",
         "destacado": "Tarifa récord más baja"
       },
@@ -461,7 +461,7 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP/EZE ➔ MDZ)",
-        "fechas": "22 Oct - 28 Oct 2026",
+        "fechas": "25 Mar - 31 Mar 2027",
         "noches": 6,
         "precio": "$ 96.200 ARS (US$ 84 oficial)",
         "destacado": "Equipaje de mano estándar"
@@ -470,8 +470,8 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ MDZ)",
-        "fechas": "08 Oct - 13 Oct 2026",
-        "noches": 5,
+        "fechas": "08 Abr - 14 Abr 2027",
+        "noches": 6,
         "precio": "$ 118.500 ARS (US$ 103 oficial)",
         "destacado": "Gran disponibilidad de horarios"
       }
@@ -561,7 +561,7 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ NQN)",
-        "fechas": "15 Oct - 19 Oct 2026",
+        "fechas": "07 Ene - 11 Ene 2027",
         "noches": 4,
         "precio": "$ 88.000 ARS (US$ 77 oficial)",
         "destacado": "Tarifa récord más baja"
@@ -570,7 +570,7 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ NQN)",
-        "fechas": "22 Oct - 26 Oct 2026",
+        "fechas": "14 Ene - 18 Ene 2027",
         "noches": 4,
         "precio": "$ 96.000 ARS (US$ 83 oficial)",
         "destacado": "Vuelo directo de 1h 50m"
@@ -579,7 +579,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ NQN)",
-        "fechas": "08 Oct - 12 Oct 2026",
+        "fechas": "31 Dic - 04 Ene 2028",
         "noches": 4,
         "precio": "$ 112.000 ARS (US$ 97 oficial)",
         "destacado": "Gran cantidad de frecuencias"
@@ -668,7 +668,7 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP/EZE ➔ IGR)",
-        "fechas": "15 Oct - 19 Oct 2026",
+        "fechas": "05 Feb - 09 Feb 2027",
         "noches": 4,
         "precio": "$ 82.600 ARS (US$ 72 oficial)",
         "destacado": "Tarifa récord más baja"
@@ -677,7 +677,7 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ IGR)",
-        "fechas": "22 Oct - 26 Oct 2026",
+        "fechas": "19 Feb - 23 Feb 2027",
         "noches": 4,
         "precio": "$ 91.000 ARS (US$ 79 oficial)",
         "destacado": "Vuelo directo de 1h 50m"
@@ -686,7 +686,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ IGR)",
-        "fechas": "08 Oct - 13 Oct 2026",
+        "fechas": "04 Mar - 09 Mar 2027",
         "noches": 5,
         "precio": "$ 109.800 ARS (US$ 95 oficial)",
         "destacado": "Llega al Parque Nacional a tiempo"
@@ -777,7 +777,7 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ REL)",
-        "fechas": "15 Oct - 19 Oct 2026",
+        "fechas": "07 Ene - 11 Ene 2027",
         "noches": 4,
         "precio": "$ 108.000 ARS (US$ 94 oficial)",
         "destacado": "Tarifa récord más baja"
@@ -786,7 +786,7 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ REL)",
-        "fechas": "22 Oct - 26 Oct 2026",
+        "fechas": "14 Ene - 18 Ene 2027",
         "noches": 4,
         "precio": "$ 118.000 ARS (US$ 103 oficial)",
         "destacado": "Vuelo directo de 2h"
@@ -795,7 +795,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ REL/PMY)",
-        "fechas": "08 Oct - 13 Oct 2026",
+        "fechas": "31 Dic - 05 Ene 2028",
         "noches": 5,
         "precio": "$ 136.000 ARS (US$ 118 oficial)",
         "destacado": "Opción aeropuerto directo PMY"
@@ -885,7 +885,7 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ SLA)",
-        "fechas": "14 Oct - 19 Oct 2026",
+        "fechas": "06 Ene - 11 Ene 2027",
         "noches": 5,
         "precio": "$ 94.200 ARS (US$ 82 oficial)",
         "destacado": "Tarifa récord más baja"
@@ -894,7 +894,7 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ SLA)",
-        "fechas": "21 Oct - 27 Oct 2026",
+        "fechas": "13 Ene - 19 Ene 2027",
         "noches": 6,
         "precio": "$ 104.500 ARS (US$ 91 oficial)",
         "destacado": "Vuelo directo de 2h 10m"
@@ -903,7 +903,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ SLA)",
-        "fechas": "07 Oct - 12 Oct 2026",
+        "fechas": "30 Dic - 04 Ene 2028",
         "noches": 5,
         "precio": "$ 122.000 ARS (US$ 106 oficial)",
         "destacado": "Múltiples horarios diarios"
@@ -993,7 +993,7 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ CPC)",
-        "fechas": "14 Oct - 19 Oct 2026",
+        "fechas": "06 Ene - 11 Ene 2027",
         "noches": 5,
         "precio": "$ 128.000 ARS (US$ 111 oficial)",
         "destacado": "Tarifa récord más baja"
@@ -1002,7 +1002,7 @@
         "puesto": "🥈",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ CPC)",
-        "fechas": "21 Oct - 26 Oct 2026",
+        "fechas": "13 Ene - 18 Ene 2027",
         "noches": 5,
         "precio": "$ 144.000 ARS (US$ 125 oficial)",
         "destacado": "Vuelo directo de 2h 20m"
@@ -1011,7 +1011,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (EZE ➔ CPC)",
-        "fechas": "07 Oct - 12 Oct 2026",
+        "fechas": "30 Dic - 04 Ene 2028",
         "noches": 5,
         "precio": "$ 165.000 ARS (US$ 143 oficial)",
         "destacado": "Excelente disponibilidad"
@@ -1101,7 +1101,7 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ USH)",
-        "fechas": "12 Oct - 18 Oct 2026",
+        "fechas": "04 Ene - 10 Ene 2027",
         "noches": 6,
         "precio": "$ 154.000 ARS (US$ 134 oficial)",
         "destacado": "Tarifa récord más baja"
@@ -1110,7 +1110,7 @@
         "puesto": "🥈",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ USH)",
-        "fechas": "19 Oct - 26 Oct 2026",
+        "fechas": "11 Ene - 18 Ene 2027",
         "noches": 7,
         "precio": "$ 172.000 ARS (US$ 149 oficial)",
         "destacado": "Vuelo directo de 3h 35m"
@@ -1119,7 +1119,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (EZE ➔ USH)",
-        "fechas": "05 Oct - 12 Oct 2026",
+        "fechas": "28 Dic - 04 Ene 2028",
         "noches": 7,
         "precio": "$ 188.000 ARS (US$ 163 oficial)",
         "destacado": "Sale desde Ezeiza"
@@ -1209,7 +1209,7 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (EZE/AEP ➔ FLN)",
-        "fechas": "15 Oct - 22 Oct 2026",
+        "fechas": "07 Ene - 14 Ene 2027",
         "noches": 7,
         "precio": "US$ 245",
         "destacado": "Tarifa récord regional"
@@ -1218,7 +1218,7 @@
         "puesto": "🥈",
         "aerolinea": "GOL Linhas Aéreas",
         "escalas": "Directo (AEP ➔ FLN)",
-        "fechas": "22 Oct - 29 Oct 2026",
+        "fechas": "14 Ene - 21 Ene 2027",
         "noches": 7,
         "precio": "US$ 275",
         "destacado": "Vuelo directo de 2h 05m"
@@ -1227,7 +1227,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ FLN)",
-        "fechas": "10 Oct - 17 Oct 2026",
+        "fechas": "02 Ene - 09 Ene 2027",
         "noches": 7,
         "precio": "US$ 310",
         "destacado": "Equipaje y atención directa"
@@ -1317,7 +1317,7 @@
         "puesto": "🥇",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala corta (GRU)",
-        "fechas": "14 Nov - 22 Nov 2026",
+        "fechas": "06 Feb - 14 Feb 2027",
         "noches": 8,
         "precio": "US$ 395",
         "destacado": "Tarifa récord más baja"
@@ -1326,7 +1326,7 @@
         "puesto": "🥈",
         "aerolinea": "GOL Linhas Aéreas",
         "escalas": "1 escala (GIG)",
-        "fechas": "07 Nov - 16 Nov 2026",
+        "fechas": "30 Ene - 08 Feb 2027",
         "noches": 9,
         "precio": "US$ 425",
         "destacado": "Conexión ágil"
@@ -1335,7 +1335,7 @@
         "puesto": "🥉",
         "aerolinea": "Azul Linhas Aéreas",
         "escalas": "1 escala (VCP)",
-        "fechas": "20 Nov - 28 Nov 2026",
+        "fechas": "12 Feb - 20 Feb 2027",
         "noches": 8,
         "precio": "US$ 470",
         "destacado": "Snacks y pantallas a bordo"
@@ -1425,7 +1425,7 @@
         "puesto": "🥇",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala corta (GRU)",
-        "fechas": "12 Nov - 21 Nov 2026",
+        "fechas": "04 Feb - 13 Feb 2027",
         "noches": 9,
         "precio": "US$ 410",
         "destacado": "Tarifa récord más baja"
@@ -1434,7 +1434,7 @@
         "puesto": "🥈",
         "aerolinea": "GOL Linhas Aéreas",
         "escalas": "1 escala (GIG)",
-        "fechas": "05 Nov - 14 Nov 2026",
+        "fechas": "28 Ene - 06 Feb 2027",
         "noches": 9,
         "precio": "US$ 440",
         "destacado": "Equipaje de mano estándar"
@@ -1443,7 +1443,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Escala o directo estacional",
-        "fechas": "18 Nov - 27 Nov 2026",
+        "fechas": "10 Feb - 19 Feb 2027",
         "noches": 9,
         "precio": "US$ 490",
         "destacado": "Atención personalizada"
@@ -1533,7 +1533,7 @@
         "puesto": "🥇",
         "aerolinea": "GOL Linhas Aéreas",
         "escalas": "1 escala corta (GRU)",
-        "fechas": "10 Nov - 19 Nov 2026",
+        "fechas": "02 Feb - 11 Feb 2027",
         "noches": 9,
         "precio": "US$ 385",
         "destacado": "Tarifa récord más baja"
@@ -1542,7 +1542,7 @@
         "puesto": "🥈",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala (GIG)",
-        "fechas": "15 Nov - 23 Nov 2026",
+        "fechas": "07 Feb - 15 Feb 2027",
         "noches": 8,
         "precio": "US$ 415",
         "destacado": "Equipaje carry-on incluido"
@@ -1551,7 +1551,7 @@
         "puesto": "🥉",
         "aerolinea": "Azul Linhas Aéreas",
         "escalas": "Directo o escala VCP",
-        "fechas": "06 Nov - 15 Nov 2026",
+        "fechas": "29 Ene - 07 Feb 2027",
         "noches": 9,
         "precio": "US$ 460",
         "destacado": "Hub principal en Recife"
@@ -1640,7 +1640,7 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (EZE/AEP ➔ GIG)",
-        "fechas": "15 Oct - 22 Oct 2026",
+        "fechas": "10 Abr - 17 Abr 2027",
         "noches": 7,
         "precio": "US$ 295",
         "destacado": "Tarifa récord regional"
@@ -1649,7 +1649,7 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (EZE ➔ GIG)",
-        "fechas": "22 Oct - 29 Oct 2026",
+        "fechas": "17 Abr - 24 Abr 2027",
         "noches": 7,
         "precio": "US$ 310",
         "destacado": "Flota de aviones modernos"
@@ -1658,7 +1658,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ GIG)",
-        "fechas": "10 Oct - 18 Oct 2026",
+        "fechas": "08 May - 16 May 2027",
         "noches": 8,
         "precio": "US$ 370",
         "destacado": "Sale desde Aeroparque"
@@ -1749,7 +1749,7 @@
         "puesto": "🥇",
         "aerolinea": "GOL Linhas Aéreas",
         "escalas": "1 escala corta (GIG)",
-        "fechas": "12 Nov - 20 Nov 2026",
+        "fechas": "04 Feb - 12 Feb 2027",
         "noches": 8,
         "precio": "US$ 365",
         "destacado": "Tarifa récord más baja"
@@ -1758,7 +1758,7 @@
         "puesto": "🥈",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala (GRU)",
-        "fechas": "05 Nov - 13 Nov 2026",
+        "fechas": "28 Ene - 05 Feb 2027",
         "noches": 8,
         "precio": "US$ 395",
         "destacado": "Conexión eficiente"
@@ -1767,7 +1767,7 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo de temporada (AEP ➔ SSA)",
-        "fechas": "18 Nov - 26 Nov 2026",
+        "fechas": "10 Feb - 18 Feb 2027",
         "noches": 8,
         "precio": "US$ 450",
         "destacado": "Vuelo directo sin escalas"
@@ -1857,7 +1857,7 @@
         "puesto": "🥇",
         "aerolinea": "SKY Airline",
         "escalas": "Directo (AEP ➔ SCL)",
-        "fechas": "15 Oct - 19 Oct 2026",
+        "fechas": "01 Abr - 05 Abr 2027",
         "noches": 4,
         "precio": "US$ 155",
         "destacado": "Tarifa récord más baja"
@@ -1866,7 +1866,7 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ SCL)",
-        "fechas": "22 Oct - 26 Oct 2026",
+        "fechas": "14 Ene - 18 Ene 2027",
         "noches": 4,
         "precio": "US$ 168",
         "destacado": "Vuelo directo de 2h 10m"
@@ -1875,7 +1875,7 @@
         "puesto": "🥉",
         "aerolinea": "LATAM Airlines",
         "escalas": "Directo (AEP/EZE ➔ SCL)",
-        "fechas": "08 Oct - 12 Oct 2026",
+        "fechas": "25 Mar - 29 Mar 2027",
         "noches": 4,
         "precio": "US$ 195",
         "destacado": "Múltiples vuelos al día"
@@ -1965,7 +1965,7 @@
         "puesto": "🥇",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala corta (PTY)",
-        "fechas": "08 Nov - 16 Nov 2026",
+        "fechas": "31 Ene - 08 Feb 2027",
         "noches": 8,
         "precio": "US$ 520",
         "destacado": "Tarifa récord más baja"
@@ -1974,7 +1974,7 @@
         "puesto": "🥈",
         "aerolinea": "Avianca",
         "escalas": "1 escala (BOG)",
-        "fechas": "15 Nov - 23 Nov 2026",
+        "fechas": "07 Feb - 15 Feb 2027",
         "noches": 8,
         "precio": "US$ 550",
         "destacado": "Conexión ágil en Bogotá"
@@ -1983,7 +1983,7 @@
         "puesto": "🥉",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala (LIM)",
-        "fechas": "22 Nov - 30 Nov 2026",
+        "fechas": "14 Feb - 22 Feb 2027",
         "noches": 8,
         "precio": "US$ 590",
         "destacado": "Excelente equipaje"
@@ -2073,23 +2073,26 @@
       {
         "puesto": "Top 1 Económico",
         "aerolinea": "LATAM Airlines",
-        "fechas": "08 May ➔ 16 May 2026 (8 noches)",
+        "fechas": "15 Ene - 23 Ene 2027",
         "escalas": "1 escala en Lima (LIM)",
-        "precio": "US$ 285"
+        "precio": "US$ 285",
+        "noches": 8
       },
       {
         "puesto": "Top 2 Rápido",
         "aerolinea": "Sky Airline",
-        "fechas": "14 Jun ➔ 22 Jun 2026 (8 noches)",
+        "fechas": "21 Feb - 01 Mar 2027",
         "escalas": "1 escala breve en Santiago / Lima",
-        "precio": "US$ 310"
+        "precio": "US$ 310",
+        "noches": 8
       },
       {
         "puesto": "Top 3 Confort",
         "aerolinea": "Avianca",
-        "fechas": "10 Jul ➔ 19 Jul 2026 (9 noches)",
+        "fechas": "19 Mar - 28 Mar 2027",
         "escalas": "1 escala en Bogotá (BOG)",
-        "precio": "US$ 340"
+        "precio": "US$ 340",
+        "noches": 9
       }
     ],
     "hoteles": [
@@ -2150,7 +2153,7 @@
         "puesto": "Top 1",
         "aerolinea": "American Airlines (Directo)",
         "escalas": "Directo sin escalas (10h 45m)",
-        "fechas": "12 Mayo - 24 Mayo 2026",
+        "fechas": "19 Ene - 31 Ene 2027",
         "noches": 12,
         "precio": "US$ 870",
         "destacado": true
@@ -2159,7 +2162,7 @@
         "puesto": "Top 2",
         "aerolinea": "Delta Air Lines (Directo)",
         "escalas": "Directo sin escalas (10h 50m)",
-        "fechas": "04 Junio - 18 Junio 2026",
+        "fechas": "11 Feb - 25 Feb 2027",
         "noches": 14,
         "precio": "US$ 915",
         "destacado": false
@@ -2168,7 +2171,7 @@
         "puesto": "Top 3",
         "aerolinea": "Copa Airlines (1 Escala PTY)",
         "escalas": "1 escala rápida en Panamá (13h 20m)",
-        "fechas": "08 Septiembre - 22 Septiembre 2026",
+        "fechas": "23 Feb - 09 Mar 2027",
         "noches": 14,
         "precio": "US$ 840",
         "destacado": false
@@ -2257,8 +2260,8 @@
         "puesto": "🥇",
         "aerolinea": "Avianca / Copa Airlines",
         "escalas": "1 escala corta",
-        "fechas": "11 Nov - 21 Nov 2026",
-        "noches": 10,
+        "fechas": "10 Abr - 18 Abr 2027",
+        "noches": 8,
         "precio": "US$ 690",
         "destacado": "Tarifa récord más baja"
       },
@@ -2266,8 +2269,8 @@
         "puesto": "🥈",
         "aerolinea": "American Airlines",
         "escalas": "Directo (EZE ➔ MIA)",
-        "fechas": "04 Nov - 14 Nov 2026",
-        "noches": 10,
+        "fechas": "24 Abr - 02 May 2027",
+        "noches": 8,
         "precio": "US$ 890",
         "destacado": "Vuelo directo nocturno"
       },
@@ -2275,8 +2278,8 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (EZE ➔ MIA)",
-        "fechas": "08 Nov - 20 Nov 2026",
-        "noches": 12,
+        "fechas": "08 May - 16 May 2027",
+        "noches": 8,
         "precio": "US$ 920",
         "destacado": "Atención en español y valijas"
       }
@@ -2366,7 +2369,7 @@
         "puesto": "🥇",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala corta (PTY)",
-        "fechas": "04 Nov - 14 Nov 2026",
+        "fechas": "27 Ene - 06 Feb 2027",
         "noches": 10,
         "precio": "US$ 710",
         "destacado": "Tarifa récord más baja"
@@ -2375,7 +2378,7 @@
         "puesto": "🥈",
         "aerolinea": "Avianca",
         "escalas": "1 escala (BOG)",
-        "fechas": "11 Nov - 21 Nov 2026",
+        "fechas": "03 Feb - 13 Feb 2027",
         "noches": 10,
         "precio": "US$ 740",
         "destacado": "Escala rápida"
@@ -2384,7 +2387,7 @@
         "puesto": "🥉",
         "aerolinea": "American Airlines / LATAM",
         "escalas": "1 escala (MIA)",
-        "fechas": "18 Nov - 28 Nov 2026",
+        "fechas": "10 Feb - 20 Feb 2027",
         "noches": 10,
         "precio": "US$ 820",
         "destacado": "Equipaje y millas"
@@ -2473,8 +2476,8 @@
         "puesto": "🥇",
         "aerolinea": "Arajet",
         "escalas": "1 escala corta (SDQ)",
-        "fechas": "12 Nov - 21 Nov 2026",
-        "noches": 9,
+        "fechas": "15 Abr - 23 Abr 2027",
+        "noches": 8,
         "precio": "US$ 580",
         "destacado": "Tarifa récord Caribe"
       },
@@ -2482,8 +2485,8 @@
         "puesto": "🥈",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala corta (PTY)",
-        "fechas": "06 Nov - 16 Nov 2026",
-        "noches": 10,
+        "fechas": "29 Abr - 07 May 2027",
+        "noches": 8,
         "precio": "US$ 690",
         "destacado": "Conexión eficiente Hub de las Américas"
       },
@@ -2491,7 +2494,7 @@
         "puesto": "🥉",
         "aerolinea": "Aeroméxico",
         "escalas": "1 escala (MEX)",
-        "fechas": "15 Nov - 23 Nov 2026",
+        "fechas": "13 May - 21 May 2027",
         "noches": 8,
         "precio": "US$ 730",
         "destacado": "Aerolínea de bandera mexicana"
@@ -2581,7 +2584,7 @@
         "puesto": "🥇",
         "aerolinea": "Arajet",
         "escalas": "Directo o escala corta",
-        "fechas": "10 Nov - 18 Nov 2026",
+        "fechas": "23 Abr - 01 May 2027",
         "noches": 8,
         "precio": "US$ 590",
         "destacado": "Tarifa récord sin escalas"
@@ -2590,8 +2593,8 @@
         "puesto": "🥈",
         "aerolinea": "Avianca",
         "escalas": "1 escala (BOG)",
-        "fechas": "20 Nov - 27 Nov 2026",
-        "noches": 7,
+        "fechas": "07 May - 15 May 2027",
+        "noches": 8,
         "precio": "US$ 680",
         "destacado": "Excelente servicio a bordo"
       },
@@ -2599,8 +2602,8 @@
         "puesto": "🥉",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala (PTY)",
-        "fechas": "14 Nov - 23 Nov 2026",
-        "noches": 9,
+        "fechas": "21 May - 29 May 2027",
+        "noches": 8,
         "precio": "US$ 710",
         "destacado": "Puntualidad líder en América"
       }
@@ -2689,8 +2692,8 @@
         "puesto": "🥇",
         "aerolinea": "Avianca",
         "escalas": "1 escala corta (BOG)",
-        "fechas": "05 Nov - 13 Nov 2026",
-        "noches": 8,
+        "fechas": "10 Mar - 20 Mar 2027",
+        "noches": 10,
         "precio": "US$ 660",
         "destacado": "Tarifa récord más baja"
       },
@@ -2698,8 +2701,8 @@
         "puesto": "🥈",
         "aerolinea": "LATAM / Arajet",
         "escalas": "1 escala técnica",
-        "fechas": "19 Nov - 26 Nov 2026",
-        "noches": 7,
+        "fechas": "24 Mar - 03 Abr 2027",
+        "noches": 10,
         "precio": "US$ 710",
         "destacado": "Equipaje carry-on incluido"
       },
@@ -2707,8 +2710,8 @@
         "puesto": "🥉",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala (PTY)",
-        "fechas": "12 Nov - 21 Nov 2026",
-        "noches": 9,
+        "fechas": "07 Abr - 17 Abr 2027",
+        "noches": 10,
         "precio": "US$ 740",
         "destacado": "Conexión ágil sin cambios de terminal"
       }
@@ -2797,7 +2800,7 @@
         "puesto": "🥇",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala corta (GRU)",
-        "fechas": "05 Nov - 20 Nov 2026",
+        "fechas": "08 May - 23 May 2027",
         "noches": 15,
         "precio": "€ 915",
         "destacado": "Tarifa récord más baja"
@@ -2806,8 +2809,8 @@
         "puesto": "🥈",
         "aerolinea": "Iberia",
         "escalas": "Directo (EZE ➔ MAD)",
-        "fechas": "18 Nov - 02 Dic 2026",
-        "noches": 14,
+        "fechas": "22 May - 06 Jun 2027",
+        "noches": 15,
         "precio": "€ 1.085",
         "destacado": "Vuelo directo más veloz"
       },
@@ -2815,8 +2818,8 @@
         "puesto": "🥉",
         "aerolinea": "Air Europa",
         "escalas": "Directo (EZE ➔ MAD)",
-        "fechas": "10 Nov - 24 Nov 2026",
-        "noches": 14,
+        "fechas": "05 Jun - 20 Jun 2027",
+        "noches": 15,
         "precio": "€ 1.140",
         "destacado": "Excelente equipaje incluido"
       }
@@ -2906,7 +2909,7 @@
         "puesto": "🥇",
         "aerolinea": "Level",
         "escalas": "Directo (EZE ➔ BCN)",
-        "fechas": "06 Nov - 20 Nov 2026",
+        "fechas": "29 Ene - 12 Feb 2027",
         "noches": 14,
         "precio": "€ 880",
         "destacado": "Vuelo directo más veloz"
@@ -2915,7 +2918,7 @@
         "puesto": "🥈",
         "aerolinea": "Iberia",
         "escalas": "1 escala corta (MAD)",
-        "fechas": "13 Nov - 27 Nov 2026",
+        "fechas": "05 Feb - 19 Feb 2027",
         "noches": 14,
         "precio": "€ 940",
         "destacado": "Excelente servicio a bordo"
@@ -2924,7 +2927,7 @@
         "puesto": "🥉",
         "aerolinea": "Air Europa",
         "escalas": "1 escala (MAD)",
-        "fechas": "18 Nov - 02 Dic 2026",
+        "fechas": "10 Feb - 24 Feb 2027",
         "noches": 14,
         "precio": "€ 975",
         "destacado": "Equipaje carry-on incluido"
@@ -3013,8 +3016,8 @@
         "puesto": "🥇",
         "aerolinea": "Air Europa",
         "escalas": "1 escala corta (MAD)",
-        "fechas": "03 Nov - 19 Nov 2026",
-        "noches": 16,
+        "fechas": "10 May - 25 May 2027",
+        "noches": 15,
         "precio": "€ 965",
         "destacado": "Tarifa récord más baja"
       },
@@ -3022,8 +3025,8 @@
         "puesto": "🥈",
         "aerolinea": "Iberia",
         "escalas": "1 escala corta (MAD)",
-        "fechas": "17 Nov - 01 Dic 2026",
-        "noches": 14,
+        "fechas": "24 May - 08 Jun 2027",
+        "noches": 15,
         "precio": "€ 1.000",
         "destacado": "Escala rápida de 2 horas"
       },
@@ -3031,8 +3034,8 @@
         "puesto": "🥉",
         "aerolinea": "ITA Airways",
         "escalas": "Directo (EZE ➔ FCO)",
-        "fechas": "12 Nov - 26 Nov 2026",
-        "noches": 14,
+        "fechas": "07 Jun - 22 Jun 2027",
+        "noches": 15,
         "precio": "€ 1.110",
         "destacado": "Vuelo directo sin escalas"
       }
@@ -3122,7 +3125,7 @@
         "puesto": "🥇",
         "aerolinea": "Air France",
         "escalas": "Directo (EZE ➔ CDG)",
-        "fechas": "04 Nov - 19 Nov 2026",
+        "fechas": "27 Ene - 11 Feb 2027",
         "noches": 15,
         "precio": "€ 900",
         "destacado": "Tarifa récord más baja"
@@ -3131,7 +3134,7 @@
         "puesto": "🥈",
         "aerolinea": "Iberia",
         "escalas": "1 escala corta (MAD)",
-        "fechas": "11 Nov - 25 Nov 2026",
+        "fechas": "03 Feb - 17 Feb 2027",
         "noches": 14,
         "precio": "€ 955",
         "destacado": "Conexión eficiente"
@@ -3140,7 +3143,7 @@
         "puesto": "🥉",
         "aerolinea": "Air Europa",
         "escalas": "1 escala (MAD)",
-        "fechas": "18 Nov - 02 Dic 2026",
+        "fechas": "10 Feb - 24 Feb 2027",
         "noches": 14,
         "precio": "€ 995",
         "destacado": "Llega a aeropuerto Orly (ORY)"
@@ -3230,7 +3233,7 @@
         "puesto": "🥇",
         "aerolinea": "British Airways",
         "escalas": "Directo (EZE ➔ LHR)",
-        "fechas": "05 Nov - 19 Nov 2026",
+        "fechas": "28 Ene - 11 Feb 2027",
         "noches": 14,
         "precio": "€ 935",
         "destacado": "Vuelo directo más veloz"
@@ -3239,7 +3242,7 @@
         "puesto": "🥈",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala corta (GRU)",
-        "fechas": "12 Nov - 26 Nov 2026",
+        "fechas": "04 Feb - 18 Feb 2027",
         "noches": 14,
         "precio": "€ 985",
         "destacado": "Excelente servicio"
@@ -3248,7 +3251,7 @@
         "puesto": "🥉",
         "aerolinea": "Iberia",
         "escalas": "1 escala (MAD)",
-        "fechas": "19 Nov - 03 Dic 2026",
+        "fechas": "11 Feb - 25 Feb 2027",
         "noches": 14,
         "precio": "€ 1.020",
         "destacado": "Equipaje incluido"
@@ -3338,7 +3341,7 @@
         "puesto": "🥇",
         "aerolinea": "Air France",
         "escalas": "1 escala corta (CDG)",
-        "fechas": "06 Nov - 20 Nov 2026",
+        "fechas": "29 Ene - 12 Feb 2027",
         "noches": 14,
         "precio": "€ 945",
         "destacado": "Tarifa récord más baja"
@@ -3347,7 +3350,7 @@
         "puesto": "🥈",
         "aerolinea": "Iberia",
         "escalas": "1 escala (MAD)",
-        "fechas": "13 Nov - 27 Nov 2026",
+        "fechas": "05 Feb - 19 Feb 2027",
         "noches": 14,
         "precio": "€ 975",
         "destacado": "Conexión eficiente"
@@ -3356,7 +3359,7 @@
         "puesto": "🥉",
         "aerolinea": "Lufthansa",
         "escalas": "1 escala (FRA)",
-        "fechas": "20 Nov - 04 Dic 2026",
+        "fechas": "12 Feb - 26 Feb 2027",
         "noches": 14,
         "precio": "€ 1.000",
         "destacado": "Llega al aeropuerto BER"
@@ -3446,7 +3449,7 @@
         "puesto": "🥇",
         "aerolinea": "Lufthansa",
         "escalas": "Directo (EZE ➔ FRA)",
-        "fechas": "03 Nov - 18 Nov 2026",
+        "fechas": "26 Ene - 10 Feb 2027",
         "noches": 15,
         "precio": "€ 955",
         "destacado": "Vuelo directo más veloz"
@@ -3455,7 +3458,7 @@
         "puesto": "🥈",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala corta (GRU)",
-        "fechas": "10 Nov - 25 Nov 2026",
+        "fechas": "02 Feb - 17 Feb 2027",
         "noches": 15,
         "precio": "€ 990",
         "destacado": "Equipaje carry-on incluido"
@@ -3464,7 +3467,7 @@
         "puesto": "🥉",
         "aerolinea": "Air Europa",
         "escalas": "1 escala (MAD)",
-        "fechas": "17 Nov - 01 Dic 2026",
+        "fechas": "09 Feb - 23 Feb 2027",
         "noches": 14,
         "precio": "€ 1.030",
         "destacado": "Atención en español"
@@ -3554,23 +3557,26 @@
       {
         "puesto": "Top 1 Directo KLM",
         "aerolinea": "KLM Royal Dutch Airlines",
-        "fechas": "06 May ➔ 21 May 2026 (15 noches)",
+        "fechas": "07 Abr - 22 Abr 2027",
         "escalas": "Vuelo Directo nocturno",
-        "precio": "€ 1.085"
+        "precio": "€ 1.085",
+        "noches": 15
       },
       {
         "puesto": "Top 2 SkyTeam",
         "aerolinea": "Air France",
-        "fechas": "12 Jun ➔ 27 Jun 2026 (15 noches)",
+        "fechas": "19 Feb - 06 Mar 2027",
         "escalas": "1 escala en París (CDG)",
-        "precio": "€ 1.005"
+        "precio": "€ 1.005",
+        "noches": 15
       },
       {
         "puesto": "Top 3 OneWorld",
         "aerolinea": "Iberia",
-        "fechas": "08 Sep ➔ 23 Sep 2026 (15 noches)",
+        "fechas": "23 Feb - 10 Mar 2027",
         "escalas": "1 escala en Madrid (MAD)",
-        "precio": "€ 1.050"
+        "precio": "€ 1.050",
+        "noches": 15
       }
     ],
     "hoteles": [
@@ -3631,7 +3637,7 @@
         "puesto": "🥇",
         "aerolinea": "ITA Airways",
         "escalas": "1 escala corta (FCO)",
-        "fechas": "04 Nov - 19 Nov 2026",
+        "fechas": "27 Ene - 11 Feb 2027",
         "noches": 15,
         "precio": "€ 990",
         "destacado": "Tarifa récord más baja"
@@ -3640,7 +3646,7 @@
         "puesto": "🥈",
         "aerolinea": "Turkish Airlines",
         "escalas": "1 escala (IST)",
-        "fechas": "11 Nov - 26 Nov 2026",
+        "fechas": "03 Feb - 18 Feb 2027",
         "noches": 15,
         "precio": "€ 1.030",
         "destacado": "Excelente catering a bordo"
@@ -3649,7 +3655,7 @@
         "puesto": "🥉",
         "aerolinea": "Iberia",
         "escalas": "1 escala (MAD)",
-        "fechas": "18 Nov - 03 Dic 2026",
+        "fechas": "10 Feb - 25 Feb 2027",
         "noches": 15,
         "precio": "€ 1.065",
         "destacado": "Equipaje carry-on incluido"
@@ -3739,7 +3745,7 @@
         "puesto": "🥇",
         "aerolinea": "KLM / Air France",
         "escalas": "1 escala (AMS/CDG)",
-        "fechas": "05 Nov - 19 Nov 2026",
+        "fechas": "28 Ene - 11 Feb 2027",
         "noches": 14,
         "precio": "€ 955",
         "destacado": "Tarifa récord más baja"
@@ -3748,7 +3754,7 @@
         "puesto": "🥈",
         "aerolinea": "Lufthansa",
         "escalas": "1 escala (FRA)",
-        "fechas": "12 Nov - 26 Nov 2026",
+        "fechas": "04 Feb - 18 Feb 2027",
         "noches": 14,
         "precio": "€ 990",
         "destacado": "Conexión eficiente"
@@ -3757,7 +3763,7 @@
         "puesto": "🥉",
         "aerolinea": "Iberia / SAS",
         "escalas": "1 escala (MAD)",
-        "fechas": "19 Nov - 03 Dic 2026",
+        "fechas": "11 Feb - 25 Feb 2027",
         "noches": 14,
         "precio": "€ 1.030",
         "destacado": "Equipaje carry-on incluido"
@@ -3847,7 +3853,7 @@
         "puesto": "🥇",
         "aerolinea": "Iberia / Play",
         "escalas": "1 escala (MAD/BCN)",
-        "fechas": "06 Nov - 20 Nov 2026",
+        "fechas": "29 Ene - 12 Feb 2027",
         "noches": 14,
         "precio": "€ 1.050",
         "destacado": "Tarifa récord más baja"
@@ -3856,7 +3862,7 @@
         "puesto": "🥈",
         "aerolinea": "British / Icelandair",
         "escalas": "1 escala (LHR)",
-        "fechas": "13 Nov - 27 Nov 2026",
+        "fechas": "05 Feb - 19 Feb 2027",
         "noches": 14,
         "precio": "€ 1.095",
         "destacado": "Conexión eficiente"
@@ -3865,7 +3871,7 @@
         "puesto": "🥉",
         "aerolinea": "Air France / Play",
         "escalas": "1 escala (CDG)",
-        "fechas": "20 Nov - 04 Dic 2026",
+        "fechas": "12 Feb - 26 Feb 2027",
         "noches": 14,
         "precio": "€ 1.150",
         "destacado": "Temporada alta de auroras"
@@ -3955,23 +3961,26 @@
       {
         "puesto": "Top 1 Turkish",
         "aerolinea": "Turkish Airlines",
-        "fechas": "04 May ➔ 19 May 2026 (15 noches)",
+        "fechas": "05 Abr - 20 Abr 2027",
         "escalas": "Escala técnica en San Pablo (mismo avión)",
-        "precio": "US$ 1.120"
+        "precio": "US$ 1.120",
+        "noches": 15
       },
       {
         "puesto": "Top 2 Qatar Airways",
         "aerolinea": "Qatar Airways",
-        "fechas": "10 Jun ➔ 25 Jun 2026 (15 noches)",
+        "fechas": "17 Feb - 04 Mar 2027",
         "escalas": "1 escala en Doha (DOH)",
-        "precio": "US$ 1.190"
+        "precio": "US$ 1.190",
+        "noches": 15
       },
       {
         "puesto": "Top 3 Star Alliance",
         "aerolinea": "Lufthansa",
-        "fechas": "15 Sep ➔ 30 Sep 2026 (15 noches)",
+        "fechas": "02 Mar - 17 Mar 2027",
         "escalas": "1 escala en Frankfurt (FRA)",
-        "precio": "US$ 1.230"
+        "precio": "US$ 1.230",
+        "noches": 15
       }
     ],
     "hoteles": [
@@ -4031,23 +4040,26 @@
       {
         "puesto": "Top 1 Emirates",
         "aerolinea": "Emirates",
-        "fechas": "15 May ➔ 30 May 2026 (15 noches)",
+        "fechas": "16 Abr - 01 May 2027",
         "escalas": "Vuelo directo con escala en Río (GIG)",
-        "precio": "US$ 1.250"
+        "precio": "US$ 1.250",
+        "noches": 15
       },
       {
         "puesto": "Top 2 Qatar Airways",
         "aerolinea": "Qatar Airways",
-        "fechas": "05 Jun ➔ 20 Jun 2026 (15 noches)",
+        "fechas": "12 Feb - 27 Feb 2027",
         "escalas": "1 escala en Doha (DOH)",
-        "precio": "US$ 1.210"
+        "precio": "US$ 1.210",
+        "noches": 15
       },
       {
         "puesto": "Top 3 Star Alliance",
         "aerolinea": "Ethiopian Airlines",
-        "fechas": "10 Oct ➔ 25 Oct 2026 (15 noches)",
+        "fechas": "27 Mar - 11 Abr 2027",
         "escalas": "1 escala en Adís Abeba (ADD)",
-        "precio": "US$ 1.080"
+        "precio": "US$ 1.080",
+        "noches": 15
       }
     ],
     "hoteles": [
@@ -4107,23 +4119,26 @@
       {
         "puesto": "Top 1 Emirates",
         "aerolinea": "Emirates",
-        "fechas": "08 May ➔ 24 May 2026 (16 noches)",
+        "fechas": "09 Abr - 25 Abr 2027",
         "escalas": "1 escala en Dubái (DXB)",
-        "precio": "US$ 1.340"
+        "precio": "US$ 1.340",
+        "noches": 16
       },
       {
         "puesto": "Top 2 Qatar Airways",
         "aerolinea": "Qatar Airways",
-        "fechas": "12 Jun ➔ 28 Jun 2026 (16 noches)",
+        "fechas": "19 Feb - 07 Mar 2027",
         "escalas": "1 escala en Doha (DOH)",
-        "precio": "US$ 1.320"
+        "precio": "US$ 1.320",
+        "noches": 16
       },
       {
         "puesto": "Top 3 Turkish",
         "aerolinea": "Turkish Airlines",
-        "fechas": "05 Oct ➔ 21 Oct 2026 (16 noches)",
+        "fechas": "22 Mar - 07 Abr 2027",
         "escalas": "1 escala en Estambul (IST)",
-        "precio": "US$ 1.380"
+        "precio": "US$ 1.380",
+        "noches": 16
       }
     ],
     "hoteles": [
@@ -4183,7 +4198,7 @@
         "puesto": "🥇",
         "aerolinea": "United Airlines",
         "escalas": "1 escala técnica (USA)",
-        "fechas": "03 Nov - 20 Nov 2026",
+        "fechas": "26 Ene - 12 Feb 2027",
         "noches": 17,
         "precio": "US$ 1.320",
         "destacado": "Tarifa récord más baja"
@@ -4192,7 +4207,7 @@
         "puesto": "🥈",
         "aerolinea": "ANA / Turkish",
         "escalas": "1 escala (IST)",
-        "fechas": "10 Nov - 26 Nov 2026",
+        "fechas": "02 Feb - 18 Feb 2027",
         "noches": 16,
         "precio": "US$ 1.410",
         "destacado": "No requiere visa de EE.UU."
@@ -4201,7 +4216,7 @@
         "puesto": "🥉",
         "aerolinea": "Ethiopian Airlines",
         "escalas": "Conexión ADD / NRT",
-        "fechas": "17 Nov - 03 Dic 2026",
+        "fechas": "09 Feb - 25 Feb 2027",
         "noches": 16,
         "precio": "US$ 1.480",
         "destacado": "2 valijas de 23 kg incluidas"
@@ -4291,7 +4306,7 @@
         "puesto": "Top 1",
         "aerolinea": "Emirates (1 Escala DXB)",
         "escalas": "1 escala en Dubái (26h 15m)",
-        "fechas": "15 Mayo - 02 Junio 2026",
+        "fechas": "16 Abr - 04 May 2027",
         "noches": 18,
         "precio": "US$ 1.380",
         "destacado": true
@@ -4300,7 +4315,7 @@
         "puesto": "Top 2",
         "aerolinea": "Qatar Airways (1 Escala DOH)",
         "escalas": "1 escala en Doha (27h 30m)",
-        "fechas": "05 Septiembre - 24 Septiembre 2026",
+        "fechas": "20 Feb - 11 Mar 2027",
         "noches": 19,
         "precio": "US$ 1.420",
         "destacado": false
@@ -4309,7 +4324,7 @@
         "puesto": "Top 3",
         "aerolinea": "Air France (1 Escala CDG)",
         "escalas": "1 escala en París (28h 10m)",
-        "fechas": "10 Octubre - 28 Octubre 2026",
+        "fechas": "27 Mar - 14 Abr 2027",
         "noches": 18,
         "precio": "US$ 1.460",
         "destacado": false
@@ -4399,7 +4414,7 @@
         "puesto": "🥇",
         "aerolinea": "Turkish Airlines",
         "escalas": "1 escala corta (IST)",
-        "fechas": "06 Nov - 20 Nov 2026",
+        "fechas": "29 Ene - 12 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.120",
         "destacado": "Tarifa récord más baja"
@@ -4408,7 +4423,7 @@
         "puesto": "🥈",
         "aerolinea": "ITA Airways",
         "escalas": "1 escala (FCO)",
-        "fechas": "13 Nov - 27 Nov 2026",
+        "fechas": "05 Feb - 19 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.170",
         "destacado": "Conexión ágil en Roma"
@@ -4417,7 +4432,7 @@
         "puesto": "🥉",
         "aerolinea": "Air France",
         "escalas": "1 escala (CDG)",
-        "fechas": "20 Nov - 04 Dic 2026",
+        "fechas": "12 Feb - 26 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.240",
         "destacado": "Excelente franquicia de equipaje"
@@ -4507,7 +4522,7 @@
         "puesto": "🥇",
         "aerolinea": "Iberia",
         "escalas": "1 escala corta (MAD)",
-        "fechas": "07 Nov - 21 Nov 2026",
+        "fechas": "30 Ene - 13 Feb 2027",
         "noches": 14,
         "precio": "US$ 960",
         "destacado": "Tarifa récord más baja"
@@ -4516,7 +4531,7 @@
         "puesto": "🥈",
         "aerolinea": "Air Europa",
         "escalas": "1 escala (MAD)",
-        "fechas": "14 Nov - 28 Nov 2026",
+        "fechas": "06 Feb - 20 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.010",
         "destacado": "Conexión eficiente"
@@ -4525,7 +4540,7 @@
         "puesto": "🥉",
         "aerolinea": "TAP Air Portugal",
         "escalas": "1 escala (LIS)",
-        "fechas": "21 Nov - 05 Dic 2026",
+        "fechas": "13 Feb - 27 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.060",
         "destacado": "Opción de stopover en Lisboa"
@@ -4615,7 +4630,7 @@
         "puesto": "🥇",
         "aerolinea": "Ethiopian Airlines",
         "escalas": "1 escala corta (ADD)",
-        "fechas": "05 Nov - 19 Nov 2026",
+        "fechas": "28 Ene - 11 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.070",
         "destacado": "Tarifa récord más baja"
@@ -4624,7 +4639,7 @@
         "puesto": "🥈",
         "aerolinea": "South African / LATAM",
         "escalas": "1 escala (GRU)",
-        "fechas": "12 Nov - 26 Nov 2026",
+        "fechas": "04 Feb - 18 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.150",
         "destacado": "Ruta transatlántica directa"
@@ -4633,7 +4648,7 @@
         "puesto": "🥉",
         "aerolinea": "Emirates / Qatar",
         "escalas": "1 escala",
-        "fechas": "19 Nov - 03 Dic 2026",
+        "fechas": "11 Feb - 25 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.250",
         "destacado": "Servicio de 5 estrellas"
