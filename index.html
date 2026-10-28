@@ -22,6 +22,7 @@
 
   <!-- Módulos de Datos Modularizados (Carga Asíncrona Diferida con defer) -->
   <script src="js/radar-data.js" defer></script>
+  <script src="js/cupones-data.js" defer></script>
   <script src="js/road-data.js" defer></script>
   <script src="js/guias-data.js" defer></script>
   <script src="js/chatbox.js" defer></script>
@@ -95,14 +96,18 @@
     /* Transición Elástica, Fluida y Despacio para la Ventana del Chatbox */
     
     /* Transición Cinemática y Sutil para el Detalle del Radar (Cero Brusquedad) */
-    #fb-radar-detail-container {
+    #fb-radar-detail-container,
+    #fb-radar-header-container,
+    #fb-radar-cards-container {
       transition: opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1),
                   transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
       opacity: 1;
       transform: translateY(0);
       will-change: opacity, transform;
     }
-    #fb-radar-detail-container.fb-dest-fading {
+    #fb-radar-detail-container.fb-dest-fading,
+    #fb-radar-header-container.fb-dest-fading,
+    #fb-radar-cards-container.fb-dest-fading {
       opacity: 0;
       transform: translateY(6px);
     }
@@ -350,18 +355,18 @@
       </div>
 
         <!-- Barra de Navegación Central Simétrica (Dock Centrado) -->
-      <nav class="hidden lg:flex items-center p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-1 xl:gap-1.5 mx-auto">
-        <a href="#radar-vuelos" id="nav-btn-vuelos" class="nav-dock-btn is-active">
+            <nav class="hidden lg:flex items-center p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-1 xl:gap-1.5 mx-auto">
+        <a href="index.html#radar-vuelos" id="nav-btn-vuelos" class="nav-dock-btn is-active">
           <span>✈️</span> Vuelos
         </a>
-        <a href="#destinos" id="nav-btn-destinos" class="nav-dock-btn">
+        <a href="index.html#destinos" id="nav-btn-destinos" class="nav-dock-btn">
           <span>🏨</span> Destinos
         </a>
         <a href="escapadas.html" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
           <span>🚗</span> Modo Ruta
         </a>
         <a href="billetera.html" id="nav-btn-billetera" class="nav-dock-btn">
-          <span>🧳</span> Billetera
+          <span>💳</span> Billetera
         </a>
         <a href="guias/index.html" id="nav-btn-guias" class="nav-dock-btn">
           <span>📖</span> Guías
@@ -418,19 +423,19 @@
     </div>
 
         <!-- Menú Móvil Desplegable -->
-    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
+        <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
       <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
-        <a href="#radar-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="index.html#radar-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
           <span>✈️</span> Vuelos
         </a>
-        <a href="#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="index.html#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🏨</span> Destinos
         </a>
         <a href="escapadas.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🚗</span> Modo Ruta
         </a>
         <a href="billetera.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>🧳</span> Billetera
+          <span>💳</span> Billetera
         </a>
         <a href="guias/index.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>📖</span> Guías
@@ -488,7 +493,7 @@
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 pt-12 border-t dark:border-slate-800/80 border-slate-200">
         <div>
           <div class="text-3xl font-extrabold dark:text-white text-slate-900">24/7</div>
-          <div class="text-xs dark:text-slate-400 text-slate-500 mt-1 uppercase font-semibold">Monitoreo Continuo 24/7</div>
+          <div class="text-xs dark:text-slate-400 text-slate-500 mt-1 uppercase font-semibold">Monitoreo 24/7</div>
         </div>
         <div>
           <div class="text-3xl font-extrabold" style="color: var(--brand-primary);">100%</div>
@@ -639,7 +644,7 @@
               <!-- 2. Fila Exclusiva del Destino (Bandera + Ciudad Limpia + IATA) con 100% de ancho -->
               <div class="mb-2">
                 <div class="text-base font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
-                  <span id="rolli-deal-flag" class="text-xl shrink-0">🇩🇴</span>
+                  <span id="rolli-deal-flag" class="text-xl shrink-0"><img src="img/flags/do.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/do.png'" alt="República Dominicana" class="w-6 h-4 object-cover rounded shadow-xs inline-block"></span>
                   <span id="rolli-deal-city" class="truncate font-extrabold">Punta Cana</span>
                   <span id="rolli-deal-iata" class="text-xs font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-400 font-bold shrink-0">(PUJ)</span>
                 </div>
@@ -697,7 +702,7 @@
               </div>
               <div class="flex items-center justify-between gap-2 text-xs">
                 <div class="flex items-center gap-1.5 truncate">
-                  <span id="rolli-next-flag">🇺🇸</span>
+                  <span id="rolli-next-flag"><img src="img/flags/us.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/us.png'" alt="Estados Unidos" class="w-4 h-3 object-cover rounded-xs inline-block"></span>
                   <span class="font-bold dark:text-slate-200 text-slate-800 truncate" id="rolli-next-city">Miami (MIA)</span>
                 </div>
                 <div class="font-extrabold font-mono text-emerald-600 dark:text-emerald-400 shrink-0" id="rolli-next-price">
@@ -817,19 +822,22 @@
 
         <!-- Controles: Selector de Moneda Dual e Indicador de Monitoreo -->
         <div class="flex items-center gap-3 flex-wrap">
-          <!-- Selector Tri-Moneda: Default (Nativa / Oficial) / ARS / USD -->
+          <!-- Selector Tri-Moneda: Default (Cabotaje ARS, Europa EUR, Resto USD) / ARS / USD -->
           <div class="flex items-center p-1 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm text-xs font-bold">
             <span class="text-[10px] uppercase font-bold text-slate-400 px-2 hidden sm:inline">Moneda:</span>
             <button type="button" onclick="window.cambiarMonedaGlobal('DEFAULT')" id="btn-curr-default"
-                    class="px-2.5 py-1 rounded-xl transition-all dark:bg-slate-800 bg-rose-600 text-white shadow-xs" title="Moneda oficial: cabotaje en pesos, Europa en euros y resto en dólares">
+                    class="px-2.5 py-1 rounded-xl transition-all text-white shadow-xs font-bold" style="background-color: var(--brand-primary);"
+                    title="Moneda por defecto: Cabotaje en pesos ($ ARS), América en dólares (US$) y Europa en euros (€)">
               Default
             </button>
             <button type="button" onclick="window.cambiarMonedaGlobal('ARS')" id="btn-curr-ars"
-                    class="px-2.5 py-1 rounded-xl transition-all dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white" title="Ver todos los precios convertidos a pesos argentinos">
+                    class="px-2.5 py-1 rounded-xl transition-all dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white font-bold"
+                    title="Ver todas las tarifas convertidas a pesos argentinos">
               ARS ($)
             </button>
             <button type="button" onclick="window.cambiarMonedaGlobal('USD')" id="btn-curr-usd"
-                    class="px-2.5 py-1 rounded-xl transition-all dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white" title="Ver todos los precios convertidos a dólares estadounidenses">
+                    class="px-2.5 py-1 rounded-xl transition-all dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white font-bold"
+                    title="Ver todas las tarifas convertidas a dólares estadounidenses">
               USD (US$)
             </button>
           </div>
@@ -894,10 +902,10 @@
         </div>
       </div>
 
-      <!-- Grid Master-Detail: Menú Lateral a la Izquierda + Panel Dinámico a la Derecha -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- PISO SUPERIOR (Superior Split): 2 Columnas balanceadas a la misma altura -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start mb-10">
         
-        <!-- SIDEBAR IZQUIERDO: 38 Destinos Monitoreados con Banderitas y Filtros Regionales -->
+        <!-- SIDEBAR IZQUIERDO (lg:col-span-4): Buscador en vivo, filtros de regiones y lista de ciudades -->
         <div class="lg:col-span-4 dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-4 shadow-sm theme-transition">
           <div class="flex items-center justify-between pb-3 mb-2 border-b dark:border-slate-800 border-slate-200 px-2">
             <span class="text-xs font-extrabold uppercase tracking-wider dark:text-slate-400 text-slate-500" id="radar-counter-sidebar">
@@ -908,16 +916,16 @@
             </span>
           </div>
 
-                    <!-- Pestañas de Filtro Regional -->
+          <!-- Pestañas de Filtro Regional -->
           <div class="flex items-center gap-1.5 overflow-x-auto pb-2 mb-2 px-0.5 fb-custom-scrollbar text-xs">
             <button type="button" onclick="window.filtrarRadarRegion('todos')" id="fb-filter-todos" class="fb-filter-chip px-2.5 py-1 rounded-xl font-bold whitespace-nowrap transition-all border text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs">
               Todos
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('cabotaje')" id="fb-filter-cabotaje" class="fb-filter-chip px-2.5 py-1 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-              🇦🇷 Cabotaje
+              <span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje</span>
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('brasil')" id="fb-filter-brasil" class="fb-filter-chip px-2.5 py-1 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-              🇧🇷 Brasil
+              <span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil</span>
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('caribe_usa')" id="fb-filter-caribe_usa" class="fb-filter-chip px-2.5 py-1 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
               🏝️ América & Caribe
@@ -927,7 +935,7 @@
             </button>
           </div>
 
-                    <!-- Buscador Instantáneo en Vivo (Sugerencia 1) -->
+          <!-- Buscador Instantáneo en Vivo -->
           <div class="relative mb-2.5 px-0.5">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -939,17 +947,23 @@
                    class="w-full text-xs rounded-xl pl-8 pr-3 py-2 dark:bg-slate-950/60 bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-rose-500 transition-all">
           </div>
           <div id="fb-radar-sidebar" class="space-y-1.5 max-h-[640px] overflow-y-auto fb-custom-scrollbar pr-1">
-            <!-- Los 36 destinos se renderizan dinámicamente con banderitas y filtros -->
+            <!-- Los 45 destinos se renderizan dinámicamente con banderitas y filtros -->
           </div>
         </div>
 
-        <!-- PANEL DERECHO: Detalle Dinámico de Ciudad, Top Vuelos y 3 Hoteles Reales -->
+        <!-- COLUMNA DERECHA (lg:col-span-8): Cabecera de Destino + Termómetro y Gráfico -->
         <div class="lg:col-span-8">
-          <div id="fb-radar-detail-container" class="transition-all">
-            <!-- El contenido dinámico se inyecta con animación aquí -->
+          <div id="fb-radar-header-container" class="transition-all">
+            <!-- Se inyecta cabecera, bandera, reseña y termómetro -->
           </div>
         </div>
 
+      </div>
+
+      <!-- PISO INFERIOR (Inferior Full-Width): Vuelos y Hospedajes en Ancho Completo -->
+      <div id="fb-radar-cards-container" class="w-full transition-all">
+        <!-- Bloque 1: Top 3 Vuelos Más Económicos Vigentes (grid md:grid-cols-3 gap-6 mb-12) -->
+        <!-- Bloque 2: Los 3 Hospedajes Más Recomendados (grid md:grid-cols-3 gap-6) -->
       </div>
 
     </div>
@@ -1100,6 +1114,7 @@
 
 
   <!-- Sección: Promociones y Cuotas en Portales Oficiales de Vuelos (Debajo de Radar) -->
+    <!-- SECCIÓN: PORTALES OFICIALES DE VIAJE & CUPONES -->
   <section id="promos-portales" class="w-full py-20 dark:bg-slate-900/60 bg-slate-100/70 border-b dark:border-slate-800 border-slate-200 theme-transition relative">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -1112,14 +1127,197 @@
           Cuotas Sin Interés, Cupones &amp; Millas por Portal
         </h2>
         <p class="dark:text-slate-400 text-slate-600 text-sm sm:text-base leading-relaxed theme-transition">
-          Tocá cada portal para desplegar con la flechita sus promociones bancarias vigentes, acuerdos de cuotas, programas de fidelidad y códigos de descuento para volar a nuestros destinos:
+          Tocá cada portal para desplegar sus promociones bancarias vigentes, acuerdos de cuotas, programas de fidelidad y códigos de descuento para volar a nuestros destinos:
         </p>
       </div>
 
-      <!-- Lista de Portales en Degradé con Flechita Desplegable -->
+      <!-- MÓDULO VISUAL: CUPONES & CÓDIGOS PROMO EN VIVO -->
+      <div class="mb-12 max-w-5xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+          <div class="flex items-center gap-2.5">
+            <span class="text-2xl">🎟️</span>
+            <div>
+              <h3 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900 tracking-tight">
+                Cupones Activos &amp; Promociones Flash
+              </h3>
+              <p class="text-xs dark:text-slate-400 text-slate-500">
+                Copialos con un clic y aplicalos directamente en el checkout de la aerolínea o portal:
+              </p>
+            </div>
+          </div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 self-start sm:self-auto">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Actualizados hoy
+          </span>
+        </div>
+
+        <div id="fb-cupones-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+          <!-- Cupón 1: Arajet -->
+          <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-purple-500/40 transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-extrabold px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
+                  Arajet 🎃
+                </span>
+                <span class="text-[10px] font-bold text-emerald-500">50% OFF</span>
+              </div>
+              <div class="text-xs font-bold dark:text-white text-slate-900 mb-1">
+                Especial Halloween
+              </div>
+              <div class="text-[11px] dark:text-slate-400 text-slate-500 mb-3">
+                Punta Cana, Cancún y Santo Domingo
+              </div>
+            </div>
+            <div class="space-y-2 pt-2 border-t dark:border-slate-800/80 border-slate-100">
+              <div class="flex items-center justify-between px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-dashed border-slate-300 dark:border-slate-700">
+                <span class="text-xs font-mono font-extrabold text-purple-600 dark:text-purple-400 select-all">HALLOTRIP</span>
+                <button type="button" onclick="window.copiarCodigoPromo(this, 'HALLOTRIP')"
+                        class="text-[10px] font-bold px-2 py-0.5 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:text-purple-500 transition-all shadow-2xs">
+                  Copiar
+                </button>
+              </div>
+              <a href="https://www.arajet.com/es" target="_blank" rel="noopener noreferrer"
+                 class="w-full py-1.5 rounded-xl text-center text-[11px] font-bold text-white block transition-all hover:brightness-110"
+                 style="background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);">
+                Aplicar en Arajet
+              </a>
+            </div>
+          </div>
+
+          <!-- Cupón 2: JetSMART -->
+          <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-rose-500/40 transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-extrabold px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
+                  JetSMART
+                </span>
+                <span class="text-[10px] font-bold text-emerald-500">35% OFF</span>
+              </div>
+              <div class="text-xs font-bold dark:text-white text-slate-900 mb-1">
+                Cabotaje Nacional
+              </div>
+              <div class="text-[11px] dark:text-slate-400 text-slate-500 mb-3">
+                Bariloche, Mendoza, Iguazú y Salta
+              </div>
+            </div>
+            <div class="space-y-2 pt-2 border-t dark:border-slate-800/80 border-slate-100">
+              <div class="flex items-center justify-between px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-dashed border-slate-300 dark:border-slate-700">
+                <span class="text-xs font-mono font-extrabold text-rose-600 dark:text-rose-400 select-all">VUELOJETS</span>
+                <button type="button" onclick="window.copiarCodigoPromo(this, 'VUELOJETS')"
+                        class="text-[10px] font-bold px-2 py-0.5 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:text-rose-500 transition-all shadow-2xs">
+                  Copiar
+                </button>
+              </div>
+              <a href="https://jetsmart.com/ar/es/" target="_blank" rel="noopener noreferrer"
+                 class="w-full py-1.5 rounded-xl text-center text-[11px] font-bold text-white block transition-all hover:brightness-110"
+                 style="background: linear-gradient(135deg, #e20613 0%, #003876 100%);">
+                Aplicar en JetSMART
+              </a>
+            </div>
+          </div>
+
+          <!-- Cupón 3: Aerolíneas Argentinas -->
+          <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-sky-500/40 transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-extrabold px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+                  Aerolíneas
+                </span>
+                <span class="text-[10px] font-bold text-emerald-500">12 Cuotas</span>
+              </div>
+              <div class="text-xs font-bold dark:text-white text-slate-900 mb-1">
+                Cuotas BNA Sin Interés
+              </div>
+              <div class="text-[11px] dark:text-slate-400 text-slate-500 mb-3">
+                Tarjetas de crédito Banco Nación
+              </div>
+            </div>
+            <div class="space-y-2 pt-2 border-t dark:border-slate-800/80 border-slate-100">
+              <div class="flex items-center justify-between px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-dashed border-slate-300 dark:border-slate-700">
+                <span class="text-xs font-mono font-extrabold text-sky-600 dark:text-sky-400 select-all">AEROCUOTAS</span>
+                <button type="button" onclick="window.copiarCodigoPromo(this, 'AEROCUOTAS')"
+                        class="text-[10px] font-bold px-2 py-0.5 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:text-sky-500 transition-all shadow-2xs">
+                  Copiar
+                </button>
+              </div>
+              <a href="https://www.aerolineas.com.ar" target="_blank" rel="noopener noreferrer"
+                 class="w-full py-1.5 rounded-xl text-center text-[11px] font-bold text-white block transition-all hover:brightness-110"
+                 style="background: linear-gradient(135deg, #0099da 0%, #004b87 100%);">
+                Aplicar en Aerolíneas
+              </a>
+            </div>
+          </div>
+
+          <!-- Cupón 4: Despegar -->
+          <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-indigo-500/40 transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-extrabold px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                  Despegar
+                </span>
+                <span class="text-[10px] font-bold text-emerald-500">$15.000 OFF</span>
+              </div>
+              <div class="text-xs font-bold dark:text-white text-slate-900 mb-1">
+                Cupón Exclusivo App
+              </div>
+              <div class="text-[11px] dark:text-slate-400 text-slate-500 mb-3">
+                Para vuelos y paquetes en la app
+              </div>
+            </div>
+            <div class="space-y-2 pt-2 border-t dark:border-slate-800/80 border-slate-100">
+              <div class="flex items-center justify-between px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-dashed border-slate-300 dark:border-slate-700">
+                <span class="text-xs font-mono font-extrabold text-indigo-600 dark:text-indigo-400 select-all">DESPEGARAPP</span>
+                <button type="button" onclick="window.copiarCodigoPromo(this, 'DESPEGARAPP')"
+                        class="text-[10px] font-bold px-2 py-0.5 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:text-indigo-500 transition-all shadow-2xs">
+                  Copiar
+                </button>
+              </div>
+              <a href="https://www.despegar.com.ar" target="_blank" rel="noopener noreferrer"
+                 class="w-full py-1.5 rounded-xl text-center text-[11px] font-bold text-white block transition-all hover:brightness-110"
+                 style="background: linear-gradient(135deg, #6835f9 0%, #3861fb 100%);">
+                Aplicar en Despegar
+              </a>
+            </div>
+          </div>
+
+          <!-- Cupón 5: Booking.com -->
+          <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-blue-500/40 transition-all">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-extrabold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+                  Booking.com
+                </span>
+                <span class="text-[10px] font-bold text-emerald-500">15% OFF</span>
+              </div>
+              <div class="text-xs font-bold dark:text-white text-slate-900 mb-1">
+                Descuento Genius
+              </div>
+              <div class="text-[11px] dark:text-slate-400 text-slate-500 mb-3">
+                En hoteles y resorts seleccionados
+              </div>
+            </div>
+            <div class="space-y-2 pt-2 border-t dark:border-slate-800/80 border-slate-100">
+              <div class="flex items-center justify-between px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-dashed border-slate-300 dark:border-slate-700">
+                <span class="text-xs font-mono font-extrabold text-blue-600 dark:text-blue-400 select-all">GENIUS15</span>
+                <button type="button" onclick="window.copiarCodigoPromo(this, 'GENIUS15')"
+                        class="text-[10px] font-bold px-2 py-0.5 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:text-blue-500 transition-all shadow-2xs">
+                  Copiar
+                </button>
+              </div>
+              <a href="https://www.booking.com" target="_blank" rel="noopener noreferrer"
+                 class="w-full py-1.5 rounded-xl text-center text-[11px] font-bold text-white block transition-all hover:brightness-110"
+                 style="background: linear-gradient(135deg, #003580 0%, #006ce4 100%);">
+                Aplicar en Booking
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de Portales Oficiales (6 Portales en Orden Estricto) -->
       <div class="space-y-4 max-w-5xl mx-auto">
         
-        <!-- 1. Kiwi.com (Partner Oficial de Emisión y Búsqueda) -->
+<!-- 1. Kiwi.com (Partner Oficial de Emisión y Búsqueda) -->
         <div class="rounded-3xl border-2 dark:border-emerald-500/40 border-emerald-500/30 overflow-hidden shadow-lg dark:bg-slate-900 bg-white theme-transition relative">
           <button type="button" onclick="window.togglePortalAccordion('kiwi')"
                   class="w-full px-6 py-5 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
@@ -1150,7 +1348,7 @@
           </button>
           
           <div id="portal-content-kiwi" class="p-6 dark:bg-slate-950/70 bg-slate-50 space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
                 <div class="text-xs font-bold uppercase text-emerald-400 mb-1">🔀 Kiwi-Code™ Exclusivo</div>
                 <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Interlining Virtual Único</h4>
@@ -1186,190 +1384,133 @@
           </div>
         </div>
 
-        <!-- 2. Despegar -->
+        <!-- 2. Arajet (Vuelos Caribe & USA) -->
         <div class="rounded-3xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-md dark:bg-slate-900 bg-white theme-transition">
-          <button type="button" onclick="window.togglePortalAccordion('despegar')"
+          <button type="button" onclick="window.togglePortalAccordion('arajet')"
                   class="w-full px-6 py-5 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
-                  style="background: linear-gradient(135deg, #6835f9 0%, #3861fb 100%);">
+                  style="background: linear-gradient(135deg, #4c1d95 0%, #1e1b4b 100%);">
             <div class="flex items-center gap-3.5">
               <div class="w-11 h-11 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-xl shadow-inner border border-white/25 flex-shrink-0">
-                🛫
+                🟣
               </div>
               <div>
                 <div class="flex items-center gap-2.5 flex-wrap">
-                  <h3 class="text-lg sm:text-xl font-extrabold tracking-tight">Despegar</h3>
-                  <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white/20 text-white border border-white/30">
-                    Hasta 12 Cuotas • Cupones App
+                  <h3 class="text-lg sm:text-xl font-extrabold tracking-tight">Arajet</h3>
+                  <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-amber-400 text-slate-900 shadow-sm border border-amber-300 flex items-center gap-1">
+                    Vuelos Baratos al Caribe · Conexión Santo Domingo
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white/20 text-white border border-white/30 hidden sm:inline-flex">
+                    Boeing 737 MAX • Hub Santo Domingo
                   </span>
                 </div>
-                <p class="text-xs text-white/85 mt-0.5">
-                  Tarjetazo semanal, beneficios bancarios y puntos Pasaporte en paquetes y vuelos.
+                <p class="text-xs text-white/90 mt-0.5">
+                  La low-cost líder para volar desde Buenos Aires (EZE) a Punta Cana, Cancún, Santo Domingo, Jamaica y el Caribe con flota nueva Boeing 737 MAX.
                 </p>
               </div>
             </div>
             <div class="flex items-center gap-2 flex-shrink-0 ml-3">
-              <span class="text-xs font-bold bg-white/15 px-2.5 py-1 rounded-lg hidden sm:inline">Ver Promos</span>
-              <span id="portal-arrow-despegar" class="text-lg font-bold transition-transform duration-300">▼</span>
+              <span class="text-xs font-bold bg-white/20 px-2.5 py-1 rounded-lg hidden sm:inline">Ver Promos</span>
+              <span id="portal-arrow-arajet" class="text-lg font-bold transition-transform duration-300">▼</span>
             </div>
           </button>
           
-          <div id="portal-content-despegar" class="hidden p-6 dark:bg-slate-950/70 bg-slate-50 space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div id="portal-content-arajet" class="hidden p-6 dark:bg-slate-950/70 bg-slate-50 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-purple-400 mb-1">💳 Financiación Bancaria</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Hasta 12 Cuotas Fijas</h4>
+                <div class="text-xs font-bold uppercase text-purple-400 mb-1">🏝️ Tarifas Ultra Low-Cost</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Desde US$ 120 por Tramo</h4>
                 <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Promociones con Banco Santander, Galicia, BBVA y Macro en vuelos nacionales seleccionados y paquetes.
+                  Conexiones ultra económicas saliendo de Ezeiza directo a Santo Domingo y con conexión rápida a Punta Cana, Cancún, San Juan y Centroamérica.
                 </p>
               </div>
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-sky-400 mb-1">🎟️ Descuento en App</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Cupones Exclusivos</h4>
+                <div class="text-xs font-bold uppercase text-amber-400 mb-1">🎟️ Cupones y Descuentos</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Promociones Estacionales</h4>
                 <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Hasta $30.000 y $50.000 ARS de descuento ingresando el cupón promocional en vuelos internacionales a USA y Europa.
+                  Campañas periódicas con descuentos de hasta 40% OFF ingresando códigos promocionales directos en el checkout de la aerolínea.
                 </p>
               </div>
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-emerald-400 mb-1">⭐ Pasaporte Despegar</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Puntos Sin Vencimiento</h4>
+                <div class="text-xs font-bold uppercase text-sky-400 mb-1">✈️ Hub del Caribe (SDQ)</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Conexión Rápida Sin Visa USA</h4>
                 <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Sumá puntos dobles al combinar vuelo + alojamiento y canjealos en reservas futuras sin cargos adicionales.
+                  Tránsito internacional en el Aeropuerto de Las Américas (SDQ) sin requerimiento de visa estadounidense ni trámites consulares complejos.
                 </p>
               </div>
             </div>
-            <div class="flex items-center justify-between pt-2 border-t dark:border-slate-800 border-slate-200 text-xs">
-              <span class="dark:text-slate-400 text-slate-500">Aerolíneas aliadas: Aerolíneas Argentinas, GOL, Avianca, Iberia.</span>
-              <a href="https://www.despegar.com.ar/informacion/promos-bancarias" target="_blank" rel="noopener noreferrer"
-                 class="font-extrabold hover:underline flex items-center gap-1" style="color: var(--brand-primary);">
-                Ver Promociones Bancarias en Despegar &rarr;
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 border-t dark:border-slate-800 border-slate-200 text-xs">
+              <span class="dark:text-slate-400 text-slate-500">Operación regular desde el Aeropuerto Internacional de Ezeiza (EZE).</span>
+              <a href="https://www.arajet.com/es" target="_blank" rel="noopener noreferrer"
+                 class="font-extrabold flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-white shadow-md hover:brightness-110 hover:scale-[1.02] transition-all w-full sm:w-auto"
+                 style="background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);">
+                <span>Reservar en Web Oficial de Arajet</span>
               </a>
             </div>
           </div>
         </div>
 
-        <!-- 3. Almundo -->
+<!-- 3. JetSMART & Smiles Argentina -->
         <div class="rounded-3xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-md dark:bg-slate-900 bg-white theme-transition">
-          <button type="button" onclick="window.togglePortalAccordion('almundo')"
+          <button type="button" onclick="window.togglePortalAccordion('jetsmart')"
                   class="w-full px-6 py-5 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
-                  style="background: linear-gradient(135deg, #0088ff 0%, #ff6600 100%);">
+                  style="background: linear-gradient(135deg, #e20613 0%, #003876 100%);">
             <div class="flex items-center gap-3.5">
               <div class="w-11 h-11 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-xl shadow-inner border border-white/25 flex-shrink-0">
-                🌐
+                ✈️
               </div>
               <div>
                 <div class="flex items-center gap-2.5 flex-wrap">
-                  <h3 class="text-lg sm:text-xl font-extrabold tracking-tight">Almundo</h3>
+                  <h3 class="text-lg sm:text-xl font-extrabold tracking-tight">JetSMART &amp; Smiles</h3>
                   <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white/20 text-white border border-white/30">
-                    Hasta 6 Cuotas Sin Interés • Cupones Europa
+                    Ultra Low Cost • Canje Smiles • Cuotas en Pesos
                   </span>
                 </div>
                 <p class="text-xs text-white/85 mt-0.5">
-                  Convenios con Banco Galicia, Macro, Santander, ICBC y Comafi con asesoría personalizada.
+                  Tarifas ultra low cost con flota nueva de Airbus A320 y canje multimodal de millas Smiles.
                 </p>
               </div>
             </div>
             <div class="flex items-center gap-2 flex-shrink-0 ml-3">
               <span class="text-xs font-bold bg-white/15 px-2.5 py-1 rounded-lg hidden sm:inline">Ver Promos</span>
-              <span id="portal-arrow-almundo" class="text-lg font-bold transition-transform duration-300">▼</span>
+              <span id="portal-arrow-jetsmart" class="text-lg font-bold transition-transform duration-300">▼</span>
             </div>
           </button>
           
-          <div id="portal-content-almundo" class="hidden p-6 dark:bg-slate-950/70 bg-slate-50 space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div id="portal-content-jetsmart" class="hidden p-6 dark:bg-slate-950/70 bg-slate-50 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-orange-400 mb-1">💳 Cuotas Sin Interés</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Hasta 6 Cuotas Cero Interés</h4>
+                <div class="text-xs font-bold uppercase text-red-500 mb-1">🏷️ Club de Descuentos</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">JetSMART Club</h4>
                 <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Con Banco Macro (Selecta), Comafi Único e ICBC en servicios nacionales y vuelos seleccionados.
+                  Hasta 25% de ahorro en pasajes y equipaje en vuelos directos a Bariloche, Mendoza, Iguazú y Río de Janeiro.
                 </p>
               </div>
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-sky-400 mb-1">🎟️ Cupones Vigentes</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Códigos de Descuento</h4>
+                <div class="text-xs font-bold uppercase text-orange-500 mb-1">🪙 Smiles &amp; Money</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Millas + Cuotas en Pesos</h4>
                 <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Códigos promocionales especiales para vuelos a Madrid, Roma, Miami, Punta Cana y Cancún.
+                  Canjeá millas acumuladas en GOL, Avianca, American Airlines y Air Europa combinando pesos y millas en cuotas.
                 </p>
               </div>
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-emerald-400 mb-1">🛡️ Club Almundo</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Asistencia Bonificada</h4>
+                <div class="text-xs font-bold uppercase text-blue-500 mb-1">💳 Medios de Pago</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Naranja X &amp; Bancos</h4>
                 <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Hasta 40% OFF en cobertura médica internacional al emitir paquetes o vuelos de larga distancia.
+                  Financiación con Plan Z de Naranja X y promociones bancarias temporales con bancos regionales.
                 </p>
               </div>
             </div>
             <div class="flex items-center justify-between pt-2 border-t dark:border-slate-800 border-slate-200 text-xs">
-              <span class="dark:text-slate-400 text-slate-500">Atención telefónica y sucursales físicas en todo el país.</span>
-              <a href="https://almundo.com.ar/promociones/promociones-bancarias" target="_blank" rel="noopener noreferrer"
+              <span class="dark:text-slate-400 text-slate-500">Operación regular en Aeroparque (AEP) y Ezeiza (EZE).</span>
+              <a href="https://jetsmart.com/ar/es/minisitios/club-de-descuentos/" target="_blank" rel="noopener noreferrer"
                  class="font-extrabold hover:underline flex items-center gap-1" style="color: var(--brand-primary);">
-                Ver Cuotas y Promociones en Almundo &rarr;
+                Ver Descuentos JetSMART Club & Smiles
               </a>
             </div>
           </div>
         </div>
 
-        <!-- 4. Booking.com -->
-        <div class="rounded-3xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-md dark:bg-slate-900 bg-white theme-transition">
-          <button type="button" onclick="window.togglePortalAccordion('booking')"
-                  class="w-full px-6 py-5 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
-                  style="background: linear-gradient(135deg, #003580 0%, #006ce4 100%);">
-            <div class="flex items-center gap-3.5">
-              <div class="w-11 h-11 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-xl shadow-inner border border-white/25 flex-shrink-0">
-                🏨
-              </div>
-              <div>
-                <div class="flex items-center gap-2.5 flex-wrap">
-                  <h3 class="text-lg sm:text-xl font-extrabold tracking-tight">Booking.com</h3>
-                  <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white/20 text-white border border-white/30">
-                    Genius 10% a 20% OFF • Cancelación Flexible
-                  </span>
-                </div>
-                <p class="text-xs text-white/85 mt-0.5">
-                  Líder global en alojamientos, hoteles todo incluido, departamentos y paquetes Vuelo+Hotel.
-                </p>
-              </div>
-            </div>
-            <div class="flex items-center gap-2 flex-shrink-0 ml-3">
-              <span class="text-xs font-bold bg-white/15 px-2.5 py-1 rounded-lg hidden sm:inline">Ver Promos</span>
-              <span id="portal-arrow-booking" class="text-lg font-bold transition-transform duration-300">▼</span>
-            </div>
-          </button>
-          
-          <div id="portal-content-booking" class="hidden p-6 dark:bg-slate-950/70 bg-slate-50 space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-sky-400 mb-1">🎖️ Programa Genius</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Descuentos Vitalicios</h4>
-                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  10% a 20% de descuento directo en miles de propiedades en Bariloche, Mendoza, Madrid, Roma, Miami y Punta Cana.
-                </p>
-              </div>
-              <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-amber-400 mb-1">☕ Upgrades &amp; Desayuno</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Beneficios Gratuitos</h4>
-                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Desayuno de cortesía y mejora de habitación sin costo extra para usuarios Genius Nivel 2 y 3.
-                </p>
-              </div>
-              <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-emerald-400 mb-1">🛡️ Sin Sorpresas</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Cancelación Gratuita</h4>
-                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Reservá con anticipación y congelá la tarifa con la opción de cancelar sin penalidades hasta pocos días antes.
-                </p>
-              </div>
-            </div>
-            <div class="flex items-center justify-between pt-2 border-t dark:border-slate-800 border-slate-200 text-xs">
-              <span class="dark:text-slate-400 text-slate-500">Reserva oficial con confirmación inmediata y soporte 24/7 en español.</span>
-              <a href="https://www.booking.com/deals/index.es.html" target="_blank" rel="noopener noreferrer"
-                 class="font-extrabold hover:underline flex items-center gap-1" style="color: var(--brand-primary);">
-                Ver Ofertas y Descuentos Genius en Booking.com &rarr;
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. Aerolíneas Argentinas -->
+<!-- 4. Aerolíneas Argentinas -->
         <div class="rounded-3xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-md dark:bg-slate-900 bg-white theme-transition">
           <button type="button" onclick="window.togglePortalAccordion('aerolineas')"
                   class="w-full px-6 py-5 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
@@ -1397,7 +1538,7 @@
           </button>
           
           <div id="portal-content-aerolineas" class="hidden p-6 dark:bg-slate-950/70 bg-slate-50 space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
                 <div class="text-xs font-bold uppercase text-sky-400 mb-1">💳 Banco Nación (BNA)</div>
                 <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">6 Cuotas Sin Interés</h4>
@@ -1430,123 +1571,123 @@
           </div>
         </div>
 
-        <!-- 6. TurismoCity -->
+<!-- 5. Despegar -->
         <div class="rounded-3xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-md dark:bg-slate-900 bg-white theme-transition">
-          <button type="button" onclick="window.togglePortalAccordion('turismocity')"
+          <button type="button" onclick="window.togglePortalAccordion('despegar')"
                   class="w-full px-6 py-5 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
-                  style="background: linear-gradient(135deg, #ffb800 0%, #ff5500 100%);">
+                  style="background: linear-gradient(135deg, #6835f9 0%, #3861fb 100%);">
             <div class="flex items-center gap-3.5">
               <div class="w-11 h-11 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-xl shadow-inner border border-white/25 flex-shrink-0">
-                🏙️
+                🛫
               </div>
               <div>
                 <div class="flex items-center gap-2.5 flex-wrap">
-                  <h3 class="text-lg sm:text-xl font-extrabold tracking-tight">TurismoCity</h3>
+                  <h3 class="text-lg sm:text-xl font-extrabold tracking-tight">Despegar</h3>
                   <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white/20 text-white border border-white/30">
-                    Metabuscador Multi-Agencia • Alertas de Tarifas Bajas
+                    Hasta 12 Cuotas • Cupones App
                   </span>
                 </div>
                 <p class="text-xs text-white/85 mt-0.5">
-                  Compara en vivo entre más de 40 agencias online para encontrar quién tiene la tarifa final más baja en pesos.
+                  Tarjetazo semanal, beneficios bancarios y puntos Pasaporte en paquetes y vuelos.
                 </p>
               </div>
             </div>
             <div class="flex items-center gap-2 flex-shrink-0 ml-3">
               <span class="text-xs font-bold bg-white/15 px-2.5 py-1 rounded-lg hidden sm:inline">Ver Promos</span>
-              <span id="portal-arrow-turismocity" class="text-lg font-bold transition-transform duration-300">▼</span>
+              <span id="portal-arrow-despegar" class="text-lg font-bold transition-transform duration-300">▼</span>
             </div>
           </button>
           
-          <div id="portal-content-turismocity" class="hidden p-6 dark:bg-slate-950/70 bg-slate-50 space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div id="portal-content-despegar" class="hidden p-6 dark:bg-slate-950/70 bg-slate-50 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-amber-500 mb-1">🔍 Comparación Neutral</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Todas las OTAs en 1 Click</h4>
+                <div class="text-xs font-bold uppercase text-purple-400 mb-1">💳 Financiación Bancaria</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Hasta 12 Cuotas Fijas</h4>
                 <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Compara Despegar, Almundo, TiendaViajes, Booking y las webs de aerolíneas sin recargos ocultos.
+                  Promociones con Banco Santander, Galicia, BBVA y Macro en vuelos nacionales seleccionados y paquetes.
                 </p>
               </div>
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-rose-500 mb-1">🚨 Alertas de Errores</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Error Fares &amp; Descuentos</h4>
+                <div class="text-xs font-bold uppercase text-sky-400 mb-1">🎟️ Descuento en App</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Cupones Exclusivos</h4>
                 <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Sistema de detección de tarifas erróneas y bajas históricas con avisos inmediatos en app y web.
+                  Hasta $30.000 y $50.000 ARS de descuento ingresando el cupón promocional en vuelos internacionales a USA y Europa.
                 </p>
               </div>
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-emerald-500 mb-1">💳 Filtro por Banco</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Buscador por Cuotas</h4>
+                <div class="text-xs font-bold uppercase text-emerald-400 mb-1">⭐ Pasaporte Despegar</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Puntos Sin Vencimiento</h4>
                 <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Filtrá los resultados para ver únicamente vuelos que tengan cuotas sin interés con las tarjetas de tu banco.
+                  Sumá puntos dobles al combinar vuelo + alojamiento y canjealos en reservas futuras sin cargos adicionales.
                 </p>
               </div>
             </div>
             <div class="flex items-center justify-between pt-2 border-t dark:border-slate-800 border-slate-200 text-xs">
-              <span class="dark:text-slate-400 text-slate-500">Agregador de precios sin costo de intermediación para el usuario.</span>
-              <a href="https://www.turismocity.com.ar" target="_blank" rel="noopener noreferrer"
+              <span class="dark:text-slate-400 text-slate-500">Aerolíneas aliadas: Aerolíneas Argentinas, GOL, Avianca, Iberia.</span>
+              <a href="https://www.despegar.com.ar/informacion/promos-bancarias" target="_blank" rel="noopener noreferrer"
                  class="font-extrabold hover:underline flex items-center gap-1" style="color: var(--brand-primary);">
-                Comparar Ofertas en TurismoCity &rarr;
+                Ver Promociones Bancarias en Despegar &rarr;
               </a>
             </div>
           </div>
         </div>
 
-        <!-- 7. JetSMART & Smiles Argentina -->
+<!-- 6. Booking.com -->
         <div class="rounded-3xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-md dark:bg-slate-900 bg-white theme-transition">
-          <button type="button" onclick="window.togglePortalAccordion('jetsmart')"
+          <button type="button" onclick="window.togglePortalAccordion('booking')"
                   class="w-full px-6 py-5 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
-                  style="background: linear-gradient(135deg, #e20613 0%, #003876 100%);">
+                  style="background: linear-gradient(135deg, #003580 0%, #006ce4 100%);">
             <div class="flex items-center gap-3.5">
               <div class="w-11 h-11 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-xl shadow-inner border border-white/25 flex-shrink-0">
-                ✈️
+                🏨
               </div>
               <div>
                 <div class="flex items-center gap-2.5 flex-wrap">
-                  <h3 class="text-lg sm:text-xl font-extrabold tracking-tight">JetSMART &amp; Smiles</h3>
+                  <h3 class="text-lg sm:text-xl font-extrabold tracking-tight">Booking.com</h3>
                   <span class="px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-white/20 text-white border border-white/30">
-                    Ultra Low Cost • Canje Smiles • Cuotas en Pesos
+                    Genius 10% a 20% OFF • Cancelación Flexible
                   </span>
                 </div>
                 <p class="text-xs text-white/85 mt-0.5">
-                  Tarifas ultra low cost con flota nueva de Airbus A320 y canje multimodal de millas Smiles.
+                  Líder global en alojamientos, hoteles todo incluido, departamentos y paquetes Vuelo+Hotel.
                 </p>
               </div>
             </div>
             <div class="flex items-center gap-2 flex-shrink-0 ml-3">
               <span class="text-xs font-bold bg-white/15 px-2.5 py-1 rounded-lg hidden sm:inline">Ver Promos</span>
-              <span id="portal-arrow-jetsmart" class="text-lg font-bold transition-transform duration-300">▼</span>
+              <span id="portal-arrow-booking" class="text-lg font-bold transition-transform duration-300">▼</span>
             </div>
           </button>
           
-          <div id="portal-content-jetsmart" class="hidden p-6 dark:bg-slate-950/70 bg-slate-50 space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div id="portal-content-booking" class="hidden p-6 dark:bg-slate-950/70 bg-slate-50 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-red-500 mb-1">🏷️ Club de Descuentos</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">JetSMART Club</h4>
+                <div class="text-xs font-bold uppercase text-sky-400 mb-1">🎖️ Programa Genius</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Descuentos Vitalicios</h4>
                 <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Hasta 25% de ahorro en pasajes y equipaje en vuelos directos a Bariloche, Mendoza, Iguazú y Río de Janeiro.
+                  10% a 20% de descuento directo en miles de propiedades en Bariloche, Mendoza, Madrid, Roma, Miami y Punta Cana.
                 </p>
               </div>
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-orange-500 mb-1">🪙 Smiles &amp; Money</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Millas + Cuotas en Pesos</h4>
+                <div class="text-xs font-bold uppercase text-amber-400 mb-1">☕ Upgrades &amp; Desayuno</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Beneficios Gratuitos</h4>
                 <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Canjeá millas acumuladas en GOL, Avianca, American Airlines y Air Europa combinando pesos y millas en cuotas.
+                  Desayuno de cortesía y mejora de habitación sin costo extra para usuarios Genius Nivel 2 y 3.
                 </p>
               </div>
               <div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-                <div class="text-xs font-bold uppercase text-blue-500 mb-1">💳 Medios de Pago</div>
-                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Naranja X &amp; Bancos</h4>
+                <div class="text-xs font-bold uppercase text-emerald-400 mb-1">🛡️ Sin Sorpresas</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Cancelación Gratuita</h4>
                 <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  Financiación con Plan Z de Naranja X y promociones bancarias temporales con bancos regionales.
+                  Reservá con anticipación y congelá la tarifa con la opción de cancelar sin penalidades hasta pocos días antes.
                 </p>
               </div>
             </div>
             <div class="flex items-center justify-between pt-2 border-t dark:border-slate-800 border-slate-200 text-xs">
-              <span class="dark:text-slate-400 text-slate-500">Operación regular en Aeroparque (AEP) y Ezeiza (EZE).</span>
-              <a href="https://jetsmart.com/ar/es/minisitios/club-de-descuentos/" target="_blank" rel="noopener noreferrer"
+              <span class="dark:text-slate-400 text-slate-500">Reserva oficial con confirmación inmediata y soporte 24/7 en español.</span>
+              <a href="https://www.booking.com/deals/index.es.html" target="_blank" rel="noopener noreferrer"
                  class="font-extrabold hover:underline flex items-center gap-1" style="color: var(--brand-primary);">
-                Ver Descuentos JetSMART Club & Smiles &rarr;
+                Ver Ofertas y Descuentos Genius en Booking.com &rarr;
               </a>
             </div>
           </div>
@@ -1557,43 +1698,99 @@
     </div>
   
   <script>
+    // Función para copiar código promocional al portapapeles
+    
+    // Función de renderizado dinámico de Cupones Activos desde window.CUPONES_DATA
+    window.renderizarCuponesDinamicos = function() {
+      if (!window.CUPONES_DATA || !Array.isArray(window.CUPONES_DATA)) return;
+      var grid = document.getElementById("fb-cupones-grid");
+      if (!grid) return;
+      
+      grid.innerHTML = window.CUPONES_DATA.map(function(c) {
+        return '<div class="p-4 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200/90 shadow-sm flex flex-col justify-between hover:border-purple-500/40 transition-all">' +
+          '<div>' +
+            '<div class="flex items-center justify-between mb-2">' +
+              '<span class="text-xs font-extrabold px-2 py-0.5 rounded-full ' + (c.bgBadge || 'bg-purple-500/10') + ' ' + (c.colorText || 'text-purple-600') + ' border ' + (c.colorBorder || 'border-purple-500/20') + '">' +
+                c.portal + ' ' + (c.emoji || '') +
+              '</span>' +
+              '<span class="text-[10px] font-bold text-emerald-500">' + c.badge + '</span>' +
+            '</div>' +
+            '<div class="text-xs font-bold dark:text-white text-slate-900 mb-1">' +
+              c.titulo +
+            '</div>' +
+            '<div class="text-[11px] dark:text-slate-400 text-slate-500 mb-3">' +
+              c.descripcion +
+            '</div>' +
+          '</div>' +
+          '<div class="space-y-2 pt-2 border-t dark:border-slate-800/80 border-slate-100">' +
+            '<div class="flex items-center justify-between px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-950 border border-dashed border-slate-300 dark:border-slate-700">' +
+              '<span class="text-xs font-mono font-extrabold ' + (c.colorText || 'text-purple-600') + ' select-all">' + c.codigo + '</span>' +
+              '<button type="button" onclick="window.copiarCodigoPromo(this, \'' + c.codigo + '\')" class="text-[10px] font-bold px-2 py-0.5 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:text-purple-500 transition-all shadow-2xs">' +
+                'Copiar' +
+              '</button>' +
+            '</div>' +
+            '<a href="' + c.url + '" target="_blank" rel="noopener noreferrer" class="w-full py-1.5 rounded-xl text-center text-[11px] font-bold text-white block transition-all hover:brightness-110" style="background: ' + (c.gradienteBtn || 'linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)') + ';">' +
+              (c.btnTexto || 'Aplicar Promo') +
+            '</a>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    };
 
-    // Configuración Modular de Afiliados (vacío por defecto para enlaces 100% limpios y directos sin UTM rotos)
-    // Configuración Modular de Afiliados (Kiwi activo; Booking y Trip en proceso con Travelpayouts)
+    window.copiarCodigoPromo = function(btn, codigo) {
+      if (!navigator.clipboard) {
+        var tempInput = document.createElement("input");
+        tempInput.value = codigo;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+      } else {
+        navigator.clipboard.writeText(codigo).catch(function() {});
+      }
+      var origHtml = btn.innerHTML;
+      btn.innerHTML = "¡Copiado! ✓";
+      btn.classList.add("bg-emerald-600", "text-white", "border-emerald-600");
+      setTimeout(function() {
+        btn.innerHTML = origHtml;
+        btn.classList.remove("bg-emerald-600", "text-white", "border-emerald-600");
+      }, 2000);
+    };
+
+    // Configuración Modular de Afiliados
     const FB_AFFILIATE_CONFIG = {
-      kiwi: { param: 'affilid', id: 'travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785' },
-      booking: { param: 'aid', id: '' }, // Listo para vincular ID de Travelpayouts
-      trip: { param: 'Allianceid', id: '' }, // Listo para vincular ID de Trip.com
-      despegar: { param: 'utm_source', id: '' },
-      almundo: { param: 'utm_source', id: '' },
-      aerolineas: { param: 'utm_source', id: '' },
-      turismocity: { param: 'utm_source', id: '' },
-      jetsmart: { param: 'utm_source', id: '' }
+      kiwi: { param: "affilid", id: "travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785" },
+      booking: { param: "aid", id: "" },
+      trip: { param: "Allianceid", id: "" },
+      arajet: { param: "utm_source", id: "" },
+      despegar: { param: "utm_source", id: "" },
+      aerolineas: { param: "utm_source", id: "" },
+      jetsmart: { param: "utm_source", id: "" }
     };
 
     window.openAffiliateLink = function(portalKey, url) {
       const cfg = FB_AFFILIATE_CONFIG[portalKey];
       if (!cfg || !cfg.id) {
-        window.open(url, '_blank', 'noopener,noreferrer');
+        window.open(url, "_blank", "noopener,noreferrer");
         return false;
       }
-      const sep = url.indexOf('?') !== -1 ? '&' : '?';
-      const finalUrl = url + sep + encodeURIComponent(cfg.param) + '=' + encodeURIComponent(cfg.id);
-      window.open(finalUrl, '_blank', 'noopener,noreferrer');
+      const sep = url.indexOf("?") !== -1 ? "&" : "?";
+      const finalUrl = url + sep + encodeURIComponent(cfg.param) + "=" + encodeURIComponent(cfg.id);
+      window.open(finalUrl, "_blank", "noopener,noreferrer");
       return false;
     };
 
     window.togglePortalAccordion = function(portalId) {
-      var content = document.getElementById('portal-content-' + portalId);
-      var arrow = document.getElementById('portal-arrow-' + portalId);
+      var content = document.getElementById("portal-content-" + portalId);
+      var arrow = document.getElementById("portal-arrow-" + portalId);
       if (!content) return;
-      var isHidden = content.classList.contains('hidden');
+      var isHidden = content.classList.contains("hidden");
       if (isHidden) {
-        content.classList.remove('hidden');
-        if (arrow) arrow.style.transform = 'rotate(180deg)';
+        content.classList.remove("hidden");
+        if (arrow) arrow.style.transform = "rotate(180deg)";
       } else {
-        content.classList.add('hidden');
-        if (arrow) arrow.style.transform = 'rotate(0deg)';
+        content.classList.add("hidden");
+        if (arrow) arrow.style.transform = "rotate(0deg)";
       }
     };
   </script>
@@ -2087,7 +2284,7 @@
 
         <!-- Panel 5: Apps & Cupos Gratis -->
         <div id="vip-panel-apps" class="hidden space-y-4">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
             
             <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
               <div class="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center font-extrabold text-lg mb-3">
@@ -3052,6 +3249,7 @@
 
       // Inicialización en DOMContentLoaded
       document.addEventListener("DOMContentLoaded", function() {
+      if (window.renderizarCuponesDinamicos) { window.renderizarCuponesDinamicos(); }
         renderWalletChips();
         window.renderPromosCatalog();
       });
@@ -3080,7 +3278,7 @@
                 PLANIFICADOR VIAL ARGENTINA <span class="current-year">2026</span>
               </div>
               <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold dark:text-white text-slate-900 tracking-tight leading-tight">
-                ¿Viajás en auto? Descubrí nuestro Modo Ruta &amp; Escapadas
+                🚗 ¿Viajás en Auto por Argentina? Semáforo de Rutas, Peajes, Combustible y Controles Sanitarios
               </h2>
               <p class="text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed">
                 Calculá el gasto exacto de nafta y peajes de cualquier punto a punto del país, consultá el semáforo de baches en vivo, qué alimentos permite el SENASA y dónde cargar en paradores 24 hs.
@@ -3091,7 +3289,7 @@
             <a href="escapadas.html"
                class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 rounded-2xl text-base font-extrabold text-white shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 group-hover:brightness-110"
                style="background: var(--brand-gradient); box-shadow: 0 12px 28px -6px var(--brand-glow);">
-              <span>Abrir Asistente de Ruta Completo</span>
+              <span>Abrir Modo Ruta</span>
               <span class="text-lg">➔</span>
             </a>
           </div>
@@ -3619,9 +3817,9 @@
         const cdnUrl = `https://flagcdn.com/w80/${code}.png`;
         const localUrl = `img/flags/${code}.png`;
         if (tamano === 'sm') {
-          return `<img src="${localUrl}" onerror="this.src='${cdnUrl}'" alt="${dest.pais}" class="w-7 h-5 object-cover rounded shadow-sm border border-slate-200/60 dark:border-slate-700/80 flex-shrink-0 group-hover:scale-110 transition-transform" loading="lazy" />`;
+          return `<img src="${localUrl}" onerror="this.onerror=null; this.src='${cdnUrl}'" alt="${dest.pais}" class="w-7 h-5 object-cover rounded shadow-sm border border-slate-200/60 dark:border-slate-700/80 flex-shrink-0 group-hover:scale-110 transition-transform" loading="lazy" />`;
         }
-        return `<img src="${localUrl}" onerror="this.src='${cdnUrl}'" alt="${dest.pais}" class="w-12 h-8 sm:w-14 sm:h-9 object-cover rounded-md shadow-md border border-slate-200/60 dark:border-slate-700/80 flex-shrink-0" loading="lazy" />`;
+        return `<img src="${localUrl}" onerror="this.onerror=null; this.src='${cdnUrl}'" alt="${dest.pais}" class="w-12 h-8 sm:w-14 sm:h-9 object-cover rounded-md shadow-md border border-slate-200/60 dark:border-slate-700/80 flex-shrink-0" loading="lazy" />`;
       }
 
 
@@ -3635,14 +3833,15 @@
     const TIPO_CAMBIO_EUR_USD = 1.08;
     const EUROPE_DEST_IDS = ['madrid', 'barcelona', 'roma', 'paris', 'londres', 'berlin', 'frankfurt', 'amsterdam', 'atenas', 'oslo', 'reikiavik'];
 
-    // Migración e inicialización del modo de moneda (DEFAULT: cabotaje en pesos, Europa en euros, resto en dólares)
-    if (!localStorage.getItem('fb_user_currency_v3')) {
+    // Inicialización del modo de moneda: DEFAULT (Cabotaje ARS, Europa EUR, Resto USD) al iniciar
+    if (!localStorage.getItem('fb_user_currency_v6')) {
       localStorage.setItem('fb_user_currency', 'DEFAULT');
-      localStorage.setItem('fb_user_currency_v3', '1');
+      localStorage.setItem('fb_user_currency_v6', '1');
     }
     let currentMonedaGlobal = localStorage.getItem('fb_user_currency') || 'DEFAULT';
     if (currentMonedaGlobal !== 'DEFAULT' && currentMonedaGlobal !== 'ARS' && currentMonedaGlobal !== 'USD') {
       currentMonedaGlobal = 'DEFAULT';
+      localStorage.setItem('fb_user_currency', 'DEFAULT');
     }
     let currentSearchQuery = '';
 
@@ -3768,8 +3967,9 @@
       });
     };
 
-    // Selector Tri-Moneda: DEFAULT (Oficial) / ARS / USD
+    // Selector Tri-Moneda: DEFAULT (Cabotaje ARS, Europa EUR, Resto USD) / ARS / USD
     window.cambiarMonedaGlobal = function(moneda) {
+      if (moneda !== 'DEFAULT' && moneda !== 'ARS' && moneda !== 'USD') moneda = 'DEFAULT';
       currentMonedaGlobal = moneda;
       localStorage.setItem('fb_user_currency', moneda);
 
@@ -3777,20 +3977,33 @@
       const btnArs = document.getElementById('btn-curr-ars');
       const btnUsd = document.getElementById('btn-curr-usd');
 
-      const activeClass = 'px-2.5 py-1 rounded-xl transition-all dark:bg-slate-800 bg-rose-600 text-white shadow-xs';
-      const inactiveClass = 'px-2.5 py-1 rounded-xl transition-all dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white';
+      const activeStyle = 'px-2.5 py-1 rounded-xl transition-all text-white shadow-xs font-bold';
+      const inactiveStyle = 'px-2.5 py-1 rounded-xl transition-all dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white font-bold';
 
-      if (btnDefault) btnDefault.className = (moneda === 'DEFAULT') ? activeClass : inactiveClass;
-      if (btnArs) btnArs.className = (moneda === 'ARS') ? activeClass : inactiveClass;
-      if (btnUsd) btnUsd.className = (moneda === 'USD') ? activeClass : inactiveClass;
+      if (btnDefault) {
+        btnDefault.className = (moneda === 'DEFAULT') ? activeStyle : inactiveStyle;
+        btnDefault.style.backgroundColor = (moneda === 'DEFAULT') ? 'var(--brand-primary)' : 'transparent';
+      }
+      if (btnArs) {
+        btnArs.className = (moneda === 'ARS') ? activeStyle : inactiveStyle;
+        btnArs.style.backgroundColor = (moneda === 'ARS') ? 'var(--brand-primary)' : 'transparent';
+      }
+      if (btnUsd) {
+        btnUsd.className = (moneda === 'USD') ? activeStyle : inactiveStyle;
+        btnUsd.style.backgroundColor = (moneda === 'USD') ? 'var(--brand-primary)' : 'transparent';
+      }
 
-      // Re-renderizar sidebar y detalle de radar con la nueva moneda
+      // Re-renderizar sidebar, detalle de radar y comparador
       if (typeof renderSidebar === 'function') renderSidebar();
       if (typeof window.renderRadarDestino === 'function' && typeof currentDestinationId !== 'undefined') {
         window.renderRadarDestino(currentDestinationId);
       }
       if (typeof window.recalcularComparadorAutoAvion === 'function') {
         window.recalcularComparadorAutoAvion();
+      }
+      // Re-renderizar el rotador y la tarjeta de Rolli para que muestre la moneda activa
+      if (typeof window.refrescarRotadorRolli === 'function') {
+        window.refrescarRotadorRolli();
       }
     };
 
@@ -3979,6 +4192,73 @@
         sep: 8, septiembre: 8, set: 8, oct: 9, octubre: 9, nov: 10, noviembre: 10, dic: 11, diciembre: 11
       };
       const MESES_ABR_RADAR = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+      // =========================================================================
+      // UTILITARIO DE EXTRACCIÓN Y CONVERSIÓN DE FECHAS A FORMATO ISO (YYYY-MM-DD)
+      // =========================================================================
+      window.obtenerFechasISO = function(fechasStr, v) {
+        if (v && v.fecha_ida && v.fecha_vuelta && /^\d{4}-\d{2}-\d{2}$/.test(v.fecha_ida) && /^\d{4}-\d{2}-\d{2}$/.test(v.fecha_vuelta)) {
+          return { ida: v.fecha_ida, vuelta: v.fecha_vuelta };
+        }
+
+        if (!fechasStr || typeof fechasStr !== 'string') {
+          const hoy = new Date();
+          const dIda = new Date(hoy.getTime() + 30 * 24 * 3600 * 1000);
+          const dVuelta = new Date(hoy.getTime() + 37 * 24 * 3600 * 1000);
+          return {
+            ida: dIda.toISOString().split('T')[0],
+            vuelta: dVuelta.toISOString().split('T')[0]
+          };
+        }
+
+        const mesesMap = {
+          ene: '01', feb: '02', mar: '03', abr: '04', may: '05', jun: '06',
+          jul: '07', ago: '08', sep: '09', set: '09', oct: '10', nov: '11', dic: '12'
+        };
+
+        const s = fechasStr.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+        // Caso ISO directo en el texto (YYYY-MM-DD - YYYY-MM-DD)
+        const matchIso = s.match(/(\d{4}-\d{2}-\d{2})\s*[-–]\s*(\d{4}-\d{2}-\d{2})/);
+        if (matchIso) {
+          return { ida: matchIso[1], vuelta: matchIso[2] };
+        }
+
+        // Caso formato en español (ej. "13 Feb - 19 Feb 2027")
+        const regex = /(\d{1,2})\s+([a-z]{3,4})(?:\s+(\d{4}))?\s*[-–]\s*(\d{1,2})\s+([a-z]{3,4})\s*(\d{4})?/;
+        const match = s.match(regex);
+
+        if (match) {
+          const dia1 = String(match[1]).padStart(2, '0');
+          const mes1Str = match[2].slice(0, 3);
+          const mes1 = mesesMap[mes1Str] || '01';
+
+          const dia2 = String(match[4]).padStart(2, '0');
+          const mes2Str = match[5].slice(0, 3);
+          const mes2 = mesesMap[mes2Str] || mes1;
+
+          let year2 = match[6] || match[3] || new Date().getFullYear();
+          year2 = parseInt(year2, 10);
+          let year1 = match[3] ? parseInt(match[3], 10) : year2;
+
+          // Si cruza el cambio de año (ej. Dic a Ene)
+          if (parseInt(mes1, 10) > parseInt(mes2, 10) && !match[3]) {
+            year1 = year2 - 1;
+          }
+
+          return {
+            ida: `${year1}-${mes1}-${dia1}`,
+            vuelta: `${year2}-${mes2}-${dia2}`
+          };
+        }
+
+        const fallbackDate = new Date();
+        fallbackDate.setDate(fallbackDate.getDate() + 30);
+        const idaStr = fallbackDate.toISOString().split('T')[0];
+        fallbackDate.setDate(fallbackDate.getDate() + 7);
+        const vueltaStr = fallbackDate.toISOString().split('T')[0];
+        return { ida: idaStr, vuelta: vueltaStr };
+      };
 
       window.normalizarFechasVueloVigente = function(fechasStr, dest) {
         if (!fechasStr || typeof fechasStr !== 'string') return fechasStr || '';
@@ -4343,161 +4623,15 @@
         `;
       }
 
-      // Generar el HTML completo de una ciudad
-      function generarDetalleHtml(dest) {
+      // Generar la Cabecera de Ciudad y el Termómetro de Precios (Piso Superior lg:col-span-8)
+      function generarCabeceraYTermometroHtml(dest) {
         const subtituloDestino = dest.es_cabotaje ? 'Argentina · Ruta Nacional de Cabotaje' : (dest.pais + ' · Monitoreo Internacional');
-        const ciudadLimpia = (dest.ciudad || '').split('&')[0].split('(')[0].trim();
-
-        const gfQuery = encodeURIComponent(`Vuelos de Buenos Aires a ${dest.iata} ${dest.ciudad}`);
-        const googleFlightsUrl = `https://www.google.com/travel/flights?q=${gfQuery}&hl=es`;
-        const flightGfUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${dest.iata}%20from%20BUE&hl=es`;
-        const despegarUrl = `https://www.despegar.com.ar/vuelos/bue/${(dest.iata || '').toLowerCase()}`;
-        const almundoUrl = `https://almundo.com.ar/vuelos/resultados/BUE/${(dest.iata || '').toUpperCase()}`;
-        const bookingCityUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(ciudadLimpia)}`;
         const tgCmd = (dest.comando_tg || '').replace('/', '');
         const tgAlertUrl = `https://t.me/GnZFlightBot?start=${encodeURIComponent(tgCmd)}`;
-        const kiwiAffilId = 'travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785';
-
-
-        const vuelosHtml = dest.vuelos.map(v => {
-          const kiwiCurrency = dest.es_cabotaje ? 'ARS' : 'USD';
-          // Búsqueda flexible en Kiwi sin forzar fechas rígidas (para no disparar escalas absurdas)
-          const kiwiUrl = `https://www.kiwi.com/deep?from=BUE&to=${dest.iata}&currency=${kiwiCurrency}&lang=es&affilid=${kiwiAffilId}`;
-
-          // URL limpia de Google Flights sin fechas forzadas: abre el comparador oficial con origen BUE y destino IATA, mostrando tarifas reales y aerolíneas que sí operan la ruta
-          const flightGfUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${dest.iata}%20from%20BUE&hl=es`;
-
-          // Normalización dinámica defensiva de fechas vigentes (Auto-Rollover)
-          const fechasVigentes = window.normalizarFechasVueloVigente ? window.normalizarFechasVueloVigente(v.fechas, dest) : v.fechas;
-
-          return `
-          <div class="dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl p-4 shadow-sm hover:border-rose-500/40 transition-all flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-lg font-bold">${v.puesto}</span>
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
-                  ${v.destacado}
-                </span>
-              </div>
-              <div class="font-extrabold text-sm dark:text-white text-slate-900 mb-1">
-                ${v.aerolinea}
-              </div>
-              <div class="text-xs dark:text-slate-400 text-slate-500 mb-2 flex items-center gap-1.5">
-                <span>🛫 ${v.escalas}</span> · <span>🌙 ${v.noches} noches</span>
-              </div>
-              <div class="text-xs font-mono dark:text-slate-300 text-slate-700 bg-slate-100 dark:bg-slate-950 px-2 py-1 rounded-lg mb-3 inline-block">
-                📅 ${fechasVigentes}
-              </div>
-            </div>
-            <div class="pt-3 border-t dark:border-slate-800 border-slate-100 space-y-2.5">
-              <div class="flex items-center justify-between gap-2">
-                <div>
-                  <div class="text-[10px] uppercase font-bold dark:text-slate-500 text-slate-400">Total Final</div>
-                  <div class="text-sm font-extrabold" style="color: var(--brand-primary);">${window.formatearPrecioMoneda ? window.formatearPrecioMoneda(v.precio, dest) : v.precio}</div>
-                </div>
-                <div class="flex items-center gap-1.5">
-                  <button type="button" onclick="window.compartirOferta('${dest.ciudad}', '${v.puesto}', '${v.aerolinea}', '${v.precio}', '${fechasVigentes}', '${dest.iata}')"
-                          class="px-2 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-700 hover:text-emerald-500 border dark:border-slate-700 border-slate-200 transition-all hover:scale-105 flex items-center gap-1"
-                          title="Compartir oferta en WhatsApp o copiar enlace">
-                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                      <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
-                    </svg>
-                  </button>
-                  <a href="${flightGfUrl}" target="_blank" rel="noopener noreferrer"
-                     class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-white transition-all hover:scale-105 flex items-center gap-1 shadow-sm"
-                     style="background: var(--brand-gradient);" title="Buscar mejores tarifas en Google Flights (Buenos Aires ➔ ${dest.iata})">
-                    <span>Ver Vuelo</span> ↗
-                  </a>
-                  <a href="${tgAlertUrl}" target="_blank" rel="noopener noreferrer"
-                     class="px-2 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-700 hover:text-rose-500 border dark:border-slate-700 border-slate-200 transition-all hover:scale-105 flex items-center gap-1"
-                     title="Crear alerta de precio en Telegram (${dest.comando_tg})">
-                    <span>🔔</span>
-                  </a>
-                </div>
-              </div>
-              <div class="pt-2 border-t dark:border-slate-800/80 border-slate-100">
-                <div class="text-[10px] uppercase font-extrabold tracking-wider dark:text-slate-400 text-slate-500 mb-1.5 flex items-center justify-between">
-                  <span>Ver / Comparar en:</span>
-                  <span class="text-[10px] text-slate-400 font-normal">Portales Oficiales</span>
-                </div>
-                <div class="grid grid-cols-2 gap-1.5">
-                  <a href="${despegarUrl}" target="_blank" rel="noopener noreferrer"
-                     class="px-2 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 hover:bg-purple-500/15 dark:text-slate-200 text-slate-700 hover:text-purple-400 border dark:border-slate-700 border-slate-200 transition-all text-center flex items-center justify-center gap-1.5 hover:scale-[1.02]"
-                     title="Cotizar en Despegar (Cuotas en Argentina)">
-                    <span class="w-1.5 h-1.5 rounded-full bg-purple-500 flex-shrink-0"></span> Despegar
-                  </a>
-                  <a href="${almundoUrl}" target="_blank" rel="noopener noreferrer"
-                     class="px-2 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 hover:bg-sky-500/15 dark:text-slate-200 text-slate-700 hover:text-sky-400 border dark:border-slate-700 border-slate-200 transition-all text-center flex items-center justify-center gap-1.5 hover:scale-[1.02]"
-                     title="Cotizar en Almundo (Promos bancarias)">
-                    <span class="w-1.5 h-1.5 rounded-full bg-sky-400 flex-shrink-0"></span> Almundo
-                  </a>
-                  <a href="${kiwiUrl}" target="_blank" rel="noopener noreferrer"
-                     class="px-2 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 hover:bg-emerald-500/15 dark:text-slate-200 text-slate-700 hover:text-emerald-400 border dark:border-slate-700 border-slate-200 transition-all text-center flex items-center justify-center gap-1.5 hover:scale-[1.02]"
-                     title="Cotizar en Kiwi.com (Afiliado Oficial)">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0"></span> Kiwi.com ↗
-                  </a>
-                  <a href="${bookingCityUrl}" target="_blank" rel="noopener noreferrer"
-                     class="px-2 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 hover:bg-blue-500/15 dark:text-slate-200 text-slate-700 hover:text-blue-400 border dark:border-slate-700 border-slate-200 transition-all text-center flex items-center justify-center gap-1.5 hover:scale-[1.02]"
-                     title="Ver hoteles en ${dest.ciudad} en Booking.com">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></span> Booking ↗
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-        }).join('');
-
-        const hotelesHtml = dest.hoteles.map(h => `
-          <div class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
-            <div>
-              <div class="relative h-44 overflow-hidden bg-slate-800">
-                <img src="${h.foto}" alt="${h.nombre}"
-                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                <div class="absolute top-3 left-3 bg-slate-950/85 backdrop-blur-md text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/20 shadow-sm">
-                  ${h.badge}
-                </div>
-              </div>
-              <div class="p-5">
-                <div class="flex items-center justify-between gap-2 mb-1.5">
-                  <span class="text-xs text-amber-400 font-bold tracking-widest">${h.estrellas}</span>
-                  <span class="text-xs font-extrabold px-2 py-0.5 rounded-full dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 dark:text-emerald-400 text-emerald-600">
-                    ⭐ ${h.puntuacion}
-                  </span>
-                </div>
-                <h4 class="font-extrabold text-base dark:text-white text-slate-900 mb-1 leading-snug">
-                  ${h.nombre}
-                </h4>
-                <div class="text-xs text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-1">
-                  <span>📍</span> ${h.zona}
-                </div>
-                <div class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 mb-3">
-                  ${h.calificacion}
-                </div>
-                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
-                  ${h.descripcion}
-                </p>
-              </div>
-            </div>
-            <div class="p-5 pt-0">
-              <div class="p-3 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800/80 border-slate-200 flex items-center justify-between">
-                <div>
-                  <div class="text-[10px] uppercase font-bold dark:text-slate-400 text-slate-500">Tarifa Promedio</div>
-                  <div class="text-xs sm:text-sm font-extrabold dark:text-white text-slate-900">${window.formatearPrecioMoneda ? window.formatearPrecioMoneda(h.precio_noche, dest) : h.precio_noche}</div>
-                </div>
-                <a href="${h.booking_url}" target="_blank" rel="noopener noreferrer"
-                   class="px-3 py-1.5 rounded-xl text-xs font-bold text-white transition-all hover:brightness-110 flex items-center gap-1"
-                   style="background: var(--brand-gradient);">
-                  Ver Hotel &rarr;
-                </a>
-              </div>
-            </div>
-          </div>
-        `).join('');
 
         return `
-          <div class="space-y-12">
-            <!-- Encabezado de Ciudad -->
+          <div class="space-y-6">
+            <!-- Encabezado de Ciudad con Bandera, IATA y Botón Telegram -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b dark:border-slate-800/80 border-slate-200">
               <div class="flex items-center gap-4">
                 ${generarBanderaHtml(dest, 'lg')}
@@ -4521,56 +4655,250 @@
               </div>
             </div>
 
-            <p class="text-sm dark:text-slate-300 text-slate-600 leading-relaxed -mt-6">
+            <!-- Reseña del Destino -->
+            <p class="text-sm dark:text-slate-300 text-slate-600 leading-relaxed -mt-2">
               ${dest.resena}
             </p>
 
+            <!-- Termómetro de Precios y Gráfico Histórico -->
             ${generarTermometroHtml(dest)}
+          </div>
+        `;
+      }
 
-            <!-- SECCIÓN 1: TOP 3 VUELOS VIGENTES -->
+      // Generador Universal de Enlaces de Hoteles en Booking.com (Cero 404 & Fechas Sincronizadas)
+      function generarBookingHotelUrl(hotel, dest) {
+        const ciudadLimpia = (dest.ciudad || '').split('&')[0].split('(')[0].trim();
+        
+        // Obtener fechas del primer vuelo disponible (Top 1)
+        let checkin = '';
+        let checkout = '';
+        if (dest.vuelos && dest.vuelos[0]) {
+          const v = dest.vuelos[0];
+          if (v.fecha_ida && v.fecha_vuelta) {
+            checkin = v.fecha_ida;
+            checkout = v.fecha_vuelta;
+          } else if (window.obtenerFechasISO) {
+            const f = window.obtenerFechasISO(v.fechas, v);
+            if (f) {
+              checkin = f.ida;
+              checkout = f.vuelta;
+            }
+          }
+        }
+
+        // Búsqueda directa del hotel exacto en Booking con fechas precargadas
+        const query = encodeURIComponent(`${hotel.nombre} ${ciudadLimpia}`);
+        let url = `https://www.booking.com/searchresults.es.html?ss=${query}&lang=es`;
+        
+        if (checkin && checkout) {
+          url += `&checkin=${checkin}&checkout=${checkout}`;
+        }
+        
+        // Mantener parámetro de afiliado si existe
+        const aid = (window.FB_AFFILIATE_CONFIG && window.FB_AFFILIATE_CONFIG.booking && window.FB_AFFILIATE_CONFIG.booking.id) ? window.FB_AFFILIATE_CONFIG.booking.id : '';
+        if (aid) {
+          url += `&aid=${encodeURIComponent(aid)}`;
+        }
+
+        return url;
+      }
+
+      // Generar las Tarjetas de Vuelos y Hospedajes en Ancho Completo (Piso Inferior w-full)
+      function generarTarjetasFullWidthHtml(dest) {
+        const ciudadLimpia = (dest.ciudad || '').split('&')[0].split('(')[0].trim();
+        const flightGfUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${dest.iata}%20from%20BUE&hl=es`;
+        const bookingCityUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(ciudadLimpia)}&lang=es`;
+        const tgCmd = (dest.comando_tg || '').replace('/', '');
+        const tgAlertUrl = `https://t.me/GnZFlightBot?start=${encodeURIComponent(tgCmd)}`;
+        const kiwiAffilId = 'travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785';
+
+        const vuelosHtml = dest.vuelos.map(v => {
+          const fechasVigentes = window.normalizarFechasVueloVigente ? window.normalizarFechasVueloVigente(v.fechas, dest) : v.fechas;
+          const fechasIso = window.obtenerFechasISO ? window.obtenerFechasISO(fechasVigentes, v) : { ida: v.fecha_ida || '2027-02-13', vuelta: v.fecha_vuelta || '2027-02-19' };
+          const fechaIda = fechasIso.ida;
+          const fechaVuelta = fechasIso.vuelta;
+
+          const flightCardGfUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${dest.iata}%20from%20BUE%20on%20${fechaIda}%20through%20${fechaVuelta}&hl=es`;
+          const kiwiUrl = `https://www.kiwi.com/deep?from=BUE&to=${dest.iata}&departure=${fechaIda}&return=${fechaVuelta}&currency=${dest.es_cabotaje ? 'ARS' : 'USD'}&lang=es&affilid=${kiwiAffilId}`;
+          const despegarUrl = `https://www.despegar.com.ar/vuelos/bue/${(dest.iata || '').toLowerCase()}?from=BUE&to=${(dest.iata || '').toUpperCase()}&departureDate=${fechaIda}&returnDate=${fechaVuelta}`;
+          const bookingHotelUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(ciudadLimpia)}&checkin=${fechaIda}&checkout=${fechaVuelta}`;
+
+          const precioFormateado = window.formatearPrecioMoneda ? window.formatearPrecioMoneda(v.precio, dest) : v.precio;
+
+          return `
+          <div class="dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-5 shadow-sm hover:border-rose-500/40 transition-all flex flex-col justify-between h-full">
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-lg">✈️</span>
-                  <h4 class="text-base sm:text-lg font-extrabold dark:text-white text-slate-900">
-                    Top 3 Vuelos Más Económicos Vigentes
-                  </h4>
+              <!-- Cabecera con Medalla / Badge completo sin truncar y Acciones secundarias -->
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="text-base font-bold flex-shrink-0">${v.puesto}</span>
+                  <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">${v.destacado}</span>
                 </div>
-                <a href="${flightGfUrl}" target="_blank" rel="noopener noreferrer"
-                   class="text-xs font-bold text-rose-500 hover:text-rose-400 flex items-center gap-1">
-                  <span>Explorar en Google Flights</span> ↗
-                </a>
+                <div class="flex items-center gap-1.5 flex-shrink-0">
+                  <button type="button" onclick="window.compartirOferta('${dest.ciudad}', '${v.puesto}', '${v.aerolinea}', '${v.precio}', '${fechasVigentes}', '${dest.iata}')"
+                          class="w-7 h-7 rounded-lg dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 hover:text-emerald-500 flex items-center justify-center transition-colors"
+                          title="Compartir oferta en WhatsApp o copiar enlace">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                      <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                    </svg>
+                  </button>
+                  <a href="${tgAlertUrl}" target="_blank" rel="noopener noreferrer"
+                     class="w-7 h-7 rounded-lg dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 hover:text-rose-500 flex items-center justify-center text-xs transition-colors"
+                     title="Crear alerta de precio en Telegram (${dest.comando_tg})">
+                    <span>🔔</span>
+                  </a>
+                </div>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                ${vuelosHtml}
+
+              <!-- Info de la Aerolínea y Fechas -->
+              <div class="font-extrabold text-sm dark:text-white text-slate-900 mb-1">
+                ${v.aerolinea}
               </div>
-              <!-- Leyenda aclaratoria de tarifas de referencia -->
-              <div class="mt-3.5 p-3.5 rounded-2xl dark:bg-slate-900/70 bg-slate-50 border dark:border-slate-800 border-slate-200/80 flex items-start sm:items-center gap-3 text-xs dark:text-slate-400 text-slate-500 shadow-xs">
-                <span class="text-base flex-shrink-0">ℹ️</span>
-                <p class="leading-relaxed">
-                  <strong class="dark:text-slate-200 text-slate-700 font-semibold">Tarifas estimadas de referencia:</strong>
-                  Precios finales ida y vuelta detectados en promociones recientes. El valor en tiempo real y la disponibilidad de cupos se confirman al instante al ingresar en <strong class="dark:text-slate-200 text-slate-700 font-semibold">Ver Vuelo / Google Flights</strong> o en los portales oficiales de reserva.
-                </p>
+              <div class="text-xs dark:text-slate-400 text-slate-500 mb-2 flex items-center gap-1.5">
+                <span>🛫 ${v.escalas}</span> · <span>🌙 ${v.noches} noches</span>
+              </div>
+              <div class="text-xs font-mono dark:text-slate-300 text-slate-700 bg-slate-100 dark:bg-slate-950 px-2.5 py-1 rounded-lg mb-3 inline-block">
+                📅 ${fechasVigentes}
               </div>
             </div>
 
-            <!-- SECCIÓN 2: LOS 3 MEJORES HOSPEDAJES -->
+            <!-- Bloque Inferior Balanceado -->
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-2">
-                  <span class="text-lg">🏨</span>
-                  <h4 class="text-base sm:text-lg font-extrabold dark:text-white text-slate-900">
-                    Los 3 Hospedajes Más Recomendados
-                  </h4>
+              <!-- Tarifa Final en una sola línea horizontal -->
+              <div class="mb-3 pt-3 border-t dark:border-slate-800/80 border-slate-100">
+                <span class="block text-[10px] uppercase font-bold tracking-wider dark:text-slate-400 text-slate-500">Tarifa Final Estimada (Ida y Vuelta)</span>
+                <div class="text-2xl font-extrabold font-mono tracking-tight whitespace-nowrap" style="color: var(--brand-primary);">${precioFormateado}</div>
+              </div>
+
+              <!-- Botón Principal Ver Vuelo Destacado -->
+              <a href="${flightCardGfUrl}" target="_blank" rel="noopener noreferrer"
+                 class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white transition-all hover:brightness-110 flex items-center justify-center gap-1.5 shadow-md mb-3"
+                 style="background: var(--brand-gradient);"
+                 title="Buscar mejores tarifas en Google Flights (Buenos Aires ➔ ${dest.iata})">
+                <span>Ver Vuelo</span>
+              </a>
+
+              <!-- Botonera con Colores Corporativos Oficiales Restaurados -->
+              <div class="space-y-1.5">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Cotizar también en:</div>
+                <div class="grid grid-cols-3 gap-2 text-center">
+                  <a href="${kiwiUrl}" target="_blank" rel="noopener noreferrer"
+                     class="py-2 px-1.5 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
+                     style="background: linear-gradient(135deg, #00a991 0%, #047857 100%);"
+                     title="Cotizar en Kiwi.com (${fechaIda} al ${fechaVuelta})">
+                    <span>🥝</span>
+                    <span class="truncate">Kiwi.com</span>
+                  </a>
+                  <a href="${despegarUrl}" target="_blank" rel="noopener noreferrer"
+                     class="py-2 px-1.5 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
+                     style="background: linear-gradient(135deg, #4300d2 0%, #6835f9 100%);"
+                     title="Cotizar en Despegar (${fechaIda} al ${fechaVuelta})">
+                    <span>🛫</span>
+                    <span class="truncate">Despegar</span>
+                  </a>
+                  <a href="${bookingHotelUrl}" target="_blank" rel="noopener noreferrer"
+                     class="py-2 px-1.5 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
+                     style="background: linear-gradient(135deg, #003580 0%, #006ce4 100%);"
+                     title="Ver hoteles en ${dest.ciudad} (${fechaIda} al ${fechaVuelta}) en Booking.com">
+                    <span>🏨</span>
+                    <span class="truncate">Booking.com</span>
+                  </a>
                 </div>
-                <a href="${bookingCityUrl}" target="_blank" rel="noopener noreferrer"
-                   class="text-xs font-bold text-rose-500 hover:text-rose-400 flex items-center gap-1">
-                  <span>Ver todos en Booking.com</span> ↗
+              </div>
+            </div>
+          </div>
+        `;
+        }).join('');
+
+        const hotelesHtml = dest.hoteles.map(h => `
+          <div class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+            <div>
+              <div class="relative h-48 overflow-hidden bg-slate-800">
+                <img src="${h.foto}" alt="${h.nombre}"
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                <div class="absolute top-3 left-3 bg-slate-950/85 backdrop-blur-md text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/20 shadow-sm">
+                  ${h.badge}
+                </div>
+              </div>
+              <div class="p-5">
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                  <span class="text-xs text-amber-400 font-bold tracking-widest">${h.estrellas}</span>
+                  <span class="text-xs font-extrabold px-2 py-0.5 rounded-full dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 dark:text-emerald-400 text-emerald-600">
+                    ⭐ ${h.puntuacion}
+                  </span>
+                </div>
+                <h4 class="font-extrabold text-base dark:text-white text-slate-900 mb-1 leading-snug">
+                  ${h.nombre}
+                </h4>
+                <div class="text-xs text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-1">
+                  <span>📍</span> ${h.zona}
+                </div>
+                <div class="text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 mb-3">
+                  ${h.calificacion}
+                </div>
+              </div>
+            </div>
+            <div class="p-5 pt-0">
+              <div class="p-3 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800/80 border-slate-200 flex items-center justify-between">
+                <div>
+                  <div class="text-[10px] uppercase font-bold dark:text-slate-400 text-slate-500">Tarifa Promedio</div>
+                  <div class="text-xs sm:text-sm font-extrabold dark:text-white text-slate-900">${window.formatearPrecioMoneda ? window.formatearPrecioMoneda(h.precio_noche, dest) : h.precio_noche}</div>
+                </div>
+                <a href="${generarBookingHotelUrl(h, dest)}" target="_blank" rel="noopener noreferrer sponsored"
+                   class="px-3 py-1.5 rounded-xl text-xs font-bold text-white transition-all hover:brightness-110 flex items-center gap-1 shadow-xs"
+                   style="background: var(--brand-gradient);">
+                  <span>Ver Hotel</span>
                 </a>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                ${hotelesHtml}
+            </div>
+          </div>
+        `).join('');
+
+        return `
+          <!-- SECCIÓN 1: TOP 3 VUELOS VIGENTES (ANCHO COMPLETO) -->
+          <div class="mb-12">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">✈️</span>
+                <h4 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900">
+                  Top 3 Vuelos Más Económicos Vigentes
+                </h4>
               </div>
+              <a href="${flightGfUrl}" target="_blank" rel="noopener noreferrer"
+                 class="text-xs font-bold text-rose-500 hover:text-rose-400 flex items-center gap-1">
+                <span>Explorar en Google Flights</span>
+              </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch mb-4">
+              ${vuelosHtml}
+            </div>
+            <!-- Leyenda aclaratoria de tarifas de referencia y fechas exactas -->
+            <div class="p-3.5 rounded-2xl dark:bg-slate-900/70 bg-slate-50 border dark:border-slate-800 border-slate-200/80 flex items-start sm:items-center gap-3 text-xs dark:text-slate-400 text-slate-500 shadow-xs">
+              <span class="text-base flex-shrink-0">ℹ️</span>
+              <p class="leading-relaxed">
+                <strong class="dark:text-slate-200 text-slate-700 font-semibold">Tarifas y Fechas Exactas:</strong>
+                Tarifas detectadas por el radar en tiempo real para las fechas exactas indicadas. La disponibilidad y el precio final se confirman al instante en el portal oficial de la aerolínea o agencia.
+              </p>
+            </div>
+          </div>
+
+          <!-- SECCIÓN 2: LOS 3 MEJORES HOSPEDAJES (ANCHO COMPLETO) -->
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🏨</span>
+                <h4 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900">
+                  Los 3 Hospedajes Más Recomendados
+                </h4>
+              </div>
+              <a href="${bookingCityUrl}" target="_blank" rel="noopener noreferrer sponsored"
+                 class="text-xs font-bold text-rose-500 hover:text-rose-400 flex items-center gap-1">
+                <span>Ver todos en Booking.com</span>
+              </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              ${hotelesHtml}
             </div>
           </div>
         `;
@@ -4581,26 +4909,39 @@
         if (destId === currentDestinationId && !isInitial) return;
         if (isTransitioning) return;
 
-        const container = document.getElementById('fb-radar-detail-container');
-        if (!container) return;
+        const headerContainer = document.getElementById('fb-radar-header-container');
+        const cardsContainer = document.getElementById('fb-radar-cards-container');
+        const oldDetailContainer = document.getElementById('fb-radar-detail-container');
 
         const dest = RADAR_DATA.find(d => d.id === destId) || RADAR_DATA[0];
         currentDestinationId = dest.id;
         updateSidebarSelection(dest.id);
 
+        const headerHtml = generarCabeceraYTermometroHtml(dest);
+        const cardsHtml = generarTarjetasFullWidthHtml(dest);
+
         if (isInitial) {
-          container.innerHTML = generarDetalleHtml(dest);
+          if (headerContainer) headerContainer.innerHTML = headerHtml;
+          if (cardsContainer) cardsContainer.innerHTML = cardsHtml;
+          if (oldDetailContainer && !headerContainer) oldDetailContainer.innerHTML = headerHtml + cardsHtml;
           return;
         }
 
-        // Transición sutil y fluida: desvanecimiento suave de 120ms y entrada de 200ms
+        // Transición fluida sincronizada
         isTransitioning = true;
-        container.classList.add('fb-dest-fading');
+        if (headerContainer) headerContainer.classList.add('fb-dest-fading');
+        if (cardsContainer) cardsContainer.classList.add('fb-dest-fading');
+        if (oldDetailContainer && !headerContainer) oldDetailContainer.classList.add('fb-dest-fading');
 
         setTimeout(() => {
-          container.innerHTML = generarDetalleHtml(dest);
+          if (headerContainer) headerContainer.innerHTML = headerHtml;
+          if (cardsContainer) cardsContainer.innerHTML = cardsHtml;
+          if (oldDetailContainer && !headerContainer) oldDetailContainer.innerHTML = headerHtml + cardsHtml;
+
           requestAnimationFrame(() => {
-            container.classList.remove('fb-dest-fading');
+            if (headerContainer) headerContainer.classList.remove('fb-dest-fading');
+            if (cardsContainer) cardsContainer.classList.remove('fb-dest-fading');
+            if (oldDetailContainer && !headerContainer) oldDetailContainer.classList.remove('fb-dest-fading');
             setTimeout(() => {
               isTransitioning = false;
             }, 220);
@@ -4608,7 +4949,7 @@
         }, 120);
       };
 
-      // Función para compartir ofertas de vuelo
+            // Función para compartir ofertas de vuelo
       window.compartirOferta = function(ciudad, puesto, aerolinea, precio, fechas, iata) {
         const texto = `✈️ ¡Mirá esta oferta que encontré en FlightBot!\n📍 ${ciudad} (${iata})\n${puesto} ${aerolinea}\n📅 ${fechas}\n💵 ${precio}\n\nDescubrila acá: ${window.location.origin}/#radar-vuelos`;
         if (navigator.share) {
@@ -4654,10 +4995,14 @@
         if (btnTodos) btnTodos.textContent = `Todos (${total})`;
 
         const btnCabotaje = document.getElementById('fb-filter-cabotaje');
-        if (btnCabotaje) btnCabotaje.textContent = `🇦🇷 Cabotaje (${cabotajeCount})`;
+        if (btnCabotaje) {
+          btnCabotaje.innerHTML = `<span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje (${cabotajeCount})</span>`;
+        }
 
         const btnBrasil = document.getElementById('fb-filter-brasil');
-        if (btnBrasil) btnBrasil.textContent = `🇧🇷 Brasil (${brasilCount})`;
+        if (btnBrasil) {
+          btnBrasil.innerHTML = `<span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil (${brasilCount})</span>`;
+        }
 
         const btnCaribe = document.getElementById('fb-filter-caribe_usa');
         if (btnCaribe) btnCaribe.textContent = `🏝️ América & Caribe (${caribeCount})`;
@@ -4677,8 +5022,6 @@
       window.actualizarContadoresRadar = actualizarContadoresRadar;
 
 
-      // Sincronización asíncrona con API de vuelos y fallback resiliente a datos locales
-      async 
       // Sincronización reactiva con el rotador completo de ofertas cazadas
       function actualizarBurbujaYTarjetasRolli() {
         if (window.refrescarRotadorRolli) {
@@ -4687,7 +5030,8 @@
       }
       window.actualizarBurbujaYTarjetasRolli = actualizarBurbujaYTarjetasRolli;
 
-      function sincronizarVuelosDesdeApi() {
+      // Sincronización asíncrona con API de vuelos y fallback resiliente a datos locales
+      async function sincronizarVuelosDesdeApi() {
         try {
           let apiUrl = '/api/vuelos';
           if (typeof process !== 'undefined' && process.env && process.env.BACKEND_API_URL) {
@@ -4877,19 +5221,24 @@
   <script>
     (function initDynamicTimers() {
       // 1. Tiempos relativos dinámicos de las tarjetas de Rolli
-      const dealFoundTimestamp = Date.now() - (14 * 60 * 1000);
+      let dealFoundTimestamp = Date.now() - (14 * 60 * 1000);
       const histFoundTimestamp = Date.now() - (3 * 3600 * 1000 + 15 * 60 * 1000);
 
       function actualizarTiemposRolli() {
         const dealEl = document.getElementById('rolli-deal-time');
         if (dealEl) {
-          const elapsedMin = Math.max(1, Math.floor((Date.now() - dealFoundTimestamp) / 60000));
-          if (elapsedMin < 60) {
-            dealEl.textContent = `hace ${elapsedMin} min`;
+          const elapsedSec = Math.max(1, Math.floor((Date.now() - dealFoundTimestamp) / 1000));
+          if (elapsedSec < 60) {
+            dealEl.textContent = `hace ${elapsedSec} seg`;
           } else {
-            const hs = Math.floor(elapsedMin / 60);
-            const m = elapsedMin % 60;
-            dealEl.textContent = `hace ${hs} hs ${m} min`;
+            const elapsedMin = Math.floor(elapsedSec / 60);
+            if (elapsedMin < 60) {
+              dealEl.textContent = `hace ${elapsedMin} min`;
+            } else {
+              const hs = Math.floor(elapsedMin / 60);
+              const m = elapsedMin % 60;
+              dealEl.textContent = `hace ${hs} hs ${m} min`;
+            }
           }
         }
 
@@ -4900,6 +5249,11 @@
           histEl.textContent = `hace ${hs} hs`;
         }
       }
+
+      window.setRolliDealTimeOffset = function(minutos) {
+        dealFoundTimestamp = Date.now() - (minutos * 60 * 1000);
+        actualizarTiemposRolli();
+      };
 
       // 2. Cuenta regresiva de expiración de cupo (rotativo entre 4 y 6 horas)
       let expiryTime = parseInt(sessionStorage.getItem('fb_deal_expiry_timestamp'), 10);
@@ -4966,7 +5320,7 @@
 
       // Intervalos periódicos
       setInterval(actualizarCountdownCupo, 1000);
-      setInterval(actualizarTiemposRolli, 60000);
+      setInterval(actualizarTiemposRolli, 10000);
       setInterval(actualizarUltimoEscaneoRadar, 60000);
       setInterval(actualizarHoraFooter, 60000);
     })();
@@ -5130,7 +5484,8 @@
         const siguiente = ofertasCazadas[(currentIndex + 1) % ofertasCazadas.length];
 
         const vActual = (actual.vuelos && actual.vuelos[0]) ? actual.vuelos[0] : {};
-        const precioActual = actual.precio_desde || vActual.precio || 'Consultar';
+        const precioRaw = actual.precio_desde || vActual.precio || 'Consultar';
+        const precioActual = window.formatearPrecioMoneda ? window.formatearPrecioMoneda(precioRaw, actual) : precioRaw;
         const ciudadCompleta = actual.ciudad || actual.nombre || actual.id;
         const ciudadLimpia = limpiarNombreCiudad(ciudadCompleta);
         const iataActual = actual.iata || '';
@@ -5142,8 +5497,11 @@
         const badgeActual = vActual.destacado || 'Tarifa récord cazada';
 
         // Actualizar elementos de la tarjeta sin mezclas
+        const codeActual = actual.codigo_pais || 'ar';
         const flagEl = document.getElementById('rolli-deal-flag');
-        if (flagEl) flagEl.textContent = banderaActual;
+        if (flagEl) {
+          flagEl.innerHTML = `<img src="img/flags/${codeActual}.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/${codeActual}.png'" alt="${actual.pais || ''}" class="w-6 h-4 object-cover rounded shadow-xs inline-block" />`;
+        }
 
         const cityEl = document.getElementById('rolli-deal-city');
         if (cityEl) cityEl.textContent = ciudadLimpia;
@@ -5165,6 +5523,19 @@
 
         const fechasEl = document.getElementById('rolli-deal-fechas');
         if (fechasEl) fechasEl.textContent = fechasActual;
+
+        // Cupos dinámicos por oferta cazada
+        const dealCuposList = [3, 2, 4, 1, 3, 2, 5];
+        const cupoEl = document.getElementById('rolli-deal-cupos');
+        if (cupoEl) {
+          cupoEl.textContent = `${dealCuposList[currentIndex % dealCuposList.length]} cupos`;
+        }
+
+        // Tiempo transcurrido dinámico por oferta
+        const dealOffsets = [6, 14, 9, 21, 12, 18, 27];
+        if (typeof window.setRolliDealTimeOffset === 'function') {
+          window.setRolliDealTimeOffset(dealOffsets[currentIndex % dealOffsets.length]);
+        }
 
         const indexEl = document.getElementById('rolli-deal-index');
         if (indexEl) indexEl.textContent = `${currentIndex + 1}/${ofertasCazadas.length}`;
@@ -5195,12 +5566,15 @@
         // 4. Actualizar miniatura de la siguiente oferta
         if (siguiente) {
           const vSig = (siguiente.vuelos && siguiente.vuelos[0]) ? siguiente.vuelos[0] : {};
+          const codeSiguiente = siguiente.codigo_pais || 'ar';
           const nextFlagEl = document.getElementById('rolli-next-flag');
-          if (nextFlagEl) nextFlagEl.textContent = siguiente.bandera || '✈️';
+          if (nextFlagEl) {
+            nextFlagEl.innerHTML = `<img src="img/flags/${codeSiguiente}.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/${codeSiguiente}.png'" alt="${siguiente.pais || ''}" class="w-4 h-3 object-cover rounded-xs inline-block" />`;
+          }
           const nextCityEl = document.getElementById('rolli-next-city');
           if (nextCityEl) nextCityEl.textContent = `${limpiarNombreCiudad(siguiente.ciudad || siguiente.nombre)} (${siguiente.iata})`;
           const nextPriceEl = document.getElementById('rolli-next-price');
-          if (nextPriceEl) nextPriceEl.textContent = siguiente.precio_desde || vSig.precio || 'Consultar';
+          if (nextPriceEl) nextPriceEl.textContent = window.formatearPrecioMoneda ? window.formatearPrecioMoneda(siguiente.precio_desde || vSig.precio, siguiente) : (siguiente.precio_desde || vSig.precio || 'Consultar');
         }
       }
 

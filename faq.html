@@ -256,23 +256,23 @@
       </div>
 
       <!-- Barra de Navegación Central Simétrica -->
-      <nav class="hidden lg:flex items-center p-1 rounded-full dark:bg-slate-900/80 bg-slate-100/90 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-0.5 xl:gap-1 mx-auto">
-        <a href="index.html#radar-vuelos" class="nav-dock-btn">
+            <nav class="hidden lg:flex items-center p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-1 xl:gap-1.5 mx-auto">
+        <a href="index.html#radar-vuelos" id="nav-btn-vuelos" class="nav-dock-btn">
           <span>✈️</span> Vuelos
         </a>
-        <a href="index.html#destinos" class="nav-dock-btn">
+        <a href="index.html#destinos" id="nav-btn-destinos" class="nav-dock-btn">
           <span>🏨</span> Destinos
         </a>
-        <a href="escapadas.html" class="nav-dock-btn">
+        <a href="escapadas.html" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="billetera.html" class="nav-dock-btn">
-          <span>🧳</span> Billetera
+        <a href="billetera.html" id="nav-btn-billetera" class="nav-dock-btn">
+          <span>💳</span> Billetera
         </a>
-        <a href="guias/index.html" class="nav-dock-btn">
+        <a href="guias/index.html" id="nav-btn-guias" class="nav-dock-btn">
           <span>📖</span> Guías
         </a>
-        <a href="faq.html" class="nav-dock-btn is-active">
+        <a href="faq.html" id="nav-btn-faq" class="nav-dock-btn is-active">
           <span>❓</span> FAQ
         </a>
       </nav>
@@ -319,7 +319,7 @@
     </div>
 
     <!-- Menú Móvil Desplegable -->
-    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
+        <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
       <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
         <a href="index.html#radar-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>✈️</span> Vuelos
@@ -331,12 +331,12 @@
           <span>🚗</span> Modo Ruta
         </a>
         <a href="billetera.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>🧳</span> Billetera
+          <span>💳</span> Billetera
         </a>
         <a href="guias/index.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>📖</span> 53 Guías
+          <span>📖</span> Guías
         </a>
-        <a href="faq.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white" style="background-color: var(--brand-primary);">
+        <a href="faq.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
           <span>❓</span> FAQ
         </a>
       </div>
