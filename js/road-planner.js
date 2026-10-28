@@ -424,6 +424,52 @@ function obtenerCorredorVial(destinoTexto) {
   };
 }
 
+// Automatización dinámica de contadores de escapadas
+window.actualizarContadoresEscapadas = function() {
+  const cards = document.querySelectorAll('.esc-card');
+  const total = cards.length;
+  if (!total) return;
+
+  const counts = { todas: total };
+  cards.forEach(card => {
+    const cat = card.getAttribute('data-cat');
+    if (cat) {
+      counts[cat] = (counts[cat] || 0) + 1;
+    }
+  });
+
+  const countBadge = document.getElementById('escapadas-total-count');
+  if (countBadge) {
+    countBadge.textContent = total;
+  }
+  const subtitleEl = document.getElementById('escapadas-header-subtitle');
+  if (subtitleEl && !countBadge) {
+    subtitleEl.innerHTML = `Explorá las <b>${total} guías</b> organizadas en 4 anillos con base en Buenos Aires. Calculá presupuesto real con <b>nafta Shell ($2.200)</b>, peajes exactos, tramos rotos y <b>ahorro por Ley Patagónica</b>.`;
+  }
+
+  const titulosBase = {
+    todas: '🌟 Todas las Guías',
+    finde_corto: '🟢 Finde Corto (< 3.5 hs · hasta 250 km)',
+    finde_largo: '🟡 Finde Largo (4 a 6.5 hs · 350-550 km)',
+    vacaciones_semana: '🔵 Vacaciones 1 Semana (7 a 11 hs · 600-950 km)',
+    gran_ruta: '🟣 Grandes Rutas (+1000 km)'
+  };
+
+  document.querySelectorAll('.esc-filtro-btn').forEach(btn => {
+    const cat = btn.getAttribute('data-cat') || (btn.id ? btn.id.replace('btn-filtro-', '') : null);
+    if (cat && counts[cat] !== undefined) {
+      const base = titulosBase[cat] || btn.textContent.replace(/\s*\(\d+\)/, '').trim();
+      btn.textContent = `${base} (${counts[cat]})`;
+    }
+  });
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', window.actualizarContadoresEscapadas);
+} else {
+  window.actualizarContadoresEscapadas();
+}
+
 // Filtro interactivo de tarjetas de escapadas
 window.filtrarEscapadas = function(cat) {
   const cards = document.querySelectorAll('.esc-card');

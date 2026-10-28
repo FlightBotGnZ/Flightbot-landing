@@ -129,7 +129,7 @@
       
       <!-- Marca / Logotipo -->
       <div class="flex items-center gap-3 shrink-0 z-10 mr-3 xl:mr-5">
-        <a href="index.html" class="flex items-center gap-3 group" title="Volver a Vuelos y Radares de FlightBot">
+        <a href="/" class="flex items-center gap-3 group" title="Volver a Vuelos y Radares de FlightBot">
           <div id="brand-logo" class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition cursor-pointer p-1 group-hover:scale-105 transition-transform"
                title="Mascota tech redondeada que sostiene su propia valija carry-on rígida con ruedas 360°. La antena superior emite pulsos de alertas cuando encuentra una tarifa baja."
                style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
@@ -171,29 +171,23 @@
       </div>
 
             <!-- Barra de Navegación Central Simétrica (Dock Centrado Matemáticamente) -->
-      <nav class="hidden lg:flex items-center p-1 rounded-full dark:bg-slate-900/80 bg-slate-100/90 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-0.5 xl:gap-1 mx-auto">
-        <a href="index.html#radar-vuelos" class="nav-dock-btn">
+            <nav class="hidden lg:flex items-center p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-1 xl:gap-1.5 mx-auto">
+        <a href="/#radar-vuelos" id="nav-btn-vuelos" class="nav-dock-btn">
           <span>✈️</span> Vuelos
         </a>
-        <a href="index.html#destinos" class="nav-dock-btn">
+        <a href="/#destinos" id="nav-btn-destinos" class="nav-dock-btn">
           <span>🏨</span> Destinos
         </a>
-        <a href="index.html#promos-portales" class="nav-dock-btn">
-          <span>🏦</span> Portales
+        <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn is-active" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
+          <span>🚗</span> Modo Ruta
         </a>
-        <a href="index.html#promociones" class="nav-dock-btn">
-          <span>💳</span> Promos &amp; VIP
+        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn">
+          <span>💳</span> Billetera
         </a>
-        <a href="escapadas.html" class="nav-dock-btn is-active">
-          <span>🚗</span> Escapadas
-        </a>
-        <a href="billetera.html" class="nav-dock-btn">
-          <span>🧳</span> Billetera
-        </a>
-        <a href="guias/index.html" class="nav-dock-btn">
+        <a href="/guias/" id="nav-btn-guias" class="nav-dock-btn">
           <span>📖</span> Guías
         </a>
-        <a href="faq.html" class="nav-dock-btn">
+        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn">
           <span>❓</span> FAQ
         </a>
       </nav>
@@ -245,30 +239,24 @@
     </div>
 
         <!-- Menú Móvil Desplegable -->
-    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
+        <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
       <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
-        <a href="index.html#radar-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/#radar-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>✈️</span> Vuelos
         </a>
-        <a href="index.html#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🏨</span> Destinos
         </a>
-        <a href="index.html#promos-portales" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>🏦</span> Portales
+        <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
+          <span>🚗</span> Modo Ruta
         </a>
-        <a href="index.html#promociones" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>💳</span> Promos &amp; VIP
+        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>💳</span> Billetera
         </a>
-        <a href="escapadas.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-bold" style="color: var(--brand-primary);">
-          <span>🚗</span> Escapadas
-        </a>
-        <a href="billetera.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>🧳</span> Billetera
-        </a>
-        <a href="guias/index.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/guias/" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>📖</span> Guías
         </a>
-        <a href="faq.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>❓</span> FAQ
         </a>
       </div>
@@ -3715,11 +3703,11 @@
         Diseñado para viajeros que disfrutan de la ruta. Precios actualizados en tiempo real y cálculo impositivo federal.
       </p>
       <div class="flex items-center justify-center gap-4 text-xs font-bold text-slate-400">
-        <a href="index.html" class="hover:text-white transition-colors">✈️ Vuelos</a>
+        <a href="/" class="hover:text-white transition-colors">✈️ Vuelos</a>
         <span>•</span>
-        <a href="billetera.html" class="hover:text-white transition-colors">🧳 Billetera</a>
+        <a href="/billetera" class="hover:text-white transition-colors">🧳 Billetera</a>
         <span>•</span>
-        <a href="guias/index.html" class="hover:text-white transition-colors">📖 Guías</a>
+        <a href="/guias/" class="hover:text-white transition-colors">📖 Guías</a>
         <span>•</span>
         <a href="https://t.me/GnZFlightBot" target="_blank" class="hover:text-white transition-colors">📱 Telegram</a>
       </div>

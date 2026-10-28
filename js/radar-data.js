@@ -3,7 +3,7 @@
    Modularizado para alto rendimiento y carga asíncrona diferida (defer).
    ========================================================================== */
 (function() {
-      window.RADAR_DATA = [
+  window.RADAR_DATA = [
   {
     "id": "bariloche",
     "ciudad": "Bariloche & Región de los Lagos",
@@ -23,7 +23,9 @@
         "fechas": "13 Feb - 19 Feb 2027",
         "noches": 6,
         "precio": "$ 112.500 ARS (US$ 98 oficial)",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-02-13",
+        "fecha_vuelta": "2027-02-19"
       },
       {
         "puesto": "🥈",
@@ -32,7 +34,9 @@
         "fechas": "20 Feb - 27 Feb 2027",
         "noches": 7,
         "precio": "$ 126.800 ARS (US$ 110 oficial)",
-        "destacado": "Salidas directas desde Aeroparque"
+        "destacado": "Salidas directas desde Aeroparque",
+        "fecha_ida": "2027-02-20",
+        "fecha_vuelta": "2027-02-27"
       },
       {
         "puesto": "🥉",
@@ -41,7 +45,9 @@
         "fechas": "05 Mar - 11 Mar 2027",
         "noches": 6,
         "precio": "$ 148.000 ARS (US$ 128 oficial)",
-        "destacado": "Múltiples frecuencias diarias"
+        "destacado": "Múltiples frecuencias diarias",
+        "fecha_ida": "2027-03-05",
+        "fecha_vuelta": "2027-03-11"
       }
     ],
     "hoteles": [
@@ -132,7 +138,9 @@
         "fechas": "08 Ene - 11 Ene 2027",
         "noches": 3,
         "precio": "$ 64.500 ARS (US$ 56 oficial)",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-08",
+        "fecha_vuelta": "2027-01-11"
       },
       {
         "puesto": "🥈",
@@ -141,7 +149,9 @@
         "fechas": "15 Ene - 18 Ene 2027",
         "noches": 3,
         "precio": "$ 72.000 ARS (US$ 63 oficial)",
-        "destacado": "Vuelo directo de 1h 15m"
+        "destacado": "Vuelo directo de 1h 15m",
+        "fecha_ida": "2027-01-15",
+        "fecha_vuelta": "2027-01-18"
       },
       {
         "puesto": "🥉",
@@ -150,7 +160,9 @@
         "fechas": "01 Ene - 04 Ene 2027",
         "noches": 3,
         "precio": "$ 84.000 ARS (US$ 73 oficial)",
-        "destacado": "Puente aéreo frecuente"
+        "destacado": "Puente aéreo frecuente",
+        "fecha_ida": "2027-01-01",
+        "fecha_vuelta": "2027-01-04"
       }
     ],
     "hoteles": [
@@ -240,7 +252,9 @@
         "fechas": "06 Ene - 12 Ene 2027",
         "noches": 6,
         "precio": "$ 148.000 ARS (US$ 129 oficial)",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-06",
+        "fecha_vuelta": "2027-01-12"
       },
       {
         "puesto": "🥈",
@@ -249,7 +263,9 @@
         "fechas": "13 Ene - 19 Ene 2027",
         "noches": 6,
         "precio": "$ 162.000 ARS (US$ 141 oficial)",
-        "destacado": "Vuelo directo de 3h 15m"
+        "destacado": "Vuelo directo de 3h 15m",
+        "fecha_ida": "2027-01-13",
+        "fecha_vuelta": "2027-01-19"
       },
       {
         "puesto": "🥉",
@@ -258,7 +274,9 @@
         "fechas": "30 Dic - 05 Ene 2028",
         "noches": 6,
         "precio": "$ 182.000 ARS (US$ 158 oficial)",
-        "destacado": "Múltiples frecuencias"
+        "destacado": "Múltiples frecuencias",
+        "fecha_ida": "2027-12-30",
+        "fecha_vuelta": "2028-01-05"
       }
     ],
     "hoteles": [
@@ -348,7 +366,9 @@
         "fechas": "07 Ene - 12 Ene 2027",
         "noches": 5,
         "precio": "$ 98.500 ARS (US$ 86 oficial)",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-07",
+        "fecha_vuelta": "2027-01-12"
       },
       {
         "puesto": "🥈",
@@ -357,7 +377,9 @@
         "fechas": "14 Ene - 19 Ene 2027",
         "noches": 5,
         "precio": "$ 108.000 ARS (US$ 94 oficial)",
-        "destacado": "Vuelo directo de 2h 15m"
+        "destacado": "Vuelo directo de 2h 15m",
+        "fecha_ida": "2027-01-14",
+        "fecha_vuelta": "2027-01-19"
       },
       {
         "puesto": "🥉",
@@ -366,7 +388,9 @@
         "fechas": "31 Dic - 05 Ene 2028",
         "noches": 5,
         "precio": "$ 126.500 ARS (US$ 110 oficial)",
-        "destacado": "Excelente puntualidad"
+        "destacado": "Excelente puntualidad",
+        "fecha_ida": "2027-12-31",
+        "fecha_vuelta": "2028-01-05"
       }
     ],
     "hoteles": [
@@ -455,7 +479,9 @@
         "fechas": "18 Mar - 24 Mar 2027",
         "noches": 6,
         "precio": "$ 89.400 ARS (US$ 78 oficial)",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-03-18",
+        "fecha_vuelta": "2027-03-24"
       },
       {
         "puesto": "🥈",
@@ -464,7 +490,9 @@
         "fechas": "25 Mar - 31 Mar 2027",
         "noches": 6,
         "precio": "$ 96.200 ARS (US$ 84 oficial)",
-        "destacado": "Equipaje de mano estándar"
+        "destacado": "Equipaje de mano estándar",
+        "fecha_ida": "2027-03-25",
+        "fecha_vuelta": "2027-03-31"
       },
       {
         "puesto": "🥉",
@@ -473,7 +501,9 @@
         "fechas": "08 Abr - 14 Abr 2027",
         "noches": 6,
         "precio": "$ 118.500 ARS (US$ 103 oficial)",
-        "destacado": "Gran disponibilidad de horarios"
+        "destacado": "Gran disponibilidad de horarios",
+        "fecha_ida": "2027-04-08",
+        "fecha_vuelta": "2027-04-14"
       }
     ],
     "hoteles": [
@@ -564,7 +594,9 @@
         "fechas": "07 Ene - 11 Ene 2027",
         "noches": 4,
         "precio": "$ 88.000 ARS (US$ 77 oficial)",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-07",
+        "fecha_vuelta": "2027-01-11"
       },
       {
         "puesto": "🥈",
@@ -573,7 +605,9 @@
         "fechas": "14 Ene - 18 Ene 2027",
         "noches": 4,
         "precio": "$ 96.000 ARS (US$ 83 oficial)",
-        "destacado": "Vuelo directo de 1h 50m"
+        "destacado": "Vuelo directo de 1h 50m",
+        "fecha_ida": "2027-01-14",
+        "fecha_vuelta": "2027-01-18"
       },
       {
         "puesto": "🥉",
@@ -582,7 +616,9 @@
         "fechas": "31 Dic - 04 Ene 2028",
         "noches": 4,
         "precio": "$ 112.000 ARS (US$ 97 oficial)",
-        "destacado": "Gran cantidad de frecuencias"
+        "destacado": "Gran cantidad de frecuencias",
+        "fecha_ida": "2027-12-31",
+        "fecha_vuelta": "2028-01-04"
       }
     ],
     "hoteles": [
@@ -671,7 +707,9 @@
         "fechas": "05 Feb - 09 Feb 2027",
         "noches": 4,
         "precio": "$ 82.600 ARS (US$ 72 oficial)",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-02-05",
+        "fecha_vuelta": "2027-02-09"
       },
       {
         "puesto": "🥈",
@@ -680,7 +718,9 @@
         "fechas": "19 Feb - 23 Feb 2027",
         "noches": 4,
         "precio": "$ 91.000 ARS (US$ 79 oficial)",
-        "destacado": "Vuelo directo de 1h 50m"
+        "destacado": "Vuelo directo de 1h 50m",
+        "fecha_ida": "2027-02-19",
+        "fecha_vuelta": "2027-02-23"
       },
       {
         "puesto": "🥉",
@@ -689,7 +729,9 @@
         "fechas": "04 Mar - 09 Mar 2027",
         "noches": 5,
         "precio": "$ 109.800 ARS (US$ 95 oficial)",
-        "destacado": "Llega al Parque Nacional a tiempo"
+        "destacado": "Llega al Parque Nacional a tiempo",
+        "fecha_ida": "2027-03-04",
+        "fecha_vuelta": "2027-03-09"
       }
     ],
     "hoteles": [
@@ -780,7 +822,9 @@
         "fechas": "07 Ene - 11 Ene 2027",
         "noches": 4,
         "precio": "$ 108.000 ARS (US$ 94 oficial)",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-07",
+        "fecha_vuelta": "2027-01-11"
       },
       {
         "puesto": "🥈",
@@ -789,7 +833,9 @@
         "fechas": "14 Ene - 18 Ene 2027",
         "noches": 4,
         "precio": "$ 118.000 ARS (US$ 103 oficial)",
-        "destacado": "Vuelo directo de 2h"
+        "destacado": "Vuelo directo de 2h",
+        "fecha_ida": "2027-01-14",
+        "fecha_vuelta": "2027-01-18"
       },
       {
         "puesto": "🥉",
@@ -798,7 +844,9 @@
         "fechas": "31 Dic - 05 Ene 2028",
         "noches": 5,
         "precio": "$ 136.000 ARS (US$ 118 oficial)",
-        "destacado": "Opción aeropuerto directo PMY"
+        "destacado": "Opción aeropuerto directo PMY",
+        "fecha_ida": "2027-12-31",
+        "fecha_vuelta": "2028-01-05"
       }
     ],
     "hoteles": [
@@ -888,7 +936,9 @@
         "fechas": "06 Ene - 11 Ene 2027",
         "noches": 5,
         "precio": "$ 94.200 ARS (US$ 82 oficial)",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-06",
+        "fecha_vuelta": "2027-01-11"
       },
       {
         "puesto": "🥈",
@@ -897,7 +947,9 @@
         "fechas": "13 Ene - 19 Ene 2027",
         "noches": 6,
         "precio": "$ 104.500 ARS (US$ 91 oficial)",
-        "destacado": "Vuelo directo de 2h 10m"
+        "destacado": "Vuelo directo de 2h 10m",
+        "fecha_ida": "2027-01-13",
+        "fecha_vuelta": "2027-01-19"
       },
       {
         "puesto": "🥉",
@@ -906,7 +958,9 @@
         "fechas": "30 Dic - 04 Ene 2028",
         "noches": 5,
         "precio": "$ 122.000 ARS (US$ 106 oficial)",
-        "destacado": "Múltiples horarios diarios"
+        "destacado": "Múltiples horarios diarios",
+        "fecha_ida": "2027-12-30",
+        "fecha_vuelta": "2028-01-04"
       }
     ],
     "hoteles": [
@@ -996,7 +1050,9 @@
         "fechas": "06 Ene - 11 Ene 2027",
         "noches": 5,
         "precio": "$ 128.000 ARS (US$ 111 oficial)",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-06",
+        "fecha_vuelta": "2027-01-11"
       },
       {
         "puesto": "🥈",
@@ -1005,7 +1061,9 @@
         "fechas": "13 Ene - 18 Ene 2027",
         "noches": 5,
         "precio": "$ 144.000 ARS (US$ 125 oficial)",
-        "destacado": "Vuelo directo de 2h 20m"
+        "destacado": "Vuelo directo de 2h 20m",
+        "fecha_ida": "2027-01-13",
+        "fecha_vuelta": "2027-01-18"
       },
       {
         "puesto": "🥉",
@@ -1014,7 +1072,9 @@
         "fechas": "30 Dic - 04 Ene 2028",
         "noches": 5,
         "precio": "$ 165.000 ARS (US$ 143 oficial)",
-        "destacado": "Excelente disponibilidad"
+        "destacado": "Excelente disponibilidad",
+        "fecha_ida": "2027-12-30",
+        "fecha_vuelta": "2028-01-04"
       }
     ],
     "hoteles": [
@@ -1104,7 +1164,9 @@
         "fechas": "04 Ene - 10 Ene 2027",
         "noches": 6,
         "precio": "$ 154.000 ARS (US$ 134 oficial)",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-04",
+        "fecha_vuelta": "2027-01-10"
       },
       {
         "puesto": "🥈",
@@ -1113,7 +1175,9 @@
         "fechas": "11 Ene - 18 Ene 2027",
         "noches": 7,
         "precio": "$ 172.000 ARS (US$ 149 oficial)",
-        "destacado": "Vuelo directo de 3h 35m"
+        "destacado": "Vuelo directo de 3h 35m",
+        "fecha_ida": "2027-01-11",
+        "fecha_vuelta": "2027-01-18"
       },
       {
         "puesto": "🥉",
@@ -1122,7 +1186,9 @@
         "fechas": "28 Dic - 04 Ene 2028",
         "noches": 7,
         "precio": "$ 188.000 ARS (US$ 163 oficial)",
-        "destacado": "Sale desde Ezeiza"
+        "destacado": "Sale desde Ezeiza",
+        "fecha_ida": "2027-12-28",
+        "fecha_vuelta": "2028-01-04"
       }
     ],
     "hoteles": [
@@ -1212,7 +1278,9 @@
         "fechas": "07 Ene - 14 Ene 2027",
         "noches": 7,
         "precio": "US$ 245",
-        "destacado": "Tarifa récord regional"
+        "destacado": "Tarifa récord regional",
+        "fecha_ida": "2027-01-07",
+        "fecha_vuelta": "2027-01-14"
       },
       {
         "puesto": "🥈",
@@ -1221,7 +1289,9 @@
         "fechas": "14 Ene - 21 Ene 2027",
         "noches": 7,
         "precio": "US$ 275",
-        "destacado": "Vuelo directo de 2h 05m"
+        "destacado": "Vuelo directo de 2h 05m",
+        "fecha_ida": "2027-01-14",
+        "fecha_vuelta": "2027-01-21"
       },
       {
         "puesto": "🥉",
@@ -1230,7 +1300,9 @@
         "fechas": "02 Ene - 09 Ene 2027",
         "noches": 7,
         "precio": "US$ 310",
-        "destacado": "Equipaje y atención directa"
+        "destacado": "Equipaje y atención directa",
+        "fecha_ida": "2027-01-02",
+        "fecha_vuelta": "2027-01-09"
       }
     ],
     "hoteles": [
@@ -1320,7 +1392,9 @@
         "fechas": "06 Feb - 14 Feb 2027",
         "noches": 8,
         "precio": "US$ 395",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-02-06",
+        "fecha_vuelta": "2027-02-14"
       },
       {
         "puesto": "🥈",
@@ -1329,7 +1403,9 @@
         "fechas": "30 Ene - 08 Feb 2027",
         "noches": 9,
         "precio": "US$ 425",
-        "destacado": "Conexión ágil"
+        "destacado": "Conexión ágil",
+        "fecha_ida": "2027-01-30",
+        "fecha_vuelta": "2027-02-08"
       },
       {
         "puesto": "🥉",
@@ -1338,7 +1414,9 @@
         "fechas": "12 Feb - 20 Feb 2027",
         "noches": 8,
         "precio": "US$ 470",
-        "destacado": "Snacks y pantallas a bordo"
+        "destacado": "Snacks y pantallas a bordo",
+        "fecha_ida": "2027-02-12",
+        "fecha_vuelta": "2027-02-20"
       }
     ],
     "hoteles": [
@@ -1428,7 +1506,9 @@
         "fechas": "04 Feb - 13 Feb 2027",
         "noches": 9,
         "precio": "US$ 410",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-02-04",
+        "fecha_vuelta": "2027-02-13"
       },
       {
         "puesto": "🥈",
@@ -1437,7 +1517,9 @@
         "fechas": "28 Ene - 06 Feb 2027",
         "noches": 9,
         "precio": "US$ 440",
-        "destacado": "Equipaje de mano estándar"
+        "destacado": "Equipaje de mano estándar",
+        "fecha_ida": "2027-01-28",
+        "fecha_vuelta": "2027-02-06"
       },
       {
         "puesto": "🥉",
@@ -1446,7 +1528,9 @@
         "fechas": "10 Feb - 19 Feb 2027",
         "noches": 9,
         "precio": "US$ 490",
-        "destacado": "Atención personalizada"
+        "destacado": "Atención personalizada",
+        "fecha_ida": "2027-02-10",
+        "fecha_vuelta": "2027-02-19"
       }
     ],
     "hoteles": [
@@ -1536,7 +1620,9 @@
         "fechas": "02 Feb - 11 Feb 2027",
         "noches": 9,
         "precio": "US$ 385",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-02-02",
+        "fecha_vuelta": "2027-02-11"
       },
       {
         "puesto": "🥈",
@@ -1545,7 +1631,9 @@
         "fechas": "07 Feb - 15 Feb 2027",
         "noches": 8,
         "precio": "US$ 415",
-        "destacado": "Equipaje carry-on incluido"
+        "destacado": "Equipaje carry-on incluido",
+        "fecha_ida": "2027-02-07",
+        "fecha_vuelta": "2027-02-15"
       },
       {
         "puesto": "🥉",
@@ -1554,7 +1642,9 @@
         "fechas": "29 Ene - 07 Feb 2027",
         "noches": 9,
         "precio": "US$ 460",
-        "destacado": "Hub principal en Recife"
+        "destacado": "Hub principal en Recife",
+        "fecha_ida": "2027-01-29",
+        "fecha_vuelta": "2027-02-07"
       }
     ],
     "hoteles": [
@@ -1643,7 +1733,9 @@
         "fechas": "10 Abr - 17 Abr 2027",
         "noches": 7,
         "precio": "US$ 295",
-        "destacado": "Tarifa récord regional"
+        "destacado": "Tarifa récord regional",
+        "fecha_ida": "2027-04-10",
+        "fecha_vuelta": "2027-04-17"
       },
       {
         "puesto": "🥈",
@@ -1652,7 +1744,9 @@
         "fechas": "17 Abr - 24 Abr 2027",
         "noches": 7,
         "precio": "US$ 310",
-        "destacado": "Flota de aviones modernos"
+        "destacado": "Flota de aviones modernos",
+        "fecha_ida": "2027-04-17",
+        "fecha_vuelta": "2027-04-24"
       },
       {
         "puesto": "🥉",
@@ -1661,7 +1755,9 @@
         "fechas": "08 May - 16 May 2027",
         "noches": 8,
         "precio": "US$ 370",
-        "destacado": "Sale desde Aeroparque"
+        "destacado": "Sale desde Aeroparque",
+        "fecha_ida": "2027-05-08",
+        "fecha_vuelta": "2027-05-16"
       }
     ],
     "hoteles": [
@@ -1752,7 +1848,9 @@
         "fechas": "04 Feb - 12 Feb 2027",
         "noches": 8,
         "precio": "US$ 365",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-02-04",
+        "fecha_vuelta": "2027-02-12"
       },
       {
         "puesto": "🥈",
@@ -1761,7 +1859,9 @@
         "fechas": "28 Ene - 05 Feb 2027",
         "noches": 8,
         "precio": "US$ 395",
-        "destacado": "Conexión eficiente"
+        "destacado": "Conexión eficiente",
+        "fecha_ida": "2027-01-28",
+        "fecha_vuelta": "2027-02-05"
       },
       {
         "puesto": "🥉",
@@ -1770,7 +1870,9 @@
         "fechas": "10 Feb - 18 Feb 2027",
         "noches": 8,
         "precio": "US$ 450",
-        "destacado": "Vuelo directo sin escalas"
+        "destacado": "Vuelo directo sin escalas",
+        "fecha_ida": "2027-02-10",
+        "fecha_vuelta": "2027-02-18"
       }
     ],
     "hoteles": [
@@ -1860,7 +1962,9 @@
         "fechas": "01 Abr - 05 Abr 2027",
         "noches": 4,
         "precio": "US$ 155",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-04-01",
+        "fecha_vuelta": "2027-04-05"
       },
       {
         "puesto": "🥈",
@@ -1869,7 +1973,9 @@
         "fechas": "14 Ene - 18 Ene 2027",
         "noches": 4,
         "precio": "US$ 168",
-        "destacado": "Vuelo directo de 2h 10m"
+        "destacado": "Vuelo directo de 2h 10m",
+        "fecha_ida": "2027-01-14",
+        "fecha_vuelta": "2027-01-18"
       },
       {
         "puesto": "🥉",
@@ -1878,7 +1984,9 @@
         "fechas": "25 Mar - 29 Mar 2027",
         "noches": 4,
         "precio": "US$ 195",
-        "destacado": "Múltiples vuelos al día"
+        "destacado": "Múltiples vuelos al día",
+        "fecha_ida": "2027-03-25",
+        "fecha_vuelta": "2027-03-29"
       }
     ],
     "hoteles": [
@@ -1968,7 +2076,9 @@
         "fechas": "31 Ene - 08 Feb 2027",
         "noches": 8,
         "precio": "US$ 520",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-31",
+        "fecha_vuelta": "2027-02-08"
       },
       {
         "puesto": "🥈",
@@ -1977,7 +2087,9 @@
         "fechas": "07 Feb - 15 Feb 2027",
         "noches": 8,
         "precio": "US$ 550",
-        "destacado": "Conexión ágil en Bogotá"
+        "destacado": "Conexión ágil en Bogotá",
+        "fecha_ida": "2027-02-07",
+        "fecha_vuelta": "2027-02-15"
       },
       {
         "puesto": "🥉",
@@ -1985,8 +2097,10 @@
         "escalas": "1 escala (LIM)",
         "fechas": "14 Feb - 22 Feb 2027",
         "noches": 8,
-        "precio": "US$ 590",
-        "destacado": "Excelente equipaje"
+        "precio": "US$ 621",
+        "destacado": "Excelente equipaje",
+        "fecha_ida": "2027-02-14",
+        "fecha_vuelta": "2027-02-22"
       }
     ],
     "hoteles": [
@@ -2076,7 +2190,9 @@
         "fechas": "15 Ene - 23 Ene 2027",
         "escalas": "1 escala en Lima (LIM)",
         "precio": "US$ 285",
-        "noches": 8
+        "noches": 8,
+        "fecha_ida": "2027-01-15",
+        "fecha_vuelta": "2027-01-23"
       },
       {
         "puesto": "Top 2 Rápido",
@@ -2084,7 +2200,9 @@
         "fechas": "21 Feb - 01 Mar 2027",
         "escalas": "1 escala breve en Santiago / Lima",
         "precio": "US$ 310",
-        "noches": 8
+        "noches": 8,
+        "fecha_ida": "2027-02-21",
+        "fecha_vuelta": "2027-03-01"
       },
       {
         "puesto": "Top 3 Confort",
@@ -2092,7 +2210,9 @@
         "fechas": "19 Mar - 28 Mar 2027",
         "escalas": "1 escala en Bogotá (BOG)",
         "precio": "US$ 340",
-        "noches": 9
+        "noches": 9,
+        "fecha_ida": "2027-03-19",
+        "fecha_vuelta": "2027-03-28"
       }
     ],
     "hoteles": [
@@ -2156,7 +2276,9 @@
         "fechas": "19 Ene - 31 Ene 2027",
         "noches": 12,
         "precio": "US$ 870",
-        "destacado": true
+        "destacado": true,
+        "fecha_ida": "2027-01-19",
+        "fecha_vuelta": "2027-01-31"
       },
       {
         "puesto": "Top 2",
@@ -2165,7 +2287,9 @@
         "fechas": "11 Feb - 25 Feb 2027",
         "noches": 14,
         "precio": "US$ 915",
-        "destacado": false
+        "destacado": false,
+        "fecha_ida": "2027-02-11",
+        "fecha_vuelta": "2027-02-25"
       },
       {
         "puesto": "Top 3",
@@ -2174,7 +2298,9 @@
         "fechas": "23 Feb - 09 Mar 2027",
         "noches": 14,
         "precio": "US$ 840",
-        "destacado": false
+        "destacado": false,
+        "fecha_ida": "2027-02-23",
+        "fecha_vuelta": "2027-03-09"
       }
     ],
     "hoteles": [
@@ -2252,7 +2378,7 @@
     "iata": "MIA",
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
-    "precio_desde": "US$ 690",
+    "precio_desde": "US$ 638",
     "comando_tg": "/miami",
     "resena": "Playas turquesas, distritos de diseño como Wynwood y el centro financiero de Brickell. Punto de partida estratégico para conectar con Orlando en el tren de alta velocidad Brightline (3h 30m) o recorrer los cayos por la Overseas Highway.",
     "vuelos": [
@@ -2262,8 +2388,10 @@
         "escalas": "1 escala corta",
         "fechas": "10 Abr - 18 Abr 2027",
         "noches": 8,
-        "precio": "US$ 690",
-        "destacado": "Tarifa récord más baja"
+        "precio": "US$ 638",
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-04-10",
+        "fecha_vuelta": "2027-04-18"
       },
       {
         "puesto": "🥈",
@@ -2272,7 +2400,9 @@
         "fechas": "24 Abr - 02 May 2027",
         "noches": 8,
         "precio": "US$ 890",
-        "destacado": "Vuelo directo nocturno"
+        "destacado": "Vuelo directo nocturno",
+        "fecha_ida": "2027-04-24",
+        "fecha_vuelta": "2027-05-02"
       },
       {
         "puesto": "🥉",
@@ -2281,7 +2411,9 @@
         "fechas": "08 May - 16 May 2027",
         "noches": 8,
         "precio": "US$ 920",
-        "destacado": "Atención en español y valijas"
+        "destacado": "Atención en español y valijas",
+        "fecha_ida": "2027-05-08",
+        "fecha_vuelta": "2027-05-16"
       }
     ],
     "hoteles": [
@@ -2372,7 +2504,9 @@
         "fechas": "27 Ene - 06 Feb 2027",
         "noches": 10,
         "precio": "US$ 710",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-27",
+        "fecha_vuelta": "2027-02-06"
       },
       {
         "puesto": "🥈",
@@ -2381,7 +2515,9 @@
         "fechas": "03 Feb - 13 Feb 2027",
         "noches": 10,
         "precio": "US$ 740",
-        "destacado": "Escala rápida"
+        "destacado": "Escala rápida",
+        "fecha_ida": "2027-02-03",
+        "fecha_vuelta": "2027-02-13"
       },
       {
         "puesto": "🥉",
@@ -2390,7 +2526,9 @@
         "fechas": "10 Feb - 20 Feb 2027",
         "noches": 10,
         "precio": "US$ 820",
-        "destacado": "Equipaje y millas"
+        "destacado": "Equipaje y millas",
+        "fecha_ida": "2027-02-10",
+        "fecha_vuelta": "2027-02-20"
       }
     ],
     "hoteles": [
@@ -2479,7 +2617,9 @@
         "fechas": "15 Abr - 23 Abr 2027",
         "noches": 8,
         "precio": "US$ 580",
-        "destacado": "Tarifa récord Caribe"
+        "destacado": "Tarifa récord Caribe",
+        "fecha_ida": "2027-04-15",
+        "fecha_vuelta": "2027-04-23"
       },
       {
         "puesto": "🥈",
@@ -2487,8 +2627,10 @@
         "escalas": "1 escala corta (PTY)",
         "fechas": "29 Abr - 07 May 2027",
         "noches": 8,
-        "precio": "US$ 690",
-        "destacado": "Conexión eficiente Hub de las Américas"
+        "precio": "US$ 638",
+        "destacado": "Conexión eficiente Hub de las Américas",
+        "fecha_ida": "2027-04-29",
+        "fecha_vuelta": "2027-05-07"
       },
       {
         "puesto": "🥉",
@@ -2497,7 +2639,9 @@
         "fechas": "13 May - 21 May 2027",
         "noches": 8,
         "precio": "US$ 730",
-        "destacado": "Aerolínea de bandera mexicana"
+        "destacado": "Aerolínea de bandera mexicana",
+        "fecha_ida": "2027-05-13",
+        "fecha_vuelta": "2027-05-21"
       }
     ],
     "hoteles": [
@@ -2576,7 +2720,7 @@
     "iata": "PUJ",
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
-    "precio_desde": "US$ 590",
+    "precio_desde": "US$ 621",
     "comando_tg": "/puntacana",
     "resena": "El epicentro del descanso tropical caribeño: kilómetros de arena blanca fina, cocoteros infinitos, aguas protegidas por barrera de coral y excursiones inolvidables a Isla Saona.",
     "vuelos": [
@@ -2586,8 +2730,10 @@
         "escalas": "Directo o escala corta",
         "fechas": "23 Abr - 01 May 2027",
         "noches": 8,
-        "precio": "US$ 590",
-        "destacado": "Tarifa récord sin escalas"
+        "precio": "US$ 621",
+        "destacado": "Tarifa récord sin escalas",
+        "fecha_ida": "2027-04-23",
+        "fecha_vuelta": "2027-05-01"
       },
       {
         "puesto": "🥈",
@@ -2596,7 +2742,9 @@
         "fechas": "07 May - 15 May 2027",
         "noches": 8,
         "precio": "US$ 680",
-        "destacado": "Excelente servicio a bordo"
+        "destacado": "Excelente servicio a bordo",
+        "fecha_ida": "2027-05-07",
+        "fecha_vuelta": "2027-05-15"
       },
       {
         "puesto": "🥉",
@@ -2605,7 +2753,9 @@
         "fechas": "21 May - 29 May 2027",
         "noches": 8,
         "precio": "US$ 710",
-        "destacado": "Puntualidad líder en América"
+        "destacado": "Puntualidad líder en América",
+        "fecha_ida": "2027-05-21",
+        "fecha_vuelta": "2027-05-29"
       }
     ],
     "hoteles": [
@@ -2695,7 +2845,9 @@
         "fechas": "10 Mar - 20 Mar 2027",
         "noches": 10,
         "precio": "US$ 660",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-03-10",
+        "fecha_vuelta": "2027-03-20"
       },
       {
         "puesto": "🥈",
@@ -2704,7 +2856,9 @@
         "fechas": "24 Mar - 03 Abr 2027",
         "noches": 10,
         "precio": "US$ 710",
-        "destacado": "Equipaje carry-on incluido"
+        "destacado": "Equipaje carry-on incluido",
+        "fecha_ida": "2027-03-24",
+        "fecha_vuelta": "2027-04-03"
       },
       {
         "puesto": "🥉",
@@ -2713,7 +2867,9 @@
         "fechas": "07 Abr - 17 Abr 2027",
         "noches": 10,
         "precio": "US$ 740",
-        "destacado": "Conexión ágil sin cambios de terminal"
+        "destacado": "Conexión ágil sin cambios de terminal",
+        "fecha_ida": "2027-04-07",
+        "fecha_vuelta": "2027-04-17"
       }
     ],
     "hoteles": [
@@ -2792,7 +2948,7 @@
     "iata": "MAD",
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
-    "precio_desde": "€ 915",
+    "precio_desde": "US$ 867",
     "comando_tg": "/madrid",
     "resena": "Capital europea de la cultura y la gastronomía, con el hub de trenes de alta velocidad más competitivo de Europa (Iryo, Ouigo y AVE a Barcelona por €9). Ideal para recorrer el Triángulo del Arte y hacer base para escapadas a Toledo y Segovia.",
     "vuelos": [
@@ -2802,8 +2958,10 @@
         "escalas": "1 escala corta (GRU)",
         "fechas": "08 May - 23 May 2027",
         "noches": 15,
-        "precio": "€ 915",
-        "destacado": "Tarifa récord más baja"
+        "precio": "US$ 867",
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-05-08",
+        "fecha_vuelta": "2027-05-23"
       },
       {
         "puesto": "🥈",
@@ -2812,7 +2970,9 @@
         "fechas": "22 May - 06 Jun 2027",
         "noches": 15,
         "precio": "€ 1.085",
-        "destacado": "Vuelo directo más veloz"
+        "destacado": "Vuelo directo más veloz",
+        "fecha_ida": "2027-05-22",
+        "fecha_vuelta": "2027-06-06"
       },
       {
         "puesto": "🥉",
@@ -2821,7 +2981,9 @@
         "fechas": "05 Jun - 20 Jun 2027",
         "noches": 15,
         "precio": "€ 1.140",
-        "destacado": "Excelente equipaje incluido"
+        "destacado": "Excelente equipaje incluido",
+        "fecha_ida": "2027-06-05",
+        "fecha_vuelta": "2027-06-20"
       }
     ],
     "hoteles": [
@@ -2912,7 +3074,9 @@
         "fechas": "29 Ene - 12 Feb 2027",
         "noches": 14,
         "precio": "€ 880",
-        "destacado": "Vuelo directo más veloz"
+        "destacado": "Vuelo directo más veloz",
+        "fecha_ida": "2027-01-29",
+        "fecha_vuelta": "2027-02-12"
       },
       {
         "puesto": "🥈",
@@ -2921,7 +3085,9 @@
         "fechas": "05 Feb - 19 Feb 2027",
         "noches": 14,
         "precio": "€ 940",
-        "destacado": "Excelente servicio a bordo"
+        "destacado": "Excelente servicio a bordo",
+        "fecha_ida": "2027-02-05",
+        "fecha_vuelta": "2027-02-19"
       },
       {
         "puesto": "🥉",
@@ -2930,7 +3096,9 @@
         "fechas": "10 Feb - 24 Feb 2027",
         "noches": 14,
         "precio": "€ 975",
-        "destacado": "Equipaje carry-on incluido"
+        "destacado": "Equipaje carry-on incluido",
+        "fecha_ida": "2027-02-10",
+        "fecha_vuelta": "2027-02-24"
       }
     ],
     "hoteles": [
@@ -3019,7 +3187,9 @@
         "fechas": "10 May - 25 May 2027",
         "noches": 15,
         "precio": "€ 965",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-05-10",
+        "fecha_vuelta": "2027-05-25"
       },
       {
         "puesto": "🥈",
@@ -3028,7 +3198,9 @@
         "fechas": "24 May - 08 Jun 2027",
         "noches": 15,
         "precio": "€ 1.000",
-        "destacado": "Escala rápida de 2 horas"
+        "destacado": "Escala rápida de 2 horas",
+        "fecha_ida": "2027-05-24",
+        "fecha_vuelta": "2027-06-08"
       },
       {
         "puesto": "🥉",
@@ -3037,7 +3209,9 @@
         "fechas": "07 Jun - 22 Jun 2027",
         "noches": 15,
         "precio": "€ 1.110",
-        "destacado": "Vuelo directo sin escalas"
+        "destacado": "Vuelo directo sin escalas",
+        "fecha_ida": "2027-06-07",
+        "fecha_vuelta": "2027-06-22"
       }
     ],
     "hoteles": [
@@ -3128,7 +3302,9 @@
         "fechas": "27 Ene - 11 Feb 2027",
         "noches": 15,
         "precio": "€ 900",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-27",
+        "fecha_vuelta": "2027-02-11"
       },
       {
         "puesto": "🥈",
@@ -3137,7 +3313,9 @@
         "fechas": "03 Feb - 17 Feb 2027",
         "noches": 14,
         "precio": "€ 955",
-        "destacado": "Conexión eficiente"
+        "destacado": "Conexión eficiente",
+        "fecha_ida": "2027-02-03",
+        "fecha_vuelta": "2027-02-17"
       },
       {
         "puesto": "🥉",
@@ -3146,7 +3324,9 @@
         "fechas": "10 Feb - 24 Feb 2027",
         "noches": 14,
         "precio": "€ 995",
-        "destacado": "Llega a aeropuerto Orly (ORY)"
+        "destacado": "Llega a aeropuerto Orly (ORY)",
+        "fecha_ida": "2027-02-10",
+        "fecha_vuelta": "2027-02-24"
       }
     ],
     "hoteles": [
@@ -3236,7 +3416,9 @@
         "fechas": "28 Ene - 11 Feb 2027",
         "noches": 14,
         "precio": "€ 935",
-        "destacado": "Vuelo directo más veloz"
+        "destacado": "Vuelo directo más veloz",
+        "fecha_ida": "2027-01-28",
+        "fecha_vuelta": "2027-02-11"
       },
       {
         "puesto": "🥈",
@@ -3245,7 +3427,9 @@
         "fechas": "04 Feb - 18 Feb 2027",
         "noches": 14,
         "precio": "€ 985",
-        "destacado": "Excelente servicio"
+        "destacado": "Excelente servicio",
+        "fecha_ida": "2027-02-04",
+        "fecha_vuelta": "2027-02-18"
       },
       {
         "puesto": "🥉",
@@ -3254,7 +3438,9 @@
         "fechas": "11 Feb - 25 Feb 2027",
         "noches": 14,
         "precio": "€ 1.020",
-        "destacado": "Equipaje incluido"
+        "destacado": "Equipaje incluido",
+        "fecha_ida": "2027-02-11",
+        "fecha_vuelta": "2027-02-25"
       }
     ],
     "hoteles": [
@@ -3344,7 +3530,9 @@
         "fechas": "29 Ene - 12 Feb 2027",
         "noches": 14,
         "precio": "€ 945",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-29",
+        "fecha_vuelta": "2027-02-12"
       },
       {
         "puesto": "🥈",
@@ -3353,7 +3541,9 @@
         "fechas": "05 Feb - 19 Feb 2027",
         "noches": 14,
         "precio": "€ 975",
-        "destacado": "Conexión eficiente"
+        "destacado": "Conexión eficiente",
+        "fecha_ida": "2027-02-05",
+        "fecha_vuelta": "2027-02-19"
       },
       {
         "puesto": "🥉",
@@ -3362,7 +3552,9 @@
         "fechas": "12 Feb - 26 Feb 2027",
         "noches": 14,
         "precio": "€ 1.000",
-        "destacado": "Llega al aeropuerto BER"
+        "destacado": "Llega al aeropuerto BER",
+        "fecha_ida": "2027-02-12",
+        "fecha_vuelta": "2027-02-26"
       }
     ],
     "hoteles": [
@@ -3452,7 +3644,9 @@
         "fechas": "26 Ene - 10 Feb 2027",
         "noches": 15,
         "precio": "€ 955",
-        "destacado": "Vuelo directo más veloz"
+        "destacado": "Vuelo directo más veloz",
+        "fecha_ida": "2027-01-26",
+        "fecha_vuelta": "2027-02-10"
       },
       {
         "puesto": "🥈",
@@ -3461,7 +3655,9 @@
         "fechas": "02 Feb - 17 Feb 2027",
         "noches": 15,
         "precio": "€ 990",
-        "destacado": "Equipaje carry-on incluido"
+        "destacado": "Equipaje carry-on incluido",
+        "fecha_ida": "2027-02-02",
+        "fecha_vuelta": "2027-02-17"
       },
       {
         "puesto": "🥉",
@@ -3470,7 +3666,9 @@
         "fechas": "09 Feb - 23 Feb 2027",
         "noches": 14,
         "precio": "€ 1.030",
-        "destacado": "Atención en español"
+        "destacado": "Atención en español",
+        "fecha_ida": "2027-02-09",
+        "fecha_vuelta": "2027-02-23"
       }
     ],
     "hoteles": [
@@ -3560,7 +3758,9 @@
         "fechas": "07 Abr - 22 Abr 2027",
         "escalas": "Vuelo Directo nocturno",
         "precio": "€ 1.085",
-        "noches": 15
+        "noches": 15,
+        "fecha_ida": "2027-04-07",
+        "fecha_vuelta": "2027-04-22"
       },
       {
         "puesto": "Top 2 SkyTeam",
@@ -3568,7 +3768,9 @@
         "fechas": "19 Feb - 06 Mar 2027",
         "escalas": "1 escala en París (CDG)",
         "precio": "€ 1.005",
-        "noches": 15
+        "noches": 15,
+        "fecha_ida": "2027-02-19",
+        "fecha_vuelta": "2027-03-06"
       },
       {
         "puesto": "Top 3 OneWorld",
@@ -3576,7 +3778,9 @@
         "fechas": "23 Feb - 10 Mar 2027",
         "escalas": "1 escala en Madrid (MAD)",
         "precio": "€ 1.050",
-        "noches": 15
+        "noches": 15,
+        "fecha_ida": "2027-02-23",
+        "fecha_vuelta": "2027-03-10"
       }
     ],
     "hoteles": [
@@ -3640,7 +3844,9 @@
         "fechas": "27 Ene - 11 Feb 2027",
         "noches": 15,
         "precio": "€ 990",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-27",
+        "fecha_vuelta": "2027-02-11"
       },
       {
         "puesto": "🥈",
@@ -3649,7 +3855,9 @@
         "fechas": "03 Feb - 18 Feb 2027",
         "noches": 15,
         "precio": "€ 1.030",
-        "destacado": "Excelente catering a bordo"
+        "destacado": "Excelente catering a bordo",
+        "fecha_ida": "2027-02-03",
+        "fecha_vuelta": "2027-02-18"
       },
       {
         "puesto": "🥉",
@@ -3658,7 +3866,9 @@
         "fechas": "10 Feb - 25 Feb 2027",
         "noches": 15,
         "precio": "€ 1.065",
-        "destacado": "Equipaje carry-on incluido"
+        "destacado": "Equipaje carry-on incluido",
+        "fecha_ida": "2027-02-10",
+        "fecha_vuelta": "2027-02-25"
       }
     ],
     "hoteles": [
@@ -3748,7 +3958,9 @@
         "fechas": "28 Ene - 11 Feb 2027",
         "noches": 14,
         "precio": "€ 955",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-28",
+        "fecha_vuelta": "2027-02-11"
       },
       {
         "puesto": "🥈",
@@ -3757,7 +3969,9 @@
         "fechas": "04 Feb - 18 Feb 2027",
         "noches": 14,
         "precio": "€ 990",
-        "destacado": "Conexión eficiente"
+        "destacado": "Conexión eficiente",
+        "fecha_ida": "2027-02-04",
+        "fecha_vuelta": "2027-02-18"
       },
       {
         "puesto": "🥉",
@@ -3766,7 +3980,9 @@
         "fechas": "11 Feb - 25 Feb 2027",
         "noches": 14,
         "precio": "€ 1.030",
-        "destacado": "Equipaje carry-on incluido"
+        "destacado": "Equipaje carry-on incluido",
+        "fecha_ida": "2027-02-11",
+        "fecha_vuelta": "2027-02-25"
       }
     ],
     "hoteles": [
@@ -3856,7 +4072,9 @@
         "fechas": "29 Ene - 12 Feb 2027",
         "noches": 14,
         "precio": "€ 1.050",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-29",
+        "fecha_vuelta": "2027-02-12"
       },
       {
         "puesto": "🥈",
@@ -3865,7 +4083,9 @@
         "fechas": "05 Feb - 19 Feb 2027",
         "noches": 14,
         "precio": "€ 1.095",
-        "destacado": "Conexión eficiente"
+        "destacado": "Conexión eficiente",
+        "fecha_ida": "2027-02-05",
+        "fecha_vuelta": "2027-02-19"
       },
       {
         "puesto": "🥉",
@@ -3874,7 +4094,9 @@
         "fechas": "12 Feb - 26 Feb 2027",
         "noches": 14,
         "precio": "€ 1.150",
-        "destacado": "Temporada alta de auroras"
+        "destacado": "Temporada alta de auroras",
+        "fecha_ida": "2027-02-12",
+        "fecha_vuelta": "2027-02-26"
       }
     ],
     "hoteles": [
@@ -3964,7 +4186,9 @@
         "fechas": "05 Abr - 20 Abr 2027",
         "escalas": "Escala técnica en San Pablo (mismo avión)",
         "precio": "US$ 1.120",
-        "noches": 15
+        "noches": 15,
+        "fecha_ida": "2027-04-05",
+        "fecha_vuelta": "2027-04-20"
       },
       {
         "puesto": "Top 2 Qatar Airways",
@@ -3972,7 +4196,9 @@
         "fechas": "17 Feb - 04 Mar 2027",
         "escalas": "1 escala en Doha (DOH)",
         "precio": "US$ 1.190",
-        "noches": 15
+        "noches": 15,
+        "fecha_ida": "2027-02-17",
+        "fecha_vuelta": "2027-03-04"
       },
       {
         "puesto": "Top 3 Star Alliance",
@@ -3980,7 +4206,9 @@
         "fechas": "02 Mar - 17 Mar 2027",
         "escalas": "1 escala en Frankfurt (FRA)",
         "precio": "US$ 1.230",
-        "noches": 15
+        "noches": 15,
+        "fecha_ida": "2027-03-02",
+        "fecha_vuelta": "2027-03-17"
       }
     ],
     "hoteles": [
@@ -4043,7 +4271,9 @@
         "fechas": "16 Abr - 01 May 2027",
         "escalas": "Vuelo directo con escala en Río (GIG)",
         "precio": "US$ 1.250",
-        "noches": 15
+        "noches": 15,
+        "fecha_ida": "2027-04-16",
+        "fecha_vuelta": "2027-05-01"
       },
       {
         "puesto": "Top 2 Qatar Airways",
@@ -4051,7 +4281,9 @@
         "fechas": "12 Feb - 27 Feb 2027",
         "escalas": "1 escala en Doha (DOH)",
         "precio": "US$ 1.210",
-        "noches": 15
+        "noches": 15,
+        "fecha_ida": "2027-02-12",
+        "fecha_vuelta": "2027-02-27"
       },
       {
         "puesto": "Top 3 Star Alliance",
@@ -4059,7 +4291,9 @@
         "fechas": "27 Mar - 11 Abr 2027",
         "escalas": "1 escala en Adís Abeba (ADD)",
         "precio": "US$ 1.080",
-        "noches": 15
+        "noches": 15,
+        "fecha_ida": "2027-03-27",
+        "fecha_vuelta": "2027-04-11"
       }
     ],
     "hoteles": [
@@ -4122,7 +4356,9 @@
         "fechas": "09 Abr - 25 Abr 2027",
         "escalas": "1 escala en Dubái (DXB)",
         "precio": "US$ 1.340",
-        "noches": 16
+        "noches": 16,
+        "fecha_ida": "2027-04-09",
+        "fecha_vuelta": "2027-04-25"
       },
       {
         "puesto": "Top 2 Qatar Airways",
@@ -4130,7 +4366,9 @@
         "fechas": "19 Feb - 07 Mar 2027",
         "escalas": "1 escala en Doha (DOH)",
         "precio": "US$ 1.320",
-        "noches": 16
+        "noches": 16,
+        "fecha_ida": "2027-02-19",
+        "fecha_vuelta": "2027-03-07"
       },
       {
         "puesto": "Top 3 Turkish",
@@ -4138,7 +4376,9 @@
         "fechas": "22 Mar - 07 Abr 2027",
         "escalas": "1 escala en Estambul (IST)",
         "precio": "US$ 1.380",
-        "noches": 16
+        "noches": 16,
+        "fecha_ida": "2027-03-22",
+        "fecha_vuelta": "2027-04-07"
       }
     ],
     "hoteles": [
@@ -4201,7 +4441,9 @@
         "fechas": "26 Ene - 12 Feb 2027",
         "noches": 17,
         "precio": "US$ 1.320",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-26",
+        "fecha_vuelta": "2027-02-12"
       },
       {
         "puesto": "🥈",
@@ -4210,7 +4452,9 @@
         "fechas": "02 Feb - 18 Feb 2027",
         "noches": 16,
         "precio": "US$ 1.410",
-        "destacado": "No requiere visa de EE.UU."
+        "destacado": "No requiere visa de EE.UU.",
+        "fecha_ida": "2027-02-02",
+        "fecha_vuelta": "2027-02-18"
       },
       {
         "puesto": "🥉",
@@ -4219,7 +4463,9 @@
         "fechas": "09 Feb - 25 Feb 2027",
         "noches": 16,
         "precio": "US$ 1.480",
-        "destacado": "2 valijas de 23 kg incluidas"
+        "destacado": "2 valijas de 23 kg incluidas",
+        "fecha_ida": "2027-02-09",
+        "fecha_vuelta": "2027-02-25"
       }
     ],
     "hoteles": [
@@ -4309,7 +4555,9 @@
         "fechas": "16 Abr - 04 May 2027",
         "noches": 18,
         "precio": "US$ 1.380",
-        "destacado": true
+        "destacado": true,
+        "fecha_ida": "2027-04-16",
+        "fecha_vuelta": "2027-05-04"
       },
       {
         "puesto": "Top 2",
@@ -4318,7 +4566,9 @@
         "fechas": "20 Feb - 11 Mar 2027",
         "noches": 19,
         "precio": "US$ 1.420",
-        "destacado": false
+        "destacado": false,
+        "fecha_ida": "2027-02-20",
+        "fecha_vuelta": "2027-03-11"
       },
       {
         "puesto": "Top 3",
@@ -4327,7 +4577,9 @@
         "fechas": "27 Mar - 14 Abr 2027",
         "noches": 18,
         "precio": "US$ 1.460",
-        "destacado": false
+        "destacado": false,
+        "fecha_ida": "2027-03-27",
+        "fecha_vuelta": "2027-04-14"
       }
     ],
     "hoteles": [
@@ -4417,7 +4669,9 @@
         "fechas": "29 Ene - 12 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.120",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-29",
+        "fecha_vuelta": "2027-02-12"
       },
       {
         "puesto": "🥈",
@@ -4426,7 +4680,9 @@
         "fechas": "05 Feb - 19 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.170",
-        "destacado": "Conexión ágil en Roma"
+        "destacado": "Conexión ágil en Roma",
+        "fecha_ida": "2027-02-05",
+        "fecha_vuelta": "2027-02-19"
       },
       {
         "puesto": "🥉",
@@ -4435,7 +4691,9 @@
         "fechas": "12 Feb - 26 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.240",
-        "destacado": "Excelente franquicia de equipaje"
+        "destacado": "Excelente franquicia de equipaje",
+        "fecha_ida": "2027-02-12",
+        "fecha_vuelta": "2027-02-26"
       }
     ],
     "hoteles": [
@@ -4525,7 +4783,9 @@
         "fechas": "30 Ene - 13 Feb 2027",
         "noches": 14,
         "precio": "US$ 960",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-30",
+        "fecha_vuelta": "2027-02-13"
       },
       {
         "puesto": "🥈",
@@ -4534,7 +4794,9 @@
         "fechas": "06 Feb - 20 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.010",
-        "destacado": "Conexión eficiente"
+        "destacado": "Conexión eficiente",
+        "fecha_ida": "2027-02-06",
+        "fecha_vuelta": "2027-02-20"
       },
       {
         "puesto": "🥉",
@@ -4543,7 +4805,9 @@
         "fechas": "13 Feb - 27 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.060",
-        "destacado": "Opción de stopover en Lisboa"
+        "destacado": "Opción de stopover en Lisboa",
+        "fecha_ida": "2027-02-13",
+        "fecha_vuelta": "2027-02-27"
       }
     ],
     "hoteles": [
@@ -4633,7 +4897,9 @@
         "fechas": "28 Ene - 11 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.070",
-        "destacado": "Tarifa récord más baja"
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-01-28",
+        "fecha_vuelta": "2027-02-11"
       },
       {
         "puesto": "🥈",
@@ -4642,7 +4908,9 @@
         "fechas": "04 Feb - 18 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.150",
-        "destacado": "Ruta transatlántica directa"
+        "destacado": "Ruta transatlántica directa",
+        "fecha_ida": "2027-02-04",
+        "fecha_vuelta": "2027-02-18"
       },
       {
         "puesto": "🥉",
@@ -4651,7 +4919,9 @@
         "fechas": "11 Feb - 25 Feb 2027",
         "noches": 14,
         "precio": "US$ 1.250",
-        "destacado": "Servicio de 5 estrellas"
+        "destacado": "Servicio de 5 estrellas",
+        "fecha_ida": "2027-02-11",
+        "fecha_vuelta": "2027-02-25"
       }
     ],
     "hoteles": [
