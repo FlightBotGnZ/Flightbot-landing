@@ -903,10 +903,10 @@
       </div>
 
       <!-- PISO SUPERIOR (Superior Split): 2 Columnas balanceadas a la misma altura -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start mb-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch mb-6">
         
         <!-- SIDEBAR IZQUIERDO (lg:col-span-4): Buscador en vivo, filtros de regiones y lista de ciudades -->
-        <div class="lg:col-span-4 dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-4 shadow-sm theme-transition">
+        <div class="lg:col-span-4 dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-4 shadow-sm theme-transition flex flex-col h-full">
           <div class="flex items-center justify-between pb-3 mb-2 border-b dark:border-slate-800 border-slate-200 px-2">
             <span class="text-xs font-extrabold uppercase tracking-wider dark:text-slate-400 text-slate-500" id="radar-counter-sidebar">
               45 Destinos en Radar
@@ -946,14 +946,14 @@
                    placeholder="Filtrar ciudad, código IATA o país..."
                    class="w-full text-xs rounded-xl pl-8 pr-3 py-2 dark:bg-slate-950/60 bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-rose-500 transition-all">
           </div>
-          <div id="fb-radar-sidebar" class="space-y-1.5 max-h-[450px] overflow-y-auto fb-custom-scrollbar pr-1">
+          <div id="fb-radar-sidebar" class="space-y-1.5 h-[450px] max-h-[450px] overflow-y-auto fb-custom-scrollbar pr-1">
             <!-- Los 45 destinos se renderizan dinámicamente con banderitas y filtros -->
           </div>
         </div>
 
         <!-- COLUMNA DERECHA (lg:col-span-8): Cabecera de Destino + Termómetro y Gráfico -->
-        <div class="lg:col-span-8">
-          <div id="fb-radar-header-container" class="transition-all">
+        <div class="lg:col-span-8 flex flex-col h-full">
+          <div id="fb-radar-header-container" class="transition-all flex flex-col h-full flex-1">
             <!-- Se inyecta cabecera, bandera, reseña y termómetro -->
           </div>
         </div>
@@ -4513,7 +4513,7 @@
 
         return `
           <!-- MÓDULO TERMÓMETRO DE PRECIOS & HISTORIAL (ESTILO GOOGLE FLIGHTS) -->
-          <div class="dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-7 shadow-sm theme-transition">
+          <div class="dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-7 shadow-sm theme-transition flex-1 flex flex-col justify-between">
             
             <!-- Encabezado del Diagnóstico -->
             <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
@@ -4628,7 +4628,7 @@
         const tgAlertUrl = `https://t.me/GnZFlightBot?start=${encodeURIComponent(tgCmd)}`;
 
         return `
-          <div class="space-y-6">
+          <div class="flex flex-col h-full flex-1 justify-between gap-5">
             <!-- Encabezado de Ciudad con Bandera, IATA y Botón Telegram -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b dark:border-slate-800/80 border-slate-200">
               <div class="flex items-center gap-4">
@@ -4659,7 +4659,9 @@
             </p>
 
             <!-- Termómetro de Precios y Gráfico Histórico -->
-            ${generarTermometroHtml(dest)}
+            <div class="flex-1 flex flex-col">
+              ${generarTermometroHtml(dest)}
+            </div>
           </div>
         `;
       }
@@ -4989,24 +4991,25 @@
         const caribeCount = data.filter(d => d.categoria_region === 'caribe_usa').length;
         const europaCount = data.filter(d => d.categoria_region === 'europa_mundo').length;
 
+        // Píldoras limpias sin números entre paréntesis para máxima legibilidad y diseño simétrico
         const btnTodos = document.getElementById('fb-filter-todos');
-        if (btnTodos) btnTodos.textContent = `Todos (${total})`;
+        if (btnTodos) btnTodos.textContent = 'Todos';
 
         const btnCabotaje = document.getElementById('fb-filter-cabotaje');
         if (btnCabotaje) {
-          btnCabotaje.innerHTML = `<span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje (${cabotajeCount})</span>`;
+          btnCabotaje.innerHTML = `<span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje</span>`;
         }
 
         const btnBrasil = document.getElementById('fb-filter-brasil');
         if (btnBrasil) {
-          btnBrasil.innerHTML = `<span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil (${brasilCount})</span>`;
+          btnBrasil.innerHTML = `<span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil</span>`;
         }
 
         const btnCaribe = document.getElementById('fb-filter-caribe_usa');
-        if (btnCaribe) btnCaribe.textContent = `🏝️ América & Caribe (${caribeCount})`;
+        if (btnCaribe) btnCaribe.textContent = '🏝️ América & Caribe';
 
         const btnEuropa = document.getElementById('fb-filter-europa_mundo');
-        if (btnEuropa) btnEuropa.textContent = `🌍 Europa & Mundo (${europaCount})`;
+        if (btnEuropa) btnEuropa.textContent = '🌍 Europa & Mundo';
 
         const elSidebar = document.getElementById('radar-counter-sidebar');
         if (elSidebar) {
