@@ -92,5 +92,23 @@ window.CUPONES_DATA = [
     "url": "https://www.booking.com",
     "activo": true,
     "actualizado_en": "2026-10-28"
+  },
+  {
+    "id": "bahia_principe",
+    "portal": "Bahia Principe",
+    "emoji": "🌴",
+    "badge": "7% OFF Extra",
+    "titulo": "Resorts Riviera Maya & Caribe",
+    "descripcion": "Descuento adicional en hoteles all-inclusive",
+    "codigo": "HOT7",
+    "colorTheme": "amber",
+    "colorBorder": "border-amber-500/20",
+    "colorText": "text-amber-600 dark:text-amber-400",
+    "bgBadge": "bg-amber-500/10",
+    "gradienteBtn": "linear-gradient(135deg, #d97706 0%, #b45309 100%)",
+    "btnTexto": "Aplicar en Bahia Principe",
+    "url": "https://www.bahia-principe.com/es/",
+    "activo": true,
+    "actualizado_en": "2026-10-28"
   }
 ];

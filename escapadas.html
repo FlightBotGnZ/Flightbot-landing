@@ -1945,220 +1945,7 @@
     </div>
   </section>
 
-  <!-- SECCIÓN COMPARADOR DINÁMICO: ¿CONVIENE AUTO O AVIÓN? (Sugerencia 5) -->
-  <section id="comparador-auto-avion" class="py-16 dark:bg-slate-950 bg-slate-50 border-t dark:border-slate-800 border-slate-200 theme-transition relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Encabezado del Comparador -->
-      <div class="text-center max-w-3xl mx-auto mb-10">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3 border shadow-sm theme-transition"
-             style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
-          <span>⚖️</span> Comparador Inteligente de Transporte
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold dark:text-white text-slate-900 tracking-tight mb-3 theme-transition">
-          ¿Conviene viajar en Auto o en Avión?
-        </h2>
-        <p class="text-sm sm:text-base dark:text-slate-400 text-slate-600 leading-relaxed theme-transition">
-          Analizá la ecuación real de tu viaje: <b>ahorro en plata vs tiempo invertido en ruta</b> según la cantidad de personas que viajan.
-        </p>
-      </div>
-
-      <!-- Card Central del Comparador -->
-      <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl max-w-5xl mx-auto theme-transition">
-        
-        <!-- Fila de Controles: Selector de Destino y Pasajeros -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-8 pb-6 border-b dark:border-slate-800 border-slate-200">
-          
-          <!-- Selector de Destino de Cabotaje -->
-          <div class="md:col-span-7">
-            <label for="comp-destino-select" class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
-              📍 Destino Nacional de Cabotaje
-            </label>
-            <select id="comp-destino-select" onchange="window.recalcularComparadorAutoAvion()"
-                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all cursor-pointer">
-              <option value="lacosta">Partido de La Costa (Mar del Tuyú / San Bernardo / Mar de Ajó)</option>
-              <option value="mardel">Mar del Plata & Chapadmalal (Autovía 2)</option>
-              <option value="bariloche" selected>San Carlos de Bariloche (RN 5 + Desierto + RN 237)</option>
-              <option value="mendoza">Mendoza Capital & Valle de Uco (RN 7)</option>
-              <option value="cordoba">Córdoba & Sierras (Autopista Rosario - Córdoba)</option>
-              <option value="iguazu">Puerto Iguazú & Cataratas (RN 14 Mercosur)</option>
-              <option value="salta">Salta & Valles Calchaquíes (RN 9 + RN 34)</option>
-              <option value="madryn">Puerto Madryn & Península Valdés (RN 3)</option>
-              <option value="sanmartin">San Martín de los Andes & Chapelco (RN 5 + RN 237 + RN 40)</option>
-              <option value="ushuaia">Ushuaia & Tierra del Fuego (RN 3 + Barcaza Magallanes)</option>
-            </select>
-          </div>
-
-          <!-- Selector de Cantidad de Pasajeros -->
-          <div class="md:col-span-5">
-            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
-              👥 Cantidad de Pasajeros
-            </label>
-            <div class="grid grid-cols-5 gap-1.5" id="comp-pasajeros-container">
-              <button type="button" onclick="window.setComparadorPasajeros(1)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">1</button>
-              <button type="button" onclick="window.setComparadorPasajeros(2)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs">2</button>
-              <button type="button" onclick="window.setComparadorPasajeros(3)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">3</button>
-              <button type="button" onclick="window.setComparadorPasajeros(4)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">4</button>
-              <button type="button" onclick="window.setComparadorPasajeros(5)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">5</button>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Selector de Movilidad en Destino al viajar en Avión (Novedad Alquiler vs Uber) -->
-        <div class="mt-4 pt-4 border-t dark:border-slate-800 border-slate-200">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div>
-              <span class="block text-xs font-bold uppercase tracking-wider dark:text-slate-300 text-slate-700">
-                🚕 ¿Cómo te vas a mover en destino si viajás en Avión?
-              </span>
-              <span class="text-[11px] dark:text-slate-400 text-slate-500">
-                En auto propio ya tenés tu movilidad cubierta ($0 extra). Si vas en avión, sumá el costo real:
-              </span>
-            </div>
-            <div class="flex items-center gap-1.5 flex-wrap" id="comp-movilidad-container">
-              <button type="button" onclick="window.setComparadorMovilidad('uber')" id="comp-mov-uber"
-                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs">
-                🚕 Uber / Traslados (~$85.000)
-              </button>
-              <button type="button" onclick="window.setComparadorMovilidad('alquiler')" id="comp-mov-alquiler"
-                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-                🚗 Alquilar Auto 7 días (~$420.000)
-              </button>
-              <button type="button" onclick="window.setComparadorMovilidad('ninguna')" id="comp-mov-ninguna"
-                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-                🚶 A pie / Centro ($0)
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Fila de Resultados Dinámicos: Tarjeta Auto vs Tarjeta Avión -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          
-          <!-- Columna Auto -->
-          <div class="p-5 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-3">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-blue-500/10 text-blue-500 border border-blue-500/20">
-                  🚗 Viaje en Auto Familiar
-                </span>
-                <span id="comp-auto-distancia" class="text-xs font-mono dark:text-slate-400 text-slate-500">1.580 km (ida)</span>
-              </div>
-              <div class="space-y-2 mb-4">
-                <div class="flex items-center justify-between text-xs">
-                  <span class="dark:text-slate-400 text-slate-600">Combustible ida y vuelta:</span>
-                  <span id="comp-auto-combustible" class="font-bold dark:text-slate-200 text-slate-800">$ 523.770</span>
-                </div>
-                <div class="flex items-center justify-between text-xs">
-                  <span class="dark:text-slate-400 text-slate-600">Peajes ida y vuelta:</span>
-                  <span id="comp-auto-peajes" class="font-bold dark:text-slate-200 text-slate-800">$ 19.000</span>
-                </div>
-                <div class="flex items-center justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                  <span>Movilidad en destino:</span>
-                  <span>✅ Tu auto en destino ($0 extra)</span>
-                </div>
-                <div class="pt-2 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between">
-                  <span class="text-xs font-bold dark:text-slate-300 text-slate-700">Costo Total Vehículo:</span>
-                  <span id="comp-auto-total" class="text-base font-extrabold text-blue-500">$ 542.770</span>
-                </div>
-                <div class="flex items-center justify-between text-xs text-slate-500">
-                  <span>Costo por persona (<span id="comp-auto-pax-label">2 pax</span>):</span>
-                  <span id="comp-auto-por-persona" class="font-semibold text-slate-600 dark:text-slate-400">$ 271.385 c/u</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Tiempo en Auto -->
-            <div class="p-3 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 flex items-center gap-3">
-              <span class="text-2xl">⏱️</span>
-              <div>
-                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Tiempo en Ruta (Ida)</div>
-                <div id="comp-auto-tiempo" class="text-sm font-extrabold dark:text-white text-slate-900">18h 35m de manejo</div>
-                <div class="text-[10px] dark:text-slate-400 text-slate-500">Requiere parada técnica y descanso</div>
-              </div>
-            </div>
-
-            <!-- Tip de Ahorro Patagónico (Ley 23.966) -->
-            <div id="comp-auto-pata-tip" class="mt-2 p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-600 dark:text-amber-300 flex items-start gap-2">
-              <span class="text-sm">⛽</span>
-              <div>
-                <b>Régimen Patagónico (Ley 23.966):</b> En destinos al sur del Río Colorado el combustible está exento de ICL/IDC (-19% a -26%). Calculamos tarifa ponderada real.
-              </div>
-            </div>
-          </div>
-
-          <!-- Columna Avión -->
-          <div class="p-5 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between mb-3">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-rose-500/10 text-rose-500 border border-rose-500/20">
-                  ✈️ Vuelo Directo Radar
-                </span>
-                <span id="comp-avion-tarifa-base" class="text-xs font-mono dark:text-slate-400 text-slate-500">Tarifa: $ 89.000 i/v</span>
-              </div>
-              <div class="space-y-2 mb-4">
-                <div class="flex items-center justify-between text-xs">
-                  <span class="dark:text-slate-400 text-slate-600">Pasajes ida y vuelta (<span id="comp-avion-pax-count">2</span> pers):</span>
-                  <span id="comp-avion-pasajes-total" class="font-bold dark:text-slate-200 text-slate-800">$ 178.000</span>
-                </div>
-                <div class="flex items-center justify-between text-xs">
-                  <span class="dark:text-slate-400 text-slate-600">Equipaje de mano y tasas:</span>
-                  <span class="font-bold text-emerald-500">Incluido base</span>
-                </div>
-                <div class="flex items-center justify-between text-xs">
-                  <span class="dark:text-slate-400 text-slate-600" id="comp-avion-mov-label">Movilidad en destino (Uber/Semana):</span>
-                  <span id="comp-avion-mov-costo" class="font-bold text-amber-500">+$ 85.000</span>
-                </div>
-                <div class="pt-2 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between">
-                  <span class="text-xs font-bold dark:text-slate-300 text-slate-700">Costo Total Grupo:</span>
-                  <span id="comp-avion-total" class="text-base font-extrabold" style="color: var(--brand-primary);">$ 178.000</span>
-                </div>
-                <div class="flex items-center justify-between text-xs text-slate-500">
-                  <span>Costo por persona:</span>
-                  <span id="comp-avion-por-persona" class="font-semibold text-slate-600 dark:text-slate-400">$ 89.000 c/u</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Tiempo en Avión -->
-            <div class="p-3 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 flex items-center gap-3">
-              <span class="text-2xl">⚡</span>
-              <div>
-                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Tiempo Total de Viaje (Ida)</div>
-                <div id="comp-avion-tiempo" class="text-sm font-extrabold dark:text-white text-slate-900">4h 15m (vuelo + trámites)</div>
-                <div class="text-[10px] dark:text-slate-400 text-slate-500">2h 15m aire + 2h aeropuerto</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Veredicto Final: Ahorro en Plata VS Tiempo en Ruta -->
-        <div id="comp-veredicto-card" class="p-5 sm:p-6 rounded-2xl dark:bg-slate-950 bg-slate-100 border dark:border-slate-800 border-slate-200 transition-all">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="space-y-1">
-              <div class="flex items-center gap-2">
-                <span id="comp-veredicto-icono" class="text-xl">✈️</span>
-                <span id="comp-veredicto-titulo" class="text-sm sm:text-base font-extrabold dark:text-white text-slate-900">
-                  Conviene Avión: Ahorrás $ 364.770 y ganás 14h 20m de vida
-                </span>
-              </div>
-              <p id="comp-veredicto-detalle" class="text-xs sm:text-sm dark:text-slate-400 text-slate-600 leading-relaxed">
-                Para 2 pasajeros, el avión es $ 364.770 más barato que mover el auto y te ahorrás 14 horas de manejo en ruta.
-              </p>
-            </div>
-            <a href="#radar-vuelos" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white transition-all hover:scale-105 flex-shrink-0 text-center shadow-md"
-               style="background: var(--brand-gradient);">
-              Ver Vuelos Disponibles &rarr;
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
+  
 
 
   
@@ -2488,39 +2275,218 @@
           </div>
         </div>
 
-        <!-- Tarjeta 3: Barrera Sanitaria (Alimentos Prohibidos vs Permitidos) -->
-        <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-7 shadow-sm theme-transition">
-          <div class="flex items-center justify-between gap-2 mb-4 flex-wrap">
-            <h3 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
-              <span>🍎</span>
-              <span>Barrera Sanitaria y Alimentos en Ruta</span>
-            </h3>
-            <span id="fb-road-food-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30">
-              SENASA / FUNBAPA
-            </span>
+      <!-- MÓDULO COMPARADOR: ¿CONVIENE VIAJAR EN AUTO O EN AVIÓN? -->
+      <div id="comparador-auto-avion" class="mb-10 pt-8 border-t dark:border-slate-800 border-slate-200 theme-transition">
+        <!-- Encabezado del Comparador -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-3 border shadow-sm theme-transition"
+             style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
+          <span>⚖️</span> Comparador Inteligente de Transporte
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold dark:text-white text-slate-900 tracking-tight mb-3 theme-transition">
+          ¿Conviene viajar en Auto o en Avión?
+        </h2>
+        <p class="text-sm sm:text-base dark:text-slate-400 text-slate-600 leading-relaxed theme-transition">
+          Analizá la ecuación real de tu viaje: <b>ahorro en plata vs tiempo invertido en ruta</b> según la cantidad de personas que viajan.
+        </p>
+      </div>
+
+      <!-- Card Central del Comparador -->
+      <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl max-w-5xl mx-auto theme-transition">
+        
+        <!-- Fila de Controles: Selector de Destino y Pasajeros -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 mb-8 pb-6 border-b dark:border-slate-800 border-slate-200">
+          
+          <!-- Selector de Destino de Cabotaje -->
+          <div class="md:col-span-7">
+            <label for="comp-destino-select" class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              📍 Destino Nacional de Cabotaje
+            </label>
+            <select id="comp-destino-select" onchange="window.recalcularComparadorAutoAvion()"
+                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all cursor-pointer">
+              <option value="lacosta">Partido de La Costa (Mar del Tuyú / San Bernardo / Mar de Ajó)</option>
+              <option value="mardel">Mar del Plata & Chapadmalal (Autovía 2)</option>
+              <option value="bariloche" selected>San Carlos de Bariloche (RN 5 + Desierto + RN 237)</option>
+              <option value="mendoza">Mendoza Capital & Valle de Uco (RN 7)</option>
+              <option value="cordoba">Córdoba & Sierras (Autopista Rosario - Córdoba)</option>
+              <option value="iguazu">Puerto Iguazú & Cataratas (RN 14 Mercosur)</option>
+              <option value="salta">Salta & Valles Calchaquíes (RN 9 + RN 34)</option>
+              <option value="madryn">Puerto Madryn & Península Valdés (RN 3)</option>
+              <option value="sanmartin">San Martín de los Andes & Chapelco (RN 5 + RN 237 + RN 40)</option>
+              <option value="ushuaia">Ushuaia & Tierra del Fuego (RN 3 + Barcaza Magallanes)</option>
+            </select>
           </div>
-          <div class="space-y-3 text-xs sm:text-sm leading-relaxed">
-            <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 dark:text-slate-200 text-slate-800" id="fb-road-food-prohibited"></div>
-            <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 dark:text-slate-200 text-slate-800" id="fb-road-food-allowed"></div>
+
+          <!-- Selector de Cantidad de Pasajeros -->
+          <div class="md:col-span-5">
+            <label class="block text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 mb-2">
+              👥 Cantidad de Pasajeros
+            </label>
+            <div class="grid grid-cols-5 gap-1.5" id="comp-pasajeros-container">
+              <button type="button" onclick="window.setComparadorPasajeros(1)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">1</button>
+              <button type="button" onclick="window.setComparadorPasajeros(2)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs">2</button>
+              <button type="button" onclick="window.setComparadorPasajeros(3)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">3</button>
+              <button type="button" onclick="window.setComparadorPasajeros(4)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">4</button>
+              <button type="button" onclick="window.setComparadorPasajeros(5)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">5</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Selector de Movilidad en Destino al viajar en Avión (Novedad Alquiler vs Uber) -->
+        <div class="mt-4 pt-4 border-t dark:border-slate-800 border-slate-200">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span class="block text-xs font-bold uppercase tracking-wider dark:text-slate-300 text-slate-700">
+                🚕 ¿Cómo te vas a mover en destino si viajás en Avión?
+              </span>
+              <span class="text-[11px] dark:text-slate-400 text-slate-500">
+                En auto propio ya tenés tu movilidad cubierta ($0 extra). Si vas en avión, sumá el costo real:
+              </span>
+            </div>
+            <div class="flex items-center gap-1.5 flex-wrap" id="comp-movilidad-container">
+              <button type="button" onclick="window.setComparadorMovilidad('uber')" id="comp-mov-uber"
+                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs">
+                🚕 Uber / Traslados (~$85.000)
+              </button>
+              <button type="button" onclick="window.setComparadorMovilidad('alquiler')" id="comp-mov-alquiler"
+                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
+                🚗 Alquilar Auto 7 días (~$420.000)
+              </button>
+              <button type="button" onclick="window.setComparadorMovilidad('ninguna')" id="comp-mov-ninguna"
+                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
+                🚶 A pie / Centro ($0)
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Tarjeta 4: Viajar con Mascotas (Vacunas, Libreta Sanitaria, Río Negro y Parques) -->
-        <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-7 shadow-sm theme-transition">
-          <div class="flex items-center justify-between gap-2 mb-4 flex-wrap">
-            <h3 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
-              <span>🐾</span>
-              <span>Viajar con Mascotas (Vacunas y Controles)</span>
-            </h3>
-            <span id="fb-road-pets-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-sky-500/15 text-sky-400 border border-sky-500/30">
-              Requisitos Viales
-            </span>
+        <!-- Fila de Resultados Dinámicos: Tarjeta Auto vs Tarjeta Avión -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          
+          <!-- Columna Auto -->
+          <div class="p-5 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-blue-500/10 text-blue-500 border border-blue-500/20">
+                  🚗 Viaje en Auto Familiar
+                </span>
+                <span id="comp-auto-distancia" class="text-xs font-mono dark:text-slate-400 text-slate-500">1.580 km (ida)</span>
+              </div>
+              <div class="space-y-2 mb-4">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="dark:text-slate-400 text-slate-600">Combustible ida y vuelta:</span>
+                  <span id="comp-auto-combustible" class="font-bold dark:text-slate-200 text-slate-800">$ 523.770</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="dark:text-slate-400 text-slate-600">Peajes ida y vuelta:</span>
+                  <span id="comp-auto-peajes" class="font-bold dark:text-slate-200 text-slate-800">$ 19.000</span>
+                </div>
+                <div class="flex items-center justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                  <span>Movilidad en destino:</span>
+                  <span>✅ Tu auto en destino ($0 extra)</span>
+                </div>
+                <div class="pt-2 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between">
+                  <span class="text-xs font-bold dark:text-slate-300 text-slate-700">Costo Total Vehículo:</span>
+                  <span id="comp-auto-total" class="text-base font-extrabold text-blue-500">$ 542.770</span>
+                </div>
+                <div class="flex items-center justify-between text-xs text-slate-500">
+                  <span>Costo por persona (<span id="comp-auto-pax-label">2 pax</span>):</span>
+                  <span id="comp-auto-por-persona" class="font-semibold text-slate-600 dark:text-slate-400">$ 271.385 c/u</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Tiempo en Auto -->
+            <div class="p-3 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 flex items-center gap-3">
+              <span class="text-2xl">⏱️</span>
+              <div>
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Tiempo en Ruta (Ida)</div>
+                <div id="comp-auto-tiempo" class="text-sm font-extrabold dark:text-white text-slate-900">18h 35m de manejo</div>
+                <div class="text-[10px] dark:text-slate-400 text-slate-500">Requiere parada técnica y descanso</div>
+              </div>
+            </div>
+
+            <!-- Tip de Ahorro Patagónico (Ley 23.966) -->
+            <div id="comp-auto-pata-tip" class="mt-2 p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-600 dark:text-amber-300 flex items-start gap-2">
+              <span class="text-sm">⛽</span>
+              <div>
+                <b>Régimen Patagónico (Ley 23.966):</b> En destinos al sur del Río Colorado el combustible está exento de ICL/IDC (-19% a -26%). Calculamos tarifa ponderada real.
+              </div>
+            </div>
           </div>
-          <div class="space-y-3 text-xs sm:text-sm leading-relaxed">
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800" id="fb-road-pets-docs"></div>
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-600" id="fb-road-pets-rules"></div>
+
+          <!-- Columna Avión -->
+          <div class="p-5 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-rose-500/10 text-rose-500 border border-rose-500/20">
+                  ✈️ Vuelo Directo Radar
+                </span>
+                <span id="comp-avion-tarifa-base" class="text-xs font-mono dark:text-slate-400 text-slate-500">Tarifa: $ 89.000 i/v</span>
+              </div>
+              <div class="space-y-2 mb-4">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="dark:text-slate-400 text-slate-600">Pasajes ida y vuelta (<span id="comp-avion-pax-count">2</span> pers):</span>
+                  <span id="comp-avion-pasajes-total" class="font-bold dark:text-slate-200 text-slate-800">$ 178.000</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="dark:text-slate-400 text-slate-600">Equipaje de mano y tasas:</span>
+                  <span class="font-bold text-emerald-500">Incluido base</span>
+                </div>
+                <div class="flex items-center justify-between text-xs">
+                  <span class="dark:text-slate-400 text-slate-600" id="comp-avion-mov-label">Movilidad en destino (Uber/Semana):</span>
+                  <span id="comp-avion-mov-costo" class="font-bold text-amber-500">+$ 85.000</span>
+                </div>
+                <div class="pt-2 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between">
+                  <span class="text-xs font-bold dark:text-slate-300 text-slate-700">Costo Total Grupo:</span>
+                  <span id="comp-avion-total" class="text-base font-extrabold" style="color: var(--brand-primary);">$ 178.000</span>
+                </div>
+                <div class="flex items-center justify-between text-xs text-slate-500">
+                  <span>Costo por persona:</span>
+                  <span id="comp-avion-por-persona" class="font-semibold text-slate-600 dark:text-slate-400">$ 89.000 c/u</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tiempo en Avión -->
+            <div class="p-3 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 flex items-center gap-3">
+              <span class="text-2xl">⚡</span>
+              <div>
+                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Tiempo Total de Viaje (Ida)</div>
+                <div id="comp-avion-tiempo" class="text-sm font-extrabold dark:text-white text-slate-900">4h 15m (vuelo + trámites)</div>
+                <div class="text-[10px] dark:text-slate-400 text-slate-500">2h 15m aire + 2h aeropuerto</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Veredicto Final: Ahorro en Plata VS Tiempo en Ruta -->
+        <div id="comp-veredicto-card" class="p-5 sm:p-6 rounded-2xl dark:bg-slate-950 bg-slate-100 border dark:border-slate-800 border-slate-200 transition-all">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span id="comp-veredicto-icono" class="text-xl">✈️</span>
+                <span id="comp-veredicto-titulo" class="text-sm sm:text-base font-extrabold dark:text-white text-slate-900">
+                  Conviene Avión: Ahorrás $ 364.770 y ganás 14h 20m de vida
+                </span>
+              </div>
+              <p id="comp-veredicto-detalle" class="text-xs sm:text-sm dark:text-slate-400 text-slate-600 leading-relaxed">
+                Para 2 pasajeros, el avión es $ 364.770 más barato que mover el auto y te ahorrás 14 horas de manejo en ruta.
+              </p>
+            </div>
+            <a href="#radar-vuelos" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white transition-all hover:scale-105 flex-shrink-0 text-center shadow-md"
+               style="background: var(--brand-gradient);">
+              Ver Vuelos Disponibles &rarr;
+            </a>
           </div>
         </div>
+
+      </div>
+      </div>
+
+        
       </div>
 
       <!-- Paradores y Estaciones Recomendadas con Km e Indicadores 24 hs / GNC / EV -->
@@ -2556,7 +2522,6 @@
           </span>
         </div>
         <div id="fb-road-ypf-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
-        </div> <!-- Fin fb-road-results-container -->
       </div>
 
       <!-- Descuentos y Promociones en Combustible y Tiendas: 3 Pestañitas Interactivas -->
@@ -2675,6 +2640,45 @@
 
         </div>
       </div>
+
+      <!-- 6º: BARRERA SANITARIA (SENASA / FUNBAPA / ISCAMEN) & VIAJAR CON MASCOTAS -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <!-- Tarjeta 3: Barrera Sanitaria (Alimentos Prohibidos vs Permitidos) -->
+        <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-7 shadow-sm theme-transition">
+          <div class="flex items-center justify-between gap-2 mb-4 flex-wrap">
+            <h3 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+              <span>🍎</span>
+              <span>Barrera Sanitaria y Alimentos en Ruta</span>
+            </h3>
+            <span id="fb-road-food-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30">
+              SENASA / FUNBAPA
+            </span>
+          </div>
+          <div class="space-y-3 text-xs sm:text-sm leading-relaxed">
+            <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 dark:text-slate-200 text-slate-800" id="fb-road-food-prohibited"></div>
+            <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 dark:text-slate-200 text-slate-800" id="fb-road-food-allowed"></div>
+          </div>
+        </div>
+
+        <!-- Tarjeta 4: Viajar con Mascotas (Vacunas, Libreta Sanitaria, Río Negro y Parques) -->
+        <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-7 shadow-sm theme-transition">
+          <div class="flex items-center justify-between gap-2 mb-4 flex-wrap">
+            <h3 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+              <span>🐾</span>
+              <span>Viajar con Mascotas (Vacunas y Controles)</span>
+            </h3>
+            <span id="fb-road-pets-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-sky-500/15 text-sky-400 border border-sky-500/30">
+              Requisitos Viales
+            </span>
+          </div>
+          <div class="space-y-3 text-xs sm:text-sm leading-relaxed">
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800" id="fb-road-pets-docs"></div>
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-600" id="fb-road-pets-rules"></div>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- Fin fb-road-results-container -->
     </div>
 
     <!-- Modal Elegante de Personalización de Hoja de Ruta (Nombre + Edad) -->
