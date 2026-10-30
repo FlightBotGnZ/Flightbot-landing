@@ -173,7 +173,7 @@ module.exports = async function handler(req, res) {
   }
 
   // Modelos de Gemini a probar en cascada
-  const modelos = ['gemini-2.0-flash', 'gemini-1.5-flash'];
+  const modelos = ['gemini-2.5-flash', 'gemini-flash-latest', 'gemini-2.0-flash'];
 
   const systemInstruction = `Eres 'F-Bot Rolli', el asistente virtual y compañero de viaje inteligente de FlightBot (https://flightbot.com.ar).
 Tono: Cálido, amigable, argentino natural (podés usar 'vos' y 'podés' con cordialidad), sumamente conciso y profesional.
@@ -204,7 +204,8 @@ Pregunta del viajero: ${mensajeLimpio}`;
     },
     generationConfig: {
       temperature: 0.3,
-      maxOutputTokens: 600
+      maxOutputTokens: 900,
+      thinkingConfig: { thinkingBudget: 0 }
     }
   };
 
@@ -225,6 +226,11 @@ Pregunta del viajero: ${mensajeLimpio}`;
       });
       clearTimeout(timeout);
 
+      if (!response.ok) {
+        // Diagnóstico seguro: solo código HTTP y modelo, jamás la clave
+        console.error('[chat] Gemini HTTP ' + response.status + ' modelo=' + modelo);
+        continue;
+      }
       if (response.ok) {
         const data = await response.json();
         const candidatos = data.candidates || [];
@@ -254,6 +260,7 @@ Pregunta del viajero: ${mensajeLimpio}`;
         }
       }
     } catch (_err) {
+      console.error('[chat] Error llamando a Gemini modelo=' + modelo + ': ' + (_err && _err.name));
       // Intentar siguiente modelo o caer en fallback
     }
   }
