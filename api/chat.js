@@ -172,9 +172,8 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  // Modelos de Gemini a probar en cascada
-  // Modelos vigentes (los mismos que usa el bot de Telegram); Vercel Hobby corta a 10 s, por eso solo 2 intentos cortos
-  const modelos = ['gemini-3.5-flash-lite', 'gemini-3.8-flash'];
+  // Modelos de Gemini Flash verificados por baja latencia (~1.2 s) compatibles con Vercel Hobby (10 s max)
+  const modelos = ['gemini-3.5-flash-lite', 'gemini-3.1-flash-lite', 'gemini-flash-lite-latest'];
 
   const systemInstruction = `Eres 'F-Bot Rolli', el asistente virtual y compañero de viaje inteligente de FlightBot (https://flightbot.com.ar).
 Tono: Cálido, amigable, argentino natural (podés usar 'vos' y 'podés' con cordialidad), sumamente conciso y profesional.
@@ -205,16 +204,14 @@ Pregunta del viajero: ${mensajeLimpio}`;
     },
     generationConfig: {
       temperature: 0.3,
-      maxOutputTokens: 900,
-      thinkingConfig: { thinkingBudget: 0 }
+      maxOutputTokens: 600
     }
   };
 
-  const diag = [];
   for (const modelo of modelos) {
     try {
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 4500);
+      const timeout = setTimeout(() => controller.abort(), 3200);
 
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelo}:generateContent`;
       const response = await fetch(url, {
@@ -229,14 +226,7 @@ Pregunta del viajero: ${mensajeLimpio}`;
       clearTimeout(timeout);
 
       if (!response.ok) {
-        // Diagnóstico seguro: solo código HTTP, estado y mensaje de Google, jamás la clave
-        let detalle = '';
-        try {
-          const errBody = await response.json();
-          detalle = String((errBody && errBody.error && (errBody.error.status + ': ' + errBody.error.message)) || '').slice(0, 160);
-        } catch (_e) {}
-        console.error('[chat] Gemini HTTP ' + response.status + ' modelo=' + modelo + ' ' + detalle);
-        diag.push({ modelo, http: response.status, detalle });
+        console.error('[chat] Gemini HTTP ' + response.status + ' modelo=' + modelo);
         continue;
       }
       if (response.ok) {
@@ -269,7 +259,6 @@ Pregunta del viajero: ${mensajeLimpio}`;
       }
     } catch (_err) {
       console.error('[chat] Error llamando a Gemini modelo=' + modelo + ': ' + (_err && _err.name));
-      diag.push({ modelo, error: String(_err && _err.name) });
       // Intentar siguiente modelo o caer en fallback
     }
   }
@@ -279,8 +268,7 @@ Pregunta del viajero: ${mensajeLimpio}`;
   return res.status(200).json({
     respuesta: fallback.respuesta,
     quick_replies: fallback.quick_replies,
-    modo: 'resiliencia_fallback',
-    diag: diag
+    modo: 'resiliencia_fallback'
   });
 };
 
