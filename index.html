@@ -4301,29 +4301,15 @@
         let dt1 = new Date(anio1, mes1, dia1);
         let dt2 = new Date(anio2, mes2, dia2);
         
-        // Umbrales de corte por región según GEMINI.md
-        let umbralDias = 45;
-        const iata = (dest && dest.iata) ? dest.iata.toUpperCase() : '';
-        const esCabotaje = dest && (dest.es_cabotaje === true || dest.categoria_region === 'cabotaje');
-        if (esCabotaje) {
-          umbralDias = 45;
-        } else if ((dest && dest.categoria_region === 'brasil') || iata === 'GIG' || iata === 'PUJ') {
-          umbralDias = 60;
-        } else if ((dest && dest.categoria_region === 'caribe_usa') || ['AUA', 'MIA', 'CUN'].includes(iata)) {
-          umbralDias = 75;
-        } else {
-          umbralDias = 90;
-        }
-        
         const hoy = new Date();
         hoy.setHours(0, 0, 0, 0);
         
         const diffDias = Math.ceil((dt1.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24));
         
-        // Si ya pasó o está en ventana de corte, rotar en ciclos de 84 días (+12 semanas)
-        if (diffDias < umbralDias) {
+        // Rotar únicamente si la fecha ya quedó en el pasado para garantizar sincronización de tarifas
+        if (diffDias < 1) {
           const noches = Math.max(1, Math.round((dt2.getTime() - dt1.getTime()) / (1000 * 60 * 60 * 24)));
-          while (Math.ceil((dt1.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24)) < umbralDias) {
+          while (Math.ceil((dt1.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24)) < 1) {
             dt1.setDate(dt1.getDate() + 84);
           }
           dt2 = new Date(dt1);
@@ -4721,8 +4707,15 @@
         const kiwiAffilId = 'travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785';
 
         const vuelosHtml = dest.vuelos.map(v => {
-          const fechasVigentes = window.normalizarFechasVueloVigente ? window.normalizarFechasVueloVigente(v.fechas, dest) : v.fechas;
-          const fechasIso = window.obtenerFechasISO ? window.obtenerFechasISO(fechasVigentes, v) : { ida: v.fecha_ida || '2027-02-13', vuelta: v.fecha_vuelta || '2027-02-19' };
+          const hoy = new Date();
+          hoy.setHours(0, 0, 0, 0);
+          const tieneFechaFutura = v.fecha_ida && new Date(v.fecha_ida + 'T00:00:00') >= hoy;
+          const fechasVigentes = (v.actualizado_en_vivo || tieneFechaFutura)
+            ? v.fechas
+            : (window.normalizarFechasVueloVigente ? window.normalizarFechasVueloVigente(v.fechas, dest) : v.fechas);
+          const fechasIso = (v.fecha_ida && v.fecha_vuelta)
+            ? { ida: v.fecha_ida, vuelta: v.fecha_vuelta }
+            : (window.obtenerFechasISO ? window.obtenerFechasISO(fechasVigentes, v) : { ida: '2026-11-25', vuelta: '2026-12-01' });
           const fechaIda = fechasIso.ida;
           const fechaVuelta = fechasIso.vuelta;
 
@@ -5051,7 +5044,7 @@
           }
 
           const controller = new AbortController();
-          const timer = setTimeout(() => controller.abort(), 3500);
+          const timer = setTimeout(() => controller.abort(), 8000);
 
           const res = await fetch(apiUrl, {
             method: 'GET',

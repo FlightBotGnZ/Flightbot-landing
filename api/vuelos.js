@@ -1,7 +1,8 @@
 /**
  * FlightBot - API Endpoint Serverless en Vercel: /api/vuelos
- * Conexión segura frontend Vercel <-> backend / Travelpayouts con caché HTTP en Edge CDN,
- * validación de origen, prevención de SSRF (CWE-918) y fallback resiliente.
+ * Conexión viva y segura con Travelpayouts / Aviasales Data API v2,
+ * enriquecimiento dinámico de tarifas, fechas reales y vínculos de reserva con Google Flights/Kiwi,
+ * caché HTTP en Edge CDN (6 horas), prevención de SSRF (CWE-918) y fallback resiliente.
  */
 
 const fs = require('fs');
@@ -14,6 +15,9 @@ const ALLOWED_ORIGINS = new Set([
   'http://localhost:8000',
   'http://127.0.0.1:8000'
 ]);
+
+const MESES_ABR = ['', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+const TIPO_CAMBIO_REF = 1350; // Tipo de cambio de referencia para vuelos internacionales
 
 // Validación Anti-SSRF para URLs salientes (CWE-918)
 function esUrlRemotaSegura(rawUrl) {
@@ -40,7 +44,7 @@ function esUrlRemotaSegura(rawUrl) {
   }
 }
 
-// Carga resiliente de los datos locales de respaldo (window.RADAR_DATA / radar-data.json)
+// Carga resiliente de los datos locales de respaldo (radar-data.json / radar-data.js)
 function cargarDatosLocales() {
   const posiblesRutas = [
     path.join(__dirname, '../js/radar-data.json'),
@@ -76,6 +80,48 @@ function cargarDatosLocales() {
   return [];
 }
 
+// Formatea fechas ISO (YYYY-MM-DD) a texto legible en español (ej. "25 Nov - 01 Dic 2026")
+function formatearRangoFechas(depStr, retStr) {
+  try {
+    const [y1, m1, d1] = depStr.split('-').map(Number);
+    const [y2, m2, d2] = retStr.split('-').map(Number);
+    const mes1 = MESES_ABR[m1] || String(m1);
+    const mes2 = MESES_ABR[m2] || String(m2);
+    const dia1 = String(d1).padStart(2, '0');
+    const dia2 = String(d2).padStart(2, '0');
+    return `${dia1} ${mes1} - ${dia2} ${mes2} ${y2}`;
+  } catch (_e) {
+    return `${depStr} al ${retStr}`;
+  }
+}
+
+// Formatea montos en ARS con separador de miles
+function formatearArs(monto) {
+  return `$ ${Math.round(monto).toLocaleString('es-AR')} ARS`;
+}
+
+// Consulta a Travelpayouts Aviasales Data API v2 con timeout seguro
+async function consultarTravelpayouts(url) {
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 4000);
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'User-Agent': 'FlightBot-Vercel-Radar/2.0'
+      },
+      signal: controller.signal
+    });
+    clearTimeout(timer);
+    if (!res.ok) return [];
+    const json = await res.json();
+    return Array.isArray(json.data) ? json.data : [];
+  } catch (_e) {
+    return [];
+  }
+}
+
 module.exports = async function handler(req, res) {
   const origin = req.headers && req.headers.origin ? String(req.headers.origin) : '';
   if (ALLOWED_ORIGINS.has(origin)) {
@@ -96,9 +142,8 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
+  // 1. Si existe BACKEND_API_URL configurado y activo, usarlo como prioridad
   const backendUrl = process.env.BACKEND_API_URL;
-
-  // 1. Si existe BACKEND_API_URL seguro, consultar el backend central
   if (esUrlRemotaSegura(backendUrl)) {
     try {
       const baseUrl = backendUrl.trim().replace(/\/+$/, '');
@@ -119,18 +164,156 @@ module.exports = async function handler(req, res) {
 
       if (remoteRes.ok) {
         const data = await remoteRes.json();
-        res.setHeader('Cache-Control', 's-maxage=1800, stale-while-revalidate=3600');
+        res.setHeader('Cache-Control', 's-maxage=21600, stale-while-revalidate=43200');
         return res.status(200).json(data);
       }
     } catch (_error) {
-      // Backend offline o timeout: fallback resiliente
+      // Backend offline: continuar al enriquecedor Travelpayouts
     }
   }
 
-  // 2. Fallback resiliente cargando el catálogo local verificado de rutas
-  const fallbackData = cargarDatosLocales();
-  res.setHeader('Cache-Control', 's-maxage=600, stale-while-revalidate=1800');
-  return res.status(200).json(fallbackData);
+  // 2. Cargar catálogo local base para preservar fotos, descripciones, hoteles y estructura
+  const catalogo = cargarDatosLocales();
+  if (!Array.isArray(catalogo) || catalogo.length === 0) {
+    return res.status(500).json({ error: 'Catálogo de vuelos no disponible' });
+  }
+
+  // 3. Enriquecimiento en tiempo real con Travelpayouts / Aviasales Data API v2
+  const tpToken = process.env.TRAVELPAYOUTS_API_KEY || 'd02683a4563a9fbba03eb7a13be518ff';
+
+  try {
+    const urlArs = `https://api.travelpayouts.com/v2/prices/latest?currency=ars&origin=BUE&period_type=year&page=1&limit=200&show_to_affiliates=true&sorting=price&token=${tpToken}`;
+    const urlUsd = `https://api.travelpayouts.com/v2/prices/latest?currency=usd&origin=BUE&period_type=year&page=1&limit=200&show_to_affiliates=true&sorting=price&token=${tpToken}`;
+
+    // Consultas específicas para rutas de alto interés que podrían quedar fuera del top 200
+    const urlGig = `https://api.travelpayouts.com/v2/prices/latest?currency=usd&origin=BUE&destination=GIG&period_type=year&page=1&limit=5&show_to_affiliates=true&sorting=price&token=${tpToken}`;
+    const urlFco = `https://api.travelpayouts.com/v2/prices/latest?currency=usd&origin=BUE&destination=FCO&period_type=year&page=1&limit=5&show_to_affiliates=true&sorting=price&token=${tpToken}`;
+
+    const [resArs, resUsd, resGig, resFco] = await Promise.allSettled([
+      consultarTravelpayouts(urlArs),
+      consultarTravelpayouts(urlUsd),
+      consultarTravelpayouts(urlGig),
+      consultarTravelpayouts(urlFco)
+    ]);
+
+    const itemsArs = resArs.status === 'fulfilled' ? resArs.value : [];
+    const itemsUsd = resUsd.status === 'fulfilled' ? resUsd.value : [];
+    const itemsGig = resGig.status === 'fulfilled' ? resGig.value : [];
+    const itemsFco = resFco.status === 'fulfilled' ? resFco.value : [];
+
+    // Combinar elementos en mapas ordenados por precio
+    const mapArs = {};
+    for (const it of itemsArs) {
+      if (it && it.destination) {
+        if (!mapArs[it.destination]) mapArs[it.destination] = [];
+        mapArs[it.destination].push(it);
+      }
+    }
+
+    const mapUsd = {};
+    for (const it of [...itemsUsd, ...itemsGig, ...itemsFco]) {
+      if (it && it.destination) {
+        if (!mapUsd[it.destination]) mapUsd[it.destination] = [];
+        mapUsd[it.destination].push(it);
+      }
+    }
+
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+
+    // Mapear cada destino del catálogo con las mejores ofertas vivas
+    const catalogoDinamico = catalogo.map(dest => {
+      const iata = (dest.iata || '').toUpperCase();
+      const esCabotaje = dest.es_cabotaje === true || dest.categoria_region === 'cabotaje';
+
+      // Seleccionar ofertas de origen según categoría de cabotaje o internacional
+      const ofertasRaw = esCabotaje 
+        ? (mapArs[iata] || mapUsd[iata] || [])
+        : (mapUsd[iata] || mapArs[iata] || []);
+
+      // Filtrar sólo vuelos con fecha de salida futura y retorno válido
+      const ofertasValidas = ofertasRaw.filter(o => {
+        if (!o.depart_date || !o.return_date || !o.value) return false;
+        const depDate = new Date(o.depart_date + 'T00:00:00');
+        return depDate >= hoy;
+      });
+
+      if (ofertasValidas.length === 0) {
+        return dest; // Conservar datos base si no hay cotización fresca disponible
+      }
+
+      // Clonar destino para mutación limpia
+      const destActualizado = JSON.parse(JSON.stringify(dest));
+      const vuelosBase = Array.isArray(destActualizado.vuelos) ? destActualizado.vuelos : [];
+
+      // Actualizar los puestos de vuelo con las opciones más económicas reales
+      const nuevosVuelos = vuelosBase.map((vueloBase, idx) => {
+        const oferta = ofertasValidas[idx] || ofertasValidas[0];
+        if (!oferta) return vueloBase;
+
+        const depDate = new Date(oferta.depart_date + 'T00:00:00');
+        const retDate = new Date(oferta.return_date + 'T00:00:00');
+        const nochesCalc = Math.max(1, Math.round((retDate - depDate) / (1000 * 60 * 60 * 24)));
+        const fechasLegibles = formatearRangoFechas(oferta.depart_date, oferta.return_date);
+
+        const canalEmisor = oferta.gate || oferta.airline || 'Kiwi.com';
+        const aerolineaNombre = (vueloBase.aerolinea && !vueloBase.aerolinea.includes('Flybondi')) 
+          ? vueloBase.aerolinea 
+          : canalEmisor;
+
+        let precioFormateado = '';
+        let precioNumArs = 0;
+        let precioNumUsd = 0;
+
+        if (esCabotaje) {
+          const valArs = Math.round(Number(oferta.value));
+          precioNumArs = valArs;
+          precioNumUsd = Math.round(valArs / TIPO_CAMBIO_REF);
+          precioFormateado = `${formatearArs(valArs)} (US$ ${precioNumUsd} aprox)`;
+        } else {
+          const valUsd = Math.round(Number(oferta.value));
+          precioNumUsd = valUsd;
+          precioNumArs = Math.round(valUsd * TIPO_CAMBIO_REF);
+          precioFormateado = `US$ ${valUsd} (aprox. ${formatearArs(precioNumArs)})`;
+        }
+
+        return {
+          ...vueloBase,
+          aerolinea: aerolineaNombre,
+          fechas: fechasLegibles,
+          fecha_ida: oferta.depart_date,
+          fecha_vuelta: oferta.return_date,
+          noches: nochesCalc,
+          precio: precioFormateado,
+          precio_ars: precioNumArs,
+          precio_usd: precioNumUsd,
+          emisor: canalEmisor,
+          actualizado_en_vivo: true
+        };
+      });
+
+      // Actualizar precio_desde del destino según el vuelo más barato
+      destActualizado.vuelos = nuevosVuelos;
+      if (nuevosVuelos.length > 0) {
+        const primerVuelo = nuevosVuelos[0];
+        if (esCabotaje) {
+          destActualizado.precio_desde = `${formatearArs(primerVuelo.precio_ars)} (US$ ${primerVuelo.precio_usd})`;
+        } else {
+          destActualizado.precio_desde = `US$ ${primerVuelo.precio_usd}`;
+        }
+      }
+
+      return destActualizado;
+    });
+
+    // 4. Servir con caché en Edge CDN de Vercel (6 horas frescas, 12 horas stale-while-revalidate)
+    res.setHeader('Cache-Control', 's-maxage=21600, stale-while-revalidate=43200');
+    return res.status(200).json(catalogoDinamico);
+  } catch (_err) {
+    // 5. Fallback resiliente al catálogo local si falla el pipeline de Travelpayouts
+    res.setHeader('Cache-Control', 's-maxage=600, stale-while-revalidate=1800');
+    return res.status(200).json(catalogo);
+  }
 };
 
 module.exports.default = module.exports;
