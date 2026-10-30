@@ -702,7 +702,23 @@
         return;
       }
 
-      container.innerHTML = filtrados.map(d => {
+      const esc = (s) => String(s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      container.innerHTML = filtrados.map(rawDoc => {
+        const d = {
+          ...rawDoc,
+          id: esc(rawDoc.id),
+          pnr: esc(rawDoc.pnr).replace(/[^A-Za-z0-9\-_]/g, ''),
+          titulo: esc(rawDoc.titulo),
+          fecha_display: esc(rawDoc.fecha_display),
+          asiento: esc(rawDoc.asiento),
+          origen_iata: esc(rawDoc.origen_iata),
+          dest_iata: esc(rawDoc.dest_iata),
+          resumen: esc(rawDoc.resumen),
+          hotel_nombre: esc(rawDoc.hotel_nombre),
+          direccion: esc(rawDoc.direccion),
+          telefono_emergencia: esc(rawDoc.telefono_emergencia),
+          whatsapp: esc(rawDoc.whatsapp)
+        };
         if (d.tipo === 'vuelo') {
           return `
             <div class="p-6 rounded-3xl border dark:border-slate-800 border-slate-200 dark:bg-slate-900 bg-white shadow-xs hover:border-rose-500/40 transition-all flex flex-col justify-between space-y-4">
@@ -941,11 +957,12 @@
 
     window.guardarDocumentoManual = function(e) {
       e.preventDefault();
-      const tipo = document.getElementById('doc-tipo').value;
-      const titulo = document.getElementById('doc-titulo').value;
-      const pnr = document.getElementById('doc-pnr').value.toUpperCase();
-      const fecha = document.getElementById('doc-fecha').value;
-      const detalles = document.getElementById('doc-detalles').value;
+      const escapeHtmlBilletera = (s) => String(s || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      const tipo = ['vuelo', 'hotel', 'asistencia'].includes(document.getElementById('doc-tipo').value) ? document.getElementById('doc-tipo').value : 'vuelo';
+      const titulo = escapeHtmlBilletera(document.getElementById('doc-titulo').value.slice(0, 120));
+      const pnr = escapeHtmlBilletera(document.getElementById('doc-pnr').value.toUpperCase().replace(/[^A-Z0-9\-_]/g, '').slice(0, 24));
+      const fecha = escapeHtmlBilletera(document.getElementById('doc-fecha').value.slice(0, 40));
+      const detalles = escapeHtmlBilletera(document.getElementById('doc-detalles').value.slice(0, 300));
 
       const nuevo = {
         id: 'doc_' + Date.now(),

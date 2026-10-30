@@ -4369,7 +4369,7 @@
           sb.innerHTML = `
             <div class="p-6 text-center text-xs dark:text-slate-400 text-slate-500">
               <div class="text-2xl mb-2">🔍</div>
-              <p>No se encontraron destinos para <strong>"${currentSearchQuery}"</strong></p>
+              <p>No se encontraron destinos para <strong>"${String(currentSearchQuery).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}"</strong></p>
               <button onclick="document.getElementById('fb-radar-search-input').value=''; window.filtrarRadarTexto('');" class="mt-2 text-rose-500 font-bold hover:underline">
                 Limpiar búsqueda
               </button>
