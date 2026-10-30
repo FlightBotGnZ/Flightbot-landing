@@ -173,7 +173,8 @@ module.exports = async function handler(req, res) {
   }
 
   // Modelos de Gemini a probar en cascada
-  const modelos = ['gemini-2.5-flash', 'gemini-flash-latest', 'gemini-2.0-flash'];
+  // Modelos vigentes (los mismos que usa el bot de Telegram); Vercel Hobby corta a 10 s, por eso solo 2 intentos cortos
+  const modelos = ['gemini-3.5-flash-lite', 'gemini-3.8-flash'];
 
   const systemInstruction = `Eres 'F-Bot Rolli', el asistente virtual y compañero de viaje inteligente de FlightBot (https://flightbot.com.ar).
 Tono: Cálido, amigable, argentino natural (podés usar 'vos' y 'podés' con cordialidad), sumamente conciso y profesional.
@@ -213,7 +214,7 @@ Pregunta del viajero: ${mensajeLimpio}`;
   for (const modelo of modelos) {
     try {
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 6000);
+      const timeout = setTimeout(() => controller.abort(), 4500);
 
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelo}:generateContent`;
       const response = await fetch(url, {

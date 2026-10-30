@@ -495,7 +495,7 @@
     if (window.location.protocol !== 'file:') {
       try {
         const ctrl = new AbortController();
-        const timer = setTimeout(() => ctrl.abort(), 6500);
+        const timer = setTimeout(() => ctrl.abort(), 9500);
         const res = await fetch('/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
