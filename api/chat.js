@@ -209,6 +209,7 @@ Pregunta del viajero: ${mensajeLimpio}`;
     }
   };
 
+  const diag = [];
   for (const modelo of modelos) {
     try {
       const controller = new AbortController();
@@ -227,8 +228,14 @@ Pregunta del viajero: ${mensajeLimpio}`;
       clearTimeout(timeout);
 
       if (!response.ok) {
-        // Diagnóstico seguro: solo código HTTP y modelo, jamás la clave
-        console.error('[chat] Gemini HTTP ' + response.status + ' modelo=' + modelo);
+        // Diagnóstico seguro: solo código HTTP, estado y mensaje de Google, jamás la clave
+        let detalle = '';
+        try {
+          const errBody = await response.json();
+          detalle = String((errBody && errBody.error && (errBody.error.status + ': ' + errBody.error.message)) || '').slice(0, 160);
+        } catch (_e) {}
+        console.error('[chat] Gemini HTTP ' + response.status + ' modelo=' + modelo + ' ' + detalle);
+        diag.push({ modelo, http: response.status, detalle });
         continue;
       }
       if (response.ok) {
@@ -261,6 +268,7 @@ Pregunta del viajero: ${mensajeLimpio}`;
       }
     } catch (_err) {
       console.error('[chat] Error llamando a Gemini modelo=' + modelo + ': ' + (_err && _err.name));
+      diag.push({ modelo, error: String(_err && _err.name) });
       // Intentar siguiente modelo o caer en fallback
     }
   }
@@ -270,7 +278,8 @@ Pregunta del viajero: ${mensajeLimpio}`;
   return res.status(200).json({
     respuesta: fallback.respuesta,
     quick_replies: fallback.quick_replies,
-    modo: 'resiliencia_fallback'
+    modo: 'resiliencia_fallback',
+    diag: diag
   });
 };
 
