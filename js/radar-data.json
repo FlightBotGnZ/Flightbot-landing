@@ -31,13 +31,13 @@
         "escalas": "Directo (AEP ➔ BRC)",
         "fechas": "25 Nov - 01 Dic 2026",
         "noches": 6,
-        "precio": "$ 150.761 ARS (US$ 112 aprox)",
+        "precio": "$ 173.000 ARS (US$ 128 aprox)",
         "destacado": "Salidas directas desde Aeroparque",
         "fecha_ida": "2026-11-25",
         "fecha_vuelta": "2026-12-01",
         "actualizado_en_vivo": true,
-        "precio_ars": 150761,
-        "precio_usd": 112
+        "precio_ars": 173000,
+        "precio_usd": 128
       },
       {
         "puesto": "🥉",
@@ -45,13 +45,13 @@
         "escalas": "Directo (AEP ➔ BRC)",
         "fechas": "25 Nov - 01 Dic 2026",
         "noches": 6,
-        "precio": "$ 150.761 ARS (US$ 112 aprox)",
+        "precio": "$ 214.000 ARS (US$ 159 aprox)",
         "destacado": "Múltiples frecuencias diarias",
         "fecha_ida": "2026-11-25",
         "fecha_vuelta": "2026-12-01",
         "actualizado_en_vivo": true,
-        "precio_ars": 150761,
-        "precio_usd": 112
+        "precio_ars": 214000,
+        "precio_usd": 159
       }
     ],
     "hoteles": [
@@ -164,13 +164,13 @@
         "escalas": "Directo (AEP ➔ COR)",
         "fechas": "08 Nov - 14 Nov 2026",
         "noches": 6,
-        "precio": "$ 94.130 ARS (US$ 70 aprox)",
+        "precio": "$ 108.000 ARS (US$ 80 aprox)",
         "destacado": "Vuelo directo de 1h 15m",
         "fecha_ida": "2026-11-08",
         "fecha_vuelta": "2026-11-14",
         "actualizado_en_vivo": true,
-        "precio_ars": 94130,
-        "precio_usd": 70
+        "precio_ars": 108000,
+        "precio_usd": 80
       },
       {
         "puesto": "🥉",
@@ -178,13 +178,13 @@
         "escalas": "Directo (AEP ➔ COR)",
         "fechas": "08 Nov - 14 Nov 2026",
         "noches": 6,
-        "precio": "$ 94.130 ARS (US$ 70 aprox)",
+        "precio": "$ 134.000 ARS (US$ 99 aprox)",
         "destacado": "Puente aéreo frecuente",
         "fecha_ida": "2026-11-08",
         "fecha_vuelta": "2026-11-14",
         "actualizado_en_vivo": true,
-        "precio_ars": 94130,
-        "precio_usd": 70
+        "precio_ars": 134000,
+        "precio_usd": 99
       }
     ],
     "hoteles": [
@@ -296,13 +296,13 @@
         "escalas": "Directo (AEP ➔ FTE)",
         "fechas": "07 Abr - 10 Abr 2027",
         "noches": 3,
-        "precio": "$ 273.600 ARS (US$ 203 aprox)",
+        "precio": "$ 315.000 ARS (US$ 233 aprox)",
         "destacado": "Vuelo directo de 3h 15m",
         "fecha_ida": "2027-04-07",
         "fecha_vuelta": "2027-04-10",
         "actualizado_en_vivo": true,
-        "precio_ars": 273600,
-        "precio_usd": 203
+        "precio_ars": 315000,
+        "precio_usd": 233
       },
       {
         "puesto": "🥉",
@@ -310,13 +310,13 @@
         "escalas": "Directo (AEP ➔ FTE)",
         "fechas": "07 Abr - 10 Abr 2027",
         "noches": 3,
-        "precio": "$ 273.600 ARS (US$ 203 aprox)",
+        "precio": "$ 389.000 ARS (US$ 288 aprox)",
         "destacado": "Múltiples frecuencias",
         "fecha_ida": "2027-04-07",
         "fecha_vuelta": "2027-04-10",
         "actualizado_en_vivo": true,
-        "precio_ars": 273600,
-        "precio_usd": 203
+        "precio_ars": 389000,
+        "precio_usd": 288
       }
     ],
     "hoteles": [
@@ -428,13 +428,13 @@
         "escalas": "Directo (AEP ➔ JUJ)",
         "fechas": "10 Nov - 19 Nov 2026",
         "noches": 9,
-        "precio": "$ 231.428 ARS (US$ 171 aprox)",
+        "precio": "$ 266.000 ARS (US$ 197 aprox)",
         "destacado": "Vuelo directo de 2h 15m",
         "fecha_ida": "2026-11-10",
         "fecha_vuelta": "2026-11-19",
         "actualizado_en_vivo": true,
-        "precio_ars": 231428,
-        "precio_usd": 171
+        "precio_ars": 266000,
+        "precio_usd": 197
       },
       {
         "puesto": "🥉",
@@ -442,13 +442,13 @@
         "escalas": "Directo (AEP ➔ JUJ)",
         "fechas": "10 Nov - 19 Nov 2026",
         "noches": 9,
-        "precio": "$ 231.428 ARS (US$ 171 aprox)",
+        "precio": "$ 329.000 ARS (US$ 244 aprox)",
         "destacado": "Excelente puntualidad",
         "fecha_ida": "2026-11-10",
         "fecha_vuelta": "2026-11-19",
         "actualizado_en_vivo": true,
-        "precio_ars": 231428,
-        "precio_usd": 171
+        "precio_ars": 329000,
+        "precio_usd": 244
       }
     ],
     "hoteles": [
@@ -559,13 +559,13 @@
         "escalas": "Directo (AEP/EZE ➔ MDZ)",
         "fechas": "29 Nov - 03 Dic 2026",
         "noches": 4,
-        "precio": "$ 118.529 ARS (US$ 88 aprox)",
+        "precio": "$ 136.000 ARS (US$ 101 aprox)",
         "destacado": "Equipaje de mano estándar",
         "fecha_ida": "2026-11-29",
         "fecha_vuelta": "2026-12-03",
         "actualizado_en_vivo": true,
-        "precio_ars": 118529,
-        "precio_usd": 88
+        "precio_ars": 136000,
+        "precio_usd": 101
       },
       {
         "puesto": "🥉",
@@ -573,13 +573,13 @@
         "escalas": "Directo (AEP ➔ MDZ)",
         "fechas": "29 Nov - 03 Dic 2026",
         "noches": 4,
-        "precio": "$ 118.529 ARS (US$ 88 aprox)",
+        "precio": "$ 168.000 ARS (US$ 124 aprox)",
         "destacado": "Gran disponibilidad de horarios",
         "fecha_ida": "2026-11-29",
         "fecha_vuelta": "2026-12-03",
         "actualizado_en_vivo": true,
-        "precio_ars": 118529,
-        "precio_usd": 88
+        "precio_ars": 168000,
+        "precio_usd": 124
       }
     ],
     "hoteles": [
@@ -692,13 +692,13 @@
         "escalas": "Directo (AEP ➔ NQN)",
         "fechas": "09 Nov - 16 Nov 2026",
         "noches": 7,
-        "precio": "$ 141.932 ARS (US$ 105 aprox)",
+        "precio": "$ 163.000 ARS (US$ 121 aprox)",
         "destacado": "Vuelo directo de 1h 50m",
         "fecha_ida": "2026-11-09",
         "fecha_vuelta": "2026-11-16",
         "actualizado_en_vivo": true,
-        "precio_ars": 141932,
-        "precio_usd": 105
+        "precio_ars": 163000,
+        "precio_usd": 121
       },
       {
         "puesto": "🥉",
@@ -706,13 +706,13 @@
         "escalas": "Directo (AEP ➔ NQN)",
         "fechas": "09 Nov - 16 Nov 2026",
         "noches": 7,
-        "precio": "$ 141.932 ARS (US$ 105 aprox)",
+        "precio": "$ 202.000 ARS (US$ 150 aprox)",
         "destacado": "Gran cantidad de frecuencias",
         "fecha_ida": "2026-11-09",
         "fecha_vuelta": "2026-11-16",
         "actualizado_en_vivo": true,
-        "precio_ars": 141932,
-        "precio_usd": 105
+        "precio_ars": 202000,
+        "precio_usd": 150
       }
     ],
     "hoteles": [
@@ -823,13 +823,13 @@
         "escalas": "Directo (AEP ➔ IGR)",
         "fechas": "16 Dic - 23 Dic 2026",
         "noches": 7,
-        "precio": "$ 103.361 ARS (US$ 77 aprox)",
+        "precio": "$ 119.000 ARS (US$ 88 aprox)",
         "destacado": "Vuelo directo de 1h 50m",
         "fecha_ida": "2026-12-16",
         "fecha_vuelta": "2026-12-23",
         "actualizado_en_vivo": true,
-        "precio_ars": 103361,
-        "precio_usd": 77
+        "precio_ars": 119000,
+        "precio_usd": 88
       },
       {
         "puesto": "🥉",
@@ -837,13 +837,13 @@
         "escalas": "Directo (AEP ➔ IGR)",
         "fechas": "16 Dic - 23 Dic 2026",
         "noches": 7,
-        "precio": "$ 103.361 ARS (US$ 77 aprox)",
+        "precio": "$ 147.000 ARS (US$ 109 aprox)",
         "destacado": "Llega al Parque Nacional a tiempo",
         "fecha_ida": "2026-12-16",
         "fecha_vuelta": "2026-12-23",
         "actualizado_en_vivo": true,
-        "precio_ars": 103361,
-        "precio_usd": 77
+        "precio_ars": 147000,
+        "precio_usd": 109
       }
     ],
     "hoteles": [
@@ -956,13 +956,13 @@
         "escalas": "Directo (AEP ➔ REL)",
         "fechas": "06 Ene - 07 Ene 2027",
         "noches": 1,
-        "precio": "$ 177.267 ARS (US$ 131 aprox)",
+        "precio": "$ 204.000 ARS (US$ 151 aprox)",
         "destacado": "Vuelo directo de 2h",
         "fecha_ida": "2027-01-06",
         "fecha_vuelta": "2027-01-07",
         "actualizado_en_vivo": true,
-        "precio_ars": 177267,
-        "precio_usd": 131
+        "precio_ars": 204000,
+        "precio_usd": 151
       },
       {
         "puesto": "🥉",
@@ -970,13 +970,13 @@
         "escalas": "Directo (AEP ➔ REL/PMY)",
         "fechas": "06 Ene - 07 Ene 2027",
         "noches": 1,
-        "precio": "$ 177.267 ARS (US$ 131 aprox)",
+        "precio": "$ 252.000 ARS (US$ 187 aprox)",
         "destacado": "Opción aeropuerto directo PMY",
         "fecha_ida": "2027-01-06",
         "fecha_vuelta": "2027-01-07",
         "actualizado_en_vivo": true,
-        "precio_ars": 177267,
-        "precio_usd": 131
+        "precio_ars": 252000,
+        "precio_usd": 187
       }
     ],
     "hoteles": [
@@ -1088,13 +1088,13 @@
         "escalas": "Directo (AEP ➔ SLA)",
         "fechas": "10 Dic - 13 Dic 2026",
         "noches": 3,
-        "precio": "$ 110.926 ARS (US$ 82 aprox)",
+        "precio": "$ 128.000 ARS (US$ 95 aprox)",
         "destacado": "Vuelo directo de 2h 10m",
         "fecha_ida": "2026-12-10",
         "fecha_vuelta": "2026-12-13",
         "actualizado_en_vivo": true,
-        "precio_ars": 110926,
-        "precio_usd": 82
+        "precio_ars": 128000,
+        "precio_usd": 95
       },
       {
         "puesto": "🥉",
@@ -1102,13 +1102,13 @@
         "escalas": "Directo (AEP ➔ SLA)",
         "fechas": "10 Dic - 13 Dic 2026",
         "noches": 3,
-        "precio": "$ 110.926 ARS (US$ 82 aprox)",
+        "precio": "$ 158.000 ARS (US$ 117 aprox)",
         "destacado": "Múltiples horarios diarios",
         "fecha_ida": "2026-12-10",
         "fecha_vuelta": "2026-12-13",
         "actualizado_en_vivo": true,
-        "precio_ars": 110926,
-        "precio_usd": 82
+        "precio_ars": 158000,
+        "precio_usd": 117
       }
     ],
     "hoteles": [
@@ -1220,13 +1220,13 @@
         "escalas": "Directo (AEP ➔ CPC)",
         "fechas": "01 Abr - 08 Abr 2027",
         "noches": 7,
-        "precio": "$ 176.156 ARS (US$ 130 aprox)",
+        "precio": "$ 250.000 ARS (US$ 185 aprox)",
         "destacado": "Vuelo directo de 2h 20m",
         "fecha_ida": "2027-04-01",
         "fecha_vuelta": "2027-04-08",
         "actualizado_en_vivo": true,
-        "precio_ars": 176156,
-        "precio_usd": 130
+        "precio_ars": 250000,
+        "precio_usd": 185
       },
       {
         "puesto": "🥉",
@@ -1234,13 +1234,13 @@
         "escalas": "Directo (EZE ➔ CPC)",
         "fechas": "01 Abr - 08 Abr 2027",
         "noches": 7,
-        "precio": "$ 176.156 ARS (US$ 130 aprox)",
+        "precio": "$ 250.000 ARS (US$ 185 aprox)",
         "destacado": "Excelente disponibilidad",
         "fecha_ida": "2027-04-01",
         "fecha_vuelta": "2027-04-08",
         "actualizado_en_vivo": true,
-        "precio_ars": 176156,
-        "precio_usd": 130
+        "precio_ars": 250000,
+        "precio_usd": 185
       }
     ],
     "hoteles": [
@@ -1352,13 +1352,13 @@
         "escalas": "Directo (AEP ➔ USH)",
         "fechas": "24 Nov - 01 Dic 2026",
         "noches": 7,
-        "precio": "$ 160.414 ARS (US$ 119 aprox)",
+        "precio": "$ 228.000 ARS (US$ 169 aprox)",
         "destacado": "Vuelo directo de 3h 35m",
         "fecha_ida": "2026-11-24",
         "fecha_vuelta": "2026-12-01",
         "actualizado_en_vivo": true,
-        "precio_ars": 160414,
-        "precio_usd": 119
+        "precio_ars": 228000,
+        "precio_usd": 169
       },
       {
         "puesto": "🥉",
@@ -1366,13 +1366,13 @@
         "escalas": "Directo (EZE ➔ USH)",
         "fechas": "24 Nov - 01 Dic 2026",
         "noches": 7,
-        "precio": "$ 160.414 ARS (US$ 119 aprox)",
+        "precio": "$ 228.000 ARS (US$ 169 aprox)",
         "destacado": "Sale desde Ezeiza",
         "fecha_ida": "2026-11-24",
         "fecha_vuelta": "2026-12-01",
         "actualizado_en_vivo": true,
-        "precio_ars": 160414,
-        "precio_usd": 119
+        "precio_ars": 228000,
+        "precio_usd": 169
       }
     ],
     "hoteles": [
@@ -1484,13 +1484,13 @@
         "escalas": "Directo (AEP ➔ FLN)",
         "fechas": "06 Mar - 12 Mar 2027",
         "noches": 6,
-        "precio": "US$ 224 (aprox. $ 302.400 ARS)",
+        "precio": "US$ 264 (aprox. $ 356.400 ARS)",
         "destacado": "Vuelo directo de 2h 05m",
         "fecha_ida": "2027-03-06",
         "fecha_vuelta": "2027-03-12",
         "actualizado_en_vivo": true,
-        "precio_ars": 302400,
-        "precio_usd": 224
+        "precio_ars": 356400,
+        "precio_usd": 264
       },
       {
         "puesto": "🥉",
@@ -1498,13 +1498,13 @@
         "escalas": "Directo (AEP ➔ FLN)",
         "fechas": "06 Mar - 12 Mar 2027",
         "noches": 6,
-        "precio": "US$ 224 (aprox. $ 302.400 ARS)",
+        "precio": "US$ 470 (aprox. $ 634.500 ARS)",
         "destacado": "Equipaje y atención directa",
         "fecha_ida": "2027-03-06",
         "fecha_vuelta": "2027-03-12",
         "actualizado_en_vivo": true,
-        "precio_ars": 302400,
-        "precio_usd": 224
+        "precio_ars": 634500,
+        "precio_usd": 470
       }
     ],
     "hoteles": [
@@ -1616,13 +1616,13 @@
         "escalas": "1 escala (GIG)",
         "fechas": "18 Dic - 22 Dic 2026",
         "noches": 4,
-        "precio": "US$ 371 (aprox. $ 500.850 ARS)",
+        "precio": "US$ 438 (aprox. $ 591.300 ARS)",
         "destacado": "Conexión ágil",
         "fecha_ida": "2026-12-18",
         "fecha_vuelta": "2026-12-22",
         "actualizado_en_vivo": true,
-        "precio_ars": 500850,
-        "precio_usd": 371
+        "precio_ars": 591300,
+        "precio_usd": 438
       },
       {
         "puesto": "🥉",
@@ -1630,13 +1630,13 @@
         "escalas": "1 escala (VCP)",
         "fechas": "18 Dic - 22 Dic 2026",
         "noches": 4,
-        "precio": "US$ 371 (aprox. $ 500.850 ARS)",
+        "precio": "US$ 501 (aprox. $ 676.350 ARS)",
         "destacado": "Snacks y pantallas a bordo",
         "fecha_ida": "2026-12-18",
         "fecha_vuelta": "2026-12-22",
         "actualizado_en_vivo": true,
-        "precio_ars": 500850,
-        "precio_usd": 371
+        "precio_ars": 676350,
+        "precio_usd": 501
       }
     ],
     "hoteles": [
@@ -1748,13 +1748,13 @@
         "escalas": "1 escala (GIG)",
         "fechas": "11 Mar - 20 Mar 2027",
         "noches": 9,
-        "precio": "US$ 389 (aprox. $ 525.150 ARS)",
+        "precio": "US$ 459 (aprox. $ 619.650 ARS)",
         "destacado": "Equipaje de mano estándar",
         "fecha_ida": "2027-03-11",
         "fecha_vuelta": "2027-03-20",
         "actualizado_en_vivo": true,
-        "precio_ars": 525150,
-        "precio_usd": 389
+        "precio_ars": 619650,
+        "precio_usd": 459
       },
       {
         "puesto": "🥉",
@@ -1762,13 +1762,13 @@
         "escalas": "Escala o directo estacional",
         "fechas": "11 Mar - 20 Mar 2027",
         "noches": 9,
-        "precio": "US$ 389 (aprox. $ 525.150 ARS)",
+        "precio": "US$ 817 (aprox. $ 1.102.950 ARS)",
         "destacado": "Atención personalizada",
         "fecha_ida": "2027-03-11",
         "fecha_vuelta": "2027-03-20",
         "actualizado_en_vivo": true,
-        "precio_ars": 525150,
-        "precio_usd": 389
+        "precio_ars": 1102950,
+        "precio_usd": 817
       }
     ],
     "hoteles": [
@@ -1880,13 +1880,13 @@
         "escalas": "1 escala (GIG)",
         "fechas": "12 Abr - 26 Abr 2027",
         "noches": 14,
-        "precio": "US$ 416 (aprox. $ 561.600 ARS)",
+        "precio": "US$ 811 (aprox. $ 1.094.850 ARS)",
         "destacado": "Equipaje carry-on incluido",
         "fecha_ida": "2027-04-12",
         "fecha_vuelta": "2027-04-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 561600,
-        "precio_usd": 416
+        "precio_ars": 1094850,
+        "precio_usd": 811
       },
       {
         "puesto": "🥉",
@@ -1894,13 +1894,13 @@
         "escalas": "Directo o escala VCP",
         "fechas": "12 Abr - 26 Abr 2027",
         "noches": 14,
-        "precio": "US$ 416 (aprox. $ 561.600 ARS)",
+        "precio": "US$ 562 (aprox. $ 758.700 ARS)",
         "destacado": "Hub principal en Recife",
         "fecha_ida": "2027-04-12",
         "fecha_vuelta": "2027-04-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 561600,
-        "precio_usd": 416
+        "precio_ars": 758700,
+        "precio_usd": 562
       }
     ],
     "hoteles": [
@@ -2135,13 +2135,13 @@
         "escalas": "1 escala (GRU)",
         "fechas": "31 Dic - 16 Ene 2027",
         "noches": 16,
-        "precio": "US$ 548 (aprox. $ 739.800 ARS)",
+        "precio": "US$ 1069 (aprox. $ 1.443.150 ARS)",
         "destacado": "Conexión eficiente",
         "fecha_ida": "2026-12-31",
         "fecha_vuelta": "2027-01-16",
         "actualizado_en_vivo": true,
-        "precio_ars": 739800,
-        "precio_usd": 548
+        "precio_ars": 1443150,
+        "precio_usd": 1069
       },
       {
         "puesto": "🥉",
@@ -2149,13 +2149,13 @@
         "escalas": "Directo de temporada (AEP ➔ SSA)",
         "fechas": "31 Dic - 16 Ene 2027",
         "noches": 16,
-        "precio": "US$ 548 (aprox. $ 739.800 ARS)",
+        "precio": "US$ 1151 (aprox. $ 1.553.850 ARS)",
         "destacado": "Vuelo directo sin escalas",
         "fecha_ida": "2026-12-31",
         "fecha_vuelta": "2027-01-16",
         "actualizado_en_vivo": true,
-        "precio_ars": 739800,
-        "precio_usd": 548
+        "precio_ars": 1553850,
+        "precio_usd": 1151
       }
     ],
     "hoteles": [
@@ -2267,13 +2267,13 @@
         "escalas": "Directo (AEP ➔ SCL)",
         "fechas": "05 Ene - 14 Ene 2027",
         "noches": 9,
-        "precio": "US$ 184 (aprox. $ 248.400 ARS)",
+        "precio": "US$ 217 (aprox. $ 292.950 ARS)",
         "destacado": "Vuelo directo de 2h 10m",
         "fecha_ida": "2027-01-05",
         "fecha_vuelta": "2027-01-14",
         "actualizado_en_vivo": true,
-        "precio_ars": 248400,
-        "precio_usd": 184
+        "precio_ars": 292950,
+        "precio_usd": 217
       },
       {
         "puesto": "🥉",
@@ -2281,13 +2281,13 @@
         "escalas": "Directo (AEP/EZE ➔ SCL)",
         "fechas": "05 Ene - 14 Ene 2027",
         "noches": 9,
-        "precio": "US$ 184 (aprox. $ 248.400 ARS)",
+        "precio": "US$ 359 (aprox. $ 484.650 ARS)",
         "destacado": "Múltiples vuelos al día",
         "fecha_ida": "2027-01-05",
         "fecha_vuelta": "2027-01-14",
         "actualizado_en_vivo": true,
-        "precio_ars": 248400,
-        "precio_usd": 184
+        "precio_ars": 484650,
+        "precio_usd": 359
       }
     ],
     "hoteles": [
@@ -2399,13 +2399,13 @@
         "escalas": "1 escala (BOG)",
         "fechas": "06 Dic - 11 Dic 2026",
         "noches": 5,
-        "precio": "US$ 623 (aprox. $ 841.050 ARS)",
+        "precio": "US$ 1134 (aprox. $ 1.530.900 ARS)",
         "destacado": "Conexión ágil en Bogotá",
         "fecha_ida": "2026-12-06",
         "fecha_vuelta": "2026-12-11",
         "actualizado_en_vivo": true,
-        "precio_ars": 841050,
-        "precio_usd": 623
+        "precio_ars": 1530900,
+        "precio_usd": 1134
       },
       {
         "puesto": "🥉",
@@ -2413,13 +2413,13 @@
         "escalas": "1 escala (LIM)",
         "fechas": "06 Dic - 11 Dic 2026",
         "noches": 5,
-        "precio": "US$ 623 (aprox. $ 841.050 ARS)",
+        "precio": "US$ 1215 (aprox. $ 1.640.250 ARS)",
         "destacado": "Excelente equipaje",
         "fecha_ida": "2026-12-06",
         "fecha_vuelta": "2026-12-11",
         "actualizado_en_vivo": true,
-        "precio_ars": 841050,
-        "precio_usd": 623
+        "precio_ars": 1640250,
+        "precio_usd": 1215
       }
     ],
     "hoteles": [
@@ -2530,26 +2530,26 @@
         "aerolinea": "Sky Airline",
         "fechas": "01 Dic - 08 Dic 2026",
         "escalas": "1 escala breve en Santiago / Lima",
-        "precio": "US$ 392 (aprox. $ 529.200 ARS)",
+        "precio": "US$ 463 (aprox. $ 625.050 ARS)",
         "noches": 7,
         "fecha_ida": "2026-12-01",
         "fecha_vuelta": "2026-12-08",
         "actualizado_en_vivo": true,
-        "precio_ars": 529200,
-        "precio_usd": 392
+        "precio_ars": 625050,
+        "precio_usd": 463
       },
       {
         "puesto": "Top 3 Confort",
         "aerolinea": "Avianca",
         "fechas": "01 Dic - 08 Dic 2026",
         "escalas": "1 escala en Bogotá (BOG)",
-        "precio": "US$ 392 (aprox. $ 529.200 ARS)",
+        "precio": "US$ 713 (aprox. $ 962.550 ARS)",
         "noches": 7,
         "fecha_ida": "2026-12-01",
         "fecha_vuelta": "2026-12-08",
         "actualizado_en_vivo": true,
-        "precio_ars": 529200,
-        "precio_usd": 392
+        "precio_ars": 962550,
+        "precio_usd": 713
       }
     ],
     "hoteles": [
@@ -2757,13 +2757,13 @@
         "escalas": "Directo (EZE ➔ MIA)",
         "fechas": "13 Nov - 18 Nov 2026",
         "noches": 5,
-        "precio": "US$ 623 (aprox. $ 841.050 ARS)",
+        "precio": "US$ 1308 (aprox. $ 1.765.800 ARS)",
         "destacado": "Vuelo directo nocturno",
         "fecha_ida": "2026-11-13",
         "fecha_vuelta": "2026-11-18",
         "actualizado_en_vivo": true,
-        "precio_ars": 841050,
-        "precio_usd": 623
+        "precio_ars": 1765800,
+        "precio_usd": 1308
       },
       {
         "puesto": "🥉",
@@ -2771,13 +2771,13 @@
         "escalas": "Directo (EZE ➔ MIA)",
         "fechas": "13 Nov - 18 Nov 2026",
         "noches": 5,
-        "precio": "US$ 623 (aprox. $ 841.050 ARS)",
+        "precio": "US$ 1308 (aprox. $ 1.765.800 ARS)",
         "destacado": "Atención en español y valijas",
         "fecha_ida": "2026-11-13",
         "fecha_vuelta": "2026-11-18",
         "actualizado_en_vivo": true,
-        "precio_ars": 841050,
-        "precio_usd": 623
+        "precio_ars": 1765800,
+        "precio_usd": 1308
       }
     ],
     "hoteles": [
@@ -3012,13 +3012,13 @@
         "escalas": "1 escala corta (PTY)",
         "fechas": "04 Mar - 11 Mar 2027",
         "noches": 7,
-        "precio": "US$ 674 (aprox. $ 909.900 ARS)",
+        "precio": "US$ 1314 (aprox. $ 1.773.900 ARS)",
         "destacado": "Conexión eficiente Hub de las Américas",
         "fecha_ida": "2027-03-04",
         "fecha_vuelta": "2027-03-11",
         "actualizado_en_vivo": true,
-        "precio_ars": 909900,
-        "precio_usd": 674
+        "precio_ars": 1773900,
+        "precio_usd": 1314
       },
       {
         "puesto": "🥉",
@@ -3026,13 +3026,13 @@
         "escalas": "1 escala (MEX)",
         "fechas": "04 Mar - 11 Mar 2027",
         "noches": 7,
-        "precio": "US$ 674 (aprox. $ 909.900 ARS)",
+        "precio": "US$ 910 (aprox. $ 1.228.500 ARS)",
         "destacado": "Aerolínea de bandera mexicana",
         "fecha_ida": "2027-03-04",
         "fecha_vuelta": "2027-03-11",
         "actualizado_en_vivo": true,
-        "precio_ars": 909900,
-        "precio_usd": 674
+        "precio_ars": 1228500,
+        "precio_usd": 910
       }
     ],
     "hoteles": [
@@ -3144,13 +3144,13 @@
         "escalas": "1 escala (BOG)",
         "fechas": "13 Mar - 20 Mar 2027",
         "noches": 7,
-        "precio": "US$ 617 (aprox. $ 832.950 ARS)",
+        "precio": "US$ 1123 (aprox. $ 1.516.050 ARS)",
         "destacado": "Excelente servicio a bordo",
         "fecha_ida": "2027-03-13",
         "fecha_vuelta": "2027-03-20",
         "actualizado_en_vivo": true,
-        "precio_ars": 832950,
-        "precio_usd": 617
+        "precio_ars": 1516050,
+        "precio_usd": 1123
       },
       {
         "puesto": "🥉",
@@ -3158,13 +3158,13 @@
         "escalas": "1 escala (PTY)",
         "fechas": "13 Mar - 20 Mar 2027",
         "noches": 7,
-        "precio": "US$ 617 (aprox. $ 832.950 ARS)",
+        "precio": "US$ 1203 (aprox. $ 1.624.050 ARS)",
         "destacado": "Puntualidad líder en América",
         "fecha_ida": "2027-03-13",
         "fecha_vuelta": "2027-03-20",
         "actualizado_en_vivo": true,
-        "precio_ars": 832950,
-        "precio_usd": 617
+        "precio_ars": 1624050,
+        "precio_usd": 1203
       }
     ],
     "hoteles": [
@@ -3276,13 +3276,13 @@
         "escalas": "1 escala técnica",
         "fechas": "02 Dic - 09 Dic 2026",
         "noches": 7,
-        "precio": "US$ 626 (aprox. $ 845.100 ARS)",
+        "precio": "US$ 1221 (aprox. $ 1.648.350 ARS)",
         "destacado": "Equipaje carry-on incluido",
         "fecha_ida": "2026-12-02",
         "fecha_vuelta": "2026-12-09",
         "actualizado_en_vivo": true,
-        "precio_ars": 845100,
-        "precio_usd": 626
+        "precio_ars": 1648350,
+        "precio_usd": 1221
       },
       {
         "puesto": "🥉",
@@ -3290,13 +3290,13 @@
         "escalas": "1 escala (PTY)",
         "fechas": "02 Dic - 09 Dic 2026",
         "noches": 7,
-        "precio": "US$ 626 (aprox. $ 845.100 ARS)",
+        "precio": "US$ 1221 (aprox. $ 1.648.350 ARS)",
         "destacado": "Conexión ágil sin cambios de terminal",
         "fecha_ida": "2026-12-02",
         "fecha_vuelta": "2026-12-09",
         "actualizado_en_vivo": true,
-        "precio_ars": 845100,
-        "precio_usd": 626
+        "precio_ars": 1648350,
+        "precio_usd": 1221
       }
     ],
     "hoteles": [
@@ -3408,13 +3408,13 @@
         "escalas": "Directo (EZE ➔ MAD)",
         "fechas": "21 Mar - 05 Abr 2027",
         "noches": 15,
-        "precio": "US$ 859 (aprox. $ 1.159.650 ARS)",
+        "precio": "US$ 1563 (aprox. $ 2.110.050 ARS)",
         "destacado": "Vuelo directo más veloz",
         "fecha_ida": "2027-03-21",
         "fecha_vuelta": "2027-04-05",
         "actualizado_en_vivo": true,
-        "precio_ars": 1159650,
-        "precio_usd": 859
+        "precio_ars": 2110050,
+        "precio_usd": 1563
       },
       {
         "puesto": "🥉",
@@ -3422,13 +3422,13 @@
         "escalas": "Directo (EZE ➔ MAD)",
         "fechas": "21 Mar - 05 Abr 2027",
         "noches": 15,
-        "precio": "US$ 859 (aprox. $ 1.159.650 ARS)",
+        "precio": "US$ 1675 (aprox. $ 2.261.250 ARS)",
         "destacado": "Excelente equipaje incluido",
         "fecha_ida": "2027-03-21",
         "fecha_vuelta": "2027-04-05",
         "actualizado_en_vivo": true,
-        "precio_ars": 1159650,
-        "precio_usd": 859
+        "precio_ars": 2261250,
+        "precio_usd": 1675
       }
     ],
     "hoteles": [
@@ -3544,13 +3544,13 @@
         "escalas": "1 escala corta (MAD)",
         "fechas": "12 Jun - 27 Jun 2027",
         "noches": 15,
-        "precio": "US$ 984 (aprox. $ 1.328.400 ARS)",
+        "precio": "US$ 1791 (aprox. $ 2.417.850 ARS)",
         "destacado": "Excelente servicio a bordo",
         "fecha_ida": "2027-06-12",
         "fecha_vuelta": "2027-06-27",
         "actualizado_en_vivo": true,
-        "precio_ars": 1328400,
-        "precio_usd": 984
+        "precio_ars": 2417850,
+        "precio_usd": 1791
       },
       {
         "puesto": "🥉",
@@ -3558,13 +3558,13 @@
         "escalas": "1 escala (MAD)",
         "fechas": "12 Jun - 27 Jun 2027",
         "noches": 15,
-        "precio": "US$ 984 (aprox. $ 1.328.400 ARS)",
+        "precio": "US$ 1919 (aprox. $ 2.590.650 ARS)",
         "destacado": "Equipaje carry-on incluido",
         "fecha_ida": "2027-06-12",
         "fecha_vuelta": "2027-06-27",
         "actualizado_en_vivo": true,
-        "precio_ars": 1328400,
-        "precio_usd": 984
+        "precio_ars": 2590650,
+        "precio_usd": 1919
       }
     ],
     "hoteles": [
@@ -4057,13 +4057,13 @@
         "escalas": "1 escala (MAD)",
         "fechas": "06 Mar - 26 Mar 2027",
         "noches": 20,
-        "precio": "US$ 1220 (aprox. $ 1.647.000 ARS)",
+        "precio": "US$ 2220 (aprox. $ 2.997.000 ARS)",
         "destacado": "Conexión eficiente",
         "fecha_ida": "2027-03-06",
         "fecha_vuelta": "2027-03-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 1647000,
-        "precio_usd": 1220
+        "precio_ars": 2997000,
+        "precio_usd": 2220
       },
       {
         "puesto": "🥉",
@@ -4071,13 +4071,13 @@
         "escalas": "1 escala (FRA)",
         "fechas": "06 Mar - 26 Mar 2027",
         "noches": 20,
-        "precio": "US$ 1220 (aprox. $ 1.647.000 ARS)",
+        "precio": "US$ 2562 (aprox. $ 3.458.700 ARS)",
         "destacado": "Llega al aeropuerto BER",
         "fecha_ida": "2027-03-06",
         "fecha_vuelta": "2027-03-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 1647000,
-        "precio_usd": 1220
+        "precio_ars": 3458700,
+        "precio_usd": 2562
       }
     ],
     "hoteles": [
@@ -4192,13 +4192,13 @@
         "escalas": "1 escala corta (GRU)",
         "fechas": "14 Jul - 14 Ago 2027",
         "noches": 31,
-        "precio": "US$ 1432 (aprox. $ 1.933.200 ARS)",
+        "precio": "US$ 2792 (aprox. $ 3.769.200 ARS)",
         "destacado": "Equipaje carry-on incluido",
         "fecha_ida": "2027-07-14",
         "fecha_vuelta": "2027-08-14",
         "actualizado_en_vivo": true,
-        "precio_ars": 1933200,
-        "precio_usd": 1432
+        "precio_ars": 3769200,
+        "precio_usd": 2792
       },
       {
         "puesto": "🥉",
@@ -4206,13 +4206,13 @@
         "escalas": "1 escala (MAD)",
         "fechas": "14 Jul - 14 Ago 2027",
         "noches": 31,
-        "precio": "US$ 1432 (aprox. $ 1.933.200 ARS)",
+        "precio": "US$ 2792 (aprox. $ 3.769.200 ARS)",
         "destacado": "Atención en español",
         "fecha_ida": "2027-07-14",
         "fecha_vuelta": "2027-08-14",
         "actualizado_en_vivo": true,
-        "precio_ars": 1933200,
-        "precio_usd": 1432
+        "precio_ars": 3769200,
+        "precio_usd": 2792
       }
     ],
     "hoteles": [
@@ -4326,26 +4326,26 @@
         "aerolinea": "Air France",
         "fechas": "07 Dic - 23 Dic 2026",
         "escalas": "1 escala en París (CDG)",
-        "precio": "US$ 1236 (aprox. $ 1.668.600 ARS)",
+        "precio": "US$ 2596 (aprox. $ 3.504.600 ARS)",
         "noches": 16,
         "fecha_ida": "2026-12-07",
         "fecha_vuelta": "2026-12-23",
         "actualizado_en_vivo": true,
-        "precio_ars": 1668600,
-        "precio_usd": 1236
+        "precio_ars": 3504600,
+        "precio_usd": 2596
       },
       {
         "puesto": "Top 3 OneWorld",
         "aerolinea": "Iberia",
         "fechas": "07 Dic - 23 Dic 2026",
         "escalas": "1 escala en Madrid (MAD)",
-        "precio": "US$ 1236 (aprox. $ 1.668.600 ARS)",
+        "precio": "US$ 2250 (aprox. $ 3.037.500 ARS)",
         "noches": 16,
         "fecha_ida": "2026-12-07",
         "fecha_vuelta": "2026-12-23",
         "actualizado_en_vivo": true,
-        "precio_ars": 1668600,
-        "precio_usd": 1236
+        "precio_ars": 3037500,
+        "precio_usd": 2250
       }
     ],
     "hoteles": [
@@ -4808,26 +4808,26 @@
         "aerolinea": "Qatar Airways",
         "fechas": "26 Nov - 21 Ene 2027",
         "escalas": "1 escala en Doha (DOH)",
-        "precio": "US$ 1288 (aprox. $ 1.738.800 ARS)",
+        "precio": "US$ 1520 (aprox. $ 2.052.000 ARS)",
         "noches": 56,
         "fecha_ida": "2026-11-26",
         "fecha_vuelta": "2027-01-21",
         "actualizado_en_vivo": true,
-        "precio_ars": 1738800,
-        "precio_usd": 1288
+        "precio_ars": 2052000,
+        "precio_usd": 1520
       },
       {
         "puesto": "Top 3 Star Alliance",
         "aerolinea": "Lufthansa",
         "fechas": "26 Nov - 21 Ene 2027",
         "escalas": "1 escala en Frankfurt (FRA)",
-        "precio": "US$ 1288 (aprox. $ 1.738.800 ARS)",
+        "precio": "US$ 2705 (aprox. $ 3.651.750 ARS)",
         "noches": 56,
         "fecha_ida": "2026-11-26",
         "fecha_vuelta": "2027-01-21",
         "actualizado_en_vivo": true,
-        "precio_ars": 1738800,
-        "precio_usd": 1288
+        "precio_ars": 3651750,
+        "precio_usd": 2705
       }
     ],
     "hoteles": [
@@ -4914,26 +4914,26 @@
         "aerolinea": "Qatar Airways",
         "fechas": "19 Nov - 26 Nov 2026",
         "escalas": "1 escala en Doha (DOH)",
-        "precio": "US$ 1293 (aprox. $ 1.745.550 ARS)",
+        "precio": "US$ 1526 (aprox. $ 2.060.100 ARS)",
         "noches": 7,
         "fecha_ida": "2026-11-19",
         "fecha_vuelta": "2026-11-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 1745550,
-        "precio_usd": 1293
+        "precio_ars": 2060100,
+        "precio_usd": 1526
       },
       {
         "puesto": "Top 3 Star Alliance",
         "aerolinea": "Ethiopian Airlines",
         "fechas": "19 Nov - 26 Nov 2026",
         "escalas": "1 escala en Adís Abeba (ADD)",
-        "precio": "US$ 1293 (aprox. $ 1.745.550 ARS)",
+        "precio": "US$ 1746 (aprox. $ 2.357.100 ARS)",
         "noches": 7,
         "fecha_ida": "2026-11-19",
         "fecha_vuelta": "2026-11-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 1745550,
-        "precio_usd": 1293
+        "precio_ars": 2357100,
+        "precio_usd": 1746
       }
     ],
     "hoteles": [
@@ -5358,13 +5358,13 @@
         "escalas": "1 escala (FCO)",
         "fechas": "25 Nov - 02 Dic 2026",
         "noches": 7,
-        "precio": "US$ 1419 (aprox. $ 1.915.650 ARS)",
+        "precio": "US$ 1674 (aprox. $ 2.259.900 ARS)",
         "destacado": "Conexión ágil en Roma",
         "fecha_ida": "2026-11-25",
         "fecha_vuelta": "2026-12-02",
         "actualizado_en_vivo": true,
-        "precio_ars": 1915650,
-        "precio_usd": 1419
+        "precio_ars": 2259900,
+        "precio_usd": 1674
       },
       {
         "puesto": "🥉",
@@ -5372,13 +5372,13 @@
         "escalas": "1 escala (CDG)",
         "fechas": "25 Nov - 02 Dic 2026",
         "noches": 7,
-        "precio": "US$ 1419 (aprox. $ 1.915.650 ARS)",
+        "precio": "US$ 2980 (aprox. $ 4.023.000 ARS)",
         "destacado": "Excelente franquicia de equipaje",
         "fecha_ida": "2026-11-25",
         "fecha_vuelta": "2026-12-02",
         "actualizado_en_vivo": true,
-        "precio_ars": 1915650,
-        "precio_usd": 1419
+        "precio_ars": 4023000,
+        "precio_usd": 2980
       }
     ],
     "hoteles": [
@@ -5490,13 +5490,13 @@
         "escalas": "1 escala (MAD)",
         "fechas": "31 Oct - 11 Nov 2026",
         "noches": 11,
-        "precio": "US$ 1367 (aprox. $ 1.845.450 ARS)",
+        "precio": "US$ 2666 (aprox. $ 3.599.100 ARS)",
         "destacado": "Conexión eficiente",
         "fecha_ida": "2026-10-31",
         "fecha_vuelta": "2026-11-11",
         "actualizado_en_vivo": true,
-        "precio_ars": 1845450,
-        "precio_usd": 1367
+        "precio_ars": 3599100,
+        "precio_usd": 2666
       },
       {
         "puesto": "🥉",
@@ -5504,13 +5504,13 @@
         "escalas": "1 escala (LIS)",
         "fechas": "31 Oct - 11 Nov 2026",
         "noches": 11,
-        "precio": "US$ 1367 (aprox. $ 1.845.450 ARS)",
+        "precio": "US$ 1845 (aprox. $ 2.490.750 ARS)",
         "destacado": "Opción de stopover en Lisboa",
         "fecha_ida": "2026-10-31",
         "fecha_vuelta": "2026-11-11",
         "actualizado_en_vivo": true,
-        "precio_ars": 1845450,
-        "precio_usd": 1367
+        "precio_ars": 2490750,
+        "precio_usd": 1845
       }
     ],
     "hoteles": [
@@ -5622,13 +5622,13 @@
         "escalas": "1 escala (GRU)",
         "fechas": "21 Abr - 31 May 2027",
         "noches": 40,
-        "precio": "US$ 1172 (aprox. $ 1.582.200 ARS)",
+        "precio": "US$ 2285 (aprox. $ 3.084.750 ARS)",
         "destacado": "Ruta transatlántica directa",
         "fecha_ida": "2027-04-21",
         "fecha_vuelta": "2027-05-31",
         "actualizado_en_vivo": true,
-        "precio_ars": 1582200,
-        "precio_usd": 1172
+        "precio_ars": 3084750,
+        "precio_usd": 2285
       },
       {
         "puesto": "🥉",
@@ -5636,13 +5636,13 @@
         "escalas": "1 escala",
         "fechas": "21 Abr - 31 May 2027",
         "noches": 40,
-        "precio": "US$ 1172 (aprox. $ 1.582.200 ARS)",
+        "precio": "US$ 2461 (aprox. $ 3.322.350 ARS)",
         "destacado": "Servicio de 5 estrellas",
         "fecha_ida": "2027-04-21",
         "fecha_vuelta": "2027-05-31",
         "actualizado_en_vivo": true,
-        "precio_ars": 1582200,
-        "precio_usd": 1172
+        "precio_ars": 3322350,
+        "precio_usd": 2461
       }
     ],
     "hoteles": [

@@ -4719,8 +4719,12 @@
           const fechaIda = fechasIso.ida;
           const fechaVuelta = fechasIso.vuelta;
 
-          const flightCardGfUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${dest.iata}%20from%20BUE%20on%20${fechaIda}%20through%20${fechaVuelta}&hl=es`;
-          const kiwiUrl = `https://www.kiwi.com/deep?from=BUE&to=${dest.iata}&departure=${fechaIda}&return=${fechaVuelta}&currency=${dest.es_cabotaje ? 'ARS' : 'USD'}&lang=es&affilid=${kiwiAffilId}`;
+          // Filtro por aerolínea específico para que Google Flights y Kiwi muestren la compañía de la tarjeta
+          const aeroLimpia = (v.aerolinea || '').split('/')[0].split('(')[0].trim();
+          const aeroFiltroGf = aeroLimpia ? `%20with%20${encodeURIComponent(aeroLimpia)}` : '';
+          const flightCardGfUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${dest.iata}%20from%20BUE%20on%20${fechaIda}%20through%20${fechaVuelta}${aeroFiltroGf}&hl=es`;
+          const kiwiAeroParam = aeroLimpia ? `&airlines=${encodeURIComponent(aeroLimpia)}` : '';
+          const kiwiUrl = `https://www.kiwi.com/deep?from=BUE&to=${dest.iata}&departure=${fechaIda}&return=${fechaVuelta}&currency=${dest.es_cabotaje ? 'ARS' : 'USD'}${kiwiAeroParam}&lang=es&affilid=${kiwiAffilId}`;
           const despegarUrl = `https://www.despegar.com.ar/vuelos/bue/${(dest.iata || '').toLowerCase()}?from=BUE&to=${(dest.iata || '').toUpperCase()}&departureDate=${fechaIda}&returnDate=${fechaVuelta}`;
           const bookingHotelUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(ciudadLimpia)}&checkin=${fechaIda}&checkout=${fechaVuelta}`;
 
