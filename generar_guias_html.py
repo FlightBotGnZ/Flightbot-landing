@@ -3194,7 +3194,7 @@ def generar_html_guia(guia: dict) -> str:
         "@type": "BlogPosting",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": f"https://flightbot.travel/guias/{slug}.html"
+            "@id": f"https://flightbot.com.ar/guias/{slug}.html"
         },
         "headline": f"Guía de Viaje a {ciudad} 2026: Qué Ver, Transporte, Barrios y Ahorro",
         "description": resumen,
@@ -3738,7 +3738,7 @@ def generar_indice_guias(guias: list) -> str:
         "@type": "Blog",
         "name": "Blog de Viajes & Guías Editoriales de FlightBot",
         "description": "Artículos de viaje, comparativas de transporte, zonas de hospedaje y monitoreo de tarifas de vuelos para los destinos más buscados.",
-        "url": "https://flightbot.travel/guias/index.html",
+        "url": "https://flightbot.com.ar/guias/index.html",
         "publisher": {
             "@type": "Organization",
             "name": "FlightBot Travel Intelligence",
