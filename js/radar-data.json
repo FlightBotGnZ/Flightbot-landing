@@ -66,7 +66,10 @@
         "precio_noche": "$ 320.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El resort de montaña más prestigioso de la Patagonia argentina: campo de golf de 18 hoyos, piscina climatizada con vista al Nahuel Huapi y gastronomía de autor.",
-        "booking_url": "https://www.booking.com/hotel/ar/llao-llao-resort-golf-spa.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/llao-llao-resort-golf-spa.es.html",
+        "precio_noche_ars": 320000,
+        "precio_noche_usd": 237,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -79,7 +82,10 @@
         "precio_noche": "$ 145.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Ubicación ideal sobre la costa del lago para salir a cenar y caminar por la calle Mitre. Piscina cubierta climatizada y spa con vista panorámica.",
-        "booking_url": "https://www.booking.com/hotel/ar/cacique-inacayal-lake-spa.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/cacique-inacayal-lake-spa.es.html",
+        "precio_noche_ars": 145000,
+        "precio_noche_usd": 107,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -92,7 +98,10 @@
         "precio_noche": "$ 78.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Entorno de bosque nativo a solo 5 minutos del centro. Desayuno buffet artesanal casero, piscina climatizada y excelente relación precio/servicio.",
-        "booking_url": "https://www.booking.com/hotel/ar/villa-huinid-pioneros.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/villa-huinid-pioneros.es.html",
+        "precio_noche_ars": 78000,
+        "precio_noche_usd": 58,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -187,10 +196,13 @@
         "puntuacion": "9.6",
         "calificacion": "Excepcional (1.850 reseñas)",
         "zona": "Centro Histórico / Manzana Jesuítica",
-        "precio_noche": "$ 165.000 ARS / noche",
+        "precio_noche": "$ 320.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Boutique premiado internacionalmente con baños subterráneos de aguas termales inspirados en termas romanas.",
-        "booking_url": "https://www.booking.com/hotel/ar/azur-real.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/azur-real.es.html",
+        "precio_noche_ars": 320000,
+        "precio_noche_usd": 237,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -203,7 +215,10 @@
         "precio_noche": "$ 95.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Piscina climatizada en la terraza con vistas panorámicas, spa y el célebre restaurante Sibaris.",
-        "booking_url": "https://www.booking.com/hotel/ar/windsor-tower.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/windsor-tower.es.html",
+        "precio_noche_ars": 95000,
+        "precio_noche_usd": 70,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -216,7 +231,10 @@
         "precio_noche": "$ 62.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Gran parque con piscina exterior, estacionamiento gratuito y acceso rápido tanto al aeropuerto como a las sierras.",
-        "booking_url": "https://www.booking.com/hotel/ar/holiday-inn-cordoba.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/holiday-inn-cordoba.es.html",
+        "precio_noche_ars": 62000,
+        "precio_noche_usd": 46,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -313,7 +331,10 @@
         "precio_noche": "$ 310.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Resort tradicional patagónico con campo de golf par 3, spa de nivel internacional y asador criollo de cordero.",
-        "booking_url": "https://www.booking.com/hotel/ar/posada-los-alamos.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/posada-los-alamos.es.html",
+        "precio_noche_ars": 310000,
+        "precio_noche_usd": 230,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -326,7 +347,10 @@
         "precio_noche": "$ 210.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Piscina in-out climatizada con vistas panorámicas al Lago Argentino y diseño contemporáneo de alta gama.",
-        "booking_url": "https://www.booking.com/hotel/ar/xelena-deluxe-suites.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/xelena-deluxe-suites.es.html",
+        "precio_noche_ars": 210000,
+        "precio_noche_usd": 156,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -339,7 +363,10 @@
         "precio_noche": "$ 88.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Decorado con motivos tehuelches, sauna, gimnasio y excelente ubicación a 2 cuadras de la avenida principal.",
-        "booking_url": "https://www.booking.com/hotel/ar/kosten-aike.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/kosten-aike.es.html",
+        "precio_noche_ars": 88000,
+        "precio_noche_usd": 65,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -436,7 +463,10 @@
         "precio_noche": "$ 260.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Boutique de arquitectura neocolonial construido en adobe frente a los cerros de Purmamarca, piscina y spa.",
-        "booking_url": "https://www.booking.com/hotel/ar/el-manantial-del-silencio.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/el-manantial-del-silencio.es.html",
+        "precio_noche_ars": 260000,
+        "precio_noche_usd": 193,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -449,7 +479,10 @@
         "precio_noche": "$ 140.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Finca histórica restaurada con huerta orgánica propia, piscina al aire libre y gastronomía de autor.",
-        "booking_url": "https://www.booking.com/hotel/ar/hotel-huacalera.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/hotel-huacalera.es.html",
+        "precio_noche_ars": 140000,
+        "precio_noche_usd": 104,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -462,7 +495,10 @@
         "precio_noche": "$ 72.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Vistas panorámicas a la ciudad y a la quebrada, piscina descubierta y fácil acceso a la Ruta 9.",
-        "booking_url": "https://www.booking.com/hotel/ar/altos-de-la-vina.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/altos-de-la-vina.es.html",
+        "precio_noche_ars": 72000,
+        "precio_noche_usd": 53,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -558,7 +594,10 @@
         "precio_noche": "$ 490.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El wine resort más exclusivo de Argentina: villas privadas rodeadas de viñedos y el restaurante 'Siete Fuegos' de Francis Mallmann frente a la cordillera.",
-        "booking_url": "https://www.booking.com/hotel/ar/the-vines-resort-spa.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/the-vines-resort-spa.es.html",
+        "precio_noche_ars": 490000,
+        "precio_noche_usd": 363,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -571,7 +610,10 @@
         "precio_noche": "$ 220.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Fachada neoclásica del siglo XIX frente a la plaza principal. Piscina descubierta climatizada, spa Kaua y los mejores restaurantes a pasos caminando.",
-        "booking_url": "https://www.booking.com/hotel/ar/park-hyatt-mendoza.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/park-hyatt-mendoza.es.html",
+        "precio_noche_ars": 220000,
+        "precio_noche_usd": 163,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -584,7 +626,10 @@
         "precio_noche": "$ 72.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Boutique de arte con cava propia de degustación de vinos, piscina al aire libre, desayuno buffet incluido y tarifas accesibles sin sobreprecios.",
-        "booking_url": "https://www.booking.com/hotel/ar/huentala.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/huentala.es.html",
+        "precio_noche_ars": 72000,
+        "precio_noche_usd": 53,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -679,10 +724,13 @@
         "puntuacion": "9.2",
         "calificacion": "Excepcional (2.200 reseñas)",
         "zona": "Parque Aeropuerto / Zona Oeste",
-        "precio_noche": "$ 180.000 ARS / noche",
+        "precio_noche": "$ 320.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Complejo 5 estrellas con piscina al aire libre climatizada, espectáculos en vivo, casino y spa de primer nivel.",
-        "booking_url": "https://www.booking.com/hotel/ar/casino-magic.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/casino-magic.es.html",
+        "precio_noche_ars": 320000,
+        "precio_noche_usd": 237,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -695,7 +743,10 @@
         "precio_noche": "$ 135.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Edificio vanguardista conectado al shopping Alto Comahue con piscina cubierta, spa y restaurante internacional.",
-        "booking_url": "https://www.booking.com/hotel/ar/hilton-garden-inn-neuquen.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/hilton-garden-inn-neuquen.es.html",
+        "precio_noche_ars": 135000,
+        "precio_noche_usd": 100,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -708,7 +759,10 @@
         "precio_noche": "$ 72.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Hotel moderno de estilo urbano céntrico con excelente desayuno buffet y conexión rápida al corredor petrolero.",
-        "booking_url": "https://www.booking.com/hotel/ar/cyan-soho-neuquen.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/cyan-soho-neuquen.es.html",
+        "precio_noche_ars": 72000,
+        "precio_noche_usd": 53,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -804,7 +858,10 @@
         "precio_noche": "$ 440.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El único hotel con vista frontal directa a la Garganta del Diablo. Piscina infinita de 50 metros frente a los saltos y acceso exclusivo a pie antes que abra el parque.",
-        "booking_url": "https://www.booking.com/hotel/ar/gran-melia-iguazu.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/gran-melia-iguazu.es.html",
+        "precio_noche_ars": 440000,
+        "precio_noche_usd": 326,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -817,7 +874,10 @@
         "precio_noche": "$ 185.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Construido en plena selva misionera con puentes colgantes entre la vegetación, piscinas estilo laguna natural y gastronomía internacional.",
-        "booking_url": "https://www.booking.com/hotel/ar/loi-suites-iguazu.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/loi-suites-iguazu.es.html",
+        "precio_noche_ars": 185000,
+        "precio_noche_usd": 137,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -830,7 +890,10 @@
         "precio_noche": "$ 65.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Hotel moderno y sustentable en el centro con terraza rooftop panorámica, piscina, sauna, cercanía a restaurantes y precio muy accesible.",
-        "booking_url": "https://www.booking.com/hotel/ar/o2-hotel-iguazu.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/o2-hotel-iguazu.es.html",
+        "precio_noche_ars": 65000,
+        "precio_noche_usd": 48,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -928,7 +991,10 @@
         "precio_noche": "$ 240.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Boutique de arquitectura contemporánea frente a las aguas del Golfo Nuevo con vista directa al paso de ballenas.",
-        "booking_url": "https://www.booking.com/hotel/ar/territorio.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/territorio.es.html",
+        "precio_noche_ars": 240000,
+        "precio_noche_usd": 178,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -941,7 +1007,10 @@
         "precio_noche": "$ 160.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Todas sus habitaciones tienen balcón con vista panorámica al mar. Casino, piscina cubierta climatizada y spa.",
-        "booking_url": "https://www.booking.com/hotel/ar/rayentray-puerto-madryn.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/rayentray-puerto-madryn.es.html",
+        "precio_noche_ars": 160000,
+        "precio_noche_usd": 119,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -954,7 +1023,10 @@
         "precio_noche": "$ 82.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Frente al mar en el centro de Madryn con gimnasio, sauna y excelente restaurante con cocina de mar.",
-        "booking_url": "https://www.booking.com/hotel/ar/dazzler-puerto-madryn.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/dazzler-puerto-madryn.es.html",
+        "precio_noche_ars": 82000,
+        "precio_noche_usd": 61,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -1051,7 +1123,10 @@
         "precio_noche": "$ 285.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Estancia centenaria al pie de los Andes con parque arbolado de eucaliptos, spa andino y alta gastronomía norteña.",
-        "booking_url": "https://www.booking.com/hotel/ar/house-of-jasmines.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/house-of-jasmines.es.html",
+        "precio_noche_ars": 285000,
+        "precio_noche_usd": 211,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -1064,7 +1139,10 @@
         "precio_noche": "$ 138.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Hotel 5 estrellas frente a la plaza con piscina cubierta climatizada, vistas panorámicas al Valle de Lerma y gastronomía regional.",
-        "booking_url": "https://www.booking.com/hotel/ar/alejandro-i.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/alejandro-i.es.html",
+        "precio_noche_ars": 138000,
+        "precio_noche_usd": 102,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -1077,7 +1155,10 @@
         "precio_noche": "$ 76.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Diseño contemporáneo en el centro histórico, piscina en la azotea y excelente relación costo/beneficio para recorrer peñas a pie.",
-        "booking_url": "https://www.booking.com/hotel/ar/design-suites-salta.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/design-suites-salta.es.html",
+        "precio_noche_ars": 76000,
+        "precio_noche_usd": 56,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -1174,7 +1255,10 @@
         "precio_noche": "$ 290.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Resort 5 estrellas enclavado en la cordillera con el único campo de golf co-diseñado por Jack Nicklaus en Argentina.",
-        "booking_url": "https://www.booking.com/hotel/ar/loi-suites-chapelco.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/loi-suites-chapelco.es.html",
+        "precio_noche_ars": 290000,
+        "precio_noche_usd": 215,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -1187,7 +1271,10 @@
         "precio_noche": "$ 120.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Estilo montañés con jardín arbolado, sauna, hidromasaje y ubicación inmejorable para caminar por el centro.",
-        "booking_url": "https://www.booking.com/hotel/ar/le-village.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/le-village.es.html",
+        "precio_noche_ars": 120000,
+        "precio_noche_usd": 89,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -1200,7 +1287,10 @@
         "precio_noche": "$ 86.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Cabañas y departamentos de madera con chimenea a leña, piscina climatizada y ambiente familiar sereno.",
-        "booking_url": "https://www.booking.com/hotel/ar/rincon-de-los-andes.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/rincon-de-los-andes.es.html",
+        "precio_noche_ars": 86000,
+        "precio_noche_usd": 64,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -1297,7 +1387,10 @@
         "precio_noche": "$ 360.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Resort de lujo sobre la cima del cerro con piscinas infinitas climatizadas al aire libre mirando al Canal Beagle.",
-        "booking_url": "https://www.booking.com/hotel/ar/arakur-ushuaia-resort-spa.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/arakur-ushuaia-resort-spa.es.html",
+        "precio_noche_ars": 360000,
+        "precio_noche_usd": 267,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -1310,7 +1403,10 @@
         "precio_noche": "$ 240.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El único hotel 5 estrellas situado directamente sobre la playa del Canal Beagle con muelle privado y spa.",
-        "booking_url": "https://www.booking.com/hotel/ar/los-cauquenes-resort-spa.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/los-cauquenes-resort-spa.es.html",
+        "precio_noche_ars": 240000,
+        "precio_noche_usd": 178,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -1323,7 +1419,10 @@
         "precio_noche": "$ 98.000 ARS / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Excelente ubicación céntrica para recorrer la Av. San Martín a pie y embarcarse en catamaranes.",
-        "booking_url": "https://www.booking.com/hotel/ar/fueguino.es.html"
+        "booking_url": "https://www.booking.com/hotel/ar/fueguino.es.html",
+        "precio_noche_ars": 98000,
+        "precio_noche_usd": 73,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -1420,7 +1519,10 @@
         "precio_noche": "US$ 310 / noche",
         "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Mega resort all-inclusive frente al mar rodeado de dunas y reservas arqueológicas, con complejo de 9 piscinas y spa.",
-        "booking_url": "https://www.booking.com/hotel/br/costao-do-santinho-resort-all-inclusive.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/costao-do-santinho-resort-all-inclusive.es.html",
+        "precio_noche_usd": 310,
+        "precio_noche_ars": 418500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -1433,7 +1535,10 @@
         "precio_noche": "US$ 160 / noche",
         "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
         "descripcion": "En el corazón de Jurerê a pasos de los paradores gastronómicos más exclusivos, piscinas climatizadas y saunas.",
-        "booking_url": "https://www.booking.com/hotel/br/il-campanario-villaggio-resort.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/il-campanario-villaggio-resort.es.html",
+        "precio_noche_usd": 160,
+        "precio_noche_ars": 216000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -1446,7 +1551,10 @@
         "precio_noche": "US$ 88 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Piscina infinita con vistas a la bahía norte, excelente restaurante en azotea y conexión rápida a las playas del norte y sur.",
-        "booking_url": "https://www.booking.com/hotel/br/majestic-palace.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/majestic-palace.es.html",
+        "precio_noche_usd": 88,
+        "precio_noche_ars": 118800,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -1543,7 +1651,10 @@
         "precio_noche": "US$ 390 / noche",
         "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El resort all inclusive más premiado de Sudamérica en TripAdvisor: río interior con kayaks, piscinas y playa de aguas calmas.",
-        "booking_url": "https://www.booking.com/hotel/br/salinas-do-maragogi-all-inclusive-resort.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/salinas-do-maragogi-all-inclusive-resort.es.html",
+        "precio_noche_usd": 390,
+        "precio_noche_ars": 526500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -1556,7 +1667,10 @@
         "precio_noche": "US$ 180 / noche",
         "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El único resort dentro de la zona urbana de Maceió frente a la playa con 62.000 m² de parque tropical, lagunas y piscinas.",
-        "booking_url": "https://www.booking.com/hotel/br/jatiuca-resort.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/jatiuca-resort.es.html",
+        "precio_noche_usd": 180,
+        "precio_noche_ars": 243000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -1569,7 +1683,10 @@
         "precio_noche": "US$ 85 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Frente a las piscinas naturales de Pajuçara donde salen las jangadas, piscina en terraza panorámica y precio sumamente accesible.",
-        "booking_url": "https://www.booking.com/hotel/br/best-western-premier-maceio.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/best-western-premier-maceio.es.html",
+        "precio_noche_usd": 85,
+        "precio_noche_ars": 114750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -1666,7 +1783,10 @@
         "precio_noche": "US$ 240 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Sobre el punto más alto de Pipa frente a la Praia do Amor con 3 piscinas panorámicas, vista al mar y bosque atlántico.",
-        "booking_url": "https://www.booking.com/hotel/br/sombra-e-agua-fresca.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/sombra-e-agua-fresca.es.html",
+        "precio_noche_usd": 240,
+        "precio_noche_ars": 324000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -1679,7 +1799,10 @@
         "precio_noche": "US$ 145 / noche",
         "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Resort frente al mar en la Via Costeira con parque acuático infantil, spa y vistas privilegiadas al Morro do Careca.",
-        "booking_url": "https://www.booking.com/hotel/br/wish-natal.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/wish-natal.es.html",
+        "precio_noche_usd": 145,
+        "precio_noche_ars": 195750,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -1692,7 +1815,10 @@
         "precio_noche": "US$ 98 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Gran complejo resort con 4 piscinas al aire libre, parque acuático, 5 restaurantes y precio imbatible por noche.",
-        "booking_url": "https://www.booking.com/hotel/br/serhs-natal-grand.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/serhs-natal-grand.es.html",
+        "precio_noche_usd": 98,
+        "precio_noche_ars": 132300,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -1789,7 +1915,10 @@
         "precio_noche": "US$ 480 / noche",
         "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Bungalows sobre el agua estilo polinesio con piscinas privadas en una laguna natural de aguas calmas sin olas.",
-        "booking_url": "https://www.booking.com/hotel/br/nannai-beach-resort.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/nannai-beach-resort.es.html",
+        "precio_noche_usd": 480,
+        "precio_noche_ars": 648000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -1802,7 +1931,10 @@
         "precio_noche": "US$ 260 / noche",
         "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Resort todo incluido de primera línea frente al mar con servicio de playa de lujo, spa Heavenly y gastronomía gourmet.",
-        "booking_url": "https://www.booking.com/hotel/br/the-westin-porto-de-galinhas.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/the-westin-porto-de-galinhas.es.html",
+        "precio_noche_usd": 260,
+        "precio_noche_ars": 351000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -1815,7 +1947,10 @@
         "precio_noche": "US$ 75 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Frente a la playa de Boa Viagem, piscina, desayuno buffet incluido y punto de partida económico hacia Olinda y Porto de Galinhas.",
-        "booking_url": "https://www.booking.com/hotel/br/grand-mercure-recife-boa-viagem.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/grand-mercure-recife-boa-viagem.es.html",
+        "precio_noche_usd": 75,
+        "precio_noche_ars": 101250,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -1902,7 +2037,10 @@
         "precio_noche": "US$ 450 / noche",
         "foto": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El palacio más legendario de Sudamérica. Piscina semiolímpica histórica, restaurante con estrella Michelin (Mee) y servicio 5 estrellas superior.",
-        "booking_url": "https://www.booking.com/hotel/br/copacabana-palace.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/copacabana-palace.es.html",
+        "precio_noche_usd": 450,
+        "precio_noche_ars": 607500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -1915,7 +2053,10 @@
         "precio_noche": "US$ 160 / noche",
         "foto": "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Hotel de diseño frente a la playa con piscina infinita de granito verde en la terraza, servicio de mayordomo y desayuno buffet premiado.",
-        "booking_url": "https://www.booking.com/hotel/br/miramar-by-windsor.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/miramar-by-windsor.es.html",
+        "precio_noche_usd": 160,
+        "precio_noche_ars": 216000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -1928,7 +2069,10 @@
         "precio_noche": "US$ 98 / noche",
         "foto": "https://images.unsplash.com/photo-1568495248636-6432b97bd949?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Ubicado en la calle más segura y arbolada de Ipanema, a pasos de restaurantes de autor. Desayuno artesanal y servicio de playa sin costos extra.",
-        "booking_url": "https://www.booking.com/hotel/br/ipanema-inn.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/ipanema-inn.es.html",
+        "precio_noche_usd": 98,
+        "precio_noche_ars": 132300,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -2026,7 +2170,10 @@
         "precio_noche": "US$ 230 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Edificio Art Déco de 1934 completamente restaurado. Piscina infinita en la terraza frente a la Bahía de Todos los Santos.",
-        "booking_url": "https://www.booking.com/hotel/br/fera-palace.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/fera-palace.es.html",
+        "precio_noche_usd": 230,
+        "precio_noche_ars": 310500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -2039,7 +2186,10 @@
         "precio_noche": "US$ 340 / noche",
         "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Ecoresort de lujo en plena naturaleza tropical con media pensión incluida, spa talasoterapia y acceso directo a la playa.",
-        "booking_url": "https://www.booking.com/hotel/br/tivoli-ecoresort-praia-do-forte.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/tivoli-ecoresort-praia-do-forte.es.html",
+        "precio_noche_usd": 340,
+        "precio_noche_ars": 459000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -2049,10 +2199,13 @@
         "puntuacion": "8.8",
         "calificacion": "Muy Bueno (3.100 reseñas)",
         "zona": "Campo Grande / Corredor da Vitória",
-        "precio_noche": "$ 78 / noche",
+        "precio_noche": "US$ 78 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Monumento histórico con más de 350 obras de arte brasileñas, dos piscinas al aire libre y spa en una zona muy arbolada.",
-        "booking_url": "https://www.booking.com/hotel/br/wish-hotel-da-bahia.es.html"
+        "booking_url": "https://www.booking.com/hotel/br/wish-hotel-da-bahia.es.html",
+        "precio_noche_usd": 78,
+        "precio_noche_ars": 105300,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -2149,7 +2302,10 @@
         "precio_noche": "US$ 210 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Hotel de diseño clásico refinado en el barrio más bohemio y seguro, rooftop con piscina y bar mirando al Parque Forestal.",
-        "booking_url": "https://www.booking.com/hotel/cl/the-singular-santiago.es.html"
+        "booking_url": "https://www.booking.com/hotel/cl/the-singular-santiago.es.html",
+        "precio_noche_usd": 210,
+        "precio_noche_ars": 283500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -2162,7 +2318,10 @@
         "precio_noche": "US$ 190 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Piscina estilo laguna con cascada rodeada de jardines, alta gastronomía y cercanía inmediata a Parque Arauco.",
-        "booking_url": "https://www.booking.com/hotel/cl/mandarin-oriental-santiago.es.html"
+        "booking_url": "https://www.booking.com/hotel/cl/mandarin-oriental-santiago.es.html",
+        "precio_noche_usd": 190,
+        "precio_noche_ars": 256500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -2175,7 +2334,10 @@
         "precio_noche": "US$ 115 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Mansión patrimonial de 1929 restaurada con diseño vanguardista, terraza con vista panorámica y atención personalizada.",
-        "booking_url": "https://www.booking.com/hotel/cl/magnolia.es.html"
+        "booking_url": "https://www.booking.com/hotel/cl/magnolia.es.html",
+        "precio_noche_usd": 115,
+        "precio_noche_ars": 155250,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -2272,7 +2434,10 @@
         "precio_noche": "US$ 240 / noche",
         "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Resort todo incluido en la mejor zona de playa de San Andrés, arquitectura caribeña moderna y club de playa.",
-        "booking_url": "https://www.booking.com/hotel/co/decameron-isleno.es.html"
+        "booking_url": "https://www.booking.com/hotel/co/decameron-isleno.es.html",
+        "precio_noche_usd": 240,
+        "precio_noche_ars": 324000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -2285,7 +2450,10 @@
         "precio_noche": "US$ 160 / noche",
         "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Sobre el paseo peatonal frente a la playa con 4 restaurantes gourmet reconocidos, piscina al aire libre y cócteles.",
-        "booking_url": "https://www.booking.com/hotel/co/hotel-casablanca-san-andres.es.html"
+        "booking_url": "https://www.booking.com/hotel/co/hotel-casablanca-san-andres.es.html",
+        "precio_noche_usd": 160,
+        "precio_noche_ars": 216000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -2298,7 +2466,10 @@
         "precio_noche": "US$ 95 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Hotel boutique moderno inaugurado recientemente con piscina, desayuno buffet incluido y ubicación céntrica.",
-        "booking_url": "https://www.booking.com/hotel/co/aquamare.es.html"
+        "booking_url": "https://www.booking.com/hotel/co/aquamare.es.html",
+        "precio_noche_usd": 95,
+        "precio_noche_ars": 128250,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -2387,21 +2558,30 @@
         "estrellas": "4 estrellas · 9.6 Excepcional",
         "precio_noche": "US$ 85 / noche",
         "zona": "Barrio San Blas",
-        "comentario": "Casona colonial restaurada con chimenea central, patio andino y servicio de té de coca de cortesía."
+        "comentario": "Casona colonial restaurada con chimenea central, patio andino y servicio de té de coca de cortesía.",
+        "precio_noche_usd": 85,
+        "precio_noche_ars": 114750,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "nombre": "Casa Andina Standard Cusco Plaza",
         "estrellas": "3 estrellas · 9.0 Fantástico",
         "precio_noche": "US$ 58 / noche",
         "zona": "Centro Histórico",
-        "comentario": "A 1 cuadra de la Plaza de Armas; habitaciones confortables con calefacción y desayuno buffet andino."
+        "comentario": "A 1 cuadra de la Plaza de Armas; habitaciones confortables con calefacción y desayuno buffet andino.",
+        "precio_noche_usd": 58,
+        "precio_noche_ars": 78300,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "nombre": "Tierra Viva Cusco Saphi",
         "estrellas": "3 estrellas · 8.9 Fabuloso",
         "precio_noche": "US$ 62 / noche",
         "zona": "Calle Saphi",
-        "comentario": "Posada boutique tranquila cerca de la catedral; personal sumamente atento y oxígeno disponible."
+        "comentario": "Posada boutique tranquila cerca de la catedral; personal sumamente atento y oxígeno disponible.",
+        "precio_noche_usd": 62,
+        "precio_noche_ars": 83700,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -2478,10 +2658,13 @@
         "puntuacion": 8.6,
         "calificacion": "Fabuloso",
         "zona": "Midtown West (a 3 cuadras de Times Square)",
-        "precio_noche": "US$ 145/noche",
+        "precio_noche": "US$ 145 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80",
         "descripcion": "Habitaciones modernas estilo cápsula chic con baño privado y terraza rooftop con vistas al skyline.",
-        "booking_url": "https://www.booking.com/hotel/us/pod-times-square.html"
+        "booking_url": "https://www.booking.com/hotel/us/pod-times-square.html",
+        "precio_noche_usd": 145,
+        "precio_noche_ars": 195750,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "Recomendado",
@@ -2491,10 +2674,13 @@
         "puntuacion": 8.9,
         "calificacion": "Excelente",
         "zona": "Hell's Kitchen / Hudson Yards",
-        "precio_noche": "US$ 210/noche",
+        "precio_noche": "US$ 210 / noche",
         "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80",
         "descripcion": "Diseño vanguardista, camas premium y fácil acceso a The High Line, Broadway y Penn Station.",
-        "booking_url": "https://www.booking.com/hotel/us/arlo-midtown.html"
+        "booking_url": "https://www.booking.com/hotel/us/arlo-midtown.html",
+        "precio_noche_usd": 210,
+        "precio_noche_ars": 283500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "Alta Gama",
@@ -2504,10 +2690,13 @@
         "puntuacion": 9.2,
         "calificacion": "Excepcional",
         "zona": "DUMBO (Frente al East River y Manhattan)",
-        "precio_noche": "US$ 390/noche",
+        "precio_noche": "US$ 390 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=600&q=80",
         "descripcion": "Lujo sustentable frente al Puente de Brooklyn con piscina infinita en la terraza frente a los rascacielos.",
-        "booking_url": "https://www.booking.com/hotel/us/1-brooklyn-bridge.html"
+        "booking_url": "https://www.booking.com/hotel/us/1-brooklyn-bridge.html",
+        "precio_noche_usd": 390,
+        "precio_noche_ars": 526500,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -2603,7 +2792,10 @@
         "precio_noche": "US$ 490 / noche",
         "foto": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El resort de lujo sustentable por excelencia en Miami: 4 piscinas al aire libre, club de playa privado y diseño orgánico frente al océano.",
-        "booking_url": "https://www.booking.com/hotel/us/1-south-beach.es.html"
+        "booking_url": "https://www.booking.com/hotel/us/1-south-beach.es.html",
+        "precio_noche_usd": 490,
+        "precio_noche_ars": 661500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -2616,7 +2808,10 @@
         "precio_noche": "US$ 210 / noche",
         "foto": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Oasis tropical sereno frente a la playa con jardín botánico, restaurante farm-to-table y acceso directo al paseo marítimo de South Beach.",
-        "booking_url": "https://www.booking.com/hotel/us/the-palms-spa.es.html"
+        "booking_url": "https://www.booking.com/hotel/us/the-palms-spa.es.html",
+        "precio_noche_usd": 210,
+        "precio_noche_ars": 283500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -2629,7 +2824,10 @@
         "precio_noche": "US$ 135 / noche",
         "foto": "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Habitaciones inteligentes con domótica, camas XL comodísimas, piscina rooftop y ubicación privilegiada junto al tren Brightline y Metromover.",
-        "booking_url": "https://www.booking.com/hotel/us/citizenm-miami-brickell.es.html"
+        "booking_url": "https://www.booking.com/hotel/us/citizenm-miami-brickell.es.html",
+        "precio_noche_usd": 135,
+        "precio_noche_ars": 182250,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -2718,7 +2916,10 @@
         "precio_noche": "US$ 640 / noche",
         "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El resort insignia de estilo victoriano de Walt Disney World: acceso directo en monorriel y vista a los fuegos artificiales.",
-        "booking_url": "https://www.booking.com/hotel/us/disney-s-grand-floridian-resort-spa.es.html"
+        "booking_url": "https://www.booking.com/hotel/us/disney-s-grand-floridian-resort-spa.es.html",
+        "precio_noche_usd": 640,
+        "precio_noche_ars": 864000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -2731,7 +2932,10 @@
         "precio_noche": "US$ 390 / noche",
         "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Inspirado en el pueblo costero italiano de Portofino, incluye pases Universal Express Unlimited gratuitos para saltar filas.",
-        "booking_url": "https://www.booking.com/hotel/us/loews-portofino-bay-at-universal-orlando.es.html"
+        "booking_url": "https://www.booking.com/hotel/us/loews-portofino-bay-at-universal-orlando.es.html",
+        "precio_noche_usd": 390,
+        "precio_noche_ars": 526500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -2744,7 +2948,10 @@
         "precio_noche": "US$ 145 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Piscina estilo resort con tobogán y cascadas, spa y ubicación privilegiada sobre I-Drive a minutos de los parques.",
-        "booking_url": "https://www.booking.com/hotel/us/hyatt-regency-orlando.es.html"
+        "booking_url": "https://www.booking.com/hotel/us/hyatt-regency-orlando.es.html",
+        "precio_noche_usd": 145,
+        "precio_noche_ars": 195750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -2840,7 +3047,10 @@
         "precio_noche": "US$ 620 / noche",
         "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El concepto todo incluido más premiado del Caribe: acceso ilimitado a todos los parques y cenotes de Grupo Xcaret con traslados incluidos.",
-        "booking_url": "https://www.booking.com/hotel/mx/hotel-xcaret-arte.es.html"
+        "booking_url": "https://www.booking.com/hotel/mx/hotel-xcaret-arte.es.html",
+        "precio_noche_usd": 620,
+        "precio_noche_ars": 837000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -2853,7 +3063,10 @@
         "precio_noche": "US$ 380 / noche",
         "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Mega resort familiar todo incluido con parque acuático privado, simulador de surf FlowRider, 10 restaurantes temáticos y club de niños.",
-        "booking_url": "https://www.booking.com/hotel/mx/the-grand-at-moon-palace.es.html"
+        "booking_url": "https://www.booking.com/hotel/mx/the-grand-at-moon-palace.es.html",
+        "precio_noche_usd": 380,
+        "precio_noche_ars": 513000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -2866,7 +3079,10 @@
         "precio_noche": "US$ 85 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "En el centro neurálgico de la Zona Hotelera, a pasos de la playa y restaurantes. Piscina en azotea con vista panorámica a la laguna sin pagar tarifas de resort.",
-        "booking_url": "https://www.booking.com/hotel/mx/aloft-cancun.es.html"
+        "booking_url": "https://www.booking.com/hotel/mx/aloft-cancun.es.html",
+        "precio_noche_usd": 85,
+        "precio_noche_ars": 114750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -2963,7 +3179,10 @@
         "precio_noche": "US$ 420 / noche",
         "foto": "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El resort todo incluido de temática musical más emblemático: 13 piscinas con toboganes, casino de clase mundial y campo de golf Jack Nicklaus.",
-        "booking_url": "https://www.booking.com/hotel/do/hard-rock-and-casino-punta-cana.es.html"
+        "booking_url": "https://www.booking.com/hotel/do/hard-rock-and-casino-punta-cana.es.html",
+        "precio_noche_usd": 420,
+        "precio_noche_ars": 567000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -2976,7 +3195,10 @@
         "precio_noche": "US$ 270 / noche",
         "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Arquitectura moderna frente al mar con 6 piscinas (incluyendo una infinita de dos niveles), bulevar gastronómico temático y spa de hidroterapia.",
-        "booking_url": "https://www.booking.com/hotel/do/lopesan-costa-bavaro-resort-spa-casino.es.html"
+        "booking_url": "https://www.booking.com/hotel/do/lopesan-costa-bavaro-resort-spa-casino.es.html",
+        "precio_noche_usd": 270,
+        "precio_noche_ars": 364500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -2989,7 +3211,10 @@
         "precio_noche": "US$ 165 / noche",
         "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Resort todo incluido recientemente inaugurado con habitaciones impecables, gastronomía gourmet a la carta sin reserva previa y excelente tarifa.",
-        "booking_url": "https://www.booking.com/hotel/do/serenade-punta-cana-beach-spa-resort.es.html"
+        "booking_url": "https://www.booking.com/hotel/do/serenade-punta-cana-beach-spa-resort.es.html",
+        "precio_noche_usd": 165,
+        "precio_noche_ars": 222750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -3086,7 +3311,10 @@
         "precio_noche": "US$ 510 / noche",
         "foto": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Elegido repetidamente el hotel #1 del Caribe para parejas y romance. Solo adultos, máxima tranquilidad y compromiso ecológico de carbono neutral.",
-        "booking_url": "https://www.booking.com/hotel/aw/bucuti-beach-resort-aruba.es.html"
+        "booking_url": "https://www.booking.com/hotel/aw/bucuti-beach-resort-aruba.es.html",
+        "precio_noche_usd": 510,
+        "precio_noche_ars": 688500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -3099,7 +3327,10 @@
         "precio_noche": "US$ 360 / noche",
         "foto": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Resort frente al mar con complejo de piscinas de varios niveles, laguna con cisnes negros, casino y cercanía a pie a todos los shoppings.",
-        "booking_url": "https://www.booking.com/hotel/aw/hyatt-regency-aruba-resort-and-casino.es.html"
+        "booking_url": "https://www.booking.com/hotel/aw/hyatt-regency-aruba-resort-and-casino.es.html",
+        "precio_noche_usd": 360,
+        "precio_noche_ars": 486000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -3112,7 +3343,10 @@
         "precio_noche": "US$ 145 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Boutique acogedor justo al otro lado de la calle de la mejor playa de Aruba. Ambiente relajado, piscina de inmersión y precio muy competitivo.",
-        "booking_url": "https://www.booking.com/hotel/aw/mvc-eagle-beach.es.html"
+        "booking_url": "https://www.booking.com/hotel/aw/mvc-eagle-beach.es.html",
+        "precio_noche_usd": 145,
+        "precio_noche_ars": 195750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -3209,7 +3443,11 @@
         "precio_noche": "€ 360 / noche",
         "foto": "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El hotel de lujo en activo más antiguo de Madrid, totalmente restaurado en estilo Art Déco. A pasos de la Puerta del Sol y los mejores wine bars.",
-        "booking_url": "https://www.booking.com/hotel/es/gran-ingles.es.html"
+        "booking_url": "https://www.booking.com/hotel/es/gran-ingles.es.html",
+        "precio_noche_eur": 360,
+        "precio_noche_usd": 389,
+        "precio_noche_ars": 522000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -3222,7 +3460,11 @@
         "precio_noche": "€ 170 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Diseño cosmopolita frente a la estación de alta velocidad y el Parque del Retiro. Rooftop con vistas panorámicas y cafetería de especialidad.",
-        "booking_url": "https://www.booking.com/hotel/es/only-you-atocha.es.html"
+        "booking_url": "https://www.booking.com/hotel/es/only-you-atocha.es.html",
+        "precio_noche_eur": 170,
+        "precio_noche_usd": 184,
+        "precio_noche_ars": 246500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -3235,7 +3477,11 @@
         "precio_noche": "€ 105 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Edificio histórico del siglo XX decorado por Pascua Ortega. Ubicación insuperable para recorrer todo a pie sin sobreprecios abusivos.",
-        "booking_url": "https://www.booking.com/hotel/es/room-mate-alicia.es.html"
+        "booking_url": "https://www.booking.com/hotel/es/room-mate-alicia.es.html",
+        "precio_noche_eur": 105,
+        "precio_noche_usd": 113,
+        "precio_noche_ars": 152250,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -3333,7 +3579,11 @@
         "precio_noche": "€ 385 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Rascacielos icónico sobre la playa con 2 estrellas Michelin (Enoteca Paco Pérez), jardines y piscinas infinitas.",
-        "booking_url": "https://www.booking.com/hotel/es/arts-barcelona.es.html"
+        "booking_url": "https://www.booking.com/hotel/es/arts-barcelona.es.html",
+        "precio_noche_eur": 385,
+        "precio_noche_usd": 416,
+        "precio_noche_ars": 558250,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -3346,7 +3596,11 @@
         "precio_noche": "€ 240 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Antigua sede gremial de hiladores de algodón del siglo XIX con escalinata suspendida histórica y terraza ajardinada.",
-        "booking_url": "https://www.booking.com/hotel/es/cotton-house-barcelona.es.html"
+        "booking_url": "https://www.booking.com/hotel/es/cotton-house-barcelona.es.html",
+        "precio_noche_eur": 240,
+        "precio_noche_usd": 259,
+        "precio_noche_ars": 348000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -3359,7 +3613,11 @@
         "precio_noche": "€ 115 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Diseño vanguardista de Jaime Beriestain, piscina en la azotea y ubicación estratégica para recorrer todo caminando.",
-        "booking_url": "https://www.booking.com/hotel/es/room-mate-gerard.es.html"
+        "booking_url": "https://www.booking.com/hotel/es/room-mate-gerard.es.html",
+        "precio_noche_eur": 115,
+        "precio_noche_usd": 124,
+        "precio_noche_ars": 166750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -3446,7 +3704,11 @@
         "precio_noche": "€ 625 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El legendario hotel favorito de aristócratas y artistas. Jardines secretos aterrazados diseñados por Giuseppe Valadier y spa de lujo.",
-        "booking_url": "https://www.booking.com/hotel/it/hotel-de-russie.es.html"
+        "booking_url": "https://www.booking.com/hotel/it/hotel-de-russie.es.html",
+        "precio_noche_eur": 625,
+        "precio_noche_usd": 675,
+        "precio_noche_ars": 906250,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -3459,7 +3721,11 @@
         "precio_noche": "€ 220 / noche",
         "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Boutique de primer nivel con una de las mejores terrazas rooftop de Roma con vista directa al Foro Romano y al Monumento a Víctor Manuel II.",
-        "booking_url": "https://www.booking.com/hotel/it/nh-collection-roma-fori-imperiali.es.html"
+        "booking_url": "https://www.booking.com/hotel/it/nh-collection-roma-fori-imperiali.es.html",
+        "precio_noche_eur": 220,
+        "precio_noche_usd": 238,
+        "precio_noche_ars": 319000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -3472,7 +3738,11 @@
         "precio_noche": "€ 120 / noche",
         "foto": "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Diseño mid-century impecable, ambiente moderno y luminoso, gastronomía italiana contemporánea y precio imbatible en una zona residencial segura.",
-        "booking_url": "https://www.booking.com/hotel/it/the-hoxton-rome.es.html"
+        "booking_url": "https://www.booking.com/hotel/it/the-hoxton-rome.es.html",
+        "precio_noche_eur": 120,
+        "precio_noche_usd": 130,
+        "precio_noche_ars": 174000,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -3561,7 +3831,11 @@
         "precio_noche": "€ 820 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Palacio parisino de 1835 decorado por Philippe Starck con restaurante 2 estrellas Michelin de Alain Ducasse.",
-        "booking_url": "https://www.booking.com/hotel/fr/le-meurice.es.html"
+        "booking_url": "https://www.booking.com/hotel/fr/le-meurice.es.html",
+        "precio_noche_eur": 820,
+        "precio_noche_usd": 886,
+        "precio_noche_ars": 1189000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -3574,7 +3848,11 @@
         "precio_noche": "€ 350 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Emplazado en el edificio histórico de correos con terraza en la azotea y vistas panorámicas de 360° a toda la ciudad.",
-        "booking_url": "https://www.booking.com/hotel/fr/madame-reve.es.html"
+        "booking_url": "https://www.booking.com/hotel/fr/madame-reve.es.html",
+        "precio_noche_eur": 350,
+        "precio_noche_usd": 378,
+        "precio_noche_ars": 507500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -3587,7 +3865,11 @@
         "precio_noche": "€ 135 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Habitaciones inteligentes con tecnología domótica, camas king XL y ubicación insuperable frente a la estación de trenes.",
-        "booking_url": "https://www.booking.com/hotel/fr/citizenm-paris-gare-de-lyon.es.html"
+        "booking_url": "https://www.booking.com/hotel/fr/citizenm-paris-gare-de-lyon.es.html",
+        "precio_noche_eur": 135,
+        "precio_noche_usd": 146,
+        "precio_noche_ars": 195750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -3675,7 +3957,11 @@
         "precio_noche": "€ 600 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El hotel histórico más emblemático del Reino Unido a orillas del Támesis, con el legendario American Bar y servicio de mayordomo.",
-        "booking_url": "https://www.booking.com/hotel/gb/the-savoy.es.html"
+        "booking_url": "https://www.booking.com/hotel/gb/the-savoy.es.html",
+        "precio_noche_eur": 600,
+        "precio_noche_usd": 648,
+        "precio_noche_ars": 870000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -3688,7 +3974,11 @@
         "precio_noche": "€ 200 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Diseño industrial chic en el epicentro de la moda y arte callejero londinense, chimeneas y ambiente cosmopolita.",
-        "booking_url": "https://www.booking.com/hotel/gb/the-hoxton-hotel.es.html"
+        "booking_url": "https://www.booking.com/hotel/gb/the-hoxton-hotel.es.html",
+        "precio_noche_eur": 200,
+        "precio_noche_usd": 216,
+        "precio_noche_ars": 290000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -3701,7 +3991,11 @@
         "precio_noche": "€ 150 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Concepto lúdico y sustentable inspirado en casas de árbol, rooftop bar con vistas a la torre BT y Regent Street.",
-        "booking_url": "https://www.booking.com/hotel/gb/treehouse-london.es.html"
+        "booking_url": "https://www.booking.com/hotel/gb/treehouse-london.es.html",
+        "precio_noche_eur": 150,
+        "precio_noche_usd": 162,
+        "precio_noche_ars": 217500,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -3798,7 +4092,11 @@
         "precio_noche": "€ 350 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El hotel legendario más célebre de Alemania frente a la Puerta de Brandeburgo, spa de 9.000 m² y restaurante 2 estrellas Michelin.",
-        "booking_url": "https://www.booking.com/hotel/de/hotel-adlon-kempinski.es.html"
+        "booking_url": "https://www.booking.com/hotel/de/hotel-adlon-kempinski.es.html",
+        "precio_noche_eur": 350,
+        "precio_noche_usd": 378,
+        "precio_noche_ars": 507500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -3811,7 +4109,11 @@
         "precio_noche": "€ 220 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Decoración inspirada en los años dorados de Berlín de 1920, bar de cócteles Fragrances galardonado y servicio de guante blanco.",
-        "booking_url": "https://www.booking.com/hotel/de/the-ritz-carlton-berlin.es.html"
+        "booking_url": "https://www.booking.com/hotel/de/the-ritz-carlton-berlin.es.html",
+        "precio_noche_eur": 220,
+        "precio_noche_usd": 238,
+        "precio_noche_ars": 319000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -3824,7 +4126,11 @@
         "precio_noche": "€ 100 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Ambiente indie y bohemio junto al río Spree y el Muro de Berlín, restaurante con productos de su propia granja biológica.",
-        "booking_url": "https://www.booking.com/hotel/de/michelberger.es.html"
+        "booking_url": "https://www.booking.com/hotel/de/michelberger.es.html",
+        "precio_noche_eur": 100,
+        "precio_noche_usd": 108,
+        "precio_noche_ars": 145000,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -3921,7 +4227,11 @@
         "precio_noche": "€ 295 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Palacio de estilo hôtel particulier francés con vistas directas a la Ópera Antigua, spa de lujo y restaurante Schönemann.",
-        "booking_url": "https://www.booking.com/hotel/de/sofitel-frankfurt-opera.es.html"
+        "booking_url": "https://www.booking.com/hotel/de/sofitel-frankfurt-opera.es.html",
+        "precio_noche_eur": 295,
+        "precio_noche_usd": 319,
+        "precio_noche_ars": 427750,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -3934,7 +4244,11 @@
         "precio_noche": "€ 180 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Hotel legendario fundado en 1876, arquitectura imperial tradicional a pasos de la plaza Römerberg y el río Meno.",
-        "booking_url": "https://www.booking.com/hotel/de/steigenberger-frankfurter-hof.es.html"
+        "booking_url": "https://www.booking.com/hotel/de/steigenberger-frankfurter-hof.es.html",
+        "precio_noche_eur": 180,
+        "precio_noche_usd": 194,
+        "precio_noche_ars": 261000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -3947,7 +4261,11 @@
         "precio_noche": "€ 90 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Diseño creativo inspirado en personalidades históricas, bicicletas de cortesía y tranvía en la puerta al centro.",
-        "booking_url": "https://www.booking.com/hotel/de/25hours-the-goldman.es.html"
+        "booking_url": "https://www.booking.com/hotel/de/25hours-the-goldman.es.html",
+        "precio_noche_eur": 90,
+        "precio_noche_usd": 97,
+        "precio_noche_ars": 130500,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -4036,21 +4354,33 @@
         "estrellas": "4 estrellas · 9.1 Fantástico",
         "precio_noche": "€ 135 / noche",
         "zona": "Amstel / Weesperplein",
-        "comentario": "Diseño contemporáneo holandés, camas king size ultramodernas y a 3 paradas de metro de Centraal Station."
+        "comentario": "Diseño contemporáneo holandés, camas king size ultramodernas y a 3 paradas de metro de Centraal Station.",
+        "precio_noche_eur": 135,
+        "precio_noche_usd": 146,
+        "precio_noche_ars": 195750,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "nombre": "Hotel Notting Hill",
         "estrellas": "4 estrellas · 8.8 Fabuloso",
         "precio_noche": "€ 150 / noche",
         "zona": "De Pijp / Museumplein",
-        "comentario": "Frente al canal Singelgracht, a pasos de los museos de Van Gogh y el mercado Albert Cuyp."
+        "comentario": "Frente al canal Singelgracht, a pasos de los museos de Van Gogh y el mercado Albert Cuyp.",
+        "precio_noche_eur": 150,
+        "precio_noche_usd": 162,
+        "precio_noche_ars": 217500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "nombre": "Motel One Amsterdam-Waterlooplein",
         "estrellas": "3 estrellas · 8.9 Fabuloso",
         "precio_noche": "€ 115 / noche",
         "zona": "Waterlooplein",
-        "comentario": "Ubicación céntrica fantástica para recorrer caminando la Casa de Rembrandt y el Jardín Botánico."
+        "comentario": "Ubicación céntrica fantástica para recorrer caminando la Casa de Rembrandt y el Jardín Botánico.",
+        "precio_noche_eur": 115,
+        "precio_noche_usd": 124,
+        "precio_noche_ars": 166750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -4127,10 +4457,13 @@
         "puntuacion": "9.4",
         "calificacion": "Excepcional (2.900 reseñas)",
         "zona": "Plaza Syntagma",
-        "precio_noche": "€ 415 / noche",
+        "precio_noche": "US$ 415 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Palacio histórico neoclásico fundado en 1874 con la terraza rooftop más célebre de Atenas con vista frontal al Partenón.",
-        "booking_url": "https://www.booking.com/hotel/gr/hotel-grande-bretagne-a-luxury-collection-hotel-athens.es.html"
+        "booking_url": "https://www.booking.com/hotel/gr/hotel-grande-bretagne-a-luxury-collection-hotel-athens.es.html",
+        "precio_noche_usd": 415,
+        "precio_noche_ars": 560250,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -4140,10 +4473,13 @@
         "puntuacion": "9.2",
         "calificacion": "Fantástico (3.600 reseñas)",
         "zona": "Barrio Plaka / Mitropoleos",
-        "precio_noche": "€ 195 / noche",
+        "precio_noche": "US$ 195 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Piscina en la azotea con vista directa a la Acrópolis iluminada, spa con piscina cubierta y gastronomía mediterránea.",
-        "booking_url": "https://www.booking.com/hotel/gr/electra-metropolis.es.html"
+        "booking_url": "https://www.booking.com/hotel/gr/electra-metropolis.es.html",
+        "precio_noche_usd": 195,
+        "precio_noche_ars": 263250,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -4153,10 +4489,13 @@
         "puntuacion": "9.1",
         "calificacion": "Excelente (2.400 reseñas)",
         "zona": "Monastiraki / Plaka",
-        "precio_noche": "€ 125 / noche",
+        "precio_noche": "US$ 125 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Hotel boutique para foodies con huerta vertical, mercado gastronómico tradicional y terraza con cócteles mirando a la colina.",
-        "booking_url": "https://www.booking.com/hotel/gr/ergon-house.es.html"
+        "booking_url": "https://www.booking.com/hotel/gr/ergon-house.es.html",
+        "precio_noche_usd": 125,
+        "precio_noche_ars": 168750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -4244,7 +4583,11 @@
         "precio_noche": "€ 350 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Hotel de diseño en el exclusivo islote de arte Tjuvholmen con spa nórdico, terraza rooftop sobre el fiordo y obras de arte contemporáneo.",
-        "booking_url": "https://www.booking.com/hotel/no/the-thief.es.html"
+        "booking_url": "https://www.booking.com/hotel/no/the-thief.es.html",
+        "precio_noche_eur": 350,
+        "precio_noche_usd": 378,
+        "precio_noche_ars": 507500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -4257,7 +4600,11 @@
         "precio_noche": "€ 210 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El legendario hotel donde se alojan los laureados del Premio Nobel de la Paz, spa de lujo y gastronomía noruega de autor.",
-        "booking_url": "https://www.booking.com/hotel/no/grand-oslo.es.html"
+        "booking_url": "https://www.booking.com/hotel/no/grand-oslo.es.html",
+        "precio_noche_eur": 210,
+        "precio_noche_usd": 227,
+        "precio_noche_ars": 304500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -4270,7 +4617,11 @@
         "precio_noche": "€ 115 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Hotel sustentable con huerta en la azotea, piscina de inmersión, sauna y conexión directa al tren Flytoget al aeropuerto.",
-        "booking_url": "https://www.booking.com/hotel/no/clarion-the-hub.es.html"
+        "booking_url": "https://www.booking.com/hotel/no/clarion-the-hub.es.html",
+        "precio_noche_eur": 115,
+        "precio_noche_usd": 124,
+        "precio_noche_ars": 166750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -4355,10 +4706,14 @@
         "puntuacion": "9.6",
         "calificacion": "Excepcional (1.600 reseñas)",
         "zona": "Grindavík / Blue Lagoon Privada",
-        "precio_noche": "€ 1.090 / noche",
+        "precio_noche": "€ 1090 / noche",
         "foto": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Camping_%C3%91andubaysal_-_panoramio.jpg/960px-Camping_%C3%91andubaysal_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "descripcion": "Resort de ultra lujo esculpido en campos de lava volcánica con acceso ilimitado a laguna geotérmica privada y spa subterráneo.",
-        "booking_url": "https://www.booking.com/hotel/is/the-retreat-at-blue-lagoon-iceland.es.html"
+        "booking_url": "https://www.booking.com/hotel/is/the-retreat-at-blue-lagoon-iceland.es.html",
+        "precio_noche_eur": 1090,
+        "precio_noche_usd": 1177,
+        "precio_noche_ars": 1580500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -4371,7 +4726,11 @@
         "precio_noche": "€ 315 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Hotel de arquitectura suspendida frente al volcán Hengill, piscina geotérmica exterior con bar Northern Lights para ver auroras.",
-        "booking_url": "https://www.booking.com/hotel/is/ion-luxury-adventure.es.html"
+        "booking_url": "https://www.booking.com/hotel/is/ion-luxury-adventure.es.html",
+        "precio_noche_eur": 315,
+        "precio_noche_usd": 340,
+        "precio_noche_ars": 456750,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -4384,7 +4743,11 @@
         "precio_noche": "€ 150 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Diseño industrial contemporáneo en el animado puerto histórico, sauna nórdica y a pasos de los mejores restaurantes de mariscos.",
-        "booking_url": "https://www.booking.com/hotel/is/exeter.es.html"
+        "booking_url": "https://www.booking.com/hotel/is/exeter.es.html",
+        "precio_noche_eur": 150,
+        "precio_noche_usd": 162,
+        "precio_noche_ars": 217500,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -4471,23 +4834,35 @@
       {
         "nombre": "Romance Istanbul Hotel",
         "estrellas": "4 estrellas · 9.5 Excepcional",
-        "precio_noche": "US$ 110 / noche",
+        "precio_noche": "€ 110 / noche",
         "zona": "Sultanahmet",
-        "comentario": "A pasos de Santa Sofía y Topkapi, con piscina cubierta, spa turco tradicional y atención de primer nivel."
+        "comentario": "A pasos de Santa Sofía y Topkapi, con piscina cubierta, spa turco tradicional y atención de primer nivel.",
+        "precio_noche_eur": 110,
+        "precio_noche_usd": 119,
+        "precio_noche_ars": 159500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "nombre": "The Wings Hotel Bosphorus",
         "estrellas": "4 estrellas · 9.2 Fantástico",
-        "precio_noche": "US$ 125 / noche",
+        "precio_noche": "€ 125 / noche",
         "zona": "Karaköy",
-        "comentario": "Rooftop con vista directa al Bósforo y la Torre Gálata; rodeado de cafés modernos y arte urbano."
+        "comentario": "Rooftop con vista directa al Bósforo y la Torre Gálata; rodeado de cafés modernos y arte urbano.",
+        "precio_noche_eur": 125,
+        "precio_noche_usd": 135,
+        "precio_noche_ars": 181250,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "nombre": "Ada Hotel Istanbul",
         "estrellas": "3 estrellas · 8.9 Fabuloso",
-        "precio_noche": "US$ 75 / noche",
+        "precio_noche": "€ 75 / noche",
         "zona": "Sultanahmet Centro",
-        "comentario": "Terraza panorámica a la Mezquita Azul y al mar de Mármara; excelente relación precio-calidad."
+        "comentario": "Terraza panorámica a la Mezquita Azul y al mar de Mármara; excelente relación precio-calidad.",
+        "precio_noche_eur": 75,
+        "precio_noche_usd": 81,
+        "precio_noche_ars": 108750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -4567,21 +4942,30 @@
         "estrellas": "3 estrellas · 9.2 Fantástico",
         "precio_noche": "US$ 95 / noche",
         "zona": "Downtown Dubai",
-        "comentario": "Piscina infinita con vistas frontales directas al Burj Khalifa; a 5 minutos a pie de Dubai Mall."
+        "comentario": "Piscina infinita con vistas frontales directas al Burj Khalifa; a 5 minutos a pie de Dubai Mall.",
+        "precio_noche_usd": 95,
+        "precio_noche_ars": 128250,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "nombre": "Millennium Place Dubai Marina",
         "estrellas": "4 estrellas · 9.0 Fantástico",
         "precio_noche": "US$ 130 / noche",
         "zona": "Dubai Marina",
-        "comentario": "Junto al paseo marítimo de la Marina y la estación de metro; excelente conectividad y restaurantes."
+        "comentario": "Junto al paseo marítimo de la Marina y la estación de metro; excelente conectividad y restaurantes.",
+        "precio_noche_usd": 130,
+        "precio_noche_ars": 175500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "nombre": "Aloft Palm Jumeirah",
         "estrellas": "4 estrellas · 8.8 Fabuloso",
         "precio_noche": "US$ 145 / noche",
         "zona": "The Palm Jumeirah",
-        "comentario": "Sobre el arco exterior de The Palm con acceso a playa privada, terraza lounge y vistas al golfo."
+        "comentario": "Sobre el arco exterior de The Palm con acceso a playa privada, terraza lounge y vistas al golfo.",
+        "precio_noche_usd": 145,
+        "precio_noche_ars": 195750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -4652,21 +5036,30 @@
         "estrellas": "4 estrellas · 9.2 Fantástico",
         "precio_noche": "US$ 85 / noche",
         "zona": "Riverside / Chao Phraya",
-        "comentario": "Piscina sobre el río, habitaciones con balcón al agua y a minutos a pie del Gran Palacio Real."
+        "comentario": "Piscina sobre el río, habitaciones con balcón al agua y a minutos a pie del Gran Palacio Real.",
+        "precio_noche_usd": 85,
+        "precio_noche_ars": 114750,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "nombre": "Eastin Grand Hotel Sathorn",
         "estrellas": "5 estrellas · 9.4 Excepcional",
         "precio_noche": "US$ 115 / noche",
         "zona": "Sathorn / Silom",
-        "comentario": "Pasarela privada directa a la estación del Skytrain BTS, piscina infinita en piso 14 y gastronomía estelar."
+        "comentario": "Pasarela privada directa a la estación del Skytrain BTS, piscina infinita en piso 14 y gastronomía estelar.",
+        "precio_noche_usd": 115,
+        "precio_noche_ars": 155250,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "nombre": "Lub d Bangkok Siam",
         "estrellas": "3 estrellas · 9.0 Fantástico",
         "precio_noche": "US$ 45 / noche",
         "zona": "Siam / MBK",
-        "comentario": "Frente al Skytrain National Stadium; perfecto para compras, museos y viajeros jóvenes."
+        "comentario": "Frente al Skytrain National Stadium; perfecto para compras, museos y viajeros jóvenes.",
+        "precio_noche_usd": 45,
+        "precio_noche_ars": 60750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -4745,7 +5138,10 @@
         "precio_noche": "US$ 950 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Santuario urbano de arquitectura zen con vistas panorámicas al Palacio Imperial y al Monte Fuji, piscina de piedra negra de 30 metros.",
-        "booking_url": "https://www.booking.com/hotel/jp/aman-tokyo.es.html"
+        "booking_url": "https://www.booking.com/hotel/jp/aman-tokyo.es.html",
+        "precio_noche_usd": 950,
+        "precio_noche_ars": 1282500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -4758,7 +5154,10 @@
         "precio_noche": "US$ 480 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El legendario hotel de 'Lost in Translation', New York Bar en el piso 52 con jazz en vivo y horizonte infinito de Tokio.",
-        "booking_url": "https://www.booking.com/hotel/jp/park-hyatt-tokyo.es.html"
+        "booking_url": "https://www.booking.com/hotel/jp/park-hyatt-tokyo.es.html",
+        "precio_noche_usd": 480,
+        "precio_noche_ars": 648000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -4771,7 +5170,10 @@
         "precio_noche": "US$ 210 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Habitaciones espaciosas a partir del piso 19 con vistas al cruce de Shibuya, servicio impecable y acceso directo al tren Narita Express.",
-        "booking_url": "https://www.booking.com/hotel/jp/cerulean-tower-tokyu.es.html"
+        "booking_url": "https://www.booking.com/hotel/jp/cerulean-tower-tokyu.es.html",
+        "precio_noche_usd": 210,
+        "precio_noche_ars": 283500,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -4856,10 +5258,13 @@
         "puntuacion": 8.7,
         "calificacion": "Fabuloso",
         "zona": "Jing'an (a 2 estaciones de People's Square)",
-        "precio_noche": "US$ 65/noche",
+        "precio_noche": "US$ 65 / noche",
         "foto": "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80",
         "descripcion": "Estilo bistró francés con diseño contemporáneo, excelente desayuno y metro a 150 metros.",
-        "booking_url": "https://www.booking.com/hotel/cn/campanile-shanghai-natural-history-museum.html"
+        "booking_url": "https://www.booking.com/hotel/cn/campanile-shanghai-natural-history-museum.html",
+        "precio_noche_usd": 65,
+        "precio_noche_ars": 87750,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "Recomendado",
@@ -4869,10 +5274,13 @@
         "puntuacion": 8.9,
         "calificacion": "Excelente",
         "zona": "People's Square / Nanjing Road",
-        "precio_noche": "US$ 120/noche",
+        "precio_noche": "US$ 120 / noche",
         "foto": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=80",
         "descripcion": "Rascacielos icónico coronado por un platillo volador con restaurante giratorio sobre People's Square.",
-        "booking_url": "https://www.booking.com/hotel/cn/radisson-blu-new-world.html"
+        "booking_url": "https://www.booking.com/hotel/cn/radisson-blu-new-world.html",
+        "precio_noche_usd": 120,
+        "precio_noche_ars": 162000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "Alta Gama",
@@ -4882,10 +5290,13 @@
         "puntuacion": 9.4,
         "calificacion": "Excepcional",
         "zona": "El Bund histórico",
-        "precio_noche": "US$ 320/noche",
+        "precio_noche": "US$ 320 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=600&q=80",
         "descripcion": "Elegancia Art Déco de la década de 1920 con vistas directas a los rascacielos iluminados de Pudong.",
-        "booking_url": "https://www.booking.com/hotel/cn/the-peninsula-shanghai.html"
+        "booking_url": "https://www.booking.com/hotel/cn/the-peninsula-shanghai.html",
+        "precio_noche_usd": 320,
+        "precio_noche_ars": 432000,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -4982,7 +5393,10 @@
         "precio_noche": "US$ 340 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Palacio real de 1869 situado a solo 700 metros de la Gran Pirámide de Keops con jardines perfumados y piscina con vista directa a los monumentos.",
-        "booking_url": "https://www.booking.com/hotel/eg/marriott-mena-house-cairo.es.html"
+        "booking_url": "https://www.booking.com/hotel/eg/marriott-mena-house-cairo.es.html",
+        "precio_noche_usd": 340,
+        "precio_noche_ars": 459000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -4995,7 +5409,10 @@
         "precio_noche": "US$ 290 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "En el prestigioso barrio diplomático de Garden City con vistas al río Nilo y a la isla de Zamalek, spa y 9 restaurantes internacionales.",
-        "booking_url": "https://www.booking.com/hotel/eg/four-seasons-cairo-at-nile-plaza.es.html"
+        "booking_url": "https://www.booking.com/hotel/eg/four-seasons-cairo-at-nile-plaza.es.html",
+        "precio_noche_usd": 290,
+        "precio_noche_ars": 391500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -5008,7 +5425,10 @@
         "precio_noche": "US$ 160 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Piscina infinita flotante sobre las aguas del Nilo, terraza panorámica para cenar y ambiente seguro en la isla residencial de Zamalek.",
-        "booking_url": "https://www.booking.com/hotel/eg/sofitel-cairo-nile-el-gezirah.es.html"
+        "booking_url": "https://www.booking.com/hotel/eg/sofitel-cairo-nile-el-gezirah.es.html",
+        "precio_noche_usd": 160,
+        "precio_noche_ars": 216000,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -5105,7 +5525,10 @@
         "precio_noche": "US$ 620 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Palacio árabe-andalusí legendario de 1923 elegido entre los mejores hoteles del mundo, jardines de 8 hectáreas y spa suntuoso.",
-        "booking_url": "https://www.booking.com/hotel/ma/la-mamounia.es.html"
+        "booking_url": "https://www.booking.com/hotel/ma/la-mamounia.es.html",
+        "precio_noche_usd": 620,
+        "precio_noche_ars": 837000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -5118,7 +5541,10 @@
         "precio_noche": "US$ 890 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Diseñado por artesanos reales marroquíes con riads privados individuales de varios pisos, piscinas privadas y túneles subterráneos de servicio.",
-        "booking_url": "https://www.booking.com/hotel/ma/royal-mansour-marrakech.es.html"
+        "booking_url": "https://www.booking.com/hotel/ma/royal-mansour-marrakech.es.html",
+        "precio_noche_usd": 890,
+        "precio_noche_ars": 1201500,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -5131,7 +5557,10 @@
         "precio_noche": "US$ 145 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Riad del siglo XVIII restaurado por expertos en antigüedades con patio andaluz tradicional, fuente, solárium y atención familiar cálida.",
-        "booking_url": "https://www.booking.com/hotel/ma/riad-kniza.es.html"
+        "booking_url": "https://www.booking.com/hotel/ma/riad-kniza.es.html",
+        "precio_noche_usd": 145,
+        "precio_noche_ars": 195750,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
@@ -5228,7 +5657,10 @@
         "precio_noche": "US$ 780 / noche",
         "foto": "https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Obra maestra arquitectónica de Thomas Heatherwick construida en un silo de grano histórico sobre el museo Zeitz MOCAA con piscina en la azotea.",
-        "booking_url": "https://www.booking.com/hotel/za/the-silo.es.html"
+        "booking_url": "https://www.booking.com/hotel/za/the-silo.es.html",
+        "precio_noche_usd": 780,
+        "precio_noche_ars": 1053000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "favorite",
@@ -5241,7 +5673,10 @@
         "precio_noche": "US$ 420 / noche",
         "foto": "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
         "descripcion": "El legendario 'Palacio Rosa' fundado en 1899, jardines exuberantes de 3 hectáreas, célebre Afternoon Tea y servicio Belmond de excelencia.",
-        "booking_url": "https://www.booking.com/hotel/za/belmond-mount-nelson.es.html"
+        "booking_url": "https://www.booking.com/hotel/za/belmond-mount-nelson.es.html",
+        "precio_noche_usd": 420,
+        "precio_noche_ars": 567000,
+        "temporada": "Referencia Media / Baja"
       },
       {
         "categoria": "value",
@@ -5254,7 +5689,10 @@
         "precio_noche": "US$ 130 / noche",
         "foto": "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
         "descripcion": "Diseño moderno y vibrante en pleno Waterfront turístico y seguro, piscina en la azotea con vistas directas a Table Mountain.",
-        "booking_url": "https://www.booking.com/hotel/za/radisson-red-hotel-v-a-waterfront-cape-town.es.html"
+        "booking_url": "https://www.booking.com/hotel/za/radisson-red-hotel-v-a-waterfront-cape-town.es.html",
+        "precio_noche_usd": 130,
+        "precio_noche_ars": 175500,
+        "temporada": "Referencia Media / Baja"
       }
     ],
     "termometro": {
