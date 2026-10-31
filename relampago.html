@@ -664,6 +664,117 @@
       renderVuelos();
     }
 
+    
+    // =========================================================================
+    // DICCIONARIO Y RESOLUCIÓN OFICIAL DE BANDERAS Y PAÍSES (CERO SIGLAS HUÉRFANAS)
+    // =========================================================================
+    const FLAGS_MAP = {
+      ar: '🇦🇷', br: '🇧🇷', cl: '🇨🇱', co: '🇨🇴', pe: '🇵🇪',
+      us: '🇺🇸', es: '🇪🇸', it: '🇮🇹', fr: '🇫🇷', mx: '🇲🇽',
+      do: '🇩🇴', aw: '🇦🇼', gb: '🇬🇧', de: '🇩🇪', nl: '🇳🇱',
+      cu: '🇨🇺', pa: '🇵🇦', th: '🇹🇭', jp: '🇯🇵', za: '🇿🇦',
+      eg: '🇪🇬', tr: '🇹🇷', gr: '🇬🇷', is: '🇮🇸', no: '🇳🇴',
+      cn: '🇨🇳', kr: '🇰🇷', nz: '🇳🇿', ma: '🇲🇦', ae: '🇦🇪',
+      mv: '🇲🇻', pf: '🇵🇫'
+    };
+
+    function obtenerBanderaPais(dest) {
+      if (!dest) return '✈️';
+      const code = (dest.codigo_pais || '').toLowerCase();
+      if (FLAGS_MAP[code]) return FLAGS_MAP[code];
+
+      // Mapeo exhaustivo por IATA de respaldo
+      const iata = (dest.iata || '').toUpperCase();
+      if (['BRC', 'COR', 'FTE', 'JUJ', 'MDZ', 'NQN', 'REL', 'SLA', 'CPC', 'USH'].includes(iata) || dest.es_cabotaje) {
+        return '🇦🇷';
+      }
+      if (['GIG', 'FLN', 'MCZ', 'NAT', 'REC', 'SSA'].includes(iata)) return '🇧🇷';
+      if (['SCL'].includes(iata)) return '🇨🇱';
+      if (['ADZ', 'BOG', 'MDE', 'CTG'].includes(iata)) return '🇨🇴';
+      if (['CUZ', 'LIM'].includes(iata)) return '🇵🇪';
+      if (['JFK', 'EWR', 'MIA', 'MCO', 'LAX'].includes(iata)) return '🇺🇸';
+      if (['MAD', 'BCN'].includes(iata)) return '🇪🇸';
+      if (['FCO', 'MXP'].includes(iata)) return '🇮🇹';
+      if (['CDG', 'ORY'].includes(iata)) return '🇫🇷';
+      if (['CUN', 'MEX'].includes(iata)) return '🇲🇽';
+      if (['PUJ', 'SDQ'].includes(iata)) return '🇩🇴';
+      if (['AUA'].includes(iata)) return '🇦🇼';
+      if (['LHR', 'LGW'].includes(iata)) return '🇬🇧';
+      if (['BER', 'FRA', 'MUC'].includes(iata)) return '🇩🇪';
+      if (['AMS'].includes(iata)) return '🇳🇱';
+      if (['HAV'].includes(iata)) return '🇨🇺';
+      if (['PTY'].includes(iata)) return '🇵🇦';
+      if (['BKK', 'HKT'].includes(iata)) return '🇹🇭';
+      if (['NRT', 'HND'].includes(iata)) return '🇯🇵';
+      if (['PEK', 'PKX', 'PVG'].includes(iata)) return '🇨🇳';
+      if (['ICN'].includes(iata)) return '🇰🇷';
+      if (['AKL'].includes(iata)) return '🇳🇿';
+      if (['RAK'].includes(iata)) return '🇲🇦';
+      if (['DXB'].includes(iata)) return '🇦🇪';
+      if (['MLE'].includes(iata)) return '🇲🇻';
+      if (['PPT'].includes(iata)) return '🇵🇫';
+      if (['CPT', 'JNB'].includes(iata)) return '🇿🇦';
+      if (['CAI'].includes(iata)) return '🇪🇬';
+      if (['IST'].includes(iata)) return '🇹🇷';
+      if (['ATH'].includes(iata)) return '🇬🇷';
+      if (['KEF'].includes(iata)) return '🇮🇸';
+      if (['OSL'].includes(iata)) return '🇳🇴';
+
+      const pais = (dest.pais || '').toLowerCase();
+      if (pais.includes('argentina')) return '🇦🇷';
+      if (pais.includes('brasil')) return '🇧🇷';
+      if (pais.includes('chile')) return '🇨🇱';
+      if (pais.includes('colombia')) return '🇨🇴';
+      if (pais.includes('perú') || pais.includes('peru')) return '🇵🇪';
+      if (pais.includes('estados unidos') || pais.includes('usa') || pais.includes('eeuu')) return '🇺🇸';
+      if (pais.includes('españa') || pais.includes('espana')) return '🇪🇸';
+      if (pais.includes('italia')) return '🇮🇹';
+      if (pais.includes('francia')) return '🇫🇷';
+      if (pais.includes('méxico') || pais.includes('mexico')) return '🇲🇽';
+      if (pais.includes('dominicana')) return '🇩🇴';
+      if (pais.includes('aruba')) return '🇦🇼';
+      if (pais.includes('reino unido') || pais.includes('inglaterra')) return '🇬🇧';
+      if (pais.includes('alemania')) return '🇩🇪';
+      if (pais.includes('países bajos') || pais.includes('holanda')) return '🇳🇱';
+      if (pais.includes('cuba')) return '🇨🇺';
+      if (pais.includes('panamá') || pais.includes('panama')) return '🇵🇦';
+      if (pais.includes('tailandia')) return '🇹🇭';
+      if (pais.includes('japón') || pais.includes('japon')) return '🇯🇵';
+      if (pais.includes('china')) return '🇨🇳';
+      return '✈️';
+    }
+
+    function obtenerSubtituloPais(dest) {
+      if (!dest) return '';
+      const bandera = obtenerBanderaPais(dest);
+      if (dest.es_cabotaje || (dest.pais && dest.pais.toLowerCase().includes('argentina'))) {
+        return '🇦🇷 Argentina (Cabotaje)';
+      }
+      let paisLimpio = (dest.pais || '').trim();
+      // Elimina cualquier sigla de 2 letras en mayúscula al inicio (ej: "BR Brasil", "CL Chile", "US Estados Unidos")
+      paisLimpio = paisLimpio.replace(/^[A-Za-z]{2}\s+/, '').trim();
+      if (paisLimpio.toLowerCase() === 'brasil') return '🇧🇷 Brasil';
+      if (paisLimpio.toLowerCase() === 'chile') return '🇨🇱 Chile';
+      if (paisLimpio.toLowerCase() === 'colombia') return '🇨🇴 Colombia';
+      if (paisLimpio.toLowerCase().includes('peru') || paisLimpio.toLowerCase().includes('perú')) return '🇵🇪 Perú';
+      if (paisLimpio.toLowerCase().includes('estados unidos')) return '🇺🇸 Estados Unidos';
+      if (paisLimpio.toLowerCase().includes('españa') || paisLimpio.toLowerCase().includes('espana')) return '🇪🇸 España';
+      if (paisLimpio.toLowerCase().includes('italia')) return '🇮🇹 Italia';
+      if (paisLimpio.toLowerCase().includes('francia')) return '🇫🇷 Francia';
+      if (paisLimpio.toLowerCase().includes('méxico') || paisLimpio.toLowerCase().includes('mexico')) return '🇲🇽 México';
+      if (paisLimpio.toLowerCase().includes('dominicana')) return '🇩🇴 República Dominicana';
+      if (paisLimpio.toLowerCase() === 'aruba') return '🇦🇼 Aruba';
+      if (paisLimpio.toLowerCase().includes('reino unido')) return '🇬🇧 Reino Unido';
+      if (paisLimpio.toLowerCase() === 'alemania') return '🇩🇪 Alemania';
+      if (paisLimpio.toLowerCase().includes('países bajos') || paisLimpio.toLowerCase().includes('paises bajos')) return '🇳🇱 Países Bajos';
+      if (paisLimpio.toLowerCase() === 'cuba') return '🇨🇺 Cuba';
+      if (paisLimpio.toLowerCase().includes('panamá') || paisLimpio.toLowerCase().includes('panama')) return '🇵🇦 Panamá';
+      if (paisLimpio.toLowerCase().includes('tailandia')) return '🇹🇭 Tailandia';
+      if (paisLimpio.toLowerCase().includes('japón') || paisLimpio.toLowerCase().includes('japon')) return '🇯🇵 Japón';
+      if (paisLimpio.toLowerCase() === 'china') return '🇨🇳 China';
+      return `${bandera} ${paisLimpio}`;
+    }
+
     function renderVuelos() {
       const container = document.getElementById('vuelos-relampago-grid');
       if (!container || !window.RADAR_DATA) return;
@@ -715,6 +826,9 @@
       container.innerHTML = lista.map(dest => {
         const rel = dest.oportunidad_relampago;
         const nombreCiudad = dest.ciudad.split(' (')[0].split(' &')[0].trim();
+        const banderaPais = obtenerBanderaPais(dest);
+        const subtituloPais = obtenerSubtituloPais(dest);
+        const iata = dest.iata || '';
         
         let precioMostrado = rel.precio;
         if (currentMoneda === 'ARS') {
@@ -758,11 +872,9 @@
               
               <!-- Cabecera de la tarjeta con bandera y badge -->
               <div class="flex items-center justify-between gap-2 mb-3">
-                <div class="flex items-center gap-2">
-                  <span class="text-xl">${dest.bandera || '🌐'}</span>
-                  <span class="font-mono text-xs px-2 py-0.5 rounded-md dark:bg-slate-950 bg-slate-100 font-extrabold text-slate-600 dark:text-slate-300 border dark:border-slate-800 border-slate-200">
-                    ${dest.iata}
-                  </span>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xl flex-shrink-0">${banderaPais}</span>
+                  <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-lg dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 border dark:border-slate-700 border-slate-200">${iata}</span>
                 </div>
                 <div class="flex items-center gap-1.5">
                   <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-rose-500 text-white shadow-xs animate-pulse flex items-center gap-1">
@@ -776,8 +888,8 @@
               <h3 class="text-xl font-black dark:text-white text-slate-900 group-hover:text-rose-500 transition-colors mb-1">
                 ${nombreCiudad}
               </h3>
-              <div class="text-xs dark:text-slate-400 text-slate-500 mb-4">
-                ${dest.es_cabotaje ? '🇦🇷 Argentina (Cabotaje)' : `${dest.bandera || ''} ${dest.pais}`}
+              <div class="text-xs font-semibold dark:text-slate-400 text-slate-500 mb-4 flex items-center gap-1.5">
+                ${subtituloPais}
               </div>
 
               <!-- Info de Salida Próxima -->
