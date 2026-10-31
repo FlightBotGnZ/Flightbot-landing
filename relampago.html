@@ -372,6 +372,18 @@
           <!-- Inyectado por JS -->
         </div>
 
+        <!-- Aclaración Impositiva & Tip de Ahorro para Tarifas Relámpago -->
+        <div class="mt-8 p-4 rounded-2xl dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200/90 flex flex-col sm:flex-row items-start sm:items-center gap-3.5 text-xs dark:text-slate-400 text-slate-600 shadow-sm">
+          <span class="text-2xl flex-shrink-0">💡</span>
+          <div class="leading-relaxed">
+            <strong class="dark:text-slate-200 text-slate-800 font-bold">Transparencia Impositiva & Ahorro en Vuelos Internacionales:</strong>
+            Las tarifas en <strong class="dark:text-slate-200 text-slate-700">ARS</strong> para rutas fuera de Argentina incluyen la estimación de percepciones impositivas argentinas (aprox. 30%-40% de percepciones / Dólar Tarjeta).
+            <span class="block sm:inline mt-1 sm:mt-0 font-medium text-emerald-600 dark:text-emerald-400">
+              ⚡ <strong>Tip para pagar menos:</strong> Si abonás en <strong>USD</strong> desde tu cuenta en dólares (vía Dólar MEP), evitás las percepciones fiscales y pagás la tarifa neta internacional más económica.
+            </span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -727,6 +739,9 @@
                    style="background: linear-gradient(135deg, #00a991 0%, #047857 100%);">
                   <span>🥝 Kiwi.com</span>
                 </a>
+              </div>
+              <div class="text-[10px] text-center dark:text-slate-400 text-slate-500 mt-2.5 font-medium leading-tight">
+                ${dest.es_cabotaje ? 'Tarifa nacional final (tasas e IVA incluidos)' : 'En ARS incluye ~30%-40% percepciones fiscales · Tip: pagá en USD (MEP) y ahorrá'}
               </div>
             </div>
 

@@ -5016,12 +5016,23 @@
               ${vuelosHtml}
             </div>
             <!-- Leyenda aclaratoria de tarifas de referencia y fechas exactas -->
-            <div class="p-3.5 rounded-2xl dark:bg-slate-900/70 bg-slate-50 border dark:border-slate-800 border-slate-200/80 flex items-start sm:items-center gap-3 text-xs dark:text-slate-400 text-slate-500 shadow-xs">
-              <span class="text-base flex-shrink-0">ℹ️</span>
-              <p class="leading-relaxed">
-                <strong class="dark:text-slate-200 text-slate-700 font-semibold">Tarifas y Fechas Exactas:</strong>
-                Tarifas detectadas por el radar en tiempo real para las fechas exactas indicadas. La disponibilidad y el precio final se confirman al instante en el portal oficial de la aerolínea o agencia.
-              </p>
+            <div class="p-4 rounded-2xl dark:bg-slate-900/80 bg-slate-50 border dark:border-slate-800 border-slate-200/90 flex flex-col gap-2.5 text-xs dark:text-slate-400 text-slate-600 shadow-xs">
+              <div class="flex items-start gap-2.5">
+                <span class="text-base flex-shrink-0">📌</span>
+                <p class="leading-relaxed">
+                  <strong class="dark:text-slate-200 text-slate-700 font-semibold">Tarifas y Fechas Exactas:</strong>
+                  Tarifas detectadas por el radar en tiempo real para las fechas exactas indicadas. La disponibilidad y el precio final se confirman al instante en el portal oficial de la aerolínea o agencia.
+                </p>
+              </div>
+              <div class="flex items-start gap-2.5 pt-2 border-t dark:border-slate-800/80 border-slate-200/80">
+                <span class="text-base flex-shrink-0">💡</span>
+                <p class="leading-relaxed">
+                  <strong class="dark:text-slate-200 text-slate-700 font-semibold">Transparencia Impositiva & Ahorro:</strong>
+                  ${dest.es_cabotaje
+                    ? 'Vuelos nacionales: los importes en ARS son finales con tasas aeroportuarias e IVA incluidos.'
+                    : 'En vuelos internacionales, las tarifas en <strong>ARS</strong> incluyen la estimación de percepciones impositivas argentinas (aprox. 30%-40% de percepciones / Dólar Tarjeta). <span class="font-medium text-emerald-600 dark:text-emerald-400">⚡ Tip de ahorro: Si pagás en <strong>USD</strong> desde tu cuenta en dólares (vía Dólar MEP), evitás estas percepciones y abonás la tarifa neta internacional más baja.</span>'}
+                </p>
+              </div>
             </div>
           </div>
 
