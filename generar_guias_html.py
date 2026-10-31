@@ -134,9 +134,9 @@ SHARED_HEADER_SWITCHER = """
           <!-- Switcher de Color (Rojo Rubí vs Azul) -->
           <div class="flex items-center gap-1.5 pl-1.5 pr-2">
             <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Tema Rojo Rubí" aria-label="Tema Rojo Rubí"
-                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0"></button>
+                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
             <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Tema Azul Océano" aria-label="Tema Azul Océano"
-                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0"></button>
+                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
           </div>
           <!-- Separador Vertical Centrado y Proporcional -->
           <div class="w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>

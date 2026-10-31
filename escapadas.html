@@ -208,9 +208,9 @@
           <!-- Switcher de Color (Rojo Rubí vs Azul) -->
           <div class="flex items-center gap-1.5 pl-1.5 pr-2">
             <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Tema Rojo Rubí" aria-label="Tema Rojo Rubí"
-                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0"></button>
+                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
             <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Tema Azul Océano" aria-label="Tema Azul Océano"
-                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0"></button>
+                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
           </div>
           <!-- Separador Vertical Centrado y Proporcional -->
           <div class="w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
@@ -285,10 +285,23 @@
       <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight dark:text-white text-slate-900 max-w-4xl mx-auto mb-4">
         Guías de Escapadas en Auto &amp; Road Trips
       </h1>
-      <p id="escapadas-header-subtitle" class="text-base sm:text-lg dark:text-slate-400 text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+      <p id="escapadas-header-subtitle" class="text-base sm:text-lg dark:text-slate-400 text-slate-600 max-w-2xl mx-auto mb-6 leading-relaxed">
         Explorá las <span id="escapadas-total-count">23</span> guías organizadas en 4 anillos con base en Buenos Aires. 
         Calculá presupuesto real con <b>nafta Shell ($2.200)</b>, peajes exactos, tramos rotos y <b>ahorro por Ley Patagónica</b>.
       </p>
+
+      <!-- Jump Dock: Navegación Rápida Mobile-First hacia herramientas -->
+      <div class="flex items-center justify-center gap-2 max-w-xl mx-auto mb-8 text-xs font-bold flex-wrap">
+        <a href="#escapadas-grid" class="px-3.5 py-2 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 text-slate-700 dark:text-slate-200 hover:text-rose-500 shadow-xs flex items-center gap-1.5 transition-all">
+          <span>🚗</span> 23 Escapadas
+        </a>
+        <a href="#planificador-rutas" class="px-3.5 py-2 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 text-slate-700 dark:text-slate-200 hover:text-rose-500 shadow-xs flex items-center gap-1.5 transition-all">
+          <span>🛣️</span> Calculador de Ruta
+        </a>
+        <a href="#comparador-auto-avion" class="px-3.5 py-2 rounded-xl text-white shadow-xs flex items-center gap-1.5 transition-all" style="background-color: var(--brand-primary);">
+          <span>⚖️</span> Comparar Auto vs Avión
+        </a>
+      </div>
 
       <!-- Selector de Filtros por Tiempo -->
       <div class="flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto mb-12">
@@ -2335,11 +2348,11 @@
               👥 Cantidad de Pasajeros
             </label>
             <div class="grid grid-cols-5 gap-1.5" id="comp-pasajeros-container">
-              <button type="button" onclick="window.setComparadorPasajeros(1)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">1</button>
-              <button type="button" onclick="window.setComparadorPasajeros(2)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs">2</button>
-              <button type="button" onclick="window.setComparadorPasajeros(3)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">3</button>
-              <button type="button" onclick="window.setComparadorPasajeros(4)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">4</button>
-              <button type="button" onclick="window.setComparadorPasajeros(5)" class="comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">5</button>
+              <button type="button" onclick="window.setComparadorPasajeros(1)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">1</button>
+              <button type="button" onclick="window.setComparadorPasajeros(2)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs">2</button>
+              <button type="button" onclick="window.setComparadorPasajeros(3)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">3</button>
+              <button type="button" onclick="window.setComparadorPasajeros(4)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">4</button>
+              <button type="button" onclick="window.setComparadorPasajeros(5)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">5</button>
             </div>
           </div>
 

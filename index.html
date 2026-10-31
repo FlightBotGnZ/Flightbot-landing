@@ -297,6 +297,14 @@
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
     }
 
+  
+    /* Prevenir zoom forzado indeseado en Safari iOS al enfocar inputs */
+    @media screen and (max-width: 767px) {
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+    }
+
   </style>
 </head>
 <body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition">
@@ -383,9 +391,9 @@
           <!-- Switcher de Color (Rojo Rubí vs Azul) -->
           <div class="flex items-center gap-1.5 pl-1.5 pr-2">
             <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Tema Rojo Rubí" aria-label="Tema Rojo Rubí"
-                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0"></button>
+                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
             <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Tema Azul Océano" aria-label="Tema Azul Océano"
-                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0"></button>
+                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
           </div>
           <!-- Separador Vertical Centrado y Proporcional -->
           <div class="w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
@@ -443,8 +451,8 @@
         <a href="/guias/" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>📖</span> Guías
         </a>
-        <a href="/faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>❓</span> FAQ
+        <a href="/faq" onclick="toggleMobileNav(false)" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>❓</span> Preguntas Frecuentes (FAQ)
         </a>
       </div>
     </div>
@@ -4823,30 +4831,23 @@
                 <span>Ver Vuelo</span>
               </a>
 
-              <!-- Botonera con Colores Corporativos Oficiales Restaurados -->
+              <!-- Botonera de Vuelos Alternativos (2 Columnas Ergonómicas) -->
               <div class="space-y-1.5">
-                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Cotizar también en:</div>
-                <div class="grid grid-cols-3 gap-2 text-center">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Cotizar vuelo también en:</div>
+                <div class="grid grid-cols-2 gap-2 text-center">
                   <a href="${kiwiUrl}" target="_blank" rel="noopener noreferrer"
-                     class="py-2 px-1.5 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
+                     class="py-2.5 px-3 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
                      style="background: linear-gradient(135deg, #00a991 0%, #047857 100%);"
                      title="Cotizar en Kiwi.com (${fechaIda} al ${fechaVuelta})">
                     <span>🥝</span>
-                    <span class="truncate">Kiwi.com</span>
+                    <span class="truncate font-semibold">Kiwi.com</span>
                   </a>
                   <a href="${despegarUrl}" target="_blank" rel="noopener noreferrer"
-                     class="py-2 px-1.5 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
+                     class="py-2.5 px-3 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
                      style="background: linear-gradient(135deg, #4300d2 0%, #6835f9 100%);"
                      title="Cotizar en Despegar (${fechaIda} al ${fechaVuelta})">
                     <span>🛫</span>
-                    <span class="truncate">Despegar</span>
-                  </a>
-                  <a href="${bookingHotelUrl}" target="_blank" rel="noopener noreferrer"
-                     class="py-2 px-1.5 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
-                     style="background: linear-gradient(135deg, #003580 0%, #006ce4 100%);"
-                     title="Ver hoteles en ${dest.ciudad} (${fechaIda} al ${fechaVuelta}) en Booking.com">
-                    <span>🏨</span>
-                    <span class="truncate">Booking.com</span>
+                    <span class="truncate font-semibold">Despegar</span>
                   </a>
                 </div>
               </div>
