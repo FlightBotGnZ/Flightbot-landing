@@ -111,6 +111,25 @@
       opacity: 0;
       transform: translateY(6px);
     }
+    @keyframes fbDestGlow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.45);
+        border-color: var(--brand-primary);
+        transform: scale(0.99);
+      }
+      50% {
+        box-shadow: 0 0 14px 2px rgba(225, 29, 72, 0.35);
+        border-color: var(--brand-primary);
+        transform: scale(1.01);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(225, 29, 72, 0);
+        transform: scale(1);
+      }
+    }
+    .fb-dest-glow {
+      animation: fbDestGlow 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
     #fb-chat-window {
       transform-origin: bottom right;
       transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
@@ -310,7 +329,7 @@
 
   <!-- Encabezado / Navegación Superior -->
   <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/80 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between relative">
       <!-- Marca / Logotipo -->
       <div class="flex items-center gap-3 shrink-0 z-10 mr-3 xl:mr-5">
         <a href="/" class="flex items-center gap-3 group">
@@ -464,29 +483,40 @@
         FlightBot rastrea automáticamente vuelos baratos, caídas repentinas de precios y te recomienda los mejores alojamientos verificados en destinos top del mundo.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 max-w-xl mx-auto">
+        <!-- 1. Botón Primario Destacado (Ancho completo en móvil) -->
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-           class="w-full sm:w-auto px-8 py-4 rounded-xl text-white font-bold text-base transition-all flex items-center justify-center gap-3 hover:brightness-110"
-           style="background-color: var(--brand-primary); box-shadow: 0 15px 30px -5px var(--brand-glow);">
+           class="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-xl text-white font-bold text-sm sm:text-base transition-all flex items-center justify-center gap-2.5 hover:brightness-110 shadow-lg"
+           style="background-color: var(--brand-primary); box-shadow: 0 12px 25px -5px var(--brand-glow);">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
           </svg>
           Iniciar Bot Gratis en Telegram
         </a>
-        <button type="button" onclick="window.toggleFlightBotChat(true)"
-                class="w-full sm:w-auto px-8 py-4 rounded-xl dark:bg-slate-900 bg-white hover:dark:bg-slate-800 hover:bg-slate-100 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 font-bold text-base transition-all shadow-sm flex items-center justify-center gap-2.5"
-                style="border-color: var(--brand-border);">
-          <span>💬</span>
-          <span>Consultar al Asistente IA</span>
-        </button>
-        <a href="/billetera" 
-           class="w-full sm:w-auto px-6 py-4 rounded-xl dark:bg-slate-900 bg-white hover:dark:bg-slate-800 hover:bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800 font-semibold text-base transition-all shadow-sm flex items-center justify-center gap-2">
-          <span>🧳</span> Mi Billetera
-        </a>
-        <a href="#destinos" 
-           class="w-full sm:w-auto px-8 py-4 rounded-xl dark:bg-slate-900 bg-white hover:dark:bg-slate-800 hover:bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800 font-semibold text-base transition-all shadow-sm">
-          Ver Destinos y Guías
-        </a>
+
+        <!-- 2. Fila Compacta en Móvil (2 columnas) para Acciones Secundarias -->
+        <div class="grid grid-cols-2 gap-2.5 w-full sm:w-auto sm:flex sm:items-center">
+          <button type="button" onclick="window.toggleFlightBotChat(true)"
+                  class="px-4 py-3 rounded-xl dark:bg-slate-900 bg-white hover:dark:bg-slate-800 hover:bg-slate-100 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 font-bold text-xs sm:text-sm transition-all shadow-xs flex items-center justify-center gap-1.5 truncate">
+            <span>💬</span>
+            <span class="truncate">Asistente IA</span>
+          </button>
+          <a href="/billetera" 
+             class="px-4 py-3 rounded-xl dark:bg-slate-900 bg-white hover:dark:bg-slate-800 hover:bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800 font-semibold text-xs sm:text-sm transition-all shadow-xs flex items-center justify-center gap-1.5 truncate">
+            <span>🧳</span>
+            <span class="truncate">Mi Billetera</span>
+          </a>
+        </div>
+
+        <!-- 3. Acceso directo sutil al Radar y Guías -->
+        <div class="w-full flex items-center justify-center pt-1">
+          <a href="#radar-vuelos" 
+             class="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-rose-500 transition-colors inline-flex items-center gap-1.5 py-1 px-3 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800/60">
+            <span>✈️</span>
+            <span>Explorar Radar de Tarifas en Vivo</span>
+            <span class="text-[11px]">&darr;</span>
+          </a>
+        </div>
       </div>
 
       <!-- Métricas destacadas -->
@@ -693,7 +723,7 @@
 
             <!-- MINI PREVIEW: SIGUIENTE OFERTA EN COLA -->
             <div class="p-2.5 rounded-xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 shadow-md theme-transition hover:border-slate-300 dark:hover:border-slate-700 cursor-pointer"
-                 id="rolli-next-preview" onclick="window.cambiarOfertaRolli(1)" title="Hacé clic para ver la siguiente oferta cazada">
+                 id="rolli-next-preview" onclick="window.cambiarOfertaRolli(1)" title="Tocá para ver la siguiente oferta cazada">
               <div class="flex items-center justify-between text-[10px] font-medium text-slate-400 mb-1">
                 <span class="flex items-center gap-1 uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400">
                   <span>⏱️</span> Siguiente oferta cazada
@@ -816,7 +846,7 @@
             ✈️ Radar de Vuelos & Hospedajes Verificados
           </h2>
           <p class="mt-2 text-sm sm:text-base dark:text-slate-400 text-slate-600 max-w-2xl leading-relaxed theme-transition">
-            Seleccioná una ciudad en el menú lateral para descubrir el <b>Top 3 de vuelos vigentes</b> (con fechas exactas de ida/vuelta) y los <b>3 hospedajes más recomendados</b> con reviews 100% reales.
+            Elegí una ciudad del catálogo para descubrir el <b>Top 3 de vuelos vigentes</b> (con fechas exactas de ida/vuelta) y los <b>3 hospedajes más recomendados</b> con reviews 100% reales.
           </p>
         </div>
 
@@ -908,9 +938,12 @@
         <!-- SIDEBAR IZQUIERDO (lg:col-span-4): Buscador en vivo, filtros de regiones y lista de ciudades -->
         <div class="lg:col-span-4 dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-4 shadow-sm theme-transition flex flex-col h-full">
           <div class="flex items-center justify-between pb-3 mb-2 border-b dark:border-slate-800 border-slate-200 px-2">
-            <span class="text-xs font-extrabold uppercase tracking-wider dark:text-slate-400 text-slate-500" id="radar-counter-sidebar">
-              45 Destinos en Radar
-            </span>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-extrabold uppercase tracking-wider dark:text-slate-400 text-slate-500" id="radar-counter-sidebar">
+                45 Destinos en Radar
+              </span>
+              <span class="text-[10px] text-slate-400 dark:text-slate-500 lg:hidden font-medium">· Tocá una ciudad</span>
+            </div>
             <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20" id="radar-live-indicator">
               ● En Vivo
             </span>
@@ -946,8 +979,23 @@
                    placeholder="Filtrar ciudad, código IATA o país..."
                    class="w-full text-xs rounded-xl pl-8 pr-3 py-2 dark:bg-slate-950/60 bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-rose-500 transition-all">
           </div>
-          <div id="fb-radar-sidebar" class="space-y-1.5 h-[450px] max-h-[450px] overflow-y-auto fb-custom-scrollbar pr-1">
+          <div id="fb-radar-sidebar" class="space-y-1.5 h-[280px] max-h-[280px] sm:h-[320px] sm:max-h-[320px] lg:h-[450px] lg:max-h-[450px] overflow-y-auto fb-custom-scrollbar pr-1">
             <!-- Los 45 destinos se renderizan dinámicamente con banderitas y filtros -->
+          </div>
+
+          <!-- Indicador Sutil de Destino Activo (Visual Affordance e Instrucción Móvil) -->
+          <div id="fb-radar-active-pill" class="mt-2.5 p-2 px-3 rounded-xl dark:bg-slate-950/70 bg-slate-100 border dark:border-slate-800 border-slate-200 text-xs flex items-center justify-between transition-all duration-300">
+            <div class="flex items-center gap-1.5 min-w-0">
+              <span class="text-rose-500 font-extrabold text-sm flex-shrink-0 animate-pulse">📍</span>
+              <span class="dark:text-slate-300 text-slate-700 font-medium truncate text-[11px] sm:text-xs">
+                Destino activo: <strong id="fb-pill-dest-nombre" class="font-bold dark:text-white text-slate-900">Bariloche</strong>
+                <span id="fb-pill-dest-iata" class="font-mono text-[10px] px-1.5 py-0.2 rounded dark:bg-slate-800 bg-white border dark:border-slate-700 border-slate-300 font-bold ml-1">BRC</span>
+              </span>
+            </div>
+            <a href="#fb-radar-header-container" onclick="const el=document.getElementById('fb-radar-header-container'); if(el){ window.scrollTo({top: el.getBoundingClientRect().top + window.pageYOffset - 75, behavior: 'smooth'}); return false; }" class="text-[11px] font-bold text-rose-500 hover:text-rose-400 whitespace-nowrap flex items-center gap-1 pl-2 flex-shrink-0" title="Ver tarifas y radar de esta ciudad">
+              <span>Vuelos abajo</span>
+              <span class="animate-bounce">↓</span>
+            </a>
           </div>
         </div>
 
@@ -4382,6 +4430,13 @@
 
           const nombreCiudad = limpiarNombreCiudad(dest.ciudad);
           const etiquetaPais = dest.es_cabotaje ? 'Argentina (Cabotaje)' : dest.pais;
+          const tieneRelampago = Boolean(dest.oportunidad_relampago && dest.oportunidad_relampago.activa);
+          const fuegoIconoHtml = tieneRelampago ? '<span class="text-xs animate-pulse inline-block" title="¡Oportunidad Relámpago activa!">🔥</span>' : '';
+          const badgeNivelHtml = tieneRelampago
+            ? '<span class="text-[9px] font-black px-1.5 py-0.2 rounded-full bg-rose-500/20 text-rose-500 dark:text-rose-400 border border-rose-500/40 flex items-center gap-0.5 animate-pulse">🔥 Relámpago</span>'
+            : (dest.termometro && dest.termometro.nivel === 'bajo'
+                ? '<span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">🟢 Oportunidad</span>'
+                : '<span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded-full bg-sky-500/15 text-sky-400 border border-sky-500/30">🔵 Estándar</span>');
 
           btn.innerHTML = `
             <div class="flex items-center gap-3">
@@ -4389,6 +4444,7 @@
               <div>
                 <div class="text-xs sm:text-sm font-bold dark:text-white text-slate-900 flex items-center gap-1.5">
                   ${nombreCiudad}
+                  ${fuegoIconoHtml}
                   <span class="text-[10px] font-mono px-1.5 py-0.2 rounded dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 border dark:border-slate-700 border-slate-300">
                     ${dest.iata}
                   </span>
@@ -4403,9 +4459,7 @@
                 ${window.formatearPrecioMoneda ? window.formatearPrecioMoneda(dest.precio_desde, dest) : dest.precio_desde}
               </div>
               <div class="flex items-center justify-end gap-1 mt-0.5">
-                <span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded-full ${dest.termometro && dest.termometro.nivel === 'bajo' ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30' : 'bg-sky-500/15 text-sky-400 border border-sky-500/30'}">
-                  ${dest.termometro && dest.termometro.nivel === 'bajo' ? '🟢 Oportunidad' : '🔵 Estándar'}
-                </span>
+                ${badgeNivelHtml}
               </div>
             </div>
           `;
@@ -4420,11 +4474,12 @@
           if (!btn) return;
           const isSelected = dest.id === activeId;
           if (isSelected) {
-            btn.className = 'w-full text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between group dark:bg-slate-800/90 bg-rose-50/60 shadow-sm scale-[1.01]';
+            btn.className = 'w-full text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between group dark:bg-slate-800/90 bg-rose-50/60 shadow-sm scale-[1.01] fb-dest-glow';
             btn.style.borderColor = 'var(--brand-primary)';
           } else {
             btn.className = 'w-full text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between group dark:bg-slate-950/40 bg-white hover:dark:bg-slate-800/50 hover:bg-slate-50 dark:border-slate-800/80 border-slate-200';
             btn.style.borderColor = '';
+            btn.classList.remove('fb-dest-glow');
           }
         });
       }
@@ -4739,16 +4794,16 @@
                   <span class="text-base font-bold flex-shrink-0">${v.puesto}</span>
                   <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">${v.destacado}</span>
                 </div>
-                <div class="flex items-center gap-1.5 flex-shrink-0">
+                <div class="flex items-center gap-2 flex-shrink-0">
                   <button type="button" onclick="window.compartirOferta('${dest.ciudad}', '${v.puesto}', '${v.aerolinea}', '${v.precio}', '${fechasVigentes}', '${dest.iata}')"
-                          class="w-7 h-7 rounded-lg dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 hover:text-emerald-500 flex items-center justify-center transition-colors"
+                          class="w-9 h-9 sm:w-8 sm:h-8 rounded-xl dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 hover:text-emerald-500 flex items-center justify-center transition-all shadow-2xs active:scale-95"
                           title="Compartir oferta en WhatsApp o copiar enlace">
-                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                       <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
                     </svg>
                   </button>
                   <a href="${tgAlertUrl}" target="_blank" rel="noopener noreferrer"
-                     class="w-7 h-7 rounded-lg dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 hover:text-rose-500 flex items-center justify-center text-xs transition-colors"
+                     class="w-9 h-9 sm:w-8 sm:h-8 rounded-xl dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 hover:text-rose-500 flex items-center justify-center text-sm transition-all shadow-2xs active:scale-95"
                      title="Crear alerta de precio en Telegram (${dest.comando_tg})">
                     <span>🔔</span>
                   </a>
@@ -4859,14 +4914,76 @@
           </div>
         `).join('');
 
+        const relampago = dest.oportunidad_relampago;
+        const bannerRelampagoHtml = (relampago && relampago.activa) ? `
+          <!-- BANNER 🔥 OPORTUNIDAD RELÁMPAGO (SALIDA PRÓXIMA) -->
+          <div class="mb-10 p-5 sm:p-6 rounded-3xl dark:bg-gradient-to-r dark:from-rose-950/40 dark:via-slate-900 dark:to-amber-950/30 bg-gradient-to-r from-rose-50 via-white to-amber-50/80 border-2 border-rose-500/40 shadow-lg relative overflow-hidden theme-transition">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-5 relative z-10">
+              <div>
+                <div class="flex items-center gap-2 mb-2 flex-wrap">
+                  <span class="inline-flex items-center gap-1 text-[11px] font-black tracking-wide uppercase px-2.5 py-0.5 rounded-full bg-rose-500 text-white shadow-xs animate-pulse">
+                    🔥 Oportunidad Relámpago
+                  </span>
+                  <span class="text-xs font-bold dark:text-amber-300 text-amber-700 bg-amber-500/15 px-2.5 py-0.5 rounded-md border border-amber-500/30">
+                    ⚡ Salida en ${relampago.dias_para_el_vuelo || '26'} días · ${relampago.ahorro_porcentaje || 'Super Tarifa'}
+                  </span>
+                  <span class="text-xs font-semibold dark:text-slate-400 text-slate-500 hidden sm:inline">
+                    ${relampago.subtitulo || 'Tarifa récord de último minuto'}
+                  </span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-black dark:text-white text-slate-900 leading-tight mb-1.5">
+                  ${relampago.aerolinea} Directo ➔ ${dest.ciudad}
+                </h3>
+                <div class="text-xs sm:text-sm dark:text-slate-300 text-slate-600 flex items-center gap-2 flex-wrap">
+                  <span class="font-mono bg-slate-100 dark:bg-slate-950 px-2 py-0.5 rounded-md border dark:border-slate-800 border-slate-200">
+                    📅 <strong>${relampago.fechas}</strong> (${relampago.noches} noches)
+                  </span>
+                  <span class="text-slate-400">·</span>
+                  <span>🛫 ${relampago.escalas}</span>
+                  <span class="text-slate-400">·</span>
+                  <span class="font-bold text-rose-500">¡Tarifa récord sin tocar tu radar de vacaciones!</span>
+                </div>
+              </div>
+              <div class="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end gap-3 flex-shrink-0">
+                <div class="text-left md:text-right">
+                  <span class="block text-[10px] uppercase font-bold tracking-wider dark:text-slate-400 text-slate-500">Tarifa Final Estimada (Ida y Vuelta)</span>
+                  <div class="text-2xl sm:text-3xl font-black font-mono tracking-tight text-rose-500 whitespace-nowrap">
+                    ${relampago.precio}
+                  </div>
+                  <div class="text-[11px] font-bold dark:text-slate-400 text-slate-500">
+                    (${relampago.precio_usd})
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                  <a href="${relampago.google_flights_url}" target="_blank" rel="noopener noreferrer"
+                     class="w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-black text-white shadow-md hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
+                     style="background: var(--brand-gradient);"
+                     title="Ver Oportunidad Relámpago en Google Flights">
+                    <span>⚡ Ver Vuelo Relámpago</span>
+                  </a>
+                  ${relampago.kiwi_url ? `
+                    <a href="${relampago.kiwi_url}" target="_blank" rel="noopener noreferrer"
+                       class="px-3.5 py-2.5 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1"
+                       style="background: linear-gradient(135deg, #00a991 0%, #047857 100%);"
+                       title="Cotizar en Kiwi.com">
+                      <span>🥝 Kiwi</span>
+                    </a>
+                  ` : ''}
+                </div>
+              </div>
+            </div>
+          </div>
+        ` : '';
+
         return `
+          ${bannerRelampagoHtml}
           <!-- SECCIÓN 1: TOP 3 VUELOS VIGENTES (ANCHO COMPLETO) -->
           <div class="mb-12">
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-2">
                 <span class="text-xl">✈️</span>
                 <h4 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900">
-                  Top 3 Vuelos Más Económicos Vigentes
+                  Top 3 Vuelos Más Económicos Vigentes ${(relampago && relampago.activa) ? '<span class="text-xs font-normal dark:text-slate-400 text-slate-500 block sm:inline sm:ml-2">(Radar Planificado)</span>' : ''}
                 </h4>
               </div>
               <a href="${flightGfUrl}" target="_blank" rel="noopener noreferrer"
@@ -4874,6 +4991,10 @@
                 <span>Explorar en Google Flights</span>
               </a>
             </div>
+            <p class="text-xs dark:text-slate-400 text-slate-500 mb-3.5 lg:hidden flex items-center gap-1.5">
+              <span class="text-rose-500 font-bold">ℹ️</span>
+              <span>Tarifas vigentes para <strong>${dest.ciudad}</strong>. Tocá cualquier opción para cotizar en tiempo real.</span>
+            </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch mb-4">
               ${vuelosHtml}
             </div>
@@ -4901,6 +5022,10 @@
                 <span>Ver todos en Booking.com</span>
               </a>
             </div>
+            <p class="text-xs dark:text-slate-400 text-slate-500 mb-3.5 lg:hidden flex items-center gap-1.5">
+              <span class="text-rose-500 font-bold">🏨</span>
+              <span>Hospedajes recomendados en <strong>${dest.ciudad}</strong> con cotización directa en Booking.</span>
+            </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
               ${hotelesHtml}
             </div>
@@ -4909,11 +5034,27 @@
               <span class="text-base flex-shrink-0">ℹ️</span>
               <p class="leading-relaxed">
                 <strong class="dark:text-slate-200 text-slate-700 font-semibold">Tarifas de Referencia y Disponibilidad en Vivo:</strong>
-                Tarifas estimadas por noche en base doble según temporada. Al hacer clic en <strong>Ver Hotel</strong>, Booking.com se abre automáticamente con las fechas exactas de tu vuelo para confirmar disponibilidad, promociones de temporada y precio final al segundo.
+                Tarifas estimadas por noche en base doble según temporada. Al tocar en <strong>Ver Hotel</strong>, Booking.com se abre automáticamente con las fechas exactas de tu vuelo para confirmar disponibilidad, promociones de temporada y precio final al segundo.
               </p>
             </div>
           </div>
         `;
+      }
+
+      // Actualizar píldora visual de destino activo (Micro-feedback para celulares y desktop)
+      function actualizarPildoraDestinoActivo(dest) {
+        if (!dest) return;
+        const elNombre = document.getElementById('fb-pill-dest-nombre');
+        const elIata = document.getElementById('fb-pill-dest-iata');
+        const pill = document.getElementById('fb-radar-active-pill');
+        if (elNombre) elNombre.innerText = limpiarNombreCiudad(dest.ciudad);
+        if (elIata) elIata.innerText = dest.iata || '';
+
+        if (pill) {
+          pill.classList.remove('fb-dest-glow');
+          void pill.offsetWidth; // Disparar reflow para reiniciar animación de destello
+          pill.classList.add('fb-dest-glow');
+        }
       }
 
       // Renderizar con animación sutil (Crossfade suave de salida y entrada)
@@ -4928,6 +5069,7 @@
         const dest = RADAR_DATA.find(d => d.id === destId) || RADAR_DATA[0];
         currentDestinationId = dest.id;
         updateSidebarSelection(dest.id);
+        actualizarPildoraDestinoActivo(dest);
 
         const headerHtml = generarCabeceraYTermometroHtml(dest);
         const cardsHtml = generarTarjetasFullWidthHtml(dest);

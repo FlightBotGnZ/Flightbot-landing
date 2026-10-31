@@ -231,12 +231,36 @@ module.exports = async function handler(req, res) {
         ? (mapArs[iata] || mapUsd[iata] || [])
         : (mapUsd[iata] || mapArs[iata] || []);
 
-      // Filtrar sólo vuelos con fecha de salida futura y retorno válido
-      const ofertasValidas = ofertasRaw.filter(o => {
+      // Calcular umbral mínimo de compra anticipada (días de corte del radar)
+      // Cabotaje: 45 días | Regional/Caribe: 60 días | USA: 75 días | Europa/Mundo: 90 días
+      let diasCorte = 45;
+      if (esCabotaje) {
+        diasCorte = 45;
+      } else if (['europa_mundo'].includes(dest.categoria_region) || ['MAD', 'FCO', 'CDG', 'LHR', 'BER', 'AMS', 'FRA', 'ATH', 'OSL', 'KEF', 'IST', 'DXB', 'NRT', 'PVG', 'BKK', 'CAI', 'RAK', 'CPT'].includes(iata)) {
+        diasCorte = 90;
+      } else if (['MIA', 'MCO', 'JFK', 'AUA', 'CUN'].includes(iata)) {
+        diasCorte = 75;
+      } else {
+        diasCorte = 60;
+      }
+
+      const fechaMinima = new Date(hoy.getTime() + (diasCorte * 24 * 60 * 60 * 1000));
+
+      // Filtrar sólo vuelos que respeten la ventana de corte de compra anticipada
+      let ofertasValidas = ofertasRaw.filter(o => {
         if (!o.depart_date || !o.return_date || !o.value) return false;
         const depDate = new Date(o.depart_date + 'T00:00:00');
-        return depDate >= hoy;
+        return depDate >= fechaMinima;
       });
+
+      // Si no hay ofertas más allá de la fecha de corte, usar las futuras normales para no quedar vacío
+      if (ofertasValidas.length === 0) {
+        ofertasValidas = ofertasRaw.filter(o => {
+          if (!o.depart_date || !o.return_date || !o.value) return false;
+          const depDate = new Date(o.depart_date + 'T00:00:00');
+          return depDate >= hoy;
+        });
+      }
 
       if (ofertasValidas.length === 0) {
         return dest; // Conservar datos base si no hay cotización fresca disponible
@@ -264,15 +288,19 @@ module.exports = async function handler(req, res) {
         // Factor de precio realista por aerolínea para evitar clonar tarifas low-cost sobre aerolíneas regulares
         let factorAero = 1.0;
         if (idx > 0 && (!ofertasValidas[idx] || ofertasValidas[idx].value === ofertasValidas[0].value)) {
-          if (esCabotaje) {
-            factorAero = (aerolineaNombre.includes('Aerolíneas') || aerolineaNombre.includes('Austral')) ? 1.42 : (idx === 1 ? 1.15 : 1.28);
+          const mismaAero = vuelosBase[0]?.aerolinea && aerolineaNombre.toLowerCase().trim() === vuelosBase[0].aerolinea.toLowerCase().trim();
+          if (mismaAero) {
+            // Misma aerolínea (ej. JetSMART con varios horarios o frecuencias): conserva la misma tarifa base real
+            factorAero = 1.0;
+          } else if (esCabotaje) {
+            factorAero = (aerolineaNombre.includes('Aerolíneas') || aerolineaNombre.includes('Austral')) ? 1.42 : 1.20;
           } else {
             if (['Avianca', 'Copa', 'LATAM', 'Air Europa', 'Delta', 'United', 'Iberia'].some(k => aerolineaNombre.includes(k))) {
               factorAero = (aerolineaNombre.includes('Copa') || aerolineaNombre.includes('Air Europa') || aerolineaNombre.includes('LATAM')) ? 1.95 : 1.82;
             } else if (['American', 'Aerolíneas', 'Air France', 'KLM', 'Lufthansa', 'Emirates'].some(k => aerolineaNombre.includes(k))) {
               factorAero = 2.10;
             } else {
-              factorAero = idx === 1 ? 1.18 : 1.35;
+              factorAero = 1.25;
             }
           }
         }

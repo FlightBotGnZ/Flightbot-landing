@@ -1,8 +1,5 @@
-/* ==========================================================================
-   FLIGHTBOT - CATÁLOGO MASTER DE DESTINOS, HOTELES Y MONITOREO DE RADAR
-   Modularizado para alto rendimiento y carga asíncrona diferida (defer).
-   ========================================================================== */
-(function() {
+// FlightBot - Catalogo Maestro Sincronizado
+(function(){
   window.RADAR_DATA = [
   {
     "id": "bariloche",
@@ -12,7 +9,7 @@
     "iata": "BRC",
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
-    "precio_desde": "$ 150.761 ARS (US$ 112)",
+    "precio_desde": "$ 185.000 ARS (US$ 137)",
     "comando_tg": "/bariloche",
     "resena": "Capital nacional del turismo de aventura: majestuosos lagos glaciares, el Cerro Campanario con una de las 7 mejores vistas del planeta, circuito de chocolaterías y el inicio de la Ruta de los 7 Lagos.",
     "vuelos": [
@@ -20,43 +17,43 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP/EZE ➔ BRC)",
-        "fechas": "25 Nov - 01 Dic 2026",
+        "fechas": "13 Feb - 19 Feb 2027",
         "noches": 6,
-        "precio": "$ 150.761 ARS (US$ 112 aprox)",
-        "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2026-11-25",
-        "fecha_vuelta": "2026-12-01",
+        "precio": "$ 185.000 ARS (US$ 137 aprox)",
+        "destacado": "Radar Planificado Verano",
+        "fecha_ida": "2027-02-13",
+        "fecha_vuelta": "2027-02-19",
         "actualizado_en_vivo": true,
-        "precio_ars": 150761,
-        "precio_usd": 112
+        "precio_ars": 185000,
+        "precio_usd": 137
       },
       {
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ BRC)",
-        "fechas": "25 Nov - 01 Dic 2026",
+        "fechas": "13 Feb - 19 Feb 2027",
         "noches": 6,
-        "precio": "$ 173.000 ARS (US$ 128 aprox)",
-        "destacado": "Salidas directas desde Aeroparque",
-        "fecha_ida": "2026-11-25",
-        "fecha_vuelta": "2026-12-01",
+        "precio": "$ 185.000 ARS (US$ 137 aprox)",
+        "destacado": "3 frecuencias diarias en verano",
+        "fecha_ida": "2027-02-13",
+        "fecha_vuelta": "2027-02-19",
         "actualizado_en_vivo": true,
-        "precio_ars": 173000,
-        "precio_usd": 128
+        "precio_ars": 185000,
+        "precio_usd": 137
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ BRC)",
-        "fechas": "25 Nov - 01 Dic 2026",
+        "fechas": "13 Feb - 19 Feb 2027",
         "noches": 6,
-        "precio": "$ 214.000 ARS (US$ 159 aprox)",
-        "destacado": "Múltiples frecuencias diarias",
-        "fecha_ida": "2026-11-25",
-        "fecha_vuelta": "2026-12-01",
+        "precio": "$ 228.000 ARS (US$ 169 aprox)",
+        "destacado": "Equipaje de mano y bodega incluido",
+        "fecha_ida": "2027-02-13",
+        "fecha_vuelta": "2027-02-19",
         "actualizado_en_vivo": true,
-        "precio_ars": 214000,
-        "precio_usd": 159
+        "precio_ars": 228000,
+        "precio_usd": 169
       }
     ],
     "hoteles": [
@@ -134,7 +131,26 @@
       "historial_formato": "$ "
     },
     "codigo_pais": "ar",
-    "categoria_region": "cabotaje"
+    "categoria_region": "cabotaje",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 26 días · Tarifa récord más baja del año",
+      "aerolinea": "JetSMART",
+      "escalas": "Directo (AEP/EZE ➔ BRC)",
+      "fechas": "25 Nov - 01 Dic 2026",
+      "fecha_ida": "2026-11-25",
+      "fecha_vuelta": "2026-12-01",
+      "noches": 6,
+      "dias_para_el_vuelo": 26,
+      "precio": "$ 139.240 ARS",
+      "precio_usd": "US$ 103 aprox",
+      "precio_ars": 139240,
+      "precio_usd_num": 103,
+      "ahorro_porcentaje": "35% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20BRC%20from%20BUE%20on%202026-11-25%20through%202026-12-01%20with%20JetSMART&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/san-carlos-de-bariloche-argentina/2026-11-25/2026-12-01?affilid=flightbot"
+    }
   },
   {
     "id": "cordoba",
