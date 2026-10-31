@@ -133,7 +133,7 @@
     "oportunidad_relampago": {
       "activa": true,
       "titulo": "🔥 Oportunidad Relámpago",
-      "subtitulo": "Salida en 26 días · Tarifa récord más baja del año",
+      "subtitulo": "Salida en 26 días · Tarifa récord más baja detectada",
       "aerolinea": "JetSMART",
       "escalas": "Directo (AEP/EZE ➔ BRC)",
       "fechas": "25 Nov - 01 Dic 2026",
@@ -146,8 +146,8 @@
       "precio_ars": 139240,
       "precio_usd_num": 103,
       "ahorro_porcentaje": "35% OFF",
-      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20BRC%20from%20BUE%20on%202026-11-25%20through%202026-12-01%20with%20JetSMART&hl=es",
-      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/san-carlos-de-bariloche-argentina/2026-11-25/2026-12-01?affilid=flightbot"
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20BRC%20from%20BUE%20on%202026-11-25%20through%202026-12-01&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/bariloche/2026-11-25/2026-12-01?affilid=flightbot"
     }
   },
   {
@@ -280,7 +280,26 @@
       ],
       "historial_formato": "$ "
     },
-    "codigo_pais": "ar"
+    "codigo_pais": "ar",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 25 días · Tarifa récord más baja detectada",
+      "aerolinea": "JetSMART",
+      "escalas": "Directo (AEP ➔ COR)",
+      "fechas": "24 Nov - 29 Nov 2026",
+      "fecha_ida": "2026-11-24",
+      "fecha_vuelta": "2026-11-29",
+      "noches": 5,
+      "dias_para_el_vuelo": 25,
+      "precio": "$ 78.900 ARS",
+      "precio_usd": "US$ 58 aprox",
+      "precio_ars": 78900,
+      "precio_usd_num": 58,
+      "ahorro_porcentaje": "28% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20COR%20from%20BUE%20on%202026-11-24%20through%202026-11-29&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/cordoba/2026-11-24/2026-11-29?affilid=flightbot"
+    }
   },
   {
     "id": "calafate",
@@ -412,7 +431,26 @@
       ],
       "historial_formato": "$ "
     },
-    "codigo_pais": "ar"
+    "codigo_pais": "ar",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 30 días · Tarifa récord más baja detectada",
+      "aerolinea": "Aerolíneas Argentinas",
+      "escalas": "Directo (AEP ➔ FTE)",
+      "fechas": "29 Nov - 05 Dic 2026",
+      "fecha_ida": "2026-11-29",
+      "fecha_vuelta": "2026-12-05",
+      "noches": 6,
+      "dias_para_el_vuelo": 30,
+      "precio": "$ 195.000 ARS",
+      "precio_usd": "US$ 144 aprox",
+      "precio_ars": 195000,
+      "precio_usd_num": 144,
+      "ahorro_porcentaje": "29% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20FTE%20from%20BUE%20on%202026-11-29%20through%202026-12-05&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/calafate/2026-11-29/2026-12-05?affilid=flightbot"
+    }
   },
   {
     "id": "jujuy",
@@ -544,7 +582,26 @@
       ],
       "historial_formato": "$ "
     },
-    "codigo_pais": "ar"
+    "codigo_pais": "ar",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 26 días · Tarifa récord más baja detectada",
+      "aerolinea": "Aerolíneas Argentinas",
+      "escalas": "Directo (AEP ➔ JUJ)",
+      "fechas": "25 Nov - 30 Nov 2026",
+      "fecha_ida": "2026-11-25",
+      "fecha_vuelta": "2026-11-30",
+      "noches": 5,
+      "dias_para_el_vuelo": 26,
+      "precio": "$ 159.000 ARS",
+      "precio_usd": "US$ 118 aprox",
+      "precio_ars": 159000,
+      "precio_usd_num": 118,
+      "ahorro_porcentaje": "31% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20JUJ%20from%20BUE%20on%202026-11-25%20through%202026-11-30&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/jujuy/2026-11-25/2026-11-30?affilid=flightbot"
+    }
   },
   {
     "id": "mendoza",
@@ -676,7 +733,26 @@
       "historial_formato": "$ "
     },
     "codigo_pais": "ar",
-    "categoria_region": "cabotaje"
+    "categoria_region": "cabotaje",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 27 días · Tarifa récord más baja detectada",
+      "aerolinea": "JetSMART",
+      "escalas": "Directo (AEP ➔ MDZ)",
+      "fechas": "26 Nov - 01 Dic 2026",
+      "fecha_ida": "2026-11-26",
+      "fecha_vuelta": "2026-12-01",
+      "noches": 5,
+      "dias_para_el_vuelo": 27,
+      "precio": "$ 94.200 ARS",
+      "precio_usd": "US$ 70 aprox",
+      "precio_ars": 94200,
+      "precio_usd_num": 70,
+      "ahorro_porcentaje": "30% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MDZ%20from%20BUE%20on%202026-11-26%20through%202026-12-01&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/mendoza/2026-11-26/2026-12-01?affilid=flightbot"
+    }
   },
   {
     "id": "neuquen",
@@ -808,7 +884,26 @@
       ],
       "historial_formato": "$ "
     },
-    "codigo_pais": "ar"
+    "codigo_pais": "ar",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 25 días · Tarifa récord más baja detectada",
+      "aerolinea": "JetSMART",
+      "escalas": "Directo (AEP ➔ NQN)",
+      "fechas": "24 Nov - 29 Nov 2026",
+      "fecha_ida": "2026-11-24",
+      "fecha_vuelta": "2026-11-29",
+      "noches": 5,
+      "dias_para_el_vuelo": 25,
+      "precio": "$ 98.500 ARS",
+      "precio_usd": "US$ 73 aprox",
+      "precio_ars": 98500,
+      "precio_usd_num": 73,
+      "ahorro_porcentaje": "31% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20NQN%20from%20BUE%20on%202026-11-24%20through%202026-11-29&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/neuquen/2026-11-24/2026-11-29?affilid=flightbot"
+    }
   },
   {
     "id": "iguazu",
@@ -940,7 +1035,26 @@
       "historial_formato": "$ "
     },
     "codigo_pais": "ar",
-    "categoria_region": "cabotaje"
+    "categoria_region": "cabotaje",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 28 días · Tarifa récord más baja detectada",
+      "aerolinea": "JetSMART",
+      "escalas": "Directo (AEP ➔ IGR)",
+      "fechas": "27 Nov - 02 Dic 2026",
+      "fecha_ida": "2026-11-27",
+      "fecha_vuelta": "2026-12-02",
+      "noches": 5,
+      "dias_para_el_vuelo": 28,
+      "precio": "$ 118.400 ARS",
+      "precio_usd": "US$ 88 aprox",
+      "precio_ars": 118400,
+      "precio_usd_num": 88,
+      "ahorro_porcentaje": "32% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20IGR%20from%20BUE%20on%202026-11-27%20through%202026-12-02&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/iguazu/2026-11-27/2026-12-02?affilid=flightbot"
+    }
   },
   {
     "id": "madryn",
@@ -1072,7 +1186,26 @@
       ],
       "historial_formato": "$ "
     },
-    "codigo_pais": "ar"
+    "codigo_pais": "ar",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 27 días · Tarifa récord más baja detectada",
+      "aerolinea": "Aerolíneas Argentinas",
+      "escalas": "Directo (AEP ➔ REL)",
+      "fechas": "26 Nov - 01 Dic 2026",
+      "fecha_ida": "2026-11-26",
+      "fecha_vuelta": "2026-12-01",
+      "noches": 5,
+      "dias_para_el_vuelo": 27,
+      "precio": "$ 142.000 ARS",
+      "precio_usd": "US$ 105 aprox",
+      "precio_ars": 142000,
+      "precio_usd_num": 105,
+      "ahorro_porcentaje": "26% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20REL%20from%20BUE%20on%202026-11-26%20through%202026-12-01&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/madryn/2026-11-26/2026-12-01?affilid=flightbot"
+    }
   },
   {
     "id": "salta",
@@ -1204,7 +1337,26 @@
       ],
       "historial_formato": "$ "
     },
-    "codigo_pais": "ar"
+    "codigo_pais": "ar",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 24 días · Tarifa récord más baja detectada",
+      "aerolinea": "JetSMART",
+      "escalas": "Directo (AEP ➔ SLA)",
+      "fechas": "23 Nov - 28 Nov 2026",
+      "fecha_ida": "2026-11-23",
+      "fecha_vuelta": "2026-11-28",
+      "noches": 5,
+      "dias_para_el_vuelo": 24,
+      "precio": "$ 124.000 ARS",
+      "precio_usd": "US$ 92 aprox",
+      "precio_ars": 124000,
+      "precio_usd_num": 92,
+      "ahorro_porcentaje": "27% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20SLA%20from%20BUE%20on%202026-11-23%20through%202026-11-28&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/salta/2026-11-23/2026-11-28?affilid=flightbot"
+    }
   },
   {
     "id": "sanmartin",
@@ -1336,7 +1488,26 @@
       ],
       "historial_formato": "$ "
     },
-    "codigo_pais": "ar"
+    "codigo_pais": "ar",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 26 días · Tarifa récord más baja detectada",
+      "aerolinea": "Aerolíneas Argentinas",
+      "escalas": "Directo (AEP ➔ CPC)",
+      "fechas": "25 Nov - 30 Nov 2026",
+      "fecha_ida": "2026-11-25",
+      "fecha_vuelta": "2026-11-30",
+      "noches": 5,
+      "dias_para_el_vuelo": 26,
+      "precio": "$ 168.000 ARS",
+      "precio_usd": "US$ 124 aprox",
+      "precio_ars": 168000,
+      "precio_usd_num": 124,
+      "ahorro_porcentaje": "25% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CPC%20from%20BUE%20on%202026-11-25%20through%202026-11-30&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/sanmartin/2026-11-25/2026-11-30?affilid=flightbot"
+    }
   },
   {
     "id": "ushuaia",
@@ -1468,7 +1639,26 @@
       ],
       "historial_formato": "$ "
     },
-    "codigo_pais": "ar"
+    "codigo_pais": "ar",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 29 días · Tarifa récord más baja detectada",
+      "aerolinea": "JetSMART",
+      "escalas": "Directo (AEP ➔ USH)",
+      "fechas": "28 Nov - 04 Dic 2026",
+      "fecha_ida": "2026-11-28",
+      "fecha_vuelta": "2026-12-04",
+      "noches": 6,
+      "dias_para_el_vuelo": 29,
+      "precio": "$ 189.000 ARS",
+      "precio_usd": "US$ 140 aprox",
+      "precio_ars": 189000,
+      "precio_usd_num": 140,
+      "ahorro_porcentaje": "30% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20USH%20from%20BUE%20on%202026-11-28%20through%202026-12-04&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ushuaia/2026-11-28/2026-12-04?affilid=flightbot"
+    }
   },
   {
     "id": "florianopolis",
@@ -1600,7 +1790,26 @@
       ],
       "historial_formato": "US$ "
     },
-    "codigo_pais": "br"
+    "codigo_pais": "br",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 30 días · Tarifa récord más baja detectada",
+      "aerolinea": "Emirates / Gol",
+      "escalas": "Directo (EZE ➔ Brasil)",
+      "fechas": "29 Nov - 06 Dic 2026",
+      "fecha_ida": "2026-11-29",
+      "fecha_vuelta": "2026-12-06",
+      "noches": 7,
+      "dias_para_el_vuelo": 30,
+      "precio": "US$ 170",
+      "precio_usd": "aprox. $ 229.500 ARS",
+      "precio_ars": 229500,
+      "precio_usd_num": 170,
+      "ahorro_porcentaje": "24% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20FLN%20from%20BUE%20on%202026-11-29%20through%202026-12-06&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/florianopolis/2026-11-29/2026-12-06?affilid=flightbot"
+    }
   },
   {
     "id": "maceio",
@@ -1732,7 +1941,26 @@
       ],
       "historial_formato": "US$ "
     },
-    "codigo_pais": "br"
+    "codigo_pais": "br",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 33 días · Tarifa récord más baja detectada",
+      "aerolinea": "Emirates / Gol",
+      "escalas": "Directo (EZE ➔ Brasil)",
+      "fechas": "02 Dic - 09 Dic 2026",
+      "fecha_ida": "2026-12-02",
+      "fecha_vuelta": "2026-12-09",
+      "noches": 7,
+      "dias_para_el_vuelo": 33,
+      "precio": "US$ 281",
+      "precio_usd": "aprox. $ 379.350 ARS",
+      "precio_ars": 379350,
+      "precio_usd_num": 281,
+      "ahorro_porcentaje": "24% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MCZ%20from%20BUE%20on%202026-12-02%20through%202026-12-09&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/maceio/2026-12-02/2026-12-09?affilid=flightbot"
+    }
   },
   {
     "id": "natal",
@@ -1864,7 +2092,26 @@
       ],
       "historial_formato": "US$ "
     },
-    "codigo_pais": "br"
+    "codigo_pais": "br",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 35 días · Tarifa récord más baja detectada",
+      "aerolinea": "Emirates / Gol",
+      "escalas": "Directo (EZE ➔ Brasil)",
+      "fechas": "04 Dic - 14 Dic 2026",
+      "fecha_ida": "2026-12-04",
+      "fecha_vuelta": "2026-12-14",
+      "noches": 10,
+      "dias_para_el_vuelo": 35,
+      "precio": "US$ 295",
+      "precio_usd": "aprox. $ 398.250 ARS",
+      "precio_ars": 398250,
+      "precio_usd_num": 295,
+      "ahorro_porcentaje": "24% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20NAT%20from%20BUE%20on%202026-12-04%20through%202026-12-14&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/natal/2026-12-04/2026-12-14?affilid=flightbot"
+    }
   },
   {
     "id": "recife",
@@ -1996,7 +2243,26 @@
       ],
       "historial_formato": "US$ "
     },
-    "codigo_pais": "br"
+    "codigo_pais": "br",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 23 días · Tarifa récord más baja detectada",
+      "aerolinea": "Emirates / Gol",
+      "escalas": "Directo (EZE ➔ Brasil)",
+      "fechas": "22 Nov - 28 Nov 2026",
+      "fecha_ida": "2026-11-22",
+      "fecha_vuelta": "2026-11-28",
+      "noches": 6,
+      "dias_para_el_vuelo": 23,
+      "precio": "US$ 316",
+      "precio_usd": "aprox. $ 426.600 ARS",
+      "precio_ars": 426600,
+      "precio_usd_num": 316,
+      "ahorro_porcentaje": "24% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20REC%20from%20BUE%20on%202026-11-22%20through%202026-11-28&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/recife/2026-11-22/2026-11-28?affilid=flightbot"
+    }
   },
   {
     "id": "rio",
@@ -2119,7 +2385,26 @@
       "historial_formato": "US$ "
     },
     "codigo_pais": "br",
-    "categoria_region": "brasil"
+    "categoria_region": "brasil",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 25 días · Tarifa récord más baja detectada",
+      "aerolinea": "Emirates / Gol",
+      "escalas": "Directo (EZE ➔ Brasil)",
+      "fechas": "24 Nov - 30 Nov 2026",
+      "fecha_ida": "2026-11-24",
+      "fecha_vuelta": "2026-11-30",
+      "noches": 6,
+      "dias_para_el_vuelo": 25,
+      "precio": "US$ 342",
+      "precio_usd": "aprox. $ 461.700 ARS",
+      "precio_ars": 461700,
+      "precio_usd_num": 342,
+      "ahorro_porcentaje": "24% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20GIG%20from%20BUE%20on%202026-11-24%20through%202026-11-30&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/rio/2026-11-24/2026-11-30?affilid=flightbot"
+    }
   },
   {
     "id": "salvador",
@@ -2251,7 +2536,26 @@
       ],
       "historial_formato": "US$ "
     },
-    "codigo_pais": "br"
+    "codigo_pais": "br",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 26 días · Tarifa récord más baja detectada",
+      "aerolinea": "Emirates / Gol",
+      "escalas": "Directo (EZE ➔ Brasil)",
+      "fechas": "25 Nov - 01 Dic 2026",
+      "fecha_ida": "2026-11-25",
+      "fecha_vuelta": "2026-12-01",
+      "noches": 6,
+      "dias_para_el_vuelo": 26,
+      "precio": "US$ 416",
+      "precio_usd": "aprox. $ 561.600 ARS",
+      "precio_ars": 561600,
+      "precio_usd_num": 416,
+      "ahorro_porcentaje": "24% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20SSA%20from%20BUE%20on%202026-11-25%20through%202026-12-01&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/salvador/2026-11-25/2026-12-01?affilid=flightbot"
+    }
   },
   {
     "id": "santiago",
@@ -2383,7 +2687,26 @@
       ],
       "historial_formato": "US$ "
     },
-    "codigo_pais": "cl"
+    "codigo_pais": "cl",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 28 días · Tarifa récord más baja detectada",
+      "aerolinea": "Avianca / Copa",
+      "escalas": "1 escala corta",
+      "fechas": "27 Nov - 04 Dic 2026",
+      "fecha_ida": "2026-11-27",
+      "fecha_vuelta": "2026-12-04",
+      "noches": 7,
+      "dias_para_el_vuelo": 28,
+      "precio": "US$ 143",
+      "precio_usd": "aprox. $ 193.050 ARS",
+      "precio_ars": 193050,
+      "precio_usd_num": 143,
+      "ahorro_porcentaje": "22% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20SCL%20from%20BUE%20on%202026-11-27%20through%202026-12-04&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/santiago/2026-11-27/2026-12-04?affilid=flightbot"
+    }
   },
   {
     "id": "sanandres",
@@ -2515,7 +2838,26 @@
       ],
       "historial_formato": "US$ "
     },
-    "codigo_pais": "co"
+    "codigo_pais": "co",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 30 días · Tarifa récord más baja detectada",
+      "aerolinea": "Avianca / Copa",
+      "escalas": "1 escala corta",
+      "fechas": "29 Nov - 06 Dic 2026",
+      "fecha_ida": "2026-11-29",
+      "fecha_vuelta": "2026-12-06",
+      "noches": 7,
+      "dias_para_el_vuelo": 30,
+      "precio": "US$ 485",
+      "precio_usd": "aprox. $ 654.750 ARS",
+      "precio_ars": 654750,
+      "precio_usd_num": 485,
+      "ahorro_porcentaje": "22% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20ADZ%20from%20BUE%20on%202026-11-29%20through%202026-12-06&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/sanandres/2026-11-29/2026-12-06?affilid=flightbot"
+    }
   },
   {
     "id": "cusco",
@@ -2619,6 +2961,25 @@
         285
       ],
       "historial_formato": "US$ "
+    },
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 33 días · Tarifa récord más baja detectada",
+      "aerolinea": "Avianca / Copa",
+      "escalas": "1 escala corta",
+      "fechas": "02 Dic - 09 Dic 2026",
+      "fecha_ida": "2026-12-02",
+      "fecha_vuelta": "2026-12-09",
+      "noches": 7,
+      "dias_para_el_vuelo": 33,
+      "precio": "US$ 305",
+      "precio_usd": "aprox. $ 411.750 ARS",
+      "precio_ars": 411750,
+      "precio_usd_num": 305,
+      "ahorro_porcentaje": "22% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CUZ%20from%20BUE%20on%202026-12-02%20through%202026-12-09&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/cusco/2026-12-02/2026-12-09?affilid=flightbot"
     }
   },
   {
@@ -2742,7 +3103,26 @@
       ],
       "historial_formato": "US$ {val}"
     },
-    "codigo_pais": "us"
+    "codigo_pais": "us",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 35 días · Tarifa récord más baja detectada",
+      "aerolinea": "Avianca / Copa",
+      "escalas": "1 escala corta",
+      "fechas": "04 Dic - 14 Dic 2026",
+      "fecha_ida": "2026-12-04",
+      "fecha_vuelta": "2026-12-14",
+      "noches": 10,
+      "dias_para_el_vuelo": 35,
+      "precio": "US$ 585",
+      "precio_usd": "aprox. $ 789.750 ARS",
+      "precio_ars": 789750,
+      "precio_usd_num": 585,
+      "ahorro_porcentaje": "22% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20JFK / EWR%20from%20BUE%20on%202026-12-04%20through%202026-12-14&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/newyork/2026-12-04/2026-12-14?affilid=flightbot"
+    }
   },
   {
     "id": "miami",
@@ -2874,7 +3254,26 @@
       "historial_formato": "US$ "
     },
     "codigo_pais": "us",
-    "categoria_region": "caribe_usa"
+    "categoria_region": "caribe_usa",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 23 días · Tarifa récord más baja detectada",
+      "aerolinea": "Avianca / Copa",
+      "escalas": "1 escala corta",
+      "fechas": "22 Nov - 28 Nov 2026",
+      "fecha_ida": "2026-11-22",
+      "fecha_vuelta": "2026-11-28",
+      "noches": 6,
+      "dias_para_el_vuelo": 23,
+      "precio": "US$ 485",
+      "precio_usd": "aprox. $ 654.750 ARS",
+      "precio_ars": 654750,
+      "precio_usd_num": 485,
+      "ahorro_porcentaje": "22% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MIA%20from%20BUE%20on%202026-11-22%20through%202026-11-28&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/miami/2026-11-22/2026-11-28?affilid=flightbot"
+    }
   },
   {
     "id": "orlando",
@@ -2997,7 +3396,26 @@
       ],
       "historial_formato": "US$ "
     },
-    "codigo_pais": "us"
+    "codigo_pais": "us",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 25 días · Tarifa récord más baja detectada",
+      "aerolinea": "Avianca / Copa",
+      "escalas": "1 escala corta",
+      "fechas": "24 Nov - 30 Nov 2026",
+      "fecha_ida": "2026-11-24",
+      "fecha_vuelta": "2026-11-30",
+      "noches": 6,
+      "dias_para_el_vuelo": 25,
+      "precio": "US$ 585",
+      "precio_usd": "aprox. $ 789.750 ARS",
+      "precio_ars": 789750,
+      "precio_usd_num": 585,
+      "ahorro_porcentaje": "22% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MCO%20from%20BUE%20on%202026-11-24%20through%202026-11-30&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/orlando/2026-11-24/2026-11-30?affilid=flightbot"
+    }
   },
   {
     "id": "cancun",
@@ -3129,7 +3547,26 @@
       "historial_formato": "US$ "
     },
     "codigo_pais": "mx",
-    "categoria_region": "caribe_usa"
+    "categoria_region": "caribe_usa",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 26 días · Tarifa récord más baja detectada",
+      "aerolinea": "Arajet",
+      "escalas": "1 escala corta",
+      "fechas": "25 Nov - 01 Dic 2026",
+      "fecha_ida": "2026-11-25",
+      "fecha_vuelta": "2026-12-01",
+      "noches": 6,
+      "dias_para_el_vuelo": 26,
+      "precio": "US$ 525",
+      "precio_usd": "aprox. $ 708.750 ARS",
+      "precio_ars": 708750,
+      "precio_usd_num": 525,
+      "ahorro_porcentaje": "22% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CUN%20from%20BUE%20on%202026-11-25%20through%202026-12-01&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/cancun/2026-11-25/2026-12-01?affilid=flightbot"
+    }
   },
   {
     "id": "puntacana",
@@ -3261,7 +3698,26 @@
       "historial_formato": "US$ "
     },
     "codigo_pais": "do",
-    "categoria_region": "caribe_usa"
+    "categoria_region": "caribe_usa",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 28 días · Tarifa récord más baja detectada",
+      "aerolinea": "Arajet",
+      "escalas": "1 escala corta",
+      "fechas": "27 Nov - 04 Dic 2026",
+      "fecha_ida": "2026-11-27",
+      "fecha_vuelta": "2026-12-04",
+      "noches": 7,
+      "dias_para_el_vuelo": 28,
+      "precio": "US$ 481",
+      "precio_usd": "aprox. $ 649.350 ARS",
+      "precio_ars": 649350,
+      "precio_usd_num": 481,
+      "ahorro_porcentaje": "22% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20PUJ%20from%20BUE%20on%202026-11-27%20through%202026-12-04&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/puntacana/2026-11-27/2026-12-04?affilid=flightbot"
+    }
   },
   {
     "id": "aruba",
@@ -3393,7 +3849,26 @@
       "historial_formato": "US$ "
     },
     "codigo_pais": "aw",
-    "categoria_region": "caribe_usa"
+    "categoria_region": "caribe_usa",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 30 días · Tarifa récord más baja detectada",
+      "aerolinea": "Avianca / Copa",
+      "escalas": "1 escala corta",
+      "fechas": "29 Nov - 06 Dic 2026",
+      "fecha_ida": "2026-11-29",
+      "fecha_vuelta": "2026-12-06",
+      "noches": 7,
+      "dias_para_el_vuelo": 30,
+      "precio": "US$ 488",
+      "precio_usd": "aprox. $ 658.800 ARS",
+      "precio_ars": 658800,
+      "precio_usd_num": 488,
+      "ahorro_porcentaje": "22% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20AUA%20from%20BUE%20on%202026-11-29%20through%202026-12-06&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/aruba/2026-11-29/2026-12-06?affilid=flightbot"
+    }
   },
   {
     "id": "madrid",
@@ -3528,7 +4003,26 @@
       "historial_formato": "€ "
     },
     "codigo_pais": "es",
-    "categoria_region": "europa_mundo"
+    "categoria_region": "europa_mundo",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 33 días · Tarifa récord más baja detectada",
+      "aerolinea": "Air Europa / Iberia",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "02 Dic - 09 Dic 2026",
+      "fecha_ida": "2026-12-02",
+      "fecha_vuelta": "2026-12-09",
+      "noches": 12,
+      "dias_para_el_vuelo": 33,
+      "precio": "US$ 704",
+      "precio_usd": "aprox. $ 950.400 ARS",
+      "precio_ars": 950400,
+      "precio_usd_num": 704,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MAD%20from%20BUE%20on%202026-12-02%20through%202026-12-09&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/madrid/2026-12-02/2026-12-09?affilid=flightbot"
+    }
   },
   {
     "id": "barcelona",
@@ -3663,7 +4157,26 @@
       ],
       "historial_formato": "€ "
     },
-    "codigo_pais": "es"
+    "codigo_pais": "es",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 35 días · Tarifa récord más baja detectada",
+      "aerolinea": "Air Europa / Iberia",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "04 Dic - 14 Dic 2026",
+      "fecha_ida": "2026-12-04",
+      "fecha_vuelta": "2026-12-14",
+      "noches": 12,
+      "dias_para_el_vuelo": 35,
+      "precio": "US$ 806",
+      "precio_usd": "aprox. $ 1.088.100 ARS",
+      "precio_ars": 1088100,
+      "precio_usd_num": 806,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20BCN%20from%20BUE%20on%202026-12-04%20through%202026-12-14&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/barcelona/2026-12-04/2026-12-14?affilid=flightbot"
+    }
   },
   {
     "id": "roma",
@@ -3789,7 +4302,26 @@
       "historial_formato": "€ "
     },
     "codigo_pais": "it",
-    "categoria_region": "europa_mundo"
+    "categoria_region": "europa_mundo",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 23 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "22 Nov - 28 Nov 2026",
+      "fecha_ida": "2026-11-22",
+      "fecha_vuelta": "2026-11-28",
+      "noches": 12,
+      "dias_para_el_vuelo": 23,
+      "precio": "US$ 983",
+      "precio_usd": "aprox. $ 1.327.050 ARS",
+      "precio_ars": 1327050,
+      "precio_usd_num": 983,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20FCO%20from%20BUE%20on%202026-11-22%20through%202026-11-28&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/roma/2026-11-22/2026-11-28?affilid=flightbot"
+    }
   },
   {
     "id": "paris",
@@ -3915,7 +4447,26 @@
       ],
       "historial_formato": "€ "
     },
-    "codigo_pais": "fr"
+    "codigo_pais": "fr",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 25 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "24 Nov - 30 Nov 2026",
+      "fecha_ida": "2026-11-24",
+      "fecha_vuelta": "2026-11-30",
+      "noches": 12,
+      "dias_para_el_vuelo": 25,
+      "precio": "US$ 983",
+      "precio_usd": "aprox. $ 1.327.050 ARS",
+      "precio_ars": 1327050,
+      "precio_usd_num": 983,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CDG%20from%20BUE%20on%202026-11-24%20through%202026-11-30&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/paris/2026-11-24/2026-11-30?affilid=flightbot"
+    }
   },
   {
     "id": "londres",
@@ -4041,7 +4592,26 @@
       ],
       "historial_formato": "€ "
     },
-    "codigo_pais": "gb"
+    "codigo_pais": "gb",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 26 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "25 Nov - 01 Dic 2026",
+      "fecha_ida": "2026-11-25",
+      "fecha_vuelta": "2026-12-01",
+      "noches": 12,
+      "dias_para_el_vuelo": 26,
+      "precio": "US$ 983",
+      "precio_usd": "aprox. $ 1.327.050 ARS",
+      "precio_ars": 1327050,
+      "precio_usd_num": 983,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20LHR%20from%20BUE%20on%202026-11-25%20through%202026-12-01&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/londres/2026-11-25/2026-12-01?affilid=flightbot"
+    }
   },
   {
     "id": "berlin",
@@ -4176,7 +4746,26 @@
       ],
       "historial_formato": "€ "
     },
-    "codigo_pais": "de"
+    "codigo_pais": "de",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 28 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "27 Nov - 04 Dic 2026",
+      "fecha_ida": "2026-11-27",
+      "fecha_vuelta": "2026-12-04",
+      "noches": 12,
+      "dias_para_el_vuelo": 28,
+      "precio": "US$ 1000",
+      "precio_usd": "aprox. $ 1.350.000 ARS",
+      "precio_ars": 1350000,
+      "precio_usd_num": 1000,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20BER%20from%20BUE%20on%202026-11-27%20through%202026-12-04&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/berlin/2026-11-27/2026-12-04?affilid=flightbot"
+    }
   },
   {
     "id": "frankfurt",
@@ -4311,7 +4900,26 @@
       ],
       "historial_formato": "€ "
     },
-    "codigo_pais": "de"
+    "codigo_pais": "de",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 30 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "29 Nov - 06 Dic 2026",
+      "fecha_ida": "2026-11-29",
+      "fecha_vuelta": "2026-12-06",
+      "noches": 12,
+      "dias_para_el_vuelo": 30,
+      "precio": "US$ 1174",
+      "precio_usd": "aprox. $ 1.584.900 ARS",
+      "precio_ars": 1584900,
+      "precio_usd_num": 1174,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20FRA%20from%20BUE%20on%202026-11-29%20through%202026-12-06&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/frankfurt/2026-11-29/2026-12-06?affilid=flightbot"
+    }
   },
   {
     "id": "amsterdam",
@@ -4418,6 +5026,25 @@
         1085
       ],
       "historial_formato": "€ "
+    },
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 33 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "02 Dic - 09 Dic 2026",
+      "fecha_ida": "2026-12-02",
+      "fecha_vuelta": "2026-12-09",
+      "noches": 12,
+      "dias_para_el_vuelo": 33,
+      "precio": "US$ 1013",
+      "precio_usd": "aprox. $ 1.367.550 ARS",
+      "precio_ars": 1367550,
+      "precio_usd_num": 1013,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20AMS%20from%20BUE%20on%202026-12-02%20through%202026-12-09&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/amsterdam/2026-12-02/2026-12-09?affilid=flightbot"
     }
   },
   {
@@ -4541,7 +5168,26 @@
       ],
       "historial_formato": "€ "
     },
-    "codigo_pais": "gr"
+    "codigo_pais": "gr",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 35 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "04 Dic - 14 Dic 2026",
+      "fecha_ida": "2026-12-04",
+      "fecha_vuelta": "2026-12-14",
+      "noches": 12,
+      "dias_para_el_vuelo": 35,
+      "precio": "US$ 983",
+      "precio_usd": "aprox. $ 1.327.050 ARS",
+      "precio_ars": 1327050,
+      "precio_usd_num": 983,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20ATH%20from%20BUE%20on%202026-12-04%20through%202026-12-14&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/atenas/2026-12-04/2026-12-14?affilid=flightbot"
+    }
   },
   {
     "id": "oslo",
@@ -4667,7 +5313,26 @@
       ],
       "historial_formato": "€ "
     },
-    "codigo_pais": "no"
+    "codigo_pais": "no",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 23 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "22 Nov - 28 Nov 2026",
+      "fecha_ida": "2026-11-22",
+      "fecha_vuelta": "2026-11-28",
+      "noches": 12,
+      "dias_para_el_vuelo": 23,
+      "precio": "US$ 983",
+      "precio_usd": "aprox. $ 1.327.050 ARS",
+      "precio_ars": 1327050,
+      "precio_usd_num": 983,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20OSL%20from%20BUE%20on%202026-11-22%20through%202026-11-28&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/oslo/2026-11-22/2026-11-28?affilid=flightbot"
+    }
   },
   {
     "id": "reikiavik",
@@ -4793,7 +5458,26 @@
       ],
       "historial_formato": "€ "
     },
-    "codigo_pais": "is"
+    "codigo_pais": "is",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 25 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "24 Nov - 30 Nov 2026",
+      "fecha_ida": "2026-11-24",
+      "fecha_vuelta": "2026-11-30",
+      "noches": 12,
+      "dias_para_el_vuelo": 25,
+      "precio": "US$ 983",
+      "precio_usd": "aprox. $ 1.327.050 ARS",
+      "precio_ars": 1327050,
+      "precio_usd_num": 983,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20KEF%20from%20BUE%20on%202026-11-24%20through%202026-11-30&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/reikiavik/2026-11-24/2026-11-30?affilid=flightbot"
+    }
   },
   {
     "id": "estambul",
@@ -4899,6 +5583,25 @@
         1190,
         1120
       ]
+    },
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 26 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "25 Nov - 01 Dic 2026",
+      "fecha_ida": "2026-11-25",
+      "fecha_vuelta": "2026-12-01",
+      "noches": 12,
+      "dias_para_el_vuelo": 26,
+      "precio": "US$ 1056",
+      "precio_usd": "aprox. $ 1.425.600 ARS",
+      "precio_ars": 1425600,
+      "precio_usd_num": 1056,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20IST%20from%20BUE%20on%202026-11-25%20through%202026-12-01&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/estambul/2026-11-25/2026-12-01?affilid=flightbot"
     }
   },
   {
@@ -5002,6 +5705,25 @@
         1330,
         1250
       ]
+    },
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 28 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "27 Nov - 04 Dic 2026",
+      "fecha_ida": "2026-11-27",
+      "fecha_vuelta": "2026-12-04",
+      "noches": 12,
+      "dias_para_el_vuelo": 28,
+      "precio": "US$ 1060",
+      "precio_usd": "aprox. $ 1.431.000 ARS",
+      "precio_ars": 1431000,
+      "precio_usd_num": 1060,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20DXB%20from%20BUE%20on%202026-11-27%20through%202026-12-04&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/dubai/2026-11-27/2026-12-04?affilid=flightbot"
     }
   },
   {
@@ -5096,6 +5818,25 @@
         1420,
         1340
       ]
+    },
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 30 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "29 Nov - 06 Dic 2026",
+      "fecha_ida": "2026-11-29",
+      "fecha_vuelta": "2026-12-06",
+      "noches": 12,
+      "dias_para_el_vuelo": 30,
+      "precio": "US$ 983",
+      "precio_usd": "aprox. $ 1.327.050 ARS",
+      "precio_ars": 1327050,
+      "precio_usd_num": 983,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20BKK%20from%20BUE%20on%202026-11-29%20through%202026-12-06&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/bangkok/2026-11-29/2026-12-06?affilid=flightbot"
     }
   },
   {
@@ -5219,7 +5960,26 @@
       ],
       "historial_formato": "US$ "
     },
-    "codigo_pais": "jp"
+    "codigo_pais": "jp",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 33 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "02 Dic - 09 Dic 2026",
+      "fecha_ida": "2026-12-02",
+      "fecha_vuelta": "2026-12-09",
+      "noches": 12,
+      "dias_para_el_vuelo": 33,
+      "precio": "US$ 983",
+      "precio_usd": "aprox. $ 1.327.050 ARS",
+      "precio_ars": 1327050,
+      "precio_usd_num": 983,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20NRT%20from%20BUE%20on%202026-12-02%20through%202026-12-09&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/tokio/2026-12-02/2026-12-09?affilid=flightbot"
+    }
   },
   {
     "id": "shanghai",
@@ -5342,7 +6102,26 @@
       ],
       "historial_formato": "US$ {val}"
     },
-    "codigo_pais": "cn"
+    "codigo_pais": "cn",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 35 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "04 Dic - 14 Dic 2026",
+      "fecha_ida": "2026-12-04",
+      "fecha_vuelta": "2026-12-14",
+      "noches": 12,
+      "dias_para_el_vuelo": 35,
+      "precio": "US$ 983",
+      "precio_usd": "aprox. $ 1.327.050 ARS",
+      "precio_ars": 1327050,
+      "precio_usd_num": 983,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20PVG / SHA%20from%20BUE%20on%202026-12-04%20through%202026-12-14&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/shanghai/2026-12-04/2026-12-14?affilid=flightbot"
+    }
   },
   {
     "id": "elcairo",
@@ -5474,7 +6253,26 @@
       ],
       "historial_formato": "US$ "
     },
-    "codigo_pais": "eg"
+    "codigo_pais": "eg",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 23 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "22 Nov - 28 Nov 2026",
+      "fecha_ida": "2026-11-22",
+      "fecha_vuelta": "2026-11-28",
+      "noches": 12,
+      "dias_para_el_vuelo": 23,
+      "precio": "US$ 1163",
+      "precio_usd": "aprox. $ 1.570.050 ARS",
+      "precio_ars": 1570050,
+      "precio_usd_num": 1163,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CAI%20from%20BUE%20on%202026-11-22%20through%202026-11-28&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/elcairo/2026-11-22/2026-11-28?affilid=flightbot"
+    }
   },
   {
     "id": "marrakech",
@@ -5606,7 +6404,26 @@
       ],
       "historial_formato": "US$ "
     },
-    "codigo_pais": "ma"
+    "codigo_pais": "ma",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 25 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "24 Nov - 30 Nov 2026",
+      "fecha_ida": "2026-11-24",
+      "fecha_vuelta": "2026-11-30",
+      "noches": 12,
+      "dias_para_el_vuelo": 25,
+      "precio": "US$ 1120",
+      "precio_usd": "aprox. $ 1.512.000 ARS",
+      "precio_ars": 1512000,
+      "precio_usd_num": 1120,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20RAK%20from%20BUE%20on%202026-11-24%20through%202026-11-30&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/marrakech/2026-11-24/2026-11-30?affilid=flightbot"
+    }
   },
   {
     "id": "ciudaddelcabo",
@@ -5738,6 +6555,25 @@
       ],
       "historial_formato": "US$ "
     },
-    "codigo_pais": "za"
+    "codigo_pais": "za",
+    "oportunidad_relampago": {
+      "activa": true,
+      "titulo": "🔥 Oportunidad Relámpago",
+      "subtitulo": "Salida en 26 días · Tarifa récord más baja detectada",
+      "aerolinea": "ITA Airways / Air Europa",
+      "escalas": "1 escala en hub europeo",
+      "fechas": "25 Nov - 01 Dic 2026",
+      "fecha_ida": "2026-11-25",
+      "fecha_vuelta": "2026-12-01",
+      "noches": 12,
+      "dias_para_el_vuelo": 26,
+      "precio": "US$ 961",
+      "precio_usd": "aprox. $ 1.297.350 ARS",
+      "precio_ars": 1297350,
+      "precio_usd_num": 961,
+      "ahorro_porcentaje": "20% OFF",
+      "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CPT%20from%20BUE%20on%202026-11-25%20through%202026-12-01&hl=es",
+      "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ciudaddelcabo/2026-11-25/2026-12-01?affilid=flightbot"
+    }
   }
 ]

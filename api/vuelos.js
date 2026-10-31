@@ -347,6 +347,65 @@ module.exports = async function handler(req, res) {
         }
       }
 
+      // Detección dinámica y enriquecimiento de Oportunidad Relámpago (< diasCorte)
+      const ofertasRelampago = ofertasRaw.filter(o => {
+        if (!o.depart_date || !o.return_date || !o.value) return false;
+        const depDate = new Date(o.depart_date + 'T00:00:00');
+        const diffDias = Math.round((depDate - hoy) / (1000 * 60 * 60 * 24));
+        return diffDias >= 7 && diffDias < diasCorte;
+      });
+
+      if (ofertasRelampago.length > 0) {
+        ofertasRelampago.sort((a, b) => Number(a.value) - Number(b.value));
+        const mejorRel = ofertasRelampago[0];
+        const depDate = new Date(mejorRel.depart_date + 'T00:00:00');
+        const retDate = new Date(mejorRel.return_date + 'T00:00:00');
+        const nochesCalc = Math.max(1, Math.round((retDate - depDate) / (1000 * 60 * 60 * 24)));
+        const diasHastaSalida = Math.round((depDate - hoy) / (1000 * 60 * 60 * 24));
+        const fechasLegibles = formatearRangoFechas(mejorRel.depart_date, mejorRel.return_date);
+        const canalAero = mejorRel.airline || mejorRel.gate || (esCabotaje ? 'JetSMART' : 'Aerolínea Oficial');
+        
+        let precioNumArs = 0;
+        let precioNumUsd = 0;
+        let precioTxt = '';
+        let precioUsdTxt = '';
+        if (esCabotaje) {
+          precioNumArs = Math.round(Number(mejorRel.value));
+          precioNumUsd = Math.round(precioNumArs / TIPO_CAMBIO_REF);
+          precioTxt = formatearArs(precioNumArs);
+          precioUsdTxt = `US$ ${precioNumUsd} aprox`;
+        } else {
+          precioNumUsd = Math.round(Number(mejorRel.value));
+          precioNumArs = Math.round(precioNumUsd * TIPO_CAMBIO_REF);
+          precioTxt = `US$ ${precioNumUsd}`;
+          precioUsdTxt = `aprox. ${formatearArs(precioNumArs)}`;
+        }
+
+        const gfLink = `https://www.google.com/travel/flights?q=Flights%20to%20${iata}%20from%20BUE%20on%20${mejorRel.depart_date}%20through%20${mejorRel.return_date}&hl=es`;
+        const slug = (dest.id || iata).toLowerCase();
+        const kiwiLink = `https://www.kiwi.com/es/search/results/buenos-aires-argentina/${slug}/${mejorRel.depart_date}/${mejorRel.return_date}?affilid=flightbot`;
+
+        destActualizado.oportunidad_relampago = {
+          activa: true,
+          titulo: '🔥 Oportunidad Relámpago',
+          subtitulo: `Salida en ${diasHastaSalida} días · Tarifa récord más baja detectada`,
+          aerolinea: canalAero,
+          escalas: 'Directo o conexión corta',
+          fechas: fechasLegibles,
+          fecha_ida: mejorRel.depart_date,
+          fecha_vuelta: mejorRel.return_date,
+          noches: nochesCalc,
+          dias_para_el_vuelo: diasHastaSalida,
+          precio: precioTxt,
+          precio_usd: precioUsdTxt,
+          precio_ars: precioNumArs,
+          precio_usd_num: precioNumUsd,
+          ahorro_porcentaje: 'Tarifa Récord',
+          google_flights_url: gfLink,
+          kiwi_url: kiwiLink
+        };
+      }
+
       return destActualizado;
     });
 

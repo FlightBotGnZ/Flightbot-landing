@@ -954,6 +954,9 @@
             <button type="button" onclick="window.filtrarRadarRegion('todos')" id="fb-filter-todos" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs">
               Todos
             </button>
+            <button type="button" onclick="window.filtrarRadarRegion('relampago')" id="fb-filter-relampago" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
+              🔥 Relámpago
+            </button>
             <button type="button" onclick="window.filtrarRadarRegion('cabotaje')" id="fb-filter-cabotaje" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
               <span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje</span>
             </button>
@@ -3858,7 +3861,9 @@
 
         const destinosFiltrados = region === 'todos' 
           ? RADAR_DATA 
-          : RADAR_DATA.filter(d => d.categoria_region === region);
+          : (region === 'relampago' 
+              ? RADAR_DATA.filter(d => Boolean(d.oportunidad_relampago && d.oportunidad_relampago.activa))
+              : RADAR_DATA.filter(d => d.categoria_region === region));
         
         if (!destinosFiltrados.some(d => d.id === currentDestinationId) && destinosFiltrados.length > 0) {
           window.renderRadarDestino(destinosFiltrados[0].id);
@@ -4388,7 +4393,9 @@
 
         let lista = currentRegionFilter === 'todos'
           ? RADAR_DATA
-          : RADAR_DATA.filter(d => d.categoria_region === currentRegionFilter);
+          : (currentRegionFilter === 'relampago'
+              ? RADAR_DATA.filter(d => Boolean(d.oportunidad_relampago && d.oportunidad_relampago.activa))
+              : RADAR_DATA.filter(d => d.categoria_region === currentRegionFilter));
 
         if (currentSearchQuery) {
           lista = lista.filter(d => 
