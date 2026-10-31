@@ -3711,7 +3711,8 @@ def generar_indice_guias(guias: list) -> str:
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+                <span>{g['icono']}</span>
                 <a href="{g['slug']}.html">{g['ciudad']}</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
