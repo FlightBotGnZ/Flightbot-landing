@@ -130,32 +130,6 @@
     .fb-dest-glow {
       animation: fbDestGlow 0.65s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    #fb-chat-window {
-      transform-origin: bottom right;
-      transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
-                  visibility 0.32s ease,
-                  width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-                  height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-                  max-height 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-      opacity: 0;
-      transform: scale(0.88) translateY(20px);
-      pointer-events: none;
-      visibility: hidden;
-      max-width: calc(100vw - 2rem);
-    }
-    #fb-chat-window.fb-chat-open {
-      opacity: 1 !important;
-      transform: scale(1) translateY(0) !important;
-      pointer-events: auto !important;
-      visibility: visible !important;
-    }
-    #fb-chat-window.fb-chat-expanded {
-      width: 640px !important;
-      max-width: calc(100vw - 2rem) !important;
-      height: 700px !important;
-      max-height: 86vh !important;
-    }
 
     /* Cursor de Máquina de Escribir (Typewriter) */
     .fb-type-cursor {
@@ -4446,13 +4420,9 @@
             ? 'Argentina (Cabotaje)' 
             : (dest.pais === 'Brasil' ? 'Brasil' : dest.pais);
           const etiquetaPais = `${banderaEmoji} ${nombrePaisLimpio}`;
-          const tieneRelampago = Boolean(dest.oportunidad_relampago && dest.oportunidad_relampago.activa);
-          const fuegoIconoHtml = tieneRelampago ? '<span class="text-xs animate-pulse inline-block" title="¡Oportunidad Relámpago activa!">🔥</span>' : '';
-          const badgeNivelHtml = tieneRelampago
-            ? '<span class="text-[9px] font-black px-1.5 py-0.2 rounded-full bg-rose-500/20 text-rose-500 dark:text-rose-400 border border-rose-500/40 flex items-center gap-0.5 animate-pulse">🔥 Relámpago</span>'
-            : (dest.termometro && dest.termometro.nivel === 'bajo'
-                ? '<span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">🟢 Oportunidad</span>'
-                : '<span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded-full bg-sky-500/15 text-sky-400 border border-sky-500/30">🔵 Estándar</span>');
+          const badgeNivelHtml = (dest.termometro && dest.termometro.nivel === 'bajo')
+            ? '<span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">🟢 Oportunidad</span>'
+            : '<span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded-full bg-sky-500/15 text-sky-400 border border-sky-500/30">🔵 Estándar</span>';
 
           btn.innerHTML = `
             <div class="flex items-center gap-3">
@@ -4460,7 +4430,6 @@
               <div>
                 <div class="text-xs sm:text-sm font-bold dark:text-white text-slate-900 flex items-center gap-1.5">
                   ${nombreCiudad}
-                  ${fuegoIconoHtml}
                   <span class="text-[10px] font-mono px-1.5 py-0.2 rounded dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 border dark:border-slate-700 border-slate-300">
                     ${dest.iata}
                   </span>
@@ -4929,77 +4898,14 @@
             </div>
           </div>
         `).join('');
-
-        const relampago = dest.oportunidad_relampago;
-        const bannerRelampagoHtml = (relampago && relampago.activa) ? `
-          <!-- BANNER 🔥 OPORTUNIDAD RELÁMPAGO (SALIDA PRÓXIMA) -->
-          <div class="mb-10 p-5 sm:p-6 rounded-3xl dark:bg-gradient-to-r dark:from-rose-950/40 dark:via-slate-900 dark:to-amber-950/30 bg-gradient-to-r from-rose-50 via-white to-amber-50/80 border-2 border-rose-500/40 shadow-lg relative overflow-hidden theme-transition">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-5 relative z-10">
-              <div>
-                <div class="flex items-center gap-2 mb-2 flex-wrap">
-                  <span class="inline-flex items-center gap-1 text-[11px] font-black tracking-wide uppercase px-2.5 py-0.5 rounded-full bg-rose-500 text-white shadow-xs animate-pulse">
-                    🔥 Oportunidad Relámpago
-                  </span>
-                  <span class="text-xs font-bold dark:text-amber-300 text-amber-700 bg-amber-500/15 px-2.5 py-0.5 rounded-md border border-amber-500/30">
-                    ⚡ Salida en ${relampago.dias_para_el_vuelo || '26'} días · ${relampago.ahorro_porcentaje || 'Super Tarifa'}
-                  </span>
-                  <span class="text-xs font-semibold dark:text-slate-400 text-slate-500 hidden sm:inline">
-                    ${relampago.subtitulo || 'Tarifa récord de último minuto'}
-                  </span>
-                </div>
-                <h3 class="text-xl sm:text-2xl font-black dark:text-white text-slate-900 leading-tight mb-1.5">
-                  ${relampago.aerolinea} Directo ➔ ${dest.ciudad}
-                </h3>
-                <div class="text-xs sm:text-sm dark:text-slate-300 text-slate-600 flex items-center gap-2 flex-wrap">
-                  <span class="font-mono bg-slate-100 dark:bg-slate-950 px-2 py-0.5 rounded-md border dark:border-slate-800 border-slate-200">
-                    📅 <strong>${relampago.fechas}</strong> (${relampago.noches} noches)
-                  </span>
-                  <span class="text-slate-400">·</span>
-                  <span>🛫 ${relampago.escalas}</span>
-                  <span class="text-slate-400">·</span>
-                  <span class="font-bold text-rose-500">¡Tarifa récord sin tocar tu radar de vacaciones!</span>
-                </div>
-              </div>
-              <div class="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end gap-3 flex-shrink-0">
-                <div class="text-left md:text-right">
-                  <span class="block text-[10px] uppercase font-bold tracking-wider dark:text-slate-400 text-slate-500">Tarifa Final Estimada (Ida y Vuelta)</span>
-                  <div class="text-2xl sm:text-3xl font-black font-mono tracking-tight text-rose-500 whitespace-nowrap">
-                    ${relampago.precio}
-                  </div>
-                  <div class="text-[11px] font-bold dark:text-slate-400 text-slate-500">
-                    (${relampago.precio_usd})
-                  </div>
-                </div>
-                <div class="flex items-center gap-2 w-full sm:w-auto">
-                  <a href="${relampago.google_flights_url}" target="_blank" rel="noopener noreferrer"
-                     class="w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-black text-white shadow-md hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
-                     style="background: var(--brand-gradient);"
-                     title="Ver Oportunidad Relámpago en Google Flights">
-                    <span>⚡ Ver Vuelo Relámpago</span>
-                  </a>
-                  ${relampago.kiwi_url ? `
-                    <a href="${relampago.kiwi_url}" target="_blank" rel="noopener noreferrer"
-                       class="px-3.5 py-2.5 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1"
-                       style="background: linear-gradient(135deg, #00a991 0%, #047857 100%);"
-                       title="Cotizar en Kiwi.com">
-                      <span>🥝 Kiwi</span>
-                    </a>
-                  ` : ''}
-                </div>
-              </div>
-            </div>
-          </div>
-        ` : '';
-
         return `
-          ${bannerRelampagoHtml}
           <!-- SECCIÓN 1: TOP 3 VUELOS VIGENTES (ANCHO COMPLETO) -->
           <div class="mb-12">
             <div class="flex items-center justify-between mb-4">
               <div class="flex items-center gap-2">
                 <span class="text-xl">✈️</span>
                 <h4 class="text-lg sm:text-xl font-extrabold dark:text-white text-slate-900">
-                  Top 3 Vuelos Más Económicos Vigentes ${(relampago && relampago.activa) ? '<span class="text-xs font-normal dark:text-slate-400 text-slate-500 block sm:inline sm:ml-2">(Radar Planificado)</span>' : ''}
+                  Top 3 Vuelos Más Económicos Vigentes
                 </h4>
               </div>
               <a href="${flightGfUrl}" target="_blank" rel="noopener noreferrer"
