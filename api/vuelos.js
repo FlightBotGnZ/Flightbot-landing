@@ -236,7 +236,7 @@ module.exports = async function handler(req, res) {
       let diasCorte = 45;
       if (esCabotaje) {
         diasCorte = 45;
-      } else if (['europa_mundo'].includes(dest.categoria_region) || ['MAD', 'FCO', 'CDG', 'LHR', 'BER', 'AMS', 'FRA', 'ATH', 'OSL', 'KEF', 'IST', 'DXB', 'NRT', 'PVG', 'BKK', 'CAI', 'RAK', 'CPT'].includes(iata)) {
+      } else if (['europa_mundo'].includes(dest.categoria_region) || ['MAD', 'FCO', 'CDG', 'LHR', 'BER', 'AMS', 'FRA', 'ATH', 'OSL', 'KEF', 'IST', 'DXB', 'NRT', 'PEK', 'PKX', 'BKK', 'CAI', 'RAK', 'CPT'].includes(iata)) {
         diasCorte = 90;
       } else if (['MIA', 'MCO', 'JFK', 'AUA', 'CUN'].includes(iata)) {
         diasCorte = 75;

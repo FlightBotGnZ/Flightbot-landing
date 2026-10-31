@@ -2619,14 +2619,14 @@ METADATOS_EDITORIALES = {
         "idioma": "Inglés (con enorme presencia de español)",
         "perfil_viajero": "Parejas, cultura, amantes del teatro, compras y viajeros urbanos",
     },
-    "shanghai": {
+    "pekin": {
         "region": "Asia & Pacífico",
-        "categoria": "Megaciudad Futurista, El Bund & Gastronomía",
-        "mejor_epoca": "Septiembre a Noviembre (Otoño templado)",
+        "categoria": "Capital Imperial, Gran Muralla & Ciudad Prohibida",
+        "mejor_epoca": "Septiembre a Noviembre (Otoño dorado) y Abril a Mayo",
         "tiempo_lectura": "10 min",
         "moneda": "Yuan Chino (CNY)",
         "idioma": "Chino Mandarín (apps de traducción recomendadas)",
-        "perfil_viajero": "Viajeros curiosos, amantes de la arquitectura, tecnología y cultura oriental",
+        "perfil_viajero": "Historia imperial, maravillas del mundo, cultura milenaria y gastronomía",
     },
     "rio": {
         "region": "América del Sur",
@@ -3881,7 +3881,7 @@ def generar_indice_guias(guias: list) -> str:
       <!-- Indicadores de Calidad Editorial -->
       <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs dark:text-slate-300 text-slate-600">
         <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
-          <span>📚</span> <span id="contador-guias-badge">{len(CATALOGO_DESTINOS_EXTENDIDO)} Guías Publicadas</span>
+          <span>📚</span> <span id="contador-guias-badge">{len(guias)} Guías Publicadas</span>
         </span>
         <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
           <span>⏱</span> Actualización en Tiempo Real
@@ -3959,28 +3959,28 @@ def generar_indice_guias(guias: list) -> str:
   {construir_bloque_chatbox_ia(contexto_pagina="guias", ciudad_titulo="", icono_ciudad="🗺️")}
 
   <script>
-    (function initContadorGuias() {
-      function actualizarContador() {
+    (function initContadorGuias() {{
+      function actualizarContador() {{
         const articulos = document.querySelectorAll('article');
         const cantidad = articulos.length;
         const badge = document.getElementById('contador-guias-badge');
-        if (badge && cantidad > 0) {
-          badge.textContent = `${cantidad} Guías Publicadas`;
-        }
-      }
-      if (document.readyState === 'loading') {
+        if (badge && cantidad > 0) {{
+          badge.textContent = cantidad + ' Guías Publicadas';
+        }}
+      }}
+      if (document.readyState === 'loading') {{
         document.addEventListener('DOMContentLoaded', actualizarContador);
-      } else {
+      }} else {{
         actualizarContador();
-      }
-      if (typeof MutationObserver !== 'undefined') {
+      }}
+      if (typeof MutationObserver !== 'undefined') {{
         const grid = document.querySelector('.grid');
-        if (grid) {
+        if (grid) {{
           const observer = new MutationObserver(actualizarContador);
-          observer.observe(grid, { childList: true });
-        }
-      }
-    })();
+          observer.observe(grid, {{ childList: true }});
+        }}
+      }}
+    }})();
   </script>
 
 </body>
