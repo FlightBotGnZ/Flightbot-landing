@@ -6,19 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FlightBot · Radar de Vuelos, Alertas y Hoteles Inteligentes</title>
   <meta name="description" content="FlightBot es tu asistente personal en Telegram para rastrear vuelos baratos 24/7 y descubrir los mejores hoteles y alojamientos del mundo.">
-  <link rel="canonical" href="https://flightbot.com.ar/">
+  <link rel="canonical" href="https://www.flightbot.com.ar/">
   <!-- Metadatos para Vista Previa en Redes Sociales (Open Graph y Twitter Card) -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://flightbot.com.ar/">
+  <meta property="og:url" content="https://www.flightbot.com.ar/">
   <meta property="og:title" content="FlightBot · Radar 24/7 de Vuelos, Rutas y Hoteles">
   <meta property="og:description" content="Rastreo en tiempo real de tarifas aéreas, cálculo de combustible y peajes, y salas VIP con tarjetas de crédito.">
-  <meta property="og:image" content="https://flightbot.com.ar/img/og-preview.jpg">
+  <meta property="og:image" content="https://www.flightbot.com.ar/img/og-preview.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FlightBot · Radar 24/7 de Vuelos, Rutas y Hoteles">
   <meta name="twitter:description" content="Rastreo en tiempo real de tarifas aéreas, cálculo de combustible y peajes, y salas VIP con tarjetas de crédito.">
-  <meta name="twitter:image" content="https://flightbot.com.ar/img/og-preview.jpg">
+  <meta name="twitter:image" content="https://www.flightbot.com.ar/img/og-preview.jpg">
 
   <!-- Módulos de Datos Modularizados (Carga Asíncrona Diferida con defer) -->
   <script src="js/radar-data.js" defer></script>
@@ -378,6 +378,13 @@
         <a href="#radar-vuelos" id="nav-btn-vuelos" class="nav-dock-btn is-active">
           <span>✈️</span> Vuelos
         </a>
+        <a href="/relampago.html" id="nav-btn-relampago" class="nav-dock-btn flex items-center gap-1.5 px-2.5 py-1" title="Ofertas Relámpago y Oportunidades Flash">
+          <span class="text-xs">🔥</span>
+          <span class="flex flex-col text-[11px] leading-[1.05] text-left">
+            <span>Ofertas</span>
+            <span class="text-[9px] opacity-80 font-medium">Relámpago</span>
+          </span>
+        </a>
         <a href="#destinos" id="nav-btn-destinos" class="nav-dock-btn">
           <span>🏨</span> Destinos
         </a>
@@ -446,6 +453,9 @@
       <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
         <a href="#radar-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
           <span>✈️</span> Vuelos
+        </a>
+        <a href="/relampago.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🔥</span> Ofertas Relámpago
         </a>
         <a href="#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🏨</span> Destinos
@@ -987,7 +997,7 @@
           </div>
 
           <!-- Indicador Sutil de Destino Activo (Visual Affordance e Instrucción Móvil) -->
-          <div id="fb-radar-active-pill" class="mt-2.5 p-2 px-3 rounded-xl dark:bg-slate-950/70 bg-slate-100 border dark:border-slate-800 border-slate-200 text-xs flex items-center justify-between transition-all duration-300">
+          <div id="fb-radar-active-pill" class="mt-2.5 p-2 px-3 rounded-xl dark:bg-slate-950/70 bg-slate-100 border dark:border-slate-800 border-slate-200 text-xs flex lg:hidden items-center justify-between transition-all duration-300">
             <div class="flex items-center gap-1.5 min-w-0">
               <span class="text-rose-500 font-extrabold text-sm flex-shrink-0 animate-pulse">📍</span>
               <span class="dark:text-slate-300 text-slate-700 font-medium truncate text-[11px] sm:text-xs">

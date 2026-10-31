@@ -2,31 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Páginas Principales -->
   <url>
-    <loc>https://flightbot.com.ar/</loc>
+    <loc>https://www.flightbot.com.ar/</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/escapadas.html</loc>
+    <loc>https://www.flightbot.com.ar/relampago.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://www.flightbot.com.ar/escapadas.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/billetera.html</loc>
+    <loc>https://www.flightbot.com.ar/billetera.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/faq.html</loc>
+    <loc>https://www.flightbot.com.ar/faq.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/index.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/index.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -34,319 +41,319 @@
 
   <!-- 53 Guías Editoriales de Destinos -->
   <url>
-    <loc>https://flightbot.com.ar/guias/amsterdam.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/amsterdam.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/aruba.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/aruba.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/atenas-islas-griegas.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/atenas-islas-griegas.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/bangkok.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/bangkok.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/barcelona-costa-brava.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/barcelona-costa-brava.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/bariloche-patagonia.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/bariloche-patagonia.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/berlin-cultura-vanguardista.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/berlin-cultura-vanguardista.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/cancun-riviera-maya.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/cancun-riviera-maya.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/ciudad-de-mexico.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/ciudad-de-mexico.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/ciudad-del-cabo-cape-town.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/ciudad-del-cabo-cape-town.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/cordoba-sierras.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/cordoba-sierras.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/cuba.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/cuba.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/cusco-machu-picchu.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/cusco-machu-picchu.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/dubai.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/dubai.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/el-cairo-piramides-de-giza.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/el-cairo-piramides-de-giza.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/el-calafate-glaciares-el-chalten.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/el-calafate-glaciares-el-chalten.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/estambul.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/estambul.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/florianopolis-ilha-da-magia.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/florianopolis-ilha-da-magia.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/frankfurt-hub-alemania.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/frankfurt-hub-alemania.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/jujuy-quebrada-de-humahuaca.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/jujuy-quebrada-de-humahuaca.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/lisboa.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/lisboa.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/londres-reino-unido.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/londres-reino-unido.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/maceio-maragogi-caribe-brasileno.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/maceio-maragogi-caribe-brasileno.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/madrid.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/madrid.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/maldivas.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/maldivas.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/marrakech-atlas.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/marrakech-atlas.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/mendoza-valle-de-uco.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/mendoza-valle-de-uco.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/miami.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/miami.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/natal-praia-da-pipa.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/natal-praia-da-pipa.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/new-york-manhattan-broadway.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/new-york-manhattan-broadway.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/nueva-zelanda.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/nueva-zelanda.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/orlando-disney-universal.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/orlando-disney-universal.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/oslo-noruega.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/oslo-noruega.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/panama.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/panama.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/paris-ile-de-france.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/paris-ile-de-france.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/polinesia.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/polinesia.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/puerto-iguazu-cataratas.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/puerto-iguazu-cataratas.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/puerto-madryn-peninsula-valdes.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/puerto-madryn-peninsula-valdes.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/punta-cana.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/punta-cana.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/recife-porto-de-galinhas.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/recife-porto-de-galinhas.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/reikiavik-islandia.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/reikiavik-islandia.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/rio-de-janeiro.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/rio-de-janeiro.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/roma.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/roma.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/salta-valles-calchaquies.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/salta-valles-calchaquies.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/salvador-bahia-costa-dos-coqueiros.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/salvador-bahia-costa-dos-coqueiros.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/san-andres-mar-7-colores.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/san-andres-mar-7-colores.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/san-martin-de-los-andes-chapelco.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/san-martin-de-los-andes-chapelco.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/santiago-de-chile-cordillera.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/santiago-de-chile-cordillera.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/seul.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/seul.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/shanghai-el-bund-pudong.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/shanghai-el-bund-pudong.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/sydney-australia.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/sydney-australia.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/tokio-japon.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/tokio-japon.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://flightbot.com.ar/guias/ushuaia-tierra-del-fuego.html</loc>
+    <loc>https://www.flightbot.com.ar/guias/ushuaia-tierra-del-fuego.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

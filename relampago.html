@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark" data-color="ruby">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.flightbot.com.ar/relampago.html">
+  <meta property="og:title" content="⚡ Ofertas Relámpago & Vuelos Flash · FlightBot">
+  <meta property="og:description" content="Tarifas récord de salida inmediata en 20 a 35 días con hasta 35% de descuento. Vuelos flash y cupones promocionales activos.">
+  <meta property="og:image" content="https://www.flightbot.com.ar/img/og-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.flightbot.com.ar/img/og-preview.jpg">
+  <link rel="canonical" href="https://www.flightbot.com.ar/relampago.html">
+  <title>⚡ Ofertas Relámpago & Vuelos Flash · FlightBot</title>
+  <meta name="description" content="Oportunidades relámpago y vuelos flash con salida en 20 a 35 días. Asientos remanentes a tarifas mínimas históricas y cupones de descuento activos.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%23e11d48' stroke='%23fff' stroke-width='.8'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%23e11d48'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='20'%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <script src="js/radar-data.js" defer></script>
+  <script src="js/cupones-data.js" defer></script>
+  <script src="js/chatbox.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --brand-primary: #e11d48;
+      --brand-primary-hover: #be123c;
+      --brand-glow: rgba(225, 29, 72, 0.35);
+      --brand-subtle: rgba(225, 29, 72, 0.1);
+      --brand-border: rgba(225, 29, 72, 0.25);
+      --brand-gradient: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+    }
+
+    [data-color="blue"] {
+      --brand-primary: #2563eb;
+      --brand-primary-hover: #1d4ed8;
+      --brand-glow: rgba(37, 99, 235, 0.35);
+      --brand-subtle: rgba(37, 99, 235, 0.1);
+      --brand-border: rgba(37, 99, 235, 0.25);
+      --brand-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    }
+
+    [data-color="amber"] {
+      --brand-primary: #d97706;
+      --brand-primary-hover: #b45309;
+      --brand-glow: rgba(217, 119, 6, 0.35);
+      --brand-subtle: rgba(217, 119, 6, 0.1);
+      --brand-border: rgba(217, 119, 6, 0.25);
+      --brand-gradient: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    }
+
+    .brand-gradient-text {
+      background: var(--brand-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .theme-transition {
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-dock-btn {
+      padding: 0.375rem 0.625rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: rgb(71 85 105);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .dark .nav-dock-btn {
+      color: rgb(203 213 225);
+    }
+    .nav-dock-btn:hover {
+      color: rgb(15 23 42);
+      background-color: #ffffff;
+    }
+    .dark .nav-dock-btn:hover {
+      color: #ffffff;
+      background-color: rgb(30 41 59);
+    }
+    .nav-dock-btn.is-active {
+      color: var(--brand-primary) !important;
+      background-color: var(--brand-subtle) !important;
+      border-color: var(--brand-border) !important;
+      font-weight: 700 !important;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    .fb-custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .fb-custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .fb-custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.3);
+      border-radius: 9999px;
+    }
+  </style>
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('fb_theme_mode') || 'dark';
+      const savedColor = localStorage.getItem('fb_theme_color') || 'ruby';
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      document.documentElement.setAttribute('data-color', savedColor);
+    })();
+  </script>
+</head>
+<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition min-h-screen flex flex-col justify-between">
+
+  <!-- Encabezado / Navegación Superior -->
+  <header class="sticky top-0 z-40 backdrop-blur-md dark:bg-slate-950/85 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
+      
+      <!-- Brand Logo con F-Bot Rolli (Limpio, sin carteles) -->
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="/" class="flex items-center gap-3 group" title="Volver al inicio de FlightBot">
+          <div id="brand-logo" class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition p-1"
+               style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
+            <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
+              <rect x="23" y="19" width="12" height="16" rx="3" fill="#e11d48" stroke="#ffffff" stroke-width="0.8"/>
+              <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <line x1="25" y1="27" x2="33" y2="27" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <line x1="25" y1="31" x2="33" y2="31" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <circle cx="25.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
+              <circle cx="32.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
+              <path d="M26 19 V13 H32 V19" stroke="#cbd5e1" stroke-width="1.1" stroke-linecap="round"/>
+              <rect x="27" y="11.5" width="4" height="1.8" rx="0.9" fill="#ffffff"/>
+              <path d="M17 24 Q22 20 27 13" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="7" y="17" width="14" height="16" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="0.8"/>
+              <rect x="10" y="22" width="8" height="6" rx="2" fill="#0f172a"/>
+              <path d="M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25" stroke="#10b981" stroke-width="0.8" stroke-linecap="round"/>
+              <rect x="5.5" y="6" width="17" height="13" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+              <line x1="14" y1="6" x2="14" y2="2" stroke="#94a3b8" stroke-width="1.1" stroke-linecap="round"/>
+              <circle cx="14" cy="1.8" r="1.6" fill="#e11d48"/>
+              <circle cx="14" cy="1.8" r="3.2" stroke="#ffffff" stroke-width="0.5" stroke-dasharray="1 1" opacity="0.8"/>
+              <rect x="8" y="9" width="12" height="6.5" rx="2.5" fill="#0f172a"/>
+              <circle cx="11" cy="12.2" r="1.2" fill="#38bdf8"/>
+              <circle cx="17" cy="12.2" r="1.2" fill="#38bdf8"/>
+              <path d="M7 23 Q2 19 3 14" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <span class="text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">
+              FlightBot
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Barra de Navegación Central Simétrica (Dock Centrado Matemáticamente) -->
+      <nav class="hidden lg:flex items-center p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-1 xl:gap-1.5 mx-auto">
+        <a href="/#radar-vuelos" id="nav-btn-vuelos" class="nav-dock-btn">
+          <span>✈️</span> Vuelos
+        </a>
+        <a href="/relampago.html" id="nav-btn-relampago" class="nav-dock-btn is-active flex items-center gap-1.5 px-2.5 py-1" title="Ofertas Relámpago y Oportunidades Flash">
+          <span class="text-xs">🔥</span>
+          <span class="flex flex-col text-[11px] leading-[1.05] text-left">
+            <span>Ofertas</span>
+            <span class="text-[9px] opacity-80 font-medium">Relámpago</span>
+          </span>
+        </a>
+        <a href="/#destinos" id="nav-btn-destinos" class="nav-dock-btn">
+          <span>🏨</span> Destinos
+        </a>
+        <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
+          <span>🚗</span> Modo Ruta
+        </a>
+        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn" title="Billetera de Pasajes Offline, PNR y Asientos">
+          <span>💳</span> Billetera
+        </a>
+        <a href="/guias/" id="nav-btn-guias" class="nav-dock-btn" title="Blog Editorial de Viajes y Guías de Ciudades">
+          <span>📖</span> Guías
+        </a>
+        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn" title="Centro de Preguntas Frecuentes y Tutoriales">
+          <span>❓</span> FAQ
+        </a>
+      </nav>
+
+      <!-- Botonera Derecha: Selector de Temas, Botón Telegram y Menú Móvil -->
+      <div class="flex items-center gap-2.5 shrink-0">
+        <!-- Selector de Color de Marca -->
+        <div class="hidden sm:flex items-center gap-1 p-1 rounded-full dark:bg-slate-900 bg-slate-100 border dark:border-slate-800 border-slate-200 text-xs">
+          <button type="button" onclick="setBrandColor('ruby')" title="Tema Ruby (Rojo)" class="w-5 h-5 rounded-full bg-rose-600 transition-transform hover:scale-110 shadow-xs"></button>
+          <button type="button" onclick="setBrandColor('blue')" title="Tema Zafiro (Azul)" class="w-5 h-5 rounded-full bg-blue-600 transition-transform hover:scale-110 shadow-xs"></button>
+          <button type="button" onclick="setBrandColor('amber')" title="Tema Ámbar (Dorado)" class="w-5 h-5 rounded-full bg-amber-600 transition-transform hover:scale-110 shadow-xs"></button>
+        </div>
+
+        <!-- Toggle Modo Oscuro / Claro -->
+        <button type="button" onclick="toggleThemeMode()" title="Cambiar modo claro / oscuro"
+                class="w-9 h-9 rounded-full flex items-center justify-center dark:bg-slate-900 bg-slate-100 dark:hover:bg-slate-800 hover:bg-slate-200 border dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 transition-colors">
+          <span class="dark:hidden text-sm">🌙</span>
+          <span class="hidden dark:inline text-sm">☀️</span>
+        </button>
+
+        <!-- CTA Principal: Telegram Bot -->
+        <a href="https://t.me/GnZFlightBot?start=relampago_web" target="_blank" rel="noopener noreferrer"
+           class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold text-white shadow-md hover:brightness-110 transition-all"
+           style="background: var(--brand-gradient);">
+          <span>✈️</span> Probar en Telegram
+        </a>
+
+        <!-- Botón Menú Móvil (< lg) -->
+        <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
+                class="lg:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
+          <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="nav-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="/#radar-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>✈️</span> Vuelos
+        </a>
+        <a href="/relampago.html" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
+          <span>🔥</span> Ofertas Relámpago
+        </a>
+        <a href="/#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🏨</span> Destinos
+        </a>
+        <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🚗</span> Modo Ruta
+        </a>
+        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>💳</span> Billetera
+        </a>
+        <a href="/guias/" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>📖</span> Guías
+        </a>
+        <a href="/faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 col-span-2">
+          <span>❓</span> FAQ (Centro de Ayuda)
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main class="flex-1">
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-12 pb-16 overflow-hidden border-b dark:border-slate-800 border-slate-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        
+        <!-- Insignia Animada -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider mb-5 border border-rose-500/30 bg-rose-500/10 text-rose-500 shadow-sm animate-pulse">
+          <span class="text-sm">⚡</span>
+          <span>Oportunidades Flash &amp; Tarifas Mínimas Históricas</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black dark:text-white text-slate-900 tracking-tight mb-4">
+          Caza de Vuelos <span class="brand-gradient-text">Relámpago</span>
+        </h1>
+        
+        <p class="max-w-2xl mx-auto text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed mb-6">
+          Tarifas de salida inmediata (próximos 20 a 35 días) detectadas por nuestro algoritmo. Asientos remanentes a precios récord con hasta <strong>35% de descuento</strong> vs. el radar planificado.
+        </p>
+
+        <!-- Indicador de Vencimiento de Ventana Flash -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 text-xs shadow-sm">
+          <span class="text-base animate-pulse">⏱️</span>
+          <span class="font-medium dark:text-slate-300 text-slate-700">Ventana de tarifas activas vence en:</span>
+          <span id="global-countdown" class="font-mono font-black text-rose-500 px-2 py-0.5 rounded-lg dark:bg-slate-950 bg-slate-100 border dark:border-slate-800 border-slate-200">
+            --:--:--
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÓDULO 1: CUPONES ACTIVOS & CÓDIGOS PROMO FLASH -->
+    <section class="w-full py-12 dark:bg-slate-900/40 bg-slate-100/60 border-b dark:border-slate-800 border-slate-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+          <div>
+            <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-rose-500 mb-1">
+              <span>🎟️</span> Códigos Promocionales Verificados
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black dark:text-white text-slate-900">
+              Cuponera Flash de Portales Oficiales
+            </h2>
+          </div>
+          <span class="text-xs dark:text-slate-400 text-slate-500">
+            Copialos en 1 clic y aplicalos en el checkout de la aerolínea
+          </span>
+        </div>
+
+        <div id="cupones-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Se inyecta dinámicamente desde cupones-data.js con fallback -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MÓDULO 2: GRILLA DE VUELOS RELÁMPAGO (45 DESTINOS) -->
+    <section class="w-full py-14">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-rose-500 mb-1">
+              <span>✈️</span> Salidas en los próximos 20 a 35 días
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black dark:text-white text-slate-900">
+              45 Oportunidades Relámpago Vigentes
+            </h2>
+          </div>
+
+          <!-- Selector de Moneda y Contador -->
+          <div class="flex items-center gap-3">
+            <div class="flex items-center p-1 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 text-xs font-bold shadow-xs">
+              <button type="button" onclick="cambiarMoneda('DEFAULT')" id="btn-mon-def" class="px-2.5 py-1 rounded-xl text-white shadow-xs font-bold" style="background-color: var(--brand-primary);">Default</button>
+              <button type="button" onclick="cambiarMoneda('ARS')" id="btn-mon-ars" class="px-2.5 py-1 rounded-xl dark:text-slate-400 text-slate-600 hover:text-white font-bold">ARS ($)</button>
+              <button type="button" onclick="cambiarMoneda('USD')" id="btn-mon-usd" class="px-2.5 py-1 rounded-xl dark:text-slate-400 text-slate-600 hover:text-white font-bold">USD (US$)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filtros por Región y Buscador -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-8">
+          <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 fb-custom-scrollbar text-xs">
+            <button type="button" onclick="filtrarRegion('todos')" id="chip-todos" class="px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap text-white shadow-xs" style="background-color: var(--brand-primary);">Todos</button>
+            <button type="button" onclick="filtrarRegion('cabotaje')" id="chip-cabotaje" class="px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">🇦🇷 Cabotaje</button>
+            <button type="button" onclick="filtrarRegion('brasil')" id="chip-brasil" class="px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">🇧🇷 Brasil</button>
+            <button type="button" onclick="filtrarRegion('caribe_usa')" id="chip-caribe_usa" class="px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">🏖️ Caribe &amp; EE.UU.</button>
+            <button type="button" onclick="filtrarRegion('europa_mundo')" id="chip-europa_mundo" class="px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">🌍 Europa &amp; Mundo</button>
+          </div>
+
+          <div class="w-full sm:w-64 relative">
+            <input type="text" id="buscador-relampago" oninput="filtrarTexto(this.value)" placeholder="Buscar ciudad o IATA..."
+                   class="w-full text-xs rounded-xl pl-8 pr-3 py-2 dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-rose-500">
+            <span class="absolute left-2.5 top-2 text-slate-400 text-xs">🔍</span>
+          </div>
+        </div>
+
+        <!-- Grilla de Tarjetas -->
+        <div id="vuelos-relampago-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Inyectado por JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MÓDULO 3: BANNER CTA TELEGRAM BOT -->
+    <section class="w-full py-14 dark:bg-gradient-to-r dark:from-slate-950 dark:via-rose-950/20 dark:to-slate-950 bg-gradient-to-r from-slate-100 via-rose-50 to-slate-100 border-t dark:border-slate-800 border-slate-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center text-2xl text-white shadow-lg"
+             style="background: var(--brand-gradient); box-shadow: 0 10px 25px -5px var(--brand-glow);">
+          📡
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-black dark:text-white text-slate-900 mb-2">
+          ¿Querés cazar tarifas relámpago antes de que se agoten?
+        </h3>
+        <p class="text-sm dark:text-slate-300 text-slate-600 max-w-xl mx-auto mb-6 leading-relaxed">
+          Las aerolíneas suelen liberar estas tarifas por pocas horas. Activá el radar en Telegram para recibir una notificación push en tu celular apenas se detecte un asiento a precio récord.
+        </p>
+        <a href="https://t.me/GnZFlightBot?start=alerta_relampago" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-sm font-black text-white shadow-xl hover:brightness-110 transition-all hover:scale-105"
+           style="background: var(--brand-gradient);">
+          <span>✈️</span> Unirse al Radar en Telegram (@GnZFlightBot)
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Oficial -->
+  <footer class="border-t dark:border-slate-800 border-slate-200 py-8 dark:bg-slate-950 bg-white theme-transition text-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 dark:text-slate-500 text-slate-600">
+      <div>&copy; <span class="current-year">2026</span> FlightBot · Radar de Vuelos &amp; Tarifas Inteligentes</div>
+      <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
+        <a href="/" class="hover:underline font-bold" style="color: var(--brand-primary);">Inicio</a>
+        <a href="/relampago.html" class="hover:underline">Ofertas Relámpago</a>
+        <a href="/escapadas" class="hover:underline">Modo Ruta</a>
+        <a href="/billetera" class="hover:underline">Billetera</a>
+        <a href="/guias/" class="hover:underline">Blog &amp; Guías</a>
+        <a href="/faq" class="hover:underline">FAQ</a>
+        <a href="https://t.me/GnZFlightBot?start=feedback_beta" target="_blank" rel="noopener noreferrer" class="font-bold text-amber-500 hover:underline">🛠️ Feedback</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lógica JavaScript de la Página -->
+  <script>
+    // 1. Manejo del Tema y Color
+    function setBrandColor(c) {
+      document.documentElement.setAttribute('data-color', c);
+      localStorage.setItem('fb_theme_color', c);
+    }
+    function toggleThemeMode() {
+      const isDark = document.documentElement.classList.contains('dark');
+      if (isDark) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('fb_theme_mode', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('fb_theme_mode', 'dark');
+      }
+    }
+    function toggleMobileNav(force) {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const iconM = document.getElementById('nav-icon-menu');
+      const iconC = document.getElementById('nav-icon-close');
+      if (!drawer) return;
+      const isOpen = !drawer.classList.contains('hidden');
+      const shouldOpen = force !== undefined ? force : !isOpen;
+      if (shouldOpen) {
+        drawer.classList.remove('hidden');
+        if (iconM) iconM.classList.add('hidden');
+        if (iconC) iconC.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+        if (iconM) iconM.classList.remove('hidden');
+        if (iconC) iconC.classList.add('hidden');
+      }
+    }
+
+    // 2. Temporizador Cuenta Regresiva Viva
+    function actualizarCuentaRegresiva() {
+      const ahora = new Date();
+      // Cuenta regresiva hacia la medianoche de hoy
+      const fin = new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate(), 23, 59, 59);
+      const diff = Math.max(0, fin - ahora);
+
+      const horas = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
+      const mins = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+      const segs = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+      const el = document.getElementById('global-countdown');
+      if (el) el.textContent = `${horas}h ${mins}m ${segs}s`;
+
+      document.querySelectorAll('.card-countdown').forEach(c => {
+        c.textContent = `${horas}h ${mins}m ${segs}s`;
+      });
+    }
+    setInterval(actualizarCuentaRegresiva, 1000);
+    actualizarCuentaRegresiva();
+
+    // 3. Cupones Activos & Copiado en 1 Clic
+    const CUPONES_DEFAULT = [
+      {
+        portal: "Arajet",
+        badge: "50% OFF",
+        titulo: "Especial Caribe",
+        desc: "Punta Cana, Cancún y Santo Domingo",
+        codigo: "HALLOTRIP",
+        url: "https://www.arajet.com/es"
+      },
+      {
+        portal: "JetSMART",
+        badge: "35% OFF",
+        titulo: "Cabotaje Nacional",
+        desc: "Bariloche, Mendoza, Iguazú y Córdoba",
+        codigo: "VUELOJETS",
+        url: "https://jetsmart.com/ar/es/"
+      },
+      {
+        portal: "Aerolíneas Argentinas",
+        badge: "12 Cuotas",
+        titulo: "Cuotas BNA Sin Interés",
+        desc: "En vuelos directos por Argentina",
+        codigo: "AEROCUOTAS",
+        url: "https://www.aerolineas.com.ar"
+      },
+      {
+        portal: "Despegar",
+        badge: "15% OFF",
+        titulo: "Vuelo + Hospedaje",
+        desc: "Paquetes combinados en Sudamérica",
+        codigo: "DESPEGARVIAJA",
+        url: "https://www.despegar.com.ar"
+      },
+      {
+        portal: "Booking.com",
+        badge: "20% OFF",
+        titulo: "Genius Rewards",
+        desc: "Descuento en hoteles recomendados",
+        codigo: "GENIUSDEAL",
+        url: "https://www.booking.com"
+      }
+    ];
+
+    function renderCupones() {
+      const container = document.getElementById('cupones-grid');
+      if (!container) return;
+      const data = (window.CUPONES_DATA && window.CUPONES_DATA.length) ? window.CUPONES_DATA : CUPONES_DEFAULT;
+
+      container.innerHTML = data.map((c, i) => `
+        <div class="p-4 rounded-2xl dark:bg-slate-950 bg-white border dark:border-slate-800 border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="font-extrabold text-sm dark:text-white text-slate-900">${c.portal}</span>
+              <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-500 border border-rose-500/30">
+                ${c.badge}
+              </span>
+            </div>
+            <div class="text-xs font-bold dark:text-slate-300 text-slate-700 mb-0.5">${c.titulo}</div>
+            <div class="text-[11px] dark:text-slate-400 text-slate-500 mb-3">${c.descripcion || c.desc || ''}</div>
+          </div>
+          <div class="pt-2 border-t dark:border-slate-800/80 border-slate-100 flex items-center justify-between gap-2">
+            <code class="px-2 py-1 rounded bg-slate-100 dark:bg-slate-900 font-mono text-xs font-bold dark:text-slate-200 text-slate-800 select-all">
+              ${c.codigo}
+            </code>
+            <div class="flex items-center gap-1.5">
+              <button type="button" onclick="copiarCodigo('${c.codigo}', this)"
+                      class="px-2.5 py-1 rounded-xl text-[11px] font-bold dark:bg-slate-800 bg-slate-100 dark:hover:bg-slate-700 hover:bg-slate-200 transition-colors">
+                Copiar
+              </button>
+              <a href="${c.url}" target="_blank" rel="noopener noreferrer sponsored"
+                 class="px-2.5 py-1 rounded-xl text-[11px] font-bold text-white transition-opacity hover:opacity-90"
+                 style="background: var(--brand-gradient);">
+                Ir
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function copiarCodigo(cod, btn) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(cod).then(() => {
+          const original = btn.innerText;
+          btn.innerText = "¡Copiado! ✓";
+          btn.classList.add('text-emerald-500', 'font-extrabold');
+          setTimeout(() => {
+            btn.innerText = original;
+            btn.classList.remove('text-emerald-500', 'font-extrabold');
+          }, 1800);
+        });
+      }
+    }
+
+    // 4. Grilla de Vuelos Relámpago con Filtros
+    let currentRegion = 'todos';
+    let searchQuery = '';
+    let currentMoneda = 'DEFAULT';
+
+    function cambiarMoneda(m) {
+      currentMoneda = m;
+      ['btn-mon-def', 'btn-mon-ars', 'btn-mon-usd'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.style.backgroundColor = '';
+          el.className = 'px-2.5 py-1 rounded-xl dark:text-slate-400 text-slate-600 hover:text-white font-bold';
+        }
+      });
+      const activeBtn = document.getElementById(m === 'DEFAULT' ? 'btn-mon-def' : (m === 'ARS' ? 'btn-mon-ars' : 'btn-mon-usd'));
+      if (activeBtn) {
+        activeBtn.style.backgroundColor = 'var(--brand-primary)';
+        activeBtn.className = 'px-2.5 py-1 rounded-xl text-white shadow-xs font-bold';
+      }
+      renderVuelos();
+    }
+
+    function filtrarRegion(reg) {
+      currentRegion = reg;
+      ['chip-todos', 'chip-cabotaje', 'chip-brasil', 'chip-caribe_usa', 'chip-europa_mundo'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.style.backgroundColor = '';
+          el.className = 'px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800';
+        }
+      });
+      const activeChip = document.getElementById('chip-' + reg);
+      if (activeChip) {
+        activeChip.style.backgroundColor = 'var(--brand-primary)';
+        activeChip.className = 'px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap text-white shadow-xs';
+      }
+      renderVuelos();
+    }
+
+    function filtrarTexto(txt) {
+      searchQuery = (txt || '').toLowerCase().trim();
+      renderVuelos();
+    }
+
+    function renderVuelos() {
+      const container = document.getElementById('vuelos-relampago-grid');
+      if (!container || !window.RADAR_DATA) return;
+
+      let lista = window.RADAR_DATA.filter(d => Boolean(d.oportunidad_relampago && d.oportunidad_relampago.activa));
+
+      if (currentRegion !== 'todos') {
+        lista = lista.filter(d => d.categoria_region === currentRegion);
+      }
+
+      if (searchQuery) {
+        lista = lista.filter(d => 
+          d.ciudad.toLowerCase().includes(searchQuery) ||
+          d.iata.toLowerCase().includes(searchQuery) ||
+          d.pais.toLowerCase().includes(searchQuery)
+        );
+      }
+
+      if (lista.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-16 text-center dark:text-slate-400 text-slate-500">
+            <span class="text-4xl block mb-2">🔍</span>
+            <p class="font-bold text-sm">No encontramos vuelos relámpago que coincidan con tu búsqueda.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = lista.map(dest => {
+        const rel = dest.oportunidad_relampago;
+        const nombreCiudad = dest.ciudad.split(' (')[0].split(' &')[0].trim();
+        
+        let precioMostrado = rel.precio;
+        if (currentMoneda === 'ARS') {
+          precioMostrado = `$ ${Number(rel.precio_ars).toLocaleString('es-AR')} ARS`;
+        } else if (currentMoneda === 'USD') {
+          precioMostrado = `US$ ${rel.precio_usd_num}`;
+        }
+
+        return `
+          <div class="rounded-3xl dark:bg-slate-900/90 bg-white border-2 border-rose-500/30 hover:border-rose-500/60 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group">
+            
+            <div class="p-5 sm:p-6">
+              
+              <!-- Cabecera de la tarjeta con bandera y badge -->
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <div class="flex items-center gap-2">
+                  <span class="text-xl">${dest.bandera || '✈️'}</span>
+                  <span class="font-mono text-xs px-2 py-0.5 rounded-md dark:bg-slate-950 bg-slate-100 font-extrabold text-slate-600 dark:text-slate-300 border dark:border-slate-800 border-slate-200">
+                    ${dest.iata}
+                  </span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-rose-500 text-white shadow-xs animate-pulse">
+                    🔥 ${rel.ahorro_porcentaje || 'Récord'}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Título de la Ciudad -->
+              <h3 class="text-xl font-black dark:text-white text-slate-900 group-hover:text-rose-500 transition-colors mb-1">
+                ${nombreCiudad}
+              </h3>
+              <div class="text-xs dark:text-slate-400 text-slate-500 mb-4">
+                ${dest.es_cabotaje ? 'Argentina (Cabotaje)' : dest.pais}
+              </div>
+
+              <!-- Info de Salida Próxima -->
+              <div class="p-3 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 space-y-1.5 mb-4 text-xs">
+                <div class="flex items-center justify-between">
+                  <span class="dark:text-slate-400 text-slate-500 font-medium">Aerolínea:</span>
+                  <span class="font-bold dark:text-slate-200 text-slate-800">${rel.aerolinea}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="dark:text-slate-400 text-slate-500 font-medium">Fechas:</span>
+                  <span class="font-mono font-bold dark:text-white text-slate-900">${rel.fechas}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="dark:text-slate-400 text-slate-500 font-medium">Urgencia:</span>
+                  <span class="font-bold text-amber-500">Salida en ${rel.dias_para_el_vuelo || '26'} días</span>
+                </div>
+              </div>
+
+              <!-- Contador de expiración de la tarjeta -->
+              <div class="flex items-center justify-between text-[11px] dark:text-slate-400 text-slate-500 mb-2">
+                <span class="flex items-center gap-1 font-semibold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Cupos disponibles
+                </span>
+                <span class="font-mono text-rose-500 font-bold card-countdown">--:--:--</span>
+              </div>
+
+            </div>
+
+            <!-- Footer de la tarjeta con precio y CTA -->
+            <div class="p-5 pt-0">
+              <div class="p-3.5 rounded-2xl dark:bg-slate-950 bg-slate-100 border dark:border-slate-800 border-slate-200 flex items-center justify-between mb-3">
+                <div>
+                  <div class="text-[9px] uppercase font-bold tracking-wider dark:text-slate-400 text-slate-500">Tarifa Final Estimada</div>
+                  <div class="text-lg sm:text-xl font-black font-mono text-rose-500 whitespace-nowrap">
+                    ${precioMostrado}
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                  Ida y Vuelta
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <a href="${rel.google_flights_url}" target="_blank" rel="noopener noreferrer"
+                   class="py-2.5 px-3 rounded-xl text-xs font-black text-white text-center shadow-md hover:brightness-110 transition-all flex items-center justify-center gap-1"
+                   style="background: var(--brand-gradient);">
+                  <span>⚡ Google Flights</span>
+                </a>
+                <a href="${rel.kiwi_url}" target="_blank" rel="noopener noreferrer"
+                   class="py-2.5 px-3 rounded-xl text-xs font-bold text-white text-center shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1"
+                   style="background: linear-gradient(135deg, #00a991 0%, #047857 100%);">
+                  <span>🥝 Kiwi.com</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Inicialización al cargar la página
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCupones();
+      renderVuelos();
+
+      // Año dinámico
+      const y = new Date().getFullYear();
+      document.querySelectorAll('.current-year').forEach(el => { el.textContent = y; });
+    });
+  </script>
+</body>
+</html>
