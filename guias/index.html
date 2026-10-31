@@ -549,6 +549,43 @@
           <span class="hidden sm:inline">Probar Bot en Telegram</span>
           <span class="sm:hidden">Bot</span>
         </a>
+        <!-- Botón Menú Móvil (< lg) -->
+        <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
+                class="lg:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
+          <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="nav-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="/#radar-vuelos" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
+          <span>✈️</span> Vuelos
+        </a>
+        <a href="/relampago" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🔥</span> Ofertas Relámpago
+        </a>
+        <a href="/#destinos" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🏨</span> Destinos
+        </a>
+        <a href="/escapadas" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🚗</span> Modo Ruta
+        </a>
+        <a href="/billetera" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>💳</span> Billetera
+        </a>
+        <a href="/guias/" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>📖</span> Guías
+        </a>
+        <a href="/faq" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>❓</span> Preguntas Frecuentes (FAQ)
+        </a>
       </div>
     </div>
   </header>
@@ -566,6 +603,24 @@
         Informes editoriales independientes preparados por el equipo de FlightBot. Analizamos conexiones aéreas, trenes de alta velocidad, logística de traslados y las mejores zonas para reservar tu hospedaje con total seguridad y sin sesgos comerciales.
       </p>
 
+      <!-- Buscador y Filtros en Vivo por Región (UX Mobile First) -->
+      <div class="max-w-3xl mx-auto mb-10 space-y-4">
+        <div class="relative w-full">
+          <input type="text" id="fb-guias-search" oninput="filtrarGuiasCatalogo()"
+                 placeholder="Buscar guía por ciudad, país o aeropuerto (ej. Madrid, Bariloche, BRC)..."
+                 class="w-full pl-11 pr-4 py-3 rounded-2xl text-sm font-semibold dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 dark:text-white text-slate-900 shadow-sm focus:outline-none focus:ring-2 transition-all"
+                 style="--tw-ring-color: var(--brand-primary);">
+          <span class="absolute left-4 top-3.5 text-base text-slate-400">🔍</span>
+        </div>
+        <div class="flex items-center justify-center gap-1.5 overflow-x-auto pb-2 no-scrollbar text-xs">
+          <button type="button" onclick="filtrarGuiasRegion('todos', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold text-white transition-all shadow-sm" style="background-color: var(--brand-primary);">Todos (53)</button>
+          <button type="button" onclick="filtrarGuiasRegion('argentina', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">🇦🇷 Cabotaje</button>
+          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">🇧🇷 Brasil</button>
+          <button type="button" onclick="filtrarGuiasRegion('caribe_usa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">🏖️ Caribe & USA</button>
+          <button type="button" onclick="filtrarGuiasRegion('europa_mundo', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">🌍 Europa & Mundo</button>
+        </div>
+      </div>
+
       <!-- Indicadores de Calidad Editorial -->
       <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs dark:text-slate-300 text-slate-600">
         <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
@@ -581,9 +636,9 @@
     </div>
 
     <!-- Rejilla de Artículos del Blog -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+    <div id="guias-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
       
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="río de janeiro" data-pais="brasil" data-region="américa del sur" data-cmd="/rio" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=80" alt="Río de Janeiro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -624,7 +679,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="roma" data-pais="italia" data-region="europa" data-cmd="/roma" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1200&q=80" alt="Roma" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -665,7 +720,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="madrid" data-pais="españa" data-region="europa" data-cmd="/madrid" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80" alt="Madrid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -706,7 +761,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="miami" data-pais="estados unidos" data-region="américa del norte" data-cmd="/miami" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80" alt="Miami" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -747,7 +802,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="cancún" data-pais="méxico" data-region="caribe & méxico" data-cmd="/cancun" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=1200&q=80" alt="Cancún" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -788,7 +843,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="punta cana" data-pais="república dominicana" data-region="caribe" data-cmd="/puntacana" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1678816331175-a61a6835e889?auto=format&fit=crop&w=1200&q=80" alt="Punta Cana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -829,7 +884,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="aruba" data-pais="aruba" data-region="caribe holandés" data-cmd="/aruba" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1518118752300-59473bb79c6c?auto=format&fit=crop&w=1200&q=80" alt="Aruba" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -870,7 +925,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="bariloche" data-pais="argentina" data-region="argentina & patagonia" data-cmd="/bariloche" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=1200&q=80" alt="Bariloche" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -911,7 +966,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="mendoza" data-pais="argentina" data-region="argentina & cuyo" data-cmd="/mendoza" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=80" alt="Mendoza" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -952,7 +1007,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="puerto iguazú" data-pais="argentina / brasil" data-region="argentina & triple frontera" data-cmd="/iguazu" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1545832063-74f2d924b61a?auto=format&fit=crop&w=1200&q=80" alt="Puerto Iguazú" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -993,7 +1048,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="reikiavik" data-pais="islandia" data-region="europa del norte / atlántico norte" data-cmd="/reikiavik" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1542627054-304853017c33?auto=format&fit=crop&w=1200&q=80" alt="Reikiavik" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1034,7 +1089,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="oslo" data-pais="noruega" data-region="escandinavia / europa del norte" data-cmd="/oslo" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=1200&q=80" alt="Oslo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1075,7 +1130,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="el calafate & el chaltén" data-pais="argentina" data-region="argentina & patagonia austral" data-cmd="/calafate" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1577373482643-5c7ccf8f0ac9?auto=format&fit=crop&w=1200&q=80" alt="El Calafate & El Chaltén" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1116,7 +1171,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="ushuaia & tierra del fuego" data-pais="argentina" data-region="argentina" data-cmd="/ushuaia" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1671595334685-fce6db1f53a4?auto=format&fit=crop&w=1200&q=80" alt="Ushuaia & Tierra del Fuego" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1157,7 +1212,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="salta & valles calchaquíes" data-pais="argentina" data-region="argentina" data-cmd="/salta" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1711841004592-d8d619331fe2?auto=format&fit=crop&w=1200&q=80" alt="Salta & Valles Calchaquíes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1198,7 +1253,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="jujuy & quebrada de humahuaca" data-pais="argentina" data-region="argentina & quebrada" data-cmd="/jujuy" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1765567972885-9b63d0f6c7db?auto=format&fit=crop&w=1200&q=80" alt="Jujuy & Quebrada de Humahuaca" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1239,7 +1294,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="córdoba & sierras" data-pais="argentina" data-region="argentina" data-cmd="/cordoba" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="Córdoba & Sierras" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1280,7 +1335,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="san martín de los andes & chapelco" data-pais="argentina" data-region="argentina & patagonia cordillerana" data-cmd="/sanmartin" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80" alt="San Martín de los Andes & Chapelco" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1321,7 +1376,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="puerto madryn & península valdés" data-pais="argentina" data-region="argentina & costa patagónica" data-cmd="/madryn" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=1200&q=80" alt="Puerto Madryn & Península Valdés" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1362,7 +1417,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="florianópolis & ilha da magia" data-pais="brasil" data-region="brasil" data-cmd="/florianopolis" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1200&q=80" alt="Florianópolis & Ilha da Magia" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1403,7 +1458,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="salvador de bahía & costa dos coqueiros" data-pais="brasil" data-region="brasil & nordeste" data-cmd="/salvador" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1200&q=80" alt="Salvador de Bahía & Costa dos Coqueiros" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1444,7 +1499,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="recife & porto de galinhas" data-pais="brasil" data-region="brasil & nordeste" data-cmd="/recife" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1200&q=80" alt="Recife & Porto de Galinhas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1485,7 +1540,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="maceió & maragogi (caribe brasileño)" data-pais="brasil" data-region="brasil & alagoas" data-cmd="/maceio" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1711805492345-403ca3e43dd1?auto=format&fit=crop&w=1200&q=80" alt="Maceió & Maragogi (Caribe Brasileño)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1526,7 +1581,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="natal & praia da pipa" data-pais="brasil" data-region="brasil & rio grande do norte" data-cmd="/natal" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1515898034510-821b204966e4?auto=format&fit=crop&w=1200&q=80" alt="Natal & Praia da Pipa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1567,7 +1622,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="orlando (disney & universal)" data-pais="estados unidos" data-region="estados unidos & florida" data-cmd="/orlando" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1200&q=80" alt="Orlando (Disney & Universal)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1608,7 +1663,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="san andrés & mar de 7 colores" data-pais="colombia" data-region="caribe colombiano" data-cmd="/sanandres" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1576475510454-b0af18970e6d?auto=format&fit=crop&w=1200&q=80" alt="San Andrés & Mar de 7 Colores" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1649,7 +1704,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="santiago de chile & cordillera" data-pais="chile" data-region="chile & zona central" data-cmd="/santiago" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1589802829985-817e51171b92?w=1200&q=80" alt="Santiago de Chile & Cordillera" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1690,7 +1745,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="barcelona & costa brava" data-pais="españa" data-region="españa & cataluña" data-cmd="/barcelona" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1200&q=80" alt="Barcelona & Costa Brava" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1731,7 +1786,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="parís & île-de-france" data-pais="francia" data-region="francia & europa" data-cmd="/paris" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80" alt="París & Île-de-France" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1772,7 +1827,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="londres" data-pais="reino unido" data-region="reino unido & europa" data-cmd="/londres" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80" alt="Londres" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1813,7 +1868,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="berlín & cultura vanguardista" data-pais="alemania" data-region="alemania & europa central" data-cmd="/berlin" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1200&q=80" alt="Berlín & Cultura Vanguardista" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1854,7 +1909,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="frankfurt (hub alemania)" data-pais="alemania" data-region="alemania & hesse" data-cmd="/frankfurt" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1754444216102-56df720de3c1?auto=format&fit=crop&w=1200&q=80" alt="Frankfurt (Hub Alemania)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1895,7 +1950,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="atenas & islas griegas" data-pais="grecia" data-region="grecia & mediterráneo" data-cmd="/atenas" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&q=80" alt="Atenas & Islas Griegas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1936,7 +1991,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="tokio (narita / haneda)" data-pais="japón" data-region="japón & asia" data-cmd="/tokio" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1200&q=80" alt="Tokio (Narita / Haneda)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -1977,7 +2032,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="el cairo & pirámides de giza" data-pais="egipto" data-region="egipto & norte de áfrica" data-cmd="/elcairo" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80" alt="El Cairo & Pirámides de Giza" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2018,7 +2073,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="marrakech & atlas" data-pais="marruecos" data-region="marruecos & norte de áfrica" data-cmd="/marrakech" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200&q=80" alt="Marrakech & Atlas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2059,7 +2114,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="ciudad del cabo (cape town)" data-pais="sudáfrica" data-region="sudáfrica & áfrica austral" data-cmd="/ciudaddelcabo" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1630341907081-397109cae17b?auto=format&fit=crop&w=1200&q=80" alt="Ciudad del Cabo (Cape Town)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2100,7 +2155,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="nueva york" data-pais="estados unidos" data-region="américa del norte" data-cmd="/newyork" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=1200&q=80" alt="Nueva York" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2141,7 +2196,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="pekín" data-pais="china" data-region="asia & pacífico" data-cmd="/pekin" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1200&q=80" alt="Pekín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2182,7 +2237,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="estambul" data-pais="turquía" data-region="turquía" data-cmd="/estambul" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80" alt="Estambul" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2223,7 +2278,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="dubái" data-pais="emiratos árabes unidos" data-region="emiratos árabes unidos" data-cmd="/dubai" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80" alt="Dubái" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2264,7 +2319,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="cusco & machu picchu" data-pais="perú" data-region="perú" data-cmd="/cusco" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=80" alt="Cusco & Machu Picchu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2305,7 +2360,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="bangkok" data-pais="tailandia" data-region="tailandia" data-cmd="/bangkok" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=80" alt="Bangkok" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2346,7 +2401,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="islas maldivas" data-pais="república de maldivas" data-region="república de maldivas" data-cmd="/maldivas" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&q=80" alt="Islas Maldivas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2387,7 +2442,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="la habana" data-pais="cuba" data-region="cuba" data-cmd="/cuba" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=1200&q=80" alt="La Habana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2428,7 +2483,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="ciudad de panamá" data-pais="panamá" data-region="panamá" data-cmd="/panama" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1544502367-3e0b08be3df7?auto=format&fit=crop&w=1200&q=80" alt="Ciudad de Panamá" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2469,7 +2524,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="tahití & bora bora" data-pais="polinesia francesa" data-region="polinesia francesa" data-cmd="/polinesia" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1738762932370-468a90e0ff68?auto=format&fit=crop&w=1200&q=80" alt="Tahití & Bora Bora" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2510,7 +2565,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="sídney & melbourne" data-pais="australia" data-region="australia" data-cmd="/sydney" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1200&q=80" alt="Sídney & Melbourne" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2551,7 +2606,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="auckland & queenstown" data-pais="nueva zelanda" data-region="nueva zelanda" data-cmd="/nuevazelanda" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1563242501-abbeb9e7f905?auto=format&fit=crop&w=1200&q=80" alt="Auckland & Queenstown" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2592,7 +2647,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="ciudad de méxico" data-pais="méxico" data-region="méxico" data-cmd="/mexico" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=80" alt="Ciudad de México" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2633,7 +2688,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="lisboa & oporto" data-pais="portugal" data-region="portugal" data-cmd="/lisboa" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1509356843151-3e7d96241e11?w=1200&q=80" alt="Lisboa & Oporto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2674,7 +2729,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="seúl" data-pais="corea del sur" data-region="corea del sur" data-cmd="/seul" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1538485399081-7191377e8241?w=1200&q=80" alt="Seúl" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2715,7 +2770,7 @@
             </div>
           </div>
         </article>
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="ámsterdam" data-pais="países bajos" data-region="países bajos" data-cmd="/amsterdam" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&q=80" alt="Ámsterdam" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -2820,6 +2875,25 @@
       document.documentElement.setAttribute('data-color', col);
       localStorage.setItem('fb_theme_color', col);
       updateThemeControls();
+    }
+
+    
+    function toggleMobileNav(forceClose) {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const iconMenu = document.getElementById('nav-icon-menu');
+      const iconClose = document.getElementById('nav-icon-close');
+      if (!drawer) return;
+      const isHidden = drawer.classList.contains('hidden');
+      const shouldOpen = forceClose !== undefined ? !forceClose : isHidden;
+      if (shouldOpen) {
+        drawer.classList.remove('hidden');
+        if (iconMenu) iconMenu.classList.add('hidden');
+        if (iconClose) iconClose.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+        if (iconMenu) iconMenu.classList.remove('hidden');
+        if (iconClose) iconClose.classList.add('hidden');
+      }
     }
 
     function toggleThemeMode() {

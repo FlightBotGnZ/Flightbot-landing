@@ -56,6 +56,30 @@
         height: 700px !important;
         max-height: 86vh !important;
       }
+
+      /* Ergonomía Móvil: FAB colapsado y chat adaptativo con teclado virtual */
+      @media (max-width: 639px) {
+        #fb-chat-fab {
+          padding: 0.5rem !important;
+          border-radius: 9999px !important;
+          width: 3.25rem !important;
+          height: 3.25rem !important;
+          justify-content: center !important;
+        }
+        #fb-chat-fab span {
+          display: none !important;
+        }
+        #fb-chat-window {
+          bottom: 0 !important;
+          right: 0 !important;
+          left: 0 !important;
+          width: 100vw !important;
+          max-width: 100vw !important;
+          height: 100dvh !important;
+          max-height: 100dvh !important;
+          border-radius: 0 !important;
+        }
+      }
       .no-scrollbar::-webkit-scrollbar {
         display: none;
       }

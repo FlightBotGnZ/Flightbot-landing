@@ -450,6 +450,25 @@ SHARED_THEME_SCRIPT = """
       updateThemeControls();
     }
 
+    
+    function toggleMobileNav(forceClose) {
+      const drawer = document.getElementById('mobile-nav-drawer');
+      const iconMenu = document.getElementById('nav-icon-menu');
+      const iconClose = document.getElementById('nav-icon-close');
+      if (!drawer) return;
+      const isHidden = drawer.classList.contains('hidden');
+      const shouldOpen = forceClose !== undefined ? !forceClose : isHidden;
+      if (shouldOpen) {
+        drawer.classList.remove('hidden');
+        if (iconMenu) iconMenu.classList.add('hidden');
+        if (iconClose) iconClose.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+        if (iconMenu) iconMenu.classList.remove('hidden');
+        if (iconClose) iconClose.classList.add('hidden');
+      }
+    }
+
     function toggleThemeMode() {
       const isDark = document.documentElement.classList.contains('dark');
       if (isDark) {
@@ -3331,6 +3350,43 @@ def generar_html_guia(guia: dict) -> str:
           <span class="hidden sm:inline">Probar Bot en Telegram</span>
           <span class="sm:hidden">Bot</span>
         </a>
+        <!-- Botón Menú Móvil (< lg) -->
+        <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
+                class="lg:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
+          <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="nav-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="/#radar-vuelos" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
+          <span>✈️</span> Vuelos
+        </a>
+        <a href="/relampago" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🔥</span> Ofertas Relámpago
+        </a>
+        <a href="/#destinos" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🏨</span> Destinos
+        </a>
+        <a href="/escapadas" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🚗</span> Modo Ruta
+        </a>
+        <a href="/billetera" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>💳</span> Billetera
+        </a>
+        <a href="/guias/" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>📖</span> Guías
+        </a>
+        <a href="/faq" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>❓</span> Preguntas Frecuentes (FAQ)
+        </a>
       </div>
     </div>
   </header>
@@ -3692,7 +3748,7 @@ def generar_indice_guias(guias: list) -> str:
             "mejor_epoca": "Todo el año",
         })
         tarjetas_html += f"""
-        <article class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
+        <article data-ciudad="{g['ciudad'].lower()}" data-pais="{g['pais'].lower()}" data-region="{g_meta['region'].lower()}" data-cmd="{g['cmd_vuelo'].lower()}" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
             <img src="{g['imagen_unsplash']}" alt="{g['ciudad']}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
@@ -3862,6 +3918,43 @@ def generar_indice_guias(guias: list) -> str:
           <span class="hidden sm:inline">Probar Bot en Telegram</span>
           <span class="sm:hidden">Bot</span>
         </a>
+        <!-- Botón Menú Móvil (< lg) -->
+        <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
+                class="lg:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
+          <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="nav-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="/#radar-vuelos" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
+          <span>✈️</span> Vuelos
+        </a>
+        <a href="/relampago" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🔥</span> Ofertas Relámpago
+        </a>
+        <a href="/#destinos" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🏨</span> Destinos
+        </a>
+        <a href="/escapadas" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>🚗</span> Modo Ruta
+        </a>
+        <a href="/billetera" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>💳</span> Billetera
+        </a>
+        <a href="/guias/" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>📖</span> Guías
+        </a>
+        <a href="/faq" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+          <span>❓</span> Preguntas Frecuentes (FAQ)
+        </a>
       </div>
     </div>
   </header>
@@ -3879,6 +3972,24 @@ def generar_indice_guias(guias: list) -> str:
         Informes editoriales independientes preparados por el equipo de FlightBot. Analizamos conexiones aéreas, trenes de alta velocidad, logística de traslados y las mejores zonas para reservar tu hospedaje con total seguridad y sin sesgos comerciales.
       </p>
 
+      <!-- Buscador y Filtros en Vivo por Región (UX Mobile First) -->
+      <div class="max-w-3xl mx-auto mb-10 space-y-4">
+        <div class="relative w-full">
+          <input type="text" id="fb-guias-search" oninput="filtrarGuiasCatalogo()"
+                 placeholder="Buscar guía por ciudad, país o aeropuerto (ej. Madrid, Bariloche, BRC)..."
+                 class="w-full pl-11 pr-4 py-3 rounded-2xl text-sm font-semibold dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 dark:text-white text-slate-900 shadow-sm focus:outline-none focus:ring-2 transition-all"
+                 style="--tw-ring-color: var(--brand-primary);">
+          <span class="absolute left-4 top-3.5 text-base text-slate-400">🔍</span>
+        </div>
+        <div class="flex items-center justify-center gap-1.5 overflow-x-auto pb-2 no-scrollbar text-xs">
+          <button type="button" onclick="filtrarGuiasRegion('todos', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold text-white transition-all shadow-sm" style="background-color: var(--brand-primary);">Todos ({len(guias)})</button>
+          <button type="button" onclick="filtrarGuiasRegion('argentina', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">🇦🇷 Cabotaje</button>
+          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">🇧🇷 Brasil</button>
+          <button type="button" onclick="filtrarGuiasRegion('caribe_usa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">🏖️ Caribe & USA</button>
+          <button type="button" onclick="filtrarGuiasRegion('europa_mundo', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">🌍 Europa & Mundo</button>
+        </div>
+      </div>
+
       <!-- Indicadores de Calidad Editorial -->
       <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs dark:text-slate-300 text-slate-600">
         <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm">
@@ -3894,7 +4005,7 @@ def generar_indice_guias(guias: list) -> str:
     </div>
 
     <!-- Rejilla de Artículos del Blog -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+    <div id="guias-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
       {tarjetas_html}
     </div>
 
