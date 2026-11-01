@@ -3766,8 +3766,41 @@
     </div>
   </footer>
 
+  <!-- Modal de Privacidad / Cookies / Términos -->
+  <div id="fb-privacy-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+    <div class="bg-white dark:bg-slate-900 border dark:border-slate-800 border-slate-200 rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden">
+      <div class="p-6 border-b dark:border-slate-800 border-slate-200 flex items-center justify-between">
+        <h3 class="text-lg font-bold dark:text-white text-slate-900">Políticas y Privacidad</h3>
+        <button onclick="closePrivacyModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1">✕</button>
+      </div>
+      <div class="p-6 overflow-y-auto text-xs sm:text-sm dark:text-slate-300 text-slate-600 space-y-4">
+        <p>FlightBot es una plataforma de código abierto y herramientas para viajeros. No comercializamos datos personales con terceros.</p>
+        <p>La Billetera offline almacena tus datos única y exclusivamente en tu propio dispositivo mediante el almacenamiento local del navegador (LocalStorage).</p>
+        <p>Los enlaces hacia aerolíneas y alojamientos utilizan enlaces de afiliados de Booking.com y Travelpayouts que pueden generar una comisión sin costo extra para vos.</p>
+      </div>
+      <div class="p-4 border-t dark:border-slate-800 border-slate-200 bg-slate-50 dark:bg-slate-950 flex justify-end">
+        <button onclick="closePrivacyModal()" class="px-4 py-2 rounded-xl text-white text-xs font-bold" style="background-color: var(--brand-primary);">Entendido</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Script del Motor de Temas Dual (Color + Modo) -->
   <script>
+    // Modal de Privacidad
+    window.openPrivacyModal = function() {
+      const modal = document.getElementById('fb-privacy-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    };
+    window.closePrivacyModal = function() {
+      const modal = document.getElementById('fb-privacy-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    };
     function toggleMobileNav(forceClose) {
       const drawer = document.getElementById('mobile-nav-drawer');
       const iconMenu = document.getElementById('nav-icon-menu');
