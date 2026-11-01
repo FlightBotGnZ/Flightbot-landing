@@ -4747,6 +4747,25 @@
         return url;
       }
 
+      // Sintetizar textos extensos de badges a un formato conciso de 2-3 palabras
+      function sintetizarTextoDestacado(txt) {
+        if (!txt || typeof txt !== 'string') return 'Mejor precio';
+        const t = txt.trim().toLowerCase();
+        if (t.includes('radar planificado') || t.includes('récord') || t.includes('record')) return 'Tarifa récord';
+        if (t.includes('frecuencia') || t.includes('diarias')) return 'Vuelo frecuente';
+        if (t.includes('equipaje') || t.includes('bodega') || t.includes('valija')) return 'Equipaje incluido';
+        if (t.includes('conexión') || t.includes('conexion')) return 'Conexión ágil';
+        if (t.includes('escala rápida') || t.includes('escala corta')) return 'Escala rápida';
+        if (t.includes('catering') || t.includes('a bordo') || t.includes('servicio')) return 'Servicio a bordo';
+        if (t.includes('calidad-precio') || t.includes('precio-calidad') || t.includes('calidad')) return 'Calidad-precio';
+        if (t.includes('temporada') || t.includes('promo') || t.includes('promocional')) return 'Tarifa promo';
+        if (t.includes('directo') || t.includes('sin escala')) return 'Vuelo directo';
+        if (t.includes('atención') || t.includes('atencion')) return 'Atención directa';
+        if (t.includes('bandera')) return 'Aerolínea bandera';
+        const palabras = txt.trim().split(/\s+/);
+        return palabras.length > 2 ? palabras.slice(0, 2).join(' ') : txt.trim();
+      }
+
       // Generar las Tarjetas de Vuelos y Hospedajes en Ancho Completo (Piso Inferior w-full)
       function generarTarjetasFullWidthHtml(dest) {
         const ciudadLimpia = (dest.ciudad || '').split('&')[0].split('(')[0].trim();
@@ -4779,29 +4798,31 @@
           const bookingHotelUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(ciudadLimpia)}&checkin=${fechaIda}&checkout=${fechaVuelta}`;
 
           const precioFormateado = window.formatearPrecioMoneda ? window.formatearPrecioMoneda(v.precio, dest) : v.precio;
+          const destacadoCorto = sintetizarTextoDestacado(v.destacado);
 
           return `
           <div class="dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-5 shadow-sm hover:border-rose-500/40 transition-all flex flex-col justify-between h-full">
-            <div>
-              <!-- Cabecera con Medalla / Badge completo sin truncar y Acciones secundarias -->
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <div class="flex items-center gap-1.5 flex-wrap">
-                  <span class="text-base font-bold flex-shrink-0">${v.puesto}</span>
-                  <span class="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">${v.destacado}</span>
+            <div class="flex flex-col flex-1">
+              <!-- Cabecera unificada en una sola línea h-8 -->
+              <div class="flex items-center justify-between gap-2 mb-3 h-8">
+                <!-- Badge unificado: Medalla + Texto conciso -->
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 truncate">
+                  <span>${v.puesto}</span>
+                  <span class="truncate">${destacadoCorto}</span>
                 </div>
-                <div class="flex items-center gap-2 flex-shrink-0">
+
+                <!-- Acciones secundarias agrupadas -->
+                <div class="flex items-center gap-1.5 shrink-0">
                   <button type="button" onclick="window.compartirOferta('${dest.ciudad}', '${v.puesto}', '${v.aerolinea}', '${v.precio}', '${fechasVigentes}', '${dest.iata}')"
-                          class="w-9 h-9 sm:w-8 sm:h-8 rounded-xl dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 hover:text-emerald-500 flex items-center justify-center transition-all shadow-2xs active:scale-95"
-                          title="Compartir oferta en WhatsApp o copiar enlace">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                          class="w-7 h-7 rounded-lg dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 hover:text-emerald-500 flex items-center justify-center transition-colors"
+                          title="Compartir oferta en WhatsApp">
+                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                       <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
                     </svg>
                   </button>
-                  <a href="${tgAlertUrl}" target="_blank" rel="noopener noreferrer"
-                     class="w-9 h-9 sm:w-8 sm:h-8 rounded-xl dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 hover:text-rose-500 flex items-center justify-center text-sm transition-all shadow-2xs active:scale-95"
-                     title="Crear alerta de precio en Telegram (${dest.comando_tg})">
-                    <span>🔔</span>
-                  </a>
+                  <a href="${tgAlertUrl}" target="_blank" rel="noopener noreferrer sponsored"
+                     class="w-7 h-7 rounded-lg dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-600 hover:text-rose-500 flex items-center justify-center text-xs transition-colors"
+                     title="Alerta en Telegram">🔔</a>
                 </div>
               </div>
 
@@ -4818,7 +4839,7 @@
             </div>
 
             <!-- Bloque Inferior Balanceado -->
-            <div>
+            <div class="mt-auto">
               <!-- Tarifa Final en una sola línea horizontal -->
               <div class="mb-3 pt-3 border-t dark:border-slate-800/80 border-slate-100">
                 <span class="block text-[10px] uppercase font-bold tracking-wider dark:text-slate-400 text-slate-500">Tarifa Final Estimada (Ida y Vuelta)</span>
