@@ -300,9 +300,19 @@
         <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 text-xs shadow-sm mb-6">
           <span class="text-base animate-pulse">⏱️</span>
           <span class="font-medium dark:text-slate-300 text-slate-700">Ventana de tarifas activas vence en:</span>
-          <span id="global-countdown" class="font-mono font-black text-rose-500 px-2 py-0.5 rounded-lg dark:bg-slate-950 bg-slate-100 border dark:border-slate-800 border-slate-200">
-            --:--:--
-          </span>
+          <span id="global-countdown" class="font-mono font-black text-rose-500 px-2 py-0.5 rounded-lg dark:bg-slate-950 bg-slate-100 border dark:border-slate-800 border-slate-200"></span>
+          <script>
+            (function(){
+              var now = new Date();
+              var fin = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+              var diff = Math.max(0, fin - now);
+              var h = String(Math.floor(diff / 3600000)).padStart(2, '0');
+              var m = String(Math.floor((diff / 60000) % 60)).padStart(2, '0');
+              var s = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+              var el = document.getElementById('global-countdown');
+              if (el) el.textContent = h + 'h ' + m + 'm ' + s + 's';
+            })();
+          </script>
         </div>
 
         <!-- Tira Bento de Telemetría Flash (4 Métricas Clave) -->
@@ -562,22 +572,31 @@
       }
     }
 
-    // 2. Temporizador Cuenta Regresiva Viva
-    function actualizarCuentaRegresiva() {
+    // 2. Temporizador Cuenta Regresiva Síncrono Inmediato (Sin placeholders ni parpadeo)
+    function getDealExpirationTarget(cardId, mesKey, salidaKey) {
       const ahora = new Date();
-      // Cuenta regresiva hacia la medianoche de hoy
       const fin = new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate(), 23, 59, 59);
-      const diff = Math.max(0, fin - ahora);
+      return fin.getTime();
+    }
 
+    function formatCountdown(targetMs) {
+      const target = Number(targetMs) || getDealExpirationTarget();
+      const ahoraMs = Date.now();
+      const diff = Math.max(0, target - ahoraMs);
       const horas = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
       const mins = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
       const segs = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+      return `${horas}h ${mins}m ${segs}s`;
+    }
 
+    function actualizarCuentaRegresiva() {
+      const targetGlobal = getDealExpirationTarget();
       const el = document.getElementById('global-countdown');
-      if (el) el.textContent = `${horas}h ${mins}m ${segs}s`;
+      if (el) el.textContent = formatCountdown(targetGlobal);
 
-      document.querySelectorAll('.card-countdown').forEach(c => {
-        c.textContent = `${horas}h ${mins}m ${segs}s`;
+      document.querySelectorAll('.deal-countdown, .card-countdown').forEach(c => {
+        const target = Number(c.getAttribute('data-expire')) || targetGlobal;
+        c.textContent = `⏱️ ${formatCountdown(target)}`;
       });
     }
     setInterval(actualizarCuentaRegresiva, 1000);
@@ -1051,6 +1070,10 @@
         const iata = dest.iata || '';
         const rel = dest.oportunidad_relampago;
 
+        // Cálculo síncrono inmediato del temporizador para eliminar cualquier parpadeo visual
+        const targetMs = getDealExpirationTarget(dest.id, tabActiva, 'salida');
+        const tiempoInicial = formatCountdown(targetMs);
+
         // 1. Badge de Ahorro Real dinámico actualizado según el mes seleccionado
         const ahorroPctTexto = paqueteTab.ahorro_porcentaje || (rel.ahorro_porcentaje || '25% OFF');
         const ahorroPctLimpio = ahorroPctTexto.replace(' OFF', '').trim();
@@ -1213,16 +1236,13 @@
                 </div>
               </div>
 
-              <!-- Telemetría de ahorro y cuenta regresiva -->
+              <!-- Telemetría de ahorro y cuenta regresiva calculada síncronamente -->
               <div class="flex items-center justify-between text-[11px] dark:text-slate-400 text-slate-500">
                 <span class="flex items-center gap-1.5 font-semibold text-emerald-600 dark:text-emerald-400">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                   <span>${ahorroMontoTexto}</span>
                 </span>
-                <span class="font-mono text-rose-500 font-bold flex items-center gap-1">
-                  <span>⏱️</span>
-                  <span class="card-countdown">--:--:--</span>
-                </span>
+                <span class="deal-countdown card-countdown font-mono text-rose-500 font-bold flex items-center gap-1" data-expire="${targetMs}">⏱️ ${tiempoInicial}</span>
               </div>
 
             </div>
