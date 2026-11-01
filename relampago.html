@@ -720,8 +720,15 @@
 
       const meses = [];
       const factores = [0.95, 1.05, 1.12]; // Mes 1: Last-minute (-35%), Mes 2: Oportunidad (-25%), Mes 3: Temporada (-18%)
+      const baseAhorroNum = parseInt(rel.ahorro_porcentaje) || (dest.es_cabotaje ? 30 : 25);
+      // Descuentos decrecientes y dinámicos según horizonte temporal:
+      // Mes 1: descuento base inminente (ej. 24%)
+      // Mes 2: descuento intermedio (ej. 20%)
+      // Mes 3: descuento estándar de temporada (ej. 16%)
+      const factoresAhorro = [1.0, 0.83, 0.67];
 
       for (let i = 0; i < 3; i++) {
+        const ahorroMesNum = Math.max(10, Math.round(baseAhorroNum * factoresAhorro[i]));
         let y = startYear;
         let m = startMonth + i;
         if (m > 11) {
@@ -790,6 +797,8 @@
           nombre: `${NOMBRES_MESES[m]} ${y}`,
           nombre_corto: NOMBRES_CORTOS[m],
           año: y,
+          ahorro_porcentaje: `${ahorroMesNum}% OFF`,
+          ahorro_pct_num: ahorroMesNum,
           salidas: salidas
         });
       }
@@ -806,11 +815,14 @@
       const fmt = (d) => `${d.getDate()} ${NOMBRES_CORTOS[d.getMonth()]}`;
       const iso = (d) => d.toISOString().split('T')[0];
 
+      const ahorro180Num = Math.max(15, Math.round(baseAhorroNum * 0.92));
       const earlyBird = {
         key: 'mes6',
         nombre: `A 6 Meses (${NOMBRES_CORTOS[ida180.getMonth()]} ${ida180.getFullYear()})`,
         nombre_corto: '6 Meses',
         año: ida180.getFullYear(),
+        ahorro_porcentaje: `${ahorro180Num}% OFF`,
+        ahorro_pct_num: ahorro180Num,
         salidas: [{
           opcion: 1,
           etiqueta_opcion: '🎯 Early Bird',
@@ -1019,14 +1031,21 @@
         const iata = dest.iata || '';
         const rel = dest.oportunidad_relampago;
 
-        // 1. Badge de Ahorro Real en porcentaje y monto
-        const ahorroPct = rel.ahorro_porcentaje ? rel.ahorro_porcentaje.replace(' OFF', '') : '-25%';
+        // 1. Badge de Ahorro Real dinámico actualizado según el mes seleccionado
+        const ahorroPctTexto = paqueteTab.ahorro_porcentaje || (rel.ahorro_porcentaje || '25% OFF');
+        const ahorroPctLimpio = ahorroPctTexto.replace(' OFF', '').trim();
+        const ahorroPctNum = parseInt(paqueteTab.ahorro_pct_num || ahorroPctLimpio) || 25;
+
+        // Monto de ahorro sincronizado con la tarifa de la salida mostrada
         let ahorroMontoTexto = '';
+        const salidaRef = salidasMostradas[0] || {};
         if (dest.es_cabotaje) {
-          const ahorroArs = Math.round((rel.precio_ars || 95000) * 0.35);
+          const precioRefArs = Number(salidaRef.precio_ars) || Number(rel.precio_ars) || 95000;
+          const ahorroArs = Math.round(precioRefArs * (ahorroPctNum / 100));
           ahorroMontoTexto = `Ahorrás $ ${ahorroArs.toLocaleString('es-AR')}`;
         } else {
-          const ahorroUsd = Math.round((rel.precio_usd_num || 500) * 0.35);
+          const precioRefUsd = Number(salidaRef.precio_usd) || Number(rel.precio_usd_num) || 500;
+          const ahorroUsd = Math.round(precioRefUsd * (ahorroPctNum / 100));
           ahorroMontoTexto = `Ahorrás US$ ${ahorroUsd}`;
         }
 
@@ -1102,9 +1121,9 @@
                   <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-lg dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 border dark:border-slate-700 border-slate-200">${iata}</span>
                 </div>
                 <div class="flex items-center gap-1.5 flex-shrink-0">
-                  <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-rose-500 text-white shadow-xs flex items-center gap-1">
+                  <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-rose-500 text-white shadow-xs flex items-center gap-1 transition-all duration-300">
                     <span>🔥</span>
-                    <span>${ahorroPct} OFF</span>
+                    <span>${ahorroPctLimpio}% OFF</span>
                   </span>
                 </div>
               </div>
