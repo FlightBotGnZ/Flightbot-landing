@@ -5676,7 +5676,7 @@
           function(c, i, p) { return `"¡Encontré esta joya para ${c} (${i}) a solo ${p}! 👇"`; }
         ];
 
-        const fraseGenerada = plantillasFrases[currentIndex % plantillasFrases.length](ciudadActual, iataActual, precioActual);
+        const fraseGenerada = plantillasFrases[currentIndex % plantillasFrases.length](ciudadLimpia, iataActual, precioActual);
 
         const speechEl = document.getElementById('rolli-speech-text');
         if (speechEl) {
