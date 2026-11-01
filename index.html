@@ -217,6 +217,15 @@
       scrollbar-width: none;
     }
 
+    /* Snap suave en carrusel móvil para selector Bento Grid */
+    .snap-carousel {
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .snap-item {
+      scroll-snap-align: start;
+    }
+
   
     /* Animación de Flotación para la Burbuja de Diálogo de F-Bot Rolli */
     @keyframes fbSpeechBubbleFloat {
@@ -934,7 +943,7 @@
               <span class="text-xs font-extrabold uppercase tracking-wider dark:text-slate-400 text-slate-500" id="radar-counter-sidebar">
                 45 Destinos en Radar
               </span>
-              <span class="text-[10px] text-slate-400 dark:text-slate-500 lg:hidden font-medium">· Tocá una ciudad</span>
+              <span class="text-[10px] text-slate-400 dark:text-slate-500 lg:hidden font-medium">· Deslizá para explorar ➔</span>
             </div>
             <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20" id="radar-live-indicator">
               ● En Vivo
@@ -971,7 +980,7 @@
                    placeholder="Filtrar ciudad, código IATA o país..."
                    class="w-full text-xs rounded-xl pl-8 pr-3 py-2 dark:bg-slate-950/60 bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-rose-500 transition-all">
           </div>
-          <div id="fb-radar-sidebar" class="space-y-1.5 h-[280px] max-h-[280px] sm:h-[320px] sm:max-h-[320px] lg:h-[450px] lg:max-h-[450px] overflow-y-auto fb-custom-scrollbar pr-1">
+          <div id="fb-radar-sidebar" class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-y-auto snap-carousel gap-2.5 lg:space-y-1.5 lg:gap-0 lg:h-[450px] lg:max-h-[450px] no-scrollbar lg:fb-custom-scrollbar pb-2 lg:pb-0 pr-0 lg:pr-1">
             <!-- Los 45 destinos se renderizan dinámicamente con banderitas y filtros -->
           </div>
 
@@ -985,7 +994,7 @@
               </span>
             </div>
             <a href="#fb-radar-header-container" onclick="const el=document.getElementById('fb-radar-header-container'); if(el){ window.scrollTo({top: el.getBoundingClientRect().top + window.pageYOffset - 75, behavior: 'smooth'}); return false; }" class="text-[11px] font-bold text-rose-500 hover:text-rose-400 whitespace-nowrap flex items-center gap-1 pl-2 flex-shrink-0" title="Ver tarifas y radar de esta ciudad">
-              <span>Vuelos abajo</span>
+              <span>Ver análisis</span>
               <span class="animate-bounce">↓</span>
             </a>
           </div>
@@ -4413,9 +4422,9 @@
           btn.id = 'fb-dest-btn-' + dest.id;
           btn.onclick = () => window.renderRadarDestino(dest.id);
           
-          btn.className = `w-full text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between group ${
+          btn.className = `snap-item flex-shrink-0 w-64 sm:w-72 lg:w-full text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer ${
             isSelected 
-              ? 'dark:bg-slate-800/90 bg-rose-50/60 shadow-sm scale-[1.01]' 
+              ? 'dark:bg-slate-800/90 bg-rose-50/60 shadow-sm scale-[1.01] fb-dest-glow' 
               : 'dark:bg-slate-950/40 bg-white hover:dark:bg-slate-800/50 hover:bg-slate-50 dark:border-slate-800/80 border-slate-200'
           }`;
           if (isSelected) {
@@ -4467,10 +4476,13 @@
           if (!btn) return;
           const isSelected = dest.id === activeId;
           if (isSelected) {
-            btn.className = 'w-full text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between group dark:bg-slate-800/90 bg-rose-50/60 shadow-sm scale-[1.01] fb-dest-glow';
+            btn.className = 'snap-item flex-shrink-0 w-64 sm:w-72 lg:w-full text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer dark:bg-slate-800/90 bg-rose-50/60 shadow-sm scale-[1.01] fb-dest-glow';
             btn.style.borderColor = 'var(--brand-primary)';
+            if (window.innerWidth < 1024) {
+              btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
           } else {
-            btn.className = 'w-full text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between group dark:bg-slate-950/40 bg-white hover:dark:bg-slate-800/50 hover:bg-slate-50 dark:border-slate-800/80 border-slate-200';
+            btn.className = 'snap-item flex-shrink-0 w-64 sm:w-72 lg:w-full text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between group cursor-pointer dark:bg-slate-950/40 bg-white hover:dark:bg-slate-800/50 hover:bg-slate-50 dark:border-slate-800/80 border-slate-200';
             btn.style.borderColor = '';
             btn.classList.remove('fb-dest-glow');
           }
@@ -4614,43 +4626,25 @@
               </div>
             </div>
 
-            <!-- Gráfico de Evolución Histórica de Precios (Sparkline 60 días) - Desplegable -->
-            <div class="mt-6 pt-5 border-t dark:border-slate-800/80 border-slate-100">
-              <!-- Barra de Control: Título (Izq) · Tendencia (Centro Matemático Fijo) · Desglosar (Der) -->
-              <div class="flex flex-col sm:flex-row sm:items-center gap-2.5 mb-2">
-                <!-- Izquierda: Título Historial (flex-1) -->
-                <div class="flex-1 text-xs font-bold dark:text-slate-300 text-slate-700 flex items-center gap-1.5">
+            <!-- Gráfico de Evolución Histórica de Precios (Sparkline 60 días) Integrado Permanente -->
+            <div class="mt-5 pt-4 border-t dark:border-slate-800/80 border-slate-100">
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <div class="text-xs font-bold dark:text-slate-300 text-slate-700 flex items-center gap-1.5">
                   <span>📈</span>
                   <span class="truncate">Historial de precios de esta búsqueda (últimos 60 días)</span>
                 </div>
-
-                <!-- Centro Matemático Fijo: Tendencia (flex-shrink-0) -->
-                <div class="flex-shrink-0 flex justify-center">
-                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 whitespace-nowrap">
-                    <span>📉</span> Tendencia a la baja (-${Math.round((1 - t.historial_valores[t.historial_valores.length - 1] / t.historial_valores[0]) * 100)}%)
-                  </span>
-                </div>
-
-                <!-- Derecha: Botón con Flechita Desglosar (flex-1 justify-end con ancho fijo para evitar saltos) -->
-                <div class="flex-1 flex justify-end">
-                  <button type="button" onclick="window.toggleHistorialGrafico('${dest.id}')"
-                          class="w-24 justify-center flex items-center gap-1.5 py-1 rounded-xl text-xs font-bold text-rose-500 hover:text-white hover:bg-rose-500/90 dark:bg-slate-800/80 bg-slate-100 border dark:border-slate-700 border-slate-200 transition-all cursor-pointer flex-shrink-0 shadow-xs"
-                          title="Desglosar gráfico histórico de 60 días">
-                    <span id="historial-btn-text-${dest.id}">Desglosar</span>
-                    <span id="historial-arrow-${dest.id}" class="text-[11px] transition-transform duration-300">▼</span>
-                  </button>
-                </div>
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 whitespace-nowrap flex-shrink-0">
+                  <span>📉</span> Tendencia favorable (-${Math.round((1 - t.historial_valores[t.historial_valores.length - 1] / t.historial_valores[0]) * 100)}%)
+                </span>
               </div>
 
-              <!-- Contenedor Desplegable del Gráfico (Oculto por defecto) -->
-              <div id="historial-grafico-wrap-${dest.id}" class="hidden my-3 transition-all duration-300">
-                <div class="w-full h-28 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800/80 border-slate-200 p-2.5 flex items-center">
-                  ${svgGrafico}
-                </div>
+              <!-- Contenedor del Gráfico SVG Integrado Permanente -->
+              <div class="my-2.5 w-full h-24 sm:h-28 rounded-2xl dark:bg-slate-950/60 bg-slate-50 border dark:border-slate-800/80 border-slate-200 p-2.5 flex items-center">
+                ${svgGrafico}
               </div>
 
               <!-- Consejo Táctico del Radar -->
-              <div class="mt-3.5 flex items-start gap-2.5 p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs dark:text-amber-300 text-amber-700 leading-relaxed">
+              <div class="mt-3 flex items-start gap-2.5 p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs dark:text-amber-300 text-amber-700 leading-relaxed">
                 <span class="text-base flex-shrink-0">💡</span>
                 <div>
                   <strong>Consejo del Radar:</strong> ${t.consejo}
@@ -4823,31 +4817,26 @@
                 <div class="text-2xl font-extrabold font-mono tracking-tight whitespace-nowrap" style="color: var(--brand-primary);">${precioFormateado}</div>
               </div>
 
-              <!-- Botón Principal Ver Vuelo Destacado -->
-              <a href="${flightCardGfUrl}" target="_blank" rel="noopener noreferrer"
-                 class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white transition-all hover:brightness-110 flex items-center justify-center gap-1.5 shadow-md mb-3"
-                 style="background: var(--brand-gradient);"
-                 title="Buscar mejores tarifas en Google Flights (Buenos Aires ➔ ${dest.iata})">
-                <span>Ver Vuelo</span>
-              </a>
-
-              <!-- Botonera de Vuelos Alternativos (2 Columnas Ergonómicas) -->
-              <div class="space-y-1.5">
-                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Cotizar vuelo también en:</div>
-                <div class="grid grid-cols-2 gap-2 text-center">
+              <!-- Botonera Unificada Bento: 1 Primario + 2 Secundarios sin romper paleta -->
+              <div class="space-y-2 pt-2 border-t dark:border-slate-800/80 border-slate-100">
+                <a href="${flightCardGfUrl}" target="_blank" rel="noopener noreferrer"
+                   class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white transition-all hover:brightness-110 flex items-center justify-center gap-1.5 shadow-md"
+                   style="background: var(--brand-gradient);"
+                   title="Buscar mejores tarifas en Google Flights (Buenos Aires ➔ ${dest.iata})">
+                  <span>✈️ Ver en Google Flights</span>
+                </a>
+                <div class="grid grid-cols-2 gap-2 text-center text-[11px] font-semibold">
                   <a href="${kiwiUrl}" target="_blank" rel="noopener noreferrer"
-                     class="py-2.5 px-3 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
-                     style="background: linear-gradient(135deg, #00a991 0%, #047857 100%);"
+                     class="py-2 px-2.5 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-300 dark:text-slate-300 text-slate-700 hover:border-emerald-500/60 hover:text-emerald-500 shadow-2xs transition-all flex items-center justify-center gap-1.5"
                      title="Cotizar en Kiwi.com (${fechaIda} al ${fechaVuelta})">
                     <span>🥝</span>
-                    <span class="truncate font-semibold">Kiwi.com</span>
+                    <span class="truncate">Kiwi.com</span>
                   </a>
                   <a href="${despegarUrl}" target="_blank" rel="noopener noreferrer"
-                     class="py-2.5 px-3 rounded-xl text-xs font-bold text-white shadow-xs hover:brightness-110 transition-all flex items-center justify-center gap-1.5"
-                     style="background: linear-gradient(135deg, #4300d2 0%, #6835f9 100%);"
+                     class="py-2 px-2.5 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-300 dark:text-slate-300 text-slate-700 hover:border-purple-500/60 hover:text-purple-500 shadow-2xs transition-all flex items-center justify-center gap-1.5"
                      title="Cotizar en Despegar (${fechaIda} al ${fechaVuelta})">
                     <span>🛫</span>
-                    <span class="truncate font-semibold">Despegar</span>
+                    <span class="truncate">Despegar</span>
                   </a>
                 </div>
               </div>
