@@ -69,6 +69,22 @@
     .card-glass {
       backdrop-filter: blur(12px);
     }
+
+    /* Snap suave en carrusel móvil para selector Bento Grid */
+    .snap-carousel {
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .snap-item {
+      scroll-snap-align: start;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   
     /* Botones de Barra de Navegación Píldora */
     .nav-dock-btn {
@@ -290,6 +306,46 @@
         Calculá presupuesto real con <b>nafta Shell ($2.200)</b>, peajes exactos, tramos rotos y <b>ahorro por Ley Patagónica</b>.
       </p>
 
+      <!-- Tira Bento de Telemetría Rutera (4 Métricas Clave) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 max-w-4xl mx-auto text-left mb-8">
+        <div class="p-3.5 rounded-2xl dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200/90 shadow-xs hover:border-rose-500/40 transition-all flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-500 border border-rose-500/20 flex items-center justify-center text-lg flex-shrink-0">
+            🚗
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-black dark:text-white text-slate-900 truncate">23 Escapadas</div>
+            <div class="text-[11px] dark:text-slate-400 text-slate-500 truncate">4 anillos de distancia</div>
+          </div>
+        </div>
+        <div class="p-3.5 rounded-2xl dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200/90 shadow-xs hover:border-emerald-500/40 transition-all flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center text-lg flex-shrink-0">
+            ⛽
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-black dark:text-white text-slate-900 truncate">Nafta &amp; Peajes</div>
+            <div class="text-[11px] dark:text-slate-400 text-slate-500 truncate">TelePASE y Ley Patagónica</div>
+          </div>
+        </div>
+        <div class="p-3.5 rounded-2xl dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200/90 shadow-xs hover:border-sky-500/40 transition-all flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-500 border border-sky-500/20 flex items-center justify-center text-lg flex-shrink-0">
+            🚦
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-black dark:text-white text-slate-900 truncate">Semáforo Vial</div>
+            <div class="text-[11px] dark:text-slate-400 text-slate-500 truncate">Estado real de calzada</div>
+          </div>
+        </div>
+        <div class="p-3.5 rounded-2xl dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200/90 shadow-xs hover:border-purple-500/40 transition-all flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 border border-purple-500/20 flex items-center justify-center text-lg flex-shrink-0">
+            ⚖️
+          </div>
+          <div class="min-w-0">
+            <div class="text-xs font-black dark:text-white text-slate-900 truncate">Auto vs Avión</div>
+            <div class="text-[11px] dark:text-slate-400 text-slate-500 truncate">Ecuación tiempo vs plata</div>
+          </div>
+        </div>
+      </div>
+
       <!-- Jump Dock: Navegación Rápida Mobile-First hacia herramientas -->
       <div class="flex items-center justify-center gap-2 max-w-xl mx-auto mb-8 text-xs font-bold flex-wrap">
         <a href="#escapadas-grid" class="px-3.5 py-2 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 text-slate-700 dark:text-slate-200 hover:text-rose-500 shadow-xs flex items-center gap-1.5 transition-all">
@@ -298,34 +354,36 @@
         <a href="#planificador-rutas" class="px-3.5 py-2 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 text-slate-700 dark:text-slate-200 hover:text-rose-500 shadow-xs flex items-center gap-1.5 transition-all">
           <span>🛣️</span> Calculador de Ruta
         </a>
-        <a href="#comparador-auto-avion" class="px-3.5 py-2 rounded-xl text-white shadow-xs flex items-center gap-1.5 transition-all" style="background-color: var(--brand-primary);">
+        <a href="#comparador-auto-avion" class="px-3.5 py-2 rounded-xl text-white shadow-xs flex items-center gap-1.5 transition-all hover:brightness-110" style="background: var(--brand-gradient);">
           <span>⚖️</span> Comparar Auto vs Avión
         </a>
       </div>
 
-      <!-- Selector de Filtros por Tiempo -->
-      <div class="flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto mb-12">
-        <button type="button" onclick="window.filtrarEscapadas('todas')" id="btn-filtro-todas" data-cat="todas"
-                class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-extrabold border transition-all shadow-sm"
-                style="background-color: var(--brand-primary); color: #ffffff; border-color: var(--brand-primary);">
-          🌟 Todas las Guías
-        </button>
-        <button type="button" onclick="window.filtrarEscapadas('finde_corto')" id="btn-filtro-finde_corto" data-cat="finde_corto"
-                class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
-          🟢 Finde Corto (&lt; 3.5 hs · hasta 250 km)
-        </button>
-        <button type="button" onclick="window.filtrarEscapadas('finde_largo')" id="btn-filtro-finde_largo" data-cat="finde_largo"
-                class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
-          🟡 Finde Largo (4 a 6.5 hs · 350-550 km)
-        </button>
-        <button type="button" onclick="window.filtrarEscapadas('vacaciones_semana')" id="btn-filtro-vacaciones_semana" data-cat="vacaciones_semana"
-                class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
-          🔵 Vacaciones 1 Semana (7 a 11 hs · 600-950 km)
-        </button>
-        <button type="button" onclick="window.filtrarEscapadas('gran_ruta')" id="btn-filtro-gran_ruta" data-cat="gran_ruta"
-                class="esc-filtro-btn px-4 py-2 rounded-full text-xs font-bold border transition-all dark:bg-slate-900 bg-white dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:border-slate-400">
-          🟣 Grandes Rutas (+1000 km)
-        </button>
+      <!-- Selector de Filtros por Anillos (Horizontal Snap Scroll en móvil) -->
+      <div class="p-2 sm:p-2.5 rounded-2xl dark:bg-slate-900/60 bg-white border dark:border-slate-800 border-slate-200 shadow-xs max-w-4xl mx-auto mb-12">
+        <div class="flex items-center gap-2 overflow-x-auto snap-carousel pb-1 no-scrollbar text-xs">
+          <button type="button" onclick="window.filtrarEscapadas('todas')" id="btn-filtro-todas" data-cat="todas"
+                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-extrabold border transition-all shadow-sm text-white"
+                  style="background-color: var(--brand-primary); border-color: var(--brand-primary);">
+            🌟 Todas las Guías
+          </button>
+          <button type="button" onclick="window.filtrarEscapadas('finde_corto')" id="btn-filtro-finde_corto" data-cat="finde_corto"
+                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:dark:bg-slate-800">
+            🟢 Finde Corto (&lt; 3.5 hs · hasta 250 km)
+          </button>
+          <button type="button" onclick="window.filtrarEscapadas('finde_largo')" id="btn-filtro-finde_largo" data-cat="finde_largo"
+                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:dark:bg-slate-800">
+            🟡 Finde Largo (4 a 6.5 hs · 350-550 km)
+          </button>
+          <button type="button" onclick="window.filtrarEscapadas('vacaciones_semana')" id="btn-filtro-vacaciones_semana" data-cat="vacaciones_semana"
+                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:dark:bg-slate-800">
+            🔵 Vacaciones 1 Semana (7 a 11 hs · 600-950 km)
+          </button>
+          <button type="button" onclick="window.filtrarEscapadas('gran_ruta')" id="btn-filtro-gran_ruta" data-cat="gran_ruta"
+                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:dark:bg-slate-800">
+            🟣 Grandes Rutas (+1000 km)
+          </button>
+        </div>
       </div>
     </div>
 
@@ -2009,6 +2067,7 @@
 
             <!-- Anchor de enlace planificador -->
       <div id="planificador-ruta"></div>
+      <div id="planificador-rutas"></div>
 
       <!-- Barra de Controles Interactivos -->
       <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl mb-8 theme-transition">

@@ -370,8 +370,59 @@
       </p>
     </div>
 
-    <!-- Buscador Reactivo en Vivo -->
-    <div class="max-w-2xl mx-auto mb-8">
+    <!-- Hero Bento Telemetry Dock (4 Pilares de Transparencia y Funcionamiento) -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto mb-10">
+      <!-- Métrica 1 -->
+      <div class="p-4 sm:p-5 rounded-3xl dark:bg-slate-900/70 bg-white/80 backdrop-blur-xl border dark:border-slate-800/80 border-slate-200/80 shadow-lg shadow-rose-950/5 flex flex-col justify-between transition-all duration-300 hover:border-rose-500/30 hover:-translate-y-0.5">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-2xl">💡</span>
+          <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full dark:bg-rose-950/40 bg-rose-50 dark:text-rose-400 text-rose-600 border border-rose-500/20">Acceso</span>
+        </div>
+        <div>
+          <div class="text-xl sm:text-2xl font-black dark:text-white text-slate-900">100% Gratuito</div>
+          <div class="text-xs dark:text-slate-400 text-slate-500 leading-tight mt-0.5">Sin suscripciones ni comisiones ocultas</div>
+        </div>
+      </div>
+
+      <!-- Métrica 2 -->
+      <div class="p-4 sm:p-5 rounded-3xl dark:bg-slate-900/70 bg-white/80 backdrop-blur-xl border dark:border-slate-800/80 border-slate-200/80 shadow-lg shadow-rose-950/5 flex flex-col justify-between transition-all duration-300 hover:border-rose-500/30 hover:-translate-y-0.5">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-2xl">⚡</span>
+          <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full dark:bg-indigo-950/40 bg-indigo-50 dark:text-indigo-400 text-indigo-600 border border-indigo-500/20">Monitoreo</span>
+        </div>
+        <div>
+          <div class="text-xl sm:text-2xl font-black dark:text-white text-slate-900">45 Rutas 24/7</div>
+          <div class="text-xs dark:text-slate-400 text-slate-500 leading-tight mt-0.5">Cadencia inteligente y alertas instantáneas</div>
+        </div>
+      </div>
+
+      <!-- Métrica 3 -->
+      <div class="p-4 sm:p-5 rounded-3xl dark:bg-slate-900/70 bg-white/80 backdrop-blur-xl border dark:border-slate-800/80 border-slate-200/80 shadow-lg shadow-rose-950/5 flex flex-col justify-between transition-all duration-300 hover:border-rose-500/30 hover:-translate-y-0.5">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-2xl">🔒</span>
+          <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full dark:bg-emerald-950/40 bg-emerald-50 dark:text-emerald-400 text-emerald-600 border border-emerald-500/20">Privacidad</span>
+        </div>
+        <div>
+          <div class="text-xl sm:text-2xl font-black dark:text-white text-slate-900">Bóveda Cifrada</div>
+          <div class="text-xs dark:text-slate-400 text-slate-500 leading-tight mt-0.5">LocalStorage en tu navegador sin servidores</div>
+        </div>
+      </div>
+
+      <!-- Métrica 4 -->
+      <div class="p-4 sm:p-5 rounded-3xl dark:bg-slate-900/70 bg-white/80 backdrop-blur-xl border dark:border-slate-800/80 border-slate-200/80 shadow-lg shadow-rose-950/5 flex flex-col justify-between transition-all duration-300 hover:border-rose-500/30 hover:-translate-y-0.5">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-2xl">🤖</span>
+          <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full dark:bg-amber-950/40 bg-amber-50 dark:text-amber-400 text-amber-600 border border-amber-500/20">Asistente</span>
+        </div>
+        <div>
+          <div class="text-xl sm:text-2xl font-black dark:text-white text-slate-900">Telegram & Web</div>
+          <div class="text-xs dark:text-slate-400 text-slate-500 leading-tight mt-0.5">Consultas en vivo, comando por voz y alertas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bento Toolbar: Buscador Reactivo y Categorías Glassmorphism -->
+    <div class="max-w-3xl mx-auto mb-10 p-3 sm:p-4 rounded-3xl dark:bg-slate-900/70 bg-white/80 backdrop-blur-xl border dark:border-slate-800/80 border-slate-200/80 shadow-xl shadow-rose-950/5 space-y-3.5">
       <div class="relative">
         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -380,45 +431,46 @@
         </div>
         <input type="text" id="faq-search-input" 
                placeholder="Buscá por palabra clave (ej: equipaje, gratis, telegram, billetera, flybondi)..."
-               class="w-full pl-11 pr-24 py-3.5 rounded-2xl dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200/90 shadow-sm text-sm dark:text-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all">
+               class="w-full pl-11 pr-24 py-3.5 rounded-2xl dark:bg-slate-950/60 bg-white/90 border dark:border-slate-800/90 border-slate-200/90 shadow-inner text-sm dark:text-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-500/50 transition-all">
         <button id="faq-search-clear" onclick="clearFaqSearch()" 
-                class="hidden absolute inset-y-0 right-0 pr-4 flex items-center text-xs font-semibold text-rose-500 hover:text-rose-600 transition-colors">
+                class="hidden absolute inset-y-0 right-0 pr-4 flex items-center text-xs font-bold text-rose-500 hover:text-rose-600 transition-colors">
           Limpiar
         </button>
       </div>
-      <div class="flex items-center justify-between mt-2.5 px-2 text-xs dark:text-slate-400 text-slate-500">
-        <span id="faq-count-indicator">Mostrando 10 preguntas</span>
-        <span>Tip: las respuestas coincidentes se expanden solas</span>
-      </div>
-    </div>
 
-    <!-- Pestañas de Filtrado por Categoría -->
-    <div class="flex items-center justify-center gap-2 flex-wrap mb-10" id="faq-category-filters">
-      <button onclick="filterFaqCategory('todas', this)" class="faq-filter-btn active">
-        🌟 Todas (10)
-      </button>
-      <button onclick="filterFaqCategory('radar', this)" class="faq-filter-btn">
-        ✈️ Radar & Vuelos (3)
-      </button>
-      <button onclick="filterFaqCategory('reservas', this)" class="faq-filter-btn">
-        🏨 Hoteles & Emisión (2)
-      </button>
-      <button onclick="filterFaqCategory('billetera', this)" class="faq-filter-btn">
-        🧳 Billetera & Privacidad (2)
-      </button>
-      <button onclick="filterFaqCategory('modoruta', this)" class="faq-filter-btn">
-        🚗 Modo Ruta & Viajes (2)
-      </button>
-      <button onclick="filterFaqCategory('pagos', this)" class="faq-filter-btn">
-        💳 Impuestos & VIP (1)
-      </button>
+      <!-- Pestañas de Filtrado por Categoría (Horizontal Snap Carousel) -->
+      <div class="flex items-center gap-1.5 overflow-x-auto snap-carousel pb-1 no-scrollbar text-xs" id="faq-category-filters">
+        <button onclick="filterFaqCategory('todas', this)" class="faq-filter-btn active shrink-0">
+          🌟 Todas (10)
+        </button>
+        <button onclick="filterFaqCategory('radar', this)" class="faq-filter-btn shrink-0">
+          ✈️ Radar & Vuelos (3)
+        </button>
+        <button onclick="filterFaqCategory('reservas', this)" class="faq-filter-btn shrink-0">
+          🏨 Hoteles & Emisión (2)
+        </button>
+        <button onclick="filterFaqCategory('billetera', this)" class="faq-filter-btn shrink-0">
+          🧳 Billetera & Privacidad (2)
+        </button>
+        <button onclick="filterFaqCategory('modoruta', this)" class="faq-filter-btn shrink-0">
+          🚗 Modo Ruta & Viajes (2)
+        </button>
+        <button onclick="filterFaqCategory('pagos', this)" class="faq-filter-btn shrink-0">
+          💳 Impuestos & VIP (1)
+        </button>
+      </div>
+
+      <div class="flex items-center justify-between px-2 pt-1 text-xs dark:text-slate-400 text-slate-500 border-t dark:border-slate-800/60 border-slate-200/60">
+        <span id="faq-count-indicator" class="font-bold text-slate-700 dark:text-slate-300">Mostrando 10 preguntas</span>
+        <span class="text-[11px]">Tip: las respuestas coincidentes se expanden automáticamente</span>
+      </div>
     </div>
 
     <!-- Lista de Preguntas Frecuentes (Acordeón) -->
     <div class="space-y-4" id="faq-accordion-container">
       
       <!-- FAQ 1: Gratuidad -->
-      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="radar" open>
+      <details class="faq-item group dark:bg-slate-900/80 bg-white/90 backdrop-blur-md rounded-3xl border dark:border-slate-800/80 border-slate-200/80 shadow-md hover:border-rose-500/40 hover:shadow-xl transition-all duration-300 overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="radar" open>
         <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-rose-500 font-mono text-sm">01.</span>
@@ -439,7 +491,7 @@
       </details>
 
       <!-- FAQ 2: Emisión y Reservas -->
-      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="reservas">
+      <details class="faq-item group dark:bg-slate-900/80 bg-white/90 backdrop-blur-md rounded-3xl border dark:border-slate-800/80 border-slate-200/80 shadow-md hover:border-rose-500/40 hover:shadow-xl transition-all duration-300 overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="reservas">
         <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-rose-500 font-mono text-sm">02.</span>
@@ -455,7 +507,7 @@
       </details>
 
       <!-- FAQ 3: Sondeo y Alertas -->
-      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="radar">
+      <details class="faq-item group dark:bg-slate-900/80 bg-white/90 backdrop-blur-md rounded-3xl border dark:border-slate-800/80 border-slate-200/80 shadow-md hover:border-rose-500/40 hover:shadow-xl transition-all duration-300 overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="radar">
         <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-rose-500 font-mono text-sm">03.</span>
@@ -476,7 +528,7 @@
       </details>
 
       <!-- FAQ 4: Seguridad y Billetera -->
-      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="billetera">
+      <details class="faq-item group dark:bg-slate-900/80 bg-white/90 backdrop-blur-md rounded-3xl border dark:border-slate-800/80 border-slate-200/80 shadow-md hover:border-rose-500/40 hover:shadow-xl transition-all duration-300 overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="billetera">
         <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-rose-500 font-mono text-sm">04.</span>
@@ -492,7 +544,7 @@
       </details>
 
       <!-- FAQ 5: Modo Ruta -->
-      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="modoruta">
+      <details class="faq-item group dark:bg-slate-900/80 bg-white/90 backdrop-blur-md rounded-3xl border dark:border-slate-800/80 border-slate-200/80 shadow-md hover:border-rose-500/40 hover:shadow-xl transition-all duration-300 overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="modoruta">
         <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-rose-500 font-mono text-sm">05.</span>
@@ -514,7 +566,7 @@
       </details>
 
       <!-- FAQ 6: Telegram -->
-      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="radar">
+      <details class="faq-item group dark:bg-slate-900/80 bg-white/90 backdrop-blur-md rounded-3xl border dark:border-slate-800/80 border-slate-200/80 shadow-md hover:border-rose-500/40 hover:shadow-xl transition-all duration-300 overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="radar">
         <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-rose-500 font-mono text-sm">06.</span>
@@ -530,7 +582,7 @@
       </details>
 
       <!-- FAQ 7: Flybondi -->
-      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="reservas">
+      <details class="faq-item group dark:bg-slate-900/80 bg-white/90 backdrop-blur-md rounded-3xl border dark:border-slate-800/80 border-slate-200/80 shadow-md hover:border-rose-500/40 hover:shadow-xl transition-all duration-300 overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="reservas">
         <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-rose-500 font-mono text-sm">07.</span>
@@ -546,7 +598,7 @@
       </details>
 
       <!-- FAQ 8: Guías de Viaje -->
-      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="modoruta">
+      <details class="faq-item group dark:bg-slate-900/80 bg-white/90 backdrop-blur-md rounded-3xl border dark:border-slate-800/80 border-slate-200/80 shadow-md hover:border-rose-500/40 hover:shadow-xl transition-all duration-300 overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="modoruta">
         <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-rose-500 font-mono text-sm">08.</span>
@@ -562,7 +614,7 @@
       </details>
 
       <!-- FAQ 9: Salas VIP y Tarjetas -->
-      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="pagos">
+      <details class="faq-item group dark:bg-slate-900/80 bg-white/90 backdrop-blur-md rounded-3xl border dark:border-slate-800/80 border-slate-200/80 shadow-md hover:border-rose-500/40 hover:shadow-xl transition-all duration-300 overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="pagos">
         <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-rose-500 font-mono text-sm">09.</span>
@@ -578,7 +630,7 @@
       </details>
 
       <!-- FAQ 10: Impuestos y Cotizaciones -->
-      <details class="faq-item group dark:bg-slate-900/90 bg-white rounded-2xl border dark:border-slate-800 border-slate-200/90 shadow-xs transition-all overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="billetera">
+      <details class="faq-item group dark:bg-slate-900/80 bg-white/90 backdrop-blur-md rounded-3xl border dark:border-slate-800/80 border-slate-200/80 shadow-md hover:border-rose-500/40 hover:shadow-xl transition-all duration-300 overflow-hidden [&_summary::-webkit-details-marker]:hidden" data-category="billetera">
         <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-rose-500 font-mono text-sm">10.</span>
@@ -596,7 +648,7 @@
     </div>
 
     <!-- Banner de Soporte / Preguntas no resueltas -->
-    <div class="mt-14 sm:mt-16 rounded-3xl p-8 sm:p-10 border dark:border-slate-800 border-slate-200/90 dark:bg-slate-900/60 bg-white text-center relative overflow-hidden shadow-sm">
+    <div class="mt-14 sm:mt-16 rounded-3xl p-8 sm:p-10 border dark:border-slate-800/80 border-slate-200/80 dark:bg-slate-900/70 bg-white/80 backdrop-blur-xl text-center relative overflow-hidden shadow-xl shadow-rose-950/5">
       <div class="max-w-2xl mx-auto relative z-10">
         <div class="w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center text-2xl shadow-md text-white"
              style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">

@@ -72,6 +72,15 @@
       scrollbar-width: none;
     }
 
+    /* Snap suave en carrusel móvil para selector Bento Grid */
+    .snap-carousel {
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .snap-item {
+      scroll-snap-align: start;
+    }
+
   
     /* Botones de Barra de Navegación Píldora */
     .nav-dock-btn {
@@ -331,50 +340,70 @@
       </div>
     </div>
 
-    <!-- Métricas Resumen del Itinerario -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="p-5 rounded-2xl dark:bg-slate-900/70 bg-white border dark:border-slate-800 border-slate-200 shadow-xs space-y-1">
-        <div class="text-[11px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500">Próximo Vuelo</div>
-        <div class="text-2xl font-extrabold" style="color: var(--brand-primary);" id="metric-dias">En 22 días</div>
-        <div class="text-xs dark:text-slate-400 text-slate-600 font-medium">EZE ➔ CDG (Air France)</div>
-      </div>
-      <div class="p-5 rounded-2xl dark:bg-slate-900/70 bg-white border dark:border-slate-800 border-slate-200 shadow-xs space-y-1">
-        <div class="text-[11px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500">Documentos Guardados</div>
-        <div class="text-2xl font-extrabold dark:text-white text-slate-900" id="metric-total">4 archivos</div>
-        <div class="text-xs text-emerald-500 font-semibold flex items-center gap-1">
-          <span>✓</span> Verificados con OCR IA
+    <!-- Métricas Resumen del Itinerario (Bento Telemetry Cards) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="p-4 sm:p-5 rounded-2xl dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200/90 shadow-xs hover:border-rose-500/40 transition-all flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-500 border border-rose-500/20 flex items-center justify-center text-xl shrink-0">
+          ✈️
+        </div>
+        <div class="min-w-0">
+          <div class="text-[10px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 truncate">Próximo Vuelo</div>
+          <div class="text-xl sm:text-2xl font-black font-mono" style="color: var(--brand-primary);" id="metric-dias">En 22 días</div>
+          <div class="text-xs dark:text-slate-400 text-slate-600 font-medium truncate">EZE ➔ CDG (Air France)</div>
         </div>
       </div>
-      <div class="p-5 rounded-2xl dark:bg-slate-900/70 bg-white border dark:border-slate-800 border-slate-200 shadow-xs space-y-1">
-        <div class="text-[11px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500">Alojamientos</div>
-        <div class="text-2xl font-extrabold dark:text-white text-slate-900" id="metric-hoteles">1 reserva</div>
-        <div class="text-xs dark:text-slate-400 text-slate-600 font-medium">CitizenM París (7 noches)</div>
+      <div class="p-4 sm:p-5 rounded-2xl dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200/90 shadow-xs hover:border-emerald-500/40 transition-all flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center justify-center text-xl shrink-0">
+          🧳
+        </div>
+        <div class="min-w-0">
+          <div class="text-[10px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 truncate">Documentos Guardados</div>
+          <div class="text-xl sm:text-2xl font-black dark:text-white text-slate-900" id="metric-total">4 archivos</div>
+          <div class="text-xs text-emerald-500 font-semibold flex items-center gap-1 truncate">
+            <span>✓</span> Verificados con OCR IA
+          </div>
+        </div>
       </div>
-      <div class="p-5 rounded-2xl dark:bg-slate-900/70 bg-white border dark:border-slate-800 border-slate-200 shadow-xs space-y-1">
-        <div class="text-[11px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500">Seguridad Bóveda</div>
-        <div class="text-2xl font-extrabold text-emerald-500">Cifrada</div>
-        <div class="text-xs dark:text-slate-400 text-slate-600 font-medium">Aislamiento por usuario</div>
+      <div class="p-4 sm:p-5 rounded-2xl dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200/90 shadow-xs hover:border-sky-500/40 transition-all flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-500 border border-sky-500/20 flex items-center justify-center text-xl shrink-0">
+          🏨
+        </div>
+        <div class="min-w-0">
+          <div class="text-[10px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 truncate">Alojamientos</div>
+          <div class="text-xl sm:text-2xl font-black dark:text-white text-slate-900" id="metric-hoteles">1 reserva</div>
+          <div class="text-xs dark:text-slate-400 text-slate-600 font-medium truncate">CitizenM París (7 noches)</div>
+        </div>
+      </div>
+      <div class="p-4 sm:p-5 rounded-2xl dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200/90 shadow-xs hover:border-purple-500/40 transition-all flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-500 border border-purple-500/20 flex items-center justify-center text-xl shrink-0">
+          🔒
+        </div>
+        <div class="min-w-0">
+          <div class="text-[10px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 truncate">Seguridad Bóveda</div>
+          <div class="text-xl sm:text-2xl font-black text-emerald-500">Cifrada</div>
+          <div class="text-xs dark:text-slate-400 text-slate-600 font-medium truncate">Aislamiento por usuario</div>
+        </div>
       </div>
     </div>
 
-    <!-- Barra de Filtros y Búsqueda -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0" id="category-tabs">
+    <!-- Barra de Filtros y Búsqueda (Bento Toolbar) -->
+    <div class="p-2 sm:p-2.5 rounded-2xl dark:bg-slate-900/60 bg-white border dark:border-slate-800 border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 no-scrollbar" id="category-tabs">
         <button type="button" onclick="window.filtrarCategoria('todos')" id="tab-todos"
-                class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all text-white shadow-xs"
+                class="px-3.5 py-2 rounded-xl text-xs font-bold transition-all text-white shadow-xs shrink-0"
                 style="background: var(--brand-gradient);">
           Todos (4)
         </button>
         <button type="button" onclick="window.filtrarCategoria('vuelo')" id="tab-vuelo"
-                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">
+                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">
           ✈️ Vuelos (2)
         </button>
         <button type="button" onclick="window.filtrarCategoria('hotel')" id="tab-hotel"
-                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">
+                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">
           🏨 Hoteles (1)
         </button>
         <button type="button" onclick="window.filtrarCategoria('asistencia')" id="tab-asistencia"
-                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">
+                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">
           🩺 Asistencia Médica (1)
         </button>
       </div>
@@ -382,9 +411,8 @@
       <div class="w-full sm:w-72 relative">
         <input type="text" id="wallet-search" oninput="window.filtrarBusqueda(this.value)"
                placeholder="Buscar PNR, aerolínea, hotel..."
-               class="w-full pl-9 pr-4 py-2 rounded-xl text-xs dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 dark:text-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2"
-               style="--tw-ring-color: var(--brand-primary);" />
-        <span class="absolute left-3 top-2.5 text-xs text-slate-400">🔍</span>
+               class="w-full pl-9 pr-4 py-2 rounded-xl text-xs dark:bg-slate-950/60 bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-rose-500 transition-all" />
+        <span class="absolute left-3 top-2 text-xs text-slate-400">🔍</span>
       </div>
     </div>
 
@@ -916,10 +944,10 @@
         const btn = document.getElementById(`tab-${t}`);
         if (!btn) return;
         if (t === cat) {
-          btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold transition-all text-white shadow-xs";
+          btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold transition-all text-white shadow-xs shrink-0";
           btn.style.background = "var(--brand-gradient)";
         } else {
-          btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-900 bg-white dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all";
+          btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0";
           btn.style.background = "";
         }
       });
