@@ -4737,40 +4737,13 @@
       }
 
       // Generador Universal de Enlaces de Hoteles en Booking.com (Cero 404 & Fechas Sincronizadas)
-      function generarBookingHotelUrl(hotel, dest) {
-        const ciudadLimpia = (dest.ciudad || '').split('&')[0].split('(')[0].trim();
-        
-        // Obtener fechas del primer vuelo disponible (Top 1)
-        let checkin = '';
-        let checkout = '';
-        if (dest.vuelos && dest.vuelos[0]) {
-          const v = dest.vuelos[0];
-          if (v.fecha_ida && v.fecha_vuelta) {
-            checkin = v.fecha_ida;
-            checkout = v.fecha_vuelta;
-          } else if (window.obtenerFechasISO) {
-            const f = window.obtenerFechasISO(v.fechas, v);
-            if (f) {
-              checkin = f.ida;
-              checkout = f.vuelta;
-            }
-          }
-        }
-
-        // Búsqueda directa del hotel exacto en Booking con fechas precargadas
-        const query = encodeURIComponent(`${hotel.nombre} ${ciudadLimpia}`);
+      function generarBookingHotelUrl(hotel, dest, fechaIda, fechaVuelta) {
+        const ciudad = limpiarNombreCiudad(dest.ciudad);
+        const query = encodeURIComponent(`${hotel.nombre} ${ciudad}`);
         let url = `https://www.booking.com/searchresults.es.html?ss=${query}&lang=es`;
-        
-        if (checkin && checkout) {
-          url += `&checkin=${checkin}&checkout=${checkout}`;
+        if (fechaIda && fechaVuelta) {
+          url += `&checkin=${fechaIda}&checkout=${fechaVuelta}`;
         }
-        
-        // Mantener parámetro de afiliado si existe
-        const aid = (window.FB_AFFILIATE_CONFIG && window.FB_AFFILIATE_CONFIG.booking && window.FB_AFFILIATE_CONFIG.booking.id) ? window.FB_AFFILIATE_CONFIG.booking.id : '';
-        if (aid) {
-          url += `&aid=${encodeURIComponent(aid)}`;
-        }
-
         return url;
       }
 
@@ -4778,7 +4751,7 @@
       function generarTarjetasFullWidthHtml(dest) {
         const ciudadLimpia = (dest.ciudad || '').split('&')[0].split('(')[0].trim();
         const flightGfUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${dest.iata}%20from%20BUE&hl=es`;
-        const bookingCityUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(ciudadLimpia)}&lang=es`;
+        const bookingCityUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(limpiarNombreCiudad(dest.ciudad))}&lang=es`;
         const tgCmd = (dest.comando_tg || '').replace('/', '');
         const tgAlertUrl = `https://t.me/GnZFlightBot?start=${encodeURIComponent(tgCmd)}`;
         const kiwiAffilId = 'travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785';
@@ -4854,20 +4827,20 @@
 
               <!-- Botonera Unificada Bento: 1 Primario + 2 Secundarios sin romper paleta -->
               <div class="space-y-2 pt-2 border-t dark:border-slate-800/80 border-slate-100">
-                <a href="${flightCardGfUrl}" target="_blank" rel="noopener noreferrer"
+                <a href="${flightCardGfUrl}" target="_blank" rel="noopener noreferrer sponsored"
                    class="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-white transition-all hover:brightness-110 flex items-center justify-center gap-1.5 shadow-md"
                    style="background: var(--brand-gradient);"
                    title="Buscar mejores tarifas en Google Flights (Buenos Aires ➔ ${dest.iata})">
                   <span>✈️ Ver en Google Flights</span>
                 </a>
                 <div class="grid grid-cols-2 gap-2 text-center text-[11px] font-semibold">
-                  <a href="${kiwiUrl}" target="_blank" rel="noopener noreferrer"
+                  <a href="${kiwiUrl}" target="_blank" rel="noopener noreferrer sponsored"
                      class="py-2 px-2.5 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-300 dark:text-slate-300 text-slate-700 hover:border-emerald-500/60 hover:text-emerald-500 shadow-2xs transition-all flex items-center justify-center gap-1.5"
                      title="Cotizar en Kiwi.com (${fechaIda} al ${fechaVuelta})">
                     <span>🥝</span>
                     <span class="truncate">Kiwi.com</span>
                   </a>
-                  <a href="${despegarUrl}" target="_blank" rel="noopener noreferrer"
+                  <a href="${despegarUrl}" target="_blank" rel="noopener noreferrer sponsored"
                      class="py-2 px-2.5 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-300 dark:text-slate-300 text-slate-700 hover:border-purple-500/60 hover:text-purple-500 shadow-2xs transition-all flex items-center justify-center gap-1.5"
                      title="Cotizar en Despegar (${fechaIda} al ${fechaVuelta})">
                     <span>🛫</span>
@@ -4880,7 +4853,26 @@
         `;
         }).join('');
 
-        const hotelesHtml = dest.hoteles.map(h => `
+        // Extraer fechas del primer vuelo disponible para sincronizar el check-in / check-out del hotel
+        let checkinHotel = '';
+        let checkoutHotel = '';
+        if (dest.vuelos && dest.vuelos[0]) {
+          const v0 = dest.vuelos[0];
+          if (v0.fecha_ida && v0.fecha_vuelta) {
+            checkinHotel = v0.fecha_ida;
+            checkoutHotel = v0.fecha_vuelta;
+          } else if (window.obtenerFechasISO) {
+            const f0 = window.obtenerFechasISO(v0.fechas, v0);
+            if (f0) {
+              checkinHotel = f0.ida;
+              checkoutHotel = f0.vuelta;
+            }
+          }
+        }
+
+        const hotelesHtml = dest.hoteles.map(h => {
+          const hotelUrl = generarBookingHotelUrl(h, dest, checkinHotel, checkoutHotel);
+          return `
           <div class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
             <div>
               <div class="relative h-48 overflow-hidden bg-slate-800">
@@ -4914,7 +4906,7 @@
                   <div class="text-[10px] uppercase font-bold dark:text-slate-400 text-slate-500">Tarifa de Referencia</div>
                   <div class="text-xs sm:text-sm font-extrabold dark:text-white text-slate-900">${window.formatearPrecioMoneda ? window.formatearPrecioMoneda(h.precio_noche, dest) : h.precio_noche}</div>
                 </div>
-                <a href="${generarBookingHotelUrl(h, dest)}" target="_blank" rel="noopener noreferrer sponsored"
+                <a href="${hotelUrl}" target="_blank" rel="noopener noreferrer sponsored"
                    class="px-3 py-1.5 rounded-xl text-xs font-bold text-white transition-all hover:brightness-110 flex items-center gap-1 shadow-xs"
                    style="background: var(--brand-gradient);">
                   <span>Ver Hotel</span>
@@ -4922,7 +4914,8 @@
               </div>
             </div>
           </div>
-        `).join('');
+        `;
+        }).join('');
         return `
           <!-- SECCIÓN 1: TOP 3 VUELOS VIGENTES (ANCHO COMPLETO) -->
           <div class="mb-12">
@@ -4933,7 +4926,7 @@
                   Top 3 Vuelos Más Económicos Vigentes
                 </h4>
               </div>
-              <a href="${flightGfUrl}" target="_blank" rel="noopener noreferrer"
+              <a href="${flightGfUrl}" target="_blank" rel="noopener noreferrer sponsored"
                  class="text-xs font-bold text-rose-500 hover:text-rose-400 flex items-center gap-1">
                 <span>Explorar en Google Flights</span>
               </a>
@@ -5015,6 +5008,53 @@
         }
       }
 
+      // 4. REVISIÓN Y VALIDACIÓN POR CONSOLA DE ENLACES SALIENTES
+      function validarEnlacesSalientesDestino(dest) {
+        if (!dest) return;
+        const containers = [
+          document.getElementById('fb-radar-header-container'),
+          document.getElementById('fb-radar-cards-container'),
+          document.getElementById('fb-radar-detail-container')
+        ];
+        
+        let totalEnlaces = 0;
+        let advertencias = 0;
+
+        containers.forEach(cont => {
+          if (!cont) return;
+          const links = cont.querySelectorAll('a[href]');
+          links.forEach(a => {
+            const href = a.getAttribute('href') || '';
+            if (href.startsWith('http://') || href.startsWith('https://')) {
+              totalEnlaces++;
+              
+              // Regla: Todos los enlaces salientes deben mantener target="_blank" rel="noopener noreferrer sponsored"
+              a.setAttribute('target', '_blank');
+              a.setAttribute('rel', 'noopener noreferrer sponsored');
+
+              // Detección estricta de parámetros rotos o incompletos
+              const esAnomalo =
+                href.includes('undefined') ||
+                href.includes('null') ||
+                (href.includes('to=') && (href.endsWith('to=') || href.includes('to=&'))) ||
+                href.includes('&checkin=&') ||
+                href.includes('&checkout=&') ||
+                href.endsWith('?ss=') ||
+                href.endsWith('&ss=');
+
+              if (esAnomalo) {
+                advertencias++;
+                console.warn(`[FlightBot Link Auditor] ⚠️ Enlace con parámetro inválido en destino ${dest.iata || dest.id}:`, href, a);
+              }
+            }
+          });
+        });
+
+        if (advertencias === 0) {
+          console.log(`[FlightBot Link Auditor] ✅ Destino ${dest.iata || dest.id} validado con éxito: ${totalEnlaces} enlaces salientes conformes.`);
+        }
+      }
+
       // Renderizar con animación sutil (Crossfade suave de salida y entrada)
       window.renderRadarDestino = function(destId, isInitial) {
         if (destId === currentDestinationId && !isInitial) return;
@@ -5036,6 +5076,7 @@
           if (headerContainer) headerContainer.innerHTML = headerHtml;
           if (cardsContainer) cardsContainer.innerHTML = cardsHtml;
           if (oldDetailContainer && !headerContainer) oldDetailContainer.innerHTML = headerHtml + cardsHtml;
+          validarEnlacesSalientesDestino(dest);
           return;
         }
 
@@ -5049,6 +5090,7 @@
           if (headerContainer) headerContainer.innerHTML = headerHtml;
           if (cardsContainer) cardsContainer.innerHTML = cardsHtml;
           if (oldDetailContainer && !headerContainer) oldDetailContainer.innerHTML = headerHtml + cardsHtml;
+          validarEnlacesSalientesDestino(dest);
 
           requestAnimationFrame(() => {
             if (headerContainer) headerContainer.classList.remove('fb-dest-fading');
