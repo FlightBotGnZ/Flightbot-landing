@@ -4077,28 +4077,141 @@ def generar_indice_guias(guias: list) -> str:
   {construir_bloque_chatbox_ia(contexto_pagina="guias", ciudad_titulo="", icono_ciudad="🗺️")}
 
   <script>
-    (function initContadorGuias() {{
-      function actualizarContador() {{
-        const articulos = document.querySelectorAll('article');
-        const cantidad = articulos.length;
-        const badge = document.getElementById('contador-guias-badge');
-        if (badge && cantidad > 0) {{
-          badge.textContent = cantidad + ' Guías Publicadas';
+    // Sistema reactivo de filtrado de guías por región y búsqueda de texto
+    let fbRegionActiva = 'todos';
+
+    function normalizarTexto(txt) {{
+      return (txt || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim();
+    }}
+
+    function cumpleFiltroRegion(pais, region, filtro) {{
+      if (filtro === 'todos') return true;
+      if (filtro === 'argentina') {{
+        return pais.includes('argentina') || region.includes('argentina') || region.includes('patagonia') || region.includes('cuyo') || region.includes('litoral');
+      }}
+      if (filtro === 'brasil') {{
+        return pais.includes('brasil') || region.includes('brasil');
+      }}
+      if (filtro === 'caribe_usa') {{
+        const paisesCaribeUsa = ['estados unidos', 'mexico', 'republica dominicana', 'aruba', 'cuba', 'panama', 'colombia'];
+        return paisesCaribeUsa.some(p => pais.includes(p)) || region.includes('caribe') || region.includes('florida');
+      }}
+      if (filtro === 'europa_mundo') {{
+        // No es cabotaje, ni brasil, ni caribe/usa
+        const esArgentina = pais.includes('argentina') || region.includes('argentina');
+        const esBrasil = pais.includes('brasil') || region.includes('brasil');
+        const paisesCaribeUsa = ['estados unidos', 'mexico', 'republica dominicana', 'aruba', 'cuba', 'panama', 'colombia'];
+        const esCaribeUsa = paisesCaribeUsa.some(p => pais.includes(p)) || region.includes('caribe') || region.includes('florida');
+        return !esArgentina && !esBrasil && !esCaribeUsa;
+      }}
+      return true;
+    }}
+
+    function aplicarFiltrosGuias() {{
+      const searchInput = document.getElementById('fb-guias-search');
+      const query = normalizarTexto(searchInput ? searchInput.value : '');
+      const articulos = document.querySelectorAll('#guias-grid article');
+      let visibles = 0;
+
+      articulos.forEach(art => {{
+        const ciudad = normalizarTexto(art.getAttribute('data-ciudad'));
+        const pais = normalizarTexto(art.getAttribute('data-pais'));
+        const region = normalizarTexto(art.getAttribute('data-region'));
+        const cmd = normalizarTexto(art.getAttribute('data-cmd'));
+        const textoCompleto = normalizarTexto(art.textContent);
+
+        const coincideRegion = cumpleFiltroRegion(pais, region, fbRegionActiva);
+        const coincideTexto = !query || 
+          ciudad.includes(query) || 
+          pais.includes(query) || 
+          region.includes(query) || 
+          cmd.includes(query) || 
+          textoCompleto.includes(query);
+
+        if (coincideRegion && coincideTexto) {{
+          art.classList.remove('hidden');
+          visibles++;
+        }} else {{
+          art.classList.add('hidden');
+        }}
+      }});
+
+      // Actualizar contador badge
+      const badge = document.getElementById('contador-guias-badge');
+      if (badge) {{
+        if (fbRegionActiva === 'todos' && !query) {{
+          badge.textContent = articulos.length + ' Guías Publicadas';
+        }} else {{
+          badge.textContent = visibles + (visibles === 1 ? ' Guía Encontrada' : ' Guías Encontradas');
         }}
       }}
-      if (document.readyState === 'loading') {{
-        document.addEventListener('DOMContentLoaded', actualizarContador);
-      }} else {{
-        actualizarContador();
-      }}
-      if (typeof MutationObserver !== 'undefined') {{
-        const grid = document.querySelector('.grid');
-        if (grid) {{
-          const observer = new MutationObserver(actualizarContador);
-          observer.observe(grid, {{ childList: true }});
+
+      // Mensaje de estado vacío
+      let noResultados = document.getElementById('fb-guias-no-results');
+      const grid = document.getElementById('guias-grid');
+      if (visibles === 0) {{
+        if (!noResultados && grid) {{
+          noResultados = document.createElement('div');
+          noResultados.id = 'fb-guias-no-results';
+          noResultados.className = 'col-span-full py-16 px-6 text-center rounded-3xl dark:bg-slate-900/60 bg-white/70 border dark:border-slate-800 border-slate-200';
+          noResultados.innerHTML = `
+            <div class="text-4xl mb-3">🔍</div>
+            <h4 class="text-lg font-bold dark:text-white text-slate-900 mb-1">No se encontraron guías</h4>
+            <p class="text-xs dark:text-slate-400 text-slate-500 mb-4 max-w-sm mx-auto">No hay destinos que coincidan con tu búsqueda en esta categoría.</p>
+            <button type="button" onclick="resetearFiltrosGuias()" class="px-4 py-2 rounded-xl text-xs font-bold text-white transition-all shadow-md" style="background-color: var(--brand-primary);">
+              Mostrar todas las guías
+            </button>
+          `;
+          grid.appendChild(noResultados);
+        }} else if (noResultados) {{
+          noResultados.classList.remove('hidden');
         }}
+      }} else if (noResultados) {{
+        noResultados.classList.add('hidden');
       }}
-    }})();
+    }}
+
+    function filtrarGuiasRegion(region, btnElement) {{
+      fbRegionActiva = region;
+
+      // Actualizar estilos visuales de los botones de filtro
+      const botones = document.querySelectorAll('.guia-filtro-btn');
+      botones.forEach(btn => {{
+        btn.style.backgroundColor = '';
+        btn.classList.remove('text-white', 'shadow-sm');
+        btn.classList.add('dark:bg-slate-900', 'bg-slate-100', 'dark:text-slate-300', 'text-slate-700', 'border', 'dark:border-slate-800', 'border-slate-200');
+      }});
+
+      if (btnElement) {{
+        btnElement.classList.remove('dark:bg-slate-900', 'bg-slate-100', 'dark:text-slate-300', 'text-slate-700', 'border', 'dark:border-slate-800', 'border-slate-200');
+        btnElement.classList.add('text-white', 'shadow-sm');
+        btnElement.style.backgroundColor = 'var(--brand-primary)';
+      }}
+
+      aplicarFiltrosGuias();
+    }}
+
+    function filtrarGuiasCatalogo() {{
+      aplicarFiltrosGuias();
+    }}
+
+    function resetearFiltrosGuias() {{
+      const searchInput = document.getElementById('fb-guias-search');
+      if (searchInput) searchInput.value = '';
+      const primerBoton = document.querySelector('.guia-filtro-btn');
+      filtrarGuiasRegion('todos', primerBoton);
+    }}
+
+    // Inicializar contador al cargar
+    if (document.readyState === 'loading') {{
+      document.addEventListener('DOMContentLoaded', aplicarFiltrosGuias);
+    }} else {{
+      aplicarFiltrosGuias();
+    }}
   </script>
 
 </body>
