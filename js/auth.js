@@ -196,7 +196,7 @@
    */
   function renderAuthSkeleton() {
     const container = document.getElementById('auth-nav-container');
-    if (!container) return;
+    if (!container || container.innerHTML.trim().length > 0) return;
     container.innerHTML = `
       <div class="h-8 w-8 sm:w-20 rounded-full bg-slate-200/60 dark:bg-slate-800/60 animate-pulse shrink-0"></div>
     `;
