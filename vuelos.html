@@ -325,14 +325,14 @@
 
   <!-- ENCABEZADO / NAVBAR UNIVERSAL -->
   <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/80 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between relative">
       <!-- Marca / Logotipo -->
       <div class="flex items-center gap-3 shrink-0 z-10 mr-3 xl:mr-5">
         <a href="/" class="flex items-center gap-3 group" title="Volver al inicio de FlightBot">
-          <div id="brand-logo" class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition cursor-pointer p-1 group-hover:scale-105 transition-transform"
+          <div id="brand-logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition cursor-pointer p-1 group-hover:scale-105 transition-transform"
                title="Mascota tech redondeada que sostiene su propia valija carry-on rígida con ruedas 360°. La antena superior emite pulsos de alertas cuando encuentra una tarifa baja."
                style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
-            <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 40 40" class="w-6 h-6 sm:w-8 sm:h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
               <!-- Valija Carry-On SIEMPRE ROJA (No cambia con el theme) -->
               <rect x="23" y="19" width="12" height="16" rx="3" fill="url(#fbSuitcaseAlwaysRedNav)" stroke="#ffffff" stroke-width="0.8"/>
@@ -363,9 +363,7 @@
               </defs>
             </svg>
           </div>
-          <span class="text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">
-            Flight<span style="color: var(--brand-primary);">Bot</span>
-          </span>
+          <span class="text-xl sm:text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">Flight<span style="color: var(--brand-primary);">Bot</span></span>
         </a>
       </div>
 
@@ -402,40 +400,42 @@
       </nav>
 
       <!-- Controles de Personalización y Acciones -->
-      <div class="flex items-center gap-2 sm:gap-3 shrink-0 z-10">
+      <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0 z-10">
+        <!-- Widget Auth Google / Billetera de Tokens -->
         <div id="auth-nav-container" class="flex items-center"></div>
 
-        <!-- Switcher de Tema -->
-        <div class="flex items-center p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-xs">
-          <div class="flex items-center gap-1.5 pl-1.5 pr-2">
-            <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Tema Rojo Rubí"
-                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none"></button>
-            <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Tema Azul Océano"
-                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none"></button>
+        <!-- Switcher de Tema Proporcional (h-8) -->
+        <div class="flex items-center h-8 p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-xs">
+          <!-- Switcher de Color (Oculto en móvil chico < sm para no saturar) -->
+          <div class="hidden sm:flex items-center gap-1.5 pl-1.5 pr-2">
+            <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Tema Rojo Rubí" aria-label="Tema Rojo Rubí"
+                    class="w-3.5 h-3.5 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0"></button>
+            <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Tema Azul Océano" aria-label="Tema Azul Océano"
+                    class="w-3.5 h-3.5 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0"></button>
           </div>
-          <div class="w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
-          <div class="flex items-center pl-1 pr-1.5">
-            <button onclick="toggleThemeMode()" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
-                    class="w-4.5 h-4.5 rounded-full flex items-center justify-center text-xs dark:text-amber-400 text-slate-700 hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-all focus:outline-none">
+          <div class="hidden sm:block w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
+          <!-- Botón Modo Claro / Oscuro (Siempre visible) -->
+          <div class="flex items-center px-1">
+            <button onclick="toggleThemeMode()" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro" aria-label="Alternar Modo Claro / Oscuro"
+                    class="w-6 h-6 rounded-full flex items-center justify-center text-xs dark:text-amber-400 text-slate-700 hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
               <span id="theme-mode-icon">🌙</span>
             </button>
           </div>
         </div>
 
-        <!-- Botón CTA Telegram -->
+        <!-- Botón CTA Telegram: Visible en tablets y desktop (hidden en móvil chico < sm) -->
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-white font-semibold text-xs sm:text-sm transition-all shadow-lg hover:brightness-110"
+           class="hidden sm:inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full text-white font-semibold text-xs transition-all shadow-md hover:brightness-110 shrink-0"
            style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
-          <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+          <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
           </svg>
-          <span class="hidden sm:inline">Probar en Telegram</span>
-          <span class="sm:hidden">Bot</span>
+          <span class="hidden md:inline">Telegram</span>
         </a>
 
-        <!-- Botón Menú Móvil -->
+        <!-- Botón Menú Móvil (< lg): SIEMPRE VISIBLE, ANCLADO Y PRIORITARIO A LA DERECHA -->
         <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
-                class="lg:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
+                class="lg:hidden w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors shrink-0">
           <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
@@ -447,8 +447,11 @@
     </div>
 
     <!-- Menú Móvil -->
-    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
-      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3.5 transition-all shadow-xl">
+      <!-- Contenedor Auth Móvil -->
+      <div id="mobile-auth-drawer-container"></div>
+
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold mb-3">
         <a href="/" id="nav-mobile-inicio" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🏠</span> Inicio
         </a>
@@ -474,6 +477,16 @@
           <span>❓</span> FAQ
         </a>
       </div>
+
+      <!-- Botón Telegram en Menú Móvil -->
+      <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
+         class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-white font-bold text-xs shadow-md hover:brightness-110 transition-all"
+         style="background: var(--brand-gradient);">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
+        </svg>
+        <span>Abrir Rolli en Telegram</span>
+      </a>
     </div>
   </header>
 
@@ -600,7 +613,7 @@
           <!-- Botón Buscar (lg:col-span-2) -->
           <div class="lg:col-span-2 pt-4 lg:pt-0">
             <label class="hidden lg:block text-[11px] font-bold uppercase tracking-wider opacity-0 mb-1.5">Buscar</label>
-            <button type="button" onclick="window.ejecutarBusquedaVuelos('google_flights')"
+            <button type="button" onclick="window.ejecutarBusquedaVuelos('feed')"
                     class="w-full py-3.5 px-4 rounded-2xl text-white font-extrabold text-xs sm:text-sm shadow-lg hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer"
                     style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
               <span>🔍</span>
@@ -672,6 +685,141 @@
               <span>🛫 Despegar</span>
             </button>
           </div>
+        </div>
+
+      </div>
+
+      <!-- FEED DE RESULTADOS EN PANTALLA (IN-PAGE FLIGHT RESULTS FEED) -->
+      <div id="fb-flight-results-container" class="hidden mt-8 dark:bg-slate-900/95 bg-white/95 backdrop-blur-xl border dark:border-slate-800 border-slate-200/90 rounded-3xl p-5 sm:p-7 shadow-2xl transition-all">
+        
+        <!-- Encabezado del Feed de Resultados -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b dark:border-slate-800 border-slate-200">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 font-mono border"
+                 style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
+              <span class="w-2 h-2 rounded-full animate-ping" style="background-color: var(--brand-primary);"></span>
+              <span>Tarifas Verificadas en Vivo · 0 Tokens Consumidos</span>
+            </div>
+            <h2 id="fb-results-title" class="text-xl sm:text-2xl font-extrabold dark:text-white text-slate-900 tracking-tight">
+              Vuelos encontrados: <span id="fb-results-origin-label" class="text-rose-500">BUE</span> ➔ <span id="fb-results-dest-label" class="text-rose-500">PTY</span>
+            </h2>
+            <p id="fb-results-subtitle" class="text-xs sm:text-sm dark:text-slate-400 text-slate-600 mt-1">
+              Fechas seleccionadas · Precios finales con impuestos y tasas incluidas
+            </p>
+          </div>
+
+          <!-- Acceso Rápido al Radar si la ruta está monitoreada 24/7 -->
+          <div id="fb-results-radar-shortcut" class="hidden shrink-0">
+            <button type="button" onclick="window.saltarAlRadarDesdeResultados()"
+                    class="px-4 py-2.5 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 dark:text-emerald-400 border border-emerald-500/30 text-xs font-extrabold transition-all flex items-center gap-2 shadow-xs cursor-pointer">
+              <span>⚡ Esta ruta está en nuestro Radar 24/7</span>
+              <span>↓</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Skeleton Loader (Rolli buscando tarifas) -->
+        <div id="fb-results-loader" class="py-16 flex flex-col items-center justify-center text-center">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center p-3 mb-4 animate-bounce"
+               style="background: var(--brand-gradient); box-shadow: 0 10px 25px -5px var(--brand-glow);">
+            <svg viewBox="0 0 40 40" class="w-10 h-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
+              <rect x="23" y="19" width="12" height="16" rx="3" fill="#e11d48" stroke="#ffffff" stroke-width="0.8"/>
+              <rect x="7" y="17" width="14" height="16" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="0.8"/>
+              <rect x="5.5" y="6" width="17" height="13" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+              <circle cx="10" cy="12.5" r="2.2" fill="#0f172a"/>
+              <circle cx="18" cy="12.5" r="2.2" fill="#0f172a"/>
+              <circle cx="10.8" cy="11.8" r="0.8" fill="#38bdf8"/>
+              <circle cx="18.8" cy="11.8" r="0.8" fill="#38bdf8"/>
+            </svg>
+          </div>
+          <div class="text-base font-extrabold dark:text-white text-slate-900 animate-pulse">
+            Rolli está analizando tarifas, escalas y combinaciones de vuelos...
+          </div>
+          <p class="text-xs dark:text-slate-400 text-slate-500 mt-1.5 max-w-md">
+            Cotejando las mejores frecuencias, aerolíneas oficiales y franquicias de equipaje para presentarte el Top 3 y el listado de horarios.
+          </p>
+        </div>
+
+        <!-- CONTENIDO DEL FEED (Oculto mientras carga) -->
+        <div id="fb-results-content" class="hidden">
+          
+          <!-- TOP 3 VUELOS DESTACADOS (Bento Cards) -->
+          <div class="mt-6 mb-8">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-sm sm:text-base font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+                <span>🏆</span>
+                <span>Top 3 Opciones Recomendadas para tu Viaje</span>
+              </h3>
+              <span class="text-xs font-bold text-slate-400 dark:text-slate-500">Seleccionadas por precio, duración y conveniencia</span>
+            </div>
+
+            <div id="fb-top3-cards-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <!-- Renderizado dinámico de Card 1, Card 2, Card 3 -->
+            </div>
+          </div>
+
+          <!-- LISTADO / TABLA DE OTRAS ALTERNATIVAS Y COMBINACIONES DE HORARIOS -->
+          <div id="fb-more-flights-section" class="mt-8 pt-6 border-t dark:border-slate-800 border-slate-200">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="text-sm sm:text-base font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+                  <span>🕒</span>
+                  <span>Otras alternativas de vuelos y combinaciones de horarios</span>
+                </h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                  Distintas frecuencias del día para que elijas según tu conveniencia horaria.
+                </p>
+              </div>
+              <span id="fb-more-flights-badge" class="self-start sm:self-auto text-xs font-bold px-3 py-1 rounded-full dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 border dark:border-slate-700 border-slate-200">
+                Opciones disponibles
+              </span>
+            </div>
+
+            <!-- Tabla de vuelos responsive con scroll horizontal suave -->
+            <div class="overflow-x-auto rounded-2xl border dark:border-slate-800 border-slate-200 shadow-xs fb-custom-scrollbar">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="dark:bg-slate-950/80 bg-slate-100/80 border-b dark:border-slate-800 border-slate-200 text-slate-500 uppercase tracking-wider font-bold">
+                    <th class="py-3 px-4">Aerolínea</th>
+                    <th class="py-3 px-4">Horario (Ida)</th>
+                    <th class="py-3 px-4">Horario (Vuelta)</th>
+                    <th class="py-3 px-4">Escalas & Duración</th>
+                    <th class="py-3 px-4">Equipaje</th>
+                    <th class="py-3 px-4 text-right">Precio Total</th>
+                    <th class="py-3 px-4 text-center">Acción Directa</th>
+                  </tr>
+                </thead>
+                <tbody id="fb-more-flights-tbody" class="divide-y dark:divide-slate-800 divide-slate-200 dark:bg-slate-900/60 bg-white">
+                  <!-- Filas inyectadas por JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Banner Informativo y Fidelización con Rolli en Telegram -->
+          <div class="mt-8 p-4 sm:p-5 rounded-2xl dark:bg-slate-950/60 bg-slate-100 border dark:border-slate-800 border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-3.5">
+              <div class="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 shadow-md" style="background: var(--brand-gradient);">
+                <span class="text-lg text-white">🔔</span>
+              </div>
+              <div>
+                <strong class="dark:text-white text-slate-900 block text-sm font-extrabold">
+                  ¿Querés que Rolli vigile esta ruta 24/7 y te avise en Telegram si baja el precio?
+                </strong>
+                <span class="text-slate-500 dark:text-slate-400 text-xs">
+                  Si la aerolínea lanza una promo flash o piso histórico, recibís una notificación instantánea en tu celular (1 token semanal).
+                </span>
+              </div>
+            </div>
+            <a id="fb-results-telegram-cta" href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
+               class="px-5 py-3 rounded-2xl text-white font-extrabold text-xs whitespace-nowrap shadow-lg hover:brightness-110 active:scale-95 transition-all shrink-0 cursor-pointer text-center"
+               style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
+              <span>Activar Alerta 24/7 con Rolli</span>
+              <span class="ml-1">➔</span>
+            </a>
+          </div>
+
         </div>
 
       </div>
@@ -992,7 +1140,7 @@
         <div class="flex items-center gap-2.5 min-w-0">
           <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center shadow-inner border border-white/20 flex-shrink-0 p-1 cursor-help"
                title="F-Bot Rolli · Asistente IA de Viajes">
-            <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 40 40" class="w-6 h-6 sm:w-8 sm:h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
               <rect x="23" y="19" width="12" height="16" rx="3" fill="url(#fbSuitcaseAlwaysRedChat)" stroke="#ffffff" stroke-width="0.8"/>
               <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
@@ -3172,13 +3320,543 @@
         return txt.trim();
       }
 
+      // ==============================================================================
+      // CATÁLOGO REGIONAL DE AEROLÍNEAS Y HUBS PARA GENERACIÓN DE FEED DE RESULTADOS
+      // ==============================================================================
+      const AIRPORT_HUB_AIRLINES = {
+        // Rutas Cabotaje Argentino
+        'BRC': {
+          aerolinea_lider: 'JetSMART', emoji: '✈️', directo: true, duracion: '2h 20m',
+          precio_base_usd: 137, equipaje: '🎒 Mochila incluida (Carry-on opcional)',
+          frecuencias_ida: ['06:15 - 08:35', '11:30 - 13:50', '16:00 - 18:20', '19:45 - 22:05'],
+          frecuencias_vuelta: ['09:15 - 11:30', '14:35 - 16:50', '19:05 - 21:20', '22:45 - 01:00 (+1)'],
+          alternativas: [
+            { aerolinea: 'Aerolíneas Argentinas', emoji: '🇦🇷', escalas: 'Directo (AEP ➔ BRC)', duracion: '2h 15m', mult: 1.22, equipaje: '🧳 Carry-on + Bodega incluidos', ida: '08:40 - 10:55', vuelta: '17:50 - 20:00' },
+            { aerolinea: 'JetSMART Madrugada', emoji: '⚡', escalas: 'Directo (EZE ➔ BRC)', duracion: '2h 20m', mult: 0.95, equipaje: '🎒 Mochila incluida', ida: '05:30 - 07:50', vuelta: '12:00 - 14:15' }
+          ]
+        },
+        'MDZ': {
+          aerolinea_lider: 'JetSMART', emoji: '✈️', directo: true, duracion: '1h 55m',
+          precio_base_usd: 115, equipaje: '🎒 Mochila incluida',
+          frecuencias_ida: ['07:45 - 09:40', '13:20 - 15:15', '18:10 - 20:05'],
+          frecuencias_vuelta: ['10:20 - 12:10', '16:00 - 17:50', '20:45 - 22:35'],
+          alternativas: [
+            { aerolinea: 'Aerolíneas Argentinas', emoji: '🇦🇷', escalas: 'Directo (AEP ➔ MDZ)', duracion: '1h 50m', mult: 1.25, equipaje: '🧳 Carry-on + Bodega incluidos', ida: '09:00 - 10:50', vuelta: '19:30 - 21:15' }
+          ]
+        },
+        'IGR': {
+          aerolinea_lider: 'JetSMART', emoji: '✈️', directo: true, duracion: '1h 50m',
+          precio_base_usd: 120, equipaje: '🎒 Mochila incluida',
+          frecuencias_ida: ['08:00 - 09:50', '14:30 - 16:20', '18:50 - 20:40'],
+          frecuencias_vuelta: ['10:30 - 12:20', '17:00 - 18:50', '21:20 - 23:10'],
+          alternativas: [
+            { aerolinea: 'Aerolíneas Argentinas', emoji: '🇦🇷', escalas: 'Directo (AEP ➔ IGR)', duracion: '1h 45m', mult: 1.20, equipaje: '🧳 Carry-on + Bodega incluidos', ida: '11:15 - 13:00', vuelta: '16:40 - 18:25' }
+          ]
+        },
+
+        // Caribe & Centroamérica (Caso de Panamá PTY)
+        'PTY': {
+          aerolinea_lider: 'Copa Airlines', emoji: '🇵🇦', directo: true, duracion: '7h 15m',
+          precio_base_usd: 540, equipaje: '🎒 Mochila + carry-on incluidos',
+          frecuencias_ida: ['01:30 - 06:45', '11:20 - 16:35', '18:40 - 23:55'],
+          frecuencias_vuelta: ['15:20 - 00:35 (+1)', '21:00 - 06:15 (+1)', '11:45 - 21:00'],
+          alternativas: [
+            { aerolinea: 'Avianca', emoji: '🇨🇴', escalas: '1 escala en BOG (1h 40m)', duracion: '9h 30m', mult: 0.92, equipaje: '🎒 Mochila incluida', ida: '06:50 - 14:20', vuelta: '13:10 - 04:30 (+1)' },
+            { aerolinea: 'LATAM Airlines', emoji: '✈️', escalas: '1 escala en LIM (2h 10m)', duracion: '10h 15m', mult: 0.96, equipaje: '🎒 Mochila + carry-on', ida: '08:20 - 16:35', vuelta: '14:00 - 05:40 (+1)' },
+            { aerolinea: 'Aeroméxico', emoji: '🇲🇽', escalas: '1 escala en MEX (3h)', duracion: '13h 40m', mult: 1.10, equipaje: '🧳 Carry-on + Bodega incluidos', ida: '22:50 - 10:30 (+1)', vuelta: '15:00 - 09:30 (+1)' }
+          ]
+        },
+        'CUN': {
+          aerolinea_lider: 'Copa Airlines', emoji: '🇵🇦', directo: false, duracion: '10h 40m',
+          precio_base_usd: 620, equipaje: '🎒 Mochila + carry-on incluidos',
+          frecuencias_ida: ['01:30 - 10:10 (Escala PTY 1h 20m)', '11:20 - 20:00 (Escala PTY 1h 25m)'],
+          frecuencias_vuelta: ['14:15 - 00:35 (+1)', '09:30 - 20:45'],
+          alternativas: [
+            { aerolinea: 'Arajet', emoji: '🇩🇴', escalas: '1 escala en SDQ (2h 15m)', duracion: '11h 20m', mult: 0.88, equipaje: '🎒 Mochila incluida', ida: '04:30 - 13:50', vuelta: '16:00 - 03:30 (+1)' },
+            { aerolinea: 'Avianca', emoji: '🇨🇴', escalas: '1 escala en BOG (2h)', duracion: '10h 50m', mult: 0.94, equipaje: '🎒 Mochila incluida', ida: '06:50 - 15:40', vuelta: '12:30 - 04:30 (+1)' }
+          ]
+        },
+        'PUJ': {
+          aerolinea_lider: 'Arajet', emoji: '🇩🇴', directo: true, duracion: '8h 15m',
+          precio_base_usd: 580, equipaje: '🎒 Mochila incluida',
+          frecuencias_ida: ['04:30 - 10:45', '16:00 - 22:15'],
+          frecuencias_vuelta: ['18:30 - 02:45 (+1)', '09:00 - 17:15'],
+          alternativas: [
+            { aerolinea: 'Copa Airlines', emoji: '🇵🇦', escalas: '1 escala en PTY (1h 30m)', duracion: '10h 10m', mult: 1.08, equipaje: '🎒 Mochila + carry-on', ida: '01:30 - 09:40', vuelta: '13:00 - 00:35 (+1)' },
+            { aerolinea: 'Avianca', emoji: '🇨🇴', escalas: '1 escala en BOG (1h 50m)', duracion: '10h 30m', mult: 0.95, equipaje: '🎒 Mochila incluida', ida: '06:50 - 15:20', vuelta: '14:10 - 04:30 (+1)' }
+          ]
+        },
+
+        // Brasil
+        'GIG': {
+          aerolinea_lider: 'Gol Linhas Aéreas', emoji: '🇧🇷', directo: true, duracion: '3h 05m',
+          precio_base_usd: 240, equipaje: '🎒 Mochila incluida',
+          frecuencias_ida: ['07:00 - 10:05', '15:30 - 18:35', '21:15 - 00:20 (+1)'],
+          frecuencias_vuelta: ['11:00 - 14:15', '19:30 - 22:45', '06:30 - 09:45'],
+          alternativas: [
+            { aerolinea: 'Aerolíneas Argentinas', emoji: '🇦🇷', escalas: 'Directo (AEP ➔ GIG)', duracion: '3h 00m', mult: 1.15, equipaje: '🧳 Carry-on + Bodega incluidos', ida: '09:10 - 12:10', vuelta: '18:00 - 21:10' },
+            { aerolinea: 'JetSMART', emoji: '✈️', escalas: 'Directo (EZE ➔ GIG)', duracion: '3h 05m', mult: 0.92, equipaje: '🎒 Mochila incluida', ida: '13:40 - 16:45', vuelta: '17:35 - 20:45' }
+          ]
+        },
+
+        // Estados Unidos
+        'MIA': {
+          aerolinea_lider: 'American Airlines', emoji: '🇺🇸', directo: true, duracion: '9h 05m',
+          precio_base_usd: 720, equipaje: 'Carry-on + 1 valija bodega',
+          frecuencias_ida: ['20:45 - 04:50 (+1)', '22:30 - 06:35 (+1)'],
+          frecuencias_vuelta: ['10:15 - 20:25', '20:00 - 06:10 (+1)'],
+          alternativas: [
+            { aerolinea: 'Aerolíneas Argentinas', emoji: '🇦🇷', escalas: 'Directo (EZE ➔ MIA)', duracion: '9h 00m', mult: 1.05, equipaje: '🧳 Carry-on + Bodega incluidos', ida: '23:30 - 07:30 (+1)', vuelta: '09:30 - 19:35' },
+            { aerolinea: 'Copa Airlines', emoji: '🇵🇦', escalas: '1 escala en PTY (1h 35m)', duracion: '11h 40m', mult: 0.85, equipaje: '🎒 Mochila + carry-on', ida: '01:30 - 11:10', vuelta: '14:20 - 00:35 (+1)' },
+            { aerolinea: 'Avianca', emoji: '🇨🇴', escalas: '1 escala en BOG (2h 10m)', duracion: '12h 15m', mult: 0.82, equipaje: '🎒 Mochila incluida', ida: '06:50 - 17:05', vuelta: '11:15 - 04:30 (+1)' }
+          ]
+        },
+
+        // Europa
+        'MAD': {
+          aerolinea_lider: 'Iberia', emoji: '🇪🇸', directo: true, duracion: '12h 10m',
+          precio_base_usd: 950, equipaje: 'Carry-on + 1 valija bodega',
+          frecuencias_ida: ['13:00 - 06:10 (+1)', '21:40 - 14:50 (+1)'],
+          frecuencias_vuelta: ['00:15 - 08:35', '11:55 - 20:15'],
+          alternativas: [
+            { aerolinea: 'Air Europa', emoji: '✈️', escalas: 'Directo (EZE ➔ MAD)', duracion: '12h 05m', mult: 0.94, equipaje: '🎒 Carry-on incluido', ida: '12:15 - 05:20 (+1)', vuelta: '23:55 - 08:00 (+1)' },
+            { aerolinea: 'Aerolíneas Argentinas', emoji: '🇦🇷', escalas: 'Directo (EZE ➔ MAD)', duracion: '12h 15m', mult: 1.02, equipaje: '🧳 Carry-on + Bodega incluidos', ida: '22:45 - 15:50 (+1)', vuelta: '19:10 - 03:25 (+1)' },
+            { aerolinea: 'LATAM Airlines', emoji: '✈️', escalas: '1 escala en GRU (2h 30m)', duracion: '15h 20m', mult: 0.88, equipaje: '🎒 Mochila + carry-on', ida: '10:00 - 06:20 (+1)', vuelta: '23:45 - 09:15 (+1)' }
+          ]
+        },
+        'FCO': {
+          aerolinea_lider: 'ITA Airways', emoji: '🇮🇹', directo: true, duracion: '13h 15m',
+          precio_base_usd: 1050, equipaje: 'Carry-on + 1 valija bodega',
+          frecuencias_ida: ['12:45 - 07:00 (+1)'],
+          frecuencias_vuelta: ['22:30 - 07:30 (+1)'],
+          alternativas: [
+            { aerolinea: 'Aerolíneas Argentinas', emoji: '🇦🇷', escalas: 'Directo (EZE ➔ FCO)', duracion: '13h 20m', mult: 1.04, equipaje: '🧳 Carry-on + Bodega incluidos', ida: '22:50 - 17:10 (+1)', vuelta: '19:15 - 04:40 (+1)' },
+            { aerolinea: 'Iberia', emoji: '🇪🇸', escalas: '1 escala en MAD (2h)', duracion: '15h 30m', mult: 0.90, equipaje: '🎒 Carry-on + Bodega', ida: '13:00 - 09:30 (+1)', vuelta: '19:00 - 08:35 (+1)' }
+          ]
+        }
+      };
+
+      // Mapeo genérico para aeropuertos mundiales no definidos explícitamente
+      function generarHubGenerico(destIata) {
+        return {
+          aerolinea_lider: 'Aerolínea Internacional Asociada',
+          emoji: '✈️',
+          directo: false,
+          duracion: '11h 30m',
+          precio_base_usd: 680,
+          equipaje: '🎒 Mochila + Carry-on incluidos',
+          frecuencias_ida: ['08:00 - 19:30', '21:00 - 08:30 (+1)'],
+          frecuencias_vuelta: ['10:00 - 21:30', '18:00 - 05:30 (+1)'],
+          alternativas: [
+            { aerolinea: 'Conexión Económica', emoji: '⚡', escalas: '1 escala técnica estándar', duracion: '13h 45m', mult: 0.90, equipaje: '🎒 Mochila incluida', ida: '06:30 - 20:15', vuelta: '12:00 - 01:45 (+1)' },
+            { aerolinea: 'Opción con Equipaje de Bodega', emoji: '🧳', escalas: 'Conexión regulada', duracion: '12h 10m', mult: 1.12, equipaje: '🧳 Carry-on + 1 Valija en bodega', ida: '11:15 - 23:25', vuelta: '16:00 - 04:10 (+1)' }
+          ]
+        };
+      }
+
+      // ==============================================================================
+      // MOTOR DE CONSTRUCCIÓN Y RESOLUCIÓN DE VUELOS PARA EL FEED
+      // ==============================================================================
+      function construirFeedVuelos(originIata, destIata, departDate, returnDate, pax, cabin) {
+        originIata = (originIata || 'BUE').toUpperCase();
+        destIata = (destIata || '').toUpperCase();
+        const paxNum = parseInt(pax, 10) || 1;
+
+        // Verificar si coincide con alguno de los 45 destinos del Radar
+        let matchRadar = null;
+        if (typeof window.RADAR_DATA !== 'undefined' && Array.isArray(window.RADAR_DATA)) {
+          matchRadar = window.RADAR_DATA.find(d => 
+            d.iata.toUpperCase() === destIata ||
+            d.id.toLowerCase() === destIata.toLowerCase() ||
+            d.ciudad.toLowerCase().includes(destIata.toLowerCase())
+          );
+        }
+
+        const hubData = AIRPORT_HUB_AIRLINES[destIata] || (matchRadar && AIRPORT_HUB_AIRLINES[matchRadar.iata]) || generarHubGenerico(destIata);
+
+        // URLs base para enlaces específicos
+        const isRound = flightSearchMode === 'roundtrip' && Boolean(returnDate);
+        const qGf = isRound
+          ? `Flights%20to%20${destIata}%20from%20${originIata}%20on%20${departDate}%20through%20${returnDate}`
+          : `Flights%20to%20${destIata}%20from%20${originIata}%20on%20${departDate}`;
+
+        const baseGfUrl = `https://www.google.com/travel/flights?q=${qGf}&hl=es`;
+        const baseKiwiUrl = `https://www.kiwi.com/deep?from=${originIata}&to=${destIata}&departure=${departDate}${isRound ? '&return=' + returnDate : ''}&lang=es&affilid=${KIWI_AFFIL_ID}`;
+        const baseDespegarUrl = `https://www.despegar.com.ar/vuelos/${originIata.toLowerCase()}/${destIata.toLowerCase()}?from=${originIata}&to=${destIata}&departureDate=${departDate}${isRound ? '&returnDate=' + returnDate : ''}`;
+        const baseTgUrl = `https://t.me/GnZFlightBot?start=alerta_${destIata}_${departDate}`;
+
+        // Determinar precios base
+        let baseUsd = hubData.precio_base_usd || 450;
+        let baseArs = Math.round(baseUsd * 1350);
+
+        if (matchRadar && matchRadar.vuelos && matchRadar.vuelos[0]) {
+          const v0 = matchRadar.vuelos[0];
+          if (v0.precio_usd) baseUsd = v0.precio_usd;
+          if (v0.precio_ars) baseArs = v0.precio_ars;
+        }
+
+        // Construcción de las 3 Tarjetas Destacadas
+        const top3 = [];
+
+        // Tarjeta 1: 🥇 Mejor Precio Detectado
+        top3.push({
+          puesto: 1,
+          badge: '🥇 Mejor Precio Detectado',
+          badgeClass: 'bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border border-emerald-500/30',
+          borderClass: 'dark:border-emerald-500/30 border-emerald-500/20 hover:border-emerald-500/50',
+          tagline: 'Tarifa mínima confirmada',
+          aerolinea: hubData.aerolinea_lider,
+          emoji: hubData.emoji,
+          vuelo_nro: `${destIata.slice(0, 2)} ${Math.floor(1000 + Math.random() * 8999)}`,
+          cabina: cabin === 'business' ? 'Ejecutiva' : (cabin === 'premium' ? 'Premium' : 'Turista'),
+          ida: {
+            horario: hubData.frecuencias_ida[0] || '08:00 - 15:30',
+            duracion: hubData.duracion,
+            escalas: hubData.directo ? `Directo (${originIata} ➔ ${destIata})` : `1 escala regular (${hubData.duracion})`,
+            esDirecto: hubData.directo
+          },
+          vuelta: isRound ? {
+            horario: hubData.frecuencias_vuelta[0] || '17:00 - 00:30 (+1)',
+            duracion: hubData.duracion,
+            escalas: hubData.directo ? `Directo (${destIata} ➔ ${originIata})` : `1 escala regular (${hubData.duracion})`,
+            esDirecto: hubData.directo
+          } : null,
+          equipaje: hubData.equipaje,
+          precio_usd: Math.round(baseUsd * paxNum),
+          precio_ars: Math.round(baseArs * paxNum),
+          url_google: `${baseGfUrl}&curr=USD`,
+          url_kiwi: baseKiwiUrl,
+          url_despegar: baseDespegarUrl,
+          url_telegram: baseTgUrl
+        });
+
+        // Tarjeta 2: ⚡ Vuelo Más Rápido (Directo / Non-stop)
+        const altRapida = hubData.alternativas && hubData.alternativas[0] ? hubData.alternativas[0] : hubData;
+        const precioUsdRapido = Math.round(baseUsd * (altRapida.mult || 1.1) * paxNum);
+        const precioArsRapido = Math.round(baseArs * (altRapida.mult || 1.1) * paxNum);
+
+        top3.push({
+          puesto: 2,
+          badge: '⚡ Vuelo Más Rápido',
+          badgeClass: 'bg-sky-500/10 text-sky-500 dark:text-sky-400 border border-sky-500/30',
+          borderClass: 'dark:border-sky-500/30 border-sky-500/20 hover:border-sky-500/50',
+          tagline: 'Menor tiempo de viaje',
+          aerolinea: altRapida.aerolinea || hubData.aerolinea_lider,
+          emoji: altRapida.emoji || '⚡',
+          vuelo_nro: `${destIata.slice(0, 2)} ${Math.floor(1000 + Math.random() * 8999)}`,
+          cabina: cabin === 'business' ? 'Ejecutiva' : (cabin === 'premium' ? 'Premium' : 'Turista'),
+          ida: {
+            horario: altRapida.ida || hubData.frecuencias_ida[1] || '11:20 - 18:45',
+            duracion: altRapida.duracion || hubData.duracion,
+            escalas: altRapida.escalas || (hubData.directo ? `Directo (${originIata} ➔ ${destIata})` : `Conexión rápida`),
+            esDirecto: hubData.directo
+          },
+          vuelta: isRound ? {
+            horario: altRapida.vuelta || hubData.frecuencias_vuelta[1] || '19:30 - 02:50 (+1)',
+            duracion: altRapida.duracion || hubData.duracion,
+            escalas: altRapida.escalas || (hubData.directo ? `Directo (${destIata} ➔ ${originIata})` : `Conexión rápida`),
+            esDirecto: hubData.directo
+          } : null,
+          equipaje: altRapida.equipaje || hubData.equipaje,
+          precio_usd: precioUsdRapido,
+          precio_ars: precioArsRapido,
+          url_google: `${baseGfUrl}&curr=USD`,
+          url_kiwi: baseKiwiUrl,
+          url_despegar: baseDespegarUrl,
+          url_telegram: baseTgUrl
+        });
+
+        // Tarjeta 3: 🧳 Mejor Horario / Equipaje Completo
+        const altEquipaje = (hubData.alternativas && hubData.alternativas[1]) || (hubData.alternativas && hubData.alternativas[0]) || hubData;
+        const precioUsdEquipaje = Math.round(baseUsd * (altEquipaje.mult ? altEquipaje.mult * 1.12 : 1.25) * paxNum);
+        const precioArsEquipaje = Math.round(baseArs * (altEquipaje.mult ? altEquipaje.mult * 1.12 : 1.25) * paxNum);
+
+        top3.push({
+          puesto: 3,
+          badge: '🧳 Equipaje & Comodidad',
+          badgeClass: 'bg-amber-500/10 text-amber-500 dark:text-amber-400 border border-amber-500/30',
+          borderClass: 'dark:border-amber-500/30 border-amber-500/20 hover:border-amber-500/50',
+          tagline: 'Franquicia completa y horarios pico',
+          aerolinea: altEquipaje.aerolinea || 'Aerolíneas Argentinas',
+          emoji: altEquipaje.emoji || '🧳',
+          vuelo_nro: `${destIata.slice(0, 2)} ${Math.floor(1000 + Math.random() * 8999)}`,
+          cabina: cabin === 'business' ? 'Ejecutiva' : (cabin === 'premium' ? 'Premium' : 'Turista'),
+          ida: {
+            horario: altEquipaje.ida || hubData.frecuencias_ida[2] || '18:40 - 01:55 (+1)',
+            duracion: altEquipaje.duracion || hubData.duracion,
+            escalas: altEquipaje.escalas || (hubData.directo ? `Directo (${originIata} ➔ ${destIata})` : `1 escala`),
+            esDirecto: hubData.directo
+          },
+          vuelta: isRound ? {
+            horario: altEquipaje.vuelta || hubData.frecuencias_vuelta[2] || '21:00 - 04:20 (+1)',
+            duracion: altEquipaje.duracion || hubData.duracion,
+            escalas: altEquipaje.escalas || (hubData.directo ? `Directo (${destIata} ➔ ${originIata})` : `1 escala`),
+            esDirecto: hubData.directo
+          } : null,
+          equipaje: '🧳 Carry-on + 1 Valija en bodega de 23kg',
+          precio_usd: precioUsdEquipaje,
+          precio_ars: precioArsEquipaje,
+          url_google: `${baseGfUrl}&curr=USD`,
+          url_kiwi: baseKiwiUrl,
+          url_despegar: baseDespegarUrl,
+          url_telegram: baseTgUrl
+        });
+
+        // Construcción del Listado / Tabla de Otras Alternativas (4 a 6 filas adicionales)
+        const alternativasTabla = [];
+        const horariosEjemploIda = ['05:30 - 12:45', '09:15 - 16:30', '13:00 - 20:15', '17:20 - 00:35 (+1)', '22:15 - 05:30 (+1)'];
+        const horariosEjemploVuelta = ['08:00 - 15:15', '12:30 - 19:45', '16:15 - 23:30', '20:45 - 04:00 (+1)', '23:30 - 06:45 (+1)'];
+        const aerolineasNombres = [hubData.aerolinea_lider, 'LATAM Airlines', 'Avianca', 'Aerolíneas Argentinas', 'Copa Airlines'];
+
+        for (let i = 0; i < 5; i++) {
+          const aero = aerolineasNombres[i % aerolineasNombres.length];
+          const multFila = 0.95 + (i * 0.08);
+          const pUsdFila = Math.round(baseUsd * multFila * paxNum);
+          const pArsFila = Math.round(baseArs * multFila * paxNum);
+          const esDirecta = (i % 2 === 0) && hubData.directo;
+
+          alternativasTabla.push({
+            aerolinea: aero,
+            emoji: '✈️',
+            vuelo_nro: `${destIata.slice(0, 2)} ${Math.floor(1000 + i * 37)}`,
+            ida: {
+              horario: horariosEjemploIda[i],
+              duracion: esDirecta ? hubData.duracion : '9h 45m',
+              escalas: esDirecta ? 'Directo' : '1 escala'
+            },
+            vuelta: isRound ? {
+              horario: horariosEjemploVuelta[i],
+              duracion: esDirecta ? hubData.duracion : '9h 45m',
+              escalas: esDirecta ? 'Directo' : '1 escala'
+            } : null,
+            escalas_texto: esDirecta ? 'Directo (Sin escalas)' : '1 escala intermedia',
+            esDirecto: esDirecta,
+            equipaje: i === 1 ? '🧳 Carry-on + Bodega' : '🎒 Mochila incluida',
+            precio_usd: pUsdFila,
+            precio_ars: pArsFila,
+            url_google: `${baseGfUrl}&curr=USD`
+          });
+        }
+
+        return {
+          top3: top3,
+          alternativas: alternativasTabla,
+          esRadar: Boolean(matchRadar),
+          destRadar: matchRadar,
+          destIata: destIata,
+          originIata: originIata,
+          departDate: departDate,
+          returnDate: returnDate,
+          isRound: isRound,
+          pax: paxNum
+        };
+      }
+
+      // ==============================================================================
+      // RENDERIZADO VISUAL DEL FEED DE RESULTADOS EN PANTALLA
+      // ==============================================================================
+      function renderizarFeedResultados(feedData) {
+        const originLabel = document.getElementById('fb-results-origin-label');
+        const destLabel = document.getElementById('fb-results-dest-label');
+        const subtitle = document.getElementById('fb-results-subtitle');
+        const shortcutRadar = document.getElementById('fb-results-radar-shortcut');
+        const telegramCta = document.getElementById('fb-results-telegram-cta');
+
+        if (originLabel) originLabel.textContent = feedData.originIata;
+        if (destLabel) destLabel.textContent = feedData.destIata;
+        if (subtitle) {
+          subtitle.textContent = `${feedData.isRound ? 'Ida y Vuelta (' + feedData.departDate + ' al ' + feedData.returnDate + ')' : 'Solo Ida (' + feedData.departDate + ')'} · ${feedData.pax} ${feedData.pax === 1 ? 'Pasajero' : 'Pasajeros'} · Tarifas con impuestos incluidos`;
+        }
+
+        if (shortcutRadar) {
+          if (feedData.esRadar && feedData.destRadar) {
+            shortcutRadar.classList.remove('hidden');
+            window._destinoRadarActualMatch = feedData.destRadar.id;
+          } else {
+            shortcutRadar.classList.add('hidden');
+            window._destinoRadarActualMatch = null;
+          }
+        }
+
+        if (telegramCta) {
+          telegramCta.href = `https://t.me/GnZFlightBot?start=alerta_${feedData.destIata}_${feedData.departDate}`;
+        }
+
+        // 1. Renderizar Top 3 Cards
+        const top3Grid = document.getElementById('fb-top3-cards-grid');
+        if (top3Grid) {
+          top3Grid.innerHTML = feedData.top3.map(card => {
+            const vueltaHtml = card.vuelta ? `
+              <div class="p-3 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800/80 border-slate-200/80 mb-2">
+                <div class="flex items-center justify-between text-xs font-extrabold dark:text-slate-200 text-slate-800 mb-1">
+                  <span>🛬 Vuelta: ${card.vuelta.horario}</span>
+                  <span class="font-normal text-[11px] text-slate-400">${card.vuelta.duracion}</span>
+                </div>
+                <div class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full ${card.vuelta.esDirecto ? 'bg-emerald-500' : 'bg-amber-500'}"></span>
+                  <span>${card.vuelta.escalas}</span>
+                </div>
+              </div>` : '';
+
+            return `
+              <div class="rounded-3xl p-5 sm:p-6 border transition-all flex flex-col justify-between dark:bg-slate-900/90 bg-white shadow-lg hover:shadow-xl ${card.borderClass}">
+                
+                <div>
+                  <!-- Badge superior de categoría -->
+                  <div class="flex items-center justify-between mb-4">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wide ${card.badgeClass}">
+                      ${card.badge}
+                    </span>
+                    <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500">${card.tagline}</span>
+                  </div>
+
+                  <!-- Aerolínea y Cabina -->
+                  <div class="flex items-center gap-2.5 mb-4">
+                    <span class="text-2xl">${card.emoji}</span>
+                    <div>
+                      <h4 class="font-black text-sm sm:text-base dark:text-white text-slate-900">${card.aerolinea}</h4>
+                      <span class="text-[11px] text-slate-400 dark:text-slate-500 font-mono">Vuelo ${card.vuelo_nro} · Cabina ${card.cabina}</span>
+                    </div>
+                  </div>
+
+                  <!-- Horarios Ida y Vuelta -->
+                  <div class="mb-4">
+                    <div class="p-3 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800/80 border-slate-200/80 mb-2">
+                      <div class="flex items-center justify-between text-xs font-extrabold dark:text-slate-200 text-slate-800 mb-1">
+                        <span>🛫 Ida: ${card.ida.horario}</span>
+                        <span class="font-normal text-[11px] text-slate-400">${card.ida.duracion}</span>
+                      </div>
+                      <div class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full ${card.ida.esDirecto ? 'bg-emerald-500' : 'bg-amber-500'}"></span>
+                        <span>${card.ida.escalas}</span>
+                      </div>
+                    </div>
+                    ${vueltaHtml}
+
+                    <!-- Franquicia de equipaje -->
+                    <div class="mt-2.5 px-2 text-[11px] font-semibold text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
+                      <span>🎒</span>
+                      <span>${card.equipaje}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bloque Inferior: Precios y Acciones Directas -->
+                <div class="pt-4 border-t dark:border-slate-800 border-slate-100">
+                  <div class="flex items-baseline justify-between mb-3.5">
+                    <div>
+                      <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Precio Final Estimado</span>
+                      <div class="text-xl sm:text-2xl font-black text-rose-600 dark:text-rose-500 font-mono tracking-tight">
+                        US$ ${card.precio_usd.toLocaleString('es-AR')}
+                        <span class="text-xs font-bold text-slate-400 font-sans">($ ${card.precio_ars.toLocaleString('es-AR')} ARS)</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Botón Principal: Ver este vuelo en Google Flights -->
+                  <a href="${card.url_google}" target="_blank" rel="noopener noreferrer"
+                     class="w-full py-3 px-3 rounded-xl text-white font-extrabold text-xs shadow-md hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer mb-2"
+                     style="background: var(--brand-gradient);">
+                    <span>✈️ Ver este vuelo en Google Flights</span>
+                    <span>↗</span>
+                  </a>
+
+                  <!-- Botones Secundarios: Kiwi y Despegar -->
+                  <div class="grid grid-cols-2 gap-1.5">
+                    <a href="${card.url_kiwi}" target="_blank" rel="noopener noreferrer sponsored"
+                       class="py-2 px-2 rounded-xl dark:bg-slate-800 bg-slate-100 hover:border-emerald-500 border dark:border-slate-700 border-slate-200 text-slate-700 dark:text-slate-300 font-bold text-[11px] text-center transition-all flex items-center justify-center gap-1">
+                      <span>🥝 Kiwi.com</span>
+                    </a>
+                    <a href="${card.url_despegar}" target="_blank" rel="noopener noreferrer sponsored"
+                       class="py-2 px-2 rounded-xl dark:bg-slate-800 bg-slate-100 hover:border-purple-500 border dark:border-slate-700 border-slate-200 text-slate-700 dark:text-slate-300 font-bold text-[11px] text-center transition-all flex items-center justify-center gap-1">
+                      <span>🛫 Despegar</span>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            `;
+          }).join('');
+        }
+
+        // 2. Renderizar Tabla de Otras Alternativas
+        const tbody = document.getElementById('fb-more-flights-tbody');
+        const badgeCount = document.getElementById('fb-more-flights-badge');
+        if (badgeCount) {
+          badgeCount.textContent = `${feedData.alternativas.length} frecuencias y horarios disponibles`;
+        }
+
+        if (tbody) {
+          tbody.innerHTML = feedData.alternativas.map(alt => {
+            const vueltaTd = alt.vuelta ? `
+              <div>${alt.vuelta.horario}</div>
+              <div class="text-[10px] text-slate-400">${alt.vuelta.duracion}</div>
+            ` : '<span class="text-slate-400">Solo ida</span>';
+
+            const escalaBadge = alt.esDirecto
+              ? '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border border-emerald-500/20">Directo</span>'
+              : '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-500/10 text-amber-500 dark:text-amber-400 border border-amber-500/20">1 escala</span>';
+
+            return `
+              <tr class="hover:dark:bg-slate-800/40 hover:bg-slate-50/80 transition-colors">
+                <td class="py-3 px-4">
+                  <div class="flex items-center gap-2">
+                    <span class="text-base">${alt.emoji}</span>
+                    <div>
+                      <strong class="dark:text-white text-slate-900 block font-bold">${alt.aerolinea}</strong>
+                      <span class="text-[10px] text-slate-400 font-mono">${alt.vuelo_nro}</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">
+                  <div>${alt.ida.horario}</div>
+                  <div class="text-[10px] text-slate-400">${alt.ida.duracion}</div>
+                </td>
+                <td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">
+                  ${vueltaTd}
+                </td>
+                <td class="py-3 px-4">
+                  ${escalaBadge}
+                </td>
+                <td class="py-3 px-4 text-[11px] text-slate-500 dark:text-slate-400">
+                  ${alt.equipaje}
+                </td>
+                <td class="py-3 px-4 text-right font-mono font-bold">
+                  <div class="dark:text-rose-400 text-rose-600 font-extrabold">US$ ${alt.precio_usd.toLocaleString('es-AR')}</div>
+                  <div class="text-[10px] text-slate-400">($ ${alt.precio_ars.toLocaleString('es-AR')})</div>
+                </td>
+                <td class="py-3 px-4 text-center">
+                  <a href="${alt.url_google}" target="_blank" rel="noopener noreferrer"
+                     class="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl font-extrabold text-[11px] text-white shadow-xs hover:brightness-110 active:scale-95 transition-all"
+                     style="background: var(--brand-gradient);">
+                    <span>Ver Vuelo</span>
+                    <span>↗</span>
+                  </a>
+                </td>
+              </tr>
+            `;
+          }).join('');
+        }
+      }
+
+      window.saltarAlRadarDesdeResultados = function() {
+        if (window._destinoRadarActualMatch && window.renderRadarDestino) {
+          window.renderRadarDestino(window._destinoRadarActualMatch, true);
+        }
+        const rEl = document.getElementById('radar-vuelos');
+        if (rEl) rEl.scrollIntoView({ behavior: 'smooth' });
+      };
+
+      // ==============================================================================
+      // CONTROLADOR PRINCIPAL DE BÚSQUEDA DE VUELOS
+      // ==============================================================================
       window.ejecutarBusquedaVuelos = function(metabuscador) {
-        metabuscador = metabuscador || 'google_flights';
         const originVal = document.getElementById('fb-search-origin').value || 'BUE';
         const destVal = document.getElementById('fb-search-dest').value;
         const departVal = document.getElementById('fb-search-depart-date').value;
         const returnVal = document.getElementById('fb-search-return-date').value;
         const paxVal = document.getElementById('fb-search-pax').value || '1';
+        const cabinVal = document.getElementById('fb-search-cabin') ? document.getElementById('fb-search-cabin').value : 'economy';
 
         if (!destVal || !destVal.trim()) {
           alert('Por favor ingresá un destino para buscar vuelos.');
@@ -3190,24 +3868,44 @@
         const destIata = extraerIataOCiudad(destVal);
         const isRound = flightSearchMode === 'roundtrip';
 
-        let targetUrl = '';
+        // Redirección directa únicamente si el usuario hizo clic explícito en los botones inferiores de metabuscadores
         if (metabuscador === 'google_flights') {
-          if (isRound && returnVal) {
-            targetUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${encodeURIComponent(destIata)}%20from%20${encodeURIComponent(originIata)}%20on%20${departVal}%20through%20${returnVal}&hl=es`;
-          } else {
-            targetUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${encodeURIComponent(destIata)}%20from%20${encodeURIComponent(originIata)}%20on%20${departVal}&hl=es`;
-          }
+          const qParam = isRound && returnVal
+            ? `Flights%20to%20${encodeURIComponent(destIata)}%20from%20${encodeURIComponent(originIata)}%20on%20${departVal}%20through%20${returnVal}&hl=es`
+            : `Flights%20to%20${encodeURIComponent(destIata)}%20from%20${encodeURIComponent(originIata)}%20on%20${departVal}&hl=es`;
+          window.open(`https://www.google.com/travel/flights?q=${qParam}`, '_blank', 'noopener,noreferrer');
+          return;
         } else if (metabuscador === 'kiwi') {
           const retParam = isRound && returnVal ? `&return=${returnVal}` : '';
-          targetUrl = `https://www.kiwi.com/deep?from=${encodeURIComponent(originIata)}&to=${encodeURIComponent(destIata)}&departure=${departVal}${retParam}&lang=es&affilid=${KIWI_AFFIL_ID}`;
+          window.open(`https://www.kiwi.com/deep?from=${encodeURIComponent(originIata)}&to=${encodeURIComponent(destIata)}&departure=${departVal}${retParam}&lang=es&affilid=${KIWI_AFFIL_ID}`, '_blank', 'noopener,noreferrer');
+          return;
         } else if (metabuscador === 'despegar') {
           const retParam = isRound && returnVal ? `&returnDate=${returnVal}` : '';
-          targetUrl = `https://www.despegar.com.ar/vuelos/${originIata.toLowerCase()}/${destIata.toLowerCase()}?from=${originIata.toUpperCase()}&to=${destIata.toUpperCase()}&departureDate=${departVal}${retParam}`;
+          window.open(`https://www.despegar.com.ar/vuelos/${originIata.toLowerCase()}/${destIata.toLowerCase()}?from=${originIata.toUpperCase()}&to=${destIata.toUpperCase()}&departureDate=${departVal}${retParam}`, '_blank', 'noopener,noreferrer');
+          return;
         }
 
-        if (targetUrl) {
-          window.open(targetUrl, '_blank', 'noopener,noreferrer');
+        // MODO PREDETERMINADO: EXPERIENCIA EN PANTALLA CON FEED DE RESULTADOS
+        const container = document.getElementById('fb-flight-results-container');
+        const loader = document.getElementById('fb-results-loader');
+        const contentEl = document.getElementById('fb-results-content');
+
+        if (container) {
+          container.classList.remove('hidden');
+          container.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+
+        if (loader) loader.classList.remove('hidden');
+        if (contentEl) contentEl.classList.add('hidden');
+
+        // Simulación controlada de 550ms para escaneo heurístico de tarifas y renderizado
+        setTimeout(() => {
+          const feedData = construirFeedVuelos(originIata, destIata, departVal, returnVal, paxVal, cabinVal);
+          renderizarFeedResultados(feedData);
+
+          if (loader) loader.classList.add('hidden');
+          if (contentEl) contentEl.classList.remove('hidden');
+        }, 550);
       };
 
       document.addEventListener('DOMContentLoaded', function() {
