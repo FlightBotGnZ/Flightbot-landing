@@ -13,7 +13,7 @@
   <link rel="canonical" href="https://www.flightbot.com.ar/relampago.html">
   <title>⚡ Ofertas Relámpago & Vuelos Flash · FlightBot</title>
   <meta name="description" content="Oportunidades relámpago y vuelos flash con salida en 20 a 35 días. Asientos remanentes a tarifas mínimas históricas y cupones de descuento activos.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%23e11d48' stroke='%23fff' stroke-width='.8'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%23e11d48'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='20'%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%23e11d48' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%23e11d48'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,13 +145,15 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
       
       <!-- Brand Logo con F-Bot Rolli (Limpio, sin carteles) -->
-      <div class="flex items-center gap-3 shrink-0">
+      <div class="flex items-center gap-3 shrink-0 z-10 mr-3 xl:mr-5">
         <a href="/" class="flex items-center gap-3 group" title="Volver al inicio de FlightBot">
-          <div id="brand-logo" class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition p-1"
+          <div id="brand-logo" class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition cursor-pointer p-1 group-hover:scale-105 transition-transform"
+               title="Mascota tech redondeada que sostiene su propia valija carry-on rígida con ruedas 360°. La antena superior emite pulsos de alertas cuando encuentra una tarifa baja."
                style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
             <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
-              <rect x="23" y="19" width="12" height="16" rx="3" fill="#e11d48" stroke="#ffffff" stroke-width="0.8"/>
+              <!-- Valija Carry-On SIEMPRE ROJA (No cambia con el theme) -->
+              <rect x="23" y="19" width="12" height="16" rx="3" fill="url(#fbSuitcaseAlwaysRedNav)" stroke="#ffffff" stroke-width="0.8"/>
               <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
               <line x1="25" y1="27" x2="33" y2="27" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
               <line x1="25" y1="31" x2="33" y2="31" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
@@ -171,22 +173,29 @@
               <circle cx="11" cy="12.2" r="1.2" fill="#38bdf8"/>
               <circle cx="17" cy="12.2" r="1.2" fill="#38bdf8"/>
               <path d="M7 23 Q2 19 3 14" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="fbSuitcaseAlwaysRedNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#e11d48"/>
+                  <stop offset="100%" stop-color="#be123c"/>
+                </linearGradient>
+              </defs>
             </svg>
           </div>
-          <div>
-            <span class="text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">
-              FlightBot
-            </span>
-          </div>
+          <span class="text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">
+            Flight<span style="color: var(--brand-primary);">Bot</span>
+          </span>
         </a>
       </div>
 
       <!-- Barra de Navegación Central Simétrica (Dock Centrado Matemáticamente) -->
       <nav class="hidden lg:flex items-center p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-1 xl:gap-1.5 mx-auto">
+        <a href="/" id="nav-btn-inicio" class="nav-dock-btn">
+          <span>🏠</span> Inicio
+        </a>
         <a href="/vuelos" id="nav-btn-vuelos" class="nav-dock-btn">
           <span>✈️</span> Vuelos
         </a>
-        <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn is-active flex items-center gap-1.5 px-2.5 py-1" title="Ofertas Relámpago y Oportunidades Flash">
+        <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn flex items-center gap-1.5 px-2.5 py-1 is-active" title="Ofertas Relámpago y Oportunidades Flash">
           <span class="text-xs">🔥</span>
           <span class="flex flex-col text-[11px] leading-[1.05] text-left">
             <span>Ofertas</span>
@@ -199,13 +208,13 @@
         <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn" title="Billetera de Pasajes Offline, PNR y Asientos">
+        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn">
           <span>💳</span> Billetera
         </a>
-        <a href="/guias/" id="nav-btn-guias" class="nav-dock-btn" title="Blog Editorial de Viajes y Guías de Ciudades">
+        <a href="/guias/" id="nav-btn-guias" class="nav-dock-btn">
           <span>📖</span> Guías
         </a>
-        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn" title="Centro de Preguntas Frecuentes y Tutoriales">
+        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn">
           <span>❓</span> FAQ
         </a>
       </nav>
@@ -253,26 +262,29 @@
     <!-- Menú Desplegable Móvil -->
     <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
       <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
-        <a href="/vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/" id="nav-mobile-inicio" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+          <span>🏠</span> Inicio
+        </a>
+        <a href="/vuelos" id="nav-mobile-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>✈️</span> Vuelos
         </a>
-        <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
-          <span>🔥</span> Ofertas Relámpago
+        <a href="/relampago" id="nav-mobile-relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
+          <span>🔥</span> Relámpago
         </a>
-        <a href="/#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/#destinos" id="nav-mobile-destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🏨</span> Destinos
         </a>
-        <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/escapadas" id="nav-mobile-modoruta" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/billetera" id="nav-mobile-billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>💳</span> Billetera
         </a>
-        <a href="/guias/" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/guias/" id="nav-mobile-guias" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>📖</span> Guías
         </a>
-        <a href="/faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 col-span-2">
-          <span>❓</span> FAQ (Centro de Ayuda)
+        <a href="/faq" id="nav-mobile-faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+          <span>❓</span> FAQ
         </a>
       </div>
     </div>

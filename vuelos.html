@@ -12,7 +12,7 @@
   <meta property="og:description" content="Cotizá pasajes en tiempo real y descubrí los vuelos más económicos vigentes y hospedajes recomendados.">
   <meta property="og:image" content="https://www.flightbot.com.ar/img/og-preview.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23e11d48'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-size='22'%3E%E2%9C%88%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%23e11d48' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%23e11d48'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
 
   <!-- Módulos de Datos Modularizados -->
   <script src="js/radar-data.js" defer></script>
@@ -328,34 +328,44 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between relative">
       <!-- Marca / Logotipo -->
       <div class="flex items-center gap-3 shrink-0 z-10 mr-3 xl:mr-5">
-        <a href="/" class="flex items-center gap-3 group">
+        <a href="/" class="flex items-center gap-3 group" title="Volver al inicio de FlightBot">
           <div id="brand-logo" class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition cursor-pointer p-1 group-hover:scale-105 transition-transform"
+               title="Mascota tech redondeada que sostiene su propia valija carry-on rígida con ruedas 360°. La antena superior emite pulsos de alertas cuando encuentra una tarifa baja."
                style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
             <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
+              <!-- Valija Carry-On SIEMPRE ROJA (No cambia con el theme) -->
               <rect x="23" y="19" width="12" height="16" rx="3" fill="url(#fbSuitcaseAlwaysRedNav)" stroke="#ffffff" stroke-width="0.8"/>
+              <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <line x1="25" y1="27" x2="33" y2="27" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
+              <line x1="25" y1="31" x2="33" y2="31" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
               <circle cx="25.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
               <circle cx="32.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
-              <path d="M26 19V16C26 15.45 26.45 15 27 15H31C31.55 15 32 15.45 32 16V19" stroke="#ffffff" stroke-width="0.8"/>
-              <rect x="7" y="10" width="22" height="24" rx="8" fill="url(#fbBodyMetallic)" stroke="#ffffff" stroke-width="1"/>
-              <circle cx="18" cy="1.8" r="1.5" fill="#e11d48" class="fb-antenna-pulse"/>
-              <line x1="18" y1="3.3" x2="18" y2="10" stroke="#cbd5e1" stroke-width="1.2" stroke-linecap="round"/>
-              <rect x="10.5" y="14" width="15" height="10" rx="3.5" fill="#0f172a" stroke="#ffffff" stroke-opacity="0.3" stroke-width="0.6"/>
-              <rect x="12" y="16" width="3.5" height="4.5" rx="1.5" fill="var(--brand-primary)"/>
-              <circle cx="13.2" cy="17.2" r="0.6" fill="#ffffff"/>
-              <rect x="20.5" y="16" width="3.5" height="4.5" rx="1.5" fill="var(--brand-primary)"/>
-              <circle cx="21.7" cy="17.2" r="0.6" fill="#ffffff"/>
-              <circle cx="18" cy="27" r="1.8" fill="url(#fbTurbineRing)"/>
+              <path d="M26 19 V13 H32 V19" stroke="#cbd5e1" stroke-width="1.1" stroke-linecap="round"/>
+              <rect x="27" y="11.5" width="4" height="1.8" rx="0.9" fill="#ffffff"/>
+              <path d="M17 24 Q22 20 27 13" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
+              <rect x="7" y="17" width="14" height="16" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="0.8"/>
+              <rect x="10" y="22" width="8" height="6" rx="2" fill="#0f172a"/>
+              <path d="M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25" stroke="#10b981" stroke-width="0.8" stroke-linecap="round"/>
+              <rect x="5.5" y="6" width="17" height="13" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+              <line x1="14" y1="6" x2="14" y2="2" stroke="#94a3b8" stroke-width="1.1" stroke-linecap="round"/>
+              <circle cx="14" cy="1.8" r="1.6" fill="#e11d48"/>
+              <circle cx="14" cy="1.8" r="3.2" stroke="#ffffff" stroke-width="0.5" stroke-dasharray="1 1" opacity="0.8"/>
+              <rect x="8" y="9" width="12" height="6.5" rx="2.5" fill="#0f172a"/>
+              <circle cx="11" cy="12.2" r="1.2" fill="#38bdf8"/>
+              <circle cx="17" cy="12.2" r="1.2" fill="#38bdf8"/>
+              <path d="M7 23 Q2 19 3 14" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="fbSuitcaseAlwaysRedNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#e11d48"/>
+                  <stop offset="100%" stop-color="#be123c"/>
+                </linearGradient>
+              </defs>
             </svg>
           </div>
-          <div class="flex flex-col">
-            <span class="text-xl font-extrabold tracking-tight dark:text-white text-slate-900 leading-none">
-              Flight<span style="color: var(--brand-primary);">Bot</span>
-            </span>
-            <span class="text-[10px] uppercase font-bold tracking-widest text-slate-400 dark:text-slate-500 mt-1">
-              Buscador & Radar
-            </span>
-          </div>
+          <span class="text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">
+            Flight<span style="color: var(--brand-primary);">Bot</span>
+          </span>
         </a>
       </div>
 
@@ -367,7 +377,7 @@
         <a href="/vuelos" id="nav-btn-vuelos" class="nav-dock-btn is-active">
           <span>✈️</span> Vuelos
         </a>
-        <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn flex items-center gap-1.5 px-2.5 py-1">
+        <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn flex items-center gap-1.5 px-2.5 py-1" title="Ofertas Relámpago y Oportunidades Flash">
           <span class="text-xs">🔥</span>
           <span class="flex flex-col text-[11px] leading-[1.05] text-left">
             <span>Ofertas</span>
@@ -377,7 +387,7 @@
         <a href="/#destinos" id="nav-btn-destinos" class="nav-dock-btn">
           <span>🏨</span> Destinos
         </a>
-        <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn">
+        <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
           <span>🚗</span> Modo Ruta
         </a>
         <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn">
@@ -439,28 +449,28 @@
     <!-- Menú Móvil -->
     <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
       <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
-        <a href="/" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700">
+        <a href="/" id="nav-mobile-inicio" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🏠</span> Inicio
         </a>
-        <a href="/vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
+        <a href="/vuelos" id="nav-mobile-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
           <span>✈️</span> Vuelos
         </a>
-        <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700">
+        <a href="/relampago" id="nav-mobile-relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🔥</span> Relámpago
         </a>
-        <a href="/#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700">
+        <a href="/#destinos" id="nav-mobile-destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🏨</span> Destinos
         </a>
-        <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700">
+        <a href="/escapadas" id="nav-mobile-modoruta" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700">
+        <a href="/billetera" id="nav-mobile-billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>💳</span> Billetera
         </a>
-        <a href="/guias/" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700">
+        <a href="/guias/" id="nav-mobile-guias" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>📖</span> Guías
         </a>
-        <a href="/faq" onclick="toggleMobileNav(false)" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700">
+        <a href="/faq" id="nav-mobile-faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>❓</span> FAQ
         </a>
       </div>
@@ -535,14 +545,19 @@
         <!-- Inputs Principales: Origen, Swap, Destino, Fechas, Botón Buscar -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-center">
           
-          <!-- Origen (lg:col-span-3) -->
-          <div class="lg:col-span-3">
+          <!-- Origen (lg:col-span-3) con Autocomplete -->
+          <div class="lg:col-span-3 relative">
             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1.5">Origen</label>
             <div class="relative">
               <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">🛫</span>
               <input type="text" id="fb-search-origin" value="Buenos Aires (BUE)" placeholder="Ciudad o código IATA"
+                     autocomplete="off"
+                     onfocus="window.abrirAutocomplete('origin', this.value)"
+                     oninput="window.filtrarAutocomplete('origin', this.value)"
                      class="w-full text-xs sm:text-sm font-semibold rounded-2xl pl-10 pr-3 py-3 dark:bg-slate-950/70 bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all">
             </div>
+            <!-- Dropdown Autocomplete Origen -->
+            <div id="fb-dropdown-origin" class="hidden absolute left-0 right-0 top-full mt-2 z-50 max-h-72 overflow-y-auto rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-2xl p-1.5 fb-custom-scrollbar"></div>
           </div>
 
           <!-- Botón Swap (lg:col-span-1) -->
@@ -553,15 +568,19 @@
             </button>
           </div>
 
-          <!-- Destino (lg:col-span-3) -->
-          <div class="lg:col-span-3">
+          <!-- Destino (lg:col-span-3) con Autocomplete Inteligente -->
+          <div class="lg:col-span-3 relative">
             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1.5">Destino</label>
             <div class="relative">
               <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">📍</span>
-              <input type="text" id="fb-search-dest" placeholder="¿Adónde querés ir? (ej: BRC, Miami)"
-                     oninput="window.checkRadarMatch(this.value)"
+              <input type="text" id="fb-search-dest" placeholder="¿Adónde viajás? (ej: Panamá, Bariloche, Miami)"
+                     autocomplete="off"
+                     onfocus="window.abrirAutocomplete('dest', this.value)"
+                     oninput="window.filtrarAutocomplete('dest', this.value)"
                      class="w-full text-xs sm:text-sm font-semibold rounded-2xl pl-10 pr-3 py-3 dark:bg-slate-950/70 bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all">
             </div>
+            <!-- Dropdown Autocomplete Destino -->
+            <div id="fb-dropdown-dest" class="hidden absolute left-0 right-0 top-full mt-2 z-50 max-h-72 overflow-y-auto rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-2xl p-1.5 fb-custom-scrollbar"></div>
           </div>
 
           <!-- Fechas: Ida y Vuelta (lg:col-span-3) -->
@@ -614,6 +633,7 @@
           <button type="button" onclick="window.seleccionarDestinoRapido('GIG', 'Río de Janeiro')" class="px-2.5 py-1 rounded-xl dark:bg-slate-800/80 bg-slate-100 hover:bg-rose-500 hover:text-white dark:hover:bg-rose-600 transition-colors text-slate-700 dark:text-slate-300 font-medium">🇧🇷 Río (GIG)</button>
           <button type="button" onclick="window.seleccionarDestinoRapido('MIA', 'Miami')" class="px-2.5 py-1 rounded-xl dark:bg-slate-800/80 bg-slate-100 hover:bg-rose-500 hover:text-white dark:hover:bg-rose-600 transition-colors text-slate-700 dark:text-slate-300 font-medium">🇺🇸 Miami (MIA)</button>
           <button type="button" onclick="window.seleccionarDestinoRapido('MAD', 'Madrid')" class="px-2.5 py-1 rounded-xl dark:bg-slate-800/80 bg-slate-100 hover:bg-rose-500 hover:text-white dark:hover:bg-rose-600 transition-colors text-slate-700 dark:text-slate-300 font-medium">🇪🇸 Madrid (MAD)</button>
+          <button type="button" onclick="window.seleccionarDestinoRapido('PTY', 'Ciudad de Panamá')" class="px-2.5 py-1 rounded-xl dark:bg-slate-800/80 bg-slate-100 hover:bg-rose-500 hover:text-white dark:hover:bg-rose-600 transition-colors text-slate-700 dark:text-slate-300 font-medium">🇵🇦 Panamá (PTY)</button>
           <button type="button" onclick="window.seleccionarDestinoRapido('CUN', 'Cancún')" class="px-2.5 py-1 rounded-xl dark:bg-slate-800/80 bg-slate-100 hover:bg-rose-500 hover:text-white dark:hover:bg-rose-600 transition-colors text-slate-700 dark:text-slate-300 font-medium">🇲🇽 Cancún (CUN)</button>
           <button type="button" onclick="window.seleccionarDestinoRapido('IGR', 'Iguazú')" class="px-2.5 py-1 rounded-xl dark:bg-slate-800/80 bg-slate-100 hover:bg-rose-500 hover:text-white dark:hover:bg-rose-600 transition-colors text-slate-700 dark:text-slate-300 font-medium">🇦🇷 Iguazú (IGR)</button>
           <button type="button" onclick="window.seleccionarDestinoRapido('FCO', 'Roma')" class="px-2.5 py-1 rounded-xl dark:bg-slate-800/80 bg-slate-100 hover:bg-rose-500 hover:text-white dark:hover:bg-rose-600 transition-colors text-slate-700 dark:text-slate-300 font-medium">🇮🇹 Roma (FCO)</button>
@@ -2851,6 +2871,157 @@
     })();
   </script>
   
+  
+  <!-- CATÁLOGO GLOBAL DE AEROPUERTOS Y AUTOCOMPLETE INTELIGENTE -->
+  <script>
+    const GLOBAL_AIRPORTS_CATALOG = [{"iata": "PTY", "ciudad": "Ciudad de Panamá", "aeropuerto": "Aeropuerto Internacional de Tocumen", "pais": "Panamá", "bandera": "🇵🇦", "codigo_pais": "pa", "radar": false}, {"iata": "PAC", "ciudad": "Ciudad de Panamá", "aeropuerto": "Aeropuerto Marcos A. Gelabert (Panamá Pacífico)", "pais": "Panamá", "bandera": "🇵🇦", "codigo_pais": "pa", "radar": false}, {"iata": "BUE", "ciudad": "Buenos Aires", "aeropuerto": "Todos los Aeropuertos (BUE)", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": false}, {"iata": "AEP", "ciudad": "Buenos Aires", "aeropuerto": "Aeroparque Jorge Newbery", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": false}, {"iata": "EZE", "ciudad": "Buenos Aires", "aeropuerto": "Aeropuerto Internacional de Ezeiza", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": false}, {"iata": "BRC", "ciudad": "Bariloche", "aeropuerto": "Tte. Luis Candelaria", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "COR", "ciudad": "Córdoba", "aeropuerto": "Ing. Ambrosio Taravella", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "MDZ", "ciudad": "Mendoza", "aeropuerto": "El Plumerillo", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "IGR", "ciudad": "Puerto Iguazú", "aeropuerto": "Mayor D. Carlos Eduardo Krause", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "SLA", "ciudad": "Salta", "aeropuerto": "Martín Miguel de Güemes", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "USH", "ciudad": "Ushuaia", "aeropuerto": "Malvinas Argentinas", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "FTE", "ciudad": "El Calafate", "aeropuerto": "Comandante Armando Tola", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "CPC", "ciudad": "San Martín de los Andes", "aeropuerto": "Aviador Carlos Campos (Chapelco)", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "JUJ", "ciudad": "Jujuy", "aeropuerto": "Gov. Horacio Guzmán", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "NQN", "ciudad": "Neuquén", "aeropuerto": "Presidente Perón", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "TUC", "ciudad": "Tucumán", "aeropuerto": "Teniente Benjamín Matienzo", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "ROS", "ciudad": "Rosario", "aeropuerto": "Islas Malvinas", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "MDQ", "ciudad": "Mar del Plata", "aeropuerto": "Ástor Piazzolla", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "REL", "ciudad": "Trelew / Puerto Madryn", "aeropuerto": "Almirante Zar", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": true}, {"iata": "CRD", "ciudad": "Comodoro Rivadavia", "aeropuerto": "General Mosconi", "pais": "Argentina", "bandera": "🇦🇷", "codigo_pais": "ar", "radar": false}, {"iata": "GIG", "ciudad": "Río de Janeiro", "aeropuerto": "Aeropuerto Internacional de Galeão", "pais": "Brasil", "bandera": "🇧🇷", "codigo_pais": "br", "radar": true}, {"iata": "SDU", "ciudad": "Río de Janeiro", "aeropuerto": "Santos Dumont", "pais": "Brasil", "bandera": "🇧🇷", "codigo_pais": "br", "radar": false}, {"iata": "GRU", "ciudad": "São Paulo", "aeropuerto": "Guarulhos", "pais": "Brasil", "bandera": "🇧🇷", "codigo_pais": "br", "radar": true}, {"iata": "CGH", "ciudad": "São Paulo", "aeropuerto": "Congonhas", "pais": "Brasil", "bandera": "🇧🇷", "codigo_pais": "br", "radar": false}, {"iata": "FLN", "ciudad": "Florianópolis", "aeropuerto": "Hercílio Luz", "pais": "Brasil", "bandera": "🇧🇷", "codigo_pais": "br", "radar": true}, {"iata": "SSA", "ciudad": "Salvador de Bahía", "aeropuerto": "Dep. Luís Eduardo Magalhães", "pais": "Brasil", "bandera": "🇧🇷", "codigo_pais": "br", "radar": true}, {"iata": "REC", "ciudad": "Recife / Porto de Galinhas", "aeropuerto": "Guararapes", "pais": "Brasil", "bandera": "🇧🇷", "codigo_pais": "br", "radar": true}, {"iata": "MCZ", "ciudad": "Maceió / Maragogi", "aeropuerto": "Zumbi dos Palmares", "pais": "Brasil", "bandera": "🇧🇷", "codigo_pais": "br", "radar": true}, {"iata": "NAT", "ciudad": "Natal / Pipa", "aeropuerto": "Gov. Aluízio Alves", "pais": "Brasil", "bandera": "🇧🇷", "codigo_pais": "br", "radar": true}, {"iata": "FOR", "ciudad": "Fortaleza / Jericoacoara", "aeropuerto": "Pinto Martins", "pais": "Brasil", "bandera": "🇧🇷", "codigo_pais": "br", "radar": true}, {"iata": "CNF", "ciudad": "Belo Horizonte", "aeropuerto": "Confins", "pais": "Brasil", "bandera": "🇧🇷", "codigo_pais": "br", "radar": false}, {"iata": "SCL", "ciudad": "Santiago de Chile", "aeropuerto": "Arturo Merino Benítez", "pais": "Chile", "bandera": "🇨🇱", "codigo_pais": "cl", "radar": true}, {"iata": "LIM", "ciudad": "Lima", "aeropuerto": "Jorge Chávez", "pais": "Perú", "bandera": "🇵🇪", "codigo_pais": "pe", "radar": true}, {"iata": "CUZ", "ciudad": "Cusco", "aeropuerto": "Alejandro Velasco Astete (Machu Picchu)", "pais": "Perú", "bandera": "🇵🇪", "codigo_pais": "pe", "radar": true}, {"iata": "BOG", "ciudad": "Bogotá", "aeropuerto": "El Dorado", "pais": "Colombia", "bandera": "🇨🇴", "codigo_pais": "co", "radar": true}, {"iata": "MDE", "ciudad": "Medellín", "aeropuerto": "José María Córdova", "pais": "Colombia", "bandera": "🇨🇴", "codigo_pais": "co", "radar": true}, {"iata": "CTG", "ciudad": "Cartagena de Indias", "aeropuerto": "Rafael Núñez", "pais": "Colombia", "bandera": "🇨🇴", "codigo_pais": "co", "radar": true}, {"iata": "ADZ", "ciudad": "San Andrés", "aeropuerto": "Gustavo Rojas Pinilla", "pais": "Colombia", "bandera": "🇨🇴", "codigo_pais": "co", "radar": true}, {"iata": "MVD", "ciudad": "Montevideo", "aeropuerto": "Carrasco", "pais": "Uruguay", "bandera": "🇺🇾", "codigo_pais": "uy", "radar": true}, {"iata": "PDP", "ciudad": "Punta del Este", "aeropuerto": "Capitán Corbeta Carlos A. Curbelo", "pais": "Uruguay", "bandera": "🇺🇾", "codigo_pais": "uy", "radar": true}, {"iata": "ASU", "ciudad": "Asunción", "aeropuerto": "Silvio Pettirossi", "pais": "Paraguay", "bandera": "🇵🇾", "codigo_pais": "py", "radar": true}, {"iata": "VVI", "ciudad": "Santa Cruz de la Sierra", "aeropuerto": "Viru Viru", "pais": "Bolivia", "bandera": "🇧🇴", "codigo_pais": "bo", "radar": true}, {"iata": "LPB", "ciudad": "La Paz", "aeropuerto": "El Alto", "pais": "Bolivia", "bandera": "🇧🇴", "codigo_pais": "bo", "radar": false}, {"iata": "UIO", "ciudad": "Quito", "aeropuerto": "Mariscal Sucre", "pais": "Ecuador", "bandera": "🇪🇨", "codigo_pais": "ec", "radar": false}, {"iata": "GYE", "ciudad": "Guayaquil", "aeropuerto": "José Joaquín de Olmedo", "pais": "Ecuador", "bandera": "🇪🇨", "codigo_pais": "ec", "radar": false}, {"iata": "CUN", "ciudad": "Cancún / Riviera Maya", "aeropuerto": "Aeropuerto Internacional de Cancún", "pais": "México", "bandera": "🇲🇽", "codigo_pais": "mx", "radar": true}, {"iata": "MEX", "ciudad": "Ciudad de México", "aeropuerto": "Benito Juárez", "pais": "México", "bandera": "🇲🇽", "codigo_pais": "mx", "radar": true}, {"iata": "PUJ", "ciudad": "Punta Cana", "aeropuerto": "Punta Cana International", "pais": "Rep. Dominicana", "bandera": "🇩🇴", "codigo_pais": "do", "radar": true}, {"iata": "SDQ", "ciudad": "Santo Domingo", "aeropuerto": "Las Américas", "pais": "Rep. Dominicana", "bandera": "🇩🇴", "codigo_pais": "do", "radar": false}, {"iata": "AUA", "ciudad": "Aruba", "aeropuerto": "Reina Beatrix", "pais": "Aruba", "bandera": "🇦🇼", "codigo_pais": "aw", "radar": true}, {"iata": "CUR", "ciudad": "Curazao", "aeropuerto": "Hato International", "pais": "Curazao", "bandera": "🇨🇼", "codigo_pais": "cw", "radar": true}, {"iata": "HAV", "ciudad": "La Habana", "aeropuerto": "José Martí", "pais": "Cuba", "bandera": "🇨🇺", "codigo_pais": "cu", "radar": true}, {"iata": "SJO", "ciudad": "San José", "aeropuerto": "Juan Santamaría", "pais": "Costa Rica", "bandera": "🇨🇷", "codigo_pais": "cr", "radar": false}, {"iata": "MIA", "ciudad": "Miami", "aeropuerto": "Miami International Airport", "pais": "Estados Unidos", "bandera": "🇺🇸", "codigo_pais": "us", "radar": true}, {"iata": "FLL", "ciudad": "Fort Lauderdale", "aeropuerto": "Hollywood International", "pais": "Estados Unidos", "bandera": "🇺🇸", "codigo_pais": "us", "radar": true}, {"iata": "MCO", "ciudad": "Orlando", "aeropuerto": "Orlando International (Disney / Universal)", "pais": "Estados Unidos", "bandera": "🇺🇸", "codigo_pais": "us", "radar": true}, {"iata": "NYC", "ciudad": "Nueva York", "aeropuerto": "Todos los Aeropuertos (JFK / EWR / LGA)", "pais": "Estados Unidos", "bandera": "🇺🇸", "codigo_pais": "us", "radar": true}, {"iata": "JFK", "ciudad": "Nueva York", "aeropuerto": "John F. Kennedy", "pais": "Estados Unidos", "bandera": "🇺🇸", "codigo_pais": "us", "radar": true}, {"iata": "EWR", "ciudad": "Nueva York / Newark", "aeropuerto": "Newark Liberty", "pais": "Estados Unidos", "bandera": "🇺🇸", "codigo_pais": "us", "radar": false}, {"iata": "LAX", "ciudad": "Los Ángeles", "aeropuerto": "Los Angeles International", "pais": "Estados Unidos", "bandera": "🇺🇸", "codigo_pais": "us", "radar": true}, {"iata": "SFO", "ciudad": "San Francisco", "aeropuerto": "San Francisco International", "pais": "Estados Unidos", "bandera": "🇺🇸", "codigo_pais": "us", "radar": true}, {"iata": "LAS", "ciudad": "Las Vegas", "aeropuerto": "Harry Reid International", "pais": "Estados Unidos", "bandera": "🇺🇸", "codigo_pais": "us", "radar": true}, {"iata": "ORD", "ciudad": "Chicago", "aeropuerto": "O'Hare International", "pais": "Estados Unidos", "bandera": "🇺🇸", "codigo_pais": "us", "radar": false}, {"iata": "ATL", "ciudad": "Atlanta", "aeropuerto": "Hartsfield-Jackson", "pais": "Estados Unidos", "bandera": "🇺🇸", "codigo_pais": "us", "radar": false}, {"iata": "MAD", "ciudad": "Madrid", "aeropuerto": "Adolfo Suárez Madrid-Barajas", "pais": "España", "bandera": "🇪🇸", "codigo_pais": "es", "radar": true}, {"iata": "BCN", "ciudad": "Barcelona", "aeropuerto": "Josep Tarradellas Barcelona-El Prat", "pais": "España", "bandera": "🇪🇸", "codigo_pais": "es", "radar": true}, {"iata": "FCO", "ciudad": "Roma", "aeropuerto": "Fiumicino Leonardo da Vinci", "pais": "Italia", "bandera": "🇮🇹", "codigo_pais": "it", "radar": true}, {"iata": "MXP", "ciudad": "Milán", "aeropuerto": "Malpensa", "pais": "Italia", "bandera": "🇮🇹", "codigo_pais": "it", "radar": true}, {"iata": "PAR", "ciudad": "París", "aeropuerto": "Todos los Aeropuertos (CDG / ORY)", "pais": "Francia", "bandera": "🇫🇷", "codigo_pais": "fr", "radar": true}, {"iata": "CDG", "ciudad": "París", "aeropuerto": "Charles de Gaulle", "pais": "Francia", "bandera": "🇫🇷", "codigo_pais": "fr", "radar": true}, {"iata": "ORY", "ciudad": "París", "aeropuerto": "Orly", "pais": "Francia", "bandera": "🇫🇷", "codigo_pais": "fr", "radar": false}, {"iata": "LON", "ciudad": "Londres", "aeropuerto": "Todos los Aeropuertos (LHR / LGW / STN)", "pais": "Reino Unido", "bandera": "🇬🇧", "codigo_pais": "gb", "radar": true}, {"iata": "LHR", "ciudad": "Londres", "aeropuerto": "Heathrow", "pais": "Reino Unido", "bandera": "🇬🇧", "codigo_pais": "gb", "radar": true}, {"iata": "LGW", "ciudad": "Londres", "aeropuerto": "Gatwick", "pais": "Reino Unido", "bandera": "🇬🇧", "codigo_pais": "gb", "radar": false}, {"iata": "AMS", "ciudad": "Ámsterdam", "aeropuerto": "Schiphol", "pais": "Países Bajos", "bandera": "🇳🇱", "codigo_pais": "nl", "radar": true}, {"iata": "FRA", "ciudad": "Frankfurt", "aeropuerto": "Frankfurt am Main", "pais": "Alemania", "bandera": "🇩🇪", "codigo_pais": "de", "radar": true}, {"iata": "BER", "ciudad": "Berlín", "aeropuerto": "Berlin Brandenburg", "pais": "Alemania", "bandera": "🇩🇪", "codigo_pais": "de", "radar": true}, {"iata": "LIS", "ciudad": "Lisboa", "aeropuerto": "Humberto Delgado", "pais": "Portugal", "bandera": "🇵🇹", "codigo_pais": "pt", "radar": true}, {"iata": "ZRH", "ciudad": "Zúrich", "aeropuerto": "Kloten", "pais": "Suiza", "bandera": "🇨🇭", "codigo_pais": "ch", "radar": false}, {"iata": "ATH", "ciudad": "Atenas", "aeropuerto": "Eleftherios Venizelos", "pais": "Grecia", "bandera": "🇬🇷", "codigo_pais": "gr", "radar": true}, {"iata": "OSL", "ciudad": "Oslo", "aeropuerto": "Gardermoen", "pais": "Noruega", "bandera": "🇳🇴", "codigo_pais": "no", "radar": true}, {"iata": "KEF", "ciudad": "Reikiavik", "aeropuerto": "Keflavík International", "pais": "Islandia", "bandera": "🇮🇸", "codigo_pais": "is", "radar": true}, {"iata": "IST", "ciudad": "Estambul", "aeropuerto": "Istanbul Airport", "pais": "Turquía", "bandera": "🇹🇷", "codigo_pais": "tr", "radar": true}, {"iata": "DXB", "ciudad": "Dubái", "aeropuerto": "Dubai International", "pais": "Emiratos Árabes", "bandera": "🇦🇪", "codigo_pais": "ae", "radar": true}, {"iata": "DOH", "ciudad": "Doha", "aeropuerto": "Hamad International", "pais": "Qatar", "bandera": "🇶🇦", "codigo_pais": "qa", "radar": false}, {"iata": "TYO", "ciudad": "Tokio", "aeropuerto": "Todos los Aeropuertos (NRT / HND)", "pais": "Japón", "bandera": "🇯🇵", "codigo_pais": "jp", "radar": true}, {"iata": "NRT", "ciudad": "Tokio", "aeropuerto": "Narita International", "pais": "Japón", "bandera": "🇯🇵", "codigo_pais": "jp", "radar": true}, {"iata": "HND", "ciudad": "Tokio", "aeropuerto": "Haneda", "pais": "Japón", "bandera": "🇯🇵", "codigo_pais": "jp", "radar": false}, {"iata": "BKK", "ciudad": "Bangkok", "aeropuerto": "Suvarnabhumi", "pais": "Tailandia", "bandera": "🇹🇭", "codigo_pais": "th", "radar": true}, {"iata": "SYD", "ciudad": "Sídney", "aeropuerto": "Kingsford Smith", "pais": "Australia", "bandera": "🇦🇺", "codigo_pais": "au", "radar": true}, {"iata": "AKL", "ciudad": "Auckland", "aeropuerto": "Auckland Airport", "pais": "Nueva Zelanda", "bandera": "🇳🇿", "codigo_pais": "nz", "radar": true}, {"iata": "CAI", "ciudad": "El Cairo", "aeropuerto": "Cairo International", "pais": "Egipto", "bandera": "🇪🇬", "codigo_pais": "eg", "radar": true}, {"iata": "CPT", "ciudad": "Ciudad del Cabo", "aeropuerto": "Cape Town International", "pais": "Sudáfrica", "bandera": "🇿🇦", "codigo_pais": "za", "radar": true}, {"iata": "MLE", "ciudad": "Maldivas", "aeropuerto": "Velana International (Malé)", "pais": "Maldivas", "bandera": "🇲🇻", "codigo_pais": "mv", "radar": true}, {"iata": "RAK", "ciudad": "Marrakech", "aeropuerto": "Menara", "pais": "Marruecos", "bandera": "🇲🇦", "codigo_pais": "ma", "radar": true}, {"iata": "SEL", "ciudad": "Seúl", "aeropuerto": "Incheon International", "pais": "Corea del Sur", "bandera": "🇰🇷", "codigo_pais": "kr", "radar": true}, {"iata": "BJS", "ciudad": "Pekín / Beijing", "aeropuerto": "Capital / Daxing", "pais": "China", "bandera": "🇨🇳", "codigo_pais": "cn", "radar": true}, {"iata": "PPT", "ciudad": "Tahití / Polinesia", "aeropuerto": "Faa'a International", "pais": "Polinesia Francesa", "bandera": "🇵🇫", "codigo_pais": "pf", "radar": true}];
+
+    (function() {
+      let activeDropdownType = null;
+
+      // Normalizar texto para búsquedas sin acentos ni mayúsculas
+      function norm(str) {
+        return (str || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+      }
+
+      // Abrir autocomplete al hacer foco o clic
+      window.abrirAutocomplete = function(type, currentVal) {
+        activeDropdownType = type;
+        window.filtrarAutocomplete(type, currentVal);
+      };
+
+      // Filtrar aeropuertos dinámicamente
+      window.filtrarAutocomplete = function(type, query) {
+        const dropdown = document.getElementById('fb-dropdown-' + type);
+        if (!dropdown) return;
+
+        const q = norm(query);
+        let matches = [];
+
+        if (!q || q.length === 0) {
+          // Si está vacío, mostrar aeropuertos populares sugeridos
+          matches = GLOBAL_AIRPORTS_CATALOG.filter(a => 
+            ['PTY', 'BRC', 'GIG', 'MIA', 'MAD', 'CUN', 'IGR', 'PUJ', 'FCO', 'SCL', 'LIM', 'BUE'].includes(a.iata)
+          );
+        } else {
+          // Buscar por código IATA exacto, ciudad, nombre de aeropuerto o país
+          matches = GLOBAL_AIRPORTS_CATALOG.filter(a => 
+            norm(a.iata).includes(q) ||
+            norm(a.ciudad).includes(q) ||
+            norm(a.aeropuerto).includes(q) ||
+            norm(a.pais).includes(q)
+          );
+        }
+
+        if (matches.length === 0) {
+          dropdown.innerHTML = `
+            <div class="p-3 text-center text-xs dark:text-slate-400 text-slate-500">
+              No encontramos aeropuertos para "<strong>${query}</strong>".<br>
+              Podés ingresar el código IATA de 3 letras directamente.
+            </div>
+          `;
+          dropdown.classList.remove('hidden');
+          return;
+        }
+
+        const html = matches.slice(0, 10).map(a => {
+          const radarBadge = a.radar 
+            ? `<span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 shrink-0">● Radar 24/7</span>`
+            : '';
+          
+          return `
+            <button type="button" onclick="window.seleccionarAeropuerto('${type}', '${a.iata}', '${a.ciudad.replace(/'/g, "\\'")}', ${a.radar})"
+                    class="w-full text-left p-2.5 rounded-xl hover:dark:bg-slate-800 hover:bg-slate-100 transition-colors flex items-center justify-between gap-3 group cursor-pointer">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <span class="text-base flex-shrink-0">${a.bandera}</span>
+                <div class="min-w-0">
+                  <div class="text-xs font-bold dark:text-white text-slate-900 truncate group-hover:text-rose-500 transition-colors">
+                    ${a.ciudad}
+                  </div>
+                  <div class="text-[11px] dark:text-slate-400 text-slate-500 truncate">
+                    ${a.aeropuerto} · ${a.pais}
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center gap-1.5 shrink-0">
+                ${radarBadge}
+                <span class="text-xs font-mono font-extrabold px-2 py-0.5 rounded-lg dark:bg-slate-950 bg-slate-200 dark:text-slate-200 text-slate-800">
+                  ${a.iata}
+                </span>
+              </div>
+            </button>
+          `;
+        }).join('');
+
+        dropdown.innerHTML = html;
+        dropdown.classList.remove('hidden');
+      };
+
+      // Seleccionar un aeropuerto del dropdown
+      window.seleccionarAeropuerto = function(type, iata, ciudad, esRadar) {
+        const input = document.getElementById(type === 'origin' ? 'fb-search-origin' : 'fb-search-dest');
+        if (input) {
+          input.value = `${ciudad} (${iata})`;
+        }
+
+        // Cerrar dropdown
+        const dropdown = document.getElementById('fb-dropdown-' + type);
+        if (dropdown) dropdown.classList.add('hidden');
+
+        if (type === 'dest') {
+          // Verificar y sincronizar con radar si aplica
+          window.checkRadarMatch(iata);
+
+          // Si el destino está en el radar, sincronizar las fechas reales del vuelo vigente
+          if (esRadar && window.RADAR_DATA) {
+            const match = window.RADAR_DATA.find(d => (d.iata || '').toUpperCase() === iata.toUpperCase());
+            if (match && match.vuelos && match.vuelos[0]) {
+              const v0 = match.vuelos[0];
+              const hoy = new Date();
+              hoy.setHours(0,0,0,0);
+              
+              let fechaIda = v0.fecha_ida;
+              let fechaVuelta = v0.fecha_vuelta;
+
+              // Si no tiene fecha_ida o está en el pasado, calcular usando helper ISO
+              if (!fechaIda || new Date(fechaIda + 'T00:00:00') < hoy) {
+                if (window.obtenerFechasISO) {
+                  const fIso = window.obtenerFechasISO(v0.fechas, v0);
+                  if (fIso) {
+                    fechaIda = fIso.ida;
+                    fechaVuelta = fIso.vuelta;
+                  }
+                }
+              }
+
+              const depInput = document.getElementById('fb-search-depart-date');
+              const retInput = document.getElementById('fb-search-return-date');
+              if (depInput && fechaIda) depInput.value = fechaIda;
+              if (retInput && fechaVuelta) retInput.value = fechaVuelta;
+            }
+          }
+        }
+      };
+
+      // Cerrar dropdowns al hacer clic afuera
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('#fb-dropdown-origin') && !e.target.closest('#fb-search-origin')) {
+          const dOrigin = document.getElementById('fb-dropdown-origin');
+          if (dOrigin) dOrigin.classList.add('hidden');
+        }
+        if (!e.target.closest('#fb-dropdown-dest') && !e.target.closest('#fb-search-dest')) {
+          const dDest = document.getElementById('fb-dropdown-dest');
+          if (dDest) dDest.classList.add('hidden');
+        }
+      });
+
+      // Actualizar seleccionarDestinoRapido para usar el nuevo helper
+      window.seleccionarDestinoRapido = function(iata, nombre) {
+        window.seleccionarAeropuerto('dest', iata, nombre, true);
+      };
+    })();
+  </script>
+
   <!-- LÓGICA DEL BUSCADOR NATIVO DE VUELOS -->
   <script>
     (function() {
@@ -2963,11 +3134,23 @@
       };
 
       function extraerIataOCiudad(txt) {
-        if (!txt) return '';
+        if (!txt) return 'BUE';
         const match = txt.match(/\(([A-Z]{3})\)/i);
         if (match) return match[1].toUpperCase();
         const trim = txt.trim().toUpperCase();
-        if (trim.length === 3) return trim;
+        if (/^[A-Z]{3}$/.test(trim)) return trim;
+        
+        // Buscar en el catálogo de aeropuertos si ingresó texto libre (ej: "panama" -> "PTY")
+        if (typeof GLOBAL_AIRPORTS_CATALOG !== 'undefined') {
+          const q = (txt || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+          const matchCat = GLOBAL_AIRPORTS_CATALOG.find(a => 
+            a.iata.toLowerCase() === q ||
+            a.ciudad.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').includes(q) ||
+            a.pais.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').includes(q)
+          );
+          if (matchCat) return matchCat.iata;
+        }
+
         return txt.trim();
       }
 
