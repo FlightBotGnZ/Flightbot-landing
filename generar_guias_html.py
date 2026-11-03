@@ -3270,6 +3270,9 @@ def generar_html_guia(guia: dict) -> str:
   <script type="application/ld+json">
 {schema_blog_posting}
   </script>
+  <!-- Vercel Web Analytics (mismo dominio, compatible con CSP script-src 'self') -->
+  <script>window.va = window.va || function () {{ (window.vaq = window.vaq || []).push(arguments); }};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition">
 
@@ -3838,6 +3841,9 @@ def generar_indice_guias(guias: list) -> str:
   <script type="application/ld+json">
 {schema_blog_index}
   </script>
+  <!-- Vercel Web Analytics (mismo dominio, compatible con CSP script-src 'self') -->
+  <script>window.va = window.va || function () {{ (window.vaq = window.vaq || []).push(arguments); }};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition">
 
