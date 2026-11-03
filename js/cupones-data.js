@@ -112,3 +112,27 @@ window.CUPONES_DATA = [
     "actualizado_en": "2026-10-28"
   }
 ];
+
+
+// Configuración Modular de Afiliados y Redirección Limpia
+window.FB_AFFILIATE_CONFIG = {
+  kiwi: { param: "affilid", id: "travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785" },
+  booking: { param: "aid", id: "" },
+  trip: { param: "Allianceid", id: "" },
+  arajet: { param: "utm_source", id: "" },
+  despegar: { param: "utm_source", id: "" },
+  aerolineas: { param: "utm_source", id: "" },
+  jetsmart: { param: "utm_source", id: "" }
+};
+
+window.openAffiliateLink = function(portalKey, url) {
+  const cfg = window.FB_AFFILIATE_CONFIG[portalKey];
+  if (!cfg || !cfg.id) {
+    window.open(url, "_blank", "noopener,noreferrer");
+    return false;
+  }
+  const sep = url.indexOf("?") !== -1 ? "&" : "?";
+  const finalUrl = url + sep + encodeURIComponent(cfg.param) + "=" + encodeURIComponent(cfg.id);
+  window.open(finalUrl, "_blank", "noopener,noreferrer");
+  return false;
+};

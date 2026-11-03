@@ -204,9 +204,6 @@
         <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn" title="Ofertas Relámpago y Oportunidades Flash">
           <span>🔥</span> Relámpago
         </a>
-        <a href="/#destinos" id="nav-btn-destinos" class="nav-dock-btn">
-          <span>🏨</span> Destinos
-        </a>
         <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
           <span>🚗</span> Modo Ruta
         </a>
@@ -300,7 +297,7 @@
       </div>
 
       <div class="grid grid-cols-2 gap-2 text-xs font-semibold mb-3">
-        <a href="/" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/" onclick="toggleMobileNav(false)" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🏠</span> Inicio
         </a>
         <a href="/vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
@@ -308,9 +305,6 @@
         </a>
         <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🔥</span> Relámpago
-        </a>
-        <a href="/#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
-          <span>🏨</span> Destinos
         </a>
         <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🚗</span> Modo Ruta
@@ -340,6 +334,1576 @@
 
   <!-- Contenido Principal -->
   <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full space-y-10">
+
+    <!-- NAVEGACIÓN DOCK BILLETERA: PESTAÑAS PRINCIPALES -->
+    <div class="flex items-center justify-center mb-6">
+      <div class="inline-flex p-1.5 rounded-2xl dark:bg-slate-900 bg-slate-100 border dark:border-slate-800 border-slate-200 shadow-sm max-w-full overflow-x-auto gap-2">
+        <button type="button" id="tab-btn-tarjetas" onclick="window.cambiarTabBilletera('tarjetas')"
+                class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all cursor-pointer text-white shadow-md"
+                style="background: var(--brand-gradient);">
+          <span>💳</span> Mis Tarjetas, Cuotas &amp; Salas VIP
+        </button>
+        <button type="button" id="tab-btn-boveda" onclick="window.cambiarTabBilletera('boveda')"
+                class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all cursor-pointer text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-transparent">
+          <span>🧳</span> Bóveda de Pasajes &amp; Modo Offline
+        </button>
+      </div>
+    </div>
+
+
+    <!-- PANEL 1: MIS TARJETAS, CUOTAS & SALAS VIP -->
+    <div id="panel-tarjetas-vip" class="space-y-8 animate-fadeIn">
+<!-- FLIGHTBOT_PROMOS_START -->
+  <!-- Sección: Promociones, Cuotas & Asistencia al Viajero por Tarjeta -->
+  <section id="promociones" class="w-full py-24 dark:bg-slate-950 bg-slate-50 border-t dark:border-slate-800 border-slate-200 theme-transition relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Encabezado de la Sección -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider mb-4 border shadow-sm theme-transition"
+             style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
+          <span>💳</span> Billetera Inteligente de Tarjetas & Asistencia
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold dark:text-white text-slate-900 tracking-tight mb-4 theme-transition">
+          Promociones, Cuotas & Asistencia al Viajero
+        </h2>
+        <p class="dark:text-slate-400 text-slate-600 text-sm sm:text-base leading-relaxed theme-transition">
+          Elegí qué tarjetas tenés en tu billetera. FlightBot filtrará en tiempo real las mejores cuotas sin interés, descuentos en hoteles y vuelos, y te mostrará la <strong class="dark:text-white text-slate-900">cobertura médica internacional que ya tenés bonificada</strong> para viajar 100% protegido.
+        </p>
+      </div>
+
+      <!-- Panel de Selección de Billetera (Mis Tarjetas) -->
+      <div class="dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl mb-10 theme-transition">
+        
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b dark:border-slate-800 border-slate-200">
+          <div>
+            <h3 class="text-lg font-extrabold dark:text-white text-slate-900 flex items-center gap-2 theme-transition">
+              <span>👛</span> Mis Tarjetas del Viajero
+            </h3>
+            <p class="text-xs dark:text-slate-400 text-slate-500 mt-0.5">
+              Marcá las tarjetas que usás habitualmente para ver tus promociones y coberturas aplicables (se guardan automáticamente en tu dispositivo):
+            </p>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <button type="button" onclick="window.resetPromosWalletFilters()"
+                    class="px-3.5 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 hover:dark:bg-slate-700 hover:bg-slate-200 dark:text-slate-300 text-slate-700 border dark:border-slate-700 border-slate-300 transition-all flex items-center gap-1.5">
+              <span>↺</span> Restablecer / Ver Todo
+            </button>
+            <button type="button" onclick="window.selectPopularWalletCards()"
+                    class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-white transition-all shadow-sm flex items-center gap-1.5"
+                    style="background: var(--brand-gradient);">
+              <span>✨</span> Seleccionar Populares
+            </button>
+          </div>
+        </div>
+
+        
+        <!-- Enlaces Oficiales a Portales con Promociones Bancarias -->
+        <div class="p-3.5 sm:p-4 rounded-2xl dark:bg-slate-900/80 bg-slate-100 border dark:border-slate-800 border-slate-200 text-xs flex flex-wrap items-center justify-between gap-3 mb-6">
+          <div class="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+            <span>🏛️</span>
+            <span class="font-semibold">Portales oficiales con acuerdos bancarios y promociones:</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <a href="https://www.despegar.com.ar/informacion/promos-bancarias" target="_blank" rel="noopener noreferrer" class="font-bold text-rose-500 hover:underline flex items-center gap-1">
+              <span>Despegar Promociones</span> ➔
+            </a>
+            <span class="text-slate-400">·</span>
+            <a href="https://www.booking.com/deals/index.es.html" target="_blank" rel="noopener noreferrer" class="font-bold text-blue-500 hover:underline flex items-center gap-1">
+              <span>Booking Ofertas</span> ➔
+            </a>
+          </div>
+        </div>
+
+        <!-- Botonera Rápida de Tarjetas Frecuentes (Chips interactivos con toggle) -->
+        <div class="pt-6">
+          <div class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
+            <span>Tarjetas y Bancos Más Populares</span>
+            <span id="fb-wallet-count-badge" class="text-xs font-bold text-rose-500">0 tarjetas activas</span>
+          </div>
+
+          <div id="fb-wallet-chips-container" class="flex flex-wrap gap-2.5">
+            <!-- Chips generados dinámicamente por JS -->
+          </div>
+        </div>
+
+        <!-- Filtros Selectores Complementarios (Banco / Categoría / Marca + Botón Buscar) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mt-6 pt-6 border-t dark:border-slate-800/80 border-slate-100 text-xs items-end">
+          <div>
+            <label class="block font-bold text-slate-400 mb-1.5 uppercase text-[10px] tracking-wider">Banco o Billetera</label>
+            <select id="fb-promos-filter-banco" onchange="window.onPromosDropdownChange()"
+                    class="w-full px-3.5 py-2.5 rounded-xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all">
+              <option value="todos">Todos los Bancos y Billeteras</option>
+              <option value="galicia">Banco Galicia</option>
+              <option value="santander">Banco Santander</option>
+              <option value="bbva">Banco BBVA</option>
+              <option value="macro">Banco Macro</option>
+              <option value="nacion">Banco Nación (BNA)</option>
+              <option value="naranja x">Naranja X</option>
+              <option value="brubank">Brubank</option>
+              <option value="uala">Ualá</option>
+              <option value="mercadopago">Mercado Pago</option>
+              <option value="amex directa">American Express Directa</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-400 mb-1.5 uppercase text-[10px] tracking-wider">Nivel / Categoría de Tarjeta</label>
+            <select id="fb-promos-filter-categoria" onchange="window.onPromosDropdownChange()"
+                    class="w-full px-3.5 py-2.5 rounded-xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all">
+              <option value="todas">Todas las Categorías</option>
+              <option value="black">Black / Signature / The Platinum Card (Alta Gama)</option>
+              <option value="platinum">Platinum</option>
+              <option value="gold">Gold</option>
+              <option value="clasica">Clásica / Débito / Prepaga</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-bold text-slate-400 mb-1.5 uppercase text-[10px] tracking-wider">Marca Emisora</label>
+            <select id="fb-promos-filter-marca" onchange="window.onPromosDropdownChange()"
+                    class="w-full px-3.5 py-2.5 rounded-xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all">
+              <option value="todas">Todas las Marcas</option>
+              <option value="visa">Visa</option>
+              <option value="mastercard">Mastercard</option>
+              <option value="amex">American Express</option>
+            </select>
+          </div>
+
+          <div>
+            <button id="fb-promos-search-btn" type="button" onclick="window.searchPromosAndVips(true)"
+                    class="w-full py-2.5 px-4 rounded-xl text-xs font-extrabold text-white shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
+                    style="background: var(--brand-gradient);">
+              <span>🔍</span>
+              <span>Buscar Beneficios</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Banner Dinámico de Diagnóstico y Resultados Rápidos en Pantalla -->
+        <div id="fb-search-active-summary" class="hidden mt-6 p-4 sm:p-5 rounded-2xl dark:bg-slate-950/80 bg-slate-50 border dark:border-slate-800 border-slate-200 theme-transition shadow-sm">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="space-y-1.5 flex-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-500 border border-rose-500/25">
+                  🔍 Tarjeta Filtrada
+                </span>
+                <h4 id="fb-summary-card-title" class="text-sm font-extrabold dark:text-white text-slate-900">
+                  Banco Santander · Platinum
+                </h4>
+              </div>
+              <p id="fb-summary-vip-desc" class="text-xs dark:text-slate-300 text-slate-600 leading-relaxed">
+                <!-- Se llena dinámicamente -->
+              </p>
+            </div>
+            <div class="flex items-center gap-2 flex-shrink-0 flex-wrap">
+              <a href="#salas-vip-aereas" onclick="window.openVipsAccordion(); return false;" class="px-3.5 py-2 rounded-xl text-xs font-bold border dark:border-slate-700 border-slate-300 dark:text-slate-300 text-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 cursor-pointer">
+                <span>🥂</span> Ver Salas VIP
+              </a>
+              <button type="button" onclick="window.scrollToPromosGrid()" class="px-4 py-2 rounded-xl text-xs font-extrabold text-white shadow transition-all hover:brightness-110 flex items-center gap-1.5" style="background: var(--brand-gradient);">
+                <span>💳</span> <span id="fb-summary-count-badge">Ver Promociones ↓</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subsección Destacada: Salas VIP en Aeropuertos (VIPs Aéreos) -->
+      <div id="salas-vip-aereas" class="dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl mb-10 theme-transition">
+        
+        <!-- Cabecera Retraíble con Botón / Flechita (Guarda / Desglosa toda la sección) -->
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 cursor-pointer select-none" onclick="window.toggleVipsAccordion()">
+          <div class="flex-1 pr-0 lg:pr-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">
+              ✈️ Beneficios Aéreos Exclusivos
+            </div>
+            <h3 class="text-xl sm:text-2xl font-extrabold dark:text-white text-slate-900 flex items-center gap-2">
+              <span>🥂</span>
+              <span>Salas VIP en Aeropuertos &amp; Accesos con tus Tarjetas</span>
+            </h3>
+            <p class="text-xs sm:text-sm dark:text-slate-400 text-slate-500 mt-1">
+              Conocé a qué salones podés ingresar sin cargo en Ezeiza, Aeroparque, el interior del país y el mundo, cuántos pases anuales tenés y qué app necesitás en tu celular:
+            </p>
+          </div>
+          
+          <div class="flex items-center gap-2 flex-shrink-0 self-start lg:self-center">
+            <button type="button" onclick="event.stopPropagation(); window.toggleVipsAccordion();"
+                    class="px-4 py-2.5 rounded-xl text-xs font-extrabold text-white shadow-md hover:brightness-110 transition-all flex items-center gap-2 cursor-pointer"
+                    style="background: var(--brand-gradient);">
+              <span id="vip-toggle-btn-text">Ver Salas VIP</span>
+              <span id="vip-main-arrow" class="text-sm font-bold transition-transform duration-300">▼</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cuerpo Desglosable / Retraíble de Salas VIP (Guardado por defecto para no saturar) -->
+        <div id="vip-body-wrapper" class="hidden mt-6 pt-6 border-t dark:border-slate-800 border-slate-200">
+          
+          <!-- Selector de Categoría de Sala VIP -->
+          <div class="flex flex-wrap items-center gap-2 mb-6">
+            <button type="button" onclick="window.setVipCategory('ezeiza')" id="vip-tab-ezeiza"
+                    class="px-4 py-2 rounded-xl text-xs font-bold text-white shadow-sm transition-all"
+                    style="background: var(--brand-gradient);">
+              <span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Ezeiza (EZE)</span>
+            </button>
+            <button type="button" onclick="window.setVipCategory('aeroparque')" id="vip-tab-aeroparque"
+                    class="px-4 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-700 hover:dark:bg-slate-700 hover:bg-slate-200 transition-all">
+              🏙️ Aeroparque (AEP)
+            </button>
+            <button type="button" onclick="window.setVipCategory('interior')" id="vip-tab-interior"
+                    class="px-4 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-700 hover:dark:bg-slate-700 hover:bg-slate-200 transition-all">
+              🗺️ Interior del País
+            </button>
+            <button type="button" onclick="window.setVipCategory('internacional')" id="vip-tab-internacional"
+                    class="px-4 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-700 hover:dark:bg-slate-700 hover:bg-slate-200 transition-all">
+              🌍 Internacionales
+            </button>
+            <button type="button" onclick="window.setVipCategory('apps')" id="vip-tab-apps"
+                    class="px-4 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-700 hover:dark:bg-slate-700 hover:bg-slate-200 transition-all">
+              📱 Apps &amp; Cupos Gratis
+            </button>
+          </div>
+
+          <!-- Panel 1: Ezeiza (EZE) -->
+        <div id="vip-panel-ezeiza" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            
+            <!-- Centurion Lounge -->
+            <div id="vip-card-centurion" class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/30">
+                    The Centurion Lounge
+                  </span>
+                  <span class="text-xs text-slate-400 font-mono">Terminal B • Puerta 23</span>
+                </div>
+                <h4 class="text-base font-extrabold dark:text-white text-slate-900 mb-1">Salón Centurion American Express</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-3">
+                  Cocina gourmet de autor, barra libre con coctelería de autor, salas de relax privadas, Wi-Fi de alta velocidad y duchas.
+                </p>
+                <div class="space-y-1.5 text-[11px] dark:text-slate-300 text-slate-700">
+                  <div class="flex items-center gap-1.5"><span>💳</span><strong>Acceso:</strong> The Platinum Card Directa &amp; Centurion</div>
+                  <div class="flex items-center gap-1.5"><span>👥</span><strong>Invitados:</strong> Titular + 1 acompañante sin cargo</div>
+                  <div class="flex items-center gap-1.5"><span>👶</span><strong>Menores:</strong> Menores de 2 años no descuentan cupo</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t dark:border-slate-800 border-slate-200 text-[11px] text-emerald-400 font-bold">
+                ✓ Ingreso directo con tarjeta física o digital + boarding pass
+              </div>
+            </div>
+
+            <!-- Star Alliance Lounge -->
+            <div id="vip-card-staralliance" class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">
+                    Star Alliance Lounge
+                  </span>
+                  <span class="text-xs text-slate-400 font-mono">Planta Alta • Puerta 9</span>
+                </div>
+                <h4 class="text-base font-extrabold dark:text-white text-slate-900 mb-1">Salón Oficial Star Alliance</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-3">
+                  Abierto las 24 horas. Amplio buffet internacional con opciones calientes y frías, vinos argentinos, duchas y vista a pista.
+                </p>
+                <div class="space-y-1.5 text-[11px] dark:text-slate-300 text-slate-700">
+                  <div class="flex items-center gap-1.5"><span>💳</span><strong>Acceso:</strong> Visa Airport Companion (DragonPass)</div>
+                  <div class="flex items-center gap-1.5"><span>✈️</span><strong>Aerolíneas:</strong> Clase Business Star Alliance (United, Lufthansa, Copa, etc.)</div>
+                  <div class="flex items-center gap-1.5"><span>⏱️</span><strong>Permanencia:</strong> Máximo 3 horas antes del vuelo</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t dark:border-slate-800 border-slate-200 text-[11px] text-sky-400 font-bold">
+                ✓ Generar código QR desde la app Visa Airport Companion
+              </div>
+            </div>
+
+            <!-- Ezeiza Lounge -->
+            <div id="vip-card-ezeiza" class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-400 border border-purple-500/30">
+                    Ezeiza Lounge
+                  </span>
+                  <span class="text-xs text-slate-400 font-mono">Terminal B • Puerta 23</span>
+                </div>
+                <h4 class="text-base font-extrabold dark:text-white text-slate-900 mb-1">Ezeiza Lounge Internacional</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-3">
+                  Espacios de coworking con enchufes universales, cafetería espresso, sándwiches frescos, bebidas y salas de televisión.
+                </p>
+                <div class="space-y-1.5 text-[11px] dark:text-slate-300 text-slate-700">
+                  <div class="flex items-center gap-1.5"><span>💳</span><strong>Acceso:</strong> Visa Airport Companion &amp; Amex Black Bancarias</div>
+                  <div class="flex items-center gap-1.5"><span>📱</span><strong>Membresías:</strong> DragonPass y acuerdos corporativos</div>
+                  <div class="flex items-center gap-1.5"><span>👶</span><strong>Familia:</strong> Espacio silencioso apto para familias con niños</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t dark:border-slate-800 border-slate-200 text-[11px] text-purple-400 font-bold">
+                ✓ Acepta pases de bancos argentinos (Galicia, Santander, BBVA, Macro)
+              </div>
+            </div>
+
+            <!-- Aeropuertos VIPClub Ezeiza -->
+            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                    Aeropuertos VIPClub
+                  </span>
+                  <span class="text-xs text-slate-400 font-mono">Terminal A (Partidas/Arribos)</span>
+                </div>
+                <h4 class="text-base font-extrabold dark:text-white text-slate-900 mb-1">VIPClub con Fast Pass de Seguridad</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-3">
+                  El servicio más exclusivo de Argentina: incluye control de seguridad y migraciones preferencial (sin filas) y sala VIP privada.
+                </p>
+                <div class="space-y-1.5 text-[11px] dark:text-slate-300 text-slate-700">
+                  <div class="flex items-center gap-1.5"><span>🏛️</span><strong>Bancos:</strong> Santander Black, Galicia Éminent, BBVA Premium World</div>
+                  <div class="flex items-center gap-1.5"><span>🚨</span><strong>Importante:</strong> Requiere reserva previa (al menos 48 hs antes)</div>
+                  <div class="flex items-center gap-1.5"><span>🛬</span><strong>Arribos:</strong> También disponible al aterrizar para esperar equipaje</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t dark:border-slate-800 border-slate-200 text-[11px] text-emerald-400 font-bold">
+                ✓ Incluye acceso ágil por carril exclusivo de migraciones
+              </div>
+            </div>
+
+            <!-- Salón Cóndor Aerolíneas Argentinas -->
+            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-sky-500/15 text-sky-400 border border-sky-500/30">
+                    Salón Cóndor (SkyTeam)
+                  </span>
+                  <span class="text-xs text-slate-400 font-mono">Terminal C • Planta Alta</span>
+                </div>
+                <h4 class="text-base font-extrabold dark:text-white text-slate-900 mb-1">Salón Cóndor Aerolíneas Plus</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-3">
+                  Más de 1.000 m² de superficie, duchas, área de descanso, gastronomía argentina, barra de vinos seleccionados y zona infantil.
+                </p>
+                <div class="space-y-1.5 text-[11px] dark:text-slate-300 text-slate-700">
+                  <div class="flex items-center gap-1.5"><span>🦅</span><strong>Aerolíneas:</strong> Socios Aerolíneas Plus Diamante y Platino</div>
+                  <div class="flex items-center gap-1.5"><span>✈️</span><strong>Pasajes:</strong> Pasajeros con ticket en Clase Business / Premium</div>
+                  <div class="flex items-center gap-1.5"><span>🌐</span><strong>Alianza:</strong> Miembros SkyTeam Elite Plus volando al exterior</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t dark:border-slate-800 border-slate-200 text-[11px] text-sky-400 font-bold">
+                ✓ Presentar tarjeta digital de socio o boarding pass business
+              </div>
+            </div>
+
+            <!-- Sala VIP Mastercard Black -->
+            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-rose-500/15 text-rose-400 border border-rose-500/30">
+                    Mastercard Black Lounge
+                  </span>
+                  <span class="text-xs text-slate-400 font-mono">Terminal B</span>
+                </div>
+                <h4 class="text-base font-extrabold dark:text-white text-slate-900 mb-1">Sala Exclusiva Mastercard Black</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-3">
+                  Espacio propio de Mastercard para titulares de tarjetas Black emitidas en Argentina y el mundo con gastronomía ligera y bebidas.
+                </p>
+                <div class="space-y-1.5 text-[11px] dark:text-slate-300 text-slate-700">
+                  <div class="flex items-center gap-1.5"><span>💳</span><strong>Acceso:</strong> Mastercard Black física o en app bancaria</div>
+                  <div class="flex items-center gap-1.5"><span>📱</span><strong>App:</strong> Mastercard Airport Experiences (LoungeKey)</div>
+                  <div class="flex items-center gap-1.5"><span>👥</span><strong>Invitados:</strong> Sujeto a cupos libres de tu banco emisor</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t dark:border-slate-800 border-slate-200 text-[11px] text-rose-400 font-bold">
+                ✓ Consultá tus cupos disponibles antes de viajar en LoungeKey
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Panel 2: Aeroparque (AEP) -->
+        <div id="vip-panel-aeroparque" class="hidden space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div id="vip-card-amae-aep" class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-sky-500/15 text-sky-400 border border-sky-500/30">
+                    AMAE Lounge Aeroparque
+                  </span>
+                  <span class="text-xs text-slate-400 font-mono">Preembarque Nacional • Puerta 1</span>
+                </div>
+                <h4 class="text-base font-extrabold dark:text-white text-slate-900 mb-1">AMAE Lounge (Preembarque Nacional)</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-3">
+                  Ubicado justo antes de la puerta 1. Medialunas calientes, café recién molido, sándwiches, bebidas con y sin alcohol y vista frontal a la pista del Río de la Plata.
+                </p>
+                <div class="space-y-1.5 text-[11px] dark:text-slate-300 text-slate-700">
+                  <div class="flex items-center gap-1.5"><span>💳</span><strong>Acceso:</strong> Visa Airport Companion (DragonPass) &amp; Mastercard Airport Experiences</div>
+                  <div class="flex items-center gap-1.5"><span>🛫</span><strong>Vuelos:</strong> Todo vuelo nacional (Bariloche, Mendoza, Iguazú, Córdoba)</div>
+                  <div class="flex items-center gap-1.5"><span>👶</span><strong>Menores:</strong> Menores de 2 años ingresan sin cargo</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t dark:border-slate-800 border-slate-200 text-[11px] text-sky-400 font-bold">
+                ✓ Escaneá tu QR de Visa Airport Companion al ingresar
+              </div>
+            </div>
+
+            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                    Aeropuertos VIPClub AEP
+                  </span>
+                  <span class="text-xs text-slate-400 font-mono">Partidas y Arribos Nacionales</span>
+                </div>
+                <h4 class="text-base font-extrabold dark:text-white text-slate-900 mb-1">VIPClub Aeroparque (Pases Bonificados)</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-3">
+                  Sala de espera tranquila con acceso preferencial. Disponible tanto antes de embarcar como al aterrizar para esperar el equipaje con comodidad.
+                </p>
+                <div class="space-y-1.5 text-[11px] dark:text-slate-300 text-slate-700">
+                  <div class="flex items-center gap-1.5"><span>🏛️</span><strong>Acceso:</strong> Cupos VIPClub bonificados por Santander Black, Galicia Éminent y BBVA</div>
+                  <div class="flex items-center gap-1.5"><span>📋</span><strong>Reserva:</strong> Recomendado agendar en la web de Aeropuertos VIPClub</div>
+                  <div class="flex items-center gap-1.5"><span>☕</span><strong>Servicios:</strong> Bocaditos dulces y salados, bebidas y prensa digital</div>
+                </div>
+              </div>
+              <div class="mt-4 pt-3 border-t dark:border-slate-800 border-slate-200 text-[11px] text-emerald-400 font-bold">
+                ✓ Verificá cuántos accesos VIPClub tenés al año en tu home banking
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Panel 3: Interior del País -->
+        <div id="vip-panel-interior" class="hidden space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="text-xs font-extrabold text-amber-400 mb-1">🏔️ Bariloche (BRC)</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">AMAE Lounge Bariloche</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-2">
+                  En el preembarque de la planta alta. Ideal para tomar algo caliente antes de volver de esquiar o de tus vacaciones en la Patagonia.
+                </p>
+                <span class="text-[11px] text-slate-400">Acceso: Visa Airport Companion (DragonPass)</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="text-xs font-extrabold text-rose-400 mb-1">🍷 Mendoza (MDZ)</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">AMAE Lounge El Plumerillo</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-2">
+                  Salón renovado con vinos mendocinos, empanadas, café espresso y descanso antes de abordar hacia Buenos Aires o Santiago.
+                </p>
+                <span class="text-[11px] text-slate-400">Acceso: DragonPass / Visa Airport Companion</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="text-xs font-extrabold text-emerald-400 mb-1">🌴 Iguazú (IGR)</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">AMAE Lounge Cataratas</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-2">
+                  Hermosa sala con aire acondicionado y refrigerios tropicales con vista a la selva misionera tras recorrer las Cataratas.
+                </p>
+                <span class="text-[11px] text-slate-400">Acceso: DragonPass / Visa Airport Companion</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="text-xs font-extrabold text-sky-400 mb-1">✈️ Córdoba (COR)</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Aeropuertos VIPClub Córdoba</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-2">
+                  En el hub central del país. Servicio ágil para conexiones nacionales e internacionales con pases bancarios bonificados.
+                </p>
+                <span class="text-[11px] text-slate-400">Acceso: VIPClub / Convenios bancarios</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Panel 4: Internacionales -->
+        <div id="vip-panel-internacional" class="hidden space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="text-xs font-extrabold text-red-500 mb-1 flex items-center gap-1.5"><img src="img/flags/es.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/es.png'" alt="España" class="w-4 h-3 object-cover rounded-xs inline-block"> Madrid (MAD)</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Salas VIP Aena Barajas</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-2">
+                  Cibeles (T1), Puerta de Alcalá (T2), Neptuno (T4) y Plaza Mayor (T4S). Gastronomía española, duchas y camas de descanso.
+                </p>
+                <span class="text-[11px] text-slate-400">Acceso: DragonPass &amp; Priority Pass</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="text-xs font-extrabold text-blue-500 mb-1 flex items-center gap-1.5"><img src="img/flags/us.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/us.png'" alt="Estados Unidos" class="w-4 h-3 object-cover rounded-xs inline-block"> Miami (MIA)</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Centurion &amp; Turkish Lounge</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-2">
+                  The Centurion Lounge (Concourse D, Amex) y Turkish Airlines Lounge (Concourse E y H, Priority Pass/DragonPass).
+                </p>
+                <span class="text-[11px] text-slate-400">Acceso: Amex Platinum / Priority Pass</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="text-xs font-extrabold text-green-500 mb-1 flex items-center gap-1.5"><img src="img/flags/it.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/it.png'" alt="Italia" class="w-4 h-3 object-cover rounded-xs inline-block"> Roma (FCO)</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Plaza Premium Fiumicino</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-2">
+                  En Terminal 3. Cocina italiana a la vista, café espresso Illy, duchas y áreas de trabajo antes del vuelo de regreso.
+                </p>
+                <span class="text-[11px] text-slate-400">Acceso: DragonPass &amp; Priority Pass</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+              <div>
+                <div class="text-xs font-extrabold text-amber-500 mb-1 flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Río de Janeiro (GIG)</div>
+                <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Plaza Premium Galeão</h4>
+                <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-2">
+                  Salón espacioso en sector nacional e internacional con gastronomía brasileña, caipirinhas libres y duchas.
+                </p>
+                <span class="text-[11px] text-slate-400">Acceso: DragonPass &amp; Priority Pass</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Panel 5: Apps & Cupos Gratis -->
+        <div id="vip-panel-apps" class="hidden space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
+            
+            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center font-extrabold text-lg mb-3">
+                1
+              </div>
+              <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Visa Airport Companion (DragonPass)</h4>
+              <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-3">
+                La app obligatoria para titulares de <strong>Visa Signature y Visa Infinite</strong> en Argentina.
+              </p>
+              <ul class="text-xs space-y-1.5 dark:text-slate-300 text-slate-700">
+                <li>• Descargá la app en Google Play o App Store.</li>
+                <li>• Registrá los 16 dígitos de tu tarjeta Visa.</li>
+                <li>• La app te muestra tus <strong>cupos gratuitos anuales</strong> (Galicia: 2 a 4; Santander: 2; BBVA: 2 a 4).</li>
+                <li>• Genera un código QR digital válido para ingresar.</li>
+              </ul>
+            </div>
+
+            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+              <div class="w-10 h-10 rounded-xl bg-rose-500/15 text-rose-400 flex items-center justify-center font-extrabold text-lg mb-3">
+                2
+              </div>
+              <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Mastercard Airport Experiences (LoungeKey)</h4>
+              <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-3">
+                Para titulares de <strong>Mastercard Black</strong> emitida por cualquier entidad financiera.
+              </p>
+              <ul class="text-xs space-y-1.5 dark:text-slate-300 text-slate-700">
+                <li>• Descargá la app oficial provista por LoungeKey.</li>
+                <li>• Verificá qué salas están activas en tu aeropuerto de salida o escala.</li>
+                <li>• En Ezeiza tenés acceso a la sala propia de Mastercard en Terminal B.</li>
+                <li>• Mostrá tu QR o plástico Black al ingreso.</li>
+              </ul>
+            </div>
+
+            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+              <div class="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center font-extrabold text-lg mb-3">
+                3
+              </div>
+              <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">American Express Directa</h4>
+              <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-3">
+                Exclusivo para socios de compra <strong>The Platinum Card &amp; Centurion</strong>.
+              </p>
+              <ul class="text-xs space-y-1.5 dark:text-slate-300 text-slate-700">
+                <li>• Accesos <strong>ilimitados</strong> a The Centurion Lounge (EZE, MIA, JFK, etc.).</li>
+                <li>• Ingresás directamente con tu tarjeta física y boarding pass.</li>
+                <li>• Titular + 1 acompañante gratis en cada visita.</li>
+                <li>• Incluye membresía Priority Pass digital con pases ilimitados.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+
+      
+  <script>
+    window.toggleVipsAccordion = function() {
+      var body = document.getElementById("vip-body-wrapper");
+      var arrow = document.getElementById("vip-main-arrow");
+      var text = document.getElementById("vip-toggle-btn-text");
+      if (!body) return;
+      var isHidden = body.classList.contains("hidden");
+      if (isHidden) {
+        body.classList.remove("hidden");
+        if (arrow) arrow.style.transform = "rotate(180deg)";
+        if (text) text.textContent = "Guardar Salas VIP";
+      } else {
+        body.classList.add("hidden");
+        if (arrow) arrow.style.transform = "rotate(0deg)";
+        if (text) text.textContent = "Ver Salas VIP";
+      }
+    };
+
+    window.openVipsAccordion = function() {
+      var body = document.getElementById("vip-body-wrapper");
+      var arrow = document.getElementById("vip-main-arrow");
+      var text = document.getElementById("vip-toggle-btn-text");
+      if (body && body.classList.contains("hidden")) {
+        body.classList.remove("hidden");
+        if (arrow) arrow.style.transform = "rotate(180deg)";
+        if (text) text.textContent = "Guardar Salas VIP";
+      }
+      var target = document.getElementById("salas-vip-aereas");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+
+    window.setVipCategory = function(cat) {
+      var tabs = ['ezeiza', 'aeroparque', 'interior', 'internacional', 'apps'];
+      tabs.forEach(function(t) {
+        var btn = document.getElementById('vip-tab-' + t);
+        var panel = document.getElementById('vip-panel-' + t);
+        if (btn) {
+          if (t === cat) {
+            btn.className = 'px-4 py-2 rounded-xl text-xs font-bold text-white shadow-sm transition-all';
+            btn.style.background = 'var(--brand-gradient)';
+          } else {
+            btn.className = 'px-4 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-700 hover:dark:bg-slate-700 hover:bg-slate-200 transition-all';
+            btn.style.background = '';
+          }
+        }
+        if (panel) {
+          if (t === cat) panel.classList.remove('hidden');
+          else panel.classList.add('hidden');
+        }
+      });
+    };
+  </script>
+
+      <!-- Banner Informativo de Asistencia Médica Bonificada (Aparece reactivamente) -->
+      <div id="fb-asistencia-highlight-banner" class="hidden mb-10 p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs sm:text-sm leading-relaxed flex items-start gap-3 shadow-sm">
+        <span class="text-2xl flex-shrink-0">🛡️</span>
+        <div>
+          <strong class="font-extrabold text-emerald-200 block text-sm sm:text-base mb-1">¡Tenés Cobertura Médica Internacional Bonificada en tus Tarjetas!</strong>
+          <span id="fb-asistencia-highlight-text">
+            Tus tarjetas Visa Signature, Mastercard Black o Amex Platinum te cubren de USD 150.000 a USD 300.000 en urgencias médicas en el exterior y superan el requisito del Tratado de Schengen para Europa (mínimo EUR 30.000). Recordá descargar tu certificado oficial antes del vuelo.
+          </span>
+        </div>
+      </div>
+
+      <!-- Pestañas de Navegación por Tipo de Beneficio -->
+      <div class="flex items-center justify-between flex-wrap gap-4 mb-8">
+        <div class="flex items-center gap-2 p-1.5 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm overflow-x-auto no-scrollbar">
+                    <button type="button" onclick="window.setPromosCategoryFilter('todas')" id="pcat-btn-todas"
+                  class="px-4 py-2 rounded-xl text-xs font-extrabold transition-all text-white shadow-sm"
+                  style="background: var(--brand-gradient);">
+            🌟 Todos los Beneficios
+          </button>
+          <button type="button" onclick="window.setPromosCategoryFilter('asistencia')" id="pcat-btn-asistencia"
+                  class="px-4 py-2 rounded-xl text-xs font-bold transition-all dark:text-slate-300 text-slate-600 hover:dark:bg-slate-800 hover:bg-slate-100 flex items-center gap-1.5">
+            <span>🛡️</span> Asistencia al Viajero
+          </button>
+          <button type="button" onclick="window.setPromosCategoryFilter('viajes')" id="pcat-btn-viajes"
+                  class="px-4 py-2 rounded-xl text-xs font-bold transition-all dark:text-slate-300 text-slate-600 hover:dark:bg-slate-800 hover:bg-slate-100 flex items-center gap-1.5">
+            <span>✈️</span> Vuelos y Hoteles
+          </button>
+          <button type="button" onclick="window.setPromosCategoryFilter('vip')" id="pcat-btn-vip"
+                  class="px-4 py-2 rounded-xl text-xs font-bold transition-all dark:text-slate-300 text-slate-600 hover:dark:bg-slate-800 hover:bg-slate-100 flex items-center gap-1.5">
+            <span>🥂</span> Salas VIP
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div id="fb-promos-counter-label" class="text-xs font-bold dark:text-slate-400 text-slate-500">
+            Cargando beneficios...
+          </div>
+          <button type="button" id="fb-toggle-all-promos-btn" onclick="window.toggleAllPromoCards()"
+                  class="px-3 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-900 bg-white hover:dark:bg-slate-800 hover:bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 transition-all shadow-xs flex items-center gap-1.5 cursor-pointer">
+            <span id="fb-toggle-all-icon" class="text-xs transition-transform duration-300">▼</span>
+            <span id="fb-toggle-all-text">Desglosar Todo</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Grilla de Promociones y Beneficios -->
+      <div id="fb-promos-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Renderizado dinámico -->
+      </div>
+
+      <!-- Estado Vacío Si No Hay Coincidencias -->
+      <div id="fb-promos-empty-state" class="hidden text-center py-16 dark:bg-slate-900/50 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-8">
+        <div class="text-4xl mb-3">🔍</div>
+        <h4 class="text-lg font-bold dark:text-white text-slate-900 mb-2">No encontramos promociones para esa combinación de tarjetas</h4>
+        <p class="text-xs dark:text-slate-400 text-slate-600 max-w-md mx-auto mb-6 leading-relaxed">
+          Probá ampliando los filtros o marcando otras tarjetas de tu billetera para descubrir cuotas sin interés y asistencias disponibles.
+        </p>
+        <button type="button" onclick="window.resetPromosWalletFilters()"
+                class="px-5 py-2.5 rounded-xl text-xs font-bold text-white shadow-md hover:brightness-110 transition-all"
+                style="background: var(--brand-gradient);">
+          Ver todas las promociones
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Script del Motor de Billetera de Tarjetas, Promociones y Asistencia al Viajero -->
+  <script>
+    (function() {
+      // 1. Tarjetas Rápidas de la Billetera (Chips de selección)
+      const WALLET_PRESETS = [
+        { id: "galicia_signature", nombre: "Galicia Visa Signature", banco: "galicia", marca: "visa", nivel: "signature", icono: "💳" },
+        { id: "santander_black", nombre: "Santander Black", banco: "santander", marca: "visa", nivel: "black", icono: "💳" },
+        { id: "bbva_black", nombre: "BBVA Mastercard Black", banco: "bbva", marca: "mastercard", nivel: "black", icono: "💳" },
+        { id: "macro_selecta", nombre: "Macro Selecta Signature", banco: "macro", marca: "visa", nivel: "signature", icono: "💎" },
+        { id: "nacion_bna", nombre: "Banco Nación BNA", banco: "nacion", marca: "visa", nivel: "todas", icono: "🏦" },
+        { id: "naranja_x", nombre: "Naranja X Plan Z", banco: "naranja x", marca: "visa", nivel: "clasica", icono: "🧡" },
+        { id: "amex_platinum", nombre: "Amex The Platinum Card", banco: "amex directa", marca: "amex", nivel: "black", icono: "💳" },
+        { id: "mercadopago", nombre: "Mercado Pago Débito/Crédito", banco: "mercadopago", marca: "mastercard", nivel: "clasica", icono: "💙" },
+        { id: "brubank_uala", nombre: "Brubank / Ualá", banco: "brubank", marca: "visa", nivel: "clasica", icono: "🟣" }
+      ];
+
+      // 2. Base de Datos Integral de Promociones, Cuotas y Asistencia al Viajero
+      const FB_ALL_PROMOS = [
+        // --- ASISTENCIA AL VIAJERO BONIFICADA POR TARJETA ---
+        {
+          id: "asistencia_visa_signature",
+          categoria: "asistencia",
+          bancos: ["todos", "galicia", "santander", "bbva", "macro", "nacion", "ciudad", "patagonia", "icbc"],
+          marcas: ["visa"],
+          niveles: ["black", "signature"],
+          entidad: "Visa Travel Assistance / AXA",
+          titulo: "Asistencia Médica Internacional USD 150.000 / 300.000",
+          badge: "🛡️ Bonificada por Tarjeta",
+          badge_color: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
+          descripcion: "Cobertura médica integral en el exterior para titular, cónyuge e hijos menores de 23 años. Incluye internación, odontología de urgencia, seguro de auto en destino (CDW/LDW) y pérdida de equipaje.",
+          requisito: "Obligatorio pagar la totalidad del pasaje internacional con la tarjeta Visa Signature o canje de millas del banco. Emitir certificado en Visa Benefits antes de viajar.",
+          schengen: true,
+          icono: "🛡️",
+          cta_texto: "Portal Visa Benefits",
+          cta_link: "https://www.visa.com.ar"
+        },
+        {
+          id: "asistencia_mastercard_black",
+          categoria: "asistencia",
+          bancos: ["todos", "galicia", "santander", "bbva", "macro", "nacion", "ciudad", "patagonia", "icbc"],
+          marcas: ["mastercard"],
+          niveles: ["black"],
+          entidad: "MasterAssist Black / AIG",
+          titulo: "Cobertura Médica Global USD 150.000 (Apta Schengen)",
+          badge: "🛡️ Bonificada por Tarjeta",
+          badge_color: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
+          descripcion: "MasterAssist internacional de alta gama: emergencias médicas, hospitalización, repatriación sanitaria, compensación por demoras de vuelo y extravío de valijas.",
+          requisito: "Comprar el pasaje con Mastercard Black y generar la póliza digital en el portal de servicios de Mastercard antes del embarque.",
+          schengen: true,
+          icono: "🛡️",
+          cta_texto: "Portal MasterAssist",
+          cta_link: "https://www.mastercard.com.ar"
+        },
+        {
+          id: "asistencia_amex_platinum",
+          categoria: "asistencia",
+          bancos: ["amex directa"],
+          marcas: ["amex"],
+          niveles: ["black", "platinum"],
+          entidad: "American Express The Platinum Card Directa",
+          titulo: "Asistencia Médica Global USD 150.000 sin Franquicia",
+          badge: "🛡️ Bonificada Alta Gama",
+          badge_color: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
+          descripcion: "Cobertura médica directa sin deducibles para titular y grupo familiar directo. Incluye seguro de autos en todo el mundo, seguro de accidentes y acceso a salones VIP Centurion.",
+          requisito: "Exclusivo socios de compra The Platinum Card Directa emitida por American Express Argentina. Descargar voucher previo al viaje.",
+          schengen: true,
+          icono: "💳",
+          cta_texto: "Portal Amex Directa",
+          cta_link: "https://www.americanexpress.com/ar"
+        },
+        {
+          id: "asistencia_visa_platinum",
+          categoria: "asistencia",
+          bancos: ["todos", "galicia", "santander", "bbva", "macro", "nacion"],
+          marcas: ["visa"],
+          niveles: ["platinum"],
+          entidad: "Visa Platinum Assistance",
+          titulo: "Cobertura Médica Regional e Internacional USD 50.000",
+          badge: "🛡️ Bonificada Platinum",
+          badge_color: "bg-sky-500/15 text-sky-400 border-sky-500/30",
+          descripcion: "Asistencia en viajes para urgencias de salud, traslados médicos y odontología en países limítrofes y destinos internacionales para el titular y adicionales.",
+          requisito: "Abonar los pasajes con Visa Platinum y tramitar el voucher en el portal Visa antes del viaje.",
+          schengen: false,
+          icono: "🛡️",
+          cta_texto: "Portal Visa Platinum",
+          cta_link: "https://www.visa.com.ar"
+        },
+        // --- PROMOCIONES EN CONTRATACIÓN DE ASISTENCIA PRIVADA ---
+        {
+          id: "asistencia_assist_card",
+          categoria: "asistencia",
+          bancos: ["todos", "santander", "galicia", "bbva", "macro"],
+          marcas: ["visa", "mastercard", "amex"],
+          niveles: ["todas", "black", "signature", "platinum", "gold", "clasica"],
+          entidad: "Assist Card Oficial",
+          titulo: "Hasta 40% OFF + hasta 12 Cuotas Sin Interés",
+          badge: "🚑 Promo Póliza Assist Card",
+          badge_color: "bg-rose-500/15 text-rose-400 border-rose-500/30",
+          descripcion: "Planes con cobertura médica desde USD 60.000 hasta USD 3.000.000 con telemedicina 24hs en español por WhatsApp, medicamentos, deportes y preexistencias. 12 cuotas con Santander y Galicia.",
+          requisito: "Contratación online con tarjetas bancarias emitidas en Argentina. Cobertura inmediata.",
+          schengen: true,
+          icono: "🚑",
+          cta_texto: "Cotizar Assist Card",
+          cta_link: "https://www.assistcard.com/ar"
+        },
+        {
+          id: "asistencia_universal",
+          categoria: "asistencia",
+          bancos: ["todos", "nacion", "naranja x", "brubank", "uala", "mercadopago"],
+          marcas: ["visa", "mastercard"],
+          niveles: ["todas", "gold", "clasica", "platinum"],
+          entidad: "Universal Assistance",
+          titulo: "50% OFF en Plan Familiar + 6 Cuotas Fijas",
+          badge: "🌍 Descuento Familiar",
+          badge_color: "bg-indigo-500/15 text-indigo-400 border-indigo-500/30",
+          descripcion: "50% de descuento en el segundo y tercer pasajero familiar. Incluye app de autogestión médica con video-consulta sin esperas y seguro de equipaje.",
+          requisito: "Abonar con tarjetas Visa o Mastercard nacionales.",
+          schengen: true,
+          icono: "🌍",
+          cta_texto: "Cotizar Universal",
+          cta_link: "https://www.universal-assistance.com"
+        },
+        {
+          id: "asistencia_pax",
+          categoria: "asistencia",
+          bancos: ["todos", "galicia", "santander", "bbva", "macro", "mercadopago"],
+          marcas: ["visa", "mastercard", "amex"],
+          niveles: ["todas", "black", "signature", "platinum", "gold", "clasica"],
+          entidad: "Pax Assistance",
+          titulo: "Hijos menores de 21 gratis + 3 Cuotas Sin Interés",
+          badge: "❤️ Menores Sin Cargo",
+          badge_color: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
+          descripcion: "Atención médica ágil 100% por WhatsApp y soporte emocional 24/7. En planes familiares, los hijos menores de 21 años viajan bonificados.",
+          requisito: "Contratación digital inmediata antes de partir.",
+          schengen: true,
+          icono: "❤️",
+          cta_texto: "Ver Pax Assistance",
+          cta_link: "https://www.paxassistance.com"
+        },
+        {
+          id: "asistencia_assist_365",
+          categoria: "asistencia",
+          bancos: ["todos", "mercadopago", "uala", "brubank", "naranja x"],
+          marcas: ["visa", "mastercard"],
+          niveles: ["todas", "clasica", "gold"],
+          entidad: "Assist 365",
+          titulo: "30% OFF directo + 3 Cuotas con Billeteras Virtuales",
+          badge: "✈️ Especial Europa & USA",
+          badge_color: "bg-amber-500/15 text-amber-400 border-amber-500/30",
+          descripcion: "Precios en pesos con cuotas accesibles para jóvenes y viajeros independientes. Coberturas específicas para nómadas digitales y visados.",
+          requisito: "Abonar mediante Mercado Pago, Ualá o tarjetas locales.",
+          schengen: true,
+          icono: "✈️",
+          cta_texto: "Ver Assist 365",
+          cta_link: "https://assist-365.com"
+        },
+        // --- VUELOS, HOTELES Y PAQUETES ---
+        {
+          id: "promo_galicia_despegar_6",
+          categoria: "viajes",
+          bancos: ["galicia"],
+          marcas: ["visa", "mastercard", "amex"],
+          niveles: ["black", "signature", "platinum", "gold"],
+          entidad: "Banco Galicia + Despegar",
+          titulo: "Hasta 6 Cuotas Sin Interés en Vuelos y Hoteles",
+          badge: "💳 Hasta 6 Cuotas Sin Interés",
+          badge_color: "bg-orange-500/15 text-orange-400 border-orange-500/30",
+          descripcion: "Financiación en cuotas con tarjetas Galicia Visa o Mastercard en paquetes y hoteles nacionales e internacionales a través de Despegar.",
+          requisito: "Pagos con tarjetas de crédito Galicia Visa o Mastercard en Despegar.",
+          schengen: false,
+          icono: "🏨",
+          cta_texto: "Ver en Despegar",
+          cta_link: "https://www.despegar.com.ar"
+        },
+        {
+          id: "promo_santander_despegar_6",
+          categoria: "viajes",
+          bancos: ["santander"],
+          marcas: ["visa", "amex"],
+          niveles: ["black", "platinum", "gold"],
+          entidad: "Banco Santander + Despegar",
+          titulo: "6 Cuotas Fijas + 10% OFF en Hoteles Seleccionados",
+          badge: "💳 6 Cuotas + 10% OFF",
+          badge_color: "bg-red-500/15 text-red-400 border-red-500/30",
+          descripcion: "6 cuotas fijas y 10% de ahorro directo en hoteles seleccionados para clientes Santander Select con tarjetas Visa o American Express.",
+          requisito: "Ingresar desde el portal de beneficios Santander o app Despegar.",
+          schengen: false,
+          icono: "🏖️",
+          cta_texto: "Ver en Despegar",
+          cta_link: "https://www.despegar.com.ar"
+        },
+        {
+          id: "promo_bbva_booking_cashback",
+          categoria: "viajes",
+          bancos: ["bbva"],
+          marcas: ["visa", "mastercard"],
+          niveles: ["black", "platinum", "gold", "clasica"],
+          entidad: "Banco BBVA + Booking.com",
+          titulo: "6% Cashback en tu Resumen + 3 Cuotas",
+          badge: "🎁 6% Reintegro",
+          badge_color: "bg-blue-500/15 text-blue-400 border-blue-500/30",
+          descripcion: "Reintegro del 6% acreditado en el resumen de tu tarjeta de crédito BBVA Visa o Mastercard en reservas de hospedaje alrededor del mundo con Booking.com.",
+          requisito: "Reservar a través del enlace promocional de BBVA y abonar con tarjeta emitida en Argentina.",
+          schengen: false,
+          icono: "🎁",
+          cta_texto: "Reservar Booking",
+          cta_link: "https://www.booking.com"
+        },
+        {
+          id: "promo_nacion_bna_18",
+          categoria: "viajes",
+          bancos: ["nacion"],
+          marcas: ["visa", "mastercard"],
+          niveles: ["todas", "black", "signature", "platinum", "gold", "clasica"],
+          entidad: "Banco Nación + BNA Viajes",
+          titulo: "18 Cuotas Sin Interés en Destinos Nacionales",
+          badge: "🏦 18 Cuotas BNA",
+          badge_color: "bg-sky-500/15 text-sky-400 border-sky-500/30",
+          descripcion: "Hasta 18 cuotas sin interés en pasajes aéreos de cabotaje, paquetes y hoteles en Bariloche, Mendoza, Iguazú, Salta y Costa Atlántica con tarjetas de crédito BNA.",
+          requisito: "Comprar a través de la plataforma oficial Tienda BNA Viajes con tarjetas Nativa Visa o Mastercard.",
+          schengen: false,
+          icono: "🏦",
+          cta_texto: "Tienda BNA Viajes",
+          cta_link: "https://tiendabna.com.ar"
+        },
+        {
+          id: "promo_macro_selecta_6",
+          categoria: "viajes",
+          bancos: ["macro"],
+          marcas: ["visa", "amex"],
+          niveles: ["black", "platinum"],
+          entidad: "Banco Macro Selecta + Despegar",
+          titulo: "6 Cuotas Sin Interés en Turismo Nacional",
+          badge: "💎 6 Cuotas Sin Interés",
+          badge_color: "bg-blue-600/15 text-blue-400 border-blue-600/30",
+          descripcion: "Cuotas sin interés y beneficios exclusivos en escapadas y pasajes de cabotaje pagando con tarjetas Macro Selecta.",
+          requisito: "Pagos con tarjetas Visa Signature o Amex Macro Selecta en Despegar.",
+          schengen: false,
+          icono: "💎",
+          cta_texto: "Ver en Despegar",
+          cta_link: "https://www.despegar.com.ar"
+        },
+        {
+          id: "promo_naranja_x_plan_z",
+          categoria: "viajes",
+          bancos: ["naranja x"],
+          marcas: ["visa", "mastercard"],
+          niveles: ["todas", "clasica", "gold"],
+          entidad: "Naranja X Viajes",
+          titulo: "Plan Z (3 Cuotas Sin Interés) + 15% OFF",
+          badge: "🧡 Plan Z Sin Interés",
+          badge_color: "bg-orange-500/15 text-orange-400 border-orange-500/30",
+          descripcion: "Financiá tus escapadas y reservas hoteleras en 3 cuotas cero interés con Plan Z y obtené 15% de descuento especial en destinos de Argentina.",
+          requisito: "Seleccionar Plan Z al momento del pago con tu tarjeta Naranja X física o virtual.",
+          schengen: false,
+          icono: "🧡",
+          cta_texto: "Ver Naranja X",
+          cta_link: "https://www.naranjax.com"
+        },
+        {
+          id: "promo_amex_centurion_viajes",
+          categoria: "viajes",
+          bancos: ["amex directa"],
+          marcas: ["amex"],
+          niveles: ["black", "platinum"],
+          entidad: "American Express Directa",
+          titulo: "6 Cuotas Fijas + Acceso a Salones Centurion",
+          badge: "💳 Salas VIP & Cuotas",
+          badge_color: "bg-slate-500/15 text-slate-300 border-slate-500/30",
+          descripcion: "6 cuotas fijas en viajes y hotelería de alta gama con The Platinum Card Directa y acceso irrestricto al Salón Centurion en Ezeiza y aeropuertos globales.",
+          requisito: "Tarjeta directa emitida por American Express Argentina.",
+          schengen: false,
+          icono: "💳",
+          cta_texto: "Beneficios Amex",
+          cta_link: "https://www.americanexpress.com/ar"
+        },
+        {
+          id: "promo_mercadopago_viajes",
+          categoria: "viajes",
+          bancos: ["mercadopago"],
+          marcas: ["mastercard", "visa"],
+          niveles: ["todas", "clasica"],
+          entidad: "Mercado Pago",
+          titulo: "3 Cuotas Fijas en Pasajes y Reservas Turísticas",
+          badge: "💙 3 Cuotas MP",
+          badge_color: "bg-cyan-500/15 text-cyan-400 border-cyan-500/30",
+          descripcion: "3 cuotas fijas en pasajes y reservas turísticas nacionales con tarjeta de crédito Mercado Pago.",
+          requisito: "Abonar desde la app de Mercado Pago.",
+          schengen: false,
+          icono: "💙",
+          cta_texto: "App Mercado Pago",
+          cta_link: "https://www.mercadopago.com.ar"
+        },
+        {
+          id: "promo_brubank_cashback_hoteles",
+          categoria: "viajes",
+          bancos: ["brubank"],
+          marcas: ["visa"],
+          niveles: ["todas", "clasica", "gold", "platinum"],
+          entidad: "Brubank",
+          titulo: "3 Cuotas Sin Interés + 5% Cashback en Hoteles",
+          badge: "🟣 5% Cashback",
+          badge_color: "bg-purple-500/15 text-purple-400 border-purple-500/30",
+          descripcion: "Financiá tu estadía en 3 cuotas sin interés y recibí 5% de cashback acreditado automáticamente en tu caja de ahorro digital en pesos.",
+          requisito: "Abonar con tarjeta Visa Brubank física o virtual.",
+          schengen: false,
+          icono: "🟣",
+          cta_texto: "App Brubank",
+          cta_link: "https://www.brubank.com"
+        },
+                        // --- SALAS VIP EN AEROPUERTOS ---
+        {
+          id: "vip_visa_airport_companion",
+          categoria: "vip",
+          bancos: ["todos", "galicia", "santander", "bbva", "macro", "nacion", "ciudad", "patagonia", "icbc"],
+          marcas: ["visa"],
+          niveles: ["black", "signature", "platinum"],
+          entidad: "Visa Airport Companion (DragonPass)",
+          titulo: "Pases Bonificados a Salas VIP Nacionales e Internacionales",
+          badge: "🥂 Cupos Bonificados",
+          badge_color: "bg-indigo-500/15 text-indigo-400 border-indigo-500/30",
+          descripcion: "Entre 4 y 8 pases anuales 100% sin cargo en Star Alliance Lounge (Ezeiza), sala AMAE (Aeroparque) y más de 1.200 salones en todo el mundo descargando la app Visa Airport Companion.",
+          requisito: "Presentar código QR digital desde la app Visa Airport Companion en el mostrador del salón.",
+          schengen: false,
+          icono: "🥂",
+          cta_texto: "Ver Salas VIP",
+          cta_link: "#salas-vip-aereas"
+        },
+        {
+          id: "vip_mastercard_airport_experiences",
+          categoria: "vip",
+          bancos: ["todos", "galicia", "santander", "bbva", "macro", "nacion", "ciudad", "patagonia", "icbc"],
+          marcas: ["mastercard"],
+          niveles: ["black"],
+          entidad: "Mastercard Airport Experiences (LoungeKey)",
+          titulo: "Acceso a Salones VIP Globales con Mastercard Black",
+          badge: "🥂 Salones LoungeKey",
+          badge_color: "bg-indigo-500/15 text-indigo-400 border-indigo-500/30",
+          descripcion: "Cupos bonificados para Ezeiza Lounge, salas AMAE en cabotaje y salones VIP de todo el mundo registrando tu tarjeta Mastercard Black en LoungeKey.",
+          requisito: "Registro previo en la app Mastercard Airport Experiences provista por LoungeKey.",
+          schengen: false,
+          icono: "🥂",
+          cta_texto: "Ver Salas VIP",
+          cta_link: "#salas-vip-aereas"
+        },
+        {
+          id: "vip_amex_centurion",
+          categoria: "vip",
+          bancos: ["amex directa", "santander", "galicia", "macro"],
+          marcas: ["amex"],
+          niveles: ["black", "platinum"],
+          entidad: "American Express The Centurion Lounge",
+          titulo: "Ingreso Irrestricto a Salón Centurion Ezeiza + Acompañante",
+          badge: "🥂 Centurion Ilimitado",
+          badge_color: "bg-indigo-500/15 text-indigo-400 border-indigo-500/30",
+          descripcion: "Acceso exclusivo para el titular y un acompañante sin cargo al Salón Centurion en Terminal B de Ezeiza, más Priority Pass digital y salas Delta Sky Club en EE.UU.",
+          requisito: "Presentar tarjeta física o digital The Platinum Card / Centurion y tarjeta de embarque.",
+          schengen: false,
+          icono: "🥂",
+          cta_texto: "Ver Salas VIP",
+          cta_link: "#salas-vip-aereas"
+        }
+      ];
+
+      // Estado local de la billetera
+      let _selectedWalletCards = new Set();
+      let _currentCategoryFilter = "todas";
+
+      // Cargar tarjetas guardadas en LocalStorage
+      try {
+        const raw = localStorage.getItem("fb_user_wallet_cards");
+        if (raw) {
+          const arr = JSON.parse(raw);
+          if (Array.isArray(arr)) {
+            arr.forEach(id => _selectedWalletCards.add(id));
+          }
+        }
+      } catch (_) {}
+
+      // Generar Chips de Tarjetas en la Billetera
+      function renderWalletChips() {
+        const container = document.getElementById("fb-wallet-chips-container");
+        if (!container) return;
+        container.innerHTML = "";
+
+        WALLET_PRESETS.forEach(card => {
+          const isSelected = _selectedWalletCards.has(card.id);
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.onclick = () => window.toggleWalletCard(card.id);
+          btn.className = isSelected
+            ? "px-3.5 py-2 rounded-2xl text-xs font-extrabold text-white flex items-center gap-2 border transition-all scale-105 shadow-md"
+            : "px-3.5 py-2 rounded-2xl text-xs font-semibold dark:bg-slate-950/80 bg-slate-100 hover:dark:bg-slate-800 hover:bg-slate-200 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-300 flex items-center gap-2 transition-all opacity-85 hover:opacity-100";
+
+          if (isSelected) {
+            btn.style.background = "var(--brand-gradient)";
+            btn.style.borderColor = "var(--brand-primary)";
+          }
+
+          btn.innerHTML = `<span>${card.icono}</span><span>${card.nombre}</span><span class="${isSelected ? 'text-white' : 'text-slate-400'} text-[11px] font-bold">${isSelected ? '✓' : '+'}</span>`;
+          container.appendChild(btn);
+        });
+
+        // Actualizar contador de tarjetas activas
+        const countBadge = document.getElementById("fb-wallet-count-badge");
+        if (countBadge) {
+          const total = _selectedWalletCards.size;
+          countBadge.textContent = total === 0 ? "Mostrando todas las tarjetas" : `${total} tarjeta${total > 1 ? 's' : ''} activa${total > 1 ? 's' : ''}`;
+        }
+      }
+
+      // Alternar estado de una tarjeta en la billetera
+      window.toggleWalletCard = function(cardId) {
+        if (_selectedWalletCards.has(cardId)) {
+          _selectedWalletCards.delete(cardId);
+        } else {
+          _selectedWalletCards.add(cardId);
+          // Sincronizar selectores desplegables con la tarjeta seleccionada
+          const card = WALLET_PRESETS.find(c => c.id === cardId);
+          if (card) {
+            const selB = document.getElementById("fb-promos-filter-banco");
+            const selC = document.getElementById("fb-promos-filter-categoria");
+            const selM = document.getElementById("fb-promos-filter-marca");
+            if (selB) selB.value = card.banco;
+            if (selC) selC.value = card.nivel === "signature" ? "black" : card.nivel;
+            if (selM) selM.value = card.marca;
+          }
+        }
+        guardarBilleteraLocalStorage();
+        renderWalletChips();
+        window.searchPromosAndVips(false);
+      };
+
+      // Guardar en LocalStorage
+      function guardarBilleteraLocalStorage() {
+        try {
+          localStorage.setItem("fb_user_wallet_cards", JSON.stringify(Array.from(_selectedWalletCards)));
+        } catch (_) {}
+      }
+
+      // Restablecer filtros
+      window.resetPromosWalletFilters = function() {
+        _selectedWalletCards.clear();
+        guardarBilleteraLocalStorage();
+        const selB = document.getElementById("fb-promos-filter-banco");
+        const selC = document.getElementById("fb-promos-filter-categoria");
+        const selM = document.getElementById("fb-promos-filter-marca");
+        if (selB) selB.value = "todos";
+        if (selC) selC.value = "todas";
+        if (selM) selM.value = "todas";
+        const summary = document.getElementById("fb-search-active-summary");
+        if (summary) summary.classList.add("hidden");
+        document.querySelectorAll(".vip-card-compat-badge").forEach(el => el.remove());
+        renderWalletChips();
+        window.renderPromosCatalog();
+      };
+
+      // Seleccionar tarjetas más populares
+      window.selectPopularWalletCards = function() {
+        _selectedWalletCards.add("galicia_signature");
+        _selectedWalletCards.add("santander_black");
+        _selectedWalletCards.add("bbva_black");
+        _selectedWalletCards.add("nacion_bna");
+        guardarBilleteraLocalStorage();
+        renderWalletChips();
+        window.searchPromosAndVips(false);
+      };
+
+      // Manejador de cambios en los selectores desplegables
+      window.onPromosDropdownChange = function() {
+        window.searchPromosAndVips(false);
+      };
+
+      // Desplazamiento suave hacia la grilla de promociones
+      window.scrollToPromosGrid = function() {
+        const grid = document.getElementById("fb-promos-cards-grid");
+        if (grid) {
+          grid.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      };
+
+      // Búsqueda integrada de Promociones y Salas VIP
+      window.searchPromosAndVips = function(scroll = false) {
+        const btn = document.getElementById("fb-promos-search-btn");
+        if (btn && scroll) {
+          btn.innerHTML = '<span class="inline-block animate-pulse">⏳</span><span>Buscando...</span>';
+          setTimeout(() => {
+            btn.innerHTML = '<span>🔍</span><span>Buscar Beneficios</span>';
+          }, 300);
+        }
+
+        const bancoSelect = document.getElementById("fb-promos-filter-banco");
+        const catSelect = document.getElementById("fb-promos-filter-categoria");
+        const marcaSelect = document.getElementById("fb-promos-filter-marca");
+
+        const banco = (bancoSelect ? bancoSelect.value : "todos").toLowerCase();
+        const cat = (catSelect ? catSelect.value : "todas").toLowerCase();
+        const marca = (marcaSelect ? marcaSelect.value : "todas").toLowerCase();
+
+        // 1. Filtrar catálogo de promociones
+        window.renderPromosCatalog();
+
+        // 2. Diagnóstico dinámico en el banner de resultados
+        const summaryBox = document.getElementById("fb-search-active-summary");
+        const summaryTitle = document.getElementById("fb-summary-card-title");
+        const summaryVipDesc = document.getElementById("fb-summary-vip-desc");
+        const summaryCountBadge = document.getElementById("fb-summary-count-badge");
+
+        const bancoNombres = {
+          "todos": "Todos los Bancos",
+          "galicia": "Banco Galicia",
+          "santander": "Banco Santander",
+          "bbva": "Banco BBVA",
+          "macro": "Banco Macro",
+          "nacion": "Banco Nación (BNA)",
+          "naranja x": "Naranja X",
+          "brubank": "Brubank",
+          "uala": "Ualá",
+          "mercadopago": "Mercado Pago",
+          "amex directa": "American Express Directa"
+        };
+
+        const catNombres = {
+          "todas": "Todas las Categorías",
+          "black": "Black / Signature / The Platinum Card (Alta Gama)",
+          "platinum": "Platinum",
+          "gold": "Gold",
+          "clasica": "Clásica / Débito / Prepaga"
+        };
+
+        const marcaNombres = {
+          "todas": "",
+          "visa": "Visa",
+          "mastercard": "Mastercard",
+          "amex": "American Express"
+        };
+
+        const bNom = bancoNombres[banco] || banco;
+        const cNom = catNombres[cat] || cat;
+        const mNom = marcaNombres[marca] || "";
+        const tarjetaTitulo = [bNom, mNom, cNom].filter(Boolean).join(" · ");
+
+        let vipText = "";
+        if (banco === "amex directa") {
+          vipText = "✨ <strong>Salas VIP Ilimitadas:</strong> Ingreso sin cargo al <strong>Salón Centurion American Express</strong> (Terminal B de Ezeiza) para titular + 1 acompañante, además de pases Priority Pass y salas Delta Sky Club en EE.UU.";
+        } else if (cat === "black") {
+          vipText = `🥂 <strong>Salas VIP Bonificadas:</strong> Con tu tarjeta <strong>${bNom} Black / Signature</strong> contás con entre <strong>4 y 8 pases anuales 100% sin cargo</strong> para Star Alliance Lounge y Ezeiza Lounge en Ezeiza, y sala AMAE en Aeroparque vía <strong>Visa Airport Companion (DragonPass)</strong> o <strong>Mastercard Airport Experiences</strong>.`;
+        } else if (cat === "platinum") {
+          vipText = `🥂 <strong>Salas VIP:</strong> Tu tarjeta <strong>${bNom} Platinum</strong> te otorga membresía digital en la app <strong>Visa Airport Companion (DragonPass)</strong> para ingresar a Star Alliance Lounge y Ezeiza Lounge con tarifa preferencial (o cupos bonificados según tu paquete Select/Éminent).`;
+        } else if (banco !== "todos") {
+          vipText = `🥂 <strong>Salas VIP:</strong> Para acceder a salas VIP bonificadas sin cargo con ${bNom}, te sugerimos consultar si tu paquete califica para upgrade a categoría Platinum o Black / Signature.`;
+        } else {
+          vipText = "🥂 <strong>Salas VIP:</strong> Seleccioná tu banco y nivel de tarjeta para conocer exactamente a qué salones podés ingresar sin cargo y cuántos pases anuales tenés disponibles.";
+        }
+
+        const grid = document.getElementById("fb-promos-cards-grid");
+        const count = grid ? grid.children.length : 0;
+
+        if (summaryBox && summaryTitle && summaryVipDesc) {
+          if (banco !== "todos" || cat !== "todas" || marca !== "todas") {
+            summaryTitle.textContent = tarjetaTitulo;
+            summaryVipDesc.innerHTML = vipText;
+            summaryBox.classList.remove("hidden");
+            if (summaryCountBadge) {
+              summaryCountBadge.textContent = `Ver ${count} Promocion${count !== 1 ? 'es' : ''} ↓`;
+            }
+          } else {
+            summaryBox.classList.add("hidden");
+          }
+        }
+
+        // 3. Resaltar compatibilidad en las tarjetas de Salas VIP
+        window.updateVipCardsCompatibility(banco, cat, marca);
+
+        // 4. Scroll suave si fue disparado explícitamente por el botón Buscar
+        if (scroll && summaryBox && !summaryBox.classList.contains("hidden")) {
+          summaryBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      };
+
+      // Actualizar insignias de compatibilidad en las tarjetas de Salas VIP
+      window.updateVipCardsCompatibility = function(banco, cat, marca) {
+        document.querySelectorAll(".vip-card-compat-badge").forEach(el => el.remove());
+
+        if (banco === "todos" && cat === "todas" && marca === "todas") return;
+
+        const bancoNombres = { "santander": "Santander", "galicia": "Galicia", "bbva": "BBVA", "macro": "Macro", "nacion": "BNA", "amex directa": "Amex Directa" };
+        const bShort = bancoNombres[banco] || banco;
+
+        // Centurion Lounge
+        const centurionCard = document.getElementById("vip-card-centurion");
+        if (centurionCard) {
+          const badge = document.createElement("div");
+          badge.className = "vip-card-compat-badge mt-3 p-2 rounded-xl text-[11px] font-bold border transition-all";
+          if (banco === "amex directa") {
+            badge.className += " bg-emerald-500/15 border-emerald-500/30 text-emerald-400";
+            badge.innerHTML = "⭐ <strong>¡Acceso Ilimitado Bonificado!</strong> Titular + 1 acompañante gratis con tu The Platinum Card.";
+          } else {
+            badge.className += " bg-amber-500/10 border-amber-500/25 text-amber-400";
+            badge.innerHTML = "ℹ️ <strong>Requiere The Platinum Card Directa</strong> (emitida por American Express Argentina, no bancaria).";
+          }
+          centurionCard.appendChild(badge);
+        }
+
+        // Star Alliance Lounge
+        const starCard = document.getElementById("vip-card-staralliance");
+        if (starCard && banco !== "todos") {
+          const badge = document.createElement("div");
+          badge.className = "vip-card-compat-badge mt-3 p-2 rounded-xl text-[11px] font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 transition-all";
+          badge.innerHTML = `✓ <strong>Acepta tu tarjeta ${bShort}:</strong> Ingreso mediante app <i>Visa Airport Companion</i> (DragonPass).`;
+          starCard.appendChild(badge);
+        }
+
+        // Ezeiza Lounge
+        const ezeizaCard = document.getElementById("vip-card-ezeiza");
+        if (ezeizaCard && banco !== "todos") {
+          const badge = document.createElement("div");
+          badge.className = "vip-card-compat-badge mt-3 p-2 rounded-xl text-[11px] font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 transition-all";
+          badge.innerHTML = `✓ <strong>Acepta tu tarjeta ${bShort}:</strong> Presentar app <i>DragonPass / Visa Airport Companion</i> en mostrador.`;
+          ezeizaCard.appendChild(badge);
+        }
+
+        // AMAE Aeroparque
+        const amaeCard = document.getElementById("vip-card-amae-aep");
+        if (amaeCard && banco !== "todos") {
+          const badge = document.createElement("div");
+          badge.className = "vip-card-compat-badge mt-3 p-2 rounded-xl text-[11px] font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 transition-all";
+          badge.innerHTML = `✓ <strong>Acepta tu tarjeta ${bShort}:</strong> Cupos bonificados con Visa Airport Companion y Mastercard Black.`;
+          amaeCard.appendChild(badge);
+        }
+      };
+
+      // Cambiar pestaña de categoría (todas / asistencia / viajes / combustible)
+      window.setPromosCategoryFilter = function(cat) {
+        _currentCategoryFilter = cat;
+        ["todas", "asistencia", "viajes", "vip"].forEach(c => {
+          const btn = document.getElementById("pcat-btn-" + c);
+          if (btn) {
+            if (c === cat) {
+              btn.className = "px-4 py-2 rounded-xl text-xs font-extrabold transition-all text-white shadow-sm";
+              btn.style.background = "var(--brand-gradient)";
+            } else {
+              btn.className = "px-4 py-2 rounded-xl text-xs font-bold transition-all dark:text-slate-300 text-slate-600 hover:dark:bg-slate-800 hover:bg-slate-100 flex items-center gap-1.5";
+              btn.style.background = "";
+            }
+          }
+        });
+        window.renderPromosCatalog();
+      };
+
+      // Renderizar el catálogo filtrado
+      window.renderPromosCatalog = function() {
+        const grid = document.getElementById("fb-promos-cards-grid");
+        const emptyState = document.getElementById("fb-promos-empty-state");
+        const counterLabel = document.getElementById("fb-promos-counter-label");
+        const highlightBanner = document.getElementById("fb-asistencia-highlight-banner");
+        if (!grid) return;
+
+        const bancoFiltro = (document.getElementById("fb-promos-filter-banco")?.value || "todos").toLowerCase();
+        const catFiltro = (document.getElementById("fb-promos-filter-categoria")?.value || "todas").toLowerCase();
+        const marcaFiltro = (document.getElementById("fb-promos-filter-marca")?.value || "todas").toLowerCase();
+
+        // Obtener tarjetas activas en la billetera
+        const activeCards = WALLET_PRESETS.filter(c => _selectedWalletCards.has(c.id));
+        const tieneTarjetaPremium = activeCards.some(c => c.nivel === "black" || c.nivel === "signature");
+
+        // Mostrar / Ocultar banner de asistencia bonificada
+        if (highlightBanner) {
+          if (tieneTarjetaPremium || catFiltro === "black" || _currentCategoryFilter === "asistencia") {
+            highlightBanner.classList.remove("hidden");
+          } else {
+            highlightBanner.classList.add("hidden");
+          }
+        }
+
+        // Filtrar promociones
+        const filtradas = FB_ALL_PROMOS.filter(p => {
+          // 1. Filtro por pestaña de categoría
+          if (_currentCategoryFilter !== "todas" && p.categoria !== _currentCategoryFilter) {
+            return false;
+          }
+
+          // 2. Filtro por dropdown de banco
+          if (bancoFiltro !== "todos" && !p.bancos.includes("todos") && !p.bancos.includes(bancoFiltro)) {
+            return false;
+          }
+
+          // 3. Filtro por dropdown de categoría/nivel de tarjeta
+          if (catFiltro !== "todas" && !p.niveles.includes("todas") && !p.niveles.includes(catFiltro)) {
+            return false;
+          }
+
+          // 4. Filtro por dropdown de marca
+          if (marcaFiltro !== "todas" && !p.marcas.includes("todas") && !p.marcas.includes(marcaFiltro)) {
+            return false;
+          }
+
+          // 5. Filtro por billetera rápida (si el usuario marcó 1 o más tarjetas)
+          if (activeCards.length > 0) {
+            const coincideConBilletera = activeCards.some(card => {
+              const coincideBanco = p.bancos.includes("todos") || p.bancos.includes(card.banco);
+              const coincideMarca = p.marcas.includes("todas") || p.marcas.includes(card.marca);
+              const coincideNivel = p.niveles.includes("todas") || p.niveles.includes(card.nivel) || (card.nivel === "signature" && p.niveles.includes("black"));
+              return coincideBanco && coincideMarca && coincideNivel;
+            });
+            if (!coincideConBilletera) return false;
+          }
+
+          return true;
+        });
+
+        // Actualizar contador
+        if (counterLabel) {
+          counterLabel.textContent = `Mostrando ${filtradas.length} beneficio${filtradas.length !== 1 ? 's' : ''}`;
+        }
+
+        // Si no hay resultados
+        if (filtradas.length === 0) {
+          grid.innerHTML = "";
+          if (emptyState) emptyState.classList.remove("hidden");
+          return;
+        }
+
+        if (emptyState) emptyState.classList.add("hidden");
+        grid.innerHTML = "";
+
+        // Renderizar cada card con información guardada y flechita desglosable
+        filtradas.forEach(p => {
+          const cardEl = document.createElement("div");
+          cardEl.className = "dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl p-5 sm:p-6 flex flex-col justify-between shadow-sm hover:shadow-xl dark:hover:border-slate-700 transition-all theme-transition";
+
+          const schengenBadge = p.schengen
+            ? '<span class="inline-flex items-center gap-1 text-[11px] font-bold text-sky-400 bg-sky-500/10 border border-sky-500/25 px-2.5 py-1 rounded-lg">🇪🇺 Válido Tratado Schengen</span>'
+            : '';
+
+          cardEl.innerHTML = `
+            <div>
+              <div class="flex items-start justify-between gap-3 mb-2.5">
+                <span class="text-2xl">${p.icono}</span>
+                <span class="inline-flex items-center text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full border ${p.badge_color}">
+                  ${p.badge}
+                </span>
+              </div>
+              <div class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 mb-1">
+                ${p.entidad}
+              </div>
+              <h4 class="text-base font-extrabold dark:text-white text-slate-900 mb-3 leading-snug theme-transition">
+                ${p.titulo}
+              </h4>
+
+              <!-- Botón Desplegable con Flechita (Guarda / Desglosa detalles) -->
+              <button type="button" onclick="window.togglePromoCardDetails('${p.id}')"
+                      class="w-full px-3.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between dark:bg-slate-950/70 bg-slate-50 hover:dark:bg-slate-800 hover:bg-slate-100 border dark:border-slate-800 border-slate-200 transition-all cursor-pointer">
+                <span id="promo-btn-text-${p.id}" class="dark:text-slate-300 text-slate-700">Ver Detalles &amp; Cobertura</span>
+                <span id="promo-arrow-${p.id}" class="text-sm font-bold transition-transform duration-300 text-rose-500">▼</span>
+              </button>
+
+              <!-- Contenedor Desglosable con Información Guardada -->
+              <div id="promo-details-${p.id}" class="promo-card-details hidden pt-3 space-y-3 border-t dark:border-slate-800 border-slate-100 mt-3">
+                <p class="text-xs dark:text-slate-300 text-slate-600 leading-relaxed theme-transition">
+                  ${p.descripcion}
+                </p>
+                ${schengenBadge ? `<div class="mb-2">${schengenBadge}</div>` : ''}
+                <div class="p-3 rounded-xl dark:bg-slate-950/80 bg-slate-50 border dark:border-slate-800/80 border-slate-200 text-[11px] dark:text-slate-400 text-slate-500 leading-relaxed">
+                  <strong class="dark:text-slate-300 text-slate-700">Requisitos:</strong> ${p.requisito}
+                </div>
+                <div class="pt-2 border-t dark:border-slate-800 border-slate-100 flex items-center justify-between">
+                  <span class="text-[11px] font-semibold text-rose-500 flex items-center gap-1">
+                    <span>⚡</span> Beneficio Verificado
+                  </span>
+                  <a href="${p.cta_link}" target="_blank" rel="noopener noreferrer"
+                     class="text-xs font-extrabold transition-all hover:underline flex items-center gap-1"
+                     style="color: var(--brand-primary);">
+                    ${p.cta_texto} &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+          grid.appendChild(cardEl);
+        });
+      };
+
+      // Alternar visualización de detalles en tarjeta individual
+      window.togglePromoCardDetails = function(promoId) {
+        const details = document.getElementById("promo-details-" + promoId);
+        const arrow = document.getElementById("promo-arrow-" + promoId);
+        const btnText = document.getElementById("promo-btn-text-" + promoId);
+        if (!details) return;
+        const isHidden = details.classList.contains("hidden");
+        if (isHidden) {
+          details.classList.remove("hidden");
+          if (arrow) arrow.style.transform = "rotate(180deg)";
+          if (btnText) btnText.textContent = "Ocultar Detalles";
+        } else {
+          details.classList.add("hidden");
+          if (arrow) arrow.style.transform = "rotate(0deg)";
+          if (btnText) btnText.textContent = "Ver Detalles & Cobertura";
+        }
+      };
+
+      // Desglosar o Guardar todas las tarjetas visibles a la vez
+      window.toggleAllPromoCards = function() {
+        const allDetails = document.querySelectorAll(".promo-card-details");
+        const toggleBtnText = document.getElementById("fb-toggle-all-text");
+        const toggleIcon = document.getElementById("fb-toggle-all-icon");
+        if (allDetails.length === 0) return;
+
+        let someHidden = false;
+        allDetails.forEach(el => {
+          if (el.classList.contains("hidden")) someHidden = true;
+        });
+
+        allDetails.forEach(el => {
+          const promoId = el.id.replace("promo-details-", "");
+          const arrow = document.getElementById("promo-arrow-" + promoId);
+          const btnText = document.getElementById("promo-btn-text-" + promoId);
+
+          if (someHidden) {
+            el.classList.remove("hidden");
+            if (arrow) arrow.style.transform = "rotate(180deg)";
+            if (btnText) btnText.textContent = "Ocultar Detalles";
+          } else {
+            el.classList.add("hidden");
+            if (arrow) arrow.style.transform = "rotate(0deg)";
+            if (btnText) btnText.textContent = "Ver Detalles & Cobertura";
+          }
+        });
+
+        if (someHidden) {
+          if (toggleBtnText) toggleBtnText.textContent = "Guardar Todo";
+          if (toggleIcon) toggleIcon.style.transform = "rotate(180deg)";
+        } else {
+          if (toggleBtnText) toggleBtnText.textContent = "Desglosar Todo";
+          if (toggleIcon) toggleIcon.style.transform = "rotate(0deg)";
+        }
+      };
+
+      // Inicialización en DOMContentLoaded
+      document.addEventListener("DOMContentLoaded", function() {
+      if (window.renderizarCuponesDinamicos) { window.renderizarCuponesDinamicos(); }
+        renderWalletChips();
+        window.renderPromosCatalog();
+      });
+    })();
+  </script>
+<!-- FLIGHTBOT_PROMOS_END -->
+    </div>
+
+    <!-- PANEL 2: BÓVEDA DE PASAJES & MODO OFFLINE -->
+    <div id="panel-boveda-offline" class="space-y-10 hidden animate-fadeIn">
+
 
     <!-- Banner de Higiene de Datos en Dispositivos Públicos (Hoteles / Cibercafés) -->
     <div class="p-3.5 sm:p-4 rounded-2xl dark:bg-amber-950/30 bg-amber-50/90 border border-amber-500/30 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-amber-900 dark:text-amber-200 shadow-xs">
@@ -487,7 +2051,9 @@
       </div>
     </div>
 
-  </main>
+  
+    </div>
+</main>
 
   <!-- Modal de Visualización de Boarding Pass / QR -->
   <div id="modal-boarding-pass" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
@@ -1458,5 +3024,59 @@
       document.querySelectorAll('.current-year').forEach(el => { el.textContent = year; });
     })();
   </script>
+
+  <script>
+    window.cambiarTabBilletera = function(tabName, scrollIntoView = false) {
+      const panelTarjetas = document.getElementById('panel-tarjetas-vip');
+      const panelBoveda = document.getElementById('panel-boveda-offline');
+      const btnTarjetas = document.getElementById('tab-btn-tarjetas');
+      const btnBoveda = document.getElementById('tab-btn-boveda');
+
+      if (tabName === 'tarjetas') {
+        if (panelTarjetas) panelTarjetas.classList.remove('hidden');
+        if (panelBoveda) panelBoveda.classList.add('hidden');
+        if (btnTarjetas) {
+          btnTarjetas.className = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all cursor-pointer text-white shadow-md';
+          btnTarjetas.style.background = 'var(--brand-gradient)';
+        }
+        if (btnBoveda) {
+          btnBoveda.className = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all cursor-pointer text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-transparent';
+          btnBoveda.style.background = 'transparent';
+        }
+        if (scrollIntoView && panelTarjetas) {
+          panelTarjetas.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        if (panelBoveda) panelBoveda.classList.remove('hidden');
+        if (panelTarjetas) panelTarjetas.classList.add('hidden');
+        if (btnBoveda) {
+          btnBoveda.className = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold flex items-center gap-2 transition-all cursor-pointer text-white shadow-md';
+          btnBoveda.style.background = 'var(--brand-gradient)';
+        }
+        if (btnTarjetas) {
+          btnTarjetas.className = 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all cursor-pointer text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-transparent';
+          btnTarjetas.style.background = 'transparent';
+        }
+        if (scrollIntoView && panelBoveda) {
+          panelBoveda.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    function initBilleteraHash() {
+      const hash = (window.location.hash || '').toLowerCase();
+      if (hash.includes('boveda') || hash.includes('documento') || hash.includes('pasaje')) {
+        window.cambiarTabBilletera('boveda');
+      } else {
+        window.cambiarTabBilletera('tarjetas');
+        if (hash.includes('salas-vip') && window.openVipsAccordion) {
+          setTimeout(window.openVipsAccordion, 100);
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', initBilleteraHash);
+    window.addEventListener('hashchange', initBilleteraHash);
+  </script>
+
 </body>
 </html>

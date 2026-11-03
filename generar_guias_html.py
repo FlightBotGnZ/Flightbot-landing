@@ -3365,9 +3365,6 @@ def generar_html_guia(guia: dict) -> str:
             <span class="text-[9px] opacity-80 font-medium">Relámpago</span>
           </span>
         </a>
-        <a href="/#destinos" id="nav-btn-destinos" class="nav-dock-btn">
-          <span>🏨</span> Destinos
-        </a>
         <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
           <span>🚗</span> Modo Ruta
         </a>
@@ -3415,9 +3412,6 @@ def generar_html_guia(guia: dict) -> str:
         </a>
         <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🔥</span> Ofertas Relámpago
-        </a>
-        <a href="/#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>🏨</span> Destinos
         </a>
         <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🚗</span> Modo Ruta
@@ -3948,9 +3942,6 @@ def generar_indice_guias(guias: list) -> str:
             <span class="text-[9px] opacity-80 font-medium">Relámpago</span>
           </span>
         </a>
-        <a href="/#destinos" id="nav-btn-destinos" class="nav-dock-btn">
-          <span>🏨</span> Destinos
-        </a>
         <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
           <span>🚗</span> Modo Ruta
         </a>
@@ -3998,9 +3989,6 @@ def generar_indice_guias(guias: list) -> str:
         </a>
         <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🔥</span> Ofertas Relámpago
-        </a>
-        <a href="/#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
-          <span>🏨</span> Destinos
         </a>
         <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
           <span>🚗</span> Modo Ruta
