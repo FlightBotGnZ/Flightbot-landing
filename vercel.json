@@ -1,6 +1,18 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/roma", "destination": "/guias/roma", "permanent": true },
+    { "source": "/madrid", "destination": "/guias/madrid", "permanent": true },
+    { "source": "/miami", "destination": "/guias/miami", "permanent": true },
+    { "source": "/rio", "destination": "/guias/rio-de-janeiro", "permanent": true },
+    { "source": "/bariloche", "destination": "/guias/bariloche-patagonia", "permanent": true },
+    { "source": "/cancun", "destination": "/guias/cancun-riviera-maya", "permanent": true },
+    { "source": "/mendoza", "destination": "/guias/mendoza-valle-de-uco", "permanent": true },
+    { "source": "/iguazu", "destination": "/guias/puerto-iguazu-cataratas", "permanent": true },
+    { "source": "/paris", "destination": "/guias/paris-ile-de-france", "permanent": true },
+    { "source": "/londres", "destination": "/guias/londres-reino-unido", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",

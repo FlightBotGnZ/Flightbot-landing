@@ -3097,7 +3097,7 @@ def generar_html_guia(guia: dict) -> str:
     for g_id, g_item in GUIAS_DESTINOS.items():
         if g_id != guia["id"]:
             otras_guias_html += f"""
-            <a href="{g_item['slug']}.html" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
+            <a href="/guias/{g_item['slug']}" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
               <span>{g_item['icono']}</span>
               <span class="font-medium dark:text-white text-slate-900">{g_item['ciudad']}</span>
             </a>"""
@@ -3772,7 +3772,7 @@ def generar_indice_guias(guias: list) -> str:
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
                 <span>{g['icono']}</span>
-                <a href="{g['slug']}.html">{g['ciudad']}</a>
+                <a href="/guias/{g['slug']}">{g['ciudad']}</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
                 {g_meta['categoria']}
@@ -3786,7 +3786,7 @@ def generar_indice_guias(guias: list) -> str:
             </div>
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
               <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">{g['cmd_vuelo']}</span>
-              <a href="{g['slug']}.html" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
+              <a href="/guias/{g['slug']}" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
                 Leer Artículo Completo &rarr;
               </a>
             </div>
@@ -3811,7 +3811,7 @@ def generar_indice_guias(guias: list) -> str:
             {
                 "@type": "BlogPosting",
                 "headline": f"Guía de Viaje a {g['ciudad']} 2026",
-                "url": f"{g['slug']}.html",
+                "url": f"https://flightbot.com.ar/guias/{g['slug']}",
                 "datePublished": "2026-10-15T09:00:00+00:00"
             }
             for g in guias
