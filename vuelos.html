@@ -325,16 +325,16 @@
 
   <!-- ENCABEZADO / NAVBAR UNIVERSAL -->
   <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/80 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 xl:gap-4 relative">
-      <!-- Marca / Logotipo -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 lg:gap-3 xl:gap-4 relative">
+      
+      <!-- 1. Marca / Logotipo -->
       <div class="flex items-center gap-3 shrink-0 z-10 mr-3 xl:mr-5">
-        <a href="/" class="flex items-center gap-3 group" title="Volver al inicio de FlightBot">
+        <a href="/" class="flex items-center gap-2.5 sm:gap-3 group" title="Volver al inicio de FlightBot">
           <div id="brand-logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition cursor-pointer p-1 group-hover:scale-105 transition-transform"
                title="Mascota tech redondeada que sostiene su propia valija carry-on rígida con ruedas 360°. La antena superior emite pulsos de alertas cuando encuentra una tarifa baja."
                style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
             <svg viewBox="0 0 40 40" class="w-6 h-6 sm:w-8 sm:h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
-              <!-- Valija Carry-On SIEMPRE ROJA (No cambia con el theme) -->
               <rect x="23" y="19" width="12" height="16" rx="3" fill="url(#fbSuitcaseAlwaysRedNav)" stroke="#ffffff" stroke-width="0.8"/>
               <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
               <line x1="25" y1="27" x2="33" y2="27" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
@@ -367,7 +367,7 @@
         </a>
       </div>
 
-      <!-- Barra de Navegación Central -->
+      <!-- 2. Barra de Navegación Central Simétrica (Dock Centrado con padding elástico) -->
       <nav class="hidden lg:flex items-center p-1 xl:p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-0.5 xl:gap-1.5 mx-auto shrink-0">
         <a href="/" id="nav-btn-inicio" class="nav-dock-btn">
           <span>🏠</span> Inicio
@@ -375,7 +375,9 @@
         <a href="/vuelos" id="nav-btn-vuelos" class="nav-dock-btn is-active">
           <span>✈️</span> Vuelos
         </a>
-        <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn" title="Ofertas Relámpago y Oportunidades Flash"><span>🔥</span> Relámpago</a>
+        <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn" title="Ofertas Relámpago y Oportunidades Flash">
+          <span>🔥</span> Relámpago
+        </a>
         <a href="/#destinos" id="nav-btn-destinos" class="nav-dock-btn">
           <span>🏨</span> Destinos
         </a>
@@ -393,12 +395,13 @@
         </a>
       </nav>
 
-      <!-- Controles de Personalización y Acciones -->
-      <div class="flex items-center gap-2 sm:gap-2.5 xl:gap-3 shrink-0 z-10 ml-2 sm:ml-3 xl:ml-4">
-        <!-- Widget Auth Google / Billetera de Tokens -->
+      <!-- 3. Contenedor Derecho Único y Balanceado (h-8 uniforme) -->
+      <div class="flex items-center gap-1.5 sm:gap-2 xl:gap-2.5 shrink-0 z-10">
+        
+        <!-- A. Widget Auth Google (Píldora h-8: compacta en lg, expandida en xl) -->
         <div id="auth-nav-container" class="flex items-center">
           <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.iniciarLoginGoogle() : null"
-                  class="inline-flex items-center justify-center gap-1.5 h-8 px-2 sm:px-3 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-900/90 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
+                  class="inline-flex items-center justify-center gap-1.5 h-8 px-2 sm:px-2.5 xl:px-3 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-900/90 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
                   title="Acceder con Google">
             <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -406,22 +409,22 @@
               <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
               <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
             </svg>
-            <span class="hidden sm:inline">Acceder</span>
+            <span class="hidden xl:inline">Acceder</span>
           </button>
         </div>
 
-        <!-- Switcher de Tema Proporcional (h-8) -->
+        <!-- B. Switcher de Tema y Color (h-8) -->
         <div class="flex items-center h-8 p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-xs theme-transition">
-          <!-- Switcher de Color Oficial (Ruby vs Blue) -->
+          <!-- Switcher de Color (Ruby / Blue) -->
           <div class="hidden sm:flex items-center gap-1.5 pl-1.5 pr-2">
             <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Color Ruby" aria-label="Color Ruby"
                     class="w-3.5 h-3.5 rounded-full bg-rose-600 hover:scale-110 transition-transform focus:outline-none"></button>
             <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Color Blue" aria-label="Color Blue"
                     class="w-3.5 h-3.5 rounded-full bg-blue-600 hover:scale-110 transition-transform focus:outline-none"></button>
           </div>
-          <!-- Separador Vertical Centrado y Proporcional -->
+          <!-- Separador Vertical -->
           <div class="hidden sm:block w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
-          <!-- Switcher de Modo (Claro / Oscuro) -->
+          <!-- Alternar Modo Oscuro / Claro -->
           <div class="flex items-center pl-1 pr-1.5">
             <button onclick="toggleThemeMode()" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro" aria-label="Alternar Modo Claro / Oscuro"
                     class="w-4.5 h-4.5 rounded-full flex items-center justify-center text-xs dark:text-amber-400 text-slate-700 hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
@@ -430,7 +433,7 @@
           </div>
         </div>
 
-        <!-- Píldora Telegram Compacta Estandarizada (h-8) -->
+        <!-- C. Píldora Telegram Única de Escritorio (h-8 px-3.5) -->
         <a href="https://t.me/GnZFlightBot?start=vuelos" target="_blank" rel="noopener noreferrer" 
            class="hidden sm:inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full text-white font-semibold text-xs shrink-0 transition-all shadow-md hover:brightness-110"
            style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);"
@@ -441,7 +444,7 @@
           <span>Telegram</span>
         </a>
 
-        <!-- Botón Menú Móvil -->
+        <!-- D. Botón Menú Móvil Único (lg:hidden) -->
         <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
                 class="lg:hidden w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors shrink-0">
           <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -451,33 +454,11 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
-      </div></div>
-        </div>
 
-        <!-- Botón CTA Telegram: Visible en tablets y desktop (hidden en móvil chico < sm) -->
-        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-           class="hidden sm:inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full text-white font-semibold text-xs transition-all shadow-md hover:brightness-110 shrink-0"
-           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
-          <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
-          </svg>
-          <span class="hidden md:inline">Telegram</span>
-        </a>
-
-        <!-- Botón Menú Móvil (< lg): SIEMPRE VISIBLE, ANCLADO Y PRIORITARIO A LA DERECHA -->
-        <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
-                class="lg:hidden w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors shrink-0">
-          <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-          <svg id="nav-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
       </div>
     </div>
 
-    <!-- Menú Móvil -->
+    <!-- 4. Menú Móvil Desplegable (Con botón de Telegram al pie del drawer) -->
     <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3.5 transition-all shadow-xl">
       <!-- Contenedor Auth Móvil -->
       <div id="mobile-auth-drawer-container">
@@ -493,33 +474,33 @@
       </div>
 
       <div class="grid grid-cols-2 gap-2 text-xs font-semibold mb-3">
-        <a href="/" id="nav-mobile-inicio" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🏠</span> Inicio
         </a>
-        <a href="/vuelos" id="nav-mobile-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
+        <a href="/vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
           <span>✈️</span> Vuelos
         </a>
-        <a href="/relampago" id="nav-mobile-relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🔥</span> Relámpago
         </a>
-        <a href="/#destinos" id="nav-mobile-destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/#destinos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🏨</span> Destinos
         </a>
-        <a href="/escapadas" id="nav-mobile-modoruta" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="/billetera" id="nav-mobile-billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>💳</span> Billetera
         </a>
-        <a href="/guias/" id="nav-mobile-guias" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/guias/" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>📖</span> Guías
         </a>
-        <a href="/faq" id="nav-mobile-faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
           <span>❓</span> FAQ
         </a>
       </div>
 
-      <!-- Botón Telegram en Menú Móvil -->
+      <!-- Botón Telegram en Menú Móvil (Al pie del drawer) -->
       <a href="https://t.me/GnZFlightBot?start=vuelos" target="_blank" rel="noopener noreferrer"
          class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-white font-bold text-xs shadow-md hover:brightness-110 transition-all mt-2"
          style="background: var(--brand-gradient);">
