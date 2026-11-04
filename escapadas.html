@@ -2395,6 +2395,7 @@
             </div>
           </div>
         </div>
+        </div> <!-- Cierre de grid-cols-1 lg:grid-cols-2 de Tarjeta 1 y 2 -->
 
       <!-- MÓDULO COMPARADOR: ¿CONVIENE VIAJAR EN AUTO O EN AVIÓN? -->
       <div id="comparador-auto-avion" class="mb-10 pt-8 border-t dark:border-slate-800 border-slate-200 theme-transition">
@@ -2425,7 +2426,6 @@
             </label>
             <select id="comp-destino-select" onchange="window.recalcularComparadorAutoAvion()"
                     class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all cursor-pointer">
-              <option value="lacosta">Partido de La Costa (Mar del Tuyú / San Bernardo / Mar de Ajó)</option>
               <option value="mardel">Mar del Plata & Chapadmalal (Autovía 2)</option>
               <option value="bariloche" selected>San Carlos de Bariloche (RN 5 + Desierto + RN 237)</option>
               <option value="mendoza">Mendoza Capital & Valle de Uco (RN 7)</option>
@@ -2479,21 +2479,35 @@
                 🚶 A pie / Centro ($0)
               </button>
             </div>
+            <!-- Tip dinámico de capacidad de Uber y autos según cantidad de pasajeros -->
+            <div id="comp-uber-capacidad-tip" class="mt-2 text-[11px] leading-relaxed transition-all"></div>
           </div>
         </div>
 
-        <!-- Fila de Resultados Dinámicos: Tarjeta Auto vs Tarjeta Avión -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <!-- Fila de Resultados Dinámicos: Tarjeta Auto vs Tarjeta Avión vs Veredicto a la Derecha -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6 items-stretch">
           
-          <!-- Columna Auto -->
-          <div class="p-5 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+          <!-- Columna 1: Auto -->
+          <div class="p-5 sm:p-6 rounded-3xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between shadow-sm">
             <div>
-              <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center justify-between mb-3.5">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-blue-500/10 text-blue-500 border border-blue-500/20">
                   🚗 Viaje en Auto Familiar
                 </span>
                 <span id="comp-auto-distancia" class="text-xs font-mono dark:text-slate-400 text-slate-500">1.580 km (ida)</span>
               </div>
+
+              <!-- Durabilidad / Tiempo en Auto (Arriba, a la par con Avión) -->
+              <div class="p-3.5 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 flex items-center gap-3 mb-4 shadow-xs">
+                <span class="text-2xl flex-shrink-0">⏱️</span>
+                <div class="min-w-0">
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Tiempo en Ruta (Ida)</div>
+                  <div id="comp-auto-tiempo" class="text-sm font-extrabold dark:text-white text-slate-900 truncate">18h 35m de manejo</div>
+                  <div class="text-[10px] dark:text-slate-400 text-slate-500 truncate">Requiere parada técnica y descanso</div>
+                </div>
+              </div>
+
+              <!-- Desglose de Gastos en Auto -->
               <div class="space-y-2 mb-4">
                 <div class="flex items-center justify-between text-xs">
                   <span class="dark:text-slate-400 text-slate-600">Combustible ida y vuelta:</span>
@@ -2518,34 +2532,36 @@
               </div>
             </div>
             
-            <!-- Tiempo en Auto -->
-            <div class="p-3 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 flex items-center gap-3">
-              <span class="text-2xl">⏱️</span>
-              <div>
-                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Tiempo en Ruta (Ida)</div>
-                <div id="comp-auto-tiempo" class="text-sm font-extrabold dark:text-white text-slate-900">18h 35m de manejo</div>
-                <div class="text-[10px] dark:text-slate-400 text-slate-500">Requiere parada técnica y descanso</div>
-              </div>
-            </div>
-
-            <!-- Tip de Ahorro Patagónico (Ley 23.966) -->
-            <div id="comp-auto-pata-tip" class="mt-2 p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-600 dark:text-amber-300 flex items-start gap-2">
-              <span class="text-sm">⛽</span>
-              <div>
+            <!-- Tip de Ahorro Patagónico (Ley 23.966) Abajo de Gastos -->
+            <div id="comp-auto-pata-tip" class="mt-auto p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-700 dark:text-amber-300 flex items-start gap-2">
+              <span class="text-base flex-shrink-0">⛽</span>
+              <div class="leading-relaxed">
                 <b>Régimen Patagónico (Ley 23.966):</b> En destinos al sur del Río Colorado el combustible está exento de ICL/IDC (-19% a -26%). Calculamos tarifa ponderada real.
               </div>
             </div>
           </div>
 
-          <!-- Columna Avión -->
-          <div class="p-5 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+          <!-- Columna 2: Avión -->
+          <div class="p-5 sm:p-6 rounded-3xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between shadow-sm">
             <div>
-              <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center justify-between mb-3.5">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-rose-500/10 text-rose-500 border border-rose-500/20">
                   ✈️ Vuelo Directo Radar
                 </span>
                 <span id="comp-avion-tarifa-base" class="text-xs font-mono dark:text-slate-400 text-slate-500">Tarifa: $ 89.000 i/v</span>
               </div>
+
+              <!-- Durabilidad / Tiempo en Avión (Arriba, a la par con Auto) -->
+              <div class="p-3.5 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 flex items-center gap-3 mb-4 shadow-xs">
+                <span class="text-2xl flex-shrink-0">⚡</span>
+                <div class="min-w-0">
+                  <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Tiempo Total de Viaje (Ida)</div>
+                  <div id="comp-avion-tiempo" class="text-sm font-extrabold dark:text-white text-slate-900 truncate">4h 15m (vuelo + trámites)</div>
+                  <div class="text-[10px] dark:text-slate-400 text-slate-500 truncate">2h 15m aire + 2h aeropuerto</div>
+                </div>
+              </div>
+
+              <!-- Desglose de Gastos en Avión -->
               <div class="space-y-2 mb-4">
                 <div class="flex items-center justify-between text-xs">
                   <span class="dark:text-slate-400 text-slate-600">Pasajes ida y vuelta (<span id="comp-avion-pax-count">2</span> pers):</span>
@@ -2570,45 +2586,70 @@
               </div>
             </div>
 
-            <!-- Tiempo en Avión -->
-            <div class="p-3 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 flex items-center gap-3">
-              <span class="text-2xl">⚡</span>
-              <div>
-                <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Tiempo Total de Viaje (Ida)</div>
-                <div id="comp-avion-tiempo" class="text-sm font-extrabold dark:text-white text-slate-900">4h 15m (vuelo + trámites)</div>
-                <div class="text-[10px] dark:text-slate-400 text-slate-500">2h 15m aire + 2h aeropuerto</div>
+            <!-- Aclaración de Combustible en Alquiler de Auto Abajo de Gastos -->
+            <div id="comp-avion-alquiler-tip" class="mt-auto p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-800 dark:text-amber-300 flex items-start gap-2">
+              <span class="text-base flex-shrink-0">⛽</span>
+              <div class="leading-relaxed">
+                <b>Política de Tanque Lleno en Alquiler:</b> Las agencias solicitan devolver el auto con el <b>tanque lleno</b>. Ese gasto no está incluido en el cálculo porque depende de cuánto manejes en destino.
               </div>
             </div>
           </div>
 
-        </div>
+          <!-- Columna 3: Tarjeta ¿Qué Conviene? (Veredicto en Vivo a la Derecha) -->
+          <div id="comp-veredicto-card" class="p-5 sm:p-6 rounded-3xl dark:bg-slate-950/90 bg-white border-2 dark:border-slate-800 border-slate-200 flex flex-col justify-between shadow-xl transition-all relative overflow-hidden group">
+            
+            <!-- Resplandor ambiental de fondo -->
+            <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full blur-3xl pointer-events-none opacity-20"
+                 style="background: var(--brand-primary);"></div>
 
-        <!-- Veredicto Final: Ahorro en Plata VS Tiempo en Ruta -->
-        <div id="comp-veredicto-card" class="p-5 sm:p-6 rounded-2xl dark:bg-slate-950 bg-slate-100 border dark:border-slate-800 border-slate-200 transition-all">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="space-y-1">
-              <div class="flex items-center gap-2">
-                <span id="comp-veredicto-icono" class="text-xl">✈️</span>
-                <span id="comp-veredicto-titulo" class="text-sm sm:text-base font-extrabold dark:text-white text-slate-900">
-                  Conviene Avión: Ahorrás $ 364.770 y ganás 14h 20m de vida
+            <div class="relative z-10 space-y-4">
+              <!-- Encabezado de Veredicto -->
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">
+                  <span>⚖️</span> Veredicto en Vivo
                 </span>
+                <span id="comp-veredicto-icono" class="text-3xl animate-bounce">✈️</span>
               </div>
-              <p id="comp-veredicto-detalle" class="text-xs sm:text-sm dark:text-slate-400 text-slate-600 leading-relaxed">
-                Para 2 pasajeros, el avión es $ 364.770 más barato que mover el auto y te ahorrás 14 horas de manejo en ruta.
-              </p>
+
+              <!-- Título y Detalle en Vivo -->
+              <div class="space-y-2">
+                <h4 id="comp-veredicto-titulo" class="text-base sm:text-lg font-black dark:text-white text-slate-900 leading-snug">
+                  Conviene Avión: Ahorrás $ 364.770 y ganás 14h 20m de vida
+                </h4>
+                <p id="comp-veredicto-detalle" class="text-xs dark:text-slate-300 text-slate-600 leading-relaxed">
+                  Para 2 pasajeros, el avión es $ 364.770 más barato que mover el auto y te ahorrás 14 horas de manejo en ruta.
+                </p>
+              </div>
+
+              <!-- Métricas Resumen -->
+              <div class="grid grid-cols-2 gap-2 pt-1">
+                <div class="p-2.5 rounded-xl dark:bg-slate-900 bg-slate-50 border dark:border-slate-800 border-slate-200">
+                  <div class="text-[10px] font-bold uppercase text-slate-400">Diferencia Plata</div>
+                  <div id="comp-veredicto-diff-plata" class="text-xs sm:text-sm font-extrabold text-emerald-500 font-mono mt-0.5">$ 364.770</div>
+                </div>
+                <div class="p-2.5 rounded-xl dark:bg-slate-900 bg-slate-50 border dark:border-slate-800 border-slate-200">
+                  <div class="text-[10px] font-bold uppercase text-slate-400">Diferencia Tiempo</div>
+                  <div id="comp-veredicto-diff-tiempo" class="text-xs sm:text-sm font-extrabold text-sky-500 font-mono mt-0.5">14.3 hs menos</div>
+                </div>
+              </div>
             </div>
-            <a href="/vuelos" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white transition-all hover:scale-105 flex-shrink-0 text-center shadow-md"
-               style="background: var(--brand-gradient);">
-              Ver Vuelos Disponibles &rarr;
-            </a>
+
+            <!-- Botón CTA abajo -->
+            <div class="relative z-10 pt-4 mt-3 border-t dark:border-slate-800 border-slate-200">
+              <a href="/vuelos" id="comp-veredicto-cta"
+                 class="w-full py-3 px-4 rounded-xl text-center text-xs font-extrabold text-white shadow-md hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                 style="background: var(--brand-gradient); box-shadow: 0 8px 16px -4px var(--brand-glow);">
+                <span>Ver Vuelos Disponibles</span>
+                <span>➔</span>
+              </a>
+            </div>
+
           </div>
+
         </div>
 
-      </div>
-      </div>
-
-        
-      </div>
+      </div> <!-- Fin dark:bg-slate-900 (Card Central del Comparador) -->
+      </div> <!-- Fin #comparador-auto-avion -->
 
       <!-- Paradores y Estaciones Recomendadas con Km e Indicadores 24 hs / GNC / EV -->
       <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm theme-transition">
@@ -3962,18 +4003,58 @@
       const autoTotalArs = data.autoCombustible + data.autoPeajes;
       const autoPorPersonaArs = Math.round(autoTotalArs / compPasajeros);
 
-      // Costo de movilidad local si viaja en avión
+      // Costo de movilidad local si viaja en avión (desglose inteligente de Uber según pasajeros)
       let costoMovilidadArs = 0;
       let labelMovilidad = 'Movilidad local:';
+      const ubersNecesarios = compPasajeros > 4 ? 2 : 1;
+      const costoUberBase = data.costoUber || 85000;
+      const costoUberTotal = costoUberBase * ubersNecesarios;
+
       if (compMovilidad === 'alquiler') {
         costoMovilidadArs = data.costoAlquiler7d || 420000;
-        labelMovilidad = 'Alquiler auto (7 días):';
+        labelMovilidad = compPasajeros > 4 ? 'Alquiler auto (7 días - 5 pax):' : 'Alquiler auto (7 días):';
       } else if (compMovilidad === 'uber') {
-        costoMovilidadArs = data.costoUber || 85000;
-        labelMovilidad = 'Uber / Traslados semana:';
+        costoMovilidadArs = costoUberTotal;
+        labelMovilidad = compPasajeros > 4 ? `Uber/Traslados (2 autos x ${compPasajeros} pax):` : 'Uber / Traslados semana:';
       } else {
         costoMovilidadArs = 0;
         labelMovilidad = 'Movilidad extra (a pie):';
+      }
+
+      // Actualizar texto del botón de Uber según pasajeros
+      const btnUber = document.getElementById('comp-mov-uber');
+      if (btnUber) {
+        if (compPasajeros > 4) {
+          btnUber.innerHTML = `🚕 2x Ubers / Traslados (~${window.formatearPrecioMoneda('$' + costoUberTotal)})`;
+        } else {
+          btnUber.innerHTML = `🚕 Uber / Traslados (~${window.formatearPrecioMoneda('$' + costoUberBase)})`;
+        }
+      }
+
+      // Tip dinámico de capacidad de Uber y autos
+      const elUberTip = document.getElementById('comp-uber-capacidad-tip');
+      if (elUberTip) {
+        if (compMovilidad === 'uber') {
+          if (compPasajeros > 4) {
+            elUberTip.className = 'mt-2.5 p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-700 dark:text-amber-300 flex items-start gap-2 leading-relaxed';
+            elUberTip.innerHTML = '<span>⚠️</span> <span><b>Grupo de 5 personas:</b> Por límite legal de plazas y capacidad de valijas (máx 4 pax por vehículo estándar), el sistema calcula automáticamente <b>2 Ubers</b> (o categoría XL/Van) para ida y vuelta al aeropuerto y traslados.</span>';
+            elUberTip.style.display = 'flex';
+          } else {
+            elUberTip.className = 'mt-2 text-[11px] dark:text-slate-400 text-slate-500 flex items-center gap-1.5';
+            elUberTip.innerHTML = '<span>ℹ️</span> <span><b>Capacidad Uber estándar:</b> Hasta 4 pasajeros. Si viajan con valijas grandes de bodega, tengan en cuenta el espacio del baúl.</span>';
+            elUberTip.style.display = 'flex';
+          }
+        } else if (compMovilidad === 'alquiler') {
+          if (compPasajeros > 4) {
+            elUberTip.className = 'mt-2.5 p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/30 text-[11px] text-blue-700 dark:text-blue-300 flex items-start gap-2 leading-relaxed';
+            elUberTip.innerHTML = '<span>ℹ️</span> <span><b>5 pasajeros en auto alquilado:</b> Un sedán estándar viaja con todas sus plazas ocupadas. Si llevan valijas grandes, puede requerirse categoría SUV o Minivan 7 asientos.</span>';
+            elUberTip.style.display = 'flex';
+          } else {
+            elUberTip.style.display = 'none';
+          }
+        } else {
+          elUberTip.style.display = 'none';
+        }
       }
 
       const pasajesTotalArs = data.precioAvionBase * compPasajeros;
@@ -4026,6 +4107,29 @@
       const diffHs = (data.tiempoAutoHs - data.tiempoAvionHs).toFixed(1);
       const diffPlata = Math.abs(autoTotalArs - avionTotalArs);
       const diffPlataFmt = window.formatearPrecioMoneda(`$ ${diffPlata}`);
+
+      // Tip de tanque lleno en alquiler de auto
+      const elAlquilerTip = document.getElementById('comp-avion-alquiler-tip');
+      if (elAlquilerTip) {
+        elAlquilerTip.style.display = compMovilidad === 'alquiler' ? 'flex' : 'none';
+      }
+
+      // Métricas numéricas del veredicto
+      const elDiffPlata = document.getElementById('comp-veredicto-diff-plata');
+      const elDiffTiempo = document.getElementById('comp-veredicto-diff-tiempo');
+      if (elDiffPlata) elDiffPlata.innerText = diffPlataFmt;
+      if (elDiffTiempo) elDiffTiempo.innerText = `${Math.abs(diffHs)} hs ${diffHs > 0 ? 'menos' : 'más'}`;
+
+      const elCta = document.getElementById('comp-veredicto-cta');
+      if (elCta) {
+        if (avionTotalArs < autoTotalArs) {
+          elCta.href = '/vuelos';
+          elCta.innerHTML = '<span>Ver Vuelos Disponibles</span> ➔';
+        } else {
+          elCta.href = '#rutas-auto';
+          elCta.innerHTML = '<span>Ver Hoja de Ruta en Auto</span> ➔';
+        }
+      }
 
       const elVerIcono = document.getElementById('comp-veredicto-icono');
       const elVerTitulo = document.getElementById('comp-veredicto-titulo');
