@@ -670,7 +670,7 @@
               Ofertas Relámpago
             </h3>
             <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-4">
-              Chollos y bajas abruptas de tarifas detectadas por nuestros centinelas automáticos. Asientos con caídas récord de hasta el 50% para viajar ya.
+              Gangas, ofertones y bajas abruptas de tarifas detectadas por nuestros centinelas automáticos. Asientos con caídas récord de hasta el 50% para viajar ya.
             </p>
             <div class="flex flex-wrap gap-1.5 mb-6">
               <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold dark:bg-slate-800 bg-slate-100 text-slate-600 dark:text-slate-400">Caídas de Precio</span>
@@ -699,12 +699,12 @@
               Modo Ruta &amp; Escapadas
             </h3>
             <p class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed mb-4">
-              Calculá peajes y nafta exactos de punto a punto en Argentina, semáforo de baches en vivo, barreras SENASA, paradores 24h y 15% de Ualá Más.
+              Calculá peajes y nafta exactos de punto a punto en Argentina, semáforo de baches en vivo, barreras SENASA y paradores 24h para descansar.
             </p>
             <div class="flex flex-wrap gap-1.5 mb-6">
               <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold dark:bg-slate-800 bg-slate-100 text-slate-600 dark:text-slate-400">Nafta &amp; Peajes</span>
               <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold dark:bg-slate-800 bg-slate-100 text-slate-600 dark:text-slate-400">Semáforo Baches</span>
-              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold dark:bg-slate-800 bg-slate-100 text-slate-600 dark:text-slate-400">Ualá Más 15%</span>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-semibold dark:bg-slate-800 bg-slate-100 text-slate-600 dark:text-slate-400">Paradores 24h</span>
             </div>
           </div>
           <a href="/escapadas" class="w-full py-3 px-4 rounded-xl text-center text-xs font-extrabold text-slate-900 dark:text-white dark:bg-slate-800 bg-slate-100 hover:bg-emerald-500 hover:text-white dark:hover:bg-emerald-500 transition-all flex items-center justify-center gap-1.5 border dark:border-slate-700 border-slate-300">
@@ -3289,44 +3289,23 @@
     })();
   </script>
 
-  <!-- Script de Navegación y ScrollSpy Lineal y Secuencial -->
+  <!-- Script de Navegación Limpia y Pestaña Activa Permanente -->
   <script>
     (function initNavDockActive() {
-      const navButtons = document.querySelectorAll('.nav-dock-btn');
-      if (!navButtons.length) return;
-
-      function setActivePill(targetHref) {
-        if (targetHref === '#' || targetHref === '/' || !targetHref) {
-          navButtons.forEach(btn => {
-            if (btn.id === 'nav-btn-inicio') btn.classList.add('is-active');
-            else btn.classList.remove('is-active');
-          });
-          return;
-        }
-        navButtons.forEach(btn => {
-          const href = btn.getAttribute('href');
-          if (href === targetHref) {
-            btn.classList.add('is-active');
-          } else {
-            btn.classList.remove('is-active');
-          }
-        });
+      // En Inicio (/), la píldora de Inicio se mantiene fija en rojo (.is-active)
+      const navBtnInicio = document.getElementById('nav-btn-inicio');
+      if (navBtnInicio) {
+        navBtnInicio.classList.add('is-active');
       }
 
-      // 1. Array de secciones ordenado según las anclas en pantalla del menú principal
-      const sectionTargets = [
-        { id: 'radar-vuelos', href: '#radar-vuelos' },
-        { id: 'destinos', href: '#destinos' }
-      ];
-
-      // Limpieza inmediata de la barra de direcciones al cargar la página si tuviera hash
+      // Limpieza inmediata de la barra de direcciones al cargar si tuviera hash
       if (window.location.hash && window.history && window.history.replaceState) {
         setTimeout(() => {
           window.history.replaceState(null, null, window.location.pathname);
         }, 100);
       }
 
-      // Navegación con Scroll Suave y URL Limpia (Cero hashes en la barra de direcciones)
+      // Navegación con Scroll Suave para anclas internas manteniendo 'Inicio' activo en el dock
       document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(link => {
         link.addEventListener('click', function(e) {
           const href = this.getAttribute('href');
@@ -3338,104 +3317,18 @@
           const targetEl = document.getElementById(targetId);
           if (targetEl) {
             e.preventDefault();
-            isClickScrolling = true;
-            setActivePill('#' + targetId);
             targetEl.scrollIntoView({ behavior: 'smooth' });
 
-            // Mantener la barra de direcciones siempre limpia en el dominio principal "/"
             if (window.history && window.history.replaceState) {
               window.history.replaceState(null, null, window.location.pathname);
             }
 
-            // Cerrar menú móvil si está abierto
             if (typeof window.toggleMobileNav === 'function') {
               window.toggleMobileNav(false);
             }
-
-            if (clickTimeout) clearTimeout(clickTimeout);
-            clickTimeout = setTimeout(() => {
-              isClickScrolling = false;
-              if (window.history && window.history.replaceState) {
-                window.history.replaceState(null, null, window.location.pathname);
-              }
-            }, 800);
           }
         });
       });
-
-      let isClickScrolling = false;
-      let clickTimeout = null;
-
-      function clearClickScroll() {
-        if (isClickScrolling) {
-          isClickScrolling = false;
-          if (clickTimeout) {
-            clearTimeout(clickTimeout);
-            clickTimeout = null;
-          }
-        }
-      }
-
-      window.addEventListener('wheel', clearClickScroll, { passive: true });
-      window.addEventListener('touchstart', clearClickScroll, { passive: true });
-
-      function updateActiveSection() {
-        if (isClickScrolling) return;
-        const scrollY = window.scrollY;
-        if (scrollY < 200) {
-          setActivePill('#');
-          return;
-        }
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-
-        // 1. Caso borde: Fondo de la página
-        if (scrollY + windowHeight >= documentHeight - 50) {
-          // Fondo de página alcanzado
-          return;
-          return;
-        }
-
-        // 2. Cálculo lineal por intersección vertical superior
-        let currentSectionId = null;
-        const triggerPoint = windowHeight * 0.35;
-
-        for (const section of sectionTargets) {
-          const el = document.getElementById(section.id);
-          if (el) {
-            const rect = el.getBoundingClientRect();
-            if (rect.top <= triggerPoint && rect.bottom > 0) {
-              currentSectionId = section.id;
-            }
-          }
-        }
-
-        if (currentSectionId) {
-          const activeTarget = sectionTargets.find(s => s.id === currentSectionId);
-          if (activeTarget) {
-            setActivePill(activeTarget.href);
-          }
-        } else if (scrollY < 200) {
-          setActivePill('#radar-vuelos');
-        }
-      }
-
-      let ticking = false;
-      function onScroll() {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            updateActiveSection();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }
-
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onScroll, { passive: true });
-
-      // Ejecución inicial para fijar estado al cargar
-      updateActiveSection();
     })();
   </script>
 
