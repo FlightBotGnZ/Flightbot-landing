@@ -220,7 +220,6 @@
   <!-- Encabezado / Navegación Superior -->
   <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/80 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 lg:gap-3 xl:gap-4 relative">
-      
       <!-- 1. Marca / Logotipo -->
       <div class="flex items-center gap-3 shrink-0 z-10 mr-3 xl:mr-5">
         <a href="/" class="flex items-center gap-2.5 sm:gap-3 group" title="Volver al inicio de FlightBot">
@@ -263,25 +262,25 @@
 
       <!-- 2. Barra de Navegación Central Simétrica (Dock Centrado con padding elástico) -->
       <nav class="hidden lg:flex items-center p-1 xl:p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-0.5 xl:gap-1.5 mx-auto shrink-0">
-        <a href="/" id="nav-btn-inicio" class="nav-dock-btn">
+        <a href="/" id="nav-btn-inicio" class="nav-dock-btn" title="Inicio de FlightBot">
           <span>🏠</span> Inicio
         </a>
-        <a href="/vuelos" id="nav-btn-vuelos" class="nav-dock-btn">
+        <a href="/vuelos" id="nav-btn-vuelos" class="nav-dock-btn" title="Buscador y Radar de Vuelos">
           <span>✈️</span> Vuelos
         </a>
         <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn" title="Ofertas Relámpago y Oportunidades Flash">
-          <span>🔥</span> Relámpago
+          <span>🔥</span> Ofertas Relámpago
         </a>
         <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn">
+        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn" title="Billetera de Tarjetas, Beneficios y Asistencia">
           <span>💳</span> Billetera
         </a>
-        <a href="/guias/" id="nav-btn-guias" class="nav-dock-btn">
+        <a href="/guias" id="nav-btn-guias" class="nav-dock-btn" title="Guías Turísticas y Rutas Monitoreadas">
           <span>📖</span> Guías
         </a>
-        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn is-active">
+        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn is-active" title="Preguntas Frecuentes y Ayuda">
           <span>❓</span> FAQ
         </a>
       </nav>
@@ -289,8 +288,8 @@
       <!-- 3. Contenedor Derecho Único y Balanceado (h-8 uniforme) -->
       <div class="flex items-center gap-1.5 sm:gap-2 xl:gap-2.5 shrink-0 z-10">
         
-        <!-- A. Widget Auth Google (Píldora h-8: compacta en lg, expandida en xl) -->
-        <div id="auth-nav-container" class="flex items-center">
+        <!-- A. Widget Auth Google (Centrado ópticamente entre navbar y theme switcher) -->
+        <div id="auth-nav-container" class="flex items-center mx-1 sm:mx-2 xl:mx-3">
           <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.iniciarLoginGoogle() : null"
                   class="inline-flex items-center justify-center gap-1.5 h-8 px-2 sm:px-2.5 xl:px-3 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-900/90 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
                   title="Acceder con Google">
@@ -325,7 +324,7 @@
         </div>
 
         <!-- C. Píldora Telegram Única de Escritorio (h-8 px-3.5) -->
-        <a href="https://t.me/GnZFlightBot?start=faq" target="_blank" rel="noopener noreferrer" 
+        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
            class="hidden sm:inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full text-white font-semibold text-xs shrink-0 transition-all shadow-md hover:brightness-110"
            style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);"
            title="Abrir FlightBot en Telegram">
@@ -365,22 +364,22 @@
       </div>
 
       <div class="grid grid-cols-2 gap-2 text-xs font-semibold mb-3">
-        <a href="/" onclick="toggleMobileNav(false)" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/" onclick="toggleMobileNav(false)" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>🏠</span> Inicio
         </a>
-        <a href="/vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>✈️</span> Vuelos
         </a>
-        <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
-          <span>🔥</span> Relámpago
+        <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
+          <span>🔥</span> Ofertas Relámpago
         </a>
-        <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>💳</span> Billetera
         </a>
-        <a href="/guias/" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/guias" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>📖</span> Guías
         </a>
         <a href="/faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
@@ -388,8 +387,8 @@
         </a>
       </div>
 
-      <!-- Botón Telegram en Menú Móvil (Al pie del drawer) -->
-      <a href="https://t.me/GnZFlightBot?start=faq" target="_blank" rel="noopener noreferrer"
+      <!-- Botón Telegram en Menú Móvil -->
+      <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
          class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-white font-bold text-xs shadow-md hover:brightness-110 transition-all mt-2"
          style="background: var(--brand-gradient);">
         <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
@@ -650,14 +649,14 @@
         <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-base sm:text-lg dark:text-white text-slate-900 select-none hover:text-rose-500 dark:hover:text-rose-400 transition-colors">
           <span class="flex items-center gap-3">
             <span class="text-rose-500 font-mono text-sm">08.</span>
-            <span class="faq-question">¿Qué información incluyen las 53 guías editoriales del Blog?</span>
+            <span class="faq-question">¿Qué información incluyen las 56 guías editoriales del Blog?</span>
           </span>
           <span class="w-8 h-8 rounded-full dark:bg-slate-800 bg-slate-100 flex items-center justify-center shrink-0 text-slate-500 group-open:rotate-180 transition-transform duration-200">
             <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
           </span>
         </summary>
         <div class="faq-answer px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base dark:text-slate-300 text-slate-600 leading-relaxed border-t dark:border-slate-800/80 border-slate-100">
-          Cada una de las <a href="/guias/" class="text-rose-500 hover:underline font-bold">53 guías de destino</a> está redactada por expertos locales e incluye: análisis de microclimas mes a mes, presupuesto diario estimado por persona (mochilero, medio y confort), transporte desde el aeropuerto, requisitos migratorios, mejores barrios para alojarse y consejos indispensables de seguridad.
+          Cada una de las <a href="/guias/" class="text-rose-500 hover:underline font-bold">56 guías de destino</a> está redactada por expertos locales e incluye: análisis de microclimas mes a mes, presupuesto diario estimado por persona (mochilero, medio y confort), transporte desde el aeropuerto, requisitos migratorios, mejores barrios para alojarse y consejos indispensables de seguridad.
         </div>
       </details>
 

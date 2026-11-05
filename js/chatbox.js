@@ -9,7 +9,7 @@
   const STORAGE_KEY_SESSION = 'fb_chat_session_id';
   const STORAGE_KEY_RESET = 'fb_chat_reset_trigger';
 
-  const FB_INITIAL_GREETING = "👋 ¡Hola! Soy <b>F-Bot Rolli</b>, tu compañero de viaje y asistente de FlightBot 🧳.<br><br>Preguntame por vuelos baratos, mejores barrios para hospedarte en nuestros 53 destinos globales, trenes de alta velocidad, equipaje de bebé, o rutas viales:";
+  const FB_INITIAL_GREETING = "👋 ¡Hola! Soy <b>F-Bot Rolli</b>, tu compañero de viaje y asistente de FlightBot 🧳.<br><br>Preguntame por vuelos baratos, mejores barrios para hospedarte en nuestros 56 destinos globales, trenes de alta velocidad, equipaje de bebé, o rutas viales:";
   const FB_INITIAL_PILLS = [
     "✈️ Vuelos a Roma y Madrid",
     "🏖️ Hoteles en Punta Cana",
@@ -225,12 +225,28 @@
 
   // Sanitización estricta anti-XSS
   function sanitizeBotHtml(raw) {
-    const escaped = String(raw || '')
+    let escaped = String(raw || '')
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
+
+    // 1. Transformar anclas o preguntas sugeridas (href="#" o sin href) en chips interactivos clicables
+    escaped = escaped.replace(
+      /&lt;a\s+href=(?:&quot;|&#39;)?#?(?:&quot;|&#39;)?[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
+      '<span class="fb-chat-suggestion text-rose-500 dark:text-rose-400 underline hover:opacity-80 cursor-pointer font-medium" data-prompt="$1">$1</span>'
+    );
+
+    // 2. Transformar enlaces externos legítimos (https:// o /guias/) en enlaces seguros
+    escaped = escaped.replace(
+      /&lt;a\s+href=(?:&quot;|&#39;)(https?:\/\/[^&"'\s]+|\/[^&"'\s]+)(?:&quot;|&#39;)[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
+      '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-rose-500 hover:underline font-semibold">$2</a>'
+    );
+
+    // 3. Purgar cualquier etiqueta <a> o </a> residual
+    escaped = escaped.replace(/&lt;\/?a[^&gt;]*&gt;/gi, '');
+
     return escaped
       .replace(/&lt;b&gt;([\s\S]*?)&lt;\/b&gt;/gi, '<strong>$1</strong>')
       .replace(/&lt;i&gt;([\s\S]*?)&lt;\/i&gt;/gi, '<em>$1</em>')
@@ -266,6 +282,19 @@
   function renderMessageDOM(role, htmlText) {
     const container = document.getElementById('fb-chat-messages');
     if (!container) return;
+    if (!container._fb_click_bound) {
+      container._fb_click_bound = true;
+      container.addEventListener('click', function(e) {
+        const item = e.target.closest('.fb-chat-suggestion');
+        if (item) {
+          e.preventDefault();
+          const prompt = item.getAttribute('data-prompt') || item.textContent.trim();
+          if (prompt && typeof window.sendFlightBotPrompt === 'function') {
+            window.sendFlightBotPrompt(prompt);
+          }
+        }
+      });
+    }
     const wrap = document.createElement('div');
     if (role === 'user') {
       wrap.className = 'flex justify-end';
@@ -498,7 +527,7 @@
     }
 
     return {
-      respuesta: "Puedo ayudarte con información de vuelos, equipaje, salas VIP y nuestras <b>53 Guías Oficiales</b> de destinos (Roma, Madrid, Miami, Río, Cancún, Punta Cana, Bariloche, Mendoza y más).<br><br>¿Hacia qué destino estás planeando tu próximo viaje?",
+      respuesta: "Puedo ayudarte con información de vuelos, equipaje, salas VIP y nuestras <b>56 Guías Oficiales</b> de destinos (Roma, Madrid, Miami, Río, Cancún, Punta Cana, Bariloche, Mendoza y más).<br><br>¿Hacia qué destino estás planeando tu próximo viaje?",
       quick_replies: FB_INITIAL_PILLS
     };
   }

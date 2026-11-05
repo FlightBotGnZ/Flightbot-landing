@@ -774,18 +774,34 @@ def construir_bloque_chatbox_ia(
 
       // Sanitización estricta anti-XSS: escapa todo y solo habilita <b>, <i>, <code> y <br>
       function sanitizeBotHtml(raw) {{
-        const escaped = String(raw || '')
+        let escaped = String(raw || '')
           .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
           .replace(/>/g, '&gt;')
           .replace(/"/g, '&quot;')
           .replace(/'/g, '&#39;');
+
+        // 1. Transformar anclas o preguntas sugeridas (href="#" o sin href) en chips interactivos clicables
+        escaped = escaped.replace(
+          /&lt;a\s+href=(?:&quot;|&#39;)?#?(?:&quot;|&#39;)?[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
+          '<span class="fb-chat-suggestion text-rose-500 dark:text-rose-400 underline hover:opacity-80 cursor-pointer font-medium" data-prompt="$1">$1</span>'
+        );
+
+        // 2. Transformar enlaces externos legítimos (https:// o /guias/) en enlaces seguros
+        escaped = escaped.replace(
+          /&lt;a\s+href=(?:&quot;|&#39;)(https?:\/\/[^&"'\s]+|\/[^&"'\s]+)(?:&quot;|&#39;)[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
+          '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-rose-500 hover:underline font-semibold">$2</a>'
+        );
+
+        // 3. Purgar cualquier etiqueta <a> o </a> residual
+        escaped = escaped.replace(/&lt;\/?a[^&gt;]*&gt;/gi, '');
+
         return escaped
-          .replace(/&lt;b&gt;([\\s\\S]*?)&lt;\\/b&gt;/gi, '<strong>$1</strong>')
-          .replace(/&lt;i&gt;([\\s\\S]*?)&lt;\\/i&gt;/gi, '<em>$1</em>')
-          .replace(/&lt;code&gt;([\\s\\S]*?)&lt;\\/code&gt;/gi, '<code class="px-1.5 py-0.5 rounded dark:bg-slate-700 bg-slate-200 font-mono text-xs">$1</code>')
-          .replace(/&lt;br\\s*\\/?&gt;/gi, '<br>')
-          .replace(/\\n/g, '<br>');
+          .replace(/&lt;b&gt;([\s\S]*?)&lt;\/b&gt;/gi, '<strong>$1</strong>')
+          .replace(/&lt;i&gt;([\s\S]*?)&lt;\/i&gt;/gi, '<em>$1</em>')
+          .replace(/&lt;code&gt;([\s\S]*?)&lt;\/code&gt;/gi, '<code class="px-1.5 py-0.5 rounded dark:bg-slate-700 bg-slate-200 font-mono text-xs">$1</code>')
+          .replace(/&lt;br\s*\/?&gt;/gi, '<br>')
+          .replace(/\n/g, '<br>');
       }}
 
       // Detectar guía mencionada en el texto o usar el contexto de la página actual
@@ -910,6 +926,19 @@ def construir_bloque_chatbox_ia(
       function appendMessage(role, htmlText) {{
         const container = document.getElementById('fb-chat-messages');
         if (!container) return;
+        if (!container._fb_click_bound) {{
+          container._fb_click_bound = true;
+          container.addEventListener('click', function(e) {{
+            const item = e.target.closest('.fb-chat-suggestion');
+            if (item) {{
+              e.preventDefault();
+              const prompt = item.getAttribute('data-prompt') || item.textContent.trim();
+              if (prompt && typeof window.sendFlightBotPrompt === 'function') {{
+                window.sendFlightBotPrompt(prompt);
+              }}
+            }}
+          }});
+        }}
         const wrap = document.createElement('div');
         if (role === 'user') {{
           wrap.className = 'flex justify-end';
@@ -2663,6 +2692,33 @@ def construir_bloque_planificador_rutas(destino_inicial: str = "bariloche", es_g
 
 
 METADATOS_EDITORIALES = {
+    "curazao": {
+        "region": "Caribe Holandés",
+        "categoria": "Playas Turquesa, Arquitectura Pastel & Snorkel",
+        "mejor_epoca": "Todo el año (Fuera de zona de huracanes)",
+        "tiempo_lectura": "8 min",
+        "moneda": "Florín Antillano (ANG) / Dólar Estadounidense (USD)",
+        "idioma": "Papiamento, Neerlandés, Español e Inglés",
+        "perfil_viajero": "Parejas, snorkelers, familias y amantes del relax caribeño",
+    },
+    "costarica": {
+        "region": "Centroamérica",
+        "categoria": "Ecoturismo, Volcanes, Biodiversidad & Pura Vida",
+        "mejor_epoca": "Diciembre a Abril (Temporada seca y sol)",
+        "tiempo_lectura": "9 min",
+        "moneda": "Colón Costarricense (CRC) / Dólar (USD)",
+        "idioma": "Español (Inglés fluido en parques y hoteles)",
+        "perfil_viajero": "Aventureros, amantes de la naturaleza, parejas y eco-turistas",
+    },
+    "cartagena": {
+        "region": "Caribe & Sudamérica",
+        "categoria": "Historia Colonial Virreinal, Murallas & Islas Coralinas",
+        "mejor_epoca": "Diciembre a Abril (Cálido y con brisa marina)",
+        "tiempo_lectura": "8 min",
+        "moneda": "Peso Colombiano (COP)",
+        "idioma": "Español",
+        "perfil_viajero": "Parejas, apasionados por la historia, cultura caribeña y vida nocturna",
+    },
     "newyork": {
         "region": "América del Norte",
         "categoria": "Metrópolis, Broadway, Arte & Rascacielos",
@@ -3859,7 +3915,7 @@ def generar_indice_guias(guias: list) -> str:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog de Viajes & Guías Editoriales 2026 · FlightBot</title>
-  <meta name="description" content="Artículos de viaje originales, análisis de transporte, trenes de alta velocidad, zonas de alojamiento y consejos de ahorro en los 54 destinos monitoreados por FlightBot.">
+  <meta name="description" content="Artículos de viaje originales, análisis de transporte, trenes de alta velocidad, zonas de alojamiento y consejos de ahorro en los {len(guias)} destinos monitoreados por FlightBot.">
   <meta name="author" content="Equipo Editorial FlightBot">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website">
@@ -4138,14 +4194,14 @@ def generar_indice_guias(guias: list) -> str:
         return pais.includes('brasil') || region.includes('brasil');
       }}
       if (filtro === 'caribe_usa') {{
-        const paisesCaribeUsa = ['estados unidos', 'mexico', 'republica dominicana', 'aruba', 'cuba', 'panama', 'colombia'];
+        const paisesCaribeUsa = ['estados unidos', 'mexico', 'republica dominicana', 'aruba', 'curazao', 'costa rica', 'cuba', 'panama', 'colombia'];
         return paisesCaribeUsa.some(p => pais.includes(p)) || region.includes('caribe') || region.includes('florida');
       }}
       if (filtro === 'europa_mundo') {{
         // No es cabotaje, ni brasil, ni caribe/usa
         const esArgentina = pais.includes('argentina') || region.includes('argentina');
         const esBrasil = pais.includes('brasil') || region.includes('brasil');
-        const paisesCaribeUsa = ['estados unidos', 'mexico', 'republica dominicana', 'aruba', 'cuba', 'panama', 'colombia'];
+        const paisesCaribeUsa = ['estados unidos', 'mexico', 'republica dominicana', 'aruba', 'curazao', 'costa rica', 'cuba', 'panama', 'colombia'];
         const esCaribeUsa = paisesCaribeUsa.some(p => pais.includes(p)) || region.includes('caribe') || region.includes('florida');
         return !esArgentina && !esBrasil && !esCaribeUsa;
       }}

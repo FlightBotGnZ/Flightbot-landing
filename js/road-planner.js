@@ -572,7 +572,7 @@ window.calcularRutaWeb = function() {
   if (elTotal) elTotal.innerText = `$ ${totalViaje.toLocaleString('es-AR')}`;
 
   const elPax = document.getElementById('res-pax-ars');
-  if (elPax) elPax.innerText = `$ ${costoPax.toLocaleString('es-AR')} c/u (${pax} pax)`;
+  if (elPax) elPax.innerText = `$ ${costoPax.toLocaleString('es-AR')} c/u (${pax} ${pax === 1 ? "persona" : "personas"})`;
 
   // 2. Semáforo vial dinámico
   const semaforoBox = document.getElementById('res-semaforo-box');

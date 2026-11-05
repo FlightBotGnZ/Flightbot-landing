@@ -148,7 +148,6 @@
   <!-- Header / Barra de Navegación -->
   <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/80 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 lg:gap-3 xl:gap-4 relative">
-      
       <!-- 1. Marca / Logotipo -->
       <div class="flex items-center gap-3 shrink-0 z-10 mr-3 xl:mr-5">
         <a href="/" class="flex items-center gap-2.5 sm:gap-3 group" title="Volver al inicio de FlightBot">
@@ -191,25 +190,25 @@
 
       <!-- 2. Barra de Navegación Central Simétrica (Dock Centrado con padding elástico) -->
       <nav class="hidden lg:flex items-center p-1 xl:p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-0.5 xl:gap-1.5 mx-auto shrink-0">
-        <a href="/" id="nav-btn-inicio" class="nav-dock-btn">
+        <a href="/" id="nav-btn-inicio" class="nav-dock-btn" title="Inicio de FlightBot">
           <span>🏠</span> Inicio
         </a>
-        <a href="/vuelos" id="nav-btn-vuelos" class="nav-dock-btn">
+        <a href="/vuelos" id="nav-btn-vuelos" class="nav-dock-btn" title="Buscador y Radar de Vuelos">
           <span>✈️</span> Vuelos
         </a>
         <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn" title="Ofertas Relámpago y Oportunidades Flash">
-          <span>🔥</span> Relámpago
+          <span>🔥</span> Ofertas Relámpago
         </a>
         <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn is-active" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn">
+        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn" title="Billetera de Tarjetas, Beneficios y Asistencia">
           <span>💳</span> Billetera
         </a>
-        <a href="/guias/" id="nav-btn-guias" class="nav-dock-btn">
+        <a href="/guias" id="nav-btn-guias" class="nav-dock-btn" title="Guías Turísticas y Rutas Monitoreadas">
           <span>📖</span> Guías
         </a>
-        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn">
+        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn" title="Preguntas Frecuentes y Ayuda">
           <span>❓</span> FAQ
         </a>
       </nav>
@@ -217,8 +216,8 @@
       <!-- 3. Contenedor Derecho Único y Balanceado (h-8 uniforme) -->
       <div class="flex items-center gap-1.5 sm:gap-2 xl:gap-2.5 shrink-0 z-10">
         
-        <!-- A. Widget Auth Google (Píldora h-8: compacta en lg, expandida en xl) -->
-        <div id="auth-nav-container" class="flex items-center">
+        <!-- A. Widget Auth Google (Centrado ópticamente entre navbar y theme switcher) -->
+        <div id="auth-nav-container" class="flex items-center mx-1 sm:mx-2 xl:mx-3">
           <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.iniciarLoginGoogle() : null"
                   class="inline-flex items-center justify-center gap-1.5 h-8 px-2 sm:px-2.5 xl:px-3 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-900/90 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
                   title="Acceder con Google">
@@ -253,7 +252,7 @@
         </div>
 
         <!-- C. Píldora Telegram Única de Escritorio (h-8 px-3.5) -->
-        <a href="https://t.me/GnZFlightBot?start=modoruta" target="_blank" rel="noopener noreferrer" 
+        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
            class="hidden sm:inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full text-white font-semibold text-xs shrink-0 transition-all shadow-md hover:brightness-110"
            style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);"
            title="Abrir FlightBot en Telegram">
@@ -293,31 +292,31 @@
       </div>
 
       <div class="grid grid-cols-2 gap-2 text-xs font-semibold mb-3">
-        <a href="/" onclick="toggleMobileNav(false)" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/" onclick="toggleMobileNav(false)" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>🏠</span> Inicio
         </a>
-        <a href="/vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>✈️</span> Vuelos
         </a>
-        <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
-          <span>🔥</span> Relámpago
+        <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
+          <span>🔥</span> Ofertas Relámpago
         </a>
         <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>💳</span> Billetera
         </a>
-        <a href="/guias/" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/guias" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>📖</span> Guías
         </a>
-        <a href="/faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium">
+        <a href="/faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>❓</span> FAQ
         </a>
       </div>
 
-      <!-- Botón Telegram en Menú Móvil (Al pie del drawer) -->
-      <a href="https://t.me/GnZFlightBot?start=modoruta" target="_blank" rel="noopener noreferrer"
+      <!-- Botón Telegram en Menú Móvil -->
+      <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
          class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-white font-bold text-xs shadow-md hover:brightness-110 transition-all mt-2"
          style="background: var(--brand-gradient);">
         <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
@@ -2434,7 +2433,7 @@
               <option value="salta">Salta & Valles Calchaquíes (RN 9 + RN 34)</option>
               <option value="madryn">Puerto Madryn & Península Valdés (RN 3)</option>
               <option value="sanmartin">San Martín de los Andes & Chapelco (RN 5 + RN 237 + RN 40)</option>
-              <option value="ushuaia">Ushuaia & Tierra del Fuego (RN 3 + Barcaza Magallanes)</option>
+              <option value="tucuman">San Miguel de Tucumán & Tafí del Valle (RN 9 + RN 34)</option>
             </select>
           </div>
 
@@ -2468,19 +2467,17 @@
             <div class="flex items-center gap-1.5 flex-wrap" id="comp-movilidad-container">
               <button type="button" onclick="window.setComparadorMovilidad('uber')" id="comp-mov-uber"
                       class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-rose-600 border-rose-500 shadow-xs">
-                🚕 Uber / Traslados (~$85.000)
+                🚕 Uber / Traslados
               </button>
               <button type="button" onclick="window.setComparadorMovilidad('alquiler')" id="comp-mov-alquiler"
                       class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-                🚗 Alquilar Auto 7 días (~$420.000)
+                🚗 Alquilar Auto 7 días
               </button>
               <button type="button" onclick="window.setComparadorMovilidad('ninguna')" id="comp-mov-ninguna"
                       class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
                 🚶 A pie / Centro ($0)
               </button>
             </div>
-            <!-- Tip dinámico de capacidad de Uber y autos según cantidad de pasajeros -->
-            <div id="comp-uber-capacidad-tip" class="mt-2 text-[11px] leading-relaxed transition-all"></div>
           </div>
         </div>
 
@@ -2490,11 +2487,11 @@
           <!-- Columna 1: Auto -->
           <div class="p-5 sm:p-6 rounded-3xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between shadow-sm">
             <div>
-              <div class="flex items-center justify-between mb-3.5">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-blue-500/10 text-blue-500 border border-blue-500/20">
-                  🚗 Viaje en Auto Familiar
+              <div class="flex items-center justify-between gap-2 mb-3.5">
+                <span class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-500/10 text-blue-500 border border-blue-500/20 shrink-0">
+                  🚗 Auto Familiar
                 </span>
-                <span id="comp-auto-distancia" class="text-xs font-mono dark:text-slate-400 text-slate-500">1.580 km (ida)</span>
+                <span id="comp-auto-distancia" class="text-xs font-mono dark:text-slate-400 text-slate-500 text-right truncate">1.580 km (ida)</span>
               </div>
 
               <!-- Durabilidad / Tiempo en Auto (Arriba, a la par con Avión) -->
@@ -2526,7 +2523,7 @@
                   <span id="comp-auto-total" class="text-base font-extrabold text-blue-500">$ 542.770</span>
                 </div>
                 <div class="flex items-center justify-between text-xs text-slate-500">
-                  <span>Costo por persona (<span id="comp-auto-pax-label">2 pax</span>):</span>
+                  <span>Costo por persona (<span id="comp-auto-pax-label">2 personas</span>):</span>
                   <span id="comp-auto-por-persona" class="font-semibold text-slate-600 dark:text-slate-400">$ 271.385 c/u</span>
                 </div>
               </div>
@@ -2544,11 +2541,11 @@
           <!-- Columna 2: Avión -->
           <div class="p-5 sm:p-6 rounded-3xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between shadow-sm">
             <div>
-              <div class="flex items-center justify-between mb-3.5">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-rose-500/10 text-rose-500 border border-rose-500/20">
-                  ✈️ Vuelo Directo Radar
+              <div class="flex items-center justify-between gap-2 mb-3.5">
+                <span class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-rose-500/10 text-rose-500 border border-rose-500/20 shrink-0">
+                  ✈️ Vuelo Directo
                 </span>
-                <span id="comp-avion-tarifa-base" class="text-xs font-mono dark:text-slate-400 text-slate-500">Tarifa: $ 89.000 i/v</span>
+                <span id="comp-avion-tarifa-base" class="text-xs font-mono dark:text-slate-400 text-slate-500 text-right whitespace-nowrap">Tarifa: $ 89.000 i/v</span>
               </div>
 
               <!-- Durabilidad / Tiempo en Avión (Arriba, a la par con Auto) -->
@@ -2561,10 +2558,10 @@
                 </div>
               </div>
 
-              <!-- Desglose de Gastos en Avión -->
+              <!-- Desglose de Gastos en Avión (Limpio, sin saturar con número de pasajeros) -->
               <div class="space-y-2 mb-4">
                 <div class="flex items-center justify-between text-xs">
-                  <span class="dark:text-slate-400 text-slate-600">Pasajes ida y vuelta (<span id="comp-avion-pax-count">2</span> pers):</span>
+                  <span class="dark:text-slate-400 text-slate-600">Pasajes ida y vuelta:</span>
                   <span id="comp-avion-pasajes-total" class="font-bold dark:text-slate-200 text-slate-800">$ 178.000</span>
                 </div>
                 <div class="flex items-center justify-between text-xs">
@@ -2572,7 +2569,7 @@
                   <span class="font-bold text-emerald-500">Incluido base</span>
                 </div>
                 <div class="flex items-center justify-between text-xs">
-                  <span class="dark:text-slate-400 text-slate-600" id="comp-avion-mov-label">Movilidad en destino (Uber/Semana):</span>
+                  <span class="dark:text-slate-400 text-slate-600" id="comp-avion-mov-label">Uber / Traslados en destino:</span>
                   <span id="comp-avion-mov-costo" class="font-bold text-amber-500">+$ 85.000</span>
                 </div>
                 <div class="pt-2 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between">
@@ -2586,11 +2583,11 @@
               </div>
             </div>
 
-            <!-- Aclaración de Combustible en Alquiler de Auto Abajo de Gastos -->
-            <div id="comp-avion-alquiler-tip" class="mt-auto p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-800 dark:text-amber-300 flex items-start gap-2">
-              <span class="text-base flex-shrink-0">⛽</span>
-              <div class="leading-relaxed">
-                <b>Política de Tanque Lleno en Alquiler:</b> Las agencias solicitan devolver el auto con el <b>tanque lleno</b>. Ese gasto no está incluido en el cálculo porque depende de cuánto manejes en destino.
+            <!-- Aclaración de Traslado en Destino (Uber o Alquiler) dentro de la tarjeta de Vuelo Directo -->
+            <div id="comp-avion-tip-box" class="mt-auto p-3 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-800 dark:text-amber-300 flex items-start gap-2">
+              <span id="comp-avion-tip-icono" class="text-base flex-shrink-0">🚕</span>
+              <div id="comp-avion-tip-texto" class="leading-relaxed">
+                <b>Capacidad en Uber / Remis:</b> Un auto convencional admite hasta 4 pasajeros por ley. Si viajan 5 personas o con valijas grandes de bodega, tener en cuenta que se requieren 2 autos (o categoría XL) para los traslados del aeropuerto al destino.
               </div>
             </div>
           </div>
@@ -3962,6 +3959,7 @@
       salta: { nombre: 'Salta', km: 1490, autoCombustible: 510000, autoPeajes: 14000, tiempoAutoHs: 18.1, tiempoAutoTexto: '18h 10m', tiempoAvionTexto: '4h 10m', tiempoAvionHs: 4.15, precioAvionBase: 88000, costoAlquiler7d: 440000, costoUber: 70000 },
       madryn: { nombre: 'Puerto Madryn', km: 1300, autoCombustible: 430000, autoPeajes: 14000, tiempoAutoHs: 14.75, tiempoAutoTexto: '14h 45m', tiempoAvionTexto: '4h 00m', tiempoAvionHs: 4.0, precioAvionBase: 95000, costoAlquiler7d: 430000, costoUber: 65000 },
       sanmartin: { nombre: 'San Martín de los Andes', km: 1570, autoCombustible: 530000, autoPeajes: 19000, tiempoAutoHs: 19.0, tiempoAutoTexto: '19h 00m', tiempoAvionTexto: '4h 25m', tiempoAvionHs: 4.4, precioAvionBase: 92000, costoAlquiler7d: 440000, costoUber: 75000 },
+      tucuman: { nombre: 'San Miguel de Tucumán', km: 1250, autoCombustible: 430000, autoPeajes: 15000, tiempoAutoHs: 14.2, tiempoAutoTexto: '14h 15m', tiempoAvionTexto: '3h 50m', tiempoAvionHs: 3.8, precioAvionBase: 76000, costoAlquiler7d: 390000, costoUber: 65000 },
       ushuaia: { nombre: 'Ushuaia', km: 3100, autoCombustible: 920000, autoPeajes: 60000, tiempoAutoHs: 38.0, tiempoAutoTexto: '38h 00m (con balsa)', tiempoAvionTexto: '5h 35m', tiempoAvionHs: 5.6, precioAvionBase: 135000, costoAlquiler7d: 480000, costoUber: 80000 },
     };
 
@@ -4003,7 +4001,7 @@
       const autoTotalArs = data.autoCombustible + data.autoPeajes;
       const autoPorPersonaArs = Math.round(autoTotalArs / compPasajeros);
 
-      // Costo de movilidad local si viaja en avión (desglose inteligente de Uber según pasajeros)
+      // Costo de movilidad local si viaja en avión
       let costoMovilidadArs = 0;
       let labelMovilidad = 'Movilidad local:';
       const ubersNecesarios = compPasajeros > 4 ? 2 : 1;
@@ -4012,49 +4010,13 @@
 
       if (compMovilidad === 'alquiler') {
         costoMovilidadArs = data.costoAlquiler7d || 420000;
-        labelMovilidad = compPasajeros > 4 ? 'Alquiler auto (7 días - 5 pax):' : 'Alquiler auto (7 días):';
+        labelMovilidad = 'Alquiler auto (7 días):';
       } else if (compMovilidad === 'uber') {
         costoMovilidadArs = costoUberTotal;
-        labelMovilidad = compPasajeros > 4 ? `Uber/Traslados (2 autos x ${compPasajeros} pax):` : 'Uber / Traslados semana:';
+        labelMovilidad = 'Uber / Traslados en destino:';
       } else {
         costoMovilidadArs = 0;
         labelMovilidad = 'Movilidad extra (a pie):';
-      }
-
-      // Actualizar texto del botón de Uber según pasajeros
-      const btnUber = document.getElementById('comp-mov-uber');
-      if (btnUber) {
-        if (compPasajeros > 4) {
-          btnUber.innerHTML = `🚕 2x Ubers / Traslados (~${window.formatearPrecioMoneda('$' + costoUberTotal)})`;
-        } else {
-          btnUber.innerHTML = `🚕 Uber / Traslados (~${window.formatearPrecioMoneda('$' + costoUberBase)})`;
-        }
-      }
-
-      // Tip dinámico de capacidad de Uber y autos
-      const elUberTip = document.getElementById('comp-uber-capacidad-tip');
-      if (elUberTip) {
-        if (compMovilidad === 'uber') {
-          if (compPasajeros > 4) {
-            elUberTip.className = 'mt-2.5 p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-700 dark:text-amber-300 flex items-start gap-2 leading-relaxed';
-            elUberTip.innerHTML = '<span>⚠️</span> <span><b>Grupo de 5 personas:</b> Por límite legal de plazas y capacidad de valijas (máx 4 pax por vehículo estándar), el sistema calcula automáticamente <b>2 Ubers</b> (o categoría XL/Van) para ida y vuelta al aeropuerto y traslados.</span>';
-            elUberTip.style.display = 'flex';
-          } else {
-            elUberTip.className = 'mt-2 text-[11px] dark:text-slate-400 text-slate-500 flex items-center gap-1.5';
-            elUberTip.innerHTML = '<span>ℹ️</span> <span><b>Capacidad Uber estándar:</b> Hasta 4 pasajeros. Si viajan con valijas grandes de bodega, tengan en cuenta el espacio del baúl.</span>';
-            elUberTip.style.display = 'flex';
-          }
-        } else if (compMovilidad === 'alquiler') {
-          if (compPasajeros > 4) {
-            elUberTip.className = 'mt-2.5 p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/30 text-[11px] text-blue-700 dark:text-blue-300 flex items-start gap-2 leading-relaxed';
-            elUberTip.innerHTML = '<span>ℹ️</span> <span><b>5 pasajeros en auto alquilado:</b> Un sedán estándar viaja con todas sus plazas ocupadas. Si llevan valijas grandes, puede requerirse categoría SUV o Minivan 7 asientos.</span>';
-            elUberTip.style.display = 'flex';
-          } else {
-            elUberTip.style.display = 'none';
-          }
-        } else {
-          elUberTip.style.display = 'none';
-        }
       }
 
       const pasajesTotalArs = data.precioAvionBase * compPasajeros;
@@ -4074,7 +4036,7 @@
       if (elComb) elComb.innerText = window.formatearPrecioMoneda(`$ ${data.autoCombustible}`);
       if (elPeajes) elPeajes.innerText = window.formatearPrecioMoneda(`$ ${data.autoPeajes}`);
       if (elAutoTotal) elAutoTotal.innerText = window.formatearPrecioMoneda(`$ ${autoTotalArs}`);
-      if (elAutoPaxLabel) elAutoPaxLabel.innerText = `${compPasajeros} pax`;
+      if (elAutoPaxLabel) elAutoPaxLabel.innerText = `${compPasajeros} ${compPasajeros === 1 ? "persona" : "personas"}`;
       if (elAutoPax) elAutoPax.innerText = `${window.formatearPrecioMoneda(`$ ${autoPorPersonaArs}`)} c/u`;
       if (elAutoTiempo) elAutoTiempo.innerText = `${data.tiempoAutoTexto} de manejo`;
 
@@ -4108,10 +4070,25 @@
       const diffPlata = Math.abs(autoTotalArs - avionTotalArs);
       const diffPlataFmt = window.formatearPrecioMoneda(`$ ${diffPlata}`);
 
-      // Tip de tanque lleno en alquiler de auto
-      const elAlquilerTip = document.getElementById('comp-avion-alquiler-tip');
-      if (elAlquilerTip) {
-        elAlquilerTip.style.display = compMovilidad === 'alquiler' ? 'flex' : 'none';
+      // Tip de movilidad al pie de la tarjeta del avión (Uber, Alquiler o A pie)
+      const elAvionTipBox = document.getElementById('comp-avion-tip-box');
+      const elAvionTipIcono = document.getElementById('comp-avion-tip-icono');
+      const elAvionTipTexto = document.getElementById('comp-avion-tip-texto');
+
+      if (elAvionTipBox && elAvionTipIcono && elAvionTipTexto) {
+        if (compMovilidad === 'uber') {
+          elAvionTipBox.style.display = 'flex';
+          elAvionTipIcono.innerText = '🚕';
+          elAvionTipTexto.innerHTML = '<b>Capacidad en Uber / Remis:</b> Un auto convencional admite hasta 4 pasajeros por ley. Si viajan 5 personas o con valijas grandes de bodega, tener en cuenta que se requieren 2 autos (o categoría XL) para los traslados del aeropuerto al destino.';
+        } else if (compMovilidad === 'alquiler') {
+          elAvionTipBox.style.display = 'flex';
+          elAvionTipIcono.innerText = '⛽';
+          elAvionTipTexto.innerHTML = '<b>Política de Tanque Lleno en Alquiler:</b> Las agencias solicitan devolver el auto con el <b>tanque lleno</b>. Ese gasto no está incluido en el cálculo porque depende de cuánto manejes en destino.';
+        } else {
+          elAvionTipBox.style.display = 'flex';
+          elAvionTipIcono.innerText = '🚶';
+          elAvionTipTexto.innerHTML = '<b>Movilidad a pie / centro:</b> Válido si tu alojamiento está en zona céntrica o caminable. No incluye traslados entre aeropuerto y hotel.';
+        }
       }
 
       // Métricas numéricas del veredicto
@@ -4121,22 +4098,31 @@
       if (elDiffTiempo) elDiffTiempo.innerText = `${Math.abs(diffHs)} hs ${diffHs > 0 ? 'menos' : 'más'}`;
 
       const elCta = document.getElementById('comp-veredicto-cta');
-      if (elCta) {
-        if (avionTotalArs < autoTotalArs) {
-          elCta.href = '/vuelos';
-          elCta.innerHTML = '<span>Ver Vuelos Disponibles</span> ➔';
-        } else {
-          elCta.href = '#rutas-auto';
-          elCta.innerHTML = '<span>Ver Hoja de Ruta en Auto</span> ➔';
-        }
-      }
-
       const elVerIcono = document.getElementById('comp-veredicto-icono');
       const elVerTitulo = document.getElementById('comp-veredicto-titulo');
       const elVerDetalle = document.getElementById('comp-veredicto-detalle');
 
-      if (avionTotalArs < autoTotalArs) {
+      // Regla especial para Mar del Plata: No se recomienda volar salvo viaje laboral de 1 persona
+      if (destId === 'mardel') {
+        if (elVerIcono) elVerIcono.innerText = '🚗';
+        if (elVerTitulo) {
+          elVerTitulo.innerText = compPasajeros === 1
+            ? 'Vuelo poco conveniente: Solo justificado para viajes laborales relámpago de 1 día'
+            : `Conviene Auto: En Avión gastás ${diffPlataFmt} más para ahorrar apenas 1 hora real`;
+        }
+        if (elVerDetalle) {
+          elVerDetalle.innerText = 'El vuelo a Mar del Plata solo tiene sentido para quien viaja solo por laburo de un día para el otro. Aunque el avión vuela en 55 minutos, al sumar 1h30 previa en Aeroparque, retiro de equipaje y remís al centro/hotel, el tiempo total puerta a puerta es de ~3h45m vs 4h45m en auto por Autovía 2. Para parejas o familias, pagar pasajes y traslados no se justifica económicamente para ahorrar solo 45 minutos.';
+        }
+        if (elCta) {
+          elCta.href = '#rutas-auto';
+          elCta.innerHTML = '<span>Ver Hoja de Ruta (Autovía 2)</span> ➔';
+        }
+      } else if (avionTotalArs < autoTotalArs) {
         // Conviene Avión
+        if (elCta) {
+          elCta.href = '/vuelos';
+          elCta.innerHTML = '<span>Ver Vuelos Disponibles</span> ➔';
+        }
         if (elVerIcono) elVerIcono.innerText = '✈️';
         if (elVerTitulo) elVerTitulo.innerText = `Conviene Avión: Ahorrás ${diffPlataFmt} y te ahorrás ${diffHs} horas de ruta agotadora`;
         if (elVerDetalle) {
@@ -4146,6 +4132,10 @@
           elVerDetalle.innerText = `${detalleMov}para ${compPasajeros} pasajero(s) volar es ${diffPlataFmt} más económico que mover el vehículo particular y ganás ${diffHs} horas de vida evitando el desgaste de manejar en ruta.`;
         }
       } else {
+        if (elCta) {
+          elCta.href = '#rutas-auto';
+          elCta.innerHTML = '<span>Ver Hoja de Ruta en Auto</span> ➔';
+        }
         // Conviene Auto en plata, pero tarda más
         const ahorroPct = Math.round((diffPlata / avionTotalArs) * 100);
         if (elVerIcono) elVerIcono.innerText = '🚗';
