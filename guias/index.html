@@ -17,11 +17,16 @@
   <meta name="twitter:image" content="https://www.flightbot.com.ar/img/og-preview.jpg">
 
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%23e11d48' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%23e11d48'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/img/rolli-avatar-transparent.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   
+  <script src="/js/auth.js" defer></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -512,14 +517,17 @@
 </head>
 <body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition">
 
-  <!-- Navegación Superior -->
+  
+  <!-- Encabezado / Navegación Superior Universal (h-16 simétrico) -->
   <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/80 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
-      <div class="flex items-center gap-3 shrink-0 z-10">
-        <a href="/" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition"
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 lg:gap-3 xl:gap-4 relative">
+      <!-- 1. Marca / Logotipo -->
+      <div class="flex items-center gap-3 shrink-0 z-10 mr-3 xl:mr-5">
+        <a href="/" class="flex items-center gap-2.5 sm:gap-3 group" title="Volver al inicio de FlightBot">
+          <div id="brand-logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition cursor-pointer p-1 group-hover:scale-105 transition-transform"
+               title="Mascota tech redondeada que sostiene su propia valija carry-on rígida con ruedas 360°. La antena superior emite pulsos de alertas cuando encuentra una tarifa baja."
                style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
-            <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 40 40" class="w-6 h-6 sm:w-8 sm:h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
               <rect x="23" y="19" width="12" height="16" rx="3" fill="url(#fbSuitcaseAlwaysRedNav)" stroke="#ffffff" stroke-width="0.8"/>
               <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
@@ -549,52 +557,65 @@
               </defs>
             </svg>
           </div>
-          <span class="text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">
-            FlightBot
-          </span>
+          <span class="text-xl sm:text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">Flight<span style="color: var(--brand-primary);">Bot</span></span>
         </a>
       </div>
 
-      <!-- Barra de Navegación Central Simétrica (Dock Centrado) -->
-      <nav class="hidden lg:flex items-center p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-1 xl:gap-1.5 mx-auto">
-        <a href="/#radar-vuelos" id="nav-btn-vuelos" class="nav-dock-btn">
+      <!-- 2. Barra de Navegación Central Simétrica (Dock Centrado con padding elástico) -->
+      <nav class="hidden lg:flex items-center p-1 xl:p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-0.5 xl:gap-1.5 mx-auto shrink-0">
+        <a href="/" id="nav-btn-inicio" class="nav-dock-btn" title="Inicio de FlightBot">
+          <span>🏠</span> Inicio
+        </a>
+        <a href="/vuelos" id="nav-btn-vuelos" class="nav-dock-btn" title="Buscador y Radar de Vuelos">
           <span>✈️</span> Vuelos
         </a>
-        <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn flex items-center gap-1.5 px-2.5 py-1" title="Ofertas Relámpago y Oportunidades Flash">
-          <span class="text-xs">🔥</span>
-          <span class="flex flex-col text-[11px] leading-[1.05] text-left">
-            <span>Ofertas</span>
-            <span class="text-[9px] opacity-80 font-medium">Relámpago</span>
-          </span>
+        <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn" title="Ofertas Relámpago y Oportunidades Flash">
+          <span>🔥</span> Ofertas Relámpago
         </a>
         <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn">
+        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn" title="Billetera de Tarjetas, Beneficios y Asistencia">
           <span>💳</span> Billetera
         </a>
-        <a href="/guias" id="nav-btn-guias" class="nav-dock-btn is-active">
+        <a href="/guias" id="nav-btn-guias" class="nav-dock-btn is-active" title="Guías Turísticas y Rutas Monitoreadas">
           <span>📖</span> Guías
         </a>
-        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn">
+        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn" title="Preguntas Frecuentes y Ayuda">
           <span>❓</span> FAQ
         </a>
       </nav>
 
-      <div class="flex items-center gap-2 sm:gap-3 shrink-0 z-10">
+      <!-- 3. Contenedor Derecho Único y Balanceado (h-8 uniforme) -->
+      <div class="flex items-center gap-1.5 sm:gap-2 xl:gap-2.5 shrink-0 z-10">
         
-        <!-- Control Dual de Personalización (Color + Modo Claro/Oscuro) - Centrado Óptico y Milimétrico Absoluto -->
-        <div class="flex items-center p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-xs theme-transition">
-          <!-- Switcher de Color (Rojo Rubí vs Azul) -->
-          <div class="flex items-center gap-1.5 pl-1.5 pr-2">
-            <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Tema Rojo Rubí" aria-label="Tema Rojo Rubí"
-                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
-            <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Tema Azul Océano" aria-label="Tema Azul Océano"
-                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
+        <!-- A. Widget Auth Google (Centrado ópticamente entre navbar y theme switcher) -->
+        <div id="auth-nav-container" class="flex items-center mx-1 sm:mx-2 xl:mx-3">
+          <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.iniciarLoginGoogle() : null"
+                  class="inline-flex items-center justify-center gap-1.5 h-8 px-2 sm:px-2.5 xl:px-3 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-900/90 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
+                  title="Acceder con Google">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <span class="hidden xl:inline">Acceder</span>
+          </button>
+        </div>
+
+        <!-- B. Switcher de Tema y Color (h-8) -->
+        <div class="flex items-center h-8 p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-xs theme-transition">
+          <!-- Switcher de Color (Ruby / Blue) -->
+          <div class="hidden sm:flex items-center gap-1.5 pl-1.5 pr-2">
+            <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Color Ruby" aria-label="Color Ruby"
+                    class="w-3.5 h-3.5 rounded-full bg-rose-600 hover:scale-110 transition-transform focus:outline-none"></button>
+            <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Color Blue" aria-label="Color Blue"
+                    class="w-3.5 h-3.5 rounded-full bg-blue-600 hover:scale-110 transition-transform focus:outline-none"></button>
           </div>
-          <!-- Separador Vertical Centrado y Proporcional -->
-          <div class="w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
-          <!-- Switcher de Modo (Claro / Oscuro) - Centrado óptico con corrección de baseline -->
+          <!-- Separador Vertical -->
+          <div class="hidden sm:block w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
+          <!-- Alternar Modo Oscuro / Claro -->
           <div class="flex items-center pl-1 pr-1.5">
             <button onclick="toggleThemeMode()" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro" aria-label="Alternar Modo Claro / Oscuro"
                     class="w-4.5 h-4.5 rounded-full flex items-center justify-center text-xs dark:text-amber-400 text-slate-700 hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
@@ -603,16 +624,17 @@
           </div>
         </div>
 
-
+        <!-- C. Píldora Telegram Única de Escritorio (h-8 px-3.5) -->
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-white font-semibold text-xs sm:text-sm transition-all shadow-lg hover:brightness-110"
-           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+           class="hidden sm:inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full text-white font-semibold text-xs shrink-0 transition-all shadow-md hover:brightness-110"
+           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);"
+           title="Abrir FlightBot en Telegram">
+          <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
           </svg>
-          <span class="hidden sm:inline">Probar Bot en Telegram</span>
-          <span class="sm:hidden">Bot</span>
+          <span>Telegram</span>
         </a>
+
         <!-- Botón Menú Móvil (< lg) -->
         <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
                 class="lg:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
@@ -623,33 +645,61 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
+
       </div>
     </div>
 
-    <!-- Menú Móvil Desplegable -->
-    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
-      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
-        <a href="/#radar-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+    <!-- 4. Menú Móvil Desplegable (Con botón de Telegram al pie del drawer) -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3.5 transition-all shadow-xl">
+      <!-- Contenedor Auth Móvil -->
+      <div id="mobile-auth-drawer-container">
+        <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.iniciarLoginGoogle() : null" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-2xl font-bold text-xs bg-white dark:bg-slate-900 border dark:border-slate-800 border-slate-200 text-slate-800 dark:text-slate-100 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-all mb-3 cursor-pointer">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span>Iniciar sesión con Google</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold mb-3">
+        <a href="/" onclick="toggleMobileNav(false)" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
+          <span>🏠</span> Inicio
+        </a>
+        <a href="/vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>✈️</span> Vuelos
         </a>
-        <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>🔥</span> Ofertas Relámpago
         </a>
-        <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>💳</span> Billetera
         </a>
         <a href="/guias" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
           <span>📖</span> Guías
         </a>
-        <a href="/faq" onclick="toggleMobileNav(false)" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>❓</span> FAQ
         </a>
       </div>
+
+      <!-- Botón Telegram en Menú Móvil -->
+      <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
+         class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-white font-bold text-xs shadow-md hover:brightness-110 transition-all mt-2"
+         style="background: var(--brand-gradient);">
+        <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
+        </svg>
+        <span>Abrir Rolli en Telegram</span>
+      </a>
     </div>
   </header>
+
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <div class="text-center max-w-3xl mx-auto mb-16">
@@ -674,11 +724,13 @@
           <span class="absolute left-4 top-3.5 text-base text-slate-400">🔍</span>
         </div>
         <div class="flex items-center justify-center gap-1.5 overflow-x-auto pb-2 no-scrollbar text-xs">
-          <button type="button" onclick="filtrarGuiasRegion('todos', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold text-white transition-all shadow-sm" style="background-color: var(--brand-primary);">Todos (56)</button>
-          <button type="button" onclick="filtrarGuiasRegion('argentina', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all inline-flex items-center gap-1.5"><img src="../img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje</button>
-          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all inline-flex items-center gap-1.5"><img src="../img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil</button>
-          <button type="button" onclick="filtrarGuiasRegion('caribe_usa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">🏖️ Caribe & USA</button>
-          <button type="button" onclick="filtrarGuiasRegion('europa_mundo', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all">🌍 Europa & Mundo</button>
+          <button type="button" onclick="filtrarGuiasRegion('todos', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold text-white transition-all shadow-sm shrink-0" style="background-color: var(--brand-primary);">Todos (56)</button>
+          <button type="button" onclick="filtrarGuiasRegion('argentina', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje</button>
+          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil</button>
+          <button type="button" onclick="filtrarGuiasRegion('caribe_usa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">🏖️ Caribe & USA</button>
+          <button type="button" onclick="filtrarGuiasRegion('europa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">🏰 Europa</button>
+          <button type="button" onclick="filtrarGuiasRegion('resto_mundo', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">🌏 Asia, África &amp; Oceanía</button>
+          <button type="button" onclick="filtrarGuiasRegion('playas', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">🌊 Playas</button>
         </div>
       </div>
 
@@ -701,7 +753,7 @@
       
         <article data-ciudad="río de janeiro" data-pais="brasil" data-region="américa del sur" data-cmd="/rio" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=80" alt="Río de Janeiro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1200&q=80" alt="Río de Janeiro" loading="eager" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               América del Sur
             </div>
@@ -732,17 +784,22 @@
                 Playas legendarias, naturaleza exuberante y puerta de entrada a la paradisíaca Región de los Lagos de Brasil....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/rio</span>
-              <a href="/guias/rio-de-janeiro" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/rio</span>
+                <a href="/vuelos?destino=rio" title="Buscar vuelos a Río de Janeiro en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/rio-de-janeiro" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="roma" data-pais="italia" data-region="europa" data-cmd="/roma" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1200&q=80" alt="Roma" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=1200&q=80" alt="Roma" loading="eager" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Europa
             </div>
@@ -773,17 +830,22 @@
                 La Ciudad Eterna: 3.000 años de historia, gastronomía de culto y el mayor hub de trenes de alta velocidad de Europa del Sur....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/roma</span>
-              <a href="/guias/roma" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/roma</span>
+                <a href="/vuelos?destino=roma" title="Buscar vuelos a Roma en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/roma" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="madrid" data-pais="españa" data-region="europa" data-cmd="/madrid" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80" alt="Madrid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80" alt="Madrid" loading="eager" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Europa
             </div>
@@ -814,17 +876,22 @@
                 Capital viva de la cultura y la gastronomía, con la red de trenes de alta velocidad más competitiva y el mayor puente aéreo low-cost de Euro...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/madrid</span>
-              <a href="/guias/madrid" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/madrid</span>
+                <a href="/vuelos?destino=madrid" title="Buscar vuelos a Madrid en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/madrid" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="miami" data-pais="estados unidos" data-region="américa del norte" data-cmd="/miami" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80" alt="Miami" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80" alt="Miami" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               América del Norte
             </div>
@@ -855,17 +922,22 @@
                 Capital del sol, diseño Art Déco, vida nocturna cosmopolita y puente aéreo insuperable hacia todo el Caribe y Florida....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/miami</span>
-              <a href="/guias/miami" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/miami</span>
+                <a href="/vuelos?destino=miami" title="Buscar vuelos a Miami en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/miami" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="cancún" data-pais="méxico" data-region="caribe & méxico" data-cmd="/cancun" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=1200&q=80" alt="Cancún" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=1200&q=80" alt="Cancún" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Caribe & México
             </div>
@@ -896,17 +968,22 @@
                 Playas de arena blanca como talco, el mar turquesa más luminoso del Caribe y la mística civilización maya....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/cancun</span>
-              <a href="/guias/cancun-riviera-maya" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/cancun</span>
+                <a href="/vuelos?destino=cancun" title="Buscar vuelos a Cancún en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/cancun-riviera-maya" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="punta cana" data-pais="república dominicana" data-region="caribe" data-cmd="/puntacana" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1678816331175-a61a6835e889?auto=format&fit=crop&w=1200&q=80" alt="Punta Cana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1678816331175-a61a6835e889?auto=format&fit=crop&w=1200&q=80" alt="Punta Cana" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Caribe
             </div>
@@ -937,17 +1014,22 @@
                 Kilómetros de arena blanca bordeada de cocoteros, resorts all-inclusive de categoría mundial y relax absoluto frente al Caribe....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/puntacana</span>
-              <a href="/guias/punta-cana" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/puntacana</span>
+                <a href="/vuelos?destino=puntacana" title="Buscar vuelos a Punta Cana en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/punta-cana" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="aruba" data-pais="aruba" data-region="caribe holandés" data-cmd="/aruba" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1518118752300-59473bb79c6c?auto=format&fit=crop&w=1200&q=80" alt="Aruba" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1518118752300-59473bb79c6c?auto=format&fit=crop&w=1200&q=80" alt="Aruba" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Caribe Holandés
             </div>
@@ -978,17 +1060,22 @@
                 La Isla Feliz: fuera de la ruta de huracanes, con más de 300 días de sol al año, arquitectura holandesa pastel y playas de postal....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/aruba</span>
-              <a href="/guias/aruba" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/aruba</span>
+                <a href="/vuelos?destino=aruba" title="Buscar vuelos a Aruba en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/aruba" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="bariloche" data-pais="argentina" data-region="argentina & patagonia" data-cmd="/bariloche" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=1200&q=80" alt="Bariloche" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=1200&q=80" alt="Bariloche" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Patagonia
             </div>
@@ -1019,17 +1106,22 @@
                 Capital nacional del turismo de aventura: lagos glaciares majestuosos, bosques de coihues, chocolates artesanales y la mítica Ruta de los 7 ...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/bariloche</span>
-              <a href="/guias/bariloche-patagonia" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/bariloche</span>
+                <a href="/vuelos?destino=bariloche" title="Buscar vuelos a Bariloche en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/bariloche-patagonia" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="mendoza" data-pais="argentina" data-region="argentina & cuyo" data-cmd="/mendoza" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=80" alt="Mendoza" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1200&q=80" alt="Mendoza" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Cuyo
             </div>
@@ -1060,17 +1152,22 @@
                 Capital mundial del Malbec: bodegas de arquitectura deslumbrante al pie de los Andes, acequias históricas y aventura cordillerana....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/mendoza</span>
-              <a href="/guias/mendoza-valle-de-uco" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/mendoza</span>
+                <a href="/vuelos?destino=mendoza" title="Buscar vuelos a Mendoza en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/mendoza-valle-de-uco" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="puerto iguazú" data-pais="argentina / brasil" data-region="argentina & triple frontera" data-cmd="/iguazu" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1545832063-74f2d924b61a?auto=format&fit=crop&w=1200&q=80" alt="Puerto Iguazú" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1545832063-74f2d924b61a?auto=format&fit=crop&w=1200&q=80" alt="Puerto Iguazú" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Triple Frontera
             </div>
@@ -1101,17 +1198,22 @@
                 Maravilla Natural del Mundo: 275 saltos de agua rugiendo en plena selva paranaense, tucanes en libertad y la Garganta del Diablo....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/iguazu</span>
-              <a href="/guias/puerto-iguazu-cataratas" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/iguazu</span>
+                <a href="/vuelos?destino=iguazu" title="Buscar vuelos a Puerto Iguazú en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/puerto-iguazu-cataratas" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="reikiavik" data-pais="islandia" data-region="europa del norte / atlántico norte" data-cmd="/reikiavik" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1542627054-304853017c33?auto=format&fit=crop&w=1200&q=80" alt="Reikiavik" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1542627054-304853017c33?auto=format&fit=crop&w=1200&q=80" alt="Reikiavik" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Europa del Norte / Atlántico Norte
             </div>
@@ -1142,17 +1244,22 @@
                 Tierra de fuego y hielo: géiseres rugientes, cascadas glaciares colosales, lagunas geotérmicas humeantes y el mayor teatro mundial para caza...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/reikiavik</span>
-              <a href="/guias/reikiavik-islandia" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/reikiavik</span>
+                <a href="/vuelos?destino=reikiavik" title="Buscar vuelos a Reikiavik en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/reikiavik-islandia" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="oslo" data-pais="noruega" data-region="escandinavia / europa del norte" data-cmd="/oslo" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=1200&q=80" alt="Oslo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?auto=format&fit=crop&w=1200&q=80" alt="Oslo" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Escandinavia / Europa del Norte
             </div>
@@ -1183,17 +1290,22 @@
                 Vanguardia arquitectónica, fiordos azules y bosques infinitos: la capital más verde, sustentable y de diseño vanguardista de Escandinavia....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/oslo</span>
-              <a href="/guias/oslo-noruega" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/oslo</span>
+                <a href="/vuelos?destino=oslo" title="Buscar vuelos a Oslo en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/oslo-noruega" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="el calafate & el chaltén" data-pais="argentina" data-region="argentina & patagonia austral" data-cmd="/calafate" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1577373482643-5c7ccf8f0ac9?auto=format&fit=crop&w=1200&q=80" alt="El Calafate & El Chaltén" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1577373482643-5c7ccf8f0ac9?auto=format&fit=crop&w=1200&q=80" alt="El Calafate & El Chaltén" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Patagonia Austral
             </div>
@@ -1224,17 +1336,22 @@
                 Reino de hielo milenario y senderos míticos: el imponente Glaciar Perito Moreno y la Capital Nacional del Trekking al pie del Cerro Fitz Roy...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/calafate</span>
-              <a href="/guias/el-calafate-glaciares-el-chalten" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/calafate</span>
+                <a href="/vuelos?destino=calafate" title="Buscar vuelos a El Calafate & El Chaltén en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/el-calafate-glaciares-el-chalten" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="ushuaia & tierra del fuego" data-pais="argentina" data-region="argentina" data-cmd="/ushuaia" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1671595334685-fce6db1f53a4?auto=format&fit=crop&w=1200&q=80" alt="Ushuaia & Tierra del Fuego" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1671595334685-fce6db1f53a4?auto=format&fit=crop&w=1200&q=80" alt="Ushuaia & Tierra del Fuego" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina
             </div>
@@ -1265,17 +1382,22 @@
                 La Ciudad del Fin del Mundo: navegación por el Canal Beagle, faro Les Éclaireurs, pingüineras australes y el centro de esquí Cerro Castor....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/ushuaia</span>
-              <a href="/guias/ushuaia-tierra-del-fuego" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/ushuaia</span>
+                <a href="/vuelos?destino=ushuaia" title="Buscar vuelos a Ushuaia & Tierra del Fuego en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/ushuaia-tierra-del-fuego" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="salta & valles calchaquíes" data-pais="argentina" data-region="argentina" data-cmd="/salta" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1711841004592-d8d619331fe2?auto=format&fit=crop&w=1200&q=80" alt="Salta & Valles Calchaquíes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1711841004592-d8d619331fe2?auto=format&fit=crop&w=1200&q=80" alt="Salta & Valles Calchaquíes" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina
             </div>
@@ -1306,17 +1428,22 @@
                 Salta 'La Linda': arquitectura colonial hispana, peñas folclóricas en la calle Balcarce, quebradas rojizas esculpidas por el viento y vinos ...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/salta</span>
-              <a href="/guias/salta-valles-calchaquies" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/salta</span>
+                <a href="/vuelos?destino=salta" title="Buscar vuelos a Salta & Valles Calchaquíes en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/salta-valles-calchaquies" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="jujuy & quebrada de humahuaca" data-pais="argentina" data-region="argentina & quebrada" data-cmd="/jujuy" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1765567972885-9b63d0f6c7db?auto=format&fit=crop&w=1200&q=80" alt="Jujuy & Quebrada de Humahuaca" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1765567972885-9b63d0f6c7db?auto=format&fit=crop&w=1200&q=80" alt="Jujuy & Quebrada de Humahuaca" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Quebrada
             </div>
@@ -1347,17 +1474,22 @@
                 Patrimonio de la Humanidad: pueblos de adobe, cerros policromáticos como el Hornocal y Purmamarca, tradiciones andinas vivas y salares infin...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/jujuy</span>
-              <a href="/guias/jujuy-quebrada-de-humahuaca" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/jujuy</span>
+                <a href="/vuelos?destino=jujuy" title="Buscar vuelos a Jujuy & Quebrada de Humahuaca en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/jujuy-quebrada-de-humahuaca" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="córdoba & sierras" data-pais="argentina" data-region="argentina" data-cmd="/cordoba" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="Córdoba & Sierras" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="Córdoba & Sierras" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina
             </div>
@@ -1388,17 +1520,22 @@
                 Segundo polo urbano de Argentina: Manzana Jesuítica Patrimonio UNESCO, barrio bohemio de Güemes y escapadas inmediatas a las sierras de Puni...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/cordoba</span>
-              <a href="/guias/cordoba-sierras" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/cordoba</span>
+                <a href="/vuelos?destino=cordoba" title="Buscar vuelos a Córdoba & Sierras en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/cordoba-sierras" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="san martín de los andes & chapelco" data-pais="argentina" data-region="argentina & patagonia cordillerana" data-cmd="/sanmartin" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80" alt="San Martín de los Andes & Chapelco" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80" alt="San Martín de los Andes & Chapelco" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Patagonia Cordillerana
             </div>
@@ -1429,17 +1566,22 @@
                 Aldea de montaña de arquitectura en madera y piedra, cabecera de la Ruta de los 7 Lagos, cerro de esquí Chapelco y playas del lago Lácar....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/sanmartin</span>
-              <a href="/guias/san-martin-de-los-andes-chapelco" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/sanmartin</span>
+                <a href="/vuelos?destino=sanmartin" title="Buscar vuelos a San Martín de los Andes & Chapelco en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/san-martin-de-los-andes-chapelco" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="puerto madryn & península valdés" data-pais="argentina" data-region="argentina & costa patagónica" data-cmd="/madryn" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=1200&q=80" alt="Puerto Madryn & Península Valdés" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=1200&q=80" alt="Puerto Madryn & Península Valdés" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Costa Patagónica
             </div>
@@ -1470,17 +1612,22 @@
                 Capital nacional del buceo y santuario de fauna marina UNESCO: avistamiento de Ballenas Francas Australes desde la costa, elefantes marinos ...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/madryn</span>
-              <a href="/guias/puerto-madryn-peninsula-valdes" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/madryn</span>
+                <a href="/vuelos?destino=madryn" title="Buscar vuelos a Puerto Madryn & Península Valdés en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/puerto-madryn-peninsula-valdes" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="florianópolis & ilha da magia" data-pais="brasil" data-region="brasil" data-cmd="/florianopolis" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1200&q=80" alt="Florianópolis & Ilha da Magia" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1200&q=80" alt="Florianópolis & Ilha da Magia" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Brasil
             </div>
@@ -1511,17 +1658,22 @@
                 La Isla de la Magia: 42 playas paradisíacas, lagunas costeras, dunas para sandboard y una gastronomía de ostras cultivadas reconocida mundia...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/florianopolis</span>
-              <a href="/guias/florianopolis-ilha-da-magia" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/florianopolis</span>
+                <a href="/vuelos?destino=florianopolis" title="Buscar vuelos a Florianópolis & Ilha da Magia en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/florianopolis-ilha-da-magia" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="salvador de bahía & costa dos coqueiros" data-pais="brasil" data-region="brasil & nordeste" data-cmd="/salvador" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1200&q=80" alt="Salvador de Bahía & Costa dos Coqueiros" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1200&q=80" alt="Salvador de Bahía & Costa dos Coqueiros" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Brasil & Nordeste
             </div>
@@ -1552,17 +1704,22 @@
                 El corazón afrobrasileño: iglesias barrocas recubiertas en pan de oro en el Pelourinho, tambores de Olodum, acarajé al dendezeiro y playas c...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/salvador</span>
-              <a href="/guias/salvador-bahia-costa-dos-coqueiros" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/salvador</span>
+                <a href="/vuelos?destino=salvador" title="Buscar vuelos a Salvador de Bahía & Costa dos Coqueiros en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/salvador-bahia-costa-dos-coqueiros" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="recife & porto de galinhas" data-pais="brasil" data-region="brasil & nordeste" data-cmd="/recife" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1200&q=80" alt="Recife & Porto de Galinhas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=1200&q=80" alt="Recife & Porto de Galinhas" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Brasil & Nordeste
             </div>
@@ -1593,17 +1750,22 @@
                 La Venecia brasileña de puentes coloniales y rascacielos, la joya barroca de Olinda y las famosas piscinas naturales de coral de Porto de Ga...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/recife</span>
-              <a href="/guias/recife-porto-de-galinhas" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/recife</span>
+                <a href="/vuelos?destino=recife" title="Buscar vuelos a Recife & Porto de Galinhas en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/recife-porto-de-galinhas" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="maceió & maragogi (caribe brasileño)" data-pais="brasil" data-region="brasil & alagoas" data-cmd="/maceio" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1711805492345-403ca3e43dd1?auto=format&fit=crop&w=1200&q=80" alt="Maceió & Maragogi (Caribe Brasileño)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1711805492345-403ca3e43dd1?auto=format&fit=crop&w=1200&q=80" alt="Maceió & Maragogi (Caribe Brasileño)" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Brasil & Alagoas
             </div>
@@ -1634,17 +1796,22 @@
                 El verdadero 'Caribe Brasileño': aguas color esmeralda y turquesa cálidas todo el año, la costanera urbana más bella de Brasil y las piscina...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/maceio</span>
-              <a href="/guias/maceio-maragogi-caribe-brasileno" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/maceio</span>
+                <a href="/vuelos?destino=maceio" title="Buscar vuelos a Maceió & Maragogi (Caribe Brasileño) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/maceio-maragogi-caribe-brasileno" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="natal & praia da pipa" data-pais="brasil" data-region="brasil & rio grande do norte" data-cmd="/natal" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1515898034510-821b204966e4?auto=format&fit=crop&w=1200&q=80" alt="Natal & Praia da Pipa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1515898034510-821b204966e4?auto=format&fit=crop&w=1200&q=80" alt="Natal & Praia da Pipa" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Brasil & Rio Grande do Norte
             </div>
@@ -1675,17 +1842,22 @@
                 La Ciudad del Sol: dunas gigantes de Genipabu recorridas en buggy con emoción, el aire más puro de las Américas según la NASA y delfines nad...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/natal</span>
-              <a href="/guias/natal-praia-da-pipa" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/natal</span>
+                <a href="/vuelos?destino=natal" title="Buscar vuelos a Natal & Praia da Pipa en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/natal-praia-da-pipa" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="orlando (disney & universal)" data-pais="estados unidos" data-region="estados unidos & florida" data-cmd="/orlando" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1200&q=80" alt="Orlando (Disney & Universal)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1597466599360-3b9775841aec?auto=format&fit=crop&w=1200&q=80" alt="Orlando (Disney & Universal)" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Estados Unidos & Florida
             </div>
@@ -1716,17 +1888,22 @@
                 Capital mundial del entretenimiento familiar: los cuatro parques mágicos de Walt Disney World, las tierras inmersivas de Harry Potter en Uni...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/orlando</span>
-              <a href="/guias/orlando-disney-universal" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/orlando</span>
+                <a href="/vuelos?destino=orlando" title="Buscar vuelos a Orlando (Disney & Universal) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/orlando-disney-universal" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="san andrés & mar de 7 colores" data-pais="colombia" data-region="caribe colombiano" data-cmd="/sanandres" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1576475510454-b0af18970e6d?auto=format&fit=crop&w=1200&q=80" alt="San Andrés & Mar de 7 Colores" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1576475510454-b0af18970e6d?auto=format&fit=crop&w=1200&q=80" alt="San Andrés & Mar de 7 Colores" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Caribe Colombiano
             </div>
@@ -1757,17 +1934,22 @@
                 Reserva Mundial de Biosfera Seaflower: el legendario Mar de los 7 Colores, cayos de arena blanca, cultura raizal con música reggae y exenció...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/sanandres</span>
-              <a href="/guias/san-andres-mar-7-colores" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/sanandres</span>
+                <a href="/vuelos?destino=sanandres" title="Buscar vuelos a San Andrés & Mar de 7 Colores en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/san-andres-mar-7-colores" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="santiago de chile & cordillera" data-pais="chile" data-region="chile & zona central" data-cmd="/santiago" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1589802829985-817e51171b92?w=1200&q=80" alt="Santiago de Chile & Cordillera" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1589802829985-817e51171b92?w=1200&q=80" alt="Santiago de Chile & Cordillera" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Chile & Zona Central
             </div>
@@ -1798,17 +1980,22 @@
                 Metrópolis andina moderna custodiada por la Cordillera de los Andes: cerro San Cristóbal, mirador Sky Costanera, viñedos del Valle del Maipo...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/santiago</span>
-              <a href="/guias/santiago-de-chile-cordillera" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/santiago</span>
+                <a href="/vuelos?destino=santiago" title="Buscar vuelos a Santiago de Chile & Cordillera en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/santiago-de-chile-cordillera" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="barcelona & costa brava" data-pais="españa" data-region="españa & cataluña" data-cmd="/barcelona" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1200&q=80" alt="Barcelona & Costa Brava" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?auto=format&fit=crop&w=1200&q=80" alt="Barcelona & Costa Brava" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               España & Cataluña
             </div>
@@ -1839,17 +2026,22 @@
                 Capital del modernismo catalán: la colosal Sagrada Família de Gaudí, el Barrio Gótico medieval, playas mediterráneas de la Barceloneta y cal...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/barcelona</span>
-              <a href="/guias/barcelona-costa-brava" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/barcelona</span>
+                <a href="/vuelos?destino=barcelona" title="Buscar vuelos a Barcelona & Costa Brava en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/barcelona-costa-brava" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="parís & île-de-france" data-pais="francia" data-region="francia & europa" data-cmd="/paris" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80" alt="París & Île-de-France" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80" alt="París & Île-de-France" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Francia & Europa
             </div>
@@ -1880,17 +2072,22 @@
                 La Ciudad de la Luz: elegancia arquitectónica haussmanniana, el Museo del Louvre, la Torre Eiffel recortada sobre el Sena y bistrós con enca...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/paris</span>
-              <a href="/guias/paris-ile-de-france" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/paris</span>
+                <a href="/vuelos?destino=paris" title="Buscar vuelos a París & Île-de-France en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/paris-ile-de-france" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="londres" data-pais="reino unido" data-region="reino unido & europa" data-cmd="/londres" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80" alt="Londres" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80" alt="Londres" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Reino Unido & Europa
             </div>
@@ -1921,17 +2118,22 @@
                 Capital global de la historia, las vanguardias culturales y el comercio: el Big Ben, el Museo Británico gratuito, palacios reales y pubs cen...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/londres</span>
-              <a href="/guias/londres-reino-unido" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/londres</span>
+                <a href="/vuelos?destino=londres" title="Buscar vuelos a Londres en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/londres-reino-unido" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="berlín & cultura vanguardista" data-pais="alemania" data-region="alemania & europa central" data-cmd="/berlin" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1200&q=80" alt="Berlín & Cultura Vanguardista" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=1200&q=80" alt="Berlín & Cultura Vanguardista" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Alemania & Europa Central
             </div>
@@ -1962,17 +2164,22 @@
                 Capital de la reinvención histórica y la vanguardia: el Muro de Berlín (East Side Gallery), la Puerta de Brandeburgo, la Isla de los Museos ...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/berlin</span>
-              <a href="/guias/berlin-cultura-vanguardista" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/berlin</span>
+                <a href="/vuelos?destino=berlin" title="Buscar vuelos a Berlín & Cultura Vanguardista en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/berlin-cultura-vanguardista" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="frankfurt (hub alemania)" data-pais="alemania" data-region="alemania & hesse" data-cmd="/frankfurt" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1754444216102-56df720de3c1?auto=format&fit=crop&w=1200&q=80" alt="Frankfurt (Hub Alemania)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1754444216102-56df720de3c1?auto=format&fit=crop&w=1200&q=80" alt="Frankfurt (Hub Alemania)" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Alemania & Hesse
             </div>
@@ -2003,17 +2210,22 @@
                 El mayor hub de conexiones aéreas y ferroviarias de Europa Central: el distrito financiero 'Mainhattan', el casco histórico reconstruido de ...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/frankfurt</span>
-              <a href="/guias/frankfurt-hub-alemania" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/frankfurt</span>
+                <a href="/vuelos?destino=frankfurt" title="Buscar vuelos a Frankfurt (Hub Alemania) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/frankfurt-hub-alemania" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="atenas & islas griegas" data-pais="grecia" data-region="grecia & mediterráneo" data-cmd="/atenas" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&q=80" alt="Atenas & Islas Griegas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&q=80" alt="Atenas & Islas Griegas" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Grecia & Mediterráneo
             </div>
@@ -2044,17 +2256,22 @@
                 Cuna de la democracia occidental y la filosofía: la imponente Acrópolis y el Partenón, callejones con buganvillas en Plaka y puerta de embar...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/atenas</span>
-              <a href="/guias/atenas-islas-griegas" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/atenas</span>
+                <a href="/vuelos?destino=atenas" title="Buscar vuelos a Atenas & Islas Griegas en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/atenas-islas-griegas" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="tokio (narita / haneda)" data-pais="japón" data-region="japón & asia" data-cmd="/tokio" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1200&q=80" alt="Tokio (Narita / Haneda)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1200&q=80" alt="Tokio (Narita / Haneda)" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Japón & Asia
             </div>
@@ -2085,17 +2302,22 @@
                 La megalópolis más cautivante y segura del planeta: templos sintoístas milenarios, cruces futuristas de neón en Shibuya, gastronomía con tre...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/tokio</span>
-              <a href="/guias/tokio-japon" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/tokio</span>
+                <a href="/vuelos?destino=tokio" title="Buscar vuelos a Tokio (Narita / Haneda) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/tokio-japon" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="el cairo & pirámides de giza" data-pais="egipto" data-region="egipto & norte de áfrica" data-cmd="/elcairo" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80" alt="El Cairo & Pirámides de Giza" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&w=1200&q=80" alt="El Cairo & Pirámides de Giza" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Egipto & Norte de África
             </div>
@@ -2126,17 +2348,22 @@
                 La madre del mundo: las Pirámides de Giza y la Gran Esfinge milenaria, el Gran Museo Egipcio con el tesoro de Tutankamón, el laberinto de Ja...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/elcairo</span>
-              <a href="/guias/el-cairo-piramides-de-giza" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/elcairo</span>
+                <a href="/vuelos?destino=elcairo" title="Buscar vuelos a El Cairo & Pirámides de Giza en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/el-cairo-piramides-de-giza" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="marrakech & atlas" data-pais="marruecos" data-region="marruecos & norte de áfrica" data-cmd="/marrakech" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200&q=80" alt="Marrakech & Atlas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=1200&q=80" alt="Marrakech & Atlas" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Marruecos & Norte de África
             </div>
@@ -2167,17 +2394,22 @@
                 La Ciudad Roja imperial: el espectáculo sensorial incesante de la plaza Jemaa el-Fna, riads con patios andalusíes ocultos, palacios de azule...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/marrakech</span>
-              <a href="/guias/marrakech-atlas" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/marrakech</span>
+                <a href="/vuelos?destino=marrakech" title="Buscar vuelos a Marrakech & Atlas en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/marrakech-atlas" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="ciudad del cabo (cape town)" data-pais="sudáfrica" data-region="sudáfrica & áfrica austral" data-cmd="/ciudaddelcabo" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1630341907081-397109cae17b?auto=format&fit=crop&w=1200&q=80" alt="Ciudad del Cabo (Cape Town)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1630341907081-397109cae17b?auto=format&fit=crop&w=1200&q=80" alt="Ciudad del Cabo (Cape Town)" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Sudáfrica & África Austral
             </div>
@@ -2208,17 +2440,22 @@
                 La Ciudad Madre de África: la silueta plana de Table Mountain, pingüinos africanos en Boulders Beach, la mítica ruta del Cabo de Buena Esper...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/ciudaddelcabo</span>
-              <a href="/guias/ciudad-del-cabo-cape-town" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/ciudaddelcabo</span>
+                <a href="/vuelos?destino=ciudaddelcabo" title="Buscar vuelos a Ciudad del Cabo (Cape Town) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/ciudad-del-cabo-cape-town" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="nueva york" data-pais="estados unidos" data-region="américa del norte" data-cmd="/newyork" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=1200&q=80" alt="Nueva York" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=1200&q=80" alt="Nueva York" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               América del Norte
             </div>
@@ -2249,17 +2486,22 @@
                 La capital del mundo: rascacielos infinitos, luces de Broadway, el pulmón verde de Central Park, cruce del puente de Brooklyn y museos legen...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/newyork</span>
-              <a href="/guias/new-york-manhattan-broadway" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/newyork</span>
+                <a href="/vuelos?destino=newyork" title="Buscar vuelos a Nueva York en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/new-york-manhattan-broadway" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="pekín" data-pais="china" data-region="asia & pacífico" data-cmd="/pekin" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1200&q=80" alt="Pekín" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&w=1200&q=80" alt="Pekín" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Asia & Pacífico
             </div>
@@ -2290,17 +2532,22 @@
                 La milenaria capital imperial de China: la colosal Ciudad Prohibida de las dinastías Ming y Qing, el ascenso épico a la Gran Muralla en Muti...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/pekin</span>
-              <a href="/guias/pekin-ciudad-prohibida-gran-muralla" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/pekin</span>
+                <a href="/vuelos?destino=pekin" title="Buscar vuelos a Pekín en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/pekin-ciudad-prohibida-gran-muralla" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="estambul" data-pais="turquía" data-region="turquía" data-cmd="/estambul" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80" alt="Estambul" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1200&q=80" alt="Estambul" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Turquía
             </div>
@@ -2331,17 +2578,22 @@
                 La legendaria encrucijada de dos continentes: mezquitas colosales, bazares milenarios aromáticos y el Bósforo iluminado....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/estambul</span>
-              <a href="/guias/estambul" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/estambul</span>
+                <a href="/vuelos?destino=estambul" title="Buscar vuelos a Estambul en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/estambul" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="dubái" data-pais="emiratos árabes unidos" data-region="emiratos árabes unidos" data-cmd="/dubai" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80" alt="Dubái" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80" alt="Dubái" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Emiratos Árabes Unidos
             </div>
@@ -2372,17 +2624,22 @@
                 La metrópolis del futuro en el desierto: los rascacielos más altos del planeta, islas artificiales de palmera y safaris entre dunas doradas....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/dubai</span>
-              <a href="/guias/dubai" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/dubai</span>
+                <a href="/vuelos?destino=dubai" title="Buscar vuelos a Dubái en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/dubai" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="cusco & machu picchu" data-pais="perú" data-region="perú" data-cmd="/cusco" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=80" alt="Cusco & Machu Picchu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1200&q=80" alt="Cusco & Machu Picchu" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Perú
             </div>
@@ -2413,17 +2670,22 @@
                 Capital del Imperio Incaico: muros ciclópeos de piedra pulida, plazas coloniales sobre templos dorados y la ciudadela sagrada de Machu Picch...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/cusco</span>
-              <a href="/guias/cusco-machu-picchu" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/cusco</span>
+                <a href="/vuelos?destino=cusco" title="Buscar vuelos a Cusco & Machu Picchu en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/cusco-machu-picchu" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="bangkok" data-pais="tailandia" data-region="tailandia" data-cmd="/bangkok" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=80" alt="Bangkok" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&q=80" alt="Bangkok" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Tailandia
             </div>
@@ -2454,17 +2716,22 @@
                 La vibrante Ciudad de los Ángeles: templos dorados junto al río Chao Phraya, mercados flotantes y la capital mundial de la comida callejera....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/bangkok</span>
-              <a href="/guias/bangkok" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/bangkok</span>
+                <a href="/vuelos?destino=bangkok" title="Buscar vuelos a Bangkok en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/bangkok" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="islas maldivas" data-pais="república de maldivas" data-region="república de maldivas" data-cmd="/maldivas" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&q=80" alt="Islas Maldivas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&q=80" alt="Islas Maldivas" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               República de Maldivas
             </div>
@@ -2495,17 +2762,22 @@
                 El paraíso de atolones coralinos en el Océano Índico: villas sobre pilotes en lagunas turquesas, arena blanca como talco y rica vida marina ...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/maldivas</span>
-              <a href="/guias/maldivas" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/maldivas</span>
+                <a href="/vuelos?destino=maldivas" title="Buscar vuelos a Islas Maldivas en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/maldivas" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="la habana" data-pais="cuba" data-region="cuba" data-cmd="/cuba" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=1200&q=80" alt="La Habana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1500759285222-a95626b934cb?w=1200&q=80" alt="La Habana" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Cuba
             </div>
@@ -2536,17 +2808,22 @@
                 El corazón nostálgico del Caribe: arquitectura colonial congelada en el tiempo, música viva en cada esquina, el mítico Malecón y autos clási...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/cuba</span>
-              <a href="/guias/cuba" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/cuba</span>
+                <a href="/vuelos?destino=cuba" title="Buscar vuelos a La Habana en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/cuba" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="ciudad de panamá" data-pais="panamá" data-region="panamá" data-cmd="/panama" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1544502367-3e0b08be3df7?auto=format&fit=crop&w=1200&q=80" alt="Ciudad de Panamá" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1544502367-3e0b08be3df7?auto=format&fit=crop&w=1200&q=80" alt="Ciudad de Panamá" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Panamá
             </div>
@@ -2577,17 +2854,22 @@
                 El rascacielos del trópico y la maravilla de la ingeniería mundial: el cruce de los océanos, el encanto bohemio del Casco Antiguo y paraíso ...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/panama</span>
-              <a href="/guias/panama" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/panama</span>
+                <a href="/vuelos?destino=panama" title="Buscar vuelos a Ciudad de Panamá en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/panama" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="tahití & bora bora" data-pais="polinesia francesa" data-region="polinesia francesa" data-cmd="/polinesia" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1738762932370-468a90e0ff68?auto=format&fit=crop&w=1200&q=80" alt="Tahití & Bora Bora" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1738762932370-468a90e0ff68?auto=format&fit=crop&w=1200&q=80" alt="Tahití & Bora Bora" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Polinesia Francesa
             </div>
@@ -2618,17 +2900,22 @@
                 El sueño del Pacífico Sur: lagunas turquesas imposibles protegidas por atolones de coral, picos volcánicos escarpados cubiertos de selva y l...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/polinesia</span>
-              <a href="/guias/polinesia" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/polinesia</span>
+                <a href="/vuelos?destino=polinesia" title="Buscar vuelos a Tahití & Bora Bora en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/polinesia" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="sídney & melbourne" data-pais="australia" data-region="australia" data-cmd="/sydney" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1200&q=80" alt="Sídney & Melbourne" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1200&q=80" alt="Sídney & Melbourne" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Australia
             </div>
@@ -2659,17 +2946,22 @@
                 El gigante de Oceanía: la majestuosa bahía de Sídney dominada por la Ópera y el Harbour Bridge, surf en playas doradas legendarias, la vibra...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/sydney</span>
-              <a href="/guias/sydney-australia" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/sydney</span>
+                <a href="/vuelos?destino=sydney" title="Buscar vuelos a Sídney & Melbourne en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/sydney-australia" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="auckland & queenstown" data-pais="nueva zelanda" data-region="nueva zelanda" data-cmd="/nuevazelanda" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1563242501-abbeb9e7f905?auto=format&fit=crop&w=1200&q=80" alt="Auckland & Queenstown" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1563242501-abbeb9e7f905?auto=format&fit=crop&w=1200&q=80" alt="Auckland & Queenstown" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Nueva Zelanda
             </div>
@@ -2700,17 +2992,22 @@
                 La Tierra Media en la vida real: fiordos glaciales majestuosos, volcanes activos, la cultura ancestral maorí, la capital mundial de los depo...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/nuevazelanda</span>
-              <a href="/guias/nueva-zelanda" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/nuevazelanda</span>
+                <a href="/vuelos?destino=nuevazelanda" title="Buscar vuelos a Auckland & Queenstown en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/nueva-zelanda" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="ciudad de méxico" data-pais="méxico" data-region="méxico" data-cmd="/mexico" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=80" alt="Ciudad de México" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1200&q=80" alt="Ciudad de México" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               México
             </div>
@@ -2741,17 +3038,22 @@
                 La gran metrópolis de América: pirámides prehispánicas milenarias, palacios barrocos y virreinales, barrios bohemios de arte y la cocina cal...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/mexico</span>
-              <a href="/guias/ciudad-de-mexico" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/mexico</span>
+                <a href="/vuelos?destino=mexico" title="Buscar vuelos a Ciudad de México en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/ciudad-de-mexico" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="lisboa & oporto" data-pais="portugal" data-region="portugal" data-cmd="/lisboa" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1509356843151-3e7d96241e11?w=1200&q=80" alt="Lisboa & Oporto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1509356843151-3e7d96241e11?w=1200&q=80" alt="Lisboa & Oporto" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Portugal
             </div>
@@ -2782,17 +3084,22 @@
                 La luz dorada del Atlántico sobre siete colinas: el traqueteo nostálgico del tranvía 28 por callejones de azulejos, melodías de fado en tabe...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/lisboa</span>
-              <a href="/guias/lisboa" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/lisboa</span>
+                <a href="/vuelos?destino=lisboa" title="Buscar vuelos a Lisboa & Oporto en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/lisboa" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="seúl" data-pais="corea del sur" data-region="corea del sur" data-cmd="/seul" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1538485399081-7191377e8241?w=1200&q=80" alt="Seúl" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1538485399081-7191377e8241?w=1200&q=80" alt="Seúl" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Corea del Sur
             </div>
@@ -2823,17 +3130,22 @@
                 El epicentro de la vanguardia mundial y la ola Hallyu: palacios de la dinastía Joseon frente a rascacielos inteligentes, templos budistas en...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/seul</span>
-              <a href="/guias/seul" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/seul</span>
+                <a href="/vuelos?destino=seul" title="Buscar vuelos a Seúl en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/seul" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="ámsterdam" data-pais="países bajos" data-region="países bajos" data-cmd="/amsterdam" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&q=80" alt="Ámsterdam" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1200&q=80" alt="Ámsterdam" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Países Bajos
             </div>
@@ -2864,17 +3176,22 @@
                 La Venecia del Norte: canales concéntricos del Siglo de Oro, bicicletas como filosofía de vida, casas barco y museos de fama mundial....
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/amsterdam</span>
-              <a href="/guias/amsterdam" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/amsterdam</span>
+                <a href="/vuelos?destino=amsterdam" title="Buscar vuelos a Ámsterdam en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/amsterdam" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="curazao" data-pais="curazao" data-region="caribe holandés" data-cmd="/curazao" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1589556264800-08ae9e129a8c?auto=format&fit=crop&w=1200&q=80" alt="Curazao" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1760984611184-7cea2575b56b?auto=format&fit=crop&w=1200&q=80" alt="Curazao" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Caribe Holandés
             </div>
@@ -2905,17 +3222,22 @@
                 El encanto europeo en el Caribe: fachadas coloniales pastel Patrimonio UNESCO, calas de agua turquesa cristalina, buceo de arrecife y ubicac...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/curazao</span>
-              <a href="/guias/curazao" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/curazao</span>
+                <a href="/vuelos?destino=curazao" title="Buscar vuelos a Curazao en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/curazao" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="costa rica" data-pais="costa rica" data-region="centroamérica" data-cmd="/costarica" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80" alt="Costa Rica" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1643400814192-381f57499b42?auto=format&fit=crop&w=1200&q=80" alt="Costa Rica" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Centroamérica
             </div>
@@ -2946,17 +3268,22 @@
                 La capital mundial del ecoturismo y el Pura Vida: volcanes activos entre aguas termales, selvas tropicales que albergan el 5% de la biodiver...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/costarica</span>
-              <a href="/guias/costa-rica" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/costarica</span>
+                <a href="/vuelos?destino=costarica" title="Buscar vuelos a Costa Rica en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/costa-rica" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
         </article>
         <article data-ciudad="cartagena de indias" data-pais="colombia" data-region="caribe & sudamérica" data-cmd="/cartagena" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1583531352515-8884af319dc1?auto=format&fit=crop&w=1200&q=80" alt="Cartagena de Indias" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <img src="https://images.unsplash.com/photo-1583531352515-8884af319dc1?auto=format&fit=crop&w=1200&q=80" alt="Cartagena de Indias" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Caribe & Sudamérica
             </div>
@@ -2987,10 +3314,15 @@
                 La Joya Colonial del Caribe: 11 kilómetros de murallas virreinales de piedra coralina, balcones coloniales cubiertos de buganvilias, ritmo d...
               </p>
             </div>
-            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between theme-transition">
-              <span class="text-xs dark:text-slate-500 text-slate-500 font-mono">/cartagena</span>
-              <a href="/guias/cartagena" class="inline-flex items-center gap-1.5 text-xs font-bold transition-all hover:translate-x-0.5" style="color: var(--brand-primary);">
-                Leer Artículo Completo &rarr;
+            <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/cartagena</span>
+                <a href="/vuelos?destino=cartagena" title="Buscar vuelos a Cartagena de Indias en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                  <span>✈️</span> Vuelos
+                </a>
+              </div>
+              <a href="/guias/cartagena" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">
+                Leer Guía &rarr;
               </a>
             </div>
           </div>
@@ -3051,6 +3383,28 @@
       </div>
     </div>
   </footer>
+
+  <!-- Botón Flotante Volver Arriba -->
+  <button id="fb-scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+          class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-slate-900/90 dark:bg-slate-800/90 text-white shadow-xl border border-slate-700/80 hover:bg-rose-600 dark:hover:bg-rose-600 transition-all opacity-0 pointer-events-none translate-y-4 duration-300"
+          title="Volver arriba">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
+  <script>
+    window.addEventListener('scroll', function() {
+      const btn = document.getElementById('fb-scroll-top-btn');
+      if (!btn) return;
+      if (window.scrollY > 400) {
+        btn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+        btn.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        btn.classList.remove('opacity-100', 'translate-y-0');
+      }
+    }, { passive: true });
+  </script>
 
   
   <!-- Script del Motor de Temas Dual (Color + Modo) -->
@@ -3836,6 +4190,14 @@
       window.sendFlightBotPrompt = async function(rawText) {
         const text = String(rawText || '').trim();
         if (!text) return;
+
+        // Capturar historial reciente para mantener coherencia conversacional
+        const currentHist = typeof loadHistory === 'function' ? loadHistory() : [];
+        const recentHistory = currentHist.slice(-6).map(h => ({
+          role: h.role === 'user' ? 'user' : 'model',
+          text: String(h.text || '').replace(/<[^>]*>/g, '').slice(0, 300)
+        }));
+
         appendMessage('user', text);
         const typingEl = showTypingIndicator();
 
@@ -3843,14 +4205,15 @@
         if (window.location.protocol !== 'file:') {
           try {
             const ctrl = new AbortController();
-            const timer = setTimeout(() => ctrl.abort(), 6500);
+            const timer = setTimeout(() => ctrl.abort(), 9500);
             const res = await fetch('/api/chat', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 mensaje: text,
                 session_id: getSessionId(),
-                contexto_pagina: FB_PAGE_CTX
+                contexto_pagina: FB_PAGE_CTX,
+                historial: recentHistory
               }),
               signal: ctrl.signal
             });
@@ -3906,7 +4269,7 @@
         .trim();
     }
 
-    function cumpleFiltroRegion(pais, region, filtro) {
+    function cumpleFiltroRegion(pais, region, ciudad, filtro) {
       if (filtro === 'todos') return true;
       if (filtro === 'argentina') {
         return pais.includes('argentina') || region.includes('argentina') || region.includes('patagonia') || region.includes('cuyo') || region.includes('litoral');
@@ -3918,13 +4281,17 @@
         const paisesCaribeUsa = ['estados unidos', 'mexico', 'republica dominicana', 'aruba', 'curazao', 'costa rica', 'cuba', 'panama', 'colombia'];
         return paisesCaribeUsa.some(p => pais.includes(p)) || region.includes('caribe') || region.includes('florida');
       }
-      if (filtro === 'europa_mundo') {
-        // No es cabotaje, ni brasil, ni caribe/usa
-        const esArgentina = pais.includes('argentina') || region.includes('argentina');
-        const esBrasil = pais.includes('brasil') || region.includes('brasil');
-        const paisesCaribeUsa = ['estados unidos', 'mexico', 'republica dominicana', 'aruba', 'curazao', 'costa rica', 'cuba', 'panama', 'colombia'];
-        const esCaribeUsa = paisesCaribeUsa.some(p => pais.includes(p)) || region.includes('caribe') || region.includes('florida');
-        return !esArgentina && !esBrasil && !esCaribeUsa;
+      if (filtro === 'europa') {
+        const paisesEuropa = ['espana', 'italia', 'francia', 'reino unido', 'alemania', 'paises bajos', 'portugal', 'grecia', 'islandia', 'noruega', 'turquia'];
+        return paisesEuropa.some(p => pais.includes(p)) || region.includes('europa');
+      }
+      if (filtro === 'resto_mundo') {
+        const paisesMundo = ['japon', 'corea', 'china', 'tailandia', 'emiratos arabes', 'dubai', 'egipto', 'marruecos', 'sudafrica', 'maldivas', 'polinesia', 'australia', 'nueva zelanda', 'chile', 'peru'];
+        return paisesMundo.some(p => pais.includes(p)) || region.includes('asia') || region.includes('africa') || region.includes('oceania') || region.includes('sudamerica');
+      }
+      if (filtro === 'playas') {
+        const destinosPlaya = ['rio de janeiro', 'florianopolis', 'salvador', 'maceio', 'natal', 'recife', 'cancun', 'punta cana', 'aruba', 'curazao', 'costa rica', 'cuba', 'san andres', 'cartagena', 'miami', 'maldivas', 'polinesia', 'grecia', 'islas griegas'];
+        return destinosPlaya.some(p => pais.includes(p) || ciudad.includes(p) || region.includes(p));
       }
       return true;
     }
@@ -3942,7 +4309,7 @@
         const cmd = normalizarTexto(art.getAttribute('data-cmd'));
         const textoCompleto = normalizarTexto(art.textContent);
 
-        const coincideRegion = cumpleFiltroRegion(pais, region, fbRegionActiva);
+        const coincideRegion = cumpleFiltroRegion(pais, region, ciudad, fbRegionActiva);
         const coincideTexto = !query || 
           ciudad.includes(query) || 
           pais.includes(query) || 

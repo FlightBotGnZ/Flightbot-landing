@@ -22,11 +22,16 @@
   <meta property="article:tag" content="Guía de Viaje">
 
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%23e11d48' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%23e11d48'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/img/rolli-avatar-transparent.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   
+  <script src="/js/auth.js" defer></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -194,14 +199,17 @@
 </head>
 <body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition">
 
-  <!-- Navegación Superior -->
+  
+  <!-- Encabezado / Navegación Superior Universal (h-16 simétrico) -->
   <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/80 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
-      <div class="flex items-center gap-3 shrink-0 z-10">
-        <a href="/" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition"
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 lg:gap-3 xl:gap-4 relative">
+      <!-- 1. Marca / Logotipo -->
+      <div class="flex items-center gap-3 shrink-0 z-10 mr-3 xl:mr-5">
+        <a href="/" class="flex items-center gap-2.5 sm:gap-3 group" title="Volver al inicio de FlightBot">
+          <div id="brand-logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition cursor-pointer p-1 group-hover:scale-105 transition-transform"
+               title="Mascota tech redondeada que sostiene su propia valija carry-on rígida con ruedas 360°. La antena superior emite pulsos de alertas cuando encuentra una tarifa baja."
                style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
-            <svg viewBox="0 0 40 40" class="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 40 40" class="w-6 h-6 sm:w-8 sm:h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
               <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
               <rect x="23" y="19" width="12" height="16" rx="3" fill="url(#fbSuitcaseAlwaysRedNav)" stroke="#ffffff" stroke-width="0.8"/>
               <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
@@ -231,52 +239,65 @@
               </defs>
             </svg>
           </div>
-          <span class="text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">
-            FlightBot
-          </span>
+          <span class="text-xl sm:text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">Flight<span style="color: var(--brand-primary);">Bot</span></span>
         </a>
       </div>
 
-      <!-- Barra de Navegación Central Simétrica (Dock Centrado) -->
-      <nav class="hidden lg:flex items-center p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-1 xl:gap-1.5 mx-auto">
-        <a href="/#radar-vuelos" id="nav-btn-vuelos" class="nav-dock-btn">
+      <!-- 2. Barra de Navegación Central Simétrica (Dock Centrado con padding elástico) -->
+      <nav class="hidden lg:flex items-center p-1 xl:p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-0.5 xl:gap-1.5 mx-auto shrink-0">
+        <a href="/" id="nav-btn-inicio" class="nav-dock-btn" title="Inicio de FlightBot">
+          <span>🏠</span> Inicio
+        </a>
+        <a href="/vuelos" id="nav-btn-vuelos" class="nav-dock-btn" title="Buscador y Radar de Vuelos">
           <span>✈️</span> Vuelos
         </a>
-        <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn flex items-center gap-1.5 px-2.5 py-1" title="Ofertas Relámpago y Oportunidades Flash">
-          <span class="text-xs">🔥</span>
-          <span class="flex flex-col text-[11px] leading-[1.05] text-left">
-            <span>Ofertas</span>
-            <span class="text-[9px] opacity-80 font-medium">Relámpago</span>
-          </span>
+        <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn" title="Ofertas Relámpago y Oportunidades Flash">
+          <span>🔥</span> Ofertas Relámpago
         </a>
         <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn">
+        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn" title="Billetera de Tarjetas, Beneficios y Asistencia">
           <span>💳</span> Billetera
         </a>
-        <a href="/guias" id="nav-btn-guias" class="nav-dock-btn is-active">
+        <a href="/guias" id="nav-btn-guias" class="nav-dock-btn is-active" title="Guías Turísticas y Rutas Monitoreadas">
           <span>📖</span> Guías
         </a>
-        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn">
+        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn" title="Preguntas Frecuentes y Ayuda">
           <span>❓</span> FAQ
         </a>
       </nav>
 
-      <div class="flex items-center gap-2 sm:gap-3 shrink-0 z-10">
+      <!-- 3. Contenedor Derecho Único y Balanceado (h-8 uniforme) -->
+      <div class="flex items-center gap-1.5 sm:gap-2 xl:gap-2.5 shrink-0 z-10">
         
-        <!-- Control Dual de Personalización (Color + Modo Claro/Oscuro) - Centrado Óptico y Milimétrico Absoluto -->
-        <div class="flex items-center p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-xs theme-transition">
-          <!-- Switcher de Color (Rojo Rubí vs Azul) -->
-          <div class="flex items-center gap-1.5 pl-1.5 pr-2">
-            <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Tema Rojo Rubí" aria-label="Tema Rojo Rubí"
-                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
-            <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Tema Azul Océano" aria-label="Tema Azul Océano"
-                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
+        <!-- A. Widget Auth Google (Centrado ópticamente entre navbar y theme switcher) -->
+        <div id="auth-nav-container" class="flex items-center mx-1 sm:mx-2 xl:mx-3">
+          <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.iniciarLoginGoogle() : null"
+                  class="inline-flex items-center justify-center gap-1.5 h-8 px-2 sm:px-2.5 xl:px-3 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-900/90 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
+                  title="Acceder con Google">
+            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <span class="hidden xl:inline">Acceder</span>
+          </button>
+        </div>
+
+        <!-- B. Switcher de Tema y Color (h-8) -->
+        <div class="flex items-center h-8 p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-xs theme-transition">
+          <!-- Switcher de Color (Ruby / Blue) -->
+          <div class="hidden sm:flex items-center gap-1.5 pl-1.5 pr-2">
+            <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Color Ruby" aria-label="Color Ruby"
+                    class="w-3.5 h-3.5 rounded-full bg-rose-600 hover:scale-110 transition-transform focus:outline-none"></button>
+            <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Color Blue" aria-label="Color Blue"
+                    class="w-3.5 h-3.5 rounded-full bg-blue-600 hover:scale-110 transition-transform focus:outline-none"></button>
           </div>
-          <!-- Separador Vertical Centrado y Proporcional -->
-          <div class="w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
-          <!-- Switcher de Modo (Claro / Oscuro) - Centrado óptico con corrección de baseline -->
+          <!-- Separador Vertical -->
+          <div class="hidden sm:block w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
+          <!-- Alternar Modo Oscuro / Claro -->
           <div class="flex items-center pl-1 pr-1.5">
             <button onclick="toggleThemeMode()" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro" aria-label="Alternar Modo Claro / Oscuro"
                     class="w-4.5 h-4.5 rounded-full flex items-center justify-center text-xs dark:text-amber-400 text-slate-700 hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
@@ -285,16 +306,17 @@
           </div>
         </div>
 
-
+        <!-- C. Píldora Telegram Única de Escritorio (h-8 px-3.5) -->
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-white font-semibold text-xs sm:text-sm transition-all shadow-lg hover:brightness-110"
-           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+           class="hidden sm:inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full text-white font-semibold text-xs shrink-0 transition-all shadow-md hover:brightness-110"
+           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);"
+           title="Abrir FlightBot en Telegram">
+          <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
           </svg>
-          <span class="hidden sm:inline">Probar Bot en Telegram</span>
-          <span class="sm:hidden">Bot</span>
+          <span>Telegram</span>
         </a>
+
         <!-- Botón Menú Móvil (< lg) -->
         <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
                 class="lg:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
@@ -305,33 +327,61 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
+
       </div>
     </div>
 
-    <!-- Menú Móvil Desplegable -->
-    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3 transition-all shadow-xl">
-      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
-        <a href="/#radar-vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+    <!-- 4. Menú Móvil Desplegable (Con botón de Telegram al pie del drawer) -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3.5 transition-all shadow-xl">
+      <!-- Contenedor Auth Móvil -->
+      <div id="mobile-auth-drawer-container">
+        <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.iniciarLoginGoogle() : null" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-2xl font-bold text-xs bg-white dark:bg-slate-900 border dark:border-slate-800 border-slate-200 text-slate-800 dark:text-slate-100 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-all mb-3 cursor-pointer">
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span>Iniciar sesión con Google</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold mb-3">
+        <a href="/" onclick="toggleMobileNav(false)" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
+          <span>🏠</span> Inicio
+        </a>
+        <a href="/vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>✈️</span> Vuelos
         </a>
-        <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>🔥</span> Ofertas Relámpago
         </a>
-        <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>🚗</span> Modo Ruta
         </a>
-        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>💳</span> Billetera
         </a>
         <a href="/guias" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
           <span>📖</span> Guías
         </a>
-        <a href="/faq" onclick="toggleMobileNav(false)" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500">
+        <a href="/faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
           <span>❓</span> FAQ
         </a>
       </div>
+
+      <!-- Botón Telegram en Menú Móvil -->
+      <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
+         class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-white font-bold text-xs shadow-md hover:brightness-110 transition-all mt-2"
+         style="background: var(--brand-gradient);">
+        <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
+        </svg>
+        <span>Abrir Rolli en Telegram</span>
+      </a>
     </div>
   </header>
+
 
   <!-- Breadcrumbs & Encabezado Principal -->
   <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -766,11 +816,18 @@
             </div>
             <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed mb-4 theme-transition">Un resort por isla: máxima exclusividad, régimen All Inclusive o pensión completa y bungalows sobre el agua.</p>
           </div>
-          <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-             class="inline-flex items-center justify-center gap-2 text-xs font-bold py-2 rounded-lg transition-all hover:brightness-110"
-             style="background-color: var(--brand-subtle); color: var(--brand-primary); border: 1px solid var(--brand-border);">
-            Consultar Tarifas en Telegram &rarr;
-          </a>
+          <div class="flex items-center gap-2 mt-2 pt-4 border-t dark:border-slate-800/80 border-slate-100">
+            <a href="https://www.booking.com/searchresults.es.html?ss=Islas+Maldivas+Resorts+en+Islas+Privadas+%28Atolones+Baa%2C+Ari+y+Mal%C3%A9+Norte%29&lang=es" target="_blank" rel="noopener noreferrer" 
+               class="flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-bold py-2.5 px-3 rounded-xl transition-all shadow-xs text-white hover:brightness-110"
+               style="background-color: #003b95;">
+              <span>🏨</span> Ver Hoteles en Resorts en Islas Privadas (Atolones Baa, Ari y Malé Norte)
+            </a>
+            <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center justify-center gap-1 text-xs font-bold py-2.5 px-3 rounded-xl transition-all border dark:border-slate-700 border-slate-200 dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500"
+               title="Consultar tarifas en Telegram">
+              <span>📱</span> Rolli
+            </a>
+          </div>
         </div>
         <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm theme-transition">
           <div>
@@ -783,11 +840,18 @@
             </div>
             <p class="dark:text-slate-400 text-slate-600 text-sm leading-relaxed mb-4 theme-transition">Opción de turismo accesible: hoteles boutique modernos, restaurantes locales y excursiones marítimas a precios razonables.</p>
           </div>
-          <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-             class="inline-flex items-center justify-center gap-2 text-xs font-bold py-2 rounded-lg transition-all hover:brightness-110"
-             style="background-color: var(--brand-subtle); color: var(--brand-primary); border: 1px solid var(--brand-border);">
-            Consultar Tarifas en Telegram &rarr;
-          </a>
+          <div class="flex items-center gap-2 mt-2 pt-4 border-t dark:border-slate-800/80 border-slate-100">
+            <a href="https://www.booking.com/searchresults.es.html?ss=Islas+Maldivas+Islas+Locales+%28Maafushi%2C+Thulusdhoo%2C+Dhigurah%29&lang=es" target="_blank" rel="noopener noreferrer" 
+               class="flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-bold py-2.5 px-3 rounded-xl transition-all shadow-xs text-white hover:brightness-110"
+               style="background-color: #003b95;">
+              <span>🏨</span> Ver Hoteles en Islas Locales (Maafushi, Thulusdhoo, Dhigurah)
+            </a>
+            <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center justify-center gap-1 text-xs font-bold py-2.5 px-3 rounded-xl transition-all border dark:border-slate-700 border-slate-200 dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500"
+               title="Consultar tarifas en Telegram">
+              <span>📱</span> Rolli
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -881,27 +945,38 @@
       </div>
     </div>
 
-    <!-- Banner de Activación en Telegram -->
-    <div class="dark:bg-slate-900 bg-slate-900 text-white border dark:border-slate-800 border-slate-800 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden mb-16 shadow-xl">
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-slate-800/40 via-transparent to-transparent pointer-events-none"></div>
-      <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">¿Buscando vuelos u hoteles para Islas Maldivas?</h3>
-      <p class="text-slate-400 max-w-xl mx-auto text-sm mb-8 leading-relaxed">
-        Activa nuestro radar inteligente en Telegram. Monitoreamos fluctuaciones reales de precios cada 48 horas y te avisamos inmediatamente cuando aparece una caída récord.
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-white font-bold text-base transition-all shadow-xl hover:brightness-110"
-           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);">
-          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
-          </svg>
-          Monitorear Islas Maldivas en Telegram
-        </a>
-        <button type="button" onclick="window.toggleFlightBotChat(true)"
-                class="inline-flex items-center gap-2.5 px-7 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold text-base transition-all shadow-lg">
-          <span>💬</span>
-          <span>Preguntar al Asistente IA</span>
-        </button>
+    <!-- Bento Card de Conversión al Radar de Vuelos & Telegram -->
+    <div class="rounded-3xl border dark:border-slate-800 border-slate-200 dark:bg-slate-900/80 bg-white p-8 sm:p-10 mb-16 shadow-xl theme-transition relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
+      <div class="max-w-3xl relative z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 theme-transition"
+             style="background-color: var(--brand-subtle); border: 1px solid var(--brand-border); color: var(--brand-primary);">
+          <span>✈️</span> Radar de Tarifas &amp; Monitoreo 24/7 · Islas Maldivas
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold dark:text-white text-slate-900 mb-3 theme-transition">
+          ¿Planeando tu viaje a Islas Maldivas?
+        </h3>
+        <p class="dark:text-slate-300 text-slate-600 text-sm sm:text-base leading-relaxed mb-6 theme-transition">
+          FlightBot analiza tarifas a Islas Maldivas (MLE (Velana International Airport - Malé)) en tiempo real cada 48 horas. Consultá los mejores precios en nuestro buscador web o activá una alerta en Telegram para que Rolli te avise al instante cuando aparezca una caída récord.
+        </p>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="/vuelos?destino=maldivas" 
+             class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white font-bold text-sm transition-all shadow-md hover:brightness-110"
+             style="background: var(--brand-gradient);">
+            <span>✈️</span> Ver Tarifas en Buscador
+          </a>
+          <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
+             class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white font-bold text-sm transition-all shadow-md hover:brightness-110 bg-[#229ED9] hover:bg-[#1e8dbf]">
+            <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
+            </svg>
+            Monitorear en Telegram
+          </a>
+          <button type="button" onclick="window.toggleFlightBotChat(true)"
+                  class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 font-bold text-sm transition-all shadow-xs">
+            <span>💬</span> Preguntar a Rolli IA
+          </button>
+        </div>
       </div>
     </div>
 
@@ -1159,6 +1234,28 @@
       </div>
     </div>
   </footer>
+
+  <!-- Botón Flotante Volver Arriba -->
+  <button id="fb-scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+          class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-slate-900/90 dark:bg-slate-800/90 text-white shadow-xl border border-slate-700/80 hover:bg-rose-600 dark:hover:bg-rose-600 transition-all opacity-0 pointer-events-none translate-y-4 duration-300"
+          title="Volver arriba">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
+  <script>
+    window.addEventListener('scroll', function() {
+      const btn = document.getElementById('fb-scroll-top-btn');
+      if (!btn) return;
+      if (window.scrollY > 400) {
+        btn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+        btn.classList.add('opacity-100', 'translate-y-0');
+      } else {
+        btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        btn.classList.remove('opacity-100', 'translate-y-0');
+      }
+    }, { passive: true });
+  </script>
 
   
   <!-- Script del Motor de Temas Dual (Color + Modo) -->
@@ -1944,6 +2041,14 @@
       window.sendFlightBotPrompt = async function(rawText) {
         const text = String(rawText || '').trim();
         if (!text) return;
+
+        // Capturar historial reciente para mantener coherencia conversacional
+        const currentHist = typeof loadHistory === 'function' ? loadHistory() : [];
+        const recentHistory = currentHist.slice(-6).map(h => ({
+          role: h.role === 'user' ? 'user' : 'model',
+          text: String(h.text || '').replace(/<[^>]*>/g, '').slice(0, 300)
+        }));
+
         appendMessage('user', text);
         const typingEl = showTypingIndicator();
 
@@ -1951,14 +2056,15 @@
         if (window.location.protocol !== 'file:') {
           try {
             const ctrl = new AbortController();
-            const timer = setTimeout(() => ctrl.abort(), 6500);
+            const timer = setTimeout(() => ctrl.abort(), 9500);
             const res = await fetch('/api/chat', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 mensaje: text,
                 session_id: getSessionId(),
-                contexto_pagina: FB_PAGE_CTX
+                contexto_pagina: FB_PAGE_CTX,
+                historial: recentHistory
               }),
               signal: ctrl.signal
             });

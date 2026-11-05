@@ -537,6 +537,13 @@
     const text = String(rawText || '').trim();
     if (!text) return;
 
+    // Capturar historial reciente para mantener coherencia conversacional
+    const currentHist = typeof loadHistory === 'function' ? loadHistory() : [];
+    const recentHistory = currentHist.slice(-6).map(h => ({
+      role: h.role === 'user' ? 'user' : 'model',
+      text: String(h.text || '').replace(/<[^>]*>/g, '').slice(0, 300)
+    }));
+
     // 1. Renderizar mensaje de usuario y guardar en historial
     renderMessageDOM('user', text);
     appendToHistory('user', text);
@@ -555,7 +562,8 @@
           body: JSON.stringify({
             mensaje: text,
             session_id: getSessionId(),
-            contexto_pagina: pageCtx
+            contexto_pagina: pageCtx,
+            historial: recentHistory
           }),
           signal: ctrl.signal
         });
