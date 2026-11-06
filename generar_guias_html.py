@@ -3197,13 +3197,13 @@ METADATOS_EDITORIALES = {
         'perfil_viajero': 'Romance, cultura, arte, compras y alta gastronomía',
         'region': 'Francia & Europa',
         'tiempo_lectura': '9 min'},
-    "londres": {       'categoria': 'Museos Gratuitos, Monarquía Británica, West End & Parques',
+    "londres": {       'categoria': 'Abbey Road, Big Ben, Museos Gratuitos & Rock Británico',
         'idioma': 'Inglés',
         'mejor_epoca': 'Mayo a Septiembre (Días largos y templados)',
         'moneda': 'Libra Esterlina (GBP)',
-        'perfil_viajero': 'Familias, cultura urbana, compras, teatro y amigos',
+        'perfil_viajero': 'Amantes de la música, cultura urbana, historia real, compras y teatro',
         'region': 'Reino Unido & Europa',
-        'tiempo_lectura': '9 min'},
+        'tiempo_lectura': '10 min'},
     "berlin": {       'categoria': 'Historia del Muro, Vanguardia Urbana, Museos UNESCO & Clubes',
         'idioma': 'Alemán (Inglés muy fluido en toda la ciudad)',
         'mejor_epoca': 'Mayo a Octubre (Clima templado y vida al aire libre)',
@@ -3276,6 +3276,54 @@ def generar_html_guia(guia: dict) -> str:
         "idioma": "Español",
         "perfil_viajero": "Viajeros independientes, parejas y familias",
     })
+
+    # Galería de postales editoriales destacadas (Abbey Road + Big Ben para Londres)
+    postales_destacadas_html = ""
+    if guia["id"] == "londres":
+        postales_destacadas_html = """
+    <!-- Galería Editorial: Abbey Road & Big Ben -->
+    <section class="mb-16">
+      <div class="flex items-center justify-between gap-3 mb-5">
+        <div class="flex items-center gap-2.5">
+          <span class="text-2xl">📸</span>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold dark:text-white text-slate-900">Dos Postales Legendarias de Londres</h2>
+            <p class="text-xs dark:text-slate-400 text-slate-500">De la mística musical de St John's Wood al corazón parlamentario a orillas del Támesis</p>
+          </div>
+        </div>
+        <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-500/10 text-rose-500 border border-rose-500/20">
+          🇬🇧 Ruta EZE ➔ LHR Activa
+        </span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <figure class="group relative rounded-2xl overflow-hidden border dark:border-slate-800 border-slate-200 dark:bg-slate-900 bg-white shadow-lg">
+          <div class="h-64 overflow-hidden">
+            <img src="/img/londres-abbey-road.jpg" alt="Cruce peatonal de Abbey Road en St John's Wood, Londres" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <figcaption class="p-4">
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-rose-500">🎸 St John's Wood · NW8</span>
+              <span class="text-[11px] font-mono dark:text-slate-400 text-slate-500">Jubilee Line</span>
+            </div>
+            <div class="font-bold text-sm dark:text-white text-slate-900">Cruce Peatonal de Abbey Road &amp; Abbey Road Studios</div>
+            <p class="text-xs dark:text-slate-400 text-slate-600 mt-1">El paso de cebra más famoso del planeta frente a los estudios de grabación de 1931, con sus clásicas balizas Belisha naranjas y los árboles georgianos de Londres.</p>
+          </figcaption>
+        </figure>
+        <figure class="group relative rounded-2xl overflow-hidden border dark:border-slate-800 border-slate-200 dark:bg-slate-900 bg-white shadow-lg">
+          <div class="h-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80" alt="Big Ben y Palacio de Westminster en Londres" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <figcaption class="p-4">
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="text-xs font-extrabold uppercase tracking-wider text-sky-400">🕰️ City of Westminster · SW1</span>
+              <span class="text-[11px] font-mono dark:text-slate-400 text-slate-500">Circle &amp; District Line</span>
+            </div>
+            <div class="font-bold text-sm dark:text-white text-slate-900">Big Ben (Elizabeth Tower) &amp; Puente de Westminster</div>
+            <p class="text-xs dark:text-slate-400 text-slate-600 mt-1">La silueta neogótica restaurada del Parlamento británico sobre el río Támesis, frente al London Eye y a pasos de la Abadía de Westminster.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>"""
 
     # Generación de tarjetas de puntos turísticos
     puntos_html = ""
@@ -3777,6 +3825,8 @@ def generar_html_guia(guia: dict) -> str:
         </div>
       </div>
     </div>
+
+    {postales_destacadas_html}
 
     <!-- Sección 1: Puntos Turísticos e Imperdibles -->
     <section id="puntos-turisticos" class="mb-16 scroll-mt-24">

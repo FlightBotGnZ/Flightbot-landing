@@ -13112,7 +13112,7 @@
         "fechas": "28 Ene - 11 Feb 2027",
         "noches": 14,
         "precio": "€ 935",
-        "destacado": "Vuelo directo más veloz",
+        "destacado": "Tarifa récord monitoreada",
         "fecha_ida": "2027-01-28",
         "fecha_vuelta": "2027-02-11"
       },
@@ -13193,12 +13193,12 @@
       }
     ],
     "termometro": {
-      "nivel": "estandar",
-      "posicion_pct": 34,
+      "nivel": "bajo",
+      "posicion_pct": 18,
       "rango_min": "€ 910",
       "rango_max": "€ 1.300",
-      "mensaje": "Tarifa estándar competitiva para viajar al Reino Unido.",
-      "texto_pin": "€ 935 es un precio estándar",
+      "mensaje": "Oportunidad récord monitoreada para volar de Ezeiza (EZE) a Londres Heathrow (LHR).",
+      "texto_pin": "€ 935 es una oportunidad récord",
       "consejo": "British Airways en vuelo directo evita trasbordos y permite llegar al hub principal de Heathrow.",
       "historial_dias": [
         "Hace 52 d",
