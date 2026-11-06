@@ -39,8 +39,8 @@ module.exports = async function handler(req, res) {
 
   return res.status(200).json({
     ok: true,
-    rutas_activas: 45,
-    destinos_monitoreados: 56,
+    rutas_activas: 57,
+    destinos_monitoreados: 57,
     seguidores_semanales: baseFollowers,
     texto_social_proof: `🔥 +${baseFollowers.toLocaleString('es-AR')} viajeros siguiendo el radar esta semana`,
     actualizado_iso: now.toISOString()
