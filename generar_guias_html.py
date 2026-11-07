@@ -187,81 +187,98 @@ SHARED_HEADER_SWITCHER = """
 
 SHARED_NAV_HEADER = """
   <!-- Encabezado / Navegación Superior Universal (h-16 simétrico) -->
-  <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/80 bg-white/90 border-b dark:border-slate-800 border-slate-200 theme-transition">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 lg:gap-3 xl:gap-4 relative">
-      <!-- 1. Marca / Logotipo -->
-      <div class="flex items-center gap-3 shrink-0 z-10 mr-3 xl:mr-5">
-        <a href="/" class="flex items-center gap-2.5 sm:gap-3 group" title="Volver al inicio de FlightBot">
-          <div id="brand-logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center shadow-lg text-white theme-transition cursor-pointer p-1 group-hover:scale-105 transition-transform"
-               title="Mascota tech redondeada que sostiene su propia valija carry-on rígida con ruedas 360°. La antena superior emite pulsos de alertas cuando encuentra una tarifa baja."
-               style="background: var(--brand-gradient); box-shadow: 0 10px 20px -5px var(--brand-glow);">
-            <svg viewBox="0 0 40 40" class="w-6 h-6 sm:w-8 sm:h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
-              <rect x="23" y="19" width="12" height="16" rx="3" fill="url(#fbSuitcaseAlwaysRedNav)" stroke="#ffffff" stroke-width="0.8"/>
-              <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
-              <line x1="25" y1="27" x2="33" y2="27" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
-              <line x1="25" y1="31" x2="33" y2="31" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.7" stroke-linecap="round"/>
-              <circle cx="25.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
-              <circle cx="32.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
-              <path d="M26 19 V13 H32 V19" stroke="#cbd5e1" stroke-width="1.1" stroke-linecap="round"/>
-              <rect x="27" y="11.5" width="4" height="1.8" rx="0.9" fill="#ffffff"/>
-              <path d="M17 24 Q22 20 27 13" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
-              <rect x="7" y="17" width="14" height="16" rx="7" fill="#f8fafc" stroke="#cbd5e1" stroke-width="0.8"/>
-              <rect x="10" y="22" width="8" height="6" rx="2" fill="#0f172a"/>
-              <path d="M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25" stroke="#10b981" stroke-width="0.8" stroke-linecap="round"/>
-              <rect x="5.5" y="6" width="17" height="13" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
-              <line x1="14" y1="6" x2="14" y2="2" stroke="#94a3b8" stroke-width="1.1" stroke-linecap="round"/>
-              <circle cx="14" cy="1.8" r="1.6" fill="#e11d48"/>
-              <circle cx="14" cy="1.8" r="3.2" stroke="#ffffff" stroke-width="0.5" stroke-dasharray="1 1" opacity="0.8"/>
-              <rect x="8" y="9" width="12" height="6.5" rx="2.5" fill="#0f172a"/>
-              <circle cx="11" cy="12.2" r="1.2" fill="#38bdf8"/>
-              <circle cx="17" cy="12.2" r="1.2" fill="#38bdf8"/>
-              <path d="M7 23 Q2 19 3 14" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
-              <defs>
-                <linearGradient id="fbSuitcaseAlwaysRedNav" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#e11d48"/>
-                  <stop offset="100%" stop-color="#be123c"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-          <span class="text-xl sm:text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 theme-transition">Flight<span style="color: var(--brand-primary);">Bot</span></span>
-        </a>
-      </div>
+  <!-- HEADER & NAVBAR DE NAVEGACIÓN UNIFICADA -->
+  <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/85 bg-white/90 border-b dark:border-slate-800/80 border-slate-200 theme-transition">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3 relative">
+      
+      <!-- 1. Marca / Logotipo Rolli + FlightBot + Slogan Oficial -->
+      <a href="/" class="flex items-center gap-2.5 group shrink-0" title="FlightBot · Con Rolli Copiloto">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-rose-500 to-rose-700 shadow-md shadow-rose-900/20 group-hover:scale-105 transition-transform">
+          <img src="/img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow">
+        </div>
+        <div>
+          <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-rose-600">Bot</span></span>
+          <span class="block text-[9px] uppercase font-bold text-slate-400 -mt-1 tracking-widest">Con Rolli Copiloto</span>
+        </div>
+      </a>
 
-      <!-- 2. Barra de Navegación Central Simétrica (Dock Centrado con padding elástico) -->
-      <nav class="hidden lg:flex items-center p-1 xl:p-1.5 rounded-full dark:bg-slate-900/90 bg-slate-100/95 border dark:border-slate-800 border-slate-200/90 backdrop-blur-md shadow-sm gap-0.5 xl:gap-1.5 mx-auto shrink-0">
-        <a href="/" id="nav-btn-inicio" class="nav-dock-btn" title="Inicio de FlightBot">
-          <span>🏠</span> Inicio
+      <!-- 2. Menú de Navegación Principal Homogéneo (Desktop - Sin Emojis) -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-1.5 mx-auto shrink-0">
+        <!-- Inicio -->
+        <a href="/" id="nav-btn-inicio" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Inicio de FlightBot">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          <span>Inicio</span>
         </a>
-        <a href="/vuelos" id="nav-btn-vuelos" class="nav-dock-btn" title="Buscador y Radar de Vuelos">
-          <span>✈️</span> Vuelos
+
+        <!-- Vuelos -->
+        <a href="/vuelos" id="nav-btn-vuelos" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Buscador y Radar de Vuelos">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
+          </svg>
+          <span>Vuelos</span>
         </a>
-        <a href="/relampago" id="nav-btn-relampago" class="nav-dock-btn" title="Ofertas Relámpago y Oportunidades Flash">
-          <span>🔥</span> Ofertas Relámpago
+
+        <!-- Relámpago -->
+        <a href="/relampago" id="nav-btn-relampago" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Ofertas Relámpago y Oportunidades Flash">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          <span>Relámpago</span>
         </a>
-        <a href="/escapadas" id="nav-btn-modoruta" class="nav-dock-btn" title="Semáforo de Rutas, Peajes, Combustible y Escapadas">
-          <span>🚗</span> Modo Ruta
+
+        <!-- Modo Ruta -->
+        <a href="/escapadas" id="nav-btn-escapadas" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Semáforo de Rutas, Peajes y Combustible">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+            <circle cx="7" cy="17" r="2"/>
+            <path d="M9 17h6"/>
+            <circle cx="17" cy="17" r="2"/>
+          </svg>
+          <span>Modo Ruta</span>
         </a>
-        <a href="/billetera" id="nav-btn-billetera" class="nav-dock-btn" title="Billetera de Tarjetas, Beneficios y Asistencia">
-          <span>💳</span> Billetera
+
+        <!-- Billetera -->
+        <a href="/billetera" id="nav-btn-billetera" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Billetera Offline y Beneficios VIP">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
+            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
+            <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
+          </svg>
+          <span>Billetera</span>
         </a>
-        <a href="/guias" id="nav-btn-guias" class="nav-dock-btn is-active" title="Guías Turísticas y Rutas Monitoreadas">
-          <span>📖</span> Guías
+
+        <!-- Guías -->
+        <a href="/guias" id="nav-btn-guias" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-semibold rounded-lg transition-all duration-150 text-rose-600 bg-rose-50 dark:bg-rose-950/40 dark:text-rose-400" title="Guías de Viaje Editoriales">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+            <path d="M6 6h10"/>
+            <path d="M6 10h10"/>
+          </svg>
+          <span>Guías</span>
         </a>
-        <a href="/faq" id="nav-btn-faq" class="nav-dock-btn" title="Preguntas Frecuentes y Ayuda">
-          <span>❓</span> FAQ
+
+        <!-- FAQ -->
+        <a href="/faq" id="nav-btn-faq" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Preguntas Frecuentes">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <path d="M12 17h.01"/>
+          </svg>
+          <span>FAQ</span>
         </a>
       </nav>
 
-      <!-- 3. Contenedor Derecho Único y Balanceado (h-8 uniforme) -->
-      <div class="flex items-center gap-1.5 sm:gap-2 xl:gap-2.5 shrink-0 z-10">
+      <!-- 3. Bloque Derecho Compacto y Alineado (flex items-center gap-2) -->
+      <div class="flex items-center gap-2 shrink-0">
         
-        <!-- A. Widget Ficha Plateada & Billetera Rolli (Arcade Token) -->
-        <div id="auth-nav-container" class="flex items-center mx-1 sm:mx-2 xl:mx-3">
+        <!-- A. Widget Ficha Plateada Rolli (Arcade Token) -->
+        <div id="auth-nav-container" class="flex items-center">
           <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.toggleModal() : null"
                   id="btn-nav-tokens"
-                  class="inline-flex items-center justify-center gap-1.5 h-8 px-2.5 sm:px-3 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-900/90 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
+                  class="inline-flex items-center justify-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-800/80 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-700 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
                   title="Billetera de fichas: 4 fichas semanales">
             <svg class="w-4 h-4 shrink-0 drop-shadow-sm" viewBox="0 0 100 100" fill="none">
               <circle cx="50" cy="50" r="46" fill="url(#metalBase3Nav)" stroke="url(#metalRim3Nav)" stroke-width="4"/>
@@ -293,40 +310,32 @@ SHARED_NAV_HEADER = """
           </button>
         </div>
 
-        <!-- B. Switcher de Tema y Color (h-8) -->
-        <div class="flex items-center h-8 p-1 rounded-full dark:bg-slate-900/90 bg-slate-100 border dark:border-slate-800 border-slate-200 backdrop-blur-md shadow-xs theme-transition">
-          <!-- Switcher de Color (Ruby / Blue) -->
-          <div class="hidden sm:flex items-center gap-1.5 pl-1.5 pr-2">
-            <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Color Ruby" aria-label="Color Ruby"
-                    class="w-3.5 h-3.5 rounded-full bg-rose-600 hover:scale-110 transition-transform focus:outline-none"></button>
-            <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Color Blue" aria-label="Color Blue"
-                    class="w-3.5 h-3.5 rounded-full bg-blue-600 hover:scale-110 transition-transform focus:outline-none"></button>
-          </div>
-          <!-- Separador Vertical -->
-          <div class="hidden sm:block w-px h-3.5 bg-slate-300 dark:bg-slate-700 shrink-0 self-center"></div>
-          <!-- Alternar Modo Oscuro / Claro -->
-          <div class="flex items-center pl-1 pr-1.5">
-            <button onclick="toggleThemeMode()" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro" aria-label="Alternar Modo Claro / Oscuro"
-                    class="w-4.5 h-4.5 rounded-full flex items-center justify-center text-xs dark:text-amber-400 text-slate-700 hover:bg-slate-200/80 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
-              <span id="theme-mode-icon" class="leading-none select-none inline-flex items-center justify-center -translate-y-[1px]">🌙</span>
-            </button>
-          </div>
+        <!-- B. Selector de Moneda: Diseño de cápsula compacta (NATIVO | ARS | USD) -->
+        <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
+          <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
+          <button type="button" id="btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
+          <button type="button" id="btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
         </div>
 
-        <!-- C. Píldora Telegram Única de Escritorio (h-8 px-3.5) -->
-        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-           class="hidden sm:inline-flex items-center gap-1.5 h-8 px-3.5 rounded-full text-white font-semibold text-xs shrink-0 transition-all shadow-md hover:brightness-110"
-           style="background-color: var(--brand-primary); box-shadow: 0 10px 20px -5px var(--brand-glow);"
-           title="Abrir FlightBot en Telegram">
-          <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24">
+        <!-- C. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
+        <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
+                class="h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
+          <span id="theme-mode-icon">🌙</span>
+        </button>
+
+        <!-- D. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
+        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
+           class="h-9 px-3 rounded-lg bg-[#229ED9] hover:bg-[#1E88E5] text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition-all shrink-0"
+           title="Chateá conmigo en Telegram para alertas instantáneas">
+          <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
           </svg>
-          <span>Telegram</span>
+          <span class="hidden sm:inline">Telegram</span>
         </a>
 
-        <!-- Botón Menú Móvil (< lg) -->
-        <button id="mobile-nav-toggle" onclick="toggleMobileNav()" aria-label="Menú de Navegación"
-                class="lg:hidden p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors">
+        <!-- E. Botón Menú Móvil (lg:hidden h-9 w-9) -->
+        <button type="button" id="mobile-nav-toggle" onclick="window.toggleMobileNav ? window.toggleMobileNav() : null" aria-label="Abrir Menú"
+                class="lg:hidden h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shrink-0">
           <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
@@ -338,11 +347,12 @@ SHARED_NAV_HEADER = """
       </div>
     </div>
 
-    <!-- 4. Menú Móvil Desplegable (Con botón de Telegram al pie del drawer) -->
-    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3.5 transition-all shadow-xl">
-      <!-- Contenedor Fichas Móvil -->
+    <!-- Menú Móvil (Drawer) Limpio con Iconos Vectoriales y Ficha Plateada -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-4 transition-all shadow-xl space-y-3">
+      
+      <!-- Contenedor Ficha Plateada Móvil -->
       <div id="mobile-auth-drawer-container">
-        <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.toggleModal() : null" class="w-full flex items-center justify-between py-2.5 px-3.5 rounded-2xl font-bold text-xs bg-white dark:bg-slate-900 border dark:border-slate-800 border-slate-200 text-slate-800 dark:text-slate-100 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-all mb-3 cursor-pointer">
+        <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.toggleModal() : null" class="w-full flex items-center justify-between py-2.5 px-3.5 rounded-xl font-bold text-xs bg-white dark:bg-slate-900 border dark:border-slate-800 border-slate-200 text-slate-800 dark:text-slate-100 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer">
           <div class="flex items-center gap-2">
             <svg class="w-5 h-5 shrink-0 drop-shadow-sm" viewBox="0 0 100 100" fill="none">
               <circle cx="50" cy="50" r="46" fill="url(#metalBase3Mob)" stroke="url(#metalRim3Mob)" stroke-width="4"/>
@@ -378,39 +388,94 @@ SHARED_NAV_HEADER = """
         </button>
       </div>
 
-      <div class="grid grid-cols-2 gap-2 text-xs font-semibold mb-3">
-        <a href="/" onclick="toggleMobileNav(false)" class="col-span-2 flex items-center justify-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
-          <span>🏠</span> Inicio
+      <div class="flex flex-col space-y-1">
+        <!-- Inicio -->
+        <a href="/" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          <span>Inicio</span>
         </a>
-        <a href="/vuelos" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
-          <span>✈️</span> Vuelos
+
+        <!-- Vuelos -->
+        <a href="/vuelos" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
+          </svg>
+          <span>Vuelos</span>
         </a>
-        <a href="/relampago" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
-          <span>🔥</span> Ofertas Relámpago
+
+        <!-- Relámpago -->
+        <a href="/relampago" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          <span>Relámpago</span>
         </a>
-        <a href="/escapadas" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
-          <span>🚗</span> Modo Ruta
+
+        <!-- Modo Ruta -->
+        <a href="/escapadas" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
+            <circle cx="7" cy="17" r="2"/>
+            <path d="M9 17h6"/>
+            <circle cx="17" cy="17" r="2"/>
+          </svg>
+          <span>Modo Ruta</span>
         </a>
-        <a href="/billetera" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
-          <span>💳</span> Billetera
+
+        <!-- Billetera -->
+        <a href="/billetera" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
+            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
+            <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
+          </svg>
+          <span>Billetera</span>
         </a>
-        <a href="/guias" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl text-white font-bold" style="background-color: var(--brand-primary);">
-          <span>📖</span> Guías
+
+        <!-- Guías -->
+        <a href="/guias" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-rose-600 bg-rose-50 dark:bg-rose-950/40 dark:text-rose-400 font-semibold transition-all">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+            <path d="M6 6h10"/>
+            <path d="M6 10h10"/>
+          </svg>
+          <span>Guías</span>
         </a>
-        <a href="/faq" onclick="toggleMobileNav(false)" class="flex items-center gap-2 p-2.5 rounded-xl dark:bg-slate-900 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500 font-medium" >
-          <span>❓</span> FAQ
+
+        <!-- FAQ -->
+        <a href="/faq" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <path d="M12 17h.01"/>
+          </svg>
+          <span>FAQ</span>
         </a>
       </div>
 
-      <!-- Botón Telegram en Menú Móvil -->
-      <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
-         class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-white font-bold text-xs shadow-md hover:brightness-110 transition-all mt-2"
-         style="background: var(--brand-gradient);">
-        <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
-        </svg>
-        <span>Abrir Rolli en Telegram</span>
-      </a>
+      <!-- Pie del Drawer: Botón Telegram y Selector de Moneda Móvil -->
+      <div class="pt-3 border-t dark:border-slate-800 border-slate-200 space-y-3">
+        <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
+           class="h-11 w-full rounded-xl bg-[#229ED9] hover:bg-[#1E88E5] text-white text-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition-all">
+          <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
+          </svg>
+          <span>Abrir Rolli en Telegram (@GnZFlightBot)</span>
+        </a>
+
+        <div class="flex items-center justify-between pt-1">
+          <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Moneda de referencia:</span>
+          <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold">
+            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
+            <button type="button" id="m-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
+            <button type="button" id="m-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </header>
 """

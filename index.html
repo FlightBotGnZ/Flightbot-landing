@@ -46,13 +46,15 @@
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans theme-transition antialiased selection:bg-rose-500 selection:text-white">
 
   <!-- HEADER & NAVBAR DE NAVEGACIÓN -->
+    <!-- HEADER & NAVBAR DE NAVEGACIÓN UNIFICADA -->
+    <!-- HEADER & NAVBAR DE NAVEGACIÓN UNIFICADA -->
   <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/85 bg-white/90 border-b dark:border-slate-800/80 border-slate-200 theme-transition">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3 relative">
       
-      <!-- 1. Marca / Logotipo Rolli + FlightBot -->
-      <a href="/" class="flex items-center gap-2.5 group shrink-0" title="FlightBot · Con Rolli">
+      <!-- 1. Marca / Logotipo Rolli + FlightBot + Slogan Oficial -->
+      <a href="/" class="flex items-center gap-2.5 group shrink-0" title="FlightBot · Con Rolli Copiloto">
         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-rose-500 to-rose-700 shadow-md shadow-rose-900/20 group-hover:scale-105 transition-transform">
-          <img src="img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow">
+          <img src="/img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow">
         </div>
         <div>
           <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-rose-600">Bot</span></span>
@@ -62,8 +64,8 @@
 
       <!-- 2. Menú de Navegación Principal Homogéneo (Desktop - Sin Emojis) -->
       <nav class="hidden lg:flex items-center gap-1 xl:gap-1.5 mx-auto shrink-0">
-        <!-- Inicio (Activo) -->
-        <a href="/" id="nav-btn-inicio" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-ruby-600 bg-ruby-50 dark:bg-ruby-950/40 dark:text-ruby-400 font-semibold" title="Inicio de FlightBot">
+        <!-- Inicio -->
+        <a href="/" id="nav-btn-inicio" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-semibold rounded-lg transition-all duration-150 text-rose-600 bg-rose-50 dark:bg-rose-950/40 dark:text-rose-400" title="Inicio de FlightBot">
           <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             <polyline points="9 22 9 12 15 12 15 22"/>
@@ -88,7 +90,7 @@
         </a>
 
         <!-- Modo Ruta -->
-        <a href="/escapadas" id="nav-btn-modoruta" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Semáforo de Rutas, Peajes y Combustible">
+        <a href="/escapadas" id="nav-btn-escapadas" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Semáforo de Rutas, Peajes y Combustible">
           <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
             <circle cx="7" cy="17" r="2"/>
@@ -132,20 +134,56 @@
       <!-- 3. Bloque Derecho Compacto y Alineado (flex items-center gap-2) -->
       <div class="flex items-center gap-2 shrink-0">
         
-        <!-- 1. Selector de Moneda: Diseño de cápsula compacta (NATIVO | ARS | USD) -->
-        <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
-          <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal('NATIVO')" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
-          <button type="button" id="btn-curr-ars" onclick="window.cambiarMonedaGlobal('ARS')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
-          <button type="button" id="btn-curr-usd" onclick="window.cambiarMonedaGlobal('USD')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
+        <!-- A. Widget Ficha Plateada Rolli (Arcade Token) -->
+        <div id="auth-nav-container" class="flex items-center">
+          <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.toggleModal() : null"
+                  id="btn-nav-tokens"
+                  class="inline-flex items-center justify-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-800/80 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-700 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
+                  title="Billetera de fichas: 4 fichas semanales">
+            <svg class="w-4 h-4 shrink-0 drop-shadow-sm" viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="46" fill="url(#metalBase3Nav)" stroke="url(#metalRim3Nav)" stroke-width="4"/>
+              <circle cx="50" cy="50" r="34" fill="url(#metalInner3Nav)" stroke="#475569" stroke-width="2"/>
+              <path d="M50 28 L53 44 L68 52 L68 56 L53 52 L53 64 L58 68 L58 71 L50 69 L42 71 L42 68 L47 64 L47 52 L32 56 L32 52 L47 44 Z" fill="#1e293b" stroke="#0f172a" stroke-width="1"/>
+              <text x="50" y="24" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">FLIGHT</text>
+              <text x="50" y="80" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">BOT</text>
+              <path d="M22 32 C30 18, 70 18, 78 32 C68 24, 32 24, 22 32 Z" fill="#ffffff" opacity="0.45"/>
+              <defs>
+                <linearGradient id="metalBase3Nav" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff"/>
+                  <stop offset="0.3" stop-color="#e2e8f0"/>
+                  <stop offset="0.7" stop-color="#94a3b8"/>
+                  <stop offset="1" stop-color="#475569"/>
+                </linearGradient>
+                <linearGradient id="metalRim3Nav" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff"/>
+                  <stop offset="0.5" stop-color="#64748b"/>
+                  <stop offset="1" stop-color="#cbd5e1"/>
+                </linearGradient>
+                <linearGradient id="metalInner3Nav" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#cbd5e1"/>
+                  <stop offset="0.5" stop-color="#94a3b8"/>
+                  <stop offset="1" stop-color="#64748b"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <span id="nav-tokens-display" class="font-bold">4 fichas</span>
+          </button>
         </div>
 
-        <!-- 2. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
-        <button type="button" onclick="window.toggleThemeMode()" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
+        <!-- B. Selector de Moneda: Diseño de cápsula compacta (NATIVO | ARS | USD) -->
+        <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
+          <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
+          <button type="button" id="btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
+          <button type="button" id="btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
+        </div>
+
+        <!-- C. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
+        <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
           <span id="theme-mode-icon">🌙</span>
         </button>
 
-        <!-- 3. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
+        <!-- D. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
            class="h-9 px-3 rounded-lg bg-[#229ED9] hover:bg-[#1E88E5] text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition-all shrink-0"
            title="Chateá conmigo en Telegram para alertas instantáneas">
@@ -155,8 +193,8 @@
           <span class="hidden sm:inline">Telegram</span>
         </a>
 
-        <!-- Botón Menú Móvil (lg:hidden h-9 w-9) -->
-        <button type="button" id="mobile-nav-toggle" onclick="window.toggleMobileNav()" aria-label="Abrir Menú"
+        <!-- E. Botón Menú Móvil (lg:hidden h-9 w-9) -->
+        <button type="button" id="mobile-nav-toggle" onclick="window.toggleMobileNav ? window.toggleMobileNav() : null" aria-label="Abrir Menú"
                 class="lg:hidden h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shrink-0">
           <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -169,11 +207,50 @@
       </div>
     </div>
 
-    <!-- Menú Móvil (Drawer) Limpio sin Emojis Viejos y con Iconos SVG Vectoriales -->
+    <!-- Menú Móvil (Drawer) Limpio con Iconos Vectoriales y Ficha Plateada -->
     <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-4 transition-all shadow-xl space-y-3">
+      
+      <!-- Contenedor Ficha Plateada Móvil -->
+      <div id="mobile-auth-drawer-container">
+        <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.toggleModal() : null" class="w-full flex items-center justify-between py-2.5 px-3.5 rounded-xl font-bold text-xs bg-white dark:bg-slate-900 border dark:border-slate-800 border-slate-200 text-slate-800 dark:text-slate-100 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 shrink-0 drop-shadow-sm" viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="46" fill="url(#metalBase3Mob)" stroke="url(#metalRim3Mob)" stroke-width="4"/>
+              <circle cx="50" cy="50" r="34" fill="url(#metalInner3Mob)" stroke="#475569" stroke-width="2"/>
+              <path d="M50 28 L53 44 L68 52 L68 56 L53 52 L53 64 L58 68 L58 71 L50 69 L42 71 L42 68 L47 64 L47 52 L32 56 L32 52 L47 44 Z" fill="#1e293b" stroke="#0f172a" stroke-width="1"/>
+              <text x="50" y="24" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">FLIGHT</text>
+              <text x="50" y="80" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">BOT</text>
+              <path d="M22 32 C30 18, 70 18, 78 32 C68 24, 32 24, 22 32 Z" fill="#ffffff" opacity="0.45"/>
+              <defs>
+                <linearGradient id="metalBase3Mob" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff"/>
+                  <stop offset="0.3" stop-color="#e2e8f0"/>
+                  <stop offset="0.7" stop-color="#94a3b8"/>
+                  <stop offset="1" stop-color="#475569"/>
+                </linearGradient>
+                <linearGradient id="metalRim3Mob" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff"/>
+                  <stop offset="0.5" stop-color="#64748b"/>
+                  <stop offset="1" stop-color="#cbd5e1"/>
+                </linearGradient>
+                <linearGradient id="metalInner3Mob" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#cbd5e1"/>
+                  <stop offset="0.5" stop-color="#94a3b8"/>
+                  <stop offset="1" stop-color="#64748b"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <span>Fichas de Búsqueda</span>
+          </div>
+          <span id="mobile-tokens-display" class="px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-300 bg-slate-800 border border-slate-700">
+            4 disponibles
+          </span>
+        </button>
+      </div>
+
       <div class="flex flex-col space-y-1">
-        <!-- Inicio (Activo) -->
-        <a href="/" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-ruby-600 bg-ruby-50 dark:bg-ruby-950/40 dark:text-ruby-400 font-semibold transition-all">
+        <!-- Inicio -->
+        <a href="/" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-rose-600 bg-rose-50 dark:bg-rose-950/40 dark:text-rose-400 font-semibold transition-all">
           <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             <polyline points="9 22 9 12 15 12 15 22"/>
@@ -239,7 +316,7 @@
         </a>
       </div>
 
-      <!-- Pie del Drawer: Botón Telegram y Selector de Moneda -->
+      <!-- Pie del Drawer: Botón Telegram y Selector de Moneda Móvil -->
       <div class="pt-3 border-t dark:border-slate-800 border-slate-200 space-y-3">
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
            class="h-11 w-full rounded-xl bg-[#229ED9] hover:bg-[#1E88E5] text-white text-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition-all">
@@ -252,12 +329,13 @@
         <div class="flex items-center justify-between pt-1">
           <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Moneda de referencia:</span>
           <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold">
-            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal('NATIVO')" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
-            <button type="button" id="m-btn-curr-ars" onclick="window.cambiarMonedaGlobal('ARS')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
-            <button type="button" id="m-btn-curr-usd" onclick="window.cambiarMonedaGlobal('USD')" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
+            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
+            <button type="button" id="m-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
+            <button type="button" id="m-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
           </div>
         </div>
       </div>
+
     </div>
   </header>
 
