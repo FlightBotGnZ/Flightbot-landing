@@ -58,3 +58,18 @@
   color: #fb7185;
   background-color: rgba(225, 29, 72, 0.15);
 }
+
+/* Clases de utilidad para el tema Ruby en Pestañas */
+.text-ruby-600 {
+  color: #e11d48;
+}
+.bg-ruby-50 {
+  background-color: #fff1f2;
+}
+.dark .dark\:text-ruby-400 {
+  color: #fb7185;
+}
+.dark .dark\:bg-ruby-950\/40 {
+  background-color: rgba(76, 5, 25, 0.4);
+}
+

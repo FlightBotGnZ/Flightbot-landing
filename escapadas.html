@@ -219,18 +219,39 @@
       <!-- 3. Contenedor Derecho Único y Balanceado (h-8 uniforme) -->
       <div class="flex items-center gap-1.5 sm:gap-2 xl:gap-2.5 shrink-0 z-10">
         
-        <!-- A. Widget Auth Google (Centrado ópticamente entre navbar y theme switcher) -->
+        <!-- A. Widget Ficha Plateada & Billetera Rolli (Arcade Token) -->
         <div id="auth-nav-container" class="flex items-center mx-1 sm:mx-2 xl:mx-3">
-          <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.iniciarLoginGoogle() : null"
-                  class="inline-flex items-center justify-center gap-1.5 h-8 px-2 sm:px-2.5 xl:px-3 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-900/90 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
-                  title="Acceder con Google">
-            <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24">
-              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.toggleModal() : null"
+                  id="btn-nav-tokens"
+                  class="inline-flex items-center justify-center gap-1.5 h-8 px-2.5 sm:px-3 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-900/90 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
+                  title="Billetera de fichas: 4 fichas semanales">
+            <svg class="w-4 h-4 shrink-0 drop-shadow-sm" viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="46" fill="url(#metalBase3Nav)" stroke="url(#metalRim3Nav)" stroke-width="4"/>
+              <circle cx="50" cy="50" r="34" fill="url(#metalInner3Nav)" stroke="#475569" stroke-width="2"/>
+              <path d="M50 28 L53 44 L68 52 L68 56 L53 52 L53 64 L58 68 L58 71 L50 69 L42 71 L42 68 L47 64 L47 52 L32 56 L32 52 L47 44 Z" fill="#1e293b" stroke="#0f172a" stroke-width="1"/>
+              <text x="50" y="24" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">FLIGHT</text>
+              <text x="50" y="80" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">BOT</text>
+              <path d="M22 32 C30 18, 70 18, 78 32 C68 24, 32 24, 22 32 Z" fill="#ffffff" opacity="0.45"/>
+              <defs>
+                <linearGradient id="metalBase3Nav" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff"/>
+                  <stop offset="0.3" stop-color="#e2e8f0"/>
+                  <stop offset="0.7" stop-color="#94a3b8"/>
+                  <stop offset="1" stop-color="#475569"/>
+                </linearGradient>
+                <linearGradient id="metalRim3Nav" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff"/>
+                  <stop offset="0.5" stop-color="#64748b"/>
+                  <stop offset="1" stop-color="#cbd5e1"/>
+                </linearGradient>
+                <linearGradient id="metalInner3Nav" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#cbd5e1"/>
+                  <stop offset="0.5" stop-color="#94a3b8"/>
+                  <stop offset="1" stop-color="#64748b"/>
+                </linearGradient>
+              </defs>
             </svg>
-            <span class="hidden xl:inline">Acceder</span>
+            <span id="nav-tokens-display" class="font-bold">4 fichas</span>
           </button>
         </div>
 
@@ -281,16 +302,46 @@
 
     <!-- 4. Menú Móvil Desplegable (Con botón de Telegram al pie del drawer) -->
     <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-3.5 transition-all shadow-xl">
-      <!-- Contenedor Auth Móvil -->
+      <!-- Contenedor Fichas Móvil -->
       <div id="mobile-auth-drawer-container">
-        <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.iniciarLoginGoogle() : null" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-2xl font-bold text-xs bg-white dark:bg-slate-900 border dark:border-slate-800 border-slate-200 text-slate-800 dark:text-slate-100 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-all mb-3 cursor-pointer">
-          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24">
-            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
-          </svg>
-          <span>Iniciar sesión con Google</span>
+        <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.toggleModal() : null" class="w-full flex items-center justify-between py-2.5 px-3.5 rounded-2xl font-bold text-xs bg-white dark:bg-slate-900 border dark:border-slate-800 border-slate-200 text-slate-800 dark:text-slate-100 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-all mb-3 cursor-pointer">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 shrink-0 drop-shadow-sm" viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="46" fill="url(#metalBase3Mob)" stroke="url(#metalRim3Mob)" stroke-width="4"/>
+              <circle cx="50" cy="50" r="34" fill="url(#metalInner3Mob)" stroke="#475569" stroke-width="2"/>
+              <path d="M50 28 L53 44 L68 52 L68 56 L53 52 L53 64 L58 68 L58 71 L50 69 L42 71 L42 68 L47 64 L47 52 L32 56 L32 52 L47 44 Z" fill="#1e293b" stroke="#0f172a" stroke-width="1"/>
+              <text x="50" y="24" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">FLIGHT</text>
+              <text x="50" y="80" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">BOT</text>
+              <path d="M22 32 C30 18, 70 18, 78 32 C68 24, 32 24, 22 32 Z" fill="#ffffff" opacity="0.45"/>
+              <defs>
+                <linearGradient id="metalBase3Mob" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff"/>
+                  <stop offset="0.3" stop-color="#e2e8f0"/>
+                  <stop offset="0.7" stop-color="#94a3b8"/>
+                  <stop offset="1" stop-color="#475569"/>
+                </linearGradient>
+                <linearGradient id="metalRim3Mob" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff"/>
+                  <stop offset="0.5" stop-color="#64748b"/>
+                  <stop offset="1" stop-color="#cbd5e1"/>
+                </linearGradient>
+                <linearGradient id="metalInner3Mob" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#cbd5e1"/>
+                  <stop offset="0.5" stop-color="#94a3b8"/>
+                  <stop offset="1" stop-color="#64748b"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <span>Fichas de Búsqueda</span>
+          </div>
+          <span id="mobile-tokens-display" class="px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-300 bg-slate-800 border border-slate-700">
+            4 disponibles
+          </span>
+        </button>
+      </div>
+          <span id="mobile-tokens-display" class="px-2 py-0.5 rounded-full text-[11px] font-bold text-amber-500 bg-amber-500/10 border border-amber-500/20">
+            4 libres
+          </span>
         </button>
       </div>
 

@@ -95,18 +95,20 @@
     const btnArs = document.getElementById('btn-curr-ars');
     const btnUsd = document.getElementById('btn-curr-usd');
 
-    const activeClasses = 'px-3 py-1 rounded-xl text-white font-bold bg-rose-600 shadow-xs transition-all text-xs';
-    const inactiveClasses = 'px-3 py-1 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-semibold transition-all text-xs';
+    const mBtnNativo = document.getElementById('m-btn-curr-nativo');
+    const mBtnArs = document.getElementById('m-btn-curr-ars');
+    const mBtnUsd = document.getElementById('m-btn-curr-usd');
 
-    if (btnNativo) {
-      btnNativo.className = (currentMonedaGlobal === 'NATIVO') ? activeClasses : inactiveClasses;
-    }
-    if (btnArs) {
-      btnArs.className = (currentMonedaGlobal === 'ARS') ? activeClasses : inactiveClasses;
-    }
-    if (btnUsd) {
-      btnUsd.className = (currentMonedaGlobal === 'USD') ? activeClasses : inactiveClasses;
-    }
+    const activeClasses = 'px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs';
+    const inactiveClasses = 'px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs';
+
+    if (btnNativo) btnNativo.className = (currentMonedaGlobal === 'NATIVO') ? activeClasses : inactiveClasses;
+    if (btnArs) btnArs.className = (currentMonedaGlobal === 'ARS') ? activeClasses : inactiveClasses;
+    if (btnUsd) btnUsd.className = (currentMonedaGlobal === 'USD') ? activeClasses : inactiveClasses;
+
+    if (mBtnNativo) mBtnNativo.className = (currentMonedaGlobal === 'NATIVO') ? activeClasses : inactiveClasses;
+    if (mBtnArs) mBtnArs.className = (currentMonedaGlobal === 'ARS') ? activeClasses : inactiveClasses;
+    if (mBtnUsd) mBtnUsd.className = (currentMonedaGlobal === 'USD') ? activeClasses : inactiveClasses;
   }
 
   // 4. Formateador inteligente de precios en moneda activa
