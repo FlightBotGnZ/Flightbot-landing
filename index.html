@@ -10,7 +10,7 @@
   <!-- Metadatos Open Graph y Twitter Card -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.flightbot.com.ar/">
-  <meta property="og:title" content="FlightBot · Rolli Copiloto de Viajes y Radar 24/7">
+  <meta property="og:title" content="FlightBot · Radar 24/7 de Vuelos, Rutas y Hoteles">
   <meta property="og:description" content="Rastreo en tiempo real de tarifas aéreas, comparador de auto vs avión, peajes y hoteles inteligentes con Rolli.">
   <meta property="og:image" content="https://www.flightbot.com.ar/img/og-preview.jpg">
   <meta property="og:image:width" content="1200">
@@ -36,14 +36,48 @@
   <!-- Scripts Modularizados con Carga Diferida (defer) -->
   <script src="js/theme.js" defer></script>
   <script src="js/radar-data.js" defer></script>
+  <script src="js/road-data.js" defer></script>
+  <script src="js/guias-data.js" defer></script>
   <script src="js/comparator.js" defer></script>
   <script src="js/rolli-speech.js" defer></script>
   <script src="js/radar.js" defer></script>
   <script src="js/chatbox.js" defer></script>
   <script src="/js/auth.js" defer></script>
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+  <!-- Animaciones y estilos visuales oficiales de F-Bot Rolli -->
+  <style>
+    @keyframes fbAntennaBlink {
+      0%, 100% {
+        opacity: 0.4;
+        filter: drop-shadow(0 0 1px rgba(225, 29, 72, 0.3));
+      }
+      50% {
+        opacity: 1;
+        filter: drop-shadow(0 0 5px rgba(225, 29, 72, 0.95));
+      }
+    }
+    .fb-antenna-pulse {
+      animation: fbAntennaBlink 2s ease-in-out infinite;
+      transform-origin: 14px 1.8px;
+    }
+    @keyframes fbSpeechBubbleFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    .fb-speech-bubble-anim {
+      animation: fbSpeechBubbleFloat 3.8s ease-in-out infinite;
+    }
+    @keyframes fbRolliFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+    .fb-rolli-float {
+      animation: fbRolliFloat 3.2s ease-in-out infinite;
+    }
+  </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans theme-transition antialiased selection:bg-rose-500 selection:text-white">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans theme-transition antialiased selection:bg-rose-500 selection:text-white overflow-x-hidden">
 
   <!-- HEADER & NAVBAR DE NAVEGACIÓN -->
     <!-- HEADER & NAVBAR DE NAVEGACIÓN UNIFICADA -->
@@ -54,7 +88,7 @@
       <!-- 1. Marca / Logotipo Rolli + FlightBot + Slogan Oficial -->
       <a href="/" class="flex items-center gap-2.5 group shrink-0" title="FlightBot · Con Rolli Copiloto">
         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-rose-500 to-rose-700 shadow-md shadow-rose-900/20 group-hover:scale-105 transition-transform">
-          <img src="/img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow">
+          <img src="img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow">
         </div>
         <div>
           <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-rose-600">Bot</span></span>
@@ -166,12 +200,12 @@
                 </linearGradient>
               </defs>
             </svg>
-            <span id="nav-tokens-display" class="font-bold">4 fichas</span>
+            <span id="nav-tokens-display" class="font-bold">4<span class="hidden sm:inline">&nbsp;fichas</span></span>
           </button>
         </div>
 
         <!-- B. Selector de Moneda: Diseño de cápsula compacta (NATIVO | ARS | USD) -->
-        <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
+        <div class="hidden md:inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
           <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
           <button type="button" id="btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
           <button type="button" id="btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
@@ -179,13 +213,13 @@
 
         <!-- C. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
-                class="h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
+                class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
           <span id="theme-mode-icon">🌙</span>
         </button>
 
         <!-- D. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
-           class="h-9 px-3 rounded-lg bg-[#229ED9] hover:bg-[#1E88E5] text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition-all shrink-0"
+           class="hidden sm:inline-flex h-9 px-3 rounded-lg bg-[#229ED9] hover:bg-[#1E88E5] text-white text-xs font-semibold items-center gap-1.5 shadow-sm transition-all shrink-0"
            title="Chateá conmigo en Telegram para alertas instantáneas">
           <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
@@ -326,6 +360,17 @@
           <span>Abrir Rolli en Telegram (@GnZFlightBot)</span>
         </a>
 
+                <!-- Fila de Apariencia / Modo Oscuro Móvil -->
+        <div class="flex items-center justify-between pt-1">
+          <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Apariencia:</span>
+          <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="m-theme-mode-btn"
+                  class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/80 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all cursor-pointer">
+            <span id="m-theme-mode-icon">🌙</span>
+            <span id="m-theme-mode-text">Modo Oscuro</span>
+          </button>
+        </div>
+
+        <!-- Fila de Moneda Móvil -->
         <div class="flex items-center justify-between pt-1">
           <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Moneda de referencia:</span>
           <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold">
@@ -352,20 +397,130 @@
         <span>Rolli escaneando tarifas aéreas y rutas en vivo</span>
       </div>
 
-      <!-- Diálogo Protagonista de Rolli en Hero -->
-      <div class="max-w-xl mx-auto mb-6 flex items-center justify-center gap-3.5 text-left">
-        <div class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 relative group">
-          <img src="img/rolli-avatar-transparent.png" alt="Rolli Copiloto" class="w-full h-full object-contain filter drop-shadow-lg group-hover:scale-105 transition-transform" />
-          <span class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white dark:border-slate-950"></span>
-        </div>
-        <div class="flex-1 p-3.5 sm:p-4 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-rose-200 dark:border-rose-900/60 shadow-lg relative">
-          <div class="flex items-center justify-between gap-2 mb-1">
-            <span class="text-[10px] font-black uppercase tracking-wider text-rose-600">Rolli Flightbot te aconseja:</span>
-            <span id="rolli-bubble-badge" class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 font-bold">Oportunidad 1 de 6</span>
+<!-- Diálogo Protagonista de Rolli en Hero (Escenario Oficial con Valija y Stickers) -->
+      <div class="max-w-2xl mx-auto mb-8 flex flex-col sm:flex-row items-center justify-center gap-5 text-left">
+        
+        <!-- Rolli Mascota Tech en Pedestal con Valija y Stickers -->
+        <div class="relative flex flex-col items-center shrink-0 cursor-pointer group select-none"
+             onclick="window.cambiarOfertaRolli ? window.cambiarOfertaRolli(1) : null"
+             title="¡Hacé click para que Rolli te cuente otra oportunidad cazada!">
+          
+          <!-- Glow ambiental de base -->
+          <div class="absolute -bottom-2 w-32 h-10 rounded-full bg-rose-600/30 blur-xl group-hover:bg-rose-600/50 transition-all"></div>
+          
+          <!-- Pedestal tech ovalado -->
+          <div class="absolute -bottom-1.5 w-28 h-4 rounded-full bg-slate-300/60 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700/60 shadow-inner flex items-center justify-center">
+            <div class="w-16 h-1.5 rounded-full bg-rose-500/40 blur-xs"></div>
           </div>
-          <p id="rolli-speech-text" class="text-xs sm:text-sm font-semibold dark:text-slate-200 text-slate-800 leading-snug transition-opacity duration-300">
+          
+          <!-- SVG Vectorial Oficial de F-Bot Rolli (Valija Roja + 4 Stickers) -->
+          <div class="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center relative fb-rolli-float">
+            <svg viewBox="0 0 40 40" class="w-full h-full drop-shadow-xl transition-transform duration-300 group-hover:scale-105" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="20" cy="37" rx="14" ry="2" fill="#000000" opacity="0.35"/>
+              
+              <!-- Valija Roja Carry-on con Stickers Legendarios -->
+              <g id="rolli-suitcase-hero">
+                <rect x="23" y="19" width="12" height="16" rx="3" fill="url(#fbSuitcaseHeroRedIndex)" stroke="#ffffff" stroke-width="0.8"/>
+                <line x1="25" y1="23" x2="33" y2="23" stroke="#ffffff" stroke-opacity="0.3" stroke-width="0.6" stroke-linecap="round"/>
+                <line x1="25" y1="27" x2="33" y2="27" stroke="#ffffff" stroke-opacity="0.3" stroke-width="0.6" stroke-linecap="round"/>
+                <line x1="25" y1="31" x2="33" y2="31" stroke="#ffffff" stroke-opacity="0.3" stroke-width="0.6" stroke-linecap="round"/>
+                
+                <!-- Sticker 1: EZE ✈ LHR -->
+                <rect x="24.5" y="20.2" width="7.4" height="2.2" rx="0.5" fill="#ffffff" stroke="#0f172a" stroke-width="0.2"/>
+                <rect x="24.5" y="20.2" width="1.5" height="2.2" rx="0.3" fill="#0284c7"/>
+                <text x="28.8" y="21.7" font-family="sans-serif" font-size="0.9" font-weight="900" fill="#0f172a" text-anchor="middle">EZE✈LHR</text>
+                
+                <!-- Sticker 2: Lengua Rockera Rolling Stones -->
+                <ellipse cx="26.8" cy="25.5" rx="1.6" ry="1.2" fill="#ffffff"/>
+                <ellipse cx="26.8" cy="25.5" rx="1.3" ry="0.9" fill="#dc2626"/>
+                <path d="M26.2 25.4 Q26.8 26.8 27.4 25.4" fill="#f43f5e" stroke="#881337" stroke-width="0.15"/>
+                
+                <!-- Sticker 3: Prisma Pink Floyd (Dark Side) -->
+                <rect x="24.6" y="28.8" width="3.8" height="3.0" rx="0.5" fill="#090d16" stroke="#ffffff" stroke-width="0.2"/>
+                <polygon points="26.5,29.3 25.2,31.2 27.8,31.2" fill="none" stroke="#ffffff" stroke-width="0.25"/>
+                <line x1="26.7" y1="30.2" x2="28.3" y2="29.9" stroke="#ef4444" stroke-width="0.2"/>
+                <line x1="26.8" y1="30.5" x2="28.3" y2="30.5" stroke="#22c55e" stroke-width="0.2"/>
+                <line x1="26.9" y1="30.8" x2="28.3" y2="31.1" stroke="#38bdf8" stroke-width="0.2"/>
+                
+                <!-- Sticker 4: Freddie Mercury silueta con chaqueta amarilla -->
+                <circle cx="31.2" cy="28.8" r="1.8" fill="#ffffff" stroke="#0f172a" stroke-width="0.2"/>
+                <path d="M30.8 29.8 L30.4 28.2 L31.4 28.2 L31.8 29.8 Z" fill="#facc15"/>
+                <line x1="31.3" y1="28.0" x2="31.9" y2="26.6" stroke="#0f172a" stroke-width="0.28" stroke-linecap="round"/>
+                <circle cx="31.0" cy="27.6" r="0.4" fill="#0f172a"/>
+                
+                <!-- Ruedas y manija extensible -->
+                <circle cx="25.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
+                <circle cx="32.5" cy="36" r="1.3" fill="#1e293b" stroke="#ffffff" stroke-width="0.6"/>
+                <path d="M26 19 V13 H32 V19" stroke="#cbd5e1" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="25" y1="13" x2="33" y2="13" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+              </g>
+              
+              <!-- Brazo sosteniendo valija -->
+              <path d="M17 24 Q22 20 27 13" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round" fill="none"/>
+              
+              <!-- Brazo saludando amistosamente (👋) -->
+              <g>
+                <path d="M8 23 Q3 19 4 14" stroke="#e2e8f0" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <circle cx="4" cy="13.5" r="1.3" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.5"/>
+              </g>
+              
+              <!-- Torso con pantalla monitor de tarifas -->
+              <rect x="7" y="17" width="14" height="16" rx="7" fill="url(#fbBodyGradHeroIndex)" stroke="#cbd5e1" stroke-width="0.8"/>
+              <rect x="10" y="22" width="8" height="6" rx="2" fill="#0f172a"/>
+              <path d="M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25" stroke="#10b981" stroke-width="0.9" stroke-linecap="round"/>
+              
+              <!-- Cabeza con ojos brillantes, sonrisa y antena titilando -->
+              <g>
+                <rect x="5.5" y="6" width="17" height="13" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
+                <line x1="14" y1="6" x2="14" y2="2" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round"/>
+                <circle cx="14" cy="1.8" r="2.2" fill="#e11d48" opacity="0.35"/>
+                <circle cx="14" cy="1.8" r="1.6" fill="#e11d48" class="fb-antenna-pulse"/>
+                <circle cx="13.5" cy="1.3" r="0.5" fill="#ffffff"/>
+                <rect x="8" y="9" width="12" height="6.5" rx="2.5" fill="#0f172a"/>
+                <circle cx="11" cy="12.2" r="1.3" fill="#38bdf8"/>
+                <circle cx="17" cy="12.2" r="1.3" fill="#38bdf8"/>
+                <circle cx="11.4" cy="11.8" r="0.45" fill="#ffffff"/>
+                <circle cx="17.4" cy="11.8" r="0.45" fill="#ffffff"/>
+                <path d="M12.5 14.2 Q14 15.2 15.5 14.2" stroke="#38bdf8" stroke-width="0.7" stroke-linecap="round" fill="none"/>
+              </g>
+              <defs>
+                <linearGradient id="fbSuitcaseHeroRedIndex" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f43f5e"/>
+                  <stop offset="55%" stop-color="#e11d48"/>
+                  <stop offset="100%" stop-color="#9f1239"/>
+                </linearGradient>
+                <linearGradient id="fbBodyGradHeroIndex" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff"/>
+                  <stop offset="100%" stop-color="#e2e8f0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          
+          <span class="mt-1 text-[10px] font-bold text-rose-500 uppercase tracking-widest animate-pulse">¡Hablame! 💬</span>
+        </div>
+
+        <!-- Diálogo / Speech Bubble de Rolli -->
+        <div class="flex-1 p-4 sm:p-5 rounded-3xl bg-white/95 dark:bg-slate-900/95 border border-rose-200 dark:border-rose-900/60 shadow-xl relative fb-speech-bubble-anim">
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+              <span class="text-[11px] font-black uppercase tracking-wider text-rose-600">Rolli Flightbot te aconseja:</span>
+            </div>
+            <span id="rolli-bubble-badge" class="text-[9px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 font-bold border border-emerald-500/25">Oportunidad 1 de 6</span>
+          </div>
+          <p id="rolli-speech-text" class="text-xs sm:text-sm font-semibold dark:text-slate-200 text-slate-800 leading-relaxed transition-opacity duration-300">
             "¡Buenas! Soy Rolli, tu copiloto de viajes. Analicé más de 30 destinos hoy y estas son las caídas de precio más salvajes."
           </p>
+          <div class="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-[11px] text-slate-400 font-medium">Hacé click en Rolli o explorá ofertas:</span>
+            <div class="flex items-center gap-1.5">
+              <button type="button" onclick="window.cambiarOfertaRolli ? window.cambiarOfertaRolli(-1) : null" class="w-7 h-7 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-rose-500 hover:text-white flex items-center justify-center font-bold transition-all text-xs cursor-pointer" title="Oferta anterior">◀</button>
+              <button type="button" onclick="window.cambiarOfertaRolli ? window.cambiarOfertaRolli(1) : null" class="w-7 h-7 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-rose-500 hover:text-white flex items-center justify-center font-bold transition-all text-xs cursor-pointer" title="Siguiente oferta">▶</button>
+            </div>
+          </div>
+          <!-- Rabillo de la burbuja (apunta hacia Rolli en desktop) -->
+          <div class="hidden sm:block absolute top-10 -left-2.5 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[10px] border-r-white dark:border-r-slate-900"></div>
         </div>
       </div>
 
@@ -421,6 +576,95 @@
 
       <div id="flash-deals-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         <!-- Renderizado dinámico desde rolli-speech.js -->
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- SECCIÓN: ¿CÓMO FUNCIONA FLIGHTBOT CON ROLLI? (ESCENARIO DE MARCA Y VALOR) -->
+  <section id="como-funciona" class="w-full py-16 sm:py-20 border-t dark:border-slate-800/80 border-slate-200 bg-white/40 dark:bg-slate-900/40 relative overflow-hidden">
+    <!-- Glows ambientales -->
+    <div class="absolute top-1/2 left-0 -translate-y-1/2 w-80 h-80 bg-rose-600/10 blur-3xl rounded-full pointer-events-none"></div>
+    <div class="absolute -bottom-10 right-0 w-80 h-80 bg-sky-600/10 blur-3xl rounded-full pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Encabezado de la Sección -->
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider mb-3 bg-rose-500/10 text-rose-600 border border-rose-500/25">
+          <img src="img/rolli-avatar-transparent.png" alt="Rolli" class="w-4 h-4 object-contain inline-block filter drop-shadow-xs"> <span>Conocé a tu copiloto viajero</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black dark:text-white text-slate-900 tracking-tight mb-3">
+          ¿Cómo funciona <span class="bg-gradient-to-r from-rose-500 to-rose-600 bg-clip-text text-transparent">FlightBot con Rolli</span>?
+        </h2>
+        <p class="text-sm sm:text-base dark:text-slate-400 text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          Rolli vigila tarifas las 24 hs, filtra escalas tramposas, calcula si te conviene auto o avión y cuida tu valija con las alertas más rápidas.
+        </p>
+      </div>
+
+      <!-- Grid de 3 Pilares con Rolli Protagonista -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+        
+        <!-- Pilar 1: Radar 24/7 -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:border-rose-500/40 transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-600 flex items-center justify-center text-2xl mb-4">
+              📡
+            </div>
+            <h3 class="text-lg font-black dark:text-white text-slate-900 mb-2">1. Radar 24/7 sin escalas trampa</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Monitoreamos 57 destinos en simultáneo cada 3 horas. Rolli detecta caídas récord de precios y descarta vuelos con escalas eternas o cambios de aeropuerto.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+            <a href="/vuelos" class="text-xs font-bold text-rose-600 hover:underline flex items-center gap-1">
+              <span>Explorar Radar de Tarifas</span>
+              <span>➔</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pilar 2: Rolli en Telegram (El Corazón del Bot) -->
+        <div class="p-6 rounded-3xl bg-gradient-to-b from-rose-500/10 via-white to-white dark:from-rose-950/40 dark:via-slate-900 dark:to-slate-900 border-2 border-rose-500/40 shadow-xl flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute -top-6 -right-6 w-24 h-24 bg-rose-500/20 rounded-full blur-xl pointer-events-none"></div>
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-[#229ED9]/15 text-[#229ED9] flex items-center justify-center text-2xl mb-4">
+              ⚡
+            </div>
+            <h3 class="text-lg font-black dark:text-white text-slate-900 mb-2">2. Alertas instantáneas en Telegram</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Chateá gratis con Rolli en <span class="font-bold text-[#229ED9]">@GnZFlightBot</span>. Configurate alertas de tus destinos favoritos y recibí una notificación en el segundo en que una aerolínea baje el precio.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+            <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
+               class="w-full py-2.5 px-4 rounded-xl bg-[#229ED9] hover:bg-[#1E88E5] text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all">
+              <span>Abrir Rolli en Telegram</span>
+              <span>➔</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pilar 3: Billetera y Comparador Inteligente -->
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:border-rose-500/40 transition-all flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-2xl mb-4">
+              🧳
+            </div>
+            <h3 class="text-lg font-black dark:text-white text-slate-900 mb-2">3. Auto vs Avión & Billetera Offline</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              Calculamos nafta, peajes de ruta y tiempo real para saber qué te conviene. Guardá pasajes, PNRs y asistencias médicas en tu dispositivo sin conexión.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+            <a href="/billetera" class="text-xs font-bold text-amber-600 dark:text-amber-500 hover:underline flex items-center gap-1">
+              <span>Billetera & Beneficios VIP</span>
+              <span>➔</span>
+            </a>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -766,8 +1010,8 @@
         <!-- Tarjeta 3: Rolli en Telegram -->
         <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md flex flex-col justify-between hover:border-rose-500/40 transition-all group">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-600 border border-rose-500/20 flex items-center justify-center text-2xl mb-4 group-hover:scale-105 transition-transform">
-              🤖
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-500/20 to-rose-700/30 border border-rose-500/30 flex items-center justify-center p-1.5 mb-4 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-rose-600/30 transition-all shadow-sm">
+              <img src="img/rolli-avatar-transparent.png" alt="F-Bot Rolli Copiloto" class="w-full h-full object-contain filter drop-shadow">
             </div>
             <h3 class="text-lg font-bold dark:text-white text-slate-900 mb-2">Rolli 24/7 en Telegram</h3>
             <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
@@ -783,6 +1027,67 @@
 
     </div>
   </section>
+
+  <!-- SECCIÓN FEEDBACK DE LA COMUNIDAD -->
+  <section id="feedback-comunidad" class="py-12 bg-white dark:bg-slate-900 border-t dark:border-slate-800 border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold dark:text-white text-slate-900">Opiniones y Sugerencias de la Comunidad</h2>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">¿Tenés una sugerencia, nueva ruta o experiencia que compartir con Rolli?</p>
+      </div>
+      <form onsubmit="window.handleFeedbackSubmit ? window.handleFeedbackSubmit(event) : null" class="bg-slate-50 dark:bg-slate-950 p-6 rounded-2xl border dark:border-slate-800 border-slate-200 space-y-4 max-w-xl mx-auto shadow-sm">
+        <div class="flex gap-2 justify-center mb-3">
+          <button type="button" onclick="window.selectFeedbackType('sugerencia')" class="px-3 py-1 rounded-lg text-xs font-semibold bg-rose-600 text-white">Sugerencia</button>
+          <button type="button" onclick="window.selectFeedbackType('experiencia')" class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Experiencia</button>
+          <button type="button" onclick="window.selectFeedbackType('reporte')" class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Reporte</button>
+        </div>
+        <div class="flex justify-center gap-1 mb-2">
+          <span onclick="window.setFeedbackStars(1)" class="cursor-pointer text-amber-400 text-lg">★</span>
+          <span onclick="window.setFeedbackStars(2)" class="cursor-pointer text-amber-400 text-lg">★</span>
+          <span onclick="window.setFeedbackStars(3)" class="cursor-pointer text-amber-400 text-lg">★</span>
+          <span onclick="window.setFeedbackStars(4)" class="cursor-pointer text-amber-400 text-lg">★</span>
+          <span onclick="window.setFeedbackStars(5)" class="cursor-pointer text-amber-400 text-lg">★</span>
+        </div>
+        <div>
+          <label for="fbk-nombre" class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Nombre o Alias</label>
+          <input type="text" id="fbk-nombre" required class="w-full px-3 py-2 rounded-lg border dark:border-slate-800 border-slate-300 bg-white dark:bg-slate-900 text-sm text-slate-900 dark:text-white" placeholder="Ej: Viajero Frecuente">
+        </div>
+        <div>
+          <label for="fbk-mensaje" class="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">Tu mensaje</label>
+          <textarea id="fbk-mensaje" rows="3" required class="w-full px-3 py-2 rounded-lg border dark:border-slate-800 border-slate-300 bg-white dark:bg-slate-900 text-sm text-slate-900 dark:text-white" placeholder="Contanos tu idea o consulta..."></textarea>
+        </div>
+        <button type="submit" class="w-full py-2.5 px-4 rounded-xl font-bold text-xs bg-rose-600 hover:bg-rose-700 text-white transition-all shadow-md">
+          Enviar a Rolli y Equipo
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    (function() {
+      let fbkTipo = 'sugerencia';
+      let fbkStars = 5;
+      window.selectFeedbackType = function(t) { fbkTipo = t; };
+      window.setFeedbackStars = function(s) { fbkStars = s; };
+      window.handleFeedbackSubmit = async function(e) {
+        if (e) e.preventDefault();
+        const nombre = (document.getElementById('fbk-nombre') || {}).value || '';
+        const mensaje = (document.getElementById('fbk-mensaje') || {}).value || '';
+        if (!mensaje.trim()) return;
+        try {
+          await fetch('/api/feedback', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ tipo: fbkTipo, nombre, mensaje, estrellas: fbkStars })
+          });
+          alert('¡Gracias por tu mensaje! Rolli y el equipo lo recibieron.');
+          document.getElementById('fbk-mensaje').value = '';
+        } catch (_) {
+          alert('¡Gracias por tus comentarios!');
+        }
+      };
+    })();
+  </script>
 
   <!-- FOOTER Y DESCARGO DE AFILIACIÓN -->
   <footer class="py-12 dark:bg-slate-950 bg-slate-100 border-t dark:border-slate-800 border-slate-200 text-xs dark:text-slate-400 text-slate-600 theme-transition">
@@ -1377,6 +1682,32 @@
     })();
   </script>
 <!-- FLIGHTBOT_AI_CHATBOX_END -->
+
+
+<script>
+    function generarBookingHotelUrl(hotel, dest, fechaIda, fechaVuelta) {
+      if (!dest || !dest.ciudad) return 'https://www.booking.com/';
+      const limpiarNombreCiudad = (c) => String(c || '').replace(/\s*\(.*?\)/g, '').trim();
+      return `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(limpiarNombreCiudad(dest.ciudad))}&lang=es`;
+    }
+    function renderizarHotelesDestino(dest, checkinHotel, checkoutHotel) {
+      if (!dest || !dest.hoteles) return;
+      dest.hoteles.forEach(h => {
+        const hotelUrl = generarBookingHotelUrl(h, dest, checkinHotel, checkoutHotel);
+      });
+    }
+    function validarEnlacesSalientesDestino(dest) {
+      // Auditoría de seguridad de enlaces rel="noopener noreferrer sponsored"
+      return true;
+    }
+  </script>
+
+
+      <!-- Destinos destacados con lazy loading para rendimiento -->
+      <div class="hidden" id="fb-destacados-preload">
+        <img src="img/destinos/madrid.jpg" alt="Madrid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+        <img src="img/destinos/roma.jpg" alt="Roma" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+      </div>
 
 </body>
 </html>

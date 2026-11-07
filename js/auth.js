@@ -153,7 +153,7 @@
     const mobileCount = document.getElementById('mobile-tokens-display');
 
     if (navCount) {
-      navCount.textContent = `${estadoTokens.tokens_available} fichas`;
+      navCount.innerHTML = `${estadoTokens.tokens_available}<span class="hidden sm:inline">&nbsp;fichas</span>`;
       if (estadoTokens.tokens_available === 0) {
         navCount.classList.add('text-rose-500');
         navCount.classList.remove('font-bold');

@@ -50,6 +50,14 @@
     if (modeLabel) {
       modeLabel.textContent = isDark ? 'Modo Oscuro' : 'Modo Claro';
     }
+    const mModeIcon = document.getElementById('m-theme-mode-icon');
+    if (mModeIcon) {
+      mModeIcon.textContent = isDark ? '🌙' : '☀️';
+    }
+    const mModeText = document.getElementById('m-theme-mode-text');
+    if (mModeText) {
+      mModeText.textContent = isDark ? 'Modo Oscuro' : 'Modo Claro';
+    }
   }
 
   // 3. Gestión de Moneda Global (NATIVO | ARS | USD)
