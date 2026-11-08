@@ -370,7 +370,7 @@
   }
 
   // 5. Inicialización al cargar el DOM
-  document.addEventListener('DOMContentLoaded', function () {
+  function initRadar() {
     // Si RADAR_DATA tarda en cargarse por defer, esperar
     function boot() {
       if (window.RADAR_DATA && window.RADAR_DATA.length > 0) {
@@ -389,5 +389,11 @@
       }
     }
     boot();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRadar);
+  } else {
+    initRadar();
+  }
 })();

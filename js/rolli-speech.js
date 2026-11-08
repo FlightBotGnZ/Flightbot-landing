@@ -303,7 +303,7 @@
     setInterval(tickCountdown, 1000);
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  function bootRolliSpeech() {
     renderOferta(0);
     renderFlashDealsGrid();
     startRotation();
@@ -313,5 +313,11 @@
       renderOferta(currentDealIdx);
       renderFlashDealsGrid();
     });
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootRolliSpeech);
+  } else {
+    bootRolliSpeech();
+  }
 })();
