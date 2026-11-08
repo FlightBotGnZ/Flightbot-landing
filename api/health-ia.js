@@ -5,7 +5,7 @@
  * Directivas de Arquitectura y Seguridad Defensiva:
  * - Sin exposición de claves ni tokens en la respuesta.
  * - Validación HTTP 200 y medición de latencias por modelo.
- * - Auto-detección de modelos deprecados o degradados.
+ * - Auto-detección de modelos deprecados o degradados con alerta a Telegram.
  */
 
 const CANDIDATOS_FLASH = [
@@ -14,6 +14,37 @@ const CANDIDATOS_FLASH = [
   'gemini-flash-lite-latest',
   'gemini-flash-latest'
 ];
+
+async function notificarTelegramFalla(operativos, fallidos, resultados) {
+  const token = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
+  const chatId = (process.env.TELEGRAM_CHAT_ID || '').trim();
+  if (!token || !chatId) return;
+
+  const esCritico = operativos.length === 0;
+  const titulo = esCritico
+    ? '🚨 <b>ALERTA CRÍTICA FLIGHTBOT WEB · CAÍDA TOTAL DE IA</b>'
+    : '⚠️ <b>GUARDIÁN IA FLIGHTBOT WEB · MODELO DEGRADADO DETECTADO</b>';
+
+  const detalleModelos = resultados.map(r => {
+    const ic = r.ok ? '✅' : (r.status === 404 ? '⚠️' : '❌');
+    return `• ${ic} <code>${r.modelo}</code>: HTTP ${r.status} (${r.latenciaMs} ms)`;
+  }).join('\n');
+
+  const texto = `${titulo}\n\n` +
+    `• <b>Modelos Operativos:</b> <code>${operativos.join(', ') || 'Ninguno'}</code>\n` +
+    `• <b>Modelos con Fallo:</b> <code>${fallidos.join(', ') || 'Ninguno'}</code>\n\n` +
+    `<b>Diagnóstico en la Nube (Vercel):</b>\n${detalleModelos}\n\n` +
+    `<i>Verificación automática de Vercel Cron: ${new Date().toLocaleString('es-AR', { timeZone: 'America/Argentina/Buenos_Aires' })}</i>`;
+
+  try {
+    const url = `https://api.telegram.org/bot${token}/sendMessage`;
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text: texto, parse_mode: 'HTML' })
+    });
+  } catch (_) {}
+}
 
 module.exports = async function handler(req, res) {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -76,6 +107,11 @@ module.exports = async function handler(req, res) {
 
   const estadoGral = operativos.length > 0 ? (fallidos.length === 0 ? 'healthy' : 'degraded') : 'down';
   const statusCode = estadoGral === 'down' ? 503 : 200;
+
+  // Notificar a Telegram si hay degradación o caída
+  if (fallidos.length > 0 || estadoGral === 'down') {
+    await notificarTelegramFalla(operativos, fallidos, resultados);
+  }
 
   return res.status(statusCode).json({
     status: estadoGral,
