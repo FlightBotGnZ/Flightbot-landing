@@ -674,17 +674,103 @@
             </button>
           </div>
 
-          <!-- Selector Pasajeros y Clase -->
-          <div class="flex items-center gap-2 text-xs">
-            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-2xl dark:bg-slate-950/70 bg-slate-100 border dark:border-slate-800 border-slate-200">
-              <span class="text-slate-400">👤</span>
-              <select id="fb-search-pax" class="bg-transparent font-bold dark:text-slate-200 text-slate-700 focus:outline-none cursor-pointer">
-                <option value="1" class="dark:bg-slate-900 text-slate-900 dark:text-white">1 Adulto</option>
-                <option value="2" class="dark:bg-slate-900 text-slate-900 dark:text-white">2 Adultos</option>
-                <option value="3" class="dark:bg-slate-900 text-slate-900 dark:text-white">3 Adultos</option>
-                <option value="4" class="dark:bg-slate-900 text-slate-900 dark:text-white">4 Adultos</option>
-              </select>
+          <!-- Selector Pasajeros (Popover Interactivo con Edades) y Clase -->
+          <div class="flex items-center gap-2 text-xs relative">
+            <!-- Input oculto retrocompatible -->
+            <input type="hidden" id="fb-search-pax" value="1">
+
+            <!-- Botón Disparador del Selector de Pasajeros -->
+            <div class="relative" id="fb-pax-selector-wrap">
+              <button type="button" id="fb-pax-trigger-btn" onclick="window.togglePaxDropdown(event)"
+                      class="flex items-center gap-2 px-3.5 py-1.5 rounded-2xl dark:bg-slate-950/70 bg-slate-100 border dark:border-slate-800 border-slate-200 hover:border-rose-500/50 transition-all cursor-pointer">
+                <span class="text-slate-400" id="fb-pax-trigger-icon">👤</span>
+                <span id="fb-pax-summary-text" class="font-bold dark:text-slate-200 text-slate-700">1 Adulto</span>
+                <span id="fb-pax-arrow" class="text-[10px] text-slate-400 transition-transform duration-200">▼</span>
+              </button>
+
+              <!-- Popover Desplegable de Pasajeros y Edades -->
+              <div id="fb-pax-dropdown" class="hidden absolute right-0 sm:left-0 top-full mt-2 w-80 sm:w-96 z-50 rounded-3xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-2xl p-4 sm:p-5 space-y-4">
+                
+                <!-- Cabecera del Popover -->
+                <div class="flex items-center justify-between pb-2.5 border-b dark:border-slate-800 border-slate-100">
+                  <span class="text-xs font-extrabold uppercase tracking-wider dark:text-white text-slate-900">Pasajeros y Edades</span>
+                  <span id="fb-pax-total-badge" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/10 text-rose-500 border border-rose-500/20">1 pasajero</span>
+                </div>
+
+                <!-- Fila 1: Adultos (18+ años) -->
+                <div class="flex items-center justify-between gap-3">
+                  <div>
+                    <div class="text-xs font-extrabold dark:text-white text-slate-900">Adultos</div>
+                    <div class="text-[11px] text-slate-400 dark:text-slate-500">18 años o más</div>
+                  </div>
+                  <div class="flex items-center gap-2.5">
+                    <button type="button" id="fb-pax-adt-minus" onclick="window.updateAdultsCount(-1)"
+                            class="w-8 h-8 rounded-xl dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 flex items-center justify-center font-black text-sm dark:text-white text-slate-700 hover:border-rose-500 disabled:opacity-35 disabled:pointer-events-none transition-all cursor-pointer">
+                      −
+                    </button>
+                    <span id="fb-pax-adt-count" class="w-5 text-center font-mono font-extrabold text-sm dark:text-white text-slate-900">1</span>
+                    <button type="button" id="fb-pax-adt-plus" onclick="window.updateAdultsCount(1)"
+                            class="w-8 h-8 rounded-xl dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 flex items-center justify-center font-black text-sm dark:text-white text-slate-700 hover:border-rose-500 disabled:opacity-35 disabled:pointer-events-none transition-all cursor-pointer">
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Fila 2: Menores / Niños y Bebés (0 a 17 años) -->
+                <div class="flex items-center justify-between gap-3 pt-2 border-t dark:border-slate-800/60 border-slate-100">
+                  <div>
+                    <div class="text-xs font-extrabold dark:text-white text-slate-900">Menores (Niños y Bebés)</div>
+                    <div class="text-[11px] text-slate-400 dark:text-slate-500">De 0 a 17 años (edad al finalizar el viaje)</div>
+                  </div>
+                  <div class="flex items-center gap-2.5">
+                    <button type="button" id="fb-pax-chd-minus" onclick="window.updateMinorsCount(-1)"
+                            class="w-8 h-8 rounded-xl dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 flex items-center justify-center font-black text-sm dark:text-white text-slate-700 hover:border-rose-500 disabled:opacity-35 disabled:pointer-events-none transition-all cursor-pointer">
+                      −
+                    </button>
+                    <span id="fb-pax-chd-count" class="w-5 text-center font-mono font-extrabold text-sm dark:text-white text-slate-900">0</span>
+                    <button type="button" id="fb-pax-chd-plus" onclick="window.updateMinorsCount(1)"
+                            class="w-8 h-8 rounded-xl dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 flex items-center justify-center font-black text-sm dark:text-white text-slate-700 hover:border-rose-500 disabled:opacity-35 disabled:pointer-events-none transition-all cursor-pointer">
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Contenedor Dinámico de Selectores de Edad por cada Menor -->
+                <div id="fb-pax-minors-ages-wrap" class="hidden pt-2 border-t dark:border-slate-800/60 border-slate-100 space-y-2.5">
+                  <div class="text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                    Indicá la edad de cada menor al momento de volar:
+                  </div>
+                  <div id="fb-pax-minors-ages-list" class="space-y-2 max-h-48 overflow-y-auto pr-1 fb-custom-scrollbar"></div>
+                </div>
+
+                <!-- Alerta de Validación de Bebés en Brazos (Máximo 1 por Adulto) -->
+                <div id="fb-pax-infant-warning" class="hidden p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[11px] text-amber-500 dark:text-amber-400 font-semibold leading-snug">
+                  ⚠️ Por seguridad aérea, solo puede viajar 1 bebé en falda (menor de 2 años) por cada adulto.
+                </div>
+
+                <!-- Mini Leyenda Aclaratoria Tarifaria IATA -->
+                <div class="p-3 rounded-2xl dark:bg-slate-950/90 bg-slate-50 border dark:border-slate-800/80 border-slate-200/80 text-[11px] dark:text-slate-400 text-slate-600 space-y-1 leading-relaxed">
+                  <div class="font-bold dark:text-slate-200 text-slate-800 flex items-center gap-1.5">
+                    <span>ℹ️</span>
+                    <span>Regla Tarifaria de Aerolíneas:</span>
+                  </div>
+                  <p>• <strong>0 a 23 meses (Bebés):</strong> Viajan en falda sin asiento y abonan solo tasas (~10%).</p>
+                  <p>• <strong>2 a 11 años (Niños):</strong> Ocupan asiento propio con tarifa menor.</p>
+                  <p>• <strong>A partir de los 12 años (Jóvenes):</strong> En aviación comercial ya abonan la misma tarifa que un adulto.</p>
+                </div>
+
+                <!-- Botón Confirmar / Cerrar -->
+                <div class="pt-1 flex justify-end">
+                  <button type="button" onclick="window.closePaxDropdown()"
+                          class="w-full py-2 px-4 rounded-xl text-xs font-extrabold text-white shadow-sm hover:brightness-110 transition-all cursor-pointer"
+                          style="background: var(--brand-gradient);">
+                    Aplicar Pasajeros
+                  </button>
+                </div>
+
+              </div>
             </div>
+
             <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-2xl dark:bg-slate-950/70 bg-slate-100 border dark:border-slate-800 border-slate-200">
               <span class="text-slate-400">💺</span>
               <select id="fb-search-cabin" class="bg-transparent font-bold dark:text-slate-200 text-slate-700 focus:outline-none cursor-pointer">
@@ -3490,6 +3576,215 @@
       const KIWI_AFFIL_ID = 'travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785';
       let flightSearchMode = 'roundtrip';
 
+      // ==============================================================================
+      // ESTADO Y CONTROLADOR INTERACTIVO DE PASAJEROS Y EDADES (ESTÁNDAR IATA)
+      // ==============================================================================
+      const paxState = {
+        adults: 1,       // 18+ años (mínimo 1, máximo 9 total)
+        minorAges: []    // Array con la edad exacta (0 a 17) de cada menor
+      };
+
+      function getPaxBreakdown() {
+        let infants = 0;  // 0 a 1 año (en falda, ~10% tarifa)
+        let children = 0; // 2 a 11 años (con asiento, ~80% tarifa)
+        let youths = 0;   // 12 a 17 años (tarifa adulto 100%)
+
+        paxState.minorAges.forEach(age => {
+          const a = parseInt(age, 10);
+          if (a < 2) infants++;
+          else if (a <= 11) children++;
+          else youths++;
+        });
+
+        const totalPax = paxState.adults + paxState.minorAges.length;
+        // Multiplicador tarifario ponderado real de aerolíneas
+        const weightedMultiplier = paxState.adults + youths + (children * 0.80) + (infants * 0.10);
+
+        let summaryShort = `${paxState.adults} ${paxState.adults === 1 ? 'Adulto' : 'Adultos'}`;
+        if (paxState.minorAges.length > 0) {
+          const parts = [`${paxState.adults} Ad`];
+          const chdPlusYouth = children + youths;
+          if (chdPlusYouth > 0) parts.push(`${chdPlusYouth} ${chdPlusYouth === 1 ? 'Niño' : 'Niños'}`);
+          if (infants > 0) parts.push(`${infants} ${infants === 1 ? 'Bebé' : 'Bebés'}`);
+          summaryShort = `${totalPax} Pasajeros (${parts.join(', ')})`;
+        }
+
+        return {
+          adults: paxState.adults,
+          youths: youths,
+          children: children,
+          infants: infants,
+          minorsTotal: paxState.minorAges.length,
+          minorAges: [...paxState.minorAges],
+          totalPax: totalPax,
+          weightedMultiplier: weightedMultiplier,
+          summaryShort: summaryShort
+        };
+      }
+
+      function renderMinorsAgeSelectors() {
+        const wrap = document.getElementById('fb-pax-minors-ages-wrap');
+        const list = document.getElementById('fb-pax-minors-ages-list');
+        if (!wrap || !list) return;
+
+        if (paxState.minorAges.length === 0) {
+          wrap.classList.add('hidden');
+          list.innerHTML = '';
+          return;
+        }
+
+        wrap.classList.remove('hidden');
+        list.innerHTML = paxState.minorAges.map((age, idx) => {
+          const ageNum = parseInt(age, 10);
+          let badgeHtml = '';
+          if (ageNum < 2) {
+            badgeHtml = '<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-sky-500/10 text-sky-400 border border-sky-500/20">👶 Bebé en falda (Sin asiento)</span>';
+          } else if (ageNum <= 11) {
+            badgeHtml = '<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">🧒 Tarifa Niño (Ocupa asiento)</span>';
+          } else {
+            badgeHtml = '<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">🧑 Abona tarifa Adulto (12+ años)</span>';
+          }
+
+          let optionsHtml = '';
+          for (let a = 0; a <= 17; a++) {
+            const label = a === 0 ? 'Menos de 1 año (0 años)' : (a === 1 ? '1 año (Bebé en brazos)' : `${a} años`);
+            optionsHtml += `<option value="${a}" ${a === ageNum ? 'selected' : ''} class="dark:bg-slate-900 text-slate-900 dark:text-white">${label}</option>`;
+          }
+
+          return `
+            <div class="p-2.5 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col gap-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-[11px] font-bold dark:text-slate-300 text-slate-700">Menor #${idx + 1}</span>
+                ${badgeHtml}
+              </div>
+              <select onchange="window.updateMinorAgeAt(${idx}, this.value)"
+                      class="w-full text-xs font-bold rounded-xl px-2.5 py-1.5 dark:bg-slate-900 bg-white border dark:border-slate-700 border-slate-300 dark:text-white text-slate-800 focus:outline-none focus:ring-1 focus:ring-rose-500 cursor-pointer">
+                ${optionsHtml}
+              </select>
+            </div>
+          `;
+        }).join('');
+      }
+
+      function syncPaxUI(showInfantWarning) {
+        const bd = getPaxBreakdown();
+
+        const hiddenInput = document.getElementById('fb-search-pax');
+        if (hiddenInput) hiddenInput.value = String(bd.totalPax);
+
+        const adtCountEl = document.getElementById('fb-pax-adt-count');
+        const chdCountEl = document.getElementById('fb-pax-chd-count');
+        if (adtCountEl) adtCountEl.textContent = String(bd.adults);
+        if (chdCountEl) chdCountEl.textContent = String(bd.minorsTotal);
+
+        const adtMinus = document.getElementById('fb-pax-adt-minus');
+        const adtPlus = document.getElementById('fb-pax-adt-plus');
+        const chdMinus = document.getElementById('fb-pax-chd-minus');
+        const chdPlus = document.getElementById('fb-pax-chd-plus');
+
+        if (adtMinus) adtMinus.disabled = bd.adults <= 1;
+        if (adtPlus) adtPlus.disabled = bd.totalPax >= 9;
+        if (chdMinus) chdMinus.disabled = bd.minorsTotal <= 0;
+        if (chdPlus) chdPlus.disabled = bd.totalPax >= 9;
+
+        const summaryEl = document.getElementById('fb-pax-summary-text');
+        const iconEl = document.getElementById('fb-pax-trigger-icon');
+        const badgeEl = document.getElementById('fb-pax-total-badge');
+
+        if (summaryEl) summaryEl.textContent = bd.summaryShort;
+        if (iconEl) iconEl.textContent = bd.totalPax > 1 ? '👥' : '👤';
+        if (badgeEl) badgeEl.textContent = `${bd.totalPax} ${bd.totalPax === 1 ? 'pasajero' : 'pasajeros'}`;
+
+        const warnEl = document.getElementById('fb-pax-infant-warning');
+        if (warnEl) {
+          if (showInfantWarning) warnEl.classList.remove('hidden');
+          else warnEl.classList.add('hidden');
+        }
+
+        renderMinorsAgeSelectors();
+      }
+
+      window.togglePaxDropdown = function(e) {
+        if (e) e.stopPropagation();
+        const dd = document.getElementById('fb-pax-dropdown');
+        const arrow = document.getElementById('fb-pax-arrow');
+        if (!dd) return;
+        const isHidden = dd.classList.contains('hidden');
+        if (isHidden) {
+          dd.classList.remove('hidden');
+          if (arrow) arrow.style.transform = 'rotate(180deg)';
+          syncPaxUI(false);
+        } else {
+          window.closePaxDropdown();
+        }
+      };
+
+      window.closePaxDropdown = function() {
+        const dd = document.getElementById('fb-pax-dropdown');
+        const arrow = document.getElementById('fb-pax-arrow');
+        if (dd) dd.classList.add('hidden');
+        if (arrow) arrow.style.transform = 'rotate(0deg)';
+      };
+
+      window.updateAdultsCount = function(delta) {
+        const nextAdults = paxState.adults + delta;
+        const totalAfter = nextAdults + paxState.minorAges.length;
+        if (nextAdults < 1 || totalAfter > 9) return;
+
+        paxState.adults = nextAdults;
+
+        // Validar que no haya más bebés (<2 años) que adultos
+        let infantsCount = paxState.minorAges.filter(a => a < 2).length;
+        let warningTriggered = false;
+        if (infantsCount > paxState.adults) {
+          warningTriggered = true;
+          for (let i = paxState.minorAges.length - 1; i >= 0 && infantsCount > paxState.adults; i--) {
+            if (paxState.minorAges[i] < 2) {
+              paxState.minorAges[i] = 2; // Ajustar a niño de 2 años con asiento
+              infantsCount--;
+            }
+          }
+        }
+        syncPaxUI(warningTriggered);
+      };
+
+      window.updateMinorsCount = function(delta) {
+        if (delta > 0) {
+          if (paxState.adults + paxState.minorAges.length >= 9) return;
+          // Por defecto inicializar nuevo menor en 6 años (Niño con asiento)
+          paxState.minorAges.push(6);
+        } else if (delta < 0) {
+          if (paxState.minorAges.length <= 0) return;
+          paxState.minorAges.pop();
+        }
+        syncPaxUI(false);
+      };
+
+      window.updateMinorAgeAt = function(idx, newAgeVal) {
+        const age = parseInt(newAgeVal, 10);
+        if (isNaN(age) || idx < 0 || idx >= paxState.minorAges.length) return;
+
+        // Verificar límite de 1 bebé en brazos (<2 años) por adulto
+        if (age < 2) {
+          const currentInfantsExcludingThis = paxState.minorAges.reduce((acc, a, i) => acc + (i !== idx && a < 2 ? 1 : 0), 0);
+          if (currentInfantsExcludingThis + 1 > paxState.adults) {
+            paxState.minorAges[idx] = 2;
+            syncPaxUI(true);
+            return;
+          }
+        }
+
+        paxState.minorAges[idx] = age;
+        syncPaxUI(false);
+      };
+
+      // Cerrar popover de pasajeros al hacer clic fuera
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('#fb-pax-selector-wrap')) {
+          window.closePaxDropdown();
+        }
+      });
+
       // Inicializar fechas por defecto (Ida: +14 días, Vuelta: +21 días)
       function initSearchDates() {
         const today = new Date();
@@ -3767,7 +4062,9 @@
       function construirFeedVuelos(originIata, destIata, departDate, returnDate, pax, cabin) {
         originIata = (originIata || 'BUE').toUpperCase();
         destIata = (destIata || '').toUpperCase();
-        const paxNum = parseInt(pax, 10) || 1;
+        const bd = getPaxBreakdown();
+        const paxNum = bd.totalPax || parseInt(pax, 10) || 1;
+        const paxMult = bd.weightedMultiplier || paxNum;
 
         // Verificar si coincide con alguno de los 57 destinos del Radar
         let matchRadar = null;
@@ -3781,15 +4078,22 @@
 
         const hubData = AIRPORT_HUB_AIRLINES[destIata] || (matchRadar && AIRPORT_HUB_AIRLINES[matchRadar.iata]) || generarHubGenerico(destIata);
 
-        // URLs base para enlaces específicos
+        // URLs base para enlaces específicos con desglose de pasajeros y edades
         const isRound = flightSearchMode === 'roundtrip' && Boolean(returnDate);
+        const adtForAirlines = bd.adults + bd.youths; // 12+ años abonan como adulto en IATA
+        const paxGfSuffix = (bd.children > 0 || bd.infants > 0 || adtForAirlines > 1)
+          ? `%20for%20${adtForAirlines}%20adults${bd.children > 0 ? '%20' + bd.children + '%20children' : ''}${bd.infants > 0 ? '%20' + bd.infants + '%20infants' : ''}`
+          : '';
         const qGf = isRound
-          ? `Flights%20to%20${destIata}%20from%20${originIata}%20on%20${departDate}%20through%20${returnDate}`
-          : `Flights%20to%20${destIata}%20from%20${originIata}%20on%20${departDate}`;
+          ? `Flights%20to%20${destIata}%20from%20${originIata}%20on%20${departDate}%20through%20${returnDate}${paxGfSuffix}`
+          : `Flights%20to%20${destIata}%20from%20${originIata}%20on%20${departDate}${paxGfSuffix}`;
+
+        const kiwiPaxParams = `&adults=${adtForAirlines}&children=${bd.children}&infants=${bd.infants}`;
+        const despegarPaxParams = `&adults=${ bd.adults }${bd.minorAges.length > 0 ? '&children=' + bd.minorAges.join(',') : ''}`;
 
         const baseGfUrl = `https://www.google.com/travel/flights?q=${qGf}&hl=es`;
-        const baseKiwiUrl = `https://www.kiwi.com/deep?from=${originIata}&to=${destIata}&departure=${departDate}${isRound ? '&return=' + returnDate : ''}&lang=es&affilid=${KIWI_AFFIL_ID}`;
-        const baseDespegarUrl = `https://www.despegar.com.ar/vuelos/${originIata.toLowerCase()}/${destIata.toLowerCase()}?from=${originIata}&to=${destIata}&departureDate=${departDate}${isRound ? '&returnDate=' + returnDate : ''}`;
+        const baseKiwiUrl = `https://www.kiwi.com/deep?from=${originIata}&to=${destIata}&departure=${departDate}${isRound ? '&return=' + returnDate : ''}${kiwiPaxParams}&lang=es&affilid=${KIWI_AFFIL_ID}`;
+        const baseDespegarUrl = `https://www.despegar.com.ar/vuelos/${originIata.toLowerCase()}/${destIata.toLowerCase()}?from=${originIata}&to=${destIata}&departureDate=${departDate}${isRound ? '&returnDate=' + returnDate : ''}${despegarPaxParams}`;
         const baseTgUrl = `https://t.me/GnZFlightBot?start=alerta_${destIata}_${departDate}`;
 
         // Determinar precios base
@@ -3829,8 +4133,8 @@
             esDirecto: hubData.directo
           } : null,
           equipaje: hubData.equipaje,
-          precio_usd: Math.round(baseUsd * paxNum),
-          precio_ars: Math.round(baseArs * paxNum),
+          precio_usd: Math.round(baseUsd * paxMult),
+          precio_ars: Math.round(baseArs * paxMult),
           url_google: `${baseGfUrl}&curr=USD`,
           url_kiwi: baseKiwiUrl,
           url_despegar: baseDespegarUrl,
@@ -3839,8 +4143,8 @@
 
         // Tarjeta 2: ⚡ Vuelo Más Rápido (Directo / Non-stop)
         const altRapida = hubData.alternativas && hubData.alternativas[0] ? hubData.alternativas[0] : hubData;
-        const precioUsdRapido = Math.round(baseUsd * (altRapida.mult || 1.1) * paxNum);
-        const precioArsRapido = Math.round(baseArs * (altRapida.mult || 1.1) * paxNum);
+        const precioUsdRapido = Math.round(baseUsd * (altRapida.mult || 1.1) * paxMult);
+        const precioArsRapido = Math.round(baseArs * (altRapida.mult || 1.1) * paxMult);
 
         top3.push({
           puesto: 2,
@@ -3875,8 +4179,8 @@
 
         // Tarjeta 3: 🧳 Mejor Horario / Equipaje Completo
         const altEquipaje = (hubData.alternativas && hubData.alternativas[1]) || (hubData.alternativas && hubData.alternativas[0]) || hubData;
-        const precioUsdEquipaje = Math.round(baseUsd * (altEquipaje.mult ? altEquipaje.mult * 1.12 : 1.25) * paxNum);
-        const precioArsEquipaje = Math.round(baseArs * (altEquipaje.mult ? altEquipaje.mult * 1.12 : 1.25) * paxNum);
+        const precioUsdEquipaje = Math.round(baseUsd * (altEquipaje.mult ? altEquipaje.mult * 1.12 : 1.25) * paxMult);
+        const precioArsEquipaje = Math.round(baseArs * (altEquipaje.mult ? altEquipaje.mult * 1.12 : 1.25) * paxMult);
 
         top3.push({
           puesto: 3,
@@ -3918,8 +4222,8 @@
         for (let i = 0; i < 5; i++) {
           const aero = aerolineasNombres[i % aerolineasNombres.length];
           const multFila = 0.95 + (i * 0.08);
-          const pUsdFila = Math.round(baseUsd * multFila * paxNum);
-          const pArsFila = Math.round(baseArs * multFila * paxNum);
+          const pUsdFila = Math.round(baseUsd * multFila * paxMult);
+          const pArsFila = Math.round(baseArs * multFila * paxMult);
           const esDirecta = (i % 2 === 0) && hubData.directo;
 
           alternativasTabla.push({
@@ -3955,7 +4259,8 @@
           departDate: departDate,
           returnDate: returnDate,
           isRound: isRound,
-          pax: paxNum
+          pax: paxNum,
+          paxSummary: bd.summaryShort
         };
       }
 
@@ -3972,7 +4277,8 @@
         if (originLabel) originLabel.textContent = feedData.originIata;
         if (destLabel) destLabel.textContent = feedData.destIata;
         if (subtitle) {
-          subtitle.textContent = `${feedData.isRound ? 'Ida y Vuelta (' + feedData.departDate + ' al ' + feedData.returnDate + ')' : 'Solo Ida (' + feedData.departDate + ')'} · ${feedData.pax} ${feedData.pax === 1 ? 'Pasajero' : 'Pasajeros'} · Tarifas con impuestos incluidos`;
+          const paxLabel = feedData.paxSummary || `${feedData.pax} ${feedData.pax === 1 ? 'Pasajero' : 'Pasajeros'}`;
+          subtitle.textContent = `${feedData.isRound ? 'Ida y Vuelta (' + feedData.departDate + ' al ' + feedData.returnDate + ')' : 'Solo Ida (' + feedData.departDate + ')'} · ${paxLabel} · Tarifas con impuestos incluidos`;
         }
 
         if (shortcutRadar) {
@@ -4174,21 +4480,28 @@
         const originIata = extraerIataOCiudad(originVal) || 'BUE';
         const destIata = extraerIataOCiudad(destVal);
         const isRound = flightSearchMode === 'roundtrip';
+        const bd = getPaxBreakdown();
+        const adtForAirlines = bd.adults + bd.youths;
 
         // Redirección directa únicamente si el usuario hizo clic explícito en los botones inferiores de metabuscadores
         if (metabuscador === 'google_flights') {
+          const paxGfSuffix = (bd.children > 0 || bd.infants > 0 || adtForAirlines > 1)
+            ? `%20for%20${adtForAirlines}%20adults${bd.children > 0 ? '%20' + bd.children + '%20children' : ''}${bd.infants > 0 ? '%20' + bd.infants + '%20infants' : ''}`
+            : '';
           const qParam = isRound && returnVal
-            ? `Flights%20to%20${encodeURIComponent(destIata)}%20from%20${encodeURIComponent(originIata)}%20on%20${departVal}%20through%20${returnVal}&hl=es`
-            : `Flights%20to%20${encodeURIComponent(destIata)}%20from%20${encodeURIComponent(originIata)}%20on%20${departVal}&hl=es`;
+            ? `Flights%20to%20${encodeURIComponent(destIata)}%20from%20${encodeURIComponent(originIata)}%20on%20${departVal}%20through%20${returnVal}${paxGfSuffix}&hl=es`
+            : `Flights%20to%20${encodeURIComponent(destIata)}%20from%20${encodeURIComponent(originIata)}%20on%20${departVal}${paxGfSuffix}&hl=es`;
           window.open(`https://www.google.com/travel/flights?q=${qParam}`, '_blank', 'noopener,noreferrer');
           return;
         } else if (metabuscador === 'kiwi') {
           const retParam = isRound && returnVal ? `&return=${returnVal}` : '';
-          window.open(`https://www.kiwi.com/deep?from=${encodeURIComponent(originIata)}&to=${encodeURIComponent(destIata)}&departure=${departVal}${retParam}&lang=es&affilid=${KIWI_AFFIL_ID}`, '_blank', 'noopener,noreferrer');
+          const kiwiPaxParams = `&adults=${adtForAirlines}&children=${bd.children}&infants=${bd.infants}`;
+          window.open(`https://www.kiwi.com/deep?from=${encodeURIComponent(originIata)}&to=${encodeURIComponent(destIata)}&departure=${departVal}${retParam}${kiwiPaxParams}&lang=es&affilid=${KIWI_AFFIL_ID}`, '_blank', 'noopener,noreferrer');
           return;
         } else if (metabuscador === 'despegar') {
           const retParam = isRound && returnVal ? `&returnDate=${returnVal}` : '';
-          window.open(`https://www.despegar.com.ar/vuelos/${originIata.toLowerCase()}/${destIata.toLowerCase()}?from=${originIata.toUpperCase()}&to=${destIata.toUpperCase()}&departureDate=${departVal}${retParam}`, '_blank', 'noopener,noreferrer');
+          const despegarPaxParams = `&adults=${bd.adults}${bd.minorAges.length > 0 ? '&children=' + bd.minorAges.join(',') : ''}`;
+          window.open(`https://www.despegar.com.ar/vuelos/${originIata.toLowerCase()}/${destIata.toLowerCase()}?from=${originIata.toUpperCase()}&to=${destIata.toUpperCase()}&departureDate=${departVal}${retParam}${despegarPaxParams}`, '_blank', 'noopener,noreferrer');
           return;
         }
 
