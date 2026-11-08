@@ -340,11 +340,18 @@
     if (!heroSelect) return;
 
     const data = getRadarData();
-    let optionsHtml = '<option value="todos">🌐 Todos los 38 destinos monitoreados</option>';
+    const totalDestinos = Array.isArray(data) ? data.length : 0;
+    let optionsHtml = `<option value="todos">🌐 Todos los ${totalDestinos} destinos monitoreados</option>`;
     data.forEach(d => {
       optionsHtml += `<option value="${d.id}">${d.iata} · ${limpiarNombreCiudad(d.ciudad)} (${d.pais})</option>`;
     });
     heroSelect.innerHTML = optionsHtml;
+
+    // Actualizar contador dinámico en el badge del radar si existe en la página
+    const radarBadgeCount = document.getElementById('radar-destinos-total-count');
+    if (radarBadgeCount && totalDestinos > 0) {
+      radarBadgeCount.textContent = totalDestinos;
+    }
 
     if (heroBtn) {
       heroBtn.addEventListener('click', function () {
