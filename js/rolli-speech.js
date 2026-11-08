@@ -134,9 +134,14 @@
         speechEl.style.opacity = '1';
       }, 150);
     }
-    const badgeEl = document.getElementById('rolli-bubble-badge');
-    if (badgeEl) {
-      badgeEl.textContent = `Oportunidad ${currentDealIdx + 1} de ${ROLLI_DEALS.length}`;
+    const badgeTextEl = document.getElementById('rolli-bubble-badge-text');
+    if (badgeTextEl) {
+      badgeTextEl.textContent = `Oportunidad ${currentDealIdx + 1} de ${ROLLI_DEALS.length}`;
+    } else {
+      const badgeEl = document.getElementById('rolli-bubble-badge');
+      if (badgeEl) {
+        badgeEl.textContent = `Oportunidad ${currentDealIdx + 1} de ${ROLLI_DEALS.length}`;
+      }
     }
 
     // 2. Tarjeta activa de Rolli

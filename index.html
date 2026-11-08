@@ -497,7 +497,14 @@
             </svg>
           </div>
           
-          <span class="mt-1 text-[10px] font-bold text-rose-500 uppercase tracking-widest animate-pulse">¡Hablame! 💬</span>
+          <!-- Botón Interactivo: Abrir Chat IA con Rolli -->
+          <button type="button"
+                  onclick="event.stopPropagation(); window.toggleFlightBotChat ? window.toggleFlightBotChat(true) : null"
+                  class="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold text-white bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-600 shadow-md shadow-rose-900/30 hover:scale-105 active:scale-95 transition-all cursor-pointer group/btn"
+                  title="Chatear en vivo con Rolli (Copiloto IA)">
+            <span class="animate-pulse">¡Hablame!</span>
+            <span class="text-xs group-hover/btn:rotate-12 transition-transform">💬</span>
+          </button>
         </div>
 
         <!-- Diálogo / Speech Bubble de Rolli -->
@@ -507,7 +514,10 @@
               <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
               <span class="text-[11px] font-black uppercase tracking-wider text-rose-600">Rolli Flightbot te aconseja:</span>
             </div>
-            <span id="rolli-bubble-badge" class="text-[9px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 font-bold border border-emerald-500/25">Oportunidad 1 de 6</span>
+            <span id="rolli-bubble-badge" class="shrink-0 whitespace-nowrap inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-500 dark:text-emerald-400 border border-emerald-500/30 shadow-xs">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span id="rolli-bubble-badge-text">Oportunidad 1 de 6</span>
+            </span>
           </div>
           <p id="rolli-speech-text" class="text-xs sm:text-sm font-semibold dark:text-slate-200 text-slate-800 leading-relaxed transition-opacity duration-300">
             "¡Buenas! Soy Rolli, tu copiloto de viajes. Analicé más de 30 destinos hoy y estas son las caídas de precio más salvajes."
@@ -519,8 +529,6 @@
               <button type="button" onclick="window.cambiarOfertaRolli ? window.cambiarOfertaRolli(1) : null" class="w-7 h-7 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-rose-500 hover:text-white flex items-center justify-center font-bold transition-all text-xs cursor-pointer" title="Siguiente oferta">▶</button>
             </div>
           </div>
-          <!-- Rabillo de la burbuja (apunta hacia Rolli en desktop) -->
-          <div class="hidden sm:block absolute top-10 -left-2.5 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-r-[10px] border-r-white dark:border-r-slate-900"></div>
         </div>
       </div>
 
