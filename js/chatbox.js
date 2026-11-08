@@ -453,7 +453,8 @@
       mendoza: ['mendoza', 'valle de uco', 'lujan de cuyo', 'maipu', 'malbec', 'aconcagua', 'cacheuta'],
       iguazu: ['iguazu', 'iguazú', 'cataratas', 'garganta del diablo', 'puerto iguazu', 'foz'],
       reikiavik: ['reikiavik', 'reykjavik', 'islandia', 'auroras', 'aurora boreal', 'blue lagoon', 'circulo dorado'],
-      oslo: ['oslo', 'noruega', 'fiordos', 'munch', 'vigeland', 'flam', 'bergen']
+      oslo: ['oslo', 'noruega', 'fiordos', 'munch', 'vigeland', 'flam', 'bergen'],
+      ushuaia: ['ushuaia', 'tierra del fuego', 'fin del mundo', 'canal beagle', 'lapataia']
     };
 
     for (const [key, aliases] of Object.entries(aliasMap)) {
@@ -478,6 +479,31 @@
     }
 
     const guia = detectarGuia(t);
+    if (/(ushuaia|tierra del fuego|fin del mundo)/.test(t)) {
+      return {
+        respuesta: "🐧 <b>Ushuaia & Tierra del Fuego en Auto (Travesía de 3 Días por RN 3):</b><br><br>" +
+          "• 🗺️ <b>Travesía Terrestre (~3.080 km por tramo):</b> Es 100% realizable pero <b>obligatorio dividirlo en 3 días (2 noches en ruta)</b>:<br>" +
+          "  - <b>Día 1:</b> Buenos Aires ➔ Las Grutas o Puerto Madryn (Noche 1 · Km 1.140 / 1.350).<br>" +
+          "  - <b>Día 2:</b> Madryn ➔ Comodoro Rivadavia o San Julián (Noche 2 · Km 1.780 / 2.100).<br>" +
+          "  - <b>Día 3:</b> San Julián ➔ Río Gallegos ➔ Paso Monte Aymond ➔ Tránsito por Chile ➔ <b>Ferry TABSA en Primera Angostura (Estrecho de Magallanes)</b> ➔ Paso San Sebastián ➔ Río Grande ➔ Ushuaia.<br><br>" +
+          "• 📋 <b>Documentación OBLIGATORIA:</b> DNI físico tarjeta vigente (Chile no acepta DNI digital), Cédula verde/azul, seguro con extensión Mercosur/Chile (RCI), grabado de cristales, Partida de nacimiento de menores y <b>CVI de SENASA obligatorio para mascotas</b>.<br>" +
+          "• ⛽ <b>Combustible:</b> Exento de ICL/IDC al sur de Río Colorado (~20-25% más barato).",
+        quick_replies: ["🚗 Hoja de Ruta Ushuaia", "⛴️ Ferry TABSA Magallanes", "🛂 Documentación Chile", "✈️ Vuelos a Ushuaia"]
+      };
+    }
+
+    if (/(realizar ese viaje nuevamente|repetir (ese )?viaje|hacerlo de nuevo|ese mismo viaje|mismo viaje|otra vez ese viaje)/.test(t)) {
+      const hist = typeof loadHistory === 'function' ? loadHistory() : [];
+      const histStr = hist.map(h => String(h.text || '')).join(' ').toLowerCase();
+      let extra = "en nuestro Planificador de Rutas.";
+      if (histStr.includes('ushuaia') || histStr.includes('tierra del fuego')) {
+        extra = "a <b>Ushuaia en auto (3 días de viaje)</b> con el cruce en la barcaza TABSA y la documentación de frontera de Chile.";
+      }
+      return {
+        respuesta: `🚗 <b>Planificación del Mismo Viaje:</b><br><br>¡Totalmente factible! Podés recalcular tu hoja de ruta completa para volver a hacer el recorrido ${extra}<br><br>¿Querés chequear la documentación de aduana, estaciones de combustible o comparar con volar en avión?`,
+        quick_replies: ["📋 Documentación de Frontera", "⛽ Nafta y Peajes", "🏨 Paradas para Dormir", "✈️ Cotizar Vuelos"]
+      };
+    }
 
     if (/(bebe|bebé|cochecito|paragüitas|moises|mamadera|infante)/.test(t)) {
       return {
@@ -537,9 +563,14 @@
     const text = String(rawText || '').trim();
     if (!text) return;
 
-    // Capturar historial reciente para mantener coherencia conversacional
+    // Capturar historial reciente para mantener coherencia conversacional (filtrando saludos iniciales huérfanos)
     const currentHist = typeof loadHistory === 'function' ? loadHistory() : [];
-    const recentHistory = currentHist.slice(-6).map(h => ({
+    // Descartar el saludo genérico inicial si es el primer elemento
+    const turnosFiltrados = currentHist.filter((h, idx) => {
+      if (idx === 0 && h.role !== 'user') return false;
+      return Boolean(h && h.text && String(h.text).trim());
+    });
+    const recentHistory = turnosFiltrados.slice(-6).map(h => ({
       role: h.role === 'user' ? 'user' : 'model',
       text: String(h.text || '').replace(/<[^>]*>/g, '').slice(0, 300)
     }));
