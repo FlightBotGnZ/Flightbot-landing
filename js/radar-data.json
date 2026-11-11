@@ -7,7 +7,7 @@
     "iata": "BRC",
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
-    "precio_desde": "$ 137.460 ARS (US$ 102)",
+    "precio_desde": "$ 141.059 ARS (US$ 104)",
     "comando_tg": "/bariloche",
     "resena": "Capital nacional del turismo de aventura: majestuosos lagos glaciares, el Cerro Campanario con una de las 7 mejores vistas del planeta, circuito de chocolaterías y el inicio de la Ruta de los 7 Lagos.",
     "vuelos": [
@@ -15,43 +15,43 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP/EZE ➔ BRC)",
-        "fechas": "07 Ene - 14 Ene 2027",
-        "noches": 7,
-        "precio": "$ 137.460 ARS (US$ 102 aprox)",
+        "fechas": "27 Feb - 04 Mar 2027",
+        "noches": 5,
+        "precio": "$ 141.059 ARS (US$ 104 aprox)",
         "destacado": "Radar Planificado Verano",
-        "fecha_ida": "2027-01-07",
-        "fecha_vuelta": "2027-01-14",
+        "fecha_ida": "2027-02-27",
+        "fecha_vuelta": "2027-03-04",
         "actualizado_en_vivo": true,
-        "precio_ars": 137460,
-        "precio_usd": 102
+        "precio_ars": 141059,
+        "precio_usd": 104
       },
       {
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ BRC)",
-        "fechas": "13 Ene - 20 Ene 2027",
-        "noches": 7,
-        "precio": "$ 157.267 ARS (US$ 116 aprox)",
+        "fechas": "26 Feb - 04 Mar 2027",
+        "noches": 6,
+        "precio": "$ 171.710 ARS (US$ 127 aprox)",
         "destacado": "3 frecuencias diarias en verano",
-        "fecha_ida": "2027-01-13",
-        "fecha_vuelta": "2027-01-20",
+        "fecha_ida": "2027-02-26",
+        "fecha_vuelta": "2027-03-04",
         "actualizado_en_vivo": true,
-        "precio_ars": 157267,
-        "precio_usd": 116
+        "precio_ars": 171710,
+        "precio_usd": 127
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ BRC)",
-        "fechas": "11 Ene - 18 Ene 2027",
-        "noches": 7,
-        "precio": "$ 172.686 ARS (US$ 128 aprox)",
+        "fechas": "15 Mar - 24 Mar 2027",
+        "noches": 9,
+        "precio": "$ 175.513 ARS (US$ 130 aprox)",
         "destacado": "Equipaje de mano y bodega incluido",
-        "fecha_ida": "2027-01-11",
-        "fecha_vuelta": "2027-01-18",
+        "fecha_ida": "2027-03-15",
+        "fecha_vuelta": "2027-03-24",
         "actualizado_en_vivo": true,
-        "precio_ars": 172686,
-        "precio_usd": 128
+        "precio_ars": 175513,
+        "precio_usd": 130
       }
     ],
     "hoteles": [
@@ -107,10 +107,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 20,
-      "rango_min": "$ 124.000 ARS",
-      "rango_max": "$ 199.000 ARS",
+      "rango_min": "$ 127.000 ARS",
+      "rango_max": "$ 205.000 ARS",
       "mensaje": "¡Tarifa récord de cabotaje! El precio actual está en el 20% más económico de la temporada.",
-      "texto_pin": "$ 137.460 ARS es una tarifa récord baja",
+      "texto_pin": "$ 141.059 ARS es una tarifa récord baja",
       "consejo": "JetSMART directo desde Aeroparque. Al haber purgado a Flybondi por concurso, JetSMART lidera las tarifas más confiables con flota A320neo.",
       "historial_dias": [
         "Hace 52 d",
@@ -120,11 +120,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        170450,
-        160828,
-        152581,
-        144333,
-        137460
+        174913,
+        165039,
+        156575,
+        148112,
+        141059
       ],
       "historial_formato": "$ "
     },
@@ -478,7 +478,7 @@
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
     "categoria_region": "cabotaje",
-    "precio_desde": "$ 81.727 ARS (US$ 61)",
+    "precio_desde": "$ 82.155 ARS (US$ 61)",
     "comando_tg": "/cordoba",
     "resena": "Segundo polo urbano de Argentina con la Manzana Jesuítica, barrios bohemios como Güemes y escapadas inmediatas a las sierras de Calamuchita, Punilla y Traslasierra.",
     "vuelos": [
@@ -488,41 +488,41 @@
         "escalas": "Directo (AEP ➔ COR)",
         "fechas": "05 Ene - 09 Ene 2027",
         "noches": 4,
-        "precio": "$ 81.727 ARS (US$ 61 aprox)",
+        "precio": "$ 82.155 ARS (US$ 61 aprox)",
         "destacado": "Tarifa récord más baja",
         "fecha_ida": "2027-01-05",
         "fecha_vuelta": "2027-01-09",
         "actualizado_en_vivo": true,
-        "precio_ars": 81727,
+        "precio_ars": 82155,
         "precio_usd": 61
       },
       {
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ COR)",
-        "fechas": "31 Dic - 08 Ene 2027",
-        "noches": 8,
-        "precio": "$ 88.594 ARS (US$ 66 aprox)",
+        "fechas": "18 Dic - 28 Dic 2026",
+        "noches": 10,
+        "precio": "$ 131.766 ARS (US$ 98 aprox)",
         "destacado": "Vuelo directo de 1h 15m",
-        "fecha_ida": "2026-12-31",
-        "fecha_vuelta": "2027-01-08",
+        "fecha_ida": "2026-12-18",
+        "fecha_vuelta": "2026-12-28",
         "actualizado_en_vivo": true,
-        "precio_ars": 88594,
-        "precio_usd": 66
+        "precio_ars": 131766,
+        "precio_usd": 98
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ COR)",
-        "fechas": "31 Dic - 10 Ene 2027",
-        "noches": 10,
-        "precio": "$ 88.670 ARS (US$ 66 aprox)",
+        "fechas": "08 Dic - 13 Dic 2026",
+        "noches": 5,
+        "precio": "$ 138.379 ARS (US$ 103 aprox)",
         "destacado": "Puente aéreo frecuente",
-        "fecha_ida": "2026-12-31",
-        "fecha_vuelta": "2027-01-10",
+        "fecha_ida": "2026-12-08",
+        "fecha_vuelta": "2026-12-13",
         "actualizado_en_vivo": true,
-        "precio_ars": 88670,
-        "precio_usd": 66
+        "precio_ars": 138379,
+        "precio_usd": 103
       }
     ],
     "hoteles": [
@@ -581,7 +581,7 @@
       "rango_min": "$ 74.000 ARS",
       "rango_max": "$ 119.000 ARS",
       "mensaje": "¡Tarifa imbatible para una escapada rápida a Córdoba!",
-      "texto_pin": "$ 81.727 ARS es una tarifa récord baja",
+      "texto_pin": "$ 82.155 ARS es una tarifa récord baja",
       "consejo": "Vuelo de solo 1h 15m ideal para fin de semana largo o turismo corporativo.",
       "historial_dias": [
         "Hace 52 d",
@@ -591,11 +591,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        101341,
-        95621,
-        90717,
-        85813,
-        81727
+        101872,
+        96121,
+        91192,
+        86263,
+        82155
       ],
       "historial_formato": "$ "
     },
@@ -948,7 +948,7 @@
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
     "categoria_region": "cabotaje",
-    "precio_desde": "$ 218.809 ARS (US$ 162)",
+    "precio_desde": "$ 253.658 ARS (US$ 188)",
     "comando_tg": "/calafate",
     "resena": "Portal de entrada al imponente Glaciar Perito Moreno y sus estruendosos desprendimientos de hielo. Minitrekking sobre el glaciar, estancias gauchas y navegación entre témpanos.",
     "vuelos": [
@@ -956,43 +956,43 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ FTE)",
-        "fechas": "09 Mar - 20 Mar 2027",
-        "noches": 11,
-        "precio": "$ 218.809 ARS (US$ 162 aprox)",
+        "fechas": "06 Mar - 14 Mar 2027",
+        "noches": 8,
+        "precio": "$ 253.658 ARS (US$ 188 aprox)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2027-03-09",
-        "fecha_vuelta": "2027-03-20",
+        "fecha_ida": "2027-03-06",
+        "fecha_vuelta": "2027-03-14",
         "actualizado_en_vivo": true,
-        "precio_ars": 218809,
-        "precio_usd": 162
+        "precio_ars": 253658,
+        "precio_usd": 188
       },
       {
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ FTE)",
-        "fechas": "17 Abr - 25 Abr 2027",
-        "noches": 8,
-        "precio": "$ 225.430 ARS (US$ 167 aprox)",
+        "fechas": "23 Feb - 05 Mar 2027",
+        "noches": 10,
+        "precio": "$ 269.714 ARS (US$ 200 aprox)",
         "destacado": "Vuelo directo de 3h 15m",
-        "fecha_ida": "2027-04-17",
-        "fecha_vuelta": "2027-04-25",
+        "fecha_ida": "2027-02-23",
+        "fecha_vuelta": "2027-03-05",
         "actualizado_en_vivo": true,
-        "precio_ars": 225430,
-        "precio_usd": 167
+        "precio_ars": 269714,
+        "precio_usd": 200
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ FTE)",
-        "fechas": "23 Feb - 04 Mar 2027",
-        "noches": 9,
-        "precio": "$ 226.660 ARS (US$ 168 aprox)",
+        "fechas": "08 Abr - 15 Abr 2027",
+        "noches": 7,
+        "precio": "$ 271.251 ARS (US$ 201 aprox)",
         "destacado": "Múltiples frecuencias",
-        "fecha_ida": "2027-02-23",
-        "fecha_vuelta": "2027-03-04",
+        "fecha_ida": "2027-04-08",
+        "fecha_vuelta": "2027-04-15",
         "actualizado_en_vivo": true,
-        "precio_ars": 226660,
-        "precio_usd": 168
+        "precio_ars": 271251,
+        "precio_usd": 201
       }
     ],
     "hoteles": [
@@ -1048,10 +1048,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 25,
-      "rango_min": "$ 197.000 ARS",
-      "rango_max": "$ 317.000 ARS",
+      "rango_min": "$ 228.000 ARS",
+      "rango_max": "$ 368.000 ARS",
       "mensaje": "¡Tarifa baja confirmada para visitar los Glaciares!",
-      "texto_pin": "$ 218.809 ARS es una tarifa récord baja",
+      "texto_pin": "$ 253.658 ARS es una tarifa récord baja",
       "consejo": "Octubre y noviembre ofrecen clima ideal y pasarelas con menos concurrencia masiva.",
       "historial_dias": [
         "Hace 52 d",
@@ -1061,11 +1061,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        271323,
-        256007,
-        242878,
-        229749,
-        218809
+        314536,
+        296780,
+        281560,
+        266341,
+        253658
       ],
       "historial_formato": "$ "
     },
@@ -1823,7 +1823,7 @@
     "iata": "MDZ",
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
-    "precio_desde": "$ 111.126 ARS (US$ 82)",
+    "precio_desde": "$ 125.358 ARS (US$ 93)",
     "comando_tg": "/mendoza",
     "resena": "Capital internacional del vino y los viñedos al pie de la cordillera de los Andes. Bodegas futuristas en Valle de Uco con menús de pasos maridados, la noche de calle Arístides y el imponente Cerro Aconcagua.",
     "vuelos": [
@@ -1831,43 +1831,43 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ MDZ)",
-        "fechas": "01 Feb - 04 Feb 2027",
-        "noches": 3,
-        "precio": "$ 111.126 ARS (US$ 82 aprox)",
+        "fechas": "24 Feb - 04 Mar 2027",
+        "noches": 8,
+        "precio": "$ 125.358 ARS (US$ 93 aprox)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2027-02-01",
-        "fecha_vuelta": "2027-02-04",
+        "fecha_ida": "2027-02-24",
+        "fecha_vuelta": "2027-03-04",
         "actualizado_en_vivo": true,
-        "precio_ars": 111126,
-        "precio_usd": 82
+        "precio_ars": 125358,
+        "precio_usd": 93
       },
       {
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP/EZE ➔ MDZ)",
-        "fechas": "08 Ene - 11 Ene 2027",
-        "noches": 3,
-        "precio": "$ 111.334 ARS (US$ 82 aprox)",
+        "fechas": "03 Feb - 13 Feb 2027",
+        "noches": 10,
+        "precio": "$ 135.457 ARS (US$ 100 aprox)",
         "destacado": "Equipaje de mano estándar",
-        "fecha_ida": "2027-01-08",
-        "fecha_vuelta": "2027-01-11",
+        "fecha_ida": "2027-02-03",
+        "fecha_vuelta": "2027-02-13",
         "actualizado_en_vivo": true,
-        "precio_ars": 111334,
-        "precio_usd": 82
+        "precio_ars": 135457,
+        "precio_usd": 100
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ MDZ)",
-        "fechas": "12 Ene - 19 Ene 2027",
+        "fechas": "10 Feb - 17 Feb 2027",
         "noches": 7,
-        "precio": "$ 119.923 ARS (US$ 89 aprox)",
+        "precio": "$ 144.806 ARS (US$ 107 aprox)",
         "destacado": "Gran disponibilidad de horarios",
-        "fecha_ida": "2027-01-12",
-        "fecha_vuelta": "2027-01-19",
+        "fecha_ida": "2027-02-10",
+        "fecha_vuelta": "2027-02-17",
         "actualizado_en_vivo": true,
-        "precio_ars": 119923,
-        "precio_usd": 89
+        "precio_ars": 144806,
+        "precio_usd": 107
       }
     ],
     "hoteles": [
@@ -1923,10 +1923,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 18,
-      "rango_min": "$ 100.000 ARS",
-      "rango_max": "$ 161.000 ARS",
+      "rango_min": "$ 113.000 ARS",
+      "rango_max": "$ 182.000 ARS",
       "mensaje": "¡Oportunidad destacada! Menos de $90.000 ARS ida y vuelta a la capital del vino.",
-      "texto_pin": "$ 111.126 ARS es una tarifa récord baja",
+      "texto_pin": "$ 125.358 ARS es una tarifa récord baja",
       "consejo": "Tarifa ideal para escapadas de enoturismo a bodegas de Valle de Uco. Aerolíneas Argentinas y JetSMART compiten fuerte en este corredor.",
       "historial_dias": [
         "Hace 52 d",
@@ -1936,11 +1936,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        137796,
-        130017,
-        123350,
-        116682,
-        111126
+        155444,
+        146669,
+        139147,
+        131626,
+        125358
       ],
       "historial_formato": "$ "
     },
@@ -2302,12 +2302,12 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ NQN)",
-        "fechas": "03 Dic - 12 Dic 2026",
+        "fechas": "25 Feb - 06 Mar 2027",
         "noches": 9,
         "precio": "$ 84.811 ARS (US$ 63 aprox)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2026-12-03",
-        "fecha_vuelta": "2026-12-12",
+        "fecha_ida": "2027-02-25",
+        "fecha_vuelta": "2027-03-06",
         "actualizado_en_vivo": true,
         "precio_ars": 84811,
         "precio_usd": 63
@@ -2316,12 +2316,12 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ NQN)",
-        "fechas": "10 Dic - 19 Dic 2026",
+        "fechas": "04 Mar - 13 Mar 2027",
         "noches": 9,
         "precio": "$ 90.748 ARS (US$ 67 aprox)",
         "destacado": "Vuelo directo de 1h 50m",
-        "fecha_ida": "2026-12-10",
-        "fecha_vuelta": "2026-12-19",
+        "fecha_ida": "2027-03-04",
+        "fecha_vuelta": "2027-03-13",
         "actualizado_en_vivo": true,
         "precio_ars": 90748,
         "precio_usd": 67
@@ -2330,12 +2330,12 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ NQN)",
-        "fechas": "17 Dic - 26 Dic 2026",
+        "fechas": "11 Mar - 20 Mar 2027",
         "noches": 9,
         "precio": "$ 103.469 ARS (US$ 77 aprox)",
         "destacado": "Gran cantidad de frecuencias",
-        "fecha_ida": "2026-12-17",
-        "fecha_vuelta": "2026-12-26",
+        "fecha_ida": "2027-03-11",
+        "fecha_vuelta": "2027-03-20",
         "actualizado_en_vivo": true,
         "precio_ars": 103469,
         "precio_usd": 77
@@ -2699,7 +2699,7 @@
     "iata": "IGR",
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
-    "precio_desde": "$ 98.810 ARS (US$ 73)",
+    "precio_desde": "$ 99.335 ARS (US$ 74)",
     "comando_tg": "/iguazu",
     "resena": "Una de las 7 Maravillas Naturales del Mundo: el estruendo de la Garganta del Diablo, pasarelas entre la selva subtropical misionera y la confluencia de los ríos Iguazú y Paraná en el Hito 3 Fronteras.",
     "vuelos": [
@@ -2709,41 +2709,41 @@
         "escalas": "Directo (AEP/EZE ➔ IGR)",
         "fechas": "01 Dic - 04 Dic 2026",
         "noches": 3,
-        "precio": "$ 98.810 ARS (US$ 73 aprox)",
+        "precio": "$ 99.335 ARS (US$ 74 aprox)",
         "destacado": "Tarifa récord más baja",
         "fecha_ida": "2026-12-01",
         "fecha_vuelta": "2026-12-04",
         "actualizado_en_vivo": true,
-        "precio_ars": 98810,
-        "precio_usd": 73
+        "precio_ars": 99335,
+        "precio_usd": 74
       },
       {
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ IGR)",
-        "fechas": "03 Dic - 06 Dic 2026",
-        "noches": 3,
-        "precio": "$ 100.475 ARS (US$ 74 aprox)",
+        "fechas": "01 Dic - 05 Dic 2026",
+        "noches": 4,
+        "precio": "$ 101.002 ARS (US$ 75 aprox)",
         "destacado": "Vuelo directo de 1h 50m",
-        "fecha_ida": "2026-12-03",
-        "fecha_vuelta": "2026-12-06",
+        "fecha_ida": "2026-12-01",
+        "fecha_vuelta": "2026-12-05",
         "actualizado_en_vivo": true,
-        "precio_ars": 100475,
-        "precio_usd": 74
+        "precio_ars": 101002,
+        "precio_usd": 75
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ IGR)",
-        "fechas": "01 Dic - 05 Dic 2026",
-        "noches": 4,
-        "precio": "$ 100.475 ARS (US$ 74 aprox)",
+        "fechas": "10 Ene - 13 Ene 2027",
+        "noches": 3,
+        "precio": "$ 104.094 ARS (US$ 77 aprox)",
         "destacado": "Llega al Parque Nacional a tiempo",
-        "fecha_ida": "2026-12-01",
-        "fecha_vuelta": "2026-12-05",
+        "fecha_ida": "2027-01-10",
+        "fecha_vuelta": "2027-01-13",
         "actualizado_en_vivo": true,
-        "precio_ars": 100475,
-        "precio_usd": 74
+        "precio_ars": 104094,
+        "precio_usd": 77
       }
     ],
     "hoteles": [
@@ -2800,9 +2800,9 @@
       "nivel": "estandar",
       "posicion_pct": 36,
       "rango_min": "$ 89.000 ARS",
-      "rango_max": "$ 143.000 ARS",
+      "rango_max": "$ 144.000 ARS",
       "mensaje": "Por el momento, se mantienen precios estándar para visitar las Cataratas del Iguazú.",
-      "texto_pin": "$ 98.810 ARS es una tarifa récord baja",
+      "texto_pin": "$ 99.335 ARS es una tarifa récord baja",
       "consejo": "Excelente momento para comprar tickets de primavera. Horarios ideales saliendo de mañana temprano desde Aeroparque.",
       "historial_dias": [
         "Hace 52 d",
@@ -2812,11 +2812,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        122524,
-        115608,
-        109679,
-        103750,
-        98810
+        123175,
+        116222,
+        110262,
+        104302,
+        99335
       ],
       "historial_formato": "$ "
     },
@@ -3178,12 +3178,12 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ REL)",
-        "fechas": "23 Nov - 28 Nov 2026",
+        "fechas": "15 Feb - 20 Feb 2027",
         "noches": 5,
         "precio": "$ 138.519 ARS (US$ 103 aprox)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2026-11-23",
-        "fecha_vuelta": "2026-11-28",
+        "fecha_ida": "2027-02-15",
+        "fecha_vuelta": "2027-02-20",
         "actualizado_en_vivo": true,
         "precio_ars": 138519,
         "precio_usd": 103
@@ -3192,12 +3192,12 @@
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ REL)",
-        "fechas": "23 Nov - 27 Nov 2026",
+        "fechas": "15 Feb - 19 Feb 2027",
         "noches": 4,
         "precio": "$ 142.890 ARS (US$ 106 aprox)",
         "destacado": "Vuelo directo de 2h",
-        "fecha_ida": "2026-11-23",
-        "fecha_vuelta": "2026-11-27",
+        "fecha_ida": "2027-02-15",
+        "fecha_vuelta": "2027-02-19",
         "actualizado_en_vivo": true,
         "precio_ars": 142890,
         "precio_usd": 106
@@ -3206,12 +3206,12 @@
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ REL/PMY)",
-        "fechas": "23 Nov - 26 Nov 2026",
+        "fechas": "15 Feb - 18 Feb 2027",
         "noches": 3,
         "precio": "$ 181.123 ARS (US$ 134 aprox)",
         "destacado": "Opción aeropuerto directo PMY",
-        "fecha_ida": "2026-11-23",
-        "fecha_vuelta": "2026-11-26",
+        "fecha_ida": "2027-02-15",
+        "fecha_vuelta": "2027-02-18",
         "actualizado_en_vivo": true,
         "precio_ars": 181123,
         "precio_usd": 134
@@ -3576,7 +3576,7 @@
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
     "categoria_region": "cabotaje",
-    "precio_desde": "$ 108.553 ARS (US$ 80)",
+    "precio_desde": "$ 137.649 ARS (US$ 102)",
     "comando_tg": "/salta",
     "resena": "La Linda colonial: arquitectura virreinal intacta, peñas folklóricas y punto de partida estratégico hacia los viñedos de altura de Cafayate, Cachi y las Salinas Grandes.",
     "vuelos": [
@@ -3584,43 +3584,43 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ SLA)",
-        "fechas": "05 Mar - 09 Mar 2027",
-        "noches": 4,
-        "precio": "$ 108.553 ARS (US$ 80 aprox)",
+        "fechas": "01 Ene - 08 Ene 2027",
+        "noches": 7,
+        "precio": "$ 137.649 ARS (US$ 102 aprox)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2027-03-05",
-        "fecha_vuelta": "2027-03-09",
+        "fecha_ida": "2027-01-01",
+        "fecha_vuelta": "2027-01-08",
         "actualizado_en_vivo": true,
-        "precio_ars": 108553,
-        "precio_usd": 80
+        "precio_ars": 137649,
+        "precio_usd": 102
       },
       {
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ SLA)",
-        "fechas": "01 Ene - 08 Ene 2027",
+        "fechas": "25 Feb - 04 Mar 2027",
         "noches": 7,
-        "precio": "$ 116.536 ARS (US$ 86 aprox)",
+        "precio": "$ 150.370 ARS (US$ 111 aprox)",
         "destacado": "Vuelo directo de 2h 10m",
-        "fecha_ida": "2027-01-01",
-        "fecha_vuelta": "2027-01-08",
+        "fecha_ida": "2027-02-25",
+        "fecha_vuelta": "2027-03-04",
         "actualizado_en_vivo": true,
-        "precio_ars": 116536,
-        "precio_usd": 86
+        "precio_ars": 150370,
+        "precio_usd": 111
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ SLA)",
-        "fechas": "05 Ene - 11 Ene 2027",
-        "noches": 6,
-        "precio": "$ 140.771 ARS (US$ 104 aprox)",
+        "fechas": "18 Ene - 21 Ene 2027",
+        "noches": 3,
+        "precio": "$ 161.499 ARS (US$ 120 aprox)",
         "destacado": "Múltiples horarios diarios",
-        "fecha_ida": "2027-01-05",
-        "fecha_vuelta": "2027-01-11",
+        "fecha_ida": "2027-01-18",
+        "fecha_vuelta": "2027-01-21",
         "actualizado_en_vivo": true,
-        "precio_ars": 140771,
-        "precio_usd": 104
+        "precio_ars": 161499,
+        "precio_usd": 120
       }
     ],
     "hoteles": [
@@ -3676,10 +3676,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 22,
-      "rango_min": "$ 98.000 ARS",
-      "rango_max": "$ 157.000 ARS",
+      "rango_min": "$ 124.000 ARS",
+      "rango_max": "$ 200.000 ARS",
       "mensaje": "¡Oportunidad en el Norte Argentino! Precios en el segmento más bajo de la temporada.",
-      "texto_pin": "$ 108.553 ARS es una tarifa récord baja",
+      "texto_pin": "$ 137.649 ARS es una tarifa récord baja",
       "consejo": "JetSMART ofrece tarifas imbatibles para primavera. Salidas ideales desde Aeroparque.",
       "historial_dias": [
         "Hace 52 d",
@@ -3689,11 +3689,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        134606,
-        127007,
-        120494,
-        113981,
-        108553
+        170685,
+        161049,
+        152790,
+        144531,
+        137649
       ],
       "historial_formato": "$ "
     },
@@ -4046,7 +4046,7 @@
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
     "categoria_region": "cabotaje",
-    "precio_desde": "$ 160.370 ARS (US$ 119)",
+    "precio_desde": "$ 170.304 ARS (US$ 126)",
     "comando_tg": "/sanmartin",
     "resena": "Paraíso patagónico a orillas del Lago Lácar y cabecera de la mítica Ruta de los 7 Lagos. Bosques andinos milenarios, esquí en Cerro Chapelco y aldea de estilo alpino.",
     "vuelos": [
@@ -4054,43 +4054,43 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ CPC)",
-        "fechas": "01 Abr - 08 Abr 2027",
-        "noches": 7,
-        "precio": "$ 160.370 ARS (US$ 119 aprox)",
+        "fechas": "05 Mar - 13 Mar 2027",
+        "noches": 8,
+        "precio": "$ 170.304 ARS (US$ 126 aprox)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2027-04-01",
-        "fecha_vuelta": "2027-04-08",
+        "fecha_ida": "2027-03-05",
+        "fecha_vuelta": "2027-03-13",
         "actualizado_en_vivo": true,
-        "precio_ars": 160370,
-        "precio_usd": 119
+        "precio_ars": 170304,
+        "precio_usd": 126
       },
       {
         "puesto": "🥈",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ CPC)",
-        "fechas": "08 Abr - 15 Abr 2027",
-        "noches": 7,
-        "precio": "$ 195.651 ARS (US$ 145 aprox)",
+        "fechas": "22 Mar - 30 Mar 2027",
+        "noches": 8,
+        "precio": "$ 181.415 ARS (US$ 134 aprox)",
         "destacado": "Vuelo directo de 2h 20m",
-        "fecha_ida": "2027-04-08",
-        "fecha_vuelta": "2027-04-15",
+        "fecha_ida": "2027-03-22",
+        "fecha_vuelta": "2027-03-30",
         "actualizado_en_vivo": true,
-        "precio_ars": 195651,
-        "precio_usd": 145
+        "precio_ars": 181415,
+        "precio_usd": 134
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (EZE ➔ CPC)",
-        "fechas": "15 Abr - 22 Abr 2027",
-        "noches": 7,
-        "precio": "$ 195.651 ARS (US$ 145 aprox)",
+        "fechas": "22 Feb - 05 Mar 2027",
+        "noches": 11,
+        "precio": "$ 186.211 ARS (US$ 138 aprox)",
         "destacado": "Excelente disponibilidad",
-        "fecha_ida": "2027-04-15",
-        "fecha_vuelta": "2027-04-22",
+        "fecha_ida": "2027-02-22",
+        "fecha_vuelta": "2027-03-05",
         "actualizado_en_vivo": true,
-        "precio_ars": 195651,
-        "precio_usd": 145
+        "precio_ars": 186211,
+        "precio_usd": 138
       }
     ],
     "hoteles": [
@@ -4146,10 +4146,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 26,
-      "rango_min": "$ 144.000 ARS",
-      "rango_max": "$ 233.000 ARS",
+      "rango_min": "$ 153.000 ARS",
+      "rango_max": "$ 247.000 ARS",
       "mensaje": "¡Precio bajo para volar directo a Chapelco!",
-      "texto_pin": "$ 160.370 ARS es una tarifa récord baja",
+      "texto_pin": "$ 170.304 ARS es una tarifa récord baja",
       "consejo": "Aterrizar en el aeropuerto Chapelco ahorra 3 horas de transfer terrestre respecto a volar vía Bariloche.",
       "historial_dias": [
         "Hace 52 d",
@@ -4159,11 +4159,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        198859,
-        187633,
-        178011,
-        168388,
-        160370
+        211177,
+        199256,
+        189037,
+        178819,
+        170304
       ],
       "historial_formato": "$ "
     },
@@ -4452,7 +4452,7 @@
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
     "categoria_region": "cabotaje",
-    "precio_desde": "$ 149.454 ARS (US$ 111)",
+    "precio_desde": "$ 150.239 ARS (US$ 111)",
     "comando_tg": "/ushuaia",
     "resena": "La ciudad más austral del mundo: navegaciones por el Canal Beagle hacia el Faro Les Éclaireurs, Parque Nacional Tierra del Fuego, esquí en Cerro Castor y la mejor centolla fresca.",
     "vuelos": [
@@ -4462,41 +4462,41 @@
         "escalas": "Directo (AEP ➔ USH)",
         "fechas": "26 Ene - 29 Ene 2027",
         "noches": 3,
-        "precio": "$ 149.454 ARS (US$ 111 aprox)",
+        "precio": "$ 150.239 ARS (US$ 111 aprox)",
         "destacado": "Tarifa récord más baja",
         "fecha_ida": "2027-01-26",
         "fecha_vuelta": "2027-01-29",
         "actualizado_en_vivo": true,
-        "precio_ars": 149454,
+        "precio_ars": 150239,
         "precio_usd": 111
       },
       {
         "puesto": "🥈",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ USH)",
-        "fechas": "25 Ene - 28 Ene 2027",
-        "noches": 3,
-        "precio": "$ 169.167 ARS (US$ 125 aprox)",
+        "fechas": "14 May - 21 May 2027",
+        "noches": 7,
+        "precio": "$ 201.518 ARS (US$ 149 aprox)",
         "destacado": "Vuelo directo de 3h 35m",
-        "fecha_ida": "2027-01-25",
-        "fecha_vuelta": "2027-01-28",
+        "fecha_ida": "2027-05-14",
+        "fecha_vuelta": "2027-05-21",
         "actualizado_en_vivo": true,
-        "precio_ars": 169167,
-        "precio_usd": 125
+        "precio_ars": 201518,
+        "precio_usd": 149
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (EZE ➔ USH)",
-        "fechas": "24 Feb - 27 Feb 2027",
-        "noches": 3,
-        "precio": "$ 190.034 ARS (US$ 141 aprox)",
+        "fechas": "11 Mar - 17 Mar 2027",
+        "noches": 6,
+        "precio": "$ 214.576 ARS (US$ 159 aprox)",
         "destacado": "Sale desde Ezeiza",
-        "fecha_ida": "2027-02-24",
-        "fecha_vuelta": "2027-02-27",
+        "fecha_ida": "2027-03-11",
+        "fecha_vuelta": "2027-03-17",
         "actualizado_en_vivo": true,
-        "precio_ars": 190034,
-        "precio_usd": 141
+        "precio_ars": 214576,
+        "precio_usd": 159
       }
     ],
     "hoteles": [
@@ -4553,9 +4553,9 @@
       "nivel": "bajo",
       "posicion_pct": 24,
       "rango_min": "$ 135.000 ARS",
-      "rango_max": "$ 217.000 ARS",
+      "rango_max": "$ 218.000 ARS",
       "mensaje": "¡Gran oportunidad de vuelo al Fin del Mundo!",
-      "texto_pin": "$ 149.454 ARS es una tarifa récord baja",
+      "texto_pin": "$ 150.239 ARS es una tarifa récord baja",
       "consejo": "Para Ushuaia esta tarifa en vuelo directo representa un ahorro de más del 30% respecto al promedio habitual.",
       "historial_dias": [
         "Hace 52 d",
@@ -4565,11 +4565,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        185323,
-        174861,
-        165894,
-        156927,
-        149454
+        186296,
+        175780,
+        166765,
+        157751,
+        150239
       ],
       "historial_formato": "$ "
     },
@@ -4922,7 +4922,7 @@
     "tipo_ruta": "Internacional / Regional",
     "es_cabotaje": false,
     "categoria_region": "brasil",
-    "precio_desde": "US$ 183",
+    "precio_desde": "US$ 185",
     "comando_tg": "/florianopolis",
     "resena": "La 'Ilha da Magia': más de 40 playas espectaculares que combinan surf de primer nivel en Joaquina y Mole con la exclusiva vida nocturna y paradores de Jurerê Internacional.",
     "vuelos": [
@@ -4932,41 +4932,41 @@
         "escalas": "Directo (EZE/AEP ➔ FLN)",
         "fechas": "31 Mar - 16 Abr 2027",
         "noches": 16,
-        "precio": "US$ 183 (aprox. $ 247.050 ARS)",
+        "precio": "US$ 185 (aprox. $ 249.750 ARS)",
         "destacado": "Tarifa récord regional",
         "fecha_ida": "2027-03-31",
         "fecha_vuelta": "2027-04-16",
         "actualizado_en_vivo": true,
-        "precio_ars": 247050,
-        "precio_usd": 183
+        "precio_ars": 249750,
+        "precio_usd": 185
       },
       {
         "puesto": "🥈",
         "aerolinea": "GOL Linhas Aéreas",
         "escalas": "Directo (AEP ➔ FLN)",
-        "fechas": "04 Abr - 12 Abr 2027",
+        "fechas": "15 Mar - 23 Mar 2027",
         "noches": 8,
-        "precio": "US$ 202 (aprox. $ 272.700 ARS)",
+        "precio": "US$ 220 (aprox. $ 297.000 ARS)",
         "destacado": "Vuelo directo de 2h 05m",
-        "fecha_ida": "2027-04-04",
-        "fecha_vuelta": "2027-04-12",
+        "fecha_ida": "2027-03-15",
+        "fecha_vuelta": "2027-03-23",
         "actualizado_en_vivo": true,
-        "precio_ars": 272700,
-        "precio_usd": 202
+        "precio_ars": 297000,
+        "precio_usd": 220
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ FLN)",
-        "fechas": "14 Abr - 30 Abr 2027",
-        "noches": 16,
-        "precio": "US$ 209 (aprox. $ 282.150 ARS)",
+        "fechas": "09 Mar - 19 Mar 2027",
+        "noches": 10,
+        "precio": "US$ 220 (aprox. $ 297.000 ARS)",
         "destacado": "Equipaje y atención directa",
-        "fecha_ida": "2027-04-14",
-        "fecha_vuelta": "2027-04-30",
+        "fecha_ida": "2027-03-09",
+        "fecha_vuelta": "2027-03-19",
         "actualizado_en_vivo": true,
-        "precio_ars": 282150,
-        "precio_usd": 209
+        "precio_ars": 297000,
+        "precio_usd": 220
       }
     ],
     "hoteles": [
@@ -5023,9 +5023,9 @@
       "nivel": "bajo",
       "posicion_pct": 22,
       "rango_min": "US$ 170",
-      "rango_max": "US$ 250",
+      "rango_max": "US$ 260",
       "mensaje": "¡Tarifa baja histórica para viajar a las playas de Florianópolis!",
-      "texto_pin": "US$ 183 es una tarifa récord baja",
+      "texto_pin": "US$ 185 es una tarifa récord baja",
       "consejo": "Vuelo directo con JetSMART por menos de US$ 250 ida y vuelta es ideal para anticipar compras de verano.",
       "historial_dias": [
         "Hace 52 d",
@@ -5035,11 +5035,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        227,
-        214,
-        203,
-        192,
-        183
+        229,
+        216,
+        205,
+        194,
+        185
       ],
       "historial_formato": "US$ "
     },
@@ -5392,7 +5392,7 @@
     "tipo_ruta": "Internacional / Regional",
     "es_cabotaje": false,
     "categoria_region": "brasil",
-    "precio_desde": "US$ 422",
+    "precio_desde": "US$ 750",
     "comando_tg": "/maceio",
     "resena": "El auténtico 'Caribe Brasileño': las Galés de Maragogi con arrecifes marinos a kilómetros de la orilla, playas bordeadas de cocoteros y lagunas de aguas cálidas todo el año.",
     "vuelos": [
@@ -5400,15 +5400,15 @@
         "puesto": "🥇",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala corta (GRU)",
-        "fechas": "18 Dic - 22 Dic 2026",
+        "fechas": "12 Mar - 16 Mar 2027",
         "noches": 4,
-        "precio": "US$ 422 (aprox. $ 569.700 ARS)",
+        "precio": "US$ 750 (aprox. $ 1.012.500 ARS)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2026-12-18",
-        "fecha_vuelta": "2026-12-22",
+        "fecha_ida": "2027-03-12",
+        "fecha_vuelta": "2027-03-16",
         "actualizado_en_vivo": true,
-        "precio_ars": 569700,
-        "precio_usd": 422
+        "precio_ars": 1012500,
+        "precio_usd": 750
       },
       {
         "puesto": "🥈",
@@ -5416,27 +5416,27 @@
         "escalas": "1 escala (GIG)",
         "fechas": "14 Mar - 24 Mar 2027",
         "noches": 10,
-        "precio": "US$ 480 (aprox. $ 648.000 ARS)",
+        "precio": "US$ 788 (aprox. $ 1.063.800 ARS)",
         "destacado": "Conexión ágil",
         "fecha_ida": "2027-03-14",
         "fecha_vuelta": "2027-03-24",
         "actualizado_en_vivo": true,
-        "precio_ars": 648000,
-        "precio_usd": 480
+        "precio_ars": 1063800,
+        "precio_usd": 788
       },
       {
         "puesto": "🥉",
         "aerolinea": "Azul Linhas Aéreas",
         "escalas": "1 escala (VCP)",
-        "fechas": "01 Ene - 05 Ene 2027",
+        "fechas": "26 Mar - 30 Mar 2027",
         "noches": 4,
-        "precio": "US$ 481 (aprox. $ 649.350 ARS)",
+        "precio": "US$ 833 (aprox. $ 1.124.550 ARS)",
         "destacado": "Snacks y pantallas a bordo",
-        "fecha_ida": "2027-01-01",
-        "fecha_vuelta": "2027-01-05",
+        "fecha_ida": "2027-03-26",
+        "fecha_vuelta": "2027-03-30",
         "actualizado_en_vivo": true,
-        "precio_ars": 649350,
-        "precio_usd": 481
+        "precio_ars": 1124550,
+        "precio_usd": 833
       }
     ],
     "hoteles": [
@@ -5492,10 +5492,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 28,
-      "rango_min": "US$ 390",
-      "rango_max": "US$ 580",
+      "rango_min": "US$ 690",
+      "rango_max": "US$ 1.040",
       "mensaje": "¡Precio récord para el paraíso de Maragogi y Maceió!",
-      "texto_pin": "US$ 422 es una tarifa récord baja",
+      "texto_pin": "US$ 750 es una tarifa récord baja",
       "consejo": "Para visitar las piscinas naturales de Maragogi se recomienda viajar con tabla de mareas en luna nueva o llena.",
       "historial_dias": [
         "Hace 52 d",
@@ -5505,11 +5505,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        523,
-        494,
-        468,
-        443,
-        422
+        930,
+        878,
+        833,
+        788,
+        750
       ],
       "historial_formato": "US$ "
     },
@@ -5798,7 +5798,7 @@
     "tipo_ruta": "Internacional / Regional",
     "es_cabotaje": false,
     "categoria_region": "brasil",
-    "precio_desde": "US$ 335",
+    "precio_desde": "US$ 459",
     "comando_tg": "/natal",
     "resena": "Dunas gigantescas de arena dorada en Genipabu para paseos en buggy y la magia de Praia da Pipa con acantilados rojizos donde se observan delfines nadando junto a la playa.",
     "vuelos": [
@@ -5806,43 +5806,43 @@
         "puesto": "🥇",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala corta (GRU)",
-        "fechas": "09 Abr - 20 Abr 2027",
-        "noches": 11,
-        "precio": "US$ 335 (aprox. $ 452.250 ARS)",
+        "fechas": "13 Mar - 19 Mar 2027",
+        "noches": 6,
+        "precio": "US$ 459 (aprox. $ 619.650 ARS)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2027-04-09",
-        "fecha_vuelta": "2027-04-20",
+        "fecha_ida": "2027-03-13",
+        "fecha_vuelta": "2027-03-19",
         "actualizado_en_vivo": true,
-        "precio_ars": 452250,
-        "precio_usd": 335
+        "precio_ars": 619650,
+        "precio_usd": 459
       },
       {
         "puesto": "🥈",
         "aerolinea": "GOL Linhas Aéreas",
         "escalas": "1 escala (GIG)",
-        "fechas": "01 Mar - 10 Mar 2027",
-        "noches": 9,
-        "precio": "US$ 359 (aprox. $ 484.650 ARS)",
+        "fechas": "20 Mar - 26 Mar 2027",
+        "noches": 6,
+        "precio": "US$ 487 (aprox. $ 657.450 ARS)",
         "destacado": "Equipaje de mano estándar",
-        "fecha_ida": "2027-03-01",
-        "fecha_vuelta": "2027-03-10",
+        "fecha_ida": "2027-03-20",
+        "fecha_vuelta": "2027-03-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 484650,
-        "precio_usd": 359
+        "precio_ars": 657450,
+        "precio_usd": 487
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Escala o directo estacional",
-        "fechas": "23 Abr - 04 May 2027",
-        "noches": 11,
-        "precio": "US$ 382 (aprox. $ 515.700 ARS)",
+        "fechas": "27 Mar - 02 Abr 2027",
+        "noches": 6,
+        "precio": "US$ 523 (aprox. $ 706.050 ARS)",
         "destacado": "Atención personalizada",
-        "fecha_ida": "2027-04-23",
-        "fecha_vuelta": "2027-05-04",
+        "fecha_ida": "2027-03-27",
+        "fecha_vuelta": "2027-04-02",
         "actualizado_en_vivo": true,
-        "precio_ars": 515700,
-        "precio_usd": 382
+        "precio_ars": 706050,
+        "precio_usd": 523
       }
     ],
     "hoteles": [
@@ -5898,10 +5898,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 28,
-      "rango_min": "US$ 310",
-      "rango_max": "US$ 460",
+      "rango_min": "US$ 420",
+      "rango_max": "US$ 630",
       "mensaje": "¡Gran precio para viajar a Natal y los acantilados de Pipa!",
-      "texto_pin": "US$ 335 es una tarifa récord baja",
+      "texto_pin": "US$ 459 es una tarifa récord baja",
       "consejo": "Pipa se ubica a 1h 15m del aeropuerto de Natal; se recomienda transfer directo para alojarse en la villa.",
       "historial_dias": [
         "Hace 52 d",
@@ -5911,11 +5911,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        415,
-        392,
-        372,
-        352,
-        335
+        569,
+        537,
+        509,
+        482,
+        459
       ],
       "historial_formato": "US$ "
     },
@@ -6236,7 +6236,7 @@
     "tipo_ruta": "Internacional / Regional",
     "es_cabotaje": false,
     "categoria_region": "brasil",
-    "precio_desde": "US$ 367",
+    "precio_desde": "US$ 389",
     "comando_tg": "/recife",
     "resena": "Las célebres piscinas naturales de aguas cristalinas de Porto de Galinhas, corales vivos, paseos en jangada tradicional y el encanto arquitectónico virreinal de Olinda.",
     "vuelos": [
@@ -6244,43 +6244,43 @@
         "puesto": "🥇",
         "aerolinea": "GOL Linhas Aéreas",
         "escalas": "1 escala corta (GRU)",
-        "fechas": "20 Feb - 03 Mar 2027",
+        "fechas": "15 Abr - 26 Abr 2027",
         "noches": 11,
-        "precio": "US$ 367 (aprox. $ 495.450 ARS)",
+        "precio": "US$ 389 (aprox. $ 525.150 ARS)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2027-02-20",
-        "fecha_vuelta": "2027-03-03",
+        "fecha_ida": "2027-04-15",
+        "fecha_vuelta": "2027-04-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 495450,
-        "precio_usd": 367
+        "precio_ars": 525150,
+        "precio_usd": 389
       },
       {
         "puesto": "🥈",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala (GIG)",
-        "fechas": "09 Abr - 20 Abr 2027",
-        "noches": 11,
-        "precio": "US$ 370 (aprox. $ 499.500 ARS)",
+        "fechas": "12 Abr - 20 Abr 2027",
+        "noches": 8,
+        "precio": "US$ 395 (aprox. $ 533.250 ARS)",
         "destacado": "Equipaje carry-on incluido",
-        "fecha_ida": "2027-04-09",
+        "fecha_ida": "2027-04-12",
         "fecha_vuelta": "2027-04-20",
         "actualizado_en_vivo": true,
-        "precio_ars": 499500,
-        "precio_usd": 370
+        "precio_ars": 533250,
+        "precio_usd": 395
       },
       {
         "puesto": "🥉",
         "aerolinea": "Azul Linhas Aéreas",
         "escalas": "Directo o escala VCP",
-        "fechas": "20 Feb - 04 Mar 2027",
-        "noches": 12,
-        "precio": "US$ 379 (aprox. $ 511.650 ARS)",
+        "fechas": "22 Mar - 29 Mar 2027",
+        "noches": 7,
+        "precio": "US$ 417 (aprox. $ 562.950 ARS)",
         "destacado": "Hub principal en Recife",
-        "fecha_ida": "2027-02-20",
-        "fecha_vuelta": "2027-03-04",
+        "fecha_ida": "2027-03-22",
+        "fecha_vuelta": "2027-03-29",
         "actualizado_en_vivo": true,
-        "precio_ars": 511650,
-        "precio_usd": 379
+        "precio_ars": 562950,
+        "precio_usd": 417
       }
     ],
     "hoteles": [
@@ -6336,10 +6336,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 27,
-      "rango_min": "US$ 340",
-      "rango_max": "US$ 510",
+      "rango_min": "US$ 360",
+      "rango_max": "US$ 540",
       "mensaje": "¡Tarifa baja confirmada para Porto de Galinhas!",
-      "texto_pin": "US$ 367 es una tarifa récord baja",
+      "texto_pin": "US$ 389 es una tarifa récord baja",
       "consejo": "Porto de Galinhas queda a solo 50 minutos por autopista del aeropuerto de Recife.",
       "historial_dias": [
         "Hace 52 d",
@@ -6349,11 +6349,11 @@
         "Hoy"
       ],
       "historial_valores": [
+        482,
         455,
-        429,
-        407,
-        385,
-        367
+        432,
+        408,
+        389
       ],
       "historial_formato": "US$ "
     },
@@ -6673,7 +6673,7 @@
     "iata": "GIG",
     "tipo_ruta": "Internacional / Regional",
     "es_cabotaje": false,
-    "precio_desde": "US$ 240",
+    "precio_desde": "US$ 256",
     "comando_tg": "/rio",
     "resena": "El Cristo Redentor, el teleférico del Pan de Azúcar y las playas míticas de Ipanema y Copacabana. A solo 2h 40m de los paraísos caribeños brasileños de Arraial do Cabo y Búzios.",
     "vuelos": [
@@ -6681,43 +6681,43 @@
         "puesto": "🥇",
         "aerolinea": "JetSMART",
         "escalas": "Directo (EZE/AEP ➔ GIG)",
-        "fechas": "16 Mar - 21 Mar 2027",
-        "noches": 5,
-        "precio": "US$ 240 (aprox. $ 324.000 ARS)",
+        "fechas": "16 Mar - 25 Mar 2027",
+        "noches": 9,
+        "precio": "US$ 256 (aprox. $ 345.600 ARS)",
         "destacado": "Tarifa récord regional",
         "fecha_ida": "2027-03-16",
-        "fecha_vuelta": "2027-03-21",
+        "fecha_vuelta": "2027-03-25",
         "actualizado_en_vivo": true,
-        "precio_ars": 324000,
-        "precio_usd": 240
+        "precio_ars": 345600,
+        "precio_usd": 256
       },
       {
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (EZE ➔ GIG)",
-        "fechas": "09 Abr - 16 Abr 2027",
-        "noches": 7,
-        "precio": "US$ 254 (aprox. $ 342.900 ARS)",
+        "fechas": "28 Feb - 06 Mar 2027",
+        "noches": 6,
+        "precio": "US$ 269 (aprox. $ 363.150 ARS)",
         "destacado": "Flota de aviones modernos",
-        "fecha_ida": "2027-04-09",
-        "fecha_vuelta": "2027-04-16",
+        "fecha_ida": "2027-02-28",
+        "fecha_vuelta": "2027-03-06",
         "actualizado_en_vivo": true,
-        "precio_ars": 342900,
-        "precio_usd": 254
+        "precio_ars": 363150,
+        "precio_usd": 269
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (AEP ➔ GIG)",
-        "fechas": "18 Feb - 11 Mar 2027",
-        "noches": 21,
-        "precio": "US$ 248 (aprox. $ 334.800 ARS)",
+        "fechas": "23 Jun - 27 Jun 2027",
+        "noches": 4,
+        "precio": "US$ 275 (aprox. $ 371.250 ARS)",
         "destacado": "Sale desde Aeroparque",
-        "fecha_ida": "2027-02-18",
-        "fecha_vuelta": "2027-03-11",
+        "fecha_ida": "2027-06-23",
+        "fecha_vuelta": "2027-06-27",
         "actualizado_en_vivo": true,
-        "precio_ars": 334800,
-        "precio_usd": 248
+        "precio_ars": 371250,
+        "precio_usd": 275
       }
     ],
     "hoteles": [
@@ -6773,10 +6773,10 @@
     "termometro": {
       "nivel": "estandar",
       "posicion_pct": 42,
-      "rango_min": "US$ 220",
-      "rango_max": "US$ 330",
+      "rango_min": "US$ 240",
+      "rango_max": "US$ 350",
       "mensaje": "Por el momento, se mantienen los precios estándar para volar a Río de Janeiro.",
-      "texto_pin": "US$ 240 es una tarifa récord baja",
+      "texto_pin": "US$ 256 es una tarifa récord baja",
       "consejo": "Vuelo directo con JetSMART saliendo de Aeroparque. Para fines de semana largos, esta tarifa suele duplicarse.",
       "historial_dias": [
         "Hace 52 d",
@@ -6786,11 +6786,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        298,
-        281,
-        266,
-        252,
-        240
+        317,
+        300,
+        284,
+        269,
+        256
       ],
       "historial_formato": "US$ "
     },
@@ -7144,7 +7144,7 @@
     "tipo_ruta": "Internacional / Regional",
     "es_cabotaje": false,
     "categoria_region": "brasil",
-    "precio_desde": "US$ 371",
+    "precio_desde": "US$ 426",
     "comando_tg": "/salvador",
     "resena": "Epicentro de la cultura afrobrasileña con las fachadas coloniales del Pelourinho, ritmo de Olodum y excursiones a las playas idílicas y piscinas naturales de Praia do Forte.",
     "vuelos": [
@@ -7152,43 +7152,43 @@
         "puesto": "🥇",
         "aerolinea": "GOL Linhas Aéreas",
         "escalas": "1 escala corta (GIG)",
-        "fechas": "23 Nov - 30 Nov 2026",
-        "noches": 7,
-        "precio": "US$ 371 (aprox. $ 500.850 ARS)",
+        "fechas": "23 Feb - 01 Mar 2027",
+        "noches": 6,
+        "precio": "US$ 426 (aprox. $ 575.100 ARS)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2026-11-23",
-        "fecha_vuelta": "2026-11-30",
+        "fecha_ida": "2027-02-23",
+        "fecha_vuelta": "2027-03-01",
         "actualizado_en_vivo": true,
-        "precio_ars": 500850,
-        "precio_usd": 371
+        "precio_ars": 575100,
+        "precio_usd": 426
       },
       {
         "puesto": "🥈",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala (GRU)",
-        "fechas": "09 Abr - 20 Abr 2027",
-        "noches": 11,
-        "precio": "US$ 413 (aprox. $ 557.550 ARS)",
+        "fechas": "19 Feb - 25 Feb 2027",
+        "noches": 6,
+        "precio": "US$ 429 (aprox. $ 579.150 ARS)",
         "destacado": "Conexión eficiente",
-        "fecha_ida": "2027-04-09",
-        "fecha_vuelta": "2027-04-20",
+        "fecha_ida": "2027-02-19",
+        "fecha_vuelta": "2027-02-25",
         "actualizado_en_vivo": true,
-        "precio_ars": 557550,
-        "precio_usd": 413
+        "precio_ars": 579150,
+        "precio_usd": 429
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo de temporada (AEP ➔ SSA)",
-        "fechas": "07 Dic - 14 Dic 2026",
-        "noches": 7,
-        "precio": "US$ 423 (aprox. $ 571.050 ARS)",
+        "fechas": "20 Feb - 26 Feb 2027",
+        "noches": 6,
+        "precio": "US$ 458 (aprox. $ 618.300 ARS)",
         "destacado": "Vuelo directo sin escalas",
-        "fecha_ida": "2026-12-07",
-        "fecha_vuelta": "2026-12-14",
+        "fecha_ida": "2027-02-20",
+        "fecha_vuelta": "2027-02-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 571050,
-        "precio_usd": 423
+        "precio_ars": 618300,
+        "precio_usd": 458
       }
     ],
     "hoteles": [
@@ -7244,10 +7244,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 25,
-      "rango_min": "US$ 340",
-      "rango_max": "US$ 510",
+      "rango_min": "US$ 390",
+      "rango_max": "US$ 590",
       "mensaje": "¡Precio bajo detectado para Bahía y playas del Nordeste!",
-      "texto_pin": "US$ 371 es una tarifa récord baja",
+      "texto_pin": "US$ 426 es una tarifa récord baja",
       "consejo": "Tarifa excelente con escala breve en Río. Permite combinar cultura colonial con el relax de Praia do Forte.",
       "historial_dias": [
         "Hace 52 d",
@@ -7257,11 +7257,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        460,
-        434,
-        412,
-        390,
-        371
+        528,
+        498,
+        473,
+        447,
+        426
       ],
       "historial_formato": "US$ "
     },
@@ -7550,7 +7550,7 @@
     "tipo_ruta": "Internacional / Regional",
     "es_cabotaje": false,
     "categoria_region": "caribe_usa",
-    "precio_desde": "US$ 167",
+    "precio_desde": "US$ 148",
     "comando_tg": "/santiago",
     "resena": "Cruce exprés de los Andes en 2 horas: polo comercial y tecnológico de vanguardia, bodegas de renombre en Valle del Maipo y centros de nieve como Valle Nevado a solo 1 hora.",
     "vuelos": [
@@ -7558,43 +7558,43 @@
         "puesto": "🥇",
         "aerolinea": "SKY Airline",
         "escalas": "Directo (AEP ➔ SCL)",
-        "fechas": "26 Ene - 03 Feb 2027",
-        "noches": 8,
-        "precio": "US$ 167 (aprox. $ 225.450 ARS)",
+        "fechas": "27 Ene - 03 Feb 2027",
+        "noches": 7,
+        "precio": "US$ 148 (aprox. $ 199.800 ARS)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2027-01-26",
+        "fecha_ida": "2027-01-27",
         "fecha_vuelta": "2027-02-03",
         "actualizado_en_vivo": true,
-        "precio_ars": 225450,
-        "precio_usd": 167
+        "precio_ars": 199800,
+        "precio_usd": 148
       },
       {
         "puesto": "🥈",
         "aerolinea": "JetSMART",
         "escalas": "Directo (AEP ➔ SCL)",
-        "fechas": "01 Feb - 06 Feb 2027",
-        "noches": 5,
-        "precio": "US$ 169 (aprox. $ 228.150 ARS)",
+        "fechas": "12 Feb - 20 Feb 2027",
+        "noches": 8,
+        "precio": "US$ 163 (aprox. $ 220.050 ARS)",
         "destacado": "Vuelo directo de 2h 10m",
-        "fecha_ida": "2027-02-01",
-        "fecha_vuelta": "2027-02-06",
+        "fecha_ida": "2027-02-12",
+        "fecha_vuelta": "2027-02-20",
         "actualizado_en_vivo": true,
-        "precio_ars": 228150,
-        "precio_usd": 169
+        "precio_ars": 220050,
+        "precio_usd": 163
       },
       {
         "puesto": "🥉",
         "aerolinea": "LATAM Airlines",
         "escalas": "Directo (AEP/EZE ➔ SCL)",
-        "fechas": "09 Abr - 23 Abr 2027",
-        "noches": 14,
-        "precio": "US$ 172 (aprox. $ 232.200 ARS)",
+        "fechas": "26 Ene - 03 Feb 2027",
+        "noches": 8,
+        "precio": "US$ 168 (aprox. $ 226.800 ARS)",
         "destacado": "Múltiples vuelos al día",
-        "fecha_ida": "2027-04-09",
-        "fecha_vuelta": "2027-04-23",
+        "fecha_ida": "2027-01-26",
+        "fecha_vuelta": "2027-02-03",
         "actualizado_en_vivo": true,
-        "precio_ars": 232200,
-        "precio_usd": 172
+        "precio_ars": 226800,
+        "precio_usd": 168
       }
     ],
     "hoteles": [
@@ -7650,10 +7650,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 20,
-      "rango_min": "US$ 150",
-      "rango_max": "US$ 230",
+      "rango_min": "US$ 140",
+      "rango_max": "US$ 200",
       "mensaje": "¡Tarifa mínima para una escapada de compras a Chile!",
-      "texto_pin": "US$ 167 es una tarifa récord baja",
+      "texto_pin": "US$ 148 es una tarifa récord baja",
       "consejo": "SKY Airline y JetSMART compiten agresivamente en este corredor directo de apenas 2 horas.",
       "historial_dias": [
         "Hace 52 d",
@@ -7663,11 +7663,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        207,
-        195,
-        185,
-        175,
-        167
+        184,
+        173,
+        164,
+        155,
+        148
       ],
       "historial_formato": "US$ "
     },
@@ -8020,7 +8020,7 @@
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
     "categoria_region": "caribe_usa",
-    "precio_desde": "US$ 633",
+    "precio_desde": "US$ 750",
     "comando_tg": "/sanandres",
     "resena": "Reserva de Biósfera Seaflower con su inconfundible 'Mar de los Siete Colores'. Excursiones a Johnny Cay, cayo Acuario con mantarrayas y arrecifes coralinos a 29°C constantes.",
     "vuelos": [
@@ -8028,43 +8028,43 @@
         "puesto": "🥇",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala corta (PTY)",
-        "fechas": "06 Dic - 11 Dic 2026",
+        "fechas": "28 Feb - 05 Mar 2027",
         "noches": 5,
-        "precio": "US$ 633 (aprox. $ 854.550 ARS)",
+        "precio": "US$ 750 (aprox. $ 1.012.500 ARS)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2026-12-06",
-        "fecha_vuelta": "2026-12-11",
+        "fecha_ida": "2027-02-28",
+        "fecha_vuelta": "2027-03-05",
         "actualizado_en_vivo": true,
-        "precio_ars": 854550,
-        "precio_usd": 633
+        "precio_ars": 1012500,
+        "precio_usd": 750
       },
       {
         "puesto": "🥈",
         "aerolinea": "Avianca",
         "escalas": "1 escala (BOG)",
-        "fechas": "13 Dic - 18 Dic 2026",
+        "fechas": "07 Mar - 12 Mar 2027",
         "noches": 5,
-        "precio": "US$ 671 (aprox. $ 905.850 ARS)",
+        "precio": "US$ 788 (aprox. $ 1.063.800 ARS)",
         "destacado": "Conexión ágil en Bogotá",
-        "fecha_ida": "2026-12-13",
-        "fecha_vuelta": "2026-12-18",
+        "fecha_ida": "2027-03-07",
+        "fecha_vuelta": "2027-03-12",
         "actualizado_en_vivo": true,
-        "precio_ars": 905850,
-        "precio_usd": 671
+        "precio_ars": 1063800,
+        "precio_usd": 788
       },
       {
         "puesto": "🥉",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala (LIM)",
-        "fechas": "20 Dic - 25 Dic 2026",
+        "fechas": "14 Mar - 19 Mar 2027",
         "noches": 5,
-        "precio": "US$ 722 (aprox. $ 974.700 ARS)",
+        "precio": "US$ 833 (aprox. $ 1.124.550 ARS)",
         "destacado": "Excelente equipaje",
-        "fecha_ida": "2026-12-20",
-        "fecha_vuelta": "2026-12-25",
+        "fecha_ida": "2027-03-14",
+        "fecha_vuelta": "2027-03-19",
         "actualizado_en_vivo": true,
-        "precio_ars": 974700,
-        "precio_usd": 722
+        "precio_ars": 1124550,
+        "precio_usd": 833
       }
     ],
     "hoteles": [
@@ -8120,10 +8120,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 24,
-      "rango_min": "US$ 580",
-      "rango_max": "US$ 870",
+      "rango_min": "US$ 690",
+      "rango_max": "US$ 1.040",
       "mensaje": "¡Oportunidad récord en el Caribe Colombiano!",
-      "texto_pin": "US$ 633 es una tarifa récord baja",
+      "texto_pin": "US$ 750 es una tarifa récord baja",
       "consejo": "Copa vía Panamá ofrece una escala muy corta y permite llevar valija carry-on de 10 kg.",
       "historial_dias": [
         "Hace 52 d",
@@ -8133,11 +8133,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        785,
-        741,
-        703,
-        665,
-        633
+        930,
+        878,
+        833,
+        788,
+        750
       ],
       "historial_formato": "US$ "
     },
@@ -8395,7 +8395,7 @@
     "es_cabotaje": false,
     "categoria_region": "caribe_usa",
     "codigo_pais": "co",
-    "precio_desde": "US$ 492",
+    "precio_desde": "US$ 591",
     "comando_tg": "/cartagena",
     "resena": "La Joya Colonial del Caribe: 11 kilómetros de murallas virreinales de piedra coralina, balcones cubiertos de buganvilias, ritmo de cumbia en Getsemaní y aguas turquesas en Islas del Rosario y Barú.",
     "vuelos": [
@@ -8403,43 +8403,43 @@
         "puesto": "🥇",
         "aerolinea": "Avianca",
         "escalas": "1 escala rápida (BOG)",
-        "fechas": "22 Feb - 05 Mar 2027",
-        "fecha_ida": "2027-02-22",
-        "fecha_vuelta": "2027-03-05",
+        "fechas": "04 Mar - 15 Mar 2027",
+        "fecha_ida": "2027-03-04",
+        "fecha_vuelta": "2027-03-15",
         "noches": 11,
-        "precio": "US$ 492 (aprox. $ 664.200 ARS)",
+        "precio": "US$ 591 (aprox. $ 797.850 ARS)",
         "destacado": "Tarifa récord",
         "actualizado_en_vivo": true,
-        "precio_usd": 492,
-        "precio_ars": 664200
+        "precio_usd": 591,
+        "precio_ars": 797850
       },
       {
         "puesto": "🥈",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala rápida (PTY)",
-        "fechas": "30 Ene - 05 Feb 2027",
-        "fecha_ida": "2027-01-30",
-        "fecha_vuelta": "2027-02-05",
-        "noches": 6,
-        "precio": "US$ 668 (aprox. $ 901.800 ARS)",
+        "fechas": "22 Mar - 30 Mar 2027",
+        "fecha_ida": "2027-03-22",
+        "fecha_vuelta": "2027-03-30",
+        "noches": 8,
+        "precio": "US$ 649 (aprox. $ 876.150 ARS)",
         "destacado": "Conexión ágil",
         "actualizado_en_vivo": true,
-        "precio_usd": 668,
-        "precio_ars": 901800
+        "precio_usd": 649,
+        "precio_ars": 876150
       },
       {
         "puesto": "🥉",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala (LIM)",
-        "fechas": "08 Mar - 19 Mar 2027",
-        "fecha_ida": "2027-03-08",
-        "fecha_vuelta": "2027-03-19",
-        "noches": 11,
-        "precio": "US$ 561 (aprox. $ 757.350 ARS)",
+        "fechas": "30 Ene - 05 Feb 2027",
+        "fecha_ida": "2027-01-30",
+        "fecha_vuelta": "2027-02-05",
+        "noches": 6,
+        "precio": "US$ 671 (aprox. $ 905.850 ARS)",
         "destacado": "Equipaje incluido",
         "actualizado_en_vivo": true,
-        "precio_usd": 561,
-        "precio_ars": 757350
+        "precio_usd": 671,
+        "precio_ars": 905850
       }
     ],
     "hoteles": [
@@ -8495,10 +8495,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 22,
-      "rango_min": "US$ 450",
-      "rango_max": "US$ 680",
+      "rango_min": "US$ 540",
+      "rango_max": "US$ 820",
       "mensaje": "¡Tarifa de oportunidad al Caribe Colombiano! En el 25% más económico del año.",
-      "texto_pin": "US$ 492 es una tarifa récord baja",
+      "texto_pin": "US$ 591 es una tarifa récord baja",
       "consejo": "Volar vía Bogotá con Avianca o vía Panamá con Copa permite combinar 5 noches en el Centro Histórico y 3 noches en Islas del Rosario.",
       "historial_dias": [
         "Hace 52 d",
@@ -8508,11 +8508,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        610,
-        576,
-        546,
-        517,
-        492
+        733,
+        691,
+        656,
+        621,
+        591
       ],
       "historial_formato": "US$ "
     },
@@ -8781,7 +8781,7 @@
     "tipo_ruta": "Sudamérica & Cultura Andina",
     "es_cabotaje": false,
     "categoria_region": "caribe_usa",
-    "precio_desde": "US$ 368",
+    "precio_desde": "US$ 435",
     "comando_tg": "/cusco",
     "codigo_pais": "pe",
     "resena": "Capital arqueológica de América: templos incas milenarios, Valle Sagrado y el misterio celestial de Machu Picchu.",
@@ -8789,41 +8789,41 @@
       {
         "puesto": "Top 1 Económico",
         "aerolinea": "LATAM Airlines",
-        "fechas": "01 Dic - 05 Dic 2026",
+        "fechas": "27 Feb - 05 Mar 2027",
         "escalas": "1 escala en Lima (LIM)",
-        "precio": "US$ 368 (aprox. $ 496.800 ARS)",
-        "noches": 4,
-        "fecha_ida": "2026-12-01",
-        "fecha_vuelta": "2026-12-05",
+        "precio": "US$ 435 (aprox. $ 587.250 ARS)",
+        "noches": 6,
+        "fecha_ida": "2027-02-27",
+        "fecha_vuelta": "2027-03-05",
         "actualizado_en_vivo": true,
-        "precio_ars": 496800,
-        "precio_usd": 368
+        "precio_ars": 587250,
+        "precio_usd": 435
       },
       {
         "puesto": "Top 2 Rápido",
         "aerolinea": "Sky Airline",
-        "fechas": "24 Nov - 29 Nov 2026",
+        "fechas": "07 Dic - 13 Dic 2026",
         "escalas": "1 escala breve en Santiago / Lima",
-        "precio": "US$ 376 (aprox. $ 507.600 ARS)",
-        "noches": 5,
-        "fecha_ida": "2026-11-24",
-        "fecha_vuelta": "2026-11-29",
+        "precio": "US$ 510 (aprox. $ 688.500 ARS)",
+        "noches": 6,
+        "fecha_ida": "2026-12-07",
+        "fecha_vuelta": "2026-12-13",
         "actualizado_en_vivo": true,
-        "precio_ars": 507600,
-        "precio_usd": 376
+        "precio_ars": 688500,
+        "precio_usd": 510
       },
       {
         "puesto": "Top 3 Confort",
         "aerolinea": "Avianca",
-        "fechas": "01 Dic - 08 Dic 2026",
+        "fechas": "13 Mar - 19 Mar 2027",
         "escalas": "1 escala en Bogotá (BOG)",
-        "precio": "US$ 390 (aprox. $ 526.500 ARS)",
-        "noches": 7,
-        "fecha_ida": "2026-12-01",
-        "fecha_vuelta": "2026-12-08",
+        "precio": "US$ 496 (aprox. $ 669.600 ARS)",
+        "noches": 6,
+        "fecha_ida": "2027-03-13",
+        "fecha_vuelta": "2027-03-19",
         "actualizado_en_vivo": true,
-        "precio_ars": 526500,
-        "precio_usd": 390
+        "precio_ars": 669600,
+        "precio_usd": 496
       }
     ],
     "hoteles": [
@@ -8861,17 +8861,17 @@
     "termometro": {
       "nivel": "oportunidad",
       "posicion_pct": 32,
-      "rango_min": "US$ 340",
-      "rango_max": "US$ 510",
+      "rango_min": "US$ 400",
+      "rango_max": "US$ 600",
       "mensaje": "Tarifa muy ventajosa para volar a los Andes peruanos en temporada seca.",
-      "texto_pin": "US$ 368 es una tarifa récord baja",
+      "texto_pin": "US$ 435 es una tarifa récord baja",
       "consejo": "Excelente oportunidad para reservar la excursión a Machu Picchu con tren panorámico y entradas oficiales.",
       "historial_valores": [
-        456,
-        431,
-        408,
-        386,
-        368
+        539,
+        509,
+        483,
+        457,
+        435
       ],
       "historial_formato": "US$ "
     },
@@ -9191,7 +9191,7 @@
     "tipo_ruta": "Internacional Directo / 1 Escala",
     "es_cabotaje": false,
     "categoria_region": "caribe_usa",
-    "precio_desde": "US$ 754",
+    "precio_desde": "US$ 817",
     "comando_tg": "/newyork",
     "resena": "La Gran Manzana: rascacielos infinitos, luces de Broadway, Central Park, el Puente de Brooklyn y museos legendarios.",
     "vuelos": [
@@ -9201,41 +9201,41 @@
         "escalas": "Directo sin escalas (10h 45m)",
         "fechas": "15 Abr - 27 Abr 2027",
         "noches": 12,
-        "precio": "US$ 754 (aprox. $ 1.017.900 ARS)",
+        "precio": "US$ 817 (aprox. $ 1.102.950 ARS)",
         "destacado": true,
         "fecha_ida": "2027-04-15",
         "fecha_vuelta": "2027-04-27",
         "actualizado_en_vivo": true,
-        "precio_ars": 1017900,
-        "precio_usd": 754
+        "precio_ars": 1102950,
+        "precio_usd": 817
       },
       {
         "puesto": "Top 2",
         "aerolinea": "Delta Air Lines (Directo)",
         "escalas": "Directo sin escalas (10h 50m)",
-        "fechas": "01 Abr - 15 Abr 2027",
-        "noches": 14,
-        "precio": "US$ 772 (aprox. $ 1.042.200 ARS)",
+        "fechas": "15 Abr - 25 Abr 2027",
+        "noches": 10,
+        "precio": "US$ 902 (aprox. $ 1.217.700 ARS)",
         "destacado": false,
-        "fecha_ida": "2027-04-01",
-        "fecha_vuelta": "2027-04-15",
+        "fecha_ida": "2027-04-15",
+        "fecha_vuelta": "2027-04-25",
         "actualizado_en_vivo": true,
-        "precio_ars": 1042200,
-        "precio_usd": 772
+        "precio_ars": 1217700,
+        "precio_usd": 902
       },
       {
         "puesto": "Top 3",
         "aerolinea": "Copa Airlines (1 Escala PTY)",
         "escalas": "1 escala rápida en Panamá (13h 20m)",
-        "fechas": "13 Feb - 27 Feb 2027",
-        "noches": 14,
-        "precio": "US$ 777 (aprox. $ 1.048.950 ARS)",
+        "fechas": "29 Abr - 11 May 2027",
+        "noches": 12,
+        "precio": "US$ 931 (aprox. $ 1.256.850 ARS)",
         "destacado": false,
-        "fecha_ida": "2027-02-13",
-        "fecha_vuelta": "2027-02-27",
+        "fecha_ida": "2027-04-29",
+        "fecha_vuelta": "2027-05-11",
         "actualizado_en_vivo": true,
-        "precio_ars": 1048950,
-        "precio_usd": 777
+        "precio_ars": 1256850,
+        "precio_usd": 931
       }
     ],
     "hoteles": [
@@ -9291,10 +9291,10 @@
     "termometro": {
       "nivel": "Oportunidad Rara",
       "posicion_pct": 22,
-      "rango_min": "US$ 690",
-      "rango_max": "US$ 1.040",
+      "rango_min": "US$ 750",
+      "rango_max": "US$ 1.130",
       "mensaje": "Tarifa muy conveniente para volar directo a Nueva York (US$ 870 vs promedio de US$ 1.150).",
-      "texto_pin": "US$ 754 es una tarifa récord baja",
+      "texto_pin": "US$ 817 es una tarifa récord baja",
       "consejo": "Los vuelos directos por debajo de US$ 900 son escasos; conviene asegurar la reserva con 90 días de anticipación.",
       "historial_dias": [
         "Hace 20d",
@@ -9304,11 +9304,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        935,
-        882,
-        837,
-        792,
-        754
+        1013,
+        956,
+        907,
+        858,
+        817
       ],
       "historial_formato": "US$ "
     },
@@ -9660,7 +9660,7 @@
     "iata": "MIA",
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
-    "precio_desde": "US$ 594",
+    "precio_desde": "US$ 622",
     "comando_tg": "/miami",
     "resena": "Playas turquesas, distritos de diseño como Wynwood y el centro financiero de Brickell. Punto de partida estratégico para conectar con Orlando en el tren de alta velocidad Brightline (3h 30m) o recorrer los cayos por la Overseas Highway.",
     "vuelos": [
@@ -9670,41 +9670,41 @@
         "escalas": "1 escala corta",
         "fechas": "09 Abr - 20 Abr 2027",
         "noches": 11,
-        "precio": "US$ 594 (aprox. $ 801.900 ARS)",
+        "precio": "US$ 622 (aprox. $ 839.700 ARS)",
         "destacado": "Tarifa récord más baja",
         "fecha_ida": "2027-04-09",
         "fecha_vuelta": "2027-04-20",
         "actualizado_en_vivo": true,
-        "precio_ars": 801900,
-        "precio_usd": 594
+        "precio_ars": 839700,
+        "precio_usd": 622
       },
       {
         "puesto": "🥈",
         "aerolinea": "American Airlines",
         "escalas": "Directo (EZE ➔ MIA)",
-        "fechas": "28 Abr - 05 May 2027",
-        "noches": 7,
-        "precio": "US$ 636 (aprox. $ 858.600 ARS)",
+        "fechas": "28 Abr - 06 May 2027",
+        "noches": 8,
+        "precio": "US$ 625 (aprox. $ 843.750 ARS)",
         "destacado": "Vuelo directo nocturno",
         "fecha_ida": "2027-04-28",
-        "fecha_vuelta": "2027-05-05",
+        "fecha_vuelta": "2027-05-06",
         "actualizado_en_vivo": true,
-        "precio_ars": 858600,
-        "precio_usd": 636
+        "precio_ars": 843750,
+        "precio_usd": 625
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (EZE ➔ MIA)",
-        "fechas": "22 Sep - 29 Sep 2027",
-        "noches": 7,
-        "precio": "US$ 694 (aprox. $ 936.900 ARS)",
+        "fechas": "31 Mar - 14 Abr 2027",
+        "noches": 14,
+        "precio": "US$ 625 (aprox. $ 843.750 ARS)",
         "destacado": "Atención en español y valijas",
-        "fecha_ida": "2027-09-22",
-        "fecha_vuelta": "2027-09-29",
+        "fecha_ida": "2027-03-31",
+        "fecha_vuelta": "2027-04-14",
         "actualizado_en_vivo": true,
-        "precio_ars": 936900,
-        "precio_usd": 694
+        "precio_ars": 843750,
+        "precio_usd": 625
       }
     ],
     "hoteles": [
@@ -9760,10 +9760,10 @@
     "termometro": {
       "nivel": "estandar",
       "posicion_pct": 38,
-      "rango_min": "US$ 550",
-      "rango_max": "US$ 820",
+      "rango_min": "US$ 570",
+      "rango_max": "US$ 860",
       "mensaje": "Por el momento, se mantienen los precios estándar para tu búsqueda a Miami.",
-      "texto_pin": "US$ 594 es una tarifa récord baja",
+      "texto_pin": "US$ 622 es una tarifa récord baja",
       "consejo": "Tarifa de ida y vuelta muy competitiva con 1 escala corta (Avianca / Copa). Se ubica cerca del piso habitual de los últimos 60 días.",
       "historial_dias": [
         "Hace 52 d",
@@ -9773,11 +9773,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        737,
-        695,
-        659,
-        624,
-        594
+        771,
+        728,
+        690,
+        653,
+        622
       ],
       "historial_formato": "US$ "
     },
@@ -10472,7 +10472,7 @@
     "iata": "CUN",
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
-    "precio_desde": "US$ 636",
+    "precio_desde": "US$ 680",
     "comando_tg": "/cancun",
     "resena": "El mar Caribe mexicano en su máxima pureza: arenas coralinas blancas, cenotes sagrados, la zona arqueológica maya de Tulum y el acceso rápido a Isla Mujeres en ferry panorámico.",
     "vuelos": [
@@ -10480,43 +10480,43 @@
         "puesto": "🥇",
         "aerolinea": "Arajet",
         "escalas": "1 escala corta (SDQ)",
-        "fechas": "13 Mar - 23 Mar 2027",
-        "noches": 10,
-        "precio": "US$ 636 (aprox. $ 858.600 ARS)",
+        "fechas": "23 Sep - 30 Sep 2027",
+        "noches": 7,
+        "precio": "US$ 680 (aprox. $ 918.000 ARS)",
         "destacado": "Tarifa récord Caribe",
-        "fecha_ida": "2027-03-13",
-        "fecha_vuelta": "2027-03-23",
+        "fecha_ida": "2027-09-23",
+        "fecha_vuelta": "2027-09-30",
         "actualizado_en_vivo": true,
-        "precio_ars": 858600,
-        "precio_usd": 636
+        "precio_ars": 918000,
+        "precio_usd": 680
       },
       {
         "puesto": "🥈",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala corta (PTY)",
-        "fechas": "10 Mar - 24 Mar 2027",
-        "noches": 14,
-        "precio": "US$ 649 (aprox. $ 876.150 ARS)",
+        "fechas": "13 Mar - 23 Mar 2027",
+        "noches": 10,
+        "precio": "US$ 711 (aprox. $ 959.850 ARS)",
         "destacado": "Conexión eficiente Hub de las Américas",
-        "fecha_ida": "2027-03-10",
-        "fecha_vuelta": "2027-03-24",
+        "fecha_ida": "2027-03-13",
+        "fecha_vuelta": "2027-03-23",
         "actualizado_en_vivo": true,
-        "precio_ars": 876150,
-        "precio_usd": 649
+        "precio_ars": 959850,
+        "precio_usd": 711
       },
       {
         "puesto": "🥉",
         "aerolinea": "Aeroméxico",
         "escalas": "1 escala (MEX)",
-        "fechas": "23 Sep - 30 Sep 2027",
-        "noches": 7,
-        "precio": "US$ 676 (aprox. $ 912.600 ARS)",
+        "fechas": "10 Feb - 24 Feb 2027",
+        "noches": 14,
+        "precio": "US$ 783 (aprox. $ 1.057.050 ARS)",
         "destacado": "Aerolínea de bandera mexicana",
-        "fecha_ida": "2027-09-23",
-        "fecha_vuelta": "2027-09-30",
+        "fecha_ida": "2027-02-10",
+        "fecha_vuelta": "2027-02-24",
         "actualizado_en_vivo": true,
-        "precio_ars": 912600,
-        "precio_usd": 676
+        "precio_ars": 1057050,
+        "precio_usd": 783
       }
     ],
     "hoteles": [
@@ -10572,10 +10572,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 25,
-      "rango_min": "US$ 590",
-      "rango_max": "US$ 880",
+      "rango_min": "US$ 630",
+      "rango_max": "US$ 940",
       "mensaje": "¡Tarifa baja confirmada! Los precios actuales están en el segmento más económico para Cancún.",
-      "texto_pin": "US$ 636 es una tarifa récord baja",
+      "texto_pin": "US$ 680 es una tarifa récord baja",
       "consejo": "Arajet y Copa tienen asientos en clase promo para viajar al Caribe. Excelente oportunidad para anticipar compras.",
       "historial_dias": [
         "Hace 52 d",
@@ -10585,11 +10585,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        789,
-        744,
-        706,
-        668,
-        636
+        843,
+        796,
+        755,
+        714,
+        680
       ],
       "historial_formato": "US$ "
     },
@@ -10912,7 +10912,7 @@
     "es_cabotaje": false,
     "categoria_region": "caribe_usa",
     "codigo_pais": "mx",
-    "precio_desde": "US$ 670",
+    "precio_desde": "US$ 679",
     "comando_tg": "/mexico",
     "resena": "La gran metrópolis de América: pirámides prehispánicas milenarias, el Castillo de Chapultepec, la Casa Azul de Frida Kahlo en Coyoacán y la gastronomía callejera y de autor más premiada del planeta.",
     "vuelos": [
@@ -10924,25 +10924,25 @@
         "fecha_ida": "2026-12-24",
         "fecha_vuelta": "2027-01-07",
         "noches": 14,
-        "precio": "US$ 670 (aprox. $ 904.500 ARS)",
+        "precio": "US$ 679 (aprox. $ 916.650 ARS)",
         "destacado": "Tarifa récord",
         "actualizado_en_vivo": true,
-        "precio_usd": 670,
-        "precio_ars": 904500
+        "precio_usd": 679,
+        "precio_ars": 916650
       },
       {
         "puesto": "🥈",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala (LIM / SCL)",
-        "fechas": "08 Mar - 21 Mar 2027",
-        "fecha_ida": "2027-03-08",
-        "fecha_vuelta": "2027-03-21",
-        "noches": 13,
-        "precio": "US$ 793 (aprox. $ 1.070.550 ARS)",
+        "fechas": "31 Dic - 14 Ene 2027",
+        "fecha_ida": "2026-12-31",
+        "fecha_vuelta": "2027-01-14",
+        "noches": 14,
+        "precio": "US$ 720 (aprox. $ 972.000 ARS)",
         "destacado": "Conexión ágil",
         "actualizado_en_vivo": true,
-        "precio_usd": 793,
-        "precio_ars": 1070550
+        "precio_usd": 720,
+        "precio_ars": 972000
       },
       {
         "puesto": "🥉",
@@ -10952,11 +10952,11 @@
         "fecha_ida": "2027-01-07",
         "fecha_vuelta": "2027-01-21",
         "noches": 14,
-        "precio": "US$ 764 (aprox. $ 1.031.400 ARS)",
+        "precio": "US$ 774 (aprox. $ 1.044.900 ARS)",
         "destacado": "Vuelo directo",
         "actualizado_en_vivo": true,
-        "precio_usd": 764,
-        "precio_ars": 1031400
+        "precio_usd": 774,
+        "precio_ars": 1044900
       }
     ],
     "hoteles": [
@@ -11013,9 +11013,9 @@
       "nivel": "bajo",
       "posicion_pct": 24,
       "rango_min": "US$ 620",
-      "rango_max": "US$ 920",
+      "rango_max": "US$ 940",
       "mensaje": "¡Tarifa competitiva a CDMX! Debajo del promedio anual de la ruta.",
-      "texto_pin": "US$ 670 es una tarifa récord baja",
+      "texto_pin": "US$ 679 es una tarifa récord baja",
       "consejo": "Copa (vía PTY) y Avianca (vía BOG) ofrecen las tarifas más bajas; Aeroméxico opera el vuelo directo en Boeing 787 Dreamliner.",
       "historial_dias": [
         "Hace 52 d",
@@ -11025,11 +11025,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        831,
-        784,
-        744,
-        704,
-        670
+        842,
+        794,
+        754,
+        713,
+        679
       ],
       "historial_formato": "US$ "
     },
@@ -11297,7 +11297,7 @@
     "iata": "PUJ",
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
-    "precio_desde": "US$ 737",
+    "precio_desde": "US$ 534",
     "comando_tg": "/puntacana",
     "resena": "El epicentro del descanso tropical caribeño: kilómetros de arena blanca fina, cocoteros infinitos, aguas protegidas por barrera de coral y excursiones inolvidables a Isla Saona.",
     "vuelos": [
@@ -11305,43 +11305,43 @@
         "puesto": "🥇",
         "aerolinea": "Arajet",
         "escalas": "Directo o escala corta",
-        "fechas": "21 Feb - 07 Mar 2027",
-        "noches": 14,
-        "precio": "US$ 737 (aprox. $ 994.950 ARS)",
+        "fechas": "14 Abr - 30 Abr 2027",
+        "noches": 16,
+        "precio": "US$ 534 (aprox. $ 720.900 ARS)",
         "destacado": "Tarifa récord sin escalas",
-        "fecha_ida": "2027-02-21",
-        "fecha_vuelta": "2027-03-07",
+        "fecha_ida": "2027-04-14",
+        "fecha_vuelta": "2027-04-30",
         "actualizado_en_vivo": true,
-        "precio_ars": 994950,
-        "precio_usd": 737
+        "precio_ars": 720900,
+        "precio_usd": 534
       },
       {
         "puesto": "🥈",
         "aerolinea": "Avianca",
         "escalas": "1 escala (BOG)",
-        "fechas": "19 Mar - 26 Mar 2027",
+        "fechas": "16 Mar - 23 Mar 2027",
         "noches": 7,
-        "precio": "US$ 767 (aprox. $ 1.035.450 ARS)",
+        "precio": "US$ 616 (aprox. $ 831.600 ARS)",
         "destacado": "Excelente servicio a bordo",
-        "fecha_ida": "2027-03-19",
-        "fecha_vuelta": "2027-03-26",
+        "fecha_ida": "2027-03-16",
+        "fecha_vuelta": "2027-03-23",
         "actualizado_en_vivo": true,
-        "precio_ars": 1035450,
-        "precio_usd": 767
+        "precio_ars": 831600,
+        "precio_usd": 616
       },
       {
         "puesto": "🥉",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala (PTY)",
-        "fechas": "07 Mar - 21 Mar 2027",
-        "noches": 14,
-        "precio": "US$ 840 (aprox. $ 1.134.000 ARS)",
+        "fechas": "21 Ene - 01 Feb 2027",
+        "noches": 11,
+        "precio": "US$ 726 (aprox. $ 980.100 ARS)",
         "destacado": "Puntualidad líder en América",
-        "fecha_ida": "2027-03-07",
-        "fecha_vuelta": "2027-03-21",
+        "fecha_ida": "2027-01-21",
+        "fecha_vuelta": "2027-02-01",
         "actualizado_en_vivo": true,
-        "precio_ars": 1134000,
-        "precio_usd": 840
+        "precio_ars": 980100,
+        "precio_usd": 726
       }
     ],
     "hoteles": [
@@ -11397,10 +11397,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 22,
-      "rango_min": "US$ 680",
-      "rango_max": "US$ 1.020",
+      "rango_min": "US$ 490",
+      "rango_max": "US$ 740",
       "mensaje": "¡Oportunidad récord! Vuelo al Caribe por debajo de los valores promedio habituales.",
-      "texto_pin": "US$ 737 es una tarifa récord baja",
+      "texto_pin": "US$ 534 es una tarifa récord baja",
       "consejo": "Arajet vía Santo Domingo ofrece la tarifa más económica del año con 1 valija carry-on incluida.",
       "historial_dias": [
         "Hace 52 d",
@@ -11410,11 +11410,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        914,
-        862,
-        818,
-        774,
-        737
+        662,
+        625,
+        593,
+        561,
+        534
       ],
       "historial_formato": "US$ "
     },
@@ -11703,7 +11703,7 @@
     "iata": "AUA",
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
-    "precio_desde": "US$ 565",
+    "precio_desde": "US$ 624",
     "comando_tg": "/aruba",
     "resena": "La 'Isla Feliz': fuera de la franja de huracanes, sol constante los 365 días del año, máxima seguridad para caminar de noche y playas de ranking mundial como Eagle Beach y Palm Beach.",
     "vuelos": [
@@ -11713,41 +11713,41 @@
         "escalas": "1 escala corta (BOG)",
         "fechas": "06 Abr - 14 Abr 2027",
         "noches": 8,
-        "precio": "US$ 565 (aprox. $ 762.750 ARS)",
+        "precio": "US$ 624 (aprox. $ 842.400 ARS)",
         "destacado": "Tarifa récord más baja",
         "fecha_ida": "2027-04-06",
         "fecha_vuelta": "2027-04-14",
         "actualizado_en_vivo": true,
-        "precio_ars": 762750,
-        "precio_usd": 565
+        "precio_ars": 842400,
+        "precio_usd": 624
       },
       {
         "puesto": "🥈",
         "aerolinea": "LATAM / Arajet",
         "escalas": "1 escala técnica",
-        "fechas": "02 Ene - 13 Ene 2027",
-        "noches": 11,
-        "precio": "US$ 704 (aprox. $ 950.400 ARS)",
+        "fechas": "05 Mar - 13 Mar 2027",
+        "noches": 8,
+        "precio": "US$ 664 (aprox. $ 896.400 ARS)",
         "destacado": "Equipaje carry-on incluido",
-        "fecha_ida": "2027-01-02",
-        "fecha_vuelta": "2027-01-13",
+        "fecha_ida": "2027-03-05",
+        "fecha_vuelta": "2027-03-13",
         "actualizado_en_vivo": true,
-        "precio_ars": 950400,
-        "precio_usd": 704
+        "precio_ars": 896400,
+        "precio_usd": 664
       },
       {
         "puesto": "🥉",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala (PTY)",
-        "fechas": "20 Abr - 28 Abr 2027",
-        "noches": 8,
-        "precio": "US$ 644 (aprox. $ 869.400 ARS)",
+        "fechas": "01 Mar - 10 Mar 2027",
+        "noches": 9,
+        "precio": "US$ 671 (aprox. $ 905.850 ARS)",
         "destacado": "Conexión ágil sin cambios de terminal",
-        "fecha_ida": "2027-04-20",
-        "fecha_vuelta": "2027-04-28",
+        "fecha_ida": "2027-03-01",
+        "fecha_vuelta": "2027-03-10",
         "actualizado_en_vivo": true,
-        "precio_ars": 869400,
-        "precio_usd": 644
+        "precio_ars": 905850,
+        "precio_usd": 671
       }
     ],
     "hoteles": [
@@ -11803,10 +11803,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 28,
-      "rango_min": "US$ 520",
-      "rango_max": "US$ 780",
+      "rango_min": "US$ 570",
+      "rango_max": "US$ 860",
       "mensaje": "¡Precio bajo de temporada detectado para volar a la 'Isla Feliz'!",
-      "texto_pin": "US$ 565 es una tarifa récord baja",
+      "texto_pin": "US$ 624 es una tarifa récord baja",
       "consejo": "Avianca vía Bogotá perforó los US$ 700. Quedan pocos cupos con esta tarifa para primavera/otoño fuera de huracanes.",
       "historial_dias": [
         "Hace 52 d",
@@ -11816,11 +11816,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        701,
-        661,
-        627,
-        593,
-        565
+        774,
+        730,
+        693,
+        655,
+        624
       ],
       "historial_formato": "US$ "
     },
@@ -12143,7 +12143,7 @@
     "es_cabotaje": false,
     "categoria_region": "caribe_usa",
     "codigo_pais": "cw",
-    "precio_desde": "US$ 771",
+    "precio_desde": "US$ 750",
     "comando_tg": "/curazao",
     "resena": "El encanto neerlandés en el Caribe Sur: fachadas pastel Patrimonio UNESCO en Willemstad, 35 calas de agua turquesa cristalina (Kenepa Grandi, Cas Abao) y clima soleado fuera del cinturón de huracanes.",
     "vuelos": [
@@ -12151,43 +12151,43 @@
         "puesto": "🥇",
         "aerolinea": "Avianca",
         "escalas": "1 escala rápida (BOG)",
-        "fechas": "26 Nov - 02 Dic 2026",
-        "fecha_ida": "2026-11-26",
-        "fecha_vuelta": "2026-12-02",
+        "fechas": "18 Feb - 24 Feb 2027",
+        "fecha_ida": "2027-02-18",
+        "fecha_vuelta": "2027-02-24",
         "noches": 6,
-        "precio": "US$ 771 (aprox. $ 1.040.850 ARS)",
+        "precio": "US$ 750 (aprox. $ 1.012.500 ARS)",
         "destacado": "Tarifa récord",
         "actualizado_en_vivo": true,
-        "precio_usd": 771,
-        "precio_ars": 1040850
+        "precio_usd": 750,
+        "precio_ars": 1012500
       },
       {
         "puesto": "🥈",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala (PTY)",
-        "fechas": "03 Dic - 09 Dic 2026",
-        "fecha_ida": "2026-12-03",
-        "fecha_vuelta": "2026-12-09",
+        "fechas": "25 Feb - 03 Mar 2027",
+        "fecha_ida": "2027-02-25",
+        "fecha_vuelta": "2027-03-03",
         "noches": 6,
-        "precio": "US$ 817 (aprox. $ 1.102.950 ARS)",
+        "precio": "US$ 788 (aprox. $ 1.063.800 ARS)",
         "destacado": "Conexión ágil",
         "actualizado_en_vivo": true,
-        "precio_usd": 817,
-        "precio_ars": 1102950
+        "precio_usd": 788,
+        "precio_ars": 1063800
       },
       {
         "puesto": "🥉",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala (PTY)",
-        "fechas": "10 Dic - 16 Dic 2026",
-        "fecha_ida": "2026-12-10",
-        "fecha_vuelta": "2026-12-16",
+        "fechas": "04 Mar - 10 Mar 2027",
+        "fecha_ida": "2027-03-04",
+        "fecha_vuelta": "2027-03-10",
         "noches": 6,
-        "precio": "US$ 879 (aprox. $ 1.186.650 ARS)",
+        "precio": "US$ 833 (aprox. $ 1.124.550 ARS)",
         "destacado": "Equipaje incluido",
         "actualizado_en_vivo": true,
-        "precio_usd": 879,
-        "precio_ars": 1186650
+        "precio_usd": 833,
+        "precio_ars": 1124550
       }
     ],
     "hoteles": [
@@ -12243,10 +12243,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 25,
-      "rango_min": "US$ 710",
-      "rango_max": "US$ 1.060",
+      "rango_min": "US$ 690",
+      "rango_max": "US$ 1.040",
       "mensaje": "¡Tarifa de oportunidad al Caribe Neerlandés! Fuera de zona de huracanes.",
-      "texto_pin": "US$ 771 es una tarifa récord baja",
+      "texto_pin": "US$ 750 es una tarifa récord baja",
       "consejo": "Avianca vía Bogotá y Copa vía Panamá ofrecen las conexiones más rápidas hacia Hato International (CUR).",
       "historial_dias": [
         "Hace 52 d",
@@ -12256,11 +12256,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        956,
-        902,
-        856,
-        810,
-        771
+        930,
+        878,
+        833,
+        788,
+        750
       ],
       "historial_formato": "US$ "
     },
@@ -12530,7 +12530,7 @@
     "es_cabotaje": false,
     "categoria_region": "caribe_usa",
     "codigo_pais": "cu",
-    "precio_desde": "US$ 933",
+    "precio_desde": "US$ 958",
     "comando_tg": "/cuba",
     "resena": "El corazón nostálgico del Caribe: plazas virreinales de La Habana Vieja, autos clásicos de los años 50 por el Malecón, sones cubanos en directo y los 20 km de arena blanca y mar turquesa de Varadero.",
     "vuelos": [
@@ -12538,43 +12538,43 @@
         "puesto": "🥇",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala rápida (PTY)",
-        "fechas": "02 Dic - 16 Dic 2026",
-        "fecha_ida": "2026-12-02",
-        "fecha_vuelta": "2026-12-16",
-        "noches": 14,
-        "precio": "US$ 933 (aprox. $ 1.259.550 ARS)",
+        "fechas": "22 Feb - 07 Mar 2027",
+        "fecha_ida": "2027-02-22",
+        "fecha_vuelta": "2027-03-07",
+        "noches": 13,
+        "precio": "US$ 958 (aprox. $ 1.293.300 ARS)",
         "destacado": "Tarifa récord",
         "actualizado_en_vivo": true,
-        "precio_usd": 933,
-        "precio_ars": 1259550
+        "precio_usd": 958,
+        "precio_ars": 1293300
       },
       {
         "puesto": "🥈",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala (LIM)",
-        "fechas": "03 Dic - 17 Dic 2026",
-        "fecha_ida": "2026-12-03",
-        "fecha_vuelta": "2026-12-17",
-        "noches": 14,
-        "precio": "US$ 989 (aprox. $ 1.335.150 ARS)",
+        "fechas": "01 Mar - 14 Mar 2027",
+        "fecha_ida": "2027-03-01",
+        "fecha_vuelta": "2027-03-14",
+        "noches": 13,
+        "precio": "US$ 1015 (aprox. $ 1.370.250 ARS)",
         "destacado": "Conexión ágil",
         "actualizado_en_vivo": true,
-        "precio_usd": 989,
-        "precio_ars": 1335150
+        "precio_usd": 1015,
+        "precio_ars": 1370250
       },
       {
         "puesto": "🥉",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala (PTY)",
-        "fechas": "09 Dic - 23 Dic 2026",
-        "fecha_ida": "2026-12-09",
-        "fecha_vuelta": "2026-12-23",
-        "noches": 14,
-        "precio": "US$ 1064 (aprox. $ 1.436.400 ARS)",
+        "fechas": "08 Mar - 21 Mar 2027",
+        "fecha_ida": "2027-03-08",
+        "fecha_vuelta": "2027-03-21",
+        "noches": 13,
+        "precio": "US$ 1092 (aprox. $ 1.474.200 ARS)",
         "destacado": "Equipaje incluido",
         "actualizado_en_vivo": true,
-        "precio_usd": 1064,
-        "precio_ars": 1436400
+        "precio_usd": 1092,
+        "precio_ars": 1474200
       }
     ],
     "hoteles": [
@@ -12630,10 +12630,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 26,
-      "rango_min": "US$ 860",
-      "rango_max": "US$ 1.290",
+      "rango_min": "US$ 880",
+      "rango_max": "US$ 1.320",
       "mensaje": "¡Tarifa conveniente al Caribe Cubano! Ideal para combinar Habana + Varadero.",
-      "texto_pin": "US$ 933 es una tarifa récord baja",
+      "texto_pin": "US$ 958 es una tarifa récord baja",
       "consejo": "Copa Airlines vía Panamá (PTY) ofrece varias frecuencias diarias hacia La Habana (HAV) y vuelos directos a Santa Clara / Cayo Santa María.",
       "historial_dias": [
         "Hace 52 d",
@@ -12643,11 +12643,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        1157,
-        1092,
-        1036,
-        980,
-        933
+        1188,
+        1121,
+        1063,
+        1006,
+        958
       ],
       "historial_formato": "US$ "
     },
@@ -12885,7 +12885,7 @@
     "es_cabotaje": false,
     "categoria_region": "caribe_usa",
     "codigo_pais": "pa",
-    "precio_desde": "US$ 617",
+    "precio_desde": "US$ 631",
     "comando_tg": "/panama",
     "resena": "El puente del mundo entre dos océanos: las esclusas del Canal de Panamá, los rooftops coloniales del Casco Antiguo UNESCO, las 365 islas vírgenes de San Blas (Guna Yala) y el mejor shopping tax-free.",
     "vuelos": [
@@ -12893,43 +12893,43 @@
         "puesto": "🥇",
         "aerolinea": "Copa Airlines",
         "escalas": "Directo (EZE ➔ PTY)",
-        "fechas": "03 Dic - 13 Dic 2026",
-        "fecha_ida": "2026-12-03",
-        "fecha_vuelta": "2026-12-13",
-        "noches": 10,
-        "precio": "US$ 617 (aprox. $ 832.950 ARS)",
+        "fechas": "10 Mar - 24 Mar 2027",
+        "fecha_ida": "2027-03-10",
+        "fecha_vuelta": "2027-03-24",
+        "noches": 14,
+        "precio": "US$ 631 (aprox. $ 851.850 ARS)",
         "destacado": "Vuelo directo",
         "actualizado_en_vivo": true,
-        "precio_usd": 617,
-        "precio_ars": 832950
+        "precio_usd": 631,
+        "precio_ars": 851850
       },
       {
         "puesto": "🥈",
         "aerolinea": "Avianca",
         "escalas": "1 escala rápida (BOG)",
-        "fechas": "03 Dic - 14 Dic 2026",
-        "fecha_ida": "2026-12-03",
-        "fecha_vuelta": "2026-12-14",
-        "noches": 11,
-        "precio": "US$ 654 (aprox. $ 882.900 ARS)",
+        "fechas": "21 Feb - 28 Feb 2027",
+        "fecha_ida": "2027-02-21",
+        "fecha_vuelta": "2027-02-28",
+        "noches": 7,
+        "precio": "US$ 707 (aprox. $ 954.450 ARS)",
         "destacado": "Conexión ágil",
         "actualizado_en_vivo": true,
-        "precio_usd": 654,
-        "precio_ars": 882900
+        "precio_usd": 707,
+        "precio_ars": 954450
       },
       {
         "puesto": "🥉",
         "aerolinea": "Copa Airlines",
         "escalas": "Directo (EZE ➔ PTY)",
-        "fechas": "04 Dic - 13 Dic 2026",
-        "fecha_ida": "2026-12-04",
-        "fecha_vuelta": "2026-12-13",
-        "noches": 9,
-        "precio": "US$ 703 (aprox. $ 949.050 ARS)",
+        "fechas": "24 Mar - 07 Abr 2027",
+        "fecha_ida": "2027-03-24",
+        "fecha_vuelta": "2027-04-07",
+        "noches": 14,
+        "precio": "US$ 719 (aprox. $ 970.650 ARS)",
         "destacado": "Equipaje incluido",
         "actualizado_en_vivo": true,
-        "precio_usd": 703,
-        "precio_ars": 949050
+        "precio_usd": 719,
+        "precio_ars": 970650
       }
     ],
     "hoteles": [
@@ -12985,10 +12985,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 22,
-      "rango_min": "US$ 570",
-      "rango_max": "US$ 850",
+      "rango_min": "US$ 580",
+      "rango_max": "US$ 870",
       "mensaje": "¡Excelente tarifa en vuelo directo a Panamá! Ideal para aprovechar el Stopover sin cargo.",
-      "texto_pin": "US$ 617 es una tarifa récord baja",
+      "texto_pin": "US$ 631 es una tarifa récord baja",
       "consejo": "Con el programa Stopover de Copa Airlines podés conocer Ciudad de Panamá y San Blas hasta por 7 días sin costo adicional de pasaje aéreo.",
       "historial_dias": [
         "Hace 52 d",
@@ -12998,11 +12998,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        765,
-        722,
-        685,
-        648,
-        617
+        782,
+        738,
+        700,
+        663,
+        631
       ],
       "historial_formato": "US$ "
     },
@@ -13272,7 +13272,7 @@
     "es_cabotaje": false,
     "categoria_region": "caribe_usa",
     "codigo_pais": "cr",
-    "precio_desde": "US$ 835",
+    "precio_desde": "US$ 670",
     "comando_tg": "/costarica",
     "resena": "La capital mundial del Pura Vida y la biodiversidad: aguas termales bajo el Volcán Arenal, puentes colgantes en el bosque nuboso de Monteverde y playas rodeadas de selva en Manuel Antonio y Guanacaste.",
     "vuelos": [
@@ -13280,43 +13280,43 @@
         "puesto": "🥇",
         "aerolinea": "Avianca",
         "escalas": "1 escala rápida (BOG)",
-        "fechas": "29 Dic - 08 Ene 2027",
-        "fecha_ida": "2026-12-29",
-        "fecha_vuelta": "2027-01-08",
-        "noches": 10,
-        "precio": "US$ 835 (aprox. $ 1.127.250 ARS)",
+        "fechas": "04 Abr - 15 Abr 2027",
+        "fecha_ida": "2027-04-04",
+        "fecha_vuelta": "2027-04-15",
+        "noches": 11,
+        "precio": "US$ 670 (aprox. $ 904.500 ARS)",
         "destacado": "Tarifa récord",
         "actualizado_en_vivo": true,
-        "precio_usd": 835,
-        "precio_ars": 1127250
+        "precio_usd": 670,
+        "precio_ars": 904500
       },
       {
         "puesto": "🥈",
         "aerolinea": "Copa Airlines",
         "escalas": "1 escala rápida (PTY)",
-        "fechas": "29 Dic - 09 Ene 2027",
-        "fecha_ida": "2026-12-29",
-        "fecha_vuelta": "2027-01-09",
-        "noches": 11,
-        "precio": "US$ 844 (aprox. $ 1.139.400 ARS)",
+        "fechas": "06 Abr - 16 Abr 2027",
+        "fecha_ida": "2027-04-06",
+        "fecha_vuelta": "2027-04-16",
+        "noches": 10,
+        "precio": "US$ 710 (aprox. $ 958.500 ARS)",
         "destacado": "Conexión ágil",
         "actualizado_en_vivo": true,
-        "precio_usd": 844,
-        "precio_ars": 1139400
+        "precio_usd": 710,
+        "precio_ars": 958500
       },
       {
         "puesto": "🥉",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala (LIM)",
-        "fechas": "27 Dic - 09 Ene 2027",
-        "fecha_ida": "2026-12-27",
-        "fecha_vuelta": "2027-01-09",
-        "noches": 13,
-        "precio": "US$ 845 (aprox. $ 1.140.750 ARS)",
+        "fechas": "06 Abr - 17 Abr 2027",
+        "fecha_ida": "2027-04-06",
+        "fecha_vuelta": "2027-04-17",
+        "noches": 11,
+        "precio": "US$ 764 (aprox. $ 1.031.400 ARS)",
         "destacado": "Equipaje incluido",
         "actualizado_en_vivo": true,
-        "precio_usd": 845,
-        "precio_ars": 1140750
+        "precio_usd": 764,
+        "precio_ars": 1031400
       }
     ],
     "hoteles": [
@@ -13372,10 +13372,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 25,
-      "rango_min": "US$ 770",
-      "rango_max": "US$ 1.150",
+      "rango_min": "US$ 620",
+      "rango_max": "US$ 920",
       "mensaje": "¡Tarifa ideal a Costa Rica! En el rango más bajo hacia San José y Guanacaste.",
-      "texto_pin": "US$ 835 es una tarifa récord baja",
+      "texto_pin": "US$ 670 es una tarifa récord baja",
       "consejo": "Entrar por San José (SJO) para visitar Arenal y salir desde Liberia (LIR) tras descansar en las playas de Guanacaste ahorra horas de ruta.",
       "historial_dias": [
         "Hace 52 d",
@@ -13385,11 +13385,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        1035,
-        977,
-        927,
-        877,
-        835
+        831,
+        784,
+        744,
+        704,
+        670
       ],
       "historial_formato": "US$ "
     },
@@ -13657,7 +13657,7 @@
     "iata": "MAD",
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
-    "precio_desde": "€ 701",
+    "precio_desde": "€ 757",
     "comando_tg": "/madrid",
     "resena": "Capital europea de la cultura y la gastronomía, con el hub de trenes de alta velocidad más competitivo de Europa (Iryo, Ouigo y AVE a Barcelona por €9). Ideal para recorrer el Triángulo del Arte y hacer base para escapadas a Toledo y Segovia.",
     "vuelos": [
@@ -13665,46 +13665,46 @@
         "puesto": "🥇",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala corta (GRU)",
-        "fechas": "14 Abr - 30 Abr 2027",
-        "noches": 16,
-        "precio": "€ 701",
+        "fechas": "04 Mar - 08 Mar 2027",
+        "noches": 4,
+        "precio": "€ 757",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2027-04-14",
-        "fecha_vuelta": "2027-04-30",
+        "fecha_ida": "2027-03-04",
+        "fecha_vuelta": "2027-03-08",
         "actualizado_en_vivo": true,
-        "precio_ars": 1023460,
-        "precio_usd": 757,
-        "precio_eur": 701
+        "precio_ars": 1105220,
+        "precio_usd": 818,
+        "precio_eur": 757
       },
       {
         "puesto": "🥈",
         "aerolinea": "Iberia",
         "escalas": "Directo (EZE ➔ MAD)",
-        "fechas": "17 Abr - 03 May 2027",
+        "fechas": "10 Abr - 26 Abr 2027",
         "noches": 16,
-        "precio": "€ 743",
+        "precio": "€ 761",
         "destacado": "Vuelo directo más veloz",
-        "fecha_ida": "2027-04-17",
-        "fecha_vuelta": "2027-05-03",
+        "fecha_ida": "2027-04-10",
+        "fecha_vuelta": "2027-04-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 1084780,
-        "precio_usd": 802,
-        "precio_eur": 743
+        "precio_ars": 1111060,
+        "precio_usd": 822,
+        "precio_eur": 761
       },
       {
         "puesto": "🥉",
         "aerolinea": "Air Europa",
         "escalas": "Directo (EZE ➔ MAD)",
-        "fechas": "18 Abr - 04 May 2027",
+        "fechas": "08 Abr - 24 Abr 2027",
         "noches": 16,
-        "precio": "€ 799",
+        "precio": "€ 763",
         "destacado": "Excelente equipaje incluido",
-        "fecha_ida": "2027-04-18",
-        "fecha_vuelta": "2027-05-04",
+        "fecha_ida": "2027-04-08",
+        "fecha_vuelta": "2027-04-24",
         "actualizado_en_vivo": true,
-        "precio_ars": 1166540,
-        "precio_usd": 863,
-        "precio_eur": 799
+        "precio_ars": 1113980,
+        "precio_usd": 824,
+        "precio_eur": 763
       }
     ],
     "hoteles": [
@@ -13763,10 +13763,10 @@
     "termometro": {
       "nivel": "estandar",
       "posicion_pct": 38,
-      "rango_min": "€ 640",
-      "rango_max": "€ 970",
+      "rango_min": "€ 700",
+      "rango_max": "€ 1.040",
       "mensaje": "Por el momento, se mantienen los precios estándar para tu búsqueda a Madrid.",
-      "texto_pin": "€ 701 es una tarifa récord baja",
+      "texto_pin": "€ 757 es una tarifa récord baja",
       "consejo": "Tarifa muy competitiva para vuelo con 1 escala corta en San Pablo. Se ubica cerca del piso histórico de los últimos 60 días.",
       "historial_dias": [
         "Hace 52 d",
@@ -13776,11 +13776,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        869,
-        820,
-        778,
-        736,
-        701
+        939,
+        886,
+        840,
+        795,
+        757
       ],
       "historial_formato": "€ "
     },
@@ -14134,7 +14134,7 @@
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "€ 869",
+    "precio_desde": "€ 992",
     "comando_tg": "/barcelona",
     "resena": "Modernismo deslumbrante de Gaudí con la Sagrada Familia y Park Güell, callejones del Barrio Gótico, gastronomía catalana y trenes de alta velocidad AVE a Madrid en solo 2h 30m.",
     "vuelos": [
@@ -14142,46 +14142,46 @@
         "puesto": "🥇",
         "aerolinea": "Level",
         "escalas": "Directo (EZE ➔ BCN)",
-        "fechas": "01 Dic - 16 Dic 2026",
-        "noches": 15,
-        "precio": "€ 869",
+        "fechas": "27 Nov - 05 Dic 2026",
+        "noches": 8,
+        "precio": "€ 992",
         "destacado": "Vuelo directo más veloz",
-        "fecha_ida": "2026-12-01",
-        "fecha_vuelta": "2026-12-16",
+        "fecha_ida": "2026-11-27",
+        "fecha_vuelta": "2026-12-05",
         "actualizado_en_vivo": true,
-        "precio_ars": 1268740,
-        "precio_usd": 939,
-        "precio_eur": 869
+        "precio_ars": 1448320,
+        "precio_usd": 1071,
+        "precio_eur": 992
       },
       {
         "puesto": "🥈",
         "aerolinea": "Iberia",
         "escalas": "1 escala corta (MAD)",
-        "fechas": "08 Dic - 23 Dic 2026",
-        "noches": 15,
-        "precio": "€ 921",
+        "fechas": "31 Ene - 18 Feb 2027",
+        "noches": 18,
+        "precio": "€ 1.009",
         "destacado": "Excelente servicio a bordo",
-        "fecha_ida": "2026-12-08",
-        "fecha_vuelta": "2026-12-23",
+        "fecha_ida": "2027-01-31",
+        "fecha_vuelta": "2027-02-18",
         "actualizado_en_vivo": true,
-        "precio_ars": 1344660,
-        "precio_usd": 995,
-        "precio_eur": 921
+        "precio_ars": 1473140,
+        "precio_usd": 1090,
+        "precio_eur": 1009
       },
       {
         "puesto": "🥉",
         "aerolinea": "Air Europa",
         "escalas": "1 escala (MAD)",
-        "fechas": "15 Dic - 30 Dic 2026",
-        "noches": 15,
-        "precio": "€ 991",
+        "fechas": "09 May - 30 May 2027",
+        "noches": 21,
+        "precio": "€ 1.017",
         "destacado": "Equipaje carry-on incluido",
-        "fecha_ida": "2026-12-15",
-        "fecha_vuelta": "2026-12-30",
+        "fecha_ida": "2027-05-09",
+        "fecha_vuelta": "2027-05-30",
         "actualizado_en_vivo": true,
-        "precio_ars": 1446860,
-        "precio_usd": 1070,
-        "precio_eur": 991
+        "precio_ars": 1484820,
+        "precio_usd": 1098,
+        "precio_eur": 1017
       }
     ],
     "hoteles": [
@@ -14240,10 +14240,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 26,
-      "rango_min": "€ 800",
-      "rango_max": "€ 1.200",
+      "rango_min": "€ 910",
+      "rango_max": "€ 1.370",
       "mensaje": "¡Tarifa baja confirmada para volar a Barcelona!",
-      "texto_pin": "€ 869 es una tarifa récord baja",
+      "texto_pin": "€ 992 es una tarifa récord baja",
       "consejo": "Level ofrece el único vuelo directo sin escalas desde Ezeiza perforando los US$ 1.000.",
       "historial_dias": [
         "Hace 52 d",
@@ -14253,11 +14253,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        1078,
-        1017,
-        965,
-        912,
-        869
+        1230,
+        1161,
+        1101,
+        1042,
+        992
       ],
       "historial_formato": "€ "
     },
@@ -14547,7 +14547,7 @@
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
     "codigo_pais": "pt",
-    "precio_desde": "€ 908",
+    "precio_desde": "€ 876",
     "comando_tg": "/lisboa",
     "resena": "La luz dorada del Atlántico sobre siete colinas: el mítico tranvía 28 por callejones de azulejos en Alfama, noches de fado, los palacios de cuento de Sintra y las bodegas ribereñas de Oporto.",
     "vuelos": [
@@ -14555,46 +14555,46 @@
         "puesto": "🥇",
         "aerolinea": "Air Europa / Iberia",
         "escalas": "1 escala rápida (MAD)",
-        "fechas": "29 Ene - 07 Feb 2027",
-        "fecha_ida": "2027-01-29",
-        "fecha_vuelta": "2027-02-07",
+        "fechas": "26 Mar - 04 Abr 2027",
+        "fecha_ida": "2027-03-26",
+        "fecha_vuelta": "2027-04-04",
         "noches": 9,
-        "precio": "€ 908",
+        "precio": "€ 876",
         "destacado": "Tarifa récord",
         "actualizado_en_vivo": true,
-        "precio_eur": 908,
-        "precio_usd": 981,
-        "precio_ars": 1325680
+        "precio_eur": 876,
+        "precio_usd": 946,
+        "precio_ars": 1278960
       },
       {
         "puesto": "🥈",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala (GRU)",
-        "fechas": "29 Ene - 13 Feb 2027",
-        "fecha_ida": "2027-01-29",
-        "fecha_vuelta": "2027-02-13",
-        "noches": 15,
-        "precio": "€ 962",
+        "fechas": "06 Sep - 15 Sep 2027",
+        "fecha_ida": "2027-09-06",
+        "fecha_vuelta": "2027-09-15",
+        "noches": 9,
+        "precio": "€ 883",
         "destacado": "Conexión ágil",
         "actualizado_en_vivo": true,
-        "precio_eur": 962,
-        "precio_usd": 1039,
-        "precio_ars": 1404520
+        "precio_eur": 883,
+        "precio_usd": 954,
+        "precio_ars": 1289180
       },
       {
         "puesto": "🥉",
         "aerolinea": "TAP Air Portugal",
         "escalas": "1 escala corta (GRU)",
-        "fechas": "31 Ene - 15 Feb 2027",
-        "fecha_ida": "2027-01-31",
-        "fecha_vuelta": "2027-02-15",
-        "noches": 15,
-        "precio": "€ 958",
+        "fechas": "24 Abr - 10 May 2027",
+        "fecha_ida": "2027-04-24",
+        "fecha_vuelta": "2027-05-10",
+        "noches": 16,
+        "precio": "€ 1.046",
         "destacado": "Equipaje incluido",
         "actualizado_en_vivo": true,
-        "precio_eur": 958,
-        "precio_usd": 1035,
-        "precio_ars": 1398680
+        "precio_eur": 1046,
+        "precio_usd": 1130,
+        "precio_ars": 1527160
       }
     ],
     "hoteles": [
@@ -14653,10 +14653,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 22,
-      "rango_min": "€ 840",
-      "rango_max": "€ 1.250",
+      "rango_min": "€ 810",
+      "rango_max": "€ 1.210",
       "mensaje": "¡Tarifa récord a Portugal! Una de las puertas más económicas a Europa Occidental.",
-      "texto_pin": "€ 908 es una tarifa récord baja",
+      "texto_pin": "€ 876 es una tarifa récord baja",
       "consejo": "El tren de alta velocidad Alfa Pendular conecta Lisboa con Oporto en solo 2h 45m desde € 19 reservando con anticipación.",
       "historial_dias": [
         "Hace 52 d",
@@ -14666,11 +14666,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        1126,
-        1062,
-        1008,
-        953,
-        908
+        1086,
+        1025,
+        972,
+        920,
+        876
       ],
       "historial_formato": "€ "
     },
@@ -14938,7 +14938,7 @@
     "iata": "FCO",
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
-    "precio_desde": "€ 928",
+    "precio_desde": "€ 969",
     "comando_tg": "/roma",
     "resena": "La Ciudad Eterna deslumbra con 3.000 años de historia viva. Desde el Coliseo y los Museos Vaticanos hasta las trattorias de Trastevere, Roma es además el gran nodo ferroviario con trenes bala Frecciarossa a Florencia en solo 1h 32m.",
     "vuelos": [
@@ -14946,46 +14946,46 @@
         "puesto": "🥇",
         "aerolinea": "Air Europa",
         "escalas": "1 escala corta (MAD)",
-        "fechas": "28 Nov - 03 Dic 2026",
-        "noches": 5,
-        "precio": "€ 928",
+        "fechas": "09 Mar - 17 Mar 2027",
+        "noches": 8,
+        "precio": "€ 969",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2026-11-28",
-        "fecha_vuelta": "2026-12-03",
+        "fecha_ida": "2027-03-09",
+        "fecha_vuelta": "2027-03-17",
         "actualizado_en_vivo": true,
-        "precio_eur": 928,
-        "precio_usd": 1002,
-        "precio_ars": 1354880
+        "precio_eur": 969,
+        "precio_usd": 1047,
+        "precio_ars": 1414740
       },
       {
         "puesto": "🥈",
         "aerolinea": "Iberia",
         "escalas": "1 escala corta (MAD)",
-        "fechas": "24 Dic - 31 Dic 2026",
-        "noches": 7,
-        "precio": "€ 1.059",
+        "fechas": "05 Mar - 10 Mar 2027",
+        "noches": 5,
+        "precio": "€ 998",
         "destacado": "Escala rápida de 2 horas",
-        "fecha_ida": "2026-12-24",
-        "fecha_vuelta": "2026-12-31",
+        "fecha_ida": "2027-03-05",
+        "fecha_vuelta": "2027-03-10",
         "actualizado_en_vivo": true,
-        "precio_eur": 1059,
-        "precio_usd": 1144,
-        "precio_ars": 1546140
+        "precio_eur": 998,
+        "precio_usd": 1078,
+        "precio_ars": 1457080
       },
       {
         "puesto": "🥉",
         "aerolinea": "ITA Airways",
         "escalas": "Directo (EZE ➔ FCO)",
-        "fechas": "26 Nov - 11 Dic 2026",
-        "noches": 15,
-        "precio": "€ 1.076",
+        "fechas": "08 Mar - 16 Mar 2027",
+        "noches": 8,
+        "precio": "€ 1.026",
         "destacado": "Vuelo directo sin escalas",
-        "fecha_ida": "2026-11-26",
-        "fecha_vuelta": "2026-12-11",
+        "fecha_ida": "2027-03-08",
+        "fecha_vuelta": "2027-03-16",
         "actualizado_en_vivo": true,
-        "precio_eur": 1076,
-        "precio_usd": 1162,
-        "precio_ars": 1570960
+        "precio_eur": 1026,
+        "precio_usd": 1108,
+        "precio_ars": 1497960
       }
     ],
     "hoteles": [
@@ -15044,10 +15044,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 24,
-      "rango_min": "€ 850",
-      "rango_max": "€ 1.280",
+      "rango_min": "€ 890",
+      "rango_max": "€ 1.340",
       "mensaje": "¡Los precios actuales son más bajos de lo habitual para volar a Roma!",
-      "texto_pin": "€ 928 es una tarifa récord baja",
+      "texto_pin": "€ 969 es una tarifa récord baja",
       "consejo": "Tarifa récord para viajar a Italia con Air Europa. Se ubica US$ 250 por debajo del promedio histórico habitual.",
       "historial_dias": [
         "Hace 52 d",
@@ -15057,11 +15057,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        1151,
-        1086,
-        1030,
-        974,
-        928
+        1202,
+        1134,
+        1076,
+        1017,
+        969
       ],
       "historial_formato": "€ "
     },
@@ -15351,7 +15351,7 @@
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "€ 1.072",
+    "precio_desde": "€ 965",
     "comando_tg": "/paris",
     "resena": "La Ciudad de la Luz: Museo del Louvre, Torre Eiffel, paseos por el Sena, elegancia de Saint-Germain y epicentro de trenes TGV y Eurostar hacia toda Europa.",
     "vuelos": [
@@ -15359,27 +15359,27 @@
         "puesto": "🥇",
         "aerolinea": "Air France",
         "escalas": "Directo (EZE ➔ CDG)",
-        "fechas": "27 Nov - 12 Dic 2026",
-        "noches": 15,
-        "precio": "€ 1.072",
+        "fechas": "08 Mar - 22 Mar 2027",
+        "noches": 14,
+        "precio": "€ 965",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2026-11-27",
-        "fecha_vuelta": "2026-12-12",
+        "fecha_ida": "2027-03-08",
+        "fecha_vuelta": "2027-03-22",
         "actualizado_en_vivo": true,
-        "precio_eur": 1072,
-        "precio_usd": 1158,
-        "precio_ars": 1565120
+        "precio_eur": 965,
+        "precio_usd": 1042,
+        "precio_ars": 1408900
       },
       {
         "puesto": "🥈",
         "aerolinea": "Iberia",
         "escalas": "1 escala corta (MAD)",
-        "fechas": "04 Dic - 19 Dic 2026",
-        "noches": 15,
+        "fechas": "01 Jun - 15 Jun 2027",
+        "noches": 14,
         "precio": "€ 1.136",
         "destacado": "Conexión eficiente",
-        "fecha_ida": "2026-12-04",
-        "fecha_vuelta": "2026-12-19",
+        "fecha_ida": "2027-06-01",
+        "fecha_vuelta": "2027-06-15",
         "actualizado_en_vivo": true,
         "precio_eur": 1136,
         "precio_usd": 1227,
@@ -15389,16 +15389,16 @@
         "puesto": "🥉",
         "aerolinea": "Air Europa",
         "escalas": "1 escala (MAD)",
-        "fechas": "11 Dic - 26 Dic 2026",
-        "noches": 15,
-        "precio": "€ 1.222",
+        "fechas": "22 Mar - 05 Abr 2027",
+        "noches": 14,
+        "precio": "€ 1.100",
         "destacado": "Llega a aeropuerto Orly (ORY)",
-        "fecha_ida": "2026-12-11",
-        "fecha_vuelta": "2026-12-26",
+        "fecha_ida": "2027-03-22",
+        "fecha_vuelta": "2027-04-05",
         "actualizado_en_vivo": true,
-        "precio_eur": 1222,
-        "precio_usd": 1320,
-        "precio_ars": 1784120
+        "precio_eur": 1100,
+        "precio_usd": 1188,
+        "precio_ars": 1606000
       }
     ],
     "hoteles": [
@@ -15457,10 +15457,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 27,
-      "rango_min": "€ 990",
-      "rango_max": "€ 1.480",
+      "rango_min": "€ 890",
+      "rango_max": "€ 1.330",
       "mensaje": "¡Precio bajo para viajar a la Ciudad de la Luz!",
-      "texto_pin": "€ 1.072 es una tarifa récord baja",
+      "texto_pin": "€ 965 es una tarifa récord baja",
       "consejo": "Air France ofrece vuelo nocturno directo de 13 horas que permite llegar descansado a la mañana a París.",
       "historial_dias": [
         "Hace 52 d",
@@ -15470,11 +15470,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        1329,
-        1254,
-        1190,
-        1126,
-        1072
+        1197,
+        1129,
+        1071,
+        1013,
+        965
       ],
       "historial_formato": "€ "
     },
@@ -15786,12 +15786,12 @@
         "puesto": "🥈",
         "aerolinea": "LATAM Airlines",
         "escalas": "1 escala corta (GRU)",
-        "fechas": "04 Feb - 18 Feb 2027",
+        "fechas": "29 Abr - 13 May 2027",
         "noches": 14,
         "precio": "€ 982",
         "destacado": "Excelente servicio",
-        "fecha_ida": "2027-02-04",
-        "fecha_vuelta": "2027-02-18",
+        "fecha_ida": "2027-04-29",
+        "fecha_vuelta": "2027-05-13",
         "actualizado_en_vivo": true,
         "precio_eur": 982,
         "precio_usd": 1061,
@@ -16143,7 +16143,7 @@
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "€ 1.285",
+    "precio_desde": "€ 960",
     "comando_tg": "/berlin",
     "resena": "Capital histórica y creativa: Puerta de Brandeburgo, Muro de Berlín, Isla de los Museos y la escena cultural y de música electrónica más innovadora de Europa.",
     "vuelos": [
@@ -16151,46 +16151,46 @@
         "puesto": "🥇",
         "aerolinea": "Air France",
         "escalas": "1 escala corta (CDG)",
-        "fechas": "24 Dic - 08 Ene 2027",
+        "fechas": "24 Dic - 08 Ene 2028",
         "noches": 15,
-        "precio": "€ 1.285",
+        "precio": "€ 960",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2026-12-24",
-        "fecha_vuelta": "2027-01-08",
+        "fecha_ida": "2027-12-24",
+        "fecha_vuelta": "2028-01-08",
         "actualizado_en_vivo": true,
-        "precio_ars": 1876100,
-        "precio_usd": 1388,
-        "precio_eur": 1285
+        "precio_ars": 1401600,
+        "precio_usd": 1037,
+        "precio_eur": 960
       },
       {
         "puesto": "🥈",
         "aerolinea": "Iberia",
         "escalas": "1 escala (MAD)",
-        "fechas": "31 Dic - 15 Ene 2027",
+        "fechas": "31 Dic - 15 Ene 2028",
         "noches": 15,
-        "precio": "€ 1.362",
+        "precio": "€ 1.008",
         "destacado": "Conexión eficiente",
-        "fecha_ida": "2026-12-31",
-        "fecha_vuelta": "2027-01-15",
+        "fecha_ida": "2027-12-31",
+        "fecha_vuelta": "2028-01-15",
         "actualizado_en_vivo": true,
-        "precio_ars": 1988520,
-        "precio_usd": 1471,
-        "precio_eur": 1362
+        "precio_ars": 1471680,
+        "precio_usd": 1089,
+        "precio_eur": 1008
       },
       {
         "puesto": "🥉",
         "aerolinea": "Lufthansa",
         "escalas": "1 escala (FRA)",
-        "fechas": "07 Ene - 22 Ene 2027",
+        "fechas": "01 Abr - 16 Abr 2027",
         "noches": 15,
-        "precio": "€ 1.465",
+        "precio": "€ 1.066",
         "destacado": "Llega al aeropuerto BER",
-        "fecha_ida": "2027-01-07",
-        "fecha_vuelta": "2027-01-22",
+        "fecha_ida": "2027-04-01",
+        "fecha_vuelta": "2027-04-16",
         "actualizado_en_vivo": true,
-        "precio_ars": 2138900,
-        "precio_usd": 1582,
-        "precio_eur": 1465
+        "precio_ars": 1556360,
+        "precio_usd": 1151,
+        "precio_eur": 1066
       }
     ],
     "hoteles": [
@@ -16249,10 +16249,10 @@
     "termometro": {
       "nivel": "estandar",
       "posicion_pct": 35,
-      "rango_min": "€ 1.180",
-      "rango_max": "€ 1.770",
+      "rango_min": "€ 880",
+      "rango_max": "€ 1.320",
       "mensaje": "Tarifa estándar competitiva para conocer Berlín.",
-      "texto_pin": "€ 1.285 es una tarifa récord baja",
+      "texto_pin": "€ 960 es una tarifa récord baja",
       "consejo": "Excelente opción para disfrutar de los famosos mercados navideños alemanes que abren a finales de noviembre.",
       "historial_dias": [
         "Hace 52 d",
@@ -16262,11 +16262,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        1593,
-        1503,
-        1426,
-        1349,
-        1285
+        1190,
+        1123,
+        1066,
+        1008,
+        960
       ],
       "historial_formato": "€ "
     },
@@ -16935,7 +16935,7 @@
     "tipo_ruta": "Europa & Canales del Norte",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "€ 979",
+    "precio_desde": "€ 899",
     "comando_tg": "/amsterdam",
     "codigo_pais": "nl",
     "resena": "Canales concéntricos Patrimonio UNESCO, bicicletas, museos de Van Gogh y Rembrandt, y el animado barrio Jordaan.",
@@ -16943,44 +16943,44 @@
       {
         "puesto": "Top 1 Directo KLM",
         "aerolinea": "KLM Royal Dutch Airlines",
-        "fechas": "02 Dic - 06 Dic 2026",
+        "fechas": "19 Feb - 28 Feb 2027",
         "escalas": "Vuelo Directo nocturno",
-        "precio": "€ 979",
-        "noches": 4,
-        "fecha_ida": "2026-12-02",
-        "fecha_vuelta": "2026-12-06",
+        "precio": "€ 899",
+        "noches": 9,
+        "fecha_ida": "2027-02-19",
+        "fecha_vuelta": "2027-02-28",
         "actualizado_en_vivo": true,
-        "precio_ars": 1429340,
-        "precio_usd": 1057,
-        "precio_eur": 979
+        "precio_ars": 1312540,
+        "precio_usd": 971,
+        "precio_eur": 899
       },
       {
         "puesto": "Top 2 SkyTeam",
         "aerolinea": "Air France",
-        "fechas": "09 Dic - 13 Dic 2026",
+        "fechas": "26 Nov - 09 Dic 2026",
         "escalas": "1 escala en París (CDG)",
-        "precio": "€ 1.038",
-        "noches": 4,
-        "fecha_ida": "2026-12-09",
-        "fecha_vuelta": "2026-12-13",
+        "precio": "€ 1.039",
+        "noches": 13,
+        "fecha_ida": "2026-11-26",
+        "fecha_vuelta": "2026-12-09",
         "actualizado_en_vivo": true,
-        "precio_ars": 1515480,
-        "precio_usd": 1121,
-        "precio_eur": 1038
+        "precio_ars": 1516940,
+        "precio_usd": 1122,
+        "precio_eur": 1039
       },
       {
         "puesto": "Top 3 OneWorld",
         "aerolinea": "Iberia",
-        "fechas": "16 Dic - 20 Dic 2026",
+        "fechas": "25 Nov - 08 Dic 2026",
         "escalas": "1 escala en Madrid (MAD)",
-        "precio": "€ 1.116",
-        "noches": 4,
-        "fecha_ida": "2026-12-16",
-        "fecha_vuelta": "2026-12-20",
+        "precio": "€ 1.042",
+        "noches": 13,
+        "fecha_ida": "2026-11-25",
+        "fecha_vuelta": "2026-12-08",
         "actualizado_en_vivo": true,
-        "precio_ars": 1629360,
-        "precio_usd": 1205,
-        "precio_eur": 1116
+        "precio_ars": 1521320,
+        "precio_usd": 1125,
+        "precio_eur": 1042
       }
     ],
     "hoteles": [
@@ -17021,17 +17021,17 @@
     "termometro": {
       "nivel": "tarifa_habitual",
       "posicion_pct": 44,
-      "rango_min": "€ 900",
-      "rango_max": "€ 1.350",
+      "rango_min": "€ 830",
+      "rango_max": "€ 1.240",
       "mensaje": "Tarifa competitiva de media estación con vuelo directo de KLM.",
-      "texto_pin": "€ 979 es una tarifa récord baja",
+      "texto_pin": "€ 899 es una tarifa récord baja",
       "consejo": "Mayo y septiembre ofrecen el mejor balance de horas de luz, tulipanes y clima templado para pedalear.",
       "historial_valores": [
-        1214,
-        1145,
-        1087,
-        1028,
-        979
+        1115,
+        1052,
+        998,
+        944,
+        899
       ],
       "historial_formato": "€ "
     },
@@ -17287,7 +17287,7 @@
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "€ 986",
+    "precio_desde": "€ 960",
     "comando_tg": "/atenas",
     "resena": "Cuna milenaria de la civilización con el Partenón y la Acrópolis dominando la ciudad. Puerto de El Pireo a minutos para conectar en ferries a Santorini, Mykonos y Creta.",
     "vuelos": [
@@ -17297,14 +17297,14 @@
         "escalas": "1 escala corta (FCO)",
         "fechas": "01 Abr - 15 Abr 2027",
         "noches": 14,
-        "precio": "€ 986",
+        "precio": "€ 960",
         "destacado": "Tarifa récord más baja",
         "fecha_ida": "2027-04-01",
         "fecha_vuelta": "2027-04-15",
         "actualizado_en_vivo": true,
-        "precio_eur": 986,
-        "precio_usd": 1065,
-        "precio_ars": 1439560
+        "precio_eur": 960,
+        "precio_usd": 1037,
+        "precio_ars": 1401600
       },
       {
         "puesto": "🥈",
@@ -17312,14 +17312,14 @@
         "escalas": "1 escala (IST)",
         "fechas": "08 Abr - 22 Abr 2027",
         "noches": 14,
-        "precio": "€ 1.045",
+        "precio": "€ 1.008",
         "destacado": "Excelente catering a bordo",
         "fecha_ida": "2027-04-08",
         "fecha_vuelta": "2027-04-22",
         "actualizado_en_vivo": true,
-        "precio_eur": 1045,
-        "precio_usd": 1129,
-        "precio_ars": 1525700
+        "precio_eur": 1008,
+        "precio_usd": 1089,
+        "precio_ars": 1471680
       },
       {
         "puesto": "🥉",
@@ -17327,14 +17327,14 @@
         "escalas": "1 escala (MAD)",
         "fechas": "15 Abr - 29 Abr 2027",
         "noches": 14,
-        "precio": "€ 1.124",
+        "precio": "€ 1.066",
         "destacado": "Equipaje carry-on incluido",
         "fecha_ida": "2027-04-15",
         "fecha_vuelta": "2027-04-29",
         "actualizado_en_vivo": true,
-        "precio_eur": 1124,
-        "precio_usd": 1214,
-        "precio_ars": 1641040
+        "precio_eur": 1066,
+        "precio_usd": 1151,
+        "precio_ars": 1556360
       }
     ],
     "hoteles": [
@@ -17390,10 +17390,10 @@
     "termometro": {
       "nivel": "estandar",
       "posicion_pct": 38,
-      "rango_min": "€ 910",
-      "rango_max": "€ 1.360",
+      "rango_min": "€ 880",
+      "rango_max": "€ 1.320",
       "mensaje": "Precios estándar vigentes para Grecia y el Egeo.",
-      "texto_pin": "€ 986 es una tarifa récord baja",
+      "texto_pin": "€ 960 es una tarifa récord baja",
       "consejo": "ITA Airways vía Roma ofrece las conexiones más rápidas para volar al Mediterráneo oriental.",
       "historial_dias": [
         "Hace 52 d",
@@ -17403,11 +17403,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        1223,
-        1154,
-        1094,
-        1035,
-        986
+        1190,
+        1123,
+        1066,
+        1008,
+        960
       ],
       "historial_formato": "€ "
     },
@@ -17687,12 +17687,12 @@
         "puesto": "🥈",
         "aerolinea": "Lufthansa",
         "escalas": "1 escala (FRA)",
-        "fechas": "04 Feb - 18 Feb 2027",
+        "fechas": "29 Abr - 13 May 2027",
         "noches": 14,
         "precio": "€ 1.003",
         "destacado": "Conexión eficiente",
-        "fecha_ida": "2027-02-04",
-        "fecha_vuelta": "2027-02-18",
+        "fecha_ida": "2027-04-29",
+        "fecha_vuelta": "2027-05-13",
         "actualizado_en_vivo": true,
         "precio_eur": 1003,
         "precio_usd": 1083,
@@ -18067,12 +18067,12 @@
         "puesto": "🥈",
         "aerolinea": "British / Icelandair",
         "escalas": "1 escala (LHR)",
-        "fechas": "05 Feb - 19 Feb 2027",
+        "fechas": "30 Abr - 14 May 2027",
         "noches": 14,
         "precio": "€ 1.102",
         "destacado": "Conexión eficiente",
-        "fecha_ida": "2027-02-05",
-        "fecha_vuelta": "2027-02-19",
+        "fecha_ida": "2027-04-30",
+        "fecha_vuelta": "2027-05-14",
         "actualizado_en_vivo": true,
         "precio_eur": 1102,
         "precio_usd": 1190,
@@ -18424,7 +18424,7 @@
     "tipo_ruta": "Puente Europa & Asia",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "US$ 1.253",
+    "precio_desde": "US$ 1.285",
     "comando_tg": "/estambul",
     "codigo_pais": "tr",
     "resena": "Encrucijada imperial entre dos continentes: mezquitas colosales, Gran Bazar milenario y atardeceres sobre el Bósforo.",
@@ -18432,41 +18432,41 @@
       {
         "puesto": "Top 1 Turkish",
         "aerolinea": "Turkish Airlines",
-        "fechas": "10 Mar - 31 Mar 2027",
+        "fechas": "07 Mar - 15 Mar 2027",
         "escalas": "Escala técnica en San Pablo (mismo avión)",
-        "precio": "US$ 1253 (aprox. $ 1.691.550 ARS)",
-        "noches": 21,
-        "fecha_ida": "2027-03-10",
-        "fecha_vuelta": "2027-03-31",
+        "precio": "US$ 1285 (aprox. $ 1.734.750 ARS)",
+        "noches": 8,
+        "fecha_ida": "2027-03-07",
+        "fecha_vuelta": "2027-03-15",
         "actualizado_en_vivo": true,
-        "precio_ars": 1691550,
-        "precio_usd": 1253
+        "precio_ars": 1734750,
+        "precio_usd": 1285
       },
       {
         "puesto": "Top 2 Qatar Airways",
         "aerolinea": "Qatar Airways",
-        "fechas": "27 Abr - 11 May 2027",
+        "fechas": "12 Abr - 26 Abr 2027",
         "escalas": "1 escala en Doha (DOH)",
-        "precio": "US$ 1297 (aprox. $ 1.750.950 ARS)",
+        "precio": "US$ 1302 (aprox. $ 1.757.700 ARS)",
         "noches": 14,
-        "fecha_ida": "2027-04-27",
-        "fecha_vuelta": "2027-05-11",
+        "fecha_ida": "2027-04-12",
+        "fecha_vuelta": "2027-04-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 1750950,
-        "precio_usd": 1297
+        "precio_ars": 1757700,
+        "precio_usd": 1302
       },
       {
         "puesto": "Top 3 Star Alliance",
         "aerolinea": "Lufthansa",
-        "fechas": "18 Abr - 24 Abr 2027",
+        "fechas": "21 Mar - 29 Mar 2027",
         "escalas": "1 escala en Frankfurt (FRA)",
-        "precio": "US$ 1373 (aprox. $ 1.853.550 ARS)",
-        "noches": 6,
-        "fecha_ida": "2027-04-18",
-        "fecha_vuelta": "2027-04-24",
+        "precio": "US$ 1465 (aprox. $ 1.977.750 ARS)",
+        "noches": 8,
+        "fecha_ida": "2027-03-21",
+        "fecha_vuelta": "2027-03-29",
         "actualizado_en_vivo": true,
-        "precio_ars": 1853550,
-        "precio_usd": 1373
+        "precio_ars": 1977750,
+        "precio_usd": 1465
       }
     ],
     "hoteles": [
@@ -18507,17 +18507,17 @@
     "termometro": {
       "nivel": "oportunidad",
       "posicion_pct": 35,
-      "rango_min": "US$ 1.150",
-      "rango_max": "US$ 1.730",
+      "rango_min": "US$ 1.180",
+      "rango_max": "US$ 1.770",
       "mensaje": "Tarifa muy conveniente para volar con servicio premium de Turkish Airlines.",
-      "texto_pin": "US$ 1.253 es una tarifa récord baja",
+      "texto_pin": "US$ 1.285 es una tarifa récord baja",
       "consejo": "Turkish Airlines permite stopover gratuito con noche de hotel bonificada en Estambul si combinas con otros destinos.",
       "historial_valores": [
-        1554,
-        1466,
-        1391,
-        1316,
-        1253
+        1593,
+        1503,
+        1426,
+        1349,
+        1285
       ],
       "historial_formato": "US$ "
     },
@@ -18805,7 +18805,7 @@
     "tipo_ruta": "Medio Oriente & Vanguardia",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "US$ 1.280",
+    "precio_desde": "US$ 1.265",
     "comando_tg": "/dubai",
     "codigo_pais": "ae",
     "resena": "Metrópolis futurista en el desierto: rascacielos récord, islas en forma de palmera, safaris entre dunas y zocos de especias.",
@@ -18813,41 +18813,41 @@
       {
         "puesto": "Top 1 Emirates",
         "aerolinea": "Emirates",
-        "fechas": "05 Dic - 12 Dic 2026",
+        "fechas": "26 Nov - 03 Dic 2026",
         "escalas": "Vuelo directo con escala en Río (GIG)",
-        "precio": "US$ 1280 (aprox. $ 1.728.000 ARS)",
+        "precio": "US$ 1265 (aprox. $ 1.707.750 ARS)",
         "noches": 7,
-        "fecha_ida": "2026-12-05",
-        "fecha_vuelta": "2026-12-12",
+        "fecha_ida": "2026-11-26",
+        "fecha_vuelta": "2026-12-03",
         "actualizado_en_vivo": true,
-        "precio_ars": 1728000,
-        "precio_usd": 1280
+        "precio_ars": 1707750,
+        "precio_usd": 1265
       },
       {
         "puesto": "Top 2 Qatar Airways",
         "aerolinea": "Qatar Airways",
-        "fechas": "07 Dic - 11 Dic 2026",
+        "fechas": "03 Dic - 09 Dic 2026",
         "escalas": "1 escala en Doha (DOH)",
-        "precio": "US$ 1339 (aprox. $ 1.807.650 ARS)",
-        "noches": 4,
-        "fecha_ida": "2026-12-07",
-        "fecha_vuelta": "2026-12-11",
+        "precio": "US$ 1341 (aprox. $ 1.810.350 ARS)",
+        "noches": 6,
+        "fecha_ida": "2026-12-03",
+        "fecha_vuelta": "2026-12-09",
         "actualizado_en_vivo": true,
-        "precio_ars": 1807650,
-        "precio_usd": 1339
+        "precio_ars": 1810350,
+        "precio_usd": 1341
       },
       {
         "puesto": "Top 3 Star Alliance",
         "aerolinea": "Ethiopian Airlines",
-        "fechas": "30 Abr - 09 May 2027",
+        "fechas": "03 Dic - 10 Dic 2026",
         "escalas": "1 escala en Adís Abeba (ADD)",
-        "precio": "US$ 1364 (aprox. $ 1.841.400 ARS)",
-        "noches": 9,
-        "fecha_ida": "2027-04-30",
-        "fecha_vuelta": "2027-05-09",
+        "precio": "US$ 1442 (aprox. $ 1.946.700 ARS)",
+        "noches": 7,
+        "fecha_ida": "2026-12-03",
+        "fecha_vuelta": "2026-12-10",
         "actualizado_en_vivo": true,
-        "precio_ars": 1841400,
-        "precio_usd": 1364
+        "precio_ars": 1946700,
+        "precio_usd": 1442
       }
     ],
     "hoteles": [
@@ -18885,17 +18885,17 @@
     "termometro": {
       "nivel": "oportunidad",
       "posicion_pct": 38,
-      "rango_min": "US$ 1.180",
-      "rango_max": "US$ 1.770",
+      "rango_min": "US$ 1.160",
+      "rango_max": "US$ 1.750",
       "mensaje": "Tarifa muy competitiva para viajar al hub más moderno de Oriente Medio.",
-      "texto_pin": "US$ 1.280 es una tarifa récord baja",
+      "texto_pin": "US$ 1.265 es una tarifa récord baja",
       "consejo": "Ideal para combinar con Abu Dhabi en tren o tour de día completo a solo 1h de viaje.",
       "historial_valores": [
-        1587,
-        1498,
-        1421,
-        1344,
-        1280
+        1569,
+        1480,
+        1404,
+        1328,
+        1265
       ],
       "historial_formato": "US$ "
     },
@@ -19570,7 +19570,7 @@
     "tipo_ruta": "Sudeste Asiático & Templos",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "US$ 1.661",
+    "precio_desde": "US$ 750",
     "comando_tg": "/bangkok",
     "codigo_pais": "th",
     "resena": "La Ciudad de los Ángeles: templos dorados sobre el río Chao Phraya, mercados flotantes y meca culinaria callejera.",
@@ -19580,39 +19580,39 @@
         "aerolinea": "Emirates",
         "fechas": "05 Abr - 19 Abr 2027",
         "escalas": "1 escala en Dubái (DXB)",
-        "precio": "US$ 1661 (aprox. $ 2.242.350 ARS)",
+        "precio": "US$ 750 (aprox. $ 1.012.500 ARS)",
         "noches": 14,
         "fecha_ida": "2027-04-05",
         "fecha_vuelta": "2027-04-19",
         "actualizado_en_vivo": true,
-        "precio_ars": 2242350,
-        "precio_usd": 1661
+        "precio_ars": 1012500,
+        "precio_usd": 750
       },
       {
         "puesto": "Top 2 Qatar Airways",
         "aerolinea": "Qatar Airways",
         "fechas": "12 Abr - 26 Abr 2027",
         "escalas": "1 escala en Doha (DOH)",
-        "precio": "US$ 1761 (aprox. $ 2.377.350 ARS)",
+        "precio": "US$ 788 (aprox. $ 1.063.800 ARS)",
         "noches": 14,
         "fecha_ida": "2027-04-12",
         "fecha_vuelta": "2027-04-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 2377350,
-        "precio_usd": 1761
+        "precio_ars": 1063800,
+        "precio_usd": 788
       },
       {
         "puesto": "Top 3 Turkish",
         "aerolinea": "Turkish Airlines",
         "fechas": "19 Abr - 03 May 2027",
         "escalas": "1 escala en Estambul (IST)",
-        "precio": "US$ 1894 (aprox. $ 2.556.900 ARS)",
+        "precio": "US$ 833 (aprox. $ 1.124.550 ARS)",
         "noches": 14,
         "fecha_ida": "2027-04-19",
         "fecha_vuelta": "2027-05-03",
         "actualizado_en_vivo": true,
-        "precio_ars": 2556900,
-        "precio_usd": 1894
+        "precio_ars": 1124550,
+        "precio_usd": 833
       }
     ],
     "hoteles": [
@@ -19650,17 +19650,17 @@
     "termometro": {
       "nivel": "oportunidad",
       "posicion_pct": 36,
-      "rango_min": "US$ 1.530",
-      "rango_max": "US$ 2.290",
+      "rango_min": "US$ 690",
+      "rango_max": "US$ 1.040",
       "mensaje": "Gran tarifa para cruzar el planeta hacia la capital tailandesa.",
-      "texto_pin": "US$ 1.661 es una tarifa récord baja",
+      "texto_pin": "US$ 750 es una tarifa récord baja",
       "consejo": "Una vez en Bangkok, los vuelos domésticos a Phuket, Chiang Mai o Krabi cuestan desde US$ 30.",
       "historial_valores": [
-        2060,
-        1943,
-        1844,
-        1744,
-        1661
+        930,
+        878,
+        833,
+        788,
+        750
       ],
       "historial_formato": "US$ "
     },
@@ -19916,7 +19916,7 @@
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "US$ 1.825",
+    "precio_desde": "US$ 750",
     "comando_tg": "/tokio",
     "resena": "La megalópolis más cautivante de Asia: contraste entre templos sintoístas de Asakusa y rascacielos de Shinjuku, cruce de Shibuya y tren bala Shinkansen a Kioto.",
     "vuelos": [
@@ -19926,13 +19926,13 @@
         "escalas": "1 escala técnica (USA)",
         "fechas": "02 Mar - 09 Mar 2027",
         "noches": 7,
-        "precio": "US$ 1825 (aprox. $ 2.463.750 ARS)",
+        "precio": "US$ 750 (aprox. $ 1.012.500 ARS)",
         "destacado": "Tarifa récord más baja",
         "fecha_ida": "2027-03-02",
         "fecha_vuelta": "2027-03-09",
         "actualizado_en_vivo": true,
-        "precio_ars": 2463750,
-        "precio_usd": 1825
+        "precio_ars": 1012500,
+        "precio_usd": 750
       },
       {
         "puesto": "🥈",
@@ -19940,13 +19940,13 @@
         "escalas": "1 escala (IST)",
         "fechas": "09 Mar - 16 Mar 2027",
         "noches": 7,
-        "precio": "US$ 1934 (aprox. $ 2.610.900 ARS)",
+        "precio": "US$ 788 (aprox. $ 1.063.800 ARS)",
         "destacado": "No requiere visa de EE.UU.",
         "fecha_ida": "2027-03-09",
         "fecha_vuelta": "2027-03-16",
         "actualizado_en_vivo": true,
-        "precio_ars": 2610900,
-        "precio_usd": 1934
+        "precio_ars": 1063800,
+        "precio_usd": 788
       },
       {
         "puesto": "🥉",
@@ -19954,13 +19954,13 @@
         "escalas": "Conexión ADD / NRT",
         "fechas": "16 Mar - 23 Mar 2027",
         "noches": 7,
-        "precio": "US$ 2080 (aprox. $ 2.808.000 ARS)",
+        "precio": "US$ 833 (aprox. $ 1.124.550 ARS)",
         "destacado": "2 valijas de 23 kg incluidas",
         "fecha_ida": "2027-03-16",
         "fecha_vuelta": "2027-03-23",
         "actualizado_en_vivo": true,
-        "precio_ars": 2808000,
-        "precio_usd": 2080
+        "precio_ars": 1124550,
+        "precio_usd": 833
       }
     ],
     "hoteles": [
@@ -20016,10 +20016,10 @@
     "termometro": {
       "nivel": "estandar",
       "posicion_pct": 36,
-      "rango_min": "US$ 1.680",
-      "rango_max": "US$ 2.520",
+      "rango_min": "US$ 690",
+      "rango_max": "US$ 1.040",
       "mensaje": "Tarifa muy competitiva para viajar al corazón de Japón.",
-      "texto_pin": "US$ 1.825 es una tarifa récord baja",
+      "texto_pin": "US$ 750 es una tarifa récord baja",
       "consejo": "Para viajeros sin visa estadounidense, Turkish o Ethiopian vía África/Europa son las alternativas directas más buscadas.",
       "historial_dias": [
         "Hace 52 d",
@@ -20029,11 +20029,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        2263,
-        2135,
-        2026,
-        1916,
-        1825
+        930,
+        878,
+        833,
+        788,
+        750
       ],
       "historial_formato": "US$ "
     },
@@ -20645,7 +20645,7 @@
     "tipo_ruta": "Intercontinental 1 Escala",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "US$ 1.759",
+    "precio_desde": "US$ 1.669",
     "comando_tg": "/pekin",
     "resena": "Capital imperial de China: la magnificencia de la Ciudad Prohibida, el ascenso a la Gran Muralla en Mutianyu, el místico Templo del Cielo y los tradicionales callejones hutong.",
     "vuelos": [
@@ -20653,43 +20653,43 @@
         "puesto": "Top 1",
         "aerolinea": "Emirates (1 Escala DXB)",
         "escalas": "1 escala en Dubái (26h 40m)",
-        "fechas": "27 Nov - 11 Dic 2026",
-        "noches": 14,
-        "precio": "US$ 1759 (aprox. $ 2.374.650 ARS)",
+        "fechas": "15 Jun - 23 Jun 2027",
+        "noches": 8,
+        "precio": "US$ 1669 (aprox. $ 2.253.150 ARS)",
         "destacado": true,
-        "fecha_ida": "2026-11-27",
-        "fecha_vuelta": "2026-12-11",
+        "fecha_ida": "2027-06-15",
+        "fecha_vuelta": "2027-06-23",
         "actualizado_en_vivo": true,
-        "precio_ars": 2374650,
-        "precio_usd": 1759
+        "precio_ars": 2253150,
+        "precio_usd": 1669
       },
       {
         "puesto": "Top 2",
         "aerolinea": "Qatar Airways (1 Escala DOH)",
         "escalas": "1 escala en Doha (27h 15m)",
-        "fechas": "24 Nov - 07 Dic 2026",
-        "noches": 13,
-        "precio": "US$ 1763 (aprox. $ 2.380.050 ARS)",
+        "fechas": "08 Jun - 14 Jun 2027",
+        "noches": 6,
+        "precio": "US$ 1784 (aprox. $ 2.408.400 ARS)",
         "destacado": false,
-        "fecha_ida": "2026-11-24",
-        "fecha_vuelta": "2026-12-07",
+        "fecha_ida": "2027-06-08",
+        "fecha_vuelta": "2027-06-14",
         "actualizado_en_vivo": true,
-        "precio_ars": 2380050,
-        "precio_usd": 1763
+        "precio_ars": 2408400,
+        "precio_usd": 1784
       },
       {
         "puesto": "Top 3",
         "aerolinea": "Air France / KLM (1 Escala CDG/AMS)",
         "escalas": "1 escala en París (28h 20m)",
-        "fechas": "08 Feb - 22 Feb 2027",
-        "noches": 14,
-        "precio": "US$ 1776 (aprox. $ 2.397.600 ARS)",
+        "fechas": "29 Jun - 07 Jul 2027",
+        "noches": 8,
+        "precio": "US$ 1903 (aprox. $ 2.569.050 ARS)",
         "destacado": false,
-        "fecha_ida": "2027-02-08",
-        "fecha_vuelta": "2027-02-22",
+        "fecha_ida": "2027-06-29",
+        "fecha_vuelta": "2027-07-07",
         "actualizado_en_vivo": true,
-        "precio_ars": 2397600,
-        "precio_usd": 1776
+        "precio_ars": 2569050,
+        "precio_usd": 1903
       }
     ],
     "hoteles": [
@@ -20745,10 +20745,10 @@
     "termometro": {
       "nivel": "Precio Habitual",
       "posicion_pct": 30,
-      "rango_min": "US$ 1.620",
-      "rango_max": "US$ 2.430",
+      "rango_min": "US$ 1.540",
+      "rango_max": "US$ 2.300",
       "mensaje": "Tarifa destacada para volar a la capital imperial china en aerolíneas de servicio completo.",
-      "texto_pin": "US$ 1.759 es una tarifa récord baja",
+      "texto_pin": "US$ 1.669 es una tarifa récord baja",
       "consejo": "Para viajes de larga distancia a China conviene reservar con al menos 60 a 90 días de anticipación y tramitar el visado o verificar el tránsito sin visa de 144 horas.",
       "historial_dias": [
         "Hace 20d",
@@ -20758,11 +20758,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        2181,
-        2058,
-        1952,
-        1847,
-        1759
+        2070,
+        1953,
+        1853,
+        1752,
+        1669
       ],
       "historial_formato": "US$ "
     },
@@ -21439,7 +21439,7 @@
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
     "codigo_pais": "nz",
-    "precio_desde": "US$ 1.195",
+    "precio_desde": "US$ 750",
     "comando_tg": "/nuevazelanda",
     "resena": "La Tierra Media en la vida real: los fiordos glaciares de Milford Sound, la capital mundial de la aventura en Queenstown, los géiseres maoríes de Rotorua y las colinas verdes de Hobbiton.",
     "vuelos": [
@@ -21451,11 +21451,11 @@
         "fecha_ida": "2027-04-09",
         "fecha_vuelta": "2027-04-23",
         "noches": 14,
-        "precio": "US$ 1195 (aprox. $ 1.613.250 ARS)",
+        "precio": "US$ 750 (aprox. $ 1.012.500 ARS)",
         "destacado": "Tarifa récord",
         "actualizado_en_vivo": true,
-        "precio_usd": 1195,
-        "precio_ars": 1613250
+        "precio_usd": 750,
+        "precio_ars": 1012500
       },
       {
         "puesto": "🥈",
@@ -21465,11 +21465,11 @@
         "fecha_ida": "2027-04-16",
         "fecha_vuelta": "2027-04-30",
         "noches": 14,
-        "precio": "US$ 1267 (aprox. $ 1.710.450 ARS)",
+        "precio": "US$ 788 (aprox. $ 1.063.800 ARS)",
         "destacado": "Conexión ágil",
         "actualizado_en_vivo": true,
-        "precio_usd": 1267,
-        "precio_ars": 1710450
+        "precio_usd": 788,
+        "precio_ars": 1063800
       },
       {
         "puesto": "🥉",
@@ -21479,11 +21479,11 @@
         "fecha_ida": "2027-04-23",
         "fecha_vuelta": "2027-05-07",
         "noches": 14,
-        "precio": "US$ 1362 (aprox. $ 1.838.700 ARS)",
+        "precio": "US$ 833 (aprox. $ 1.124.550 ARS)",
         "destacado": "Equipaje incluido",
         "actualizado_en_vivo": true,
-        "precio_usd": 1362,
-        "precio_ars": 1838700
+        "precio_usd": 833,
+        "precio_ars": 1124550
       }
     ],
     "hoteles": [
@@ -21539,10 +21539,10 @@
     "termometro": {
       "nivel": "bajo",
       "posicion_pct": 18,
-      "rango_min": "US$ 1.100",
-      "rango_max": "US$ 1.650",
+      "rango_min": "US$ 690",
+      "rango_max": "US$ 1.040",
       "mensaje": "¡Tarifa récord histórica a Nueva Zelanda! Por debajo de los US$ 1.250 vía Santiago.",
-      "texto_pin": "US$ 1.195 es una tarifa récord baja",
+      "texto_pin": "US$ 750 es una tarifa récord baja",
       "consejo": "LATAM conecta Buenos Aires con Auckland con solo 1 escala en Santiago (SCL), sin necesidad de visa de tránsito estadounidense.",
       "historial_dias": [
         "Hace 52 d",
@@ -21552,11 +21552,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        1482,
-        1398,
-        1326,
-        1255,
-        1195
+        930,
+        878,
+        833,
+        788,
+        750
       ],
       "historial_formato": "US$ "
     },
@@ -22180,7 +22180,7 @@
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "US$ 1.611",
+    "precio_desde": "US$ 1.604",
     "comando_tg": "/elcairo",
     "resena": "Las Pirámides de Giza y la Gran Esfinge, el nuevo Gran Museo Egipcio (GEM), bazares de Khan el-Khalili y base para cruceros fluviales por el histórico río Nilo.",
     "vuelos": [
@@ -22188,43 +22188,43 @@
         "puesto": "🥇",
         "aerolinea": "Turkish Airlines",
         "escalas": "1 escala corta (IST)",
-        "fechas": "09 Dic - 26 Dic 2026",
-        "noches": 17,
-        "precio": "US$ 1611 (aprox. $ 2.174.850 ARS)",
+        "fechas": "30 Nov - 16 Dic 2026",
+        "noches": 16,
+        "precio": "US$ 1604 (aprox. $ 2.165.400 ARS)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2026-12-09",
-        "fecha_vuelta": "2026-12-26",
+        "fecha_ida": "2026-11-30",
+        "fecha_vuelta": "2026-12-16",
         "actualizado_en_vivo": true,
-        "precio_ars": 2174850,
-        "precio_usd": 1611
+        "precio_ars": 2165400,
+        "precio_usd": 1604
       },
       {
         "puesto": "🥈",
         "aerolinea": "ITA Airways",
         "escalas": "1 escala (FCO)",
-        "fechas": "16 Dic - 02 Ene 2027",
-        "noches": 17,
-        "precio": "US$ 1708 (aprox. $ 2.305.800 ARS)",
+        "fechas": "02 Dic - 16 Dic 2026",
+        "noches": 14,
+        "precio": "US$ 1625 (aprox. $ 2.193.750 ARS)",
         "destacado": "Conexión ágil en Roma",
-        "fecha_ida": "2026-12-16",
-        "fecha_vuelta": "2027-01-02",
+        "fecha_ida": "2026-12-02",
+        "fecha_vuelta": "2026-12-16",
         "actualizado_en_vivo": true,
-        "precio_ars": 2305800,
-        "precio_usd": 1708
+        "precio_ars": 2193750,
+        "precio_usd": 1625
       },
       {
         "puesto": "🥉",
         "aerolinea": "Air France",
         "escalas": "1 escala (CDG)",
-        "fechas": "23 Dic - 09 Ene 2027",
-        "noches": 17,
-        "precio": "US$ 1837 (aprox. $ 2.479.950 ARS)",
+        "fechas": "06 Dic - 15 Dic 2026",
+        "noches": 9,
+        "precio": "US$ 1646 (aprox. $ 2.222.100 ARS)",
         "destacado": "Excelente franquicia de equipaje",
-        "fecha_ida": "2026-12-23",
-        "fecha_vuelta": "2027-01-09",
+        "fecha_ida": "2026-12-06",
+        "fecha_vuelta": "2026-12-15",
         "actualizado_en_vivo": true,
-        "precio_ars": 2479950,
-        "precio_usd": 1837
+        "precio_ars": 2222100,
+        "precio_usd": 1646
       }
     ],
     "hoteles": [
@@ -22281,9 +22281,9 @@
       "nivel": "estandar",
       "posicion_pct": 37,
       "rango_min": "US$ 1.480",
-      "rango_max": "US$ 2.220",
+      "rango_max": "US$ 2.210",
       "mensaje": "Precios estándar para viajar a la tierra de los Faraones.",
-      "texto_pin": "US$ 1.611 es una tarifa récord baja",
+      "texto_pin": "US$ 1.604 es una tarifa récord baja",
       "consejo": "Noviembre y diciembre son los mejores meses del año para visitar Egipto por sus temperaturas moderadas de 24°C.",
       "historial_dias": [
         "Hace 52 d",
@@ -22293,11 +22293,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        1998,
-        1885,
-        1788,
-        1692,
-        1611
+        1989,
+        1877,
+        1780,
+        1684,
+        1604
       ],
       "historial_formato": "US$ "
     },
@@ -22960,7 +22960,7 @@
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "US$ 899",
+    "precio_desde": "US$ 1.290",
     "comando_tg": "/ciudaddelcabo",
     "resena": "La imponente Table Mountain, pingüinos en Boulders Beach, viñedos de Stellenbosch y el Cabo de Buena Esperanza donde se abrazan el Atlántico y el Índico.",
     "vuelos": [
@@ -22968,43 +22968,43 @@
         "puesto": "🥇",
         "aerolinea": "Ethiopian Airlines",
         "escalas": "1 escala corta (ADD)",
-        "fechas": "29 Ene - 12 Feb 2027",
+        "fechas": "30 Ene - 13 Feb 2027",
         "noches": 14,
-        "precio": "US$ 899 (aprox. $ 1.213.650 ARS)",
+        "precio": "US$ 1290 (aprox. $ 1.741.500 ARS)",
         "destacado": "Tarifa récord más baja",
-        "fecha_ida": "2027-01-29",
-        "fecha_vuelta": "2027-02-12",
+        "fecha_ida": "2027-01-30",
+        "fecha_vuelta": "2027-02-13",
         "actualizado_en_vivo": true,
-        "precio_ars": 1213650,
-        "precio_usd": 899
+        "precio_ars": 1741500,
+        "precio_usd": 1290
       },
       {
         "puesto": "🥈",
         "aerolinea": "South African / LATAM",
         "escalas": "1 escala (GRU)",
-        "fechas": "20 Ene - 27 Ene 2027",
-        "noches": 7,
-        "precio": "US$ 1174 (aprox. $ 1.584.900 ARS)",
+        "fechas": "06 Feb - 20 Feb 2027",
+        "noches": 14,
+        "precio": "US$ 1367 (aprox. $ 1.845.450 ARS)",
         "destacado": "Ruta transatlántica directa",
-        "fecha_ida": "2027-01-20",
-        "fecha_vuelta": "2027-01-27",
+        "fecha_ida": "2027-02-06",
+        "fecha_vuelta": "2027-02-20",
         "actualizado_en_vivo": true,
-        "precio_ars": 1584900,
-        "precio_usd": 1174
+        "precio_ars": 1845450,
+        "precio_usd": 1367
       },
       {
         "puesto": "🥉",
         "aerolinea": "Emirates / Qatar",
         "escalas": "1 escala",
-        "fechas": "12 Feb - 26 Feb 2027",
+        "fechas": "13 Feb - 27 Feb 2027",
         "noches": 14,
-        "precio": "US$ 1025 (aprox. $ 1.383.750 ARS)",
+        "precio": "US$ 1471 (aprox. $ 1.985.850 ARS)",
         "destacado": "Servicio de 5 estrellas",
-        "fecha_ida": "2027-02-12",
-        "fecha_vuelta": "2027-02-26",
+        "fecha_ida": "2027-02-13",
+        "fecha_vuelta": "2027-02-27",
         "actualizado_en_vivo": true,
-        "precio_ars": 1383750,
-        "precio_usd": 1025
+        "precio_ars": 1985850,
+        "precio_usd": 1471
       }
     ],
     "hoteles": [
@@ -23060,10 +23060,10 @@
     "termometro": {
       "nivel": "estandar",
       "posicion_pct": 35,
-      "rango_min": "US$ 830",
-      "rango_max": "US$ 1.240",
+      "rango_min": "US$ 1.190",
+      "rango_max": "US$ 1.780",
       "mensaje": "Precios estándar para descubrir los paisajes de Sudáfrica.",
-      "texto_pin": "US$ 899 es una tarifa récord baja",
+      "texto_pin": "US$ 1.290 es una tarifa récord baja",
       "consejo": "Noviembre coincide con el inicio de la primavera sudafricana, ideal para combinar Ciudad del Cabo con la Ruta Jardín o safaris.",
       "historial_dias": [
         "Hace 52 d",
@@ -23073,11 +23073,11 @@
         "Hoy"
       ],
       "historial_valores": [
-        1115,
-        1052,
-        998,
-        944,
-        899
+        1600,
+        1509,
+        1432,
+        1354,
+        1290
       ],
       "historial_formato": "US$ "
     },
