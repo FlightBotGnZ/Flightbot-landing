@@ -1287,8 +1287,8 @@
               </span>
               <span class="text-[10px] text-slate-400 dark:text-slate-500 lg:hidden font-medium">· Deslizá para explorar ➔</span>
             </div>
-            <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20" id="radar-live-indicator">
-              ● En Vivo
+            <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 flex items-center" id="radar-live-indicator">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>En Vivo
             </span>
           </div>
 
@@ -3384,7 +3384,7 @@
             // Actualizar indicador visual del radar con punto verde
             const indicatorEl = document.getElementById('radar-live-indicator');
             if (indicatorEl) {
-              indicatorEl.innerHTML = '<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>● Tarifas sincronizadas en vivo';
+              indicatorEl.innerHTML = '<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>Tarifas sincronizadas en vivo';
               indicatorEl.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center shadow-xs transition-all';
             }
             const badgeEl = document.getElementById('radar-badge-monitoreo');
@@ -3400,7 +3400,7 @@
               syncEl.textContent = `Radar sincronizado hoy a las ${hh}:${mm} hs`;
             }
             if (badgeEl) {
-              badgeEl.innerHTML = `Monitoreo en tiempo real · <strong>${destinosRemotos.length} Destinos oficiales</strong> · <span class="text-emerald-500 font-bold">● Tarifas sincronizadas en vivo</span>`;
+              badgeEl.innerHTML = `Monitoreo en tiempo real · <strong>${destinosRemotos.length} Destinos oficiales</strong> · <span class="text-emerald-500 font-bold">Tarifas sincronizadas en vivo</span>`;
             }
           }
         } catch (_err) {
