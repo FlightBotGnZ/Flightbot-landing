@@ -6,25 +6,8 @@
 (function () {
   'use strict';
 
-  // Catálogo de ofertas calientes cazadas por Rolli
+  // Catálogo de oportunidades destacadas detectadas por Rolli
   const ROLLI_DEALS = [
-    {
-      id: 'puntacana',
-      ciudad: 'Punta Cana',
-      iata: 'PUJ',
-      pais: 'República Dominicana',
-      flagCode: 'do',
-      aerolinea: 'Arajet',
-      escalas: 'Vuelo Directo',
-      precioOriginal: 'US$ 621',
-      ahorroPct: '-38%',
-      fechas: '23 Abr - 01 May (8 noches)',
-      cupos: 3,
-      tag: 'Piso histórico detectado',
-      tiempoDeteccion: 'hace 12 min',
-      speech: '¡Buenas! Soy Rolli. Acabo de cazar Punta Cana directo a US$ 621 ida y vuelta. ¡Es un 38% menos que el promedio histórico!',
-      img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80'
-    },
     {
       id: 'bariloche',
       ciudad: 'Bariloche',
@@ -37,10 +20,27 @@
       ahorroPct: '-32%',
       fechas: '14 May - 19 May (5 noches)',
       cupos: 4,
-      tag: 'Cazado por Rolli',
+      tag: 'Detectado por Rolli',
       tiempoDeteccion: 'hace 18 min',
-      speech: '¡Che, mirá Bariloche! Cayó la tarifa para mayo a $137.460 ARS final con tasas. Ideal para esquivar temporada alta.',
+      speech: 'Tarifa mínima récord para Bariloche: $ 137.460 ARS final con tasas. Vuelo directo sin escalas.',
       img: 'https://images.unsplash.com/photo-1548685913-fe6678babe8d?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 'puntacana',
+      ciudad: 'Punta Cana',
+      iata: 'PUJ',
+      pais: 'República Dominicana',
+      flagCode: 'do',
+      aerolinea: 'Arajet',
+      escalas: 'Vuelo Directo',
+      precioOriginal: 'US$ 621',
+      ahorroPct: '-38%',
+      fechas: '23 Abr - 01 May (8 noches)',
+      cupos: 3,
+      tag: 'Detectado por Rolli',
+      tiempoDeteccion: 'hace 12 min',
+      speech: 'Punta Cana directo a US$ 621 ida y vuelta. Un 38% por debajo del promedio histórico registrado.',
+      img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'rio',
@@ -54,9 +54,9 @@
       ahorroPct: '-29%',
       fechas: '08 Jun - 15 Jun (7 noches)',
       cupos: 2,
-      tag: 'Piso histórico detectado',
+      tag: 'Detectado por Rolli',
       tiempoDeteccion: 'hace 24 min',
-      speech: 'Río a US$ 240 no se ve todos los días. Vuelo directo desde Aeroparque con valija carry-on incluida.',
+      speech: 'Río de Janeiro a US$ 240 ida y vuelta en vuelo directo desde Aeroparque. Piso histórico detectado.',
       img: 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=80'
     },
     {
@@ -71,9 +71,9 @@
       ahorroPct: '-24%',
       fechas: '18 Sep - 03 Oct (15 noches)',
       cupos: 2,
-      tag: 'Cazado por Rolli',
+      tag: 'Detectado por Rolli',
       tiempoDeteccion: 'hace 35 min',
-      speech: 'Para Europa en primavera/otoño, Madrid a € 701 ida y vuelta es la ganga del día. Sin escalas trampas.',
+      speech: 'Madrid a € 701 ida y vuelta: oportunidad destacada del día para viajar en temporada media.',
       img: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=800&q=80'
     },
     {
@@ -88,9 +88,9 @@
       ahorroPct: '-31%',
       fechas: '10 Ago - 22 Ago (12 noches)',
       cupos: 3,
-      tag: 'Piso histórico detectado',
+      tag: 'Detectado por Rolli',
       tiempoDeteccion: 'hace 41 min',
-      speech: 'Detecté cupos promocionales en American para Miami a US$ 638. Si tenés visa al día, no lo dudes ni un segundo.',
+      speech: 'Cupos confirmados en American Airlines para Miami a US$ 638 directo ida y vuelta.',
       img: 'https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=800&q=80'
     },
     {
@@ -99,15 +99,15 @@
       iata: 'IGR',
       pais: 'Argentina',
       flagCode: 'ar',
-      aerolinea: 'Flybondi excluido · JetSMART',
+      aerolinea: 'JetSMART / AR',
       escalas: 'Vuelo Directo',
       precioOriginal: '$ 118.900 ARS',
       ahorroPct: '-27%',
       fechas: '04 Jun - 08 Jun (4 noches)',
       cupos: 5,
-      tag: 'Cazado por Rolli',
+      tag: 'Detectado por Rolli',
       tiempoDeteccion: 'hace 52 min',
-      speech: 'Cataratas a precio de escapada: $118.900 ARS ida y vuelta con JetSMART. Excelente para recargar energía.',
+      speech: 'Cataratas del Iguazú a $ 118.900 ARS ida y vuelta final. Escapada directa sin pagar de más.',
       img: 'https://images.unsplash.com/photo-1582650625119-3a31f8418b7d?auto=format&fit=crop&w=800&q=80'
     }
   ];
@@ -204,53 +204,54 @@
     }
   }
 
-  // Renderizar la grilla de tarjetas de Oportunidades Flash debajo del Hero
+  // Renderizar la grilla de 3 tarjetas de Oportunidades Destacadas del Día
   function renderFlashDealsGrid() {
     const container = document.getElementById('flash-deals-container');
     if (!container) return;
 
     let html = '';
-    ROLLI_DEALS.forEach((d) => {
+    const topDeals = ROLLI_DEALS.slice(0, 3);
+    topDeals.forEach((d) => {
       const priceFmt = (typeof window.formatearPrecioMoneda === 'function')
         ? window.formatearPrecioMoneda(d.precioOriginal, d.id)
         : d.precioOriginal;
 
       html += `
         <div class="group relative rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:border-rose-500/50 transition-all flex flex-col justify-between">
-          <div class="relative h-44 w-full overflow-hidden">
+          <div class="relative h-48 w-full overflow-hidden">
             <img src="${d.img}" alt="${d.ciudad}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
             
-            <div class="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-rose-600 text-white shadow-md">
-              <span>🔥 ${d.ahorroPct} histórico</span>
+            <div class="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-rose-600 text-white shadow-md">
+              <span>🔥 ${d.ahorroPct} piso histórico</span>
             </div>
 
-            <div class="absolute top-3 right-3 flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white border border-white/20">
-              <img src="img/flags/${d.flagCode}.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/${d.flagCode}.png'" alt="${d.pais}" class="w-3.5 h-2.5 object-cover rounded-xs" />
+            <div class="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white border border-white/20">
+              <img src="img/flags/${d.flagCode}.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/${d.flagCode}.png'" alt="${d.pais}" class="w-4 h-3 object-cover rounded-xs" />
               <span>${d.iata}</span>
             </div>
 
             <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-white">
               <div>
-                <h3 class="text-lg font-black leading-tight drop-shadow-sm">${d.ciudad}</h3>
+                <h3 class="text-xl font-black leading-tight drop-shadow-sm">${d.ciudad}</h3>
                 <span class="text-xs text-slate-200">${d.aerolinea} · ${d.escalas}</span>
               </div>
             </div>
           </div>
 
-          <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
             <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-              <span>🗓️ ${d.fechas}</span>
+              <span class="font-medium">🗓️ ${d.fechas}</span>
               <span class="font-bold text-amber-500">🔥 ${d.cupos} cupos</span>
             </div>
 
             <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <div>
                 <span class="text-[9px] uppercase font-bold text-slate-400 block tracking-wider">Detectado por Rolli</span>
-                <span class="text-lg font-black font-mono text-rose-600 dark:text-rose-500">${priceFmt}</span>
+                <span class="text-xl font-black font-mono text-rose-600 dark:text-rose-500">${priceFmt}</span>
               </div>
 
-              <a href="/vuelos?dest=${d.id}" class="px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 shadow-sm transition-all hover:scale-105 active:scale-95 flex items-center gap-1">
+              <a href="/vuelos?dest=${d.id}" class="px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 shadow-sm transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5">
                 <span>Ver Tarifa</span>
                 <span>➔</span>
               </a>
