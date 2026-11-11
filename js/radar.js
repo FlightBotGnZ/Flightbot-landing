@@ -341,9 +341,9 @@
 
     const data = getRadarData();
     const totalDestinos = Array.isArray(data) ? data.length : 0;
-    let optionsHtml = `<option value="todos">🌐 Todos los ${totalDestinos} destinos monitoreados</option>`;
+    let optionsHtml = `<option value="todos" class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">🌐 Todos los ${totalDestinos} destinos monitoreados</option>`;
     data.forEach(d => {
-      optionsHtml += `<option value="${d.id}">${d.iata} · ${limpiarNombreCiudad(d.ciudad)} (${d.pais})</option>`;
+      optionsHtml += `<option value="${d.id}" class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">${d.iata} · ${limpiarNombreCiudad(d.ciudad)} (${d.pais})</option>`;
     });
     heroSelect.innerHTML = optionsHtml;
 
@@ -359,11 +359,17 @@
         const radarSec = document.getElementById('radar-vuelos');
         if (radarSec) {
           radarSec.scrollIntoView({ behavior: 'smooth' });
-        }
-        if (selectedId && selectedId !== 'todos') {
-          setTimeout(() => {
-            window.renderRadarDestino(selectedId);
-          }, 300);
+          if (selectedId && selectedId !== 'todos') {
+            setTimeout(() => {
+              window.renderRadarDestino(selectedId);
+            }, 300);
+          }
+        } else {
+          if (selectedId && selectedId !== 'todos') {
+            window.location.href = `/vuelos?dest=${encodeURIComponent(selectedId)}`;
+          } else {
+            window.location.href = '/vuelos';
+          }
         }
       });
     }
