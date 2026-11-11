@@ -57,18 +57,8 @@
         max-height: 86vh !important;
       }
 
-      /* Ergonomía Móvil: FAB colapsado y chat adaptativo con teclado virtual */
+      /* Ergonomía Móvil: chat adaptativo con teclado virtual */
       @media (max-width: 639px) {
-        #fb-chat-fab {
-          padding: 0.5rem !important;
-          border-radius: 9999px !important;
-          width: 3.25rem !important;
-          height: 3.25rem !important;
-          justify-content: center !important;
-        }
-        #fb-chat-fab span {
-          display: none !important;
-        }
         #fb-chat-window {
           bottom: 0 !important;
           right: 0 !important;
@@ -177,15 +167,16 @@
         </div>
       </div>
 
-      <!-- Botón Flotante Principal con Cara DNI de Rolli -->
+      <!-- Botón Flotante Principal (Trigger Idéntico a Guías y Vuelos) -->
       <button id="fb-chat-fab" type="button" onclick="window.toggleFlightBotChat()"
               aria-label="Abrir Asistente IA de FlightBot"
-              class="group flex items-center gap-2.5 pl-2 pr-4 py-2 rounded-full text-white font-bold text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
-              style="background: var(--brand-gradient); box-shadow: 0 14px 30px -5px var(--brand-glow);">
-        <div class="relative w-8 h-8 rounded-full bg-slate-900/60 border border-white/30 flex items-center justify-center p-0.5 overflow-hidden shadow-inner">
-          ${ROLLI_DNI_SVG}
-        </div>
-        <span class="pr-1 tracking-tight">F-Bot Rolli · Chat IA</span>
+              class="group flex items-center gap-3 px-4 py-3.5 rounded-full text-white font-bold text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
+              style="background: var(--brand-gradient, linear-gradient(135deg, #e11d48 0%, #be123c 100%)); box-shadow: 0 14px 30px -5px var(--brand-glow, rgba(225, 29, 72, 0.45));">
+        <span class="relative flex h-6 w-6 items-center justify-center">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-25"></span>
+          <span class="relative text-base">💬</span>
+        </span>
+        <span class="pr-1">F-Bot Rolli · Chat IA</span>
       </button>
     `;
     document.body.appendChild(wrap);
