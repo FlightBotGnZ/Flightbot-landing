@@ -448,18 +448,11 @@
                 </linearGradient>
               </defs>
             </svg>
-            <span id="nav-tokens-display" class="font-bold">4<span class="hidden sm:inline">&nbsp;fichas</span></span>
+            <span id="nav-tokens-display" class="font-bold">(4)</span>
           </button>
         </div>
 
-        <!-- B. Selector de Moneda: Diseño de cápsula compacta (NATIVO | ARS | USD) -->
-        <div class="hidden md:inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
-          <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
-          <button type="button" id="btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
-          <button type="button" id="btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
-        </div>
-
-        <!-- C. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
+        <!-- B. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
           <span id="theme-mode-icon">🌙</span>
@@ -1407,11 +1400,18 @@
         </div>
 
         <div>
-          <h5 class="dark:text-white text-slate-900 font-semibold text-sm mb-3">Políticas y Términos</h5>
-          <p class="dark:text-slate-400 text-slate-600 leading-relaxed mb-2">
-            Priorizamos la privacidad de nuestros usuarios y la transparencia en la información de viaje.
+          <h5 class="dark:text-white text-slate-900 font-semibold text-sm mb-3">Moneda y Cotización de Referencia</h5>
+          <p class="dark:text-slate-400 text-slate-600 leading-relaxed mb-2.5">
+            Ref. orientativa Dólar MEP / Turístico (<strong class="dark:text-slate-200 text-slate-800">$1.350 ARS</strong>). <span class="dark:text-slate-500 text-slate-400 font-medium" id="footer-sync-time">Radar sincronizado hoy a las <span id="footer-sync-hhmm">14:50</span> hs.</span>
           </p>
-          <span class="dark:text-slate-500 text-slate-400 font-medium" id="footer-sync-time">Radar sincronizado hoy a las <span id="footer-sync-hhmm">14:50</span> hs</span>
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Moneda activa:</span>
+            <div class="inline-flex p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold shadow-xs" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
+              <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
+              <button type="button" id="footer-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">ARS</button>
+              <button type="button" id="footer-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">USD</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2212,11 +2212,12 @@
       });
     };
 
-    // Selector Tri-Moneda: DEFAULT (Cabotaje ARS, Europa EUR, Resto USD) / ARS / USD
+    // Selector Tri-Moneda: DEFAULT/NATIVO (Cabotaje ARS, Europa EUR, Resto USD) / ARS / USD
     window.cambiarMonedaGlobal = function(moneda) {
+      if (moneda === 'NATIVO') moneda = 'DEFAULT';
       if (moneda !== 'DEFAULT' && moneda !== 'ARS' && moneda !== 'USD') moneda = 'DEFAULT';
       currentMonedaGlobal = moneda;
-      localStorage.setItem('fb_user_currency', moneda);
+      localStorage.setItem('fb_user_currency', moneda === 'DEFAULT' ? 'NATIVO' : moneda);
 
       const btnDefault = document.getElementById('btn-curr-default');
       const btnArs = document.getElementById('btn-curr-ars');
@@ -2237,6 +2238,18 @@
         btnUsd.className = (moneda === 'USD') ? activeStyle : inactiveStyle;
         btnUsd.style.backgroundColor = (moneda === 'USD') ? 'var(--brand-primary)' : 'transparent';
       }
+
+      // Sincronizar botones del Footer y Drawer Móvil
+      const pillActive = 'px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs cursor-pointer';
+      const pillInactive = 'px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer';
+      ['m-btn-curr-', 'footer-btn-curr-'].forEach(prefix => {
+        const bNat = document.getElementById(prefix + 'nativo');
+        const bArs = document.getElementById(prefix + 'ars');
+        const bUsd = document.getElementById(prefix + 'usd');
+        if (bNat) bNat.className = (moneda === 'DEFAULT') ? pillActive : pillInactive;
+        if (bArs) bArs.className = (moneda === 'ARS') ? pillActive : pillInactive;
+        if (bUsd) bUsd.className = (moneda === 'USD') ? pillActive : pillInactive;
+      });
 
       // Re-renderizar sidebar, detalle de radar y comparador
       if (typeof renderSidebar === 'function') renderSidebar();

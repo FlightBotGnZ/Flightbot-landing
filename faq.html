@@ -341,18 +341,11 @@
                 </linearGradient>
               </defs>
             </svg>
-            <span id="nav-tokens-display" class="font-bold">4<span class="hidden sm:inline">&nbsp;fichas</span></span>
+            <span id="nav-tokens-display" class="font-bold">(4)</span>
           </button>
         </div>
 
-        <!-- B. Selector de Moneda: Diseño de cápsula compacta (NATIVO | ARS | USD) -->
-        <div class="hidden md:inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
-          <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
-          <button type="button" id="btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
-          <button type="button" id="btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
-        </div>
-
-        <!-- C. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
+        <!-- B. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
           <span id="theme-mode-icon">🌙</span>
@@ -854,17 +847,30 @@
 
   <!-- Pie de Página -->
   <footer class="border-t dark:border-slate-800 border-slate-200 py-8 dark:bg-slate-950 bg-slate-50 theme-transition text-xs">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 dark:text-slate-500 text-slate-600">
-      <div>&copy; <span class="current-year">2026</span> FlightBot · Centro de Respuestas & Transparencia</div>
-      <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
-        <a href="/" class="hover:underline font-bold" style="color: var(--brand-primary);">Inicio FlightBot</a>
-        <a href="/escapadas" class="hover:underline">Modo Ruta</a>
-        <a href="/billetera" class="hover:underline">Billetera</a>
-        <a href="/guias/" class="hover:underline">Blog & Guías</a>
-        <a href="https://t.me/GnZFlightBot?start=feedback_beta" target="_blank" rel="noopener noreferrer" class="font-bold text-amber-500 hover:underline">🛠️ Feedback Beta</a>
-        <a href="javascript:void(0)" onclick="openPrivacyModal('privacy')" class="hover:underline">Privacidad</a>
-        <a href="javascript:void(0)" onclick="openPrivacyModal('cookies')" class="hover:underline">Cookies</a>
-        <a href="javascript:void(0)" onclick="openPrivacyModal('terms')" class="hover:underline">Términos</a>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 dark:text-slate-500 text-slate-600">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pb-4 border-b dark:border-slate-800/80 border-slate-200/80">
+        <span class="text-[11px] font-medium dark:text-slate-400 text-slate-500">Cotización orientativa: <strong class="dark:text-slate-200 text-slate-800">Dólar MEP / Turístico ($1.350 ARS)</strong></span>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Moneda:</span>
+          <div class="inline-flex p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold shadow-xs" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
+            <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
+            <button type="button" id="footer-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">ARS</button>
+            <button type="button" id="footer-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">USD</button>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>&copy; <span class="current-year">2026</span> FlightBot · Centro de Respuestas & Transparencia</div>
+        <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
+          <a href="/" class="hover:underline font-bold" style="color: var(--brand-primary);">Inicio FlightBot</a>
+          <a href="/escapadas" class="hover:underline">Modo Ruta</a>
+          <a href="/billetera" class="hover:underline">Billetera</a>
+          <a href="/guias/" class="hover:underline">Blog & Guías</a>
+          <a href="https://t.me/GnZFlightBot?start=feedback_beta" target="_blank" rel="noopener noreferrer" class="font-bold text-amber-500 hover:underline">🛠️ Feedback Beta</a>
+          <a href="javascript:void(0)" onclick="openPrivacyModal('privacy')" class="hover:underline">Privacidad</a>
+          <a href="javascript:void(0)" onclick="openPrivacyModal('cookies')" class="hover:underline">Cookies</a>
+          <a href="javascript:void(0)" onclick="openPrivacyModal('terms')" class="hover:underline">Términos</a>
+        </div>
       </div>
     </div>
   </footer>

@@ -99,7 +99,11 @@
   };
 
   function updateCurrencyControls() {
-    const btnNativo = document.getElementById('btn-curr-nativo') || document.getElementById('btn-curr-default');
+    const isNativo = currentMonedaGlobal === 'NATIVO' || currentMonedaGlobal === 'DEFAULT';
+    const isArs = currentMonedaGlobal === 'ARS';
+    const isUsd = currentMonedaGlobal === 'USD';
+
+    const btnNativo = document.getElementById('btn-curr-nativo');
     const btnArs = document.getElementById('btn-curr-ars');
     const btnUsd = document.getElementById('btn-curr-usd');
 
@@ -107,16 +111,24 @@
     const mBtnArs = document.getElementById('m-btn-curr-ars');
     const mBtnUsd = document.getElementById('m-btn-curr-usd');
 
-    const activeClasses = 'px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs';
-    const inactiveClasses = 'px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs';
+    const fBtnNativo = document.getElementById('footer-btn-curr-nativo');
+    const fBtnArs = document.getElementById('footer-btn-curr-ars');
+    const fBtnUsd = document.getElementById('footer-btn-curr-usd');
 
-    if (btnNativo) btnNativo.className = (currentMonedaGlobal === 'NATIVO') ? activeClasses : inactiveClasses;
-    if (btnArs) btnArs.className = (currentMonedaGlobal === 'ARS') ? activeClasses : inactiveClasses;
-    if (btnUsd) btnUsd.className = (currentMonedaGlobal === 'USD') ? activeClasses : inactiveClasses;
+    const activeClasses = 'px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs cursor-pointer';
+    const inactiveClasses = 'px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer';
 
-    if (mBtnNativo) mBtnNativo.className = (currentMonedaGlobal === 'NATIVO') ? activeClasses : inactiveClasses;
-    if (mBtnArs) mBtnArs.className = (currentMonedaGlobal === 'ARS') ? activeClasses : inactiveClasses;
-    if (mBtnUsd) mBtnUsd.className = (currentMonedaGlobal === 'USD') ? activeClasses : inactiveClasses;
+    if (btnNativo) btnNativo.className = isNativo ? activeClasses : inactiveClasses;
+    if (btnArs && !document.getElementById('btn-curr-default')) btnArs.className = isArs ? activeClasses : inactiveClasses;
+    if (btnUsd && !document.getElementById('btn-curr-default')) btnUsd.className = isUsd ? activeClasses : inactiveClasses;
+
+    if (mBtnNativo) mBtnNativo.className = isNativo ? activeClasses : inactiveClasses;
+    if (mBtnArs) mBtnArs.className = isArs ? activeClasses : inactiveClasses;
+    if (mBtnUsd) mBtnUsd.className = isUsd ? activeClasses : inactiveClasses;
+
+    if (fBtnNativo) fBtnNativo.className = isNativo ? activeClasses : inactiveClasses;
+    if (fBtnArs) fBtnArs.className = isArs ? activeClasses : inactiveClasses;
+    if (fBtnUsd) fBtnUsd.className = isUsd ? activeClasses : inactiveClasses;
   }
 
   // 4. Formateador inteligente de precios en moneda activa

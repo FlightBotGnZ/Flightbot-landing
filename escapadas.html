@@ -270,18 +270,11 @@
                 </linearGradient>
               </defs>
             </svg>
-            <span id="nav-tokens-display" class="font-bold">4<span class="hidden sm:inline">&nbsp;fichas</span></span>
+            <span id="nav-tokens-display" class="font-bold">(4)</span>
           </button>
         </div>
 
-        <!-- B. Selector de Moneda: Diseño de cápsula compacta (NATIVO | ARS | USD) -->
-        <div class="hidden md:inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
-          <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
-          <button type="button" id="btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
-          <button type="button" id="btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
-        </div>
-
-        <!-- C. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
+        <!-- B. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
           <span id="theme-mode-icon">🌙</span>
@@ -4145,9 +4138,17 @@
         <span class="text-2xl font-extrabold brand-gradient-text">FlightBot</span>
         <span class="text-xs uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-slate-800 text-slate-300">Escapadas</span>
       </div>
-      <p class="text-xs text-slate-500 max-w-md mx-auto mb-6">
+      <p class="text-xs text-slate-500 max-w-md mx-auto mb-5">
         Diseñado para viajeros que disfrutan de la ruta. Precios actualizados en tiempo real y cálculo impositivo federal.
       </p>
+      <div class="flex items-center justify-center gap-2.5 flex-wrap mb-6">
+        <span class="text-[11px] font-medium text-slate-500 dark:text-slate-400">Moneda (Ref. MEP $1.350 ARS):</span>
+        <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold shadow-xs" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
+          <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
+          <button type="button" id="footer-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">ARS</button>
+          <button type="button" id="footer-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">USD</button>
+        </div>
+      </div>
       <div class="flex items-center justify-center gap-4 text-xs font-bold text-slate-400">
         <a href="/" class="hover:text-white transition-colors">✈️ Vuelos</a>
         <span>•</span>
