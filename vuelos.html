@@ -1392,6 +1392,53 @@
             </div>
           </div>
 
+          <!-- Barra de Controles: Ordenamiento por Precio y Filtro por Temporada -->
+          <div class="mt-4 pt-4 border-t dark:border-slate-800 border-slate-200/90 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
+            <!-- Temporadas: Alta, Media, Baja -->
+            <div class="flex items-center gap-2 flex-wrap text-xs">
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+                <span>🗓️</span> <span>Temporada:</span>
+              </span>
+              <div class="inline-flex p-1 rounded-2xl dark:bg-slate-800/80 bg-slate-100 border dark:border-slate-700 border-slate-200/90" id="resorts-temporada-toggle">
+                <button type="button" onclick="window.filtrarResortsTemporada('todas')" id="btn-temp-todas"
+                        class="px-2.5 py-1 rounded-xl font-bold transition-all bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs">
+                  Todas
+                </button>
+                <button type="button" onclick="window.filtrarResortsTemporada('alta')" id="btn-temp-alta"
+                        class="px-2.5 py-1 rounded-xl font-bold transition-all text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+                  ☀️ Alta (Ene-Feb)
+                </button>
+                <button type="button" onclick="window.filtrarResortsTemporada('media')" id="btn-temp-media"
+                        class="px-2.5 py-1 rounded-xl font-bold transition-all text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+                  🌤️ Media (May)
+                </button>
+                <button type="button" onclick="window.filtrarResortsTemporada('baja')" id="btn-temp-baja"
+                        class="px-2.5 py-1 rounded-xl font-bold transition-all text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+                  🌴 Baja (Sep)
+                </button>
+              </div>
+            </div>
+
+            <!-- Ordenar por Precio -->
+            <div class="flex items-center gap-2 text-xs">
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+                <span>💵</span> <span>Ordenar por:</span>
+              </span>
+              <div class="relative">
+                <select id="resorts-orden-precio" onchange="window.cambiarOrdenResorts(this.value)"
+                        class="py-1.5 pl-3 pr-8 rounded-xl font-bold dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200/90 dark:text-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all text-xs cursor-pointer">
+                  <option value="precio_asc">Menor precio por noche</option>
+                  <option value="precio_desc">Mayor precio (Luxury first)</option>
+                  <option value="descuento_desc">Mayor ahorro / % Descuento</option>
+                  <option value="sargazo_min">Menor riesgo de sargazo</option>
+                </select>
+              </div>
+              <span id="resorts-count-badge" class="px-2.5 py-1 rounded-xl text-[11px] font-mono font-bold bg-cyan-500/15 text-cyan-500 border border-cyan-500/30">
+                21 resorts
+              </span>
+            </div>
+          </div>
+
           <!-- Banner Informativo de Desbloqueo de Tarifas -->
           <div class="mt-6 p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-cyan-900 dark:text-cyan-200">
             <div class="flex items-center gap-3">
@@ -4688,6 +4735,8 @@
     // CONTROLADOR Y RENDERIZADO DEL RADAR DE RESORTS ALL-INCLUSIVE
     // ==============================================================================
     let currentResortsFilter = 'todos';
+    let currentResortsTemporada = 'todas';
+    let currentResortsOrden = 'precio_asc';
 
     window.cambiarVistaRadar = function(vista) {
       const containerVuelos = document.getElementById('fb-radar-cards-container');
@@ -4736,6 +4785,31 @@
       window.renderizarResortsCards();
     };
 
+    window.filtrarResortsTemporada = function(temporada) {
+      currentResortsTemporada = temporada;
+      const tempBtns = [
+        { id: 'btn-temp-todas', key: 'todas' },
+        { id: 'btn-temp-alta', key: 'alta' },
+        { id: 'btn-temp-media', key: 'media' },
+        { id: 'btn-temp-baja', key: 'baja' }
+      ];
+      tempBtns.forEach(t => {
+        const btn = document.getElementById(t.id);
+        if (!btn) return;
+        if (t.key === temporada) {
+          btn.className = 'px-2.5 py-1 rounded-xl font-bold transition-all bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs';
+        } else {
+          btn.className = 'px-2.5 py-1 rounded-xl font-bold transition-all text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white';
+        }
+      });
+      window.renderizarResortsCards();
+    };
+
+    window.cambiarOrdenResorts = function(criterio) {
+      currentResortsOrden = criterio;
+      window.renderizarResortsCards();
+    };
+
     function obtenerFotoResort(nombre, cadena) {
       const n = (nombre || '').toLowerCase();
       if (n.includes('turquesa')) return 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=800&q=80';
@@ -4751,22 +4825,67 @@
       return 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80';
     }
 
+    function calcularPrecioSegunTemporada(resort, temporada) {
+      if (temporada === 'alta') return resort.termometro_estacional ? resort.termometro_estacional.alta : resort.precio_noche_usd;
+      if (temporada === 'media') return resort.termometro_estacional ? resort.termometro_estacional.media : Math.round(resort.precio_noche_usd * 0.82);
+      if (temporada === 'baja') return resort.termometro_estacional ? resort.termometro_estacional.baja : Math.round(resort.precio_noche_usd * 0.62);
+      return resort.precio_noche_usd;
+    }
+
     window.renderizarResortsCards = function() {
       const grid = document.getElementById('fb-resorts-cards-grid');
+      const badgeCount = document.getElementById('resorts-count-badge');
       if (!grid || !window.RESORTS_DATA || !Array.isArray(window.RESORTS_DATA)) return;
 
-      const items = currentResortsFilter === 'todos'
-        ? window.RESORTS_DATA
+      // 1. Filtrar por Cadena
+      let items = currentResortsFilter === 'todos'
+        ? [...window.RESORTS_DATA]
         : window.RESORTS_DATA.filter(r => {
             if (currentResortsFilter === 'Dreams / Secrets') return r.cadena.includes('Dreams') || r.cadena.includes('Secrets');
             return r.cadena.includes(currentResortsFilter);
           });
+
+      // 2. Ordenar según el criterio seleccionado
+      items.sort((a, b) => {
+        const precioA = calcularPrecioSegunTemporada(a, currentResortsTemporada);
+        const precioB = calcularPrecioSegunTemporada(b, currentResortsTemporada);
+
+        if (currentResortsOrden === 'precio_asc') {
+          return precioA - precioB;
+        } else if (currentResortsOrden === 'precio_desc') {
+          return precioB - precioA;
+        } else if (currentResortsOrden === 'descuento_desc') {
+          return (b.descuento_pct || 0) - (a.descuento_pct || 0);
+        } else if (currentResortsOrden === 'sargazo_min') {
+          const score = (r) => {
+            const s = (r.riesgo_sargazo || '').toLowerCase();
+            if (s.includes('muy bajo') || s.includes('nula')) return 1;
+            if (s.includes('bajo')) return 2;
+            if (s.includes('moderado')) return 3;
+            return 4;
+          };
+          return score(a) - score(b);
+        }
+        return 0;
+      });
+
+      if (badgeCount) {
+        badgeCount.textContent = `${items.length} resorts`;
+      }
 
       grid.innerHTML = items.map(r => {
         const foto = obtenerFotoResort(r.nombre, r.cadena);
         const sargazoBadge = r.riesgo_sargazo.includes('Bajo') || r.riesgo_sargazo.includes('Muy Bajo')
           ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">🟢 Sargazo Mínimo</span>'
           : '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/30">🟡 Barrera Anti-Sargazo</span>';
+
+        const precioNocheActual = calcularPrecioSegunTemporada(r, currentResortsTemporada);
+        const total8Noches = Math.round(precioNocheActual * 8);
+
+        let tempHighlightLabel = '';
+        if (currentResortsTemporada === 'alta') tempHighlightLabel = '<span class="text-amber-500 font-bold"> · Tarifa Alta Ene-Feb</span>';
+        else if (currentResortsTemporada === 'media') tempHighlightLabel = '<span class="text-emerald-500 font-bold"> · Tarifa Media Mayo</span>';
+        else if (currentResortsTemporada === 'baja') tempHighlightLabel = '<span class="text-cyan-400 font-bold"> · Tarifa Baja Sept</span>';
 
         const bookingUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(r.nombre)}&checkin=2027-01-29&checkout=2027-02-06&group_adults=2&no_rooms=1&lang=es`;
         const officialUrl = `https://www.google.com/search?q=${encodeURIComponent(r.nombre + ' web oficial roiback ' + r.cupon_codigo)}`;
@@ -4807,8 +4926,8 @@
                 <!-- Auditoría de Precios -->
                 <div class="p-3.5 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200/80 space-y-2">
                   <div class="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
-                    <span>💎 Tarifa Miembro + Cupón:</span>
-                    <span class="font-mono text-base font-black text-rose-600 dark:text-rose-400">US$ ${r.precio_noche_usd} <span class="text-[10px] font-normal text-slate-400">/noche</span></span>
+                    <span>💎 Tarifa Miembro + Cupón${tempHighlightLabel}:</span>
+                    <span class="font-mono text-base font-black text-rose-600 dark:text-rose-400">US$ ${precioNocheActual} <span class="text-[10px] font-normal text-slate-400">/noche</span></span>
                   </div>
                   <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1.5 border-t dark:border-slate-800 border-slate-200">
                     <span>Tarifa Lista Público:</span>
@@ -4816,7 +4935,7 @@
                   </div>
                   <div class="flex items-center justify-between text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
                     <span>Total 8 noches (2 adultos):</span>
-                    <span class="font-mono font-bold">US$ ${r.precio_8n_usd.toLocaleString('es-AR')} (-${r.descuento_pct}%)</span>
+                    <span class="font-mono font-bold">US$ ${total8Noches.toLocaleString('es-AR')} (-${r.descuento_pct}%)</span>
                   </div>
                 </div>
 
@@ -4827,15 +4946,15 @@
                     <span class="text-emerald-500">Ahorro hasta -38%</span>
                   </div>
                   <div class="grid grid-cols-3 gap-1.5 text-center text-[10px] font-mono">
-                    <div class="p-1.5 rounded-xl dark:bg-slate-800/80 bg-slate-100 border dark:border-slate-700/80 border-slate-200">
+                    <div class="p-1.5 rounded-xl ${currentResortsTemporada === 'alta' ? 'ring-2 ring-amber-500 bg-amber-500/10' : 'dark:bg-slate-800/80 bg-slate-100'} border dark:border-slate-700/80 border-slate-200 cursor-pointer" onclick="window.filtrarResortsTemporada('alta')">
                       <div class="text-slate-400 text-[9px] uppercase">☀️ Alta</div>
                       <div class="font-bold dark:text-white text-slate-800">US$ ${r.termometro_estacional.alta}</div>
                     </div>
-                    <div class="p-1.5 rounded-xl dark:bg-slate-800/80 bg-slate-100 border dark:border-slate-700/80 border-slate-200">
+                    <div class="p-1.5 rounded-xl ${currentResortsTemporada === 'media' ? 'ring-2 ring-emerald-500 bg-emerald-500/10' : 'dark:bg-slate-800/80 bg-slate-100'} border dark:border-slate-700/80 border-slate-200 cursor-pointer" onclick="window.filtrarResortsTemporada('media')">
                       <div class="text-slate-400 text-[9px] uppercase">🌤️ Media</div>
                       <div class="font-bold text-emerald-500">US$ ${r.termometro_estacional.media}</div>
                     </div>
-                    <div class="p-1.5 rounded-xl dark:bg-slate-800/80 bg-slate-100 border dark:border-slate-700/80 border-slate-200">
+                    <div class="p-1.5 rounded-xl ${currentResortsTemporada === 'baja' ? 'ring-2 ring-cyan-500 bg-cyan-500/10' : 'dark:bg-slate-800/80 bg-slate-100'} border dark:border-slate-700/80 border-slate-200 cursor-pointer" onclick="window.filtrarResortsTemporada('baja')">
                       <div class="text-slate-400 text-[9px] uppercase">🌴 Baja</div>
                       <div class="font-bold text-cyan-400">US$ ${r.termometro_estacional.baja}</div>
                     </div>
