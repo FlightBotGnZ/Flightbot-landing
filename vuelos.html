@@ -1305,19 +1305,25 @@
                     <!-- Pestañas de Filtro Regional -->
           <div class="flex items-center gap-1.5 overflow-x-auto pb-2 mb-2 px-0.5 fb-custom-scrollbar text-xs">
             <button type="button" onclick="window.filtrarRadarRegion('todos')" id="fb-filter-todos" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border text-white dark:bg-slate-800 bg-blue-600 border-blue-500 shadow-xs">
-              Todos (57)
+              Todos
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('cabotaje')" id="fb-filter-cabotaje" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-              <span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje (11)</span>
+              <span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje</span>
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('brasil')" id="fb-filter-brasil" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-              <span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil (6)</span>
+              <span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil</span>
             </button>
-            <button type="button" onclick="window.filtrarRadarRegion('caribe_usa')" id="fb-filter-caribe_usa" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-              🏝️ América & Caribe (15)
+            <button type="button" onclick="window.filtrarRadarRegion('caribe')" id="fb-filter-caribe" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
+              🏝️ Caribe & Playas
+            </button>
+            <button type="button" onclick="window.filtrarRadarRegion('america')" id="fb-filter-america" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
+              🌎 América
+            </button>
+            <button type="button" onclick="window.filtrarRadarRegion('all_inclusive')" id="fb-filter-all_inclusive" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
+              🌴 All-Inclusive
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('europa_mundo')" id="fb-filter-europa_mundo" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-              🌍 Europa & Mundo (25)
+              🌍 Europa & Mundo
             </button>
           </div>
 
@@ -1391,6 +1397,16 @@
               <button type="button" onclick="window.filtrarResortsCadena('Grand Palladium')" class="px-3 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-cyan-500 hover:text-white transition-colors">Palladium</button>
               <button type="button" onclick="window.filtrarResortsCadena('Dreams / Secrets')" class="px-3 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-cyan-500 hover:text-white transition-colors">Dreams / Hyatt</button>
             </div>
+          </div>
+
+          <!-- Filtro Rápido de Zona All-Inclusive -->
+          <div class="mt-4 pt-3 border-t dark:border-slate-800 border-slate-200/90 flex items-center gap-2 flex-wrap text-xs" id="resorts-zona-filter">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mr-1">📍 Zona:</span>
+            <button type="button" onclick="window.filtrarResortsZona('todas')" data-zona="todas" class="px-3 py-1 rounded-xl text-xs font-bold bg-blue-600 text-white shadow-xs">Todas</button>
+            <button type="button" onclick="window.filtrarResortsZona('dominicana')" data-zona="dominicana" class="px-3 py-1 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-blue-600 hover:text-white transition-colors">🇩🇴 Rep. Dominicana</button>
+            <button type="button" onclick="window.filtrarResortsZona('brasil')" data-zona="brasil" class="px-3 py-1 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-blue-600 hover:text-white transition-colors">🇧🇷 Brasil</button>
+            <button type="button" onclick="window.filtrarResortsZona('jamaica')" data-zona="jamaica" class="px-3 py-1 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-blue-600 hover:text-white transition-colors">🇯🇲 Jamaica</button>
+            <button type="button" onclick="window.filtrarResortsZona('otros')" data-zona="otros" class="px-3 py-1 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-blue-600 hover:text-white transition-colors">🏝️ Caribe Sur & Centroamérica</button>
           </div>
 
           <!-- Barra de Controles: Ordenamiento por Precio y Filtro por Temporada -->
@@ -2174,6 +2190,20 @@
       let isTransitioning = false;
       let currentRegionFilter = 'todos';
 
+      // Reglas limpias de agrupación regional (separa Caribe & Playas de América, y agrupa destinos All-Inclusive)
+      const CARIBE_PLAYA_IDS = new Set(['puntacana', 'cancun', 'aruba', 'curazao', 'cuba', 'sanandres', 'cartagena', 'panama', 'costarica']);
+      const AMERICA_RESTO_IDS = new Set(['santiago', 'cusco', 'newyork', 'miami', 'orlando', 'mexico']);
+      const ALL_INCLUSIVE_DEST_IDS = new Set(['puntacana', 'cancun', 'aruba', 'curazao', 'cartagena', 'panama', 'costarica', 'salvador', 'maceio', 'maragogi', 'portodegalinhas']);
+
+      function destMatchesRegionFilter(dest, region) {
+        if (!dest || region === 'todos') return true;
+        if (region === 'relampago') return Boolean(dest.oportunidad_relampago && dest.oportunidad_relampago.activa);
+        if (region === 'caribe') return CARIBE_PLAYA_IDS.has(dest.id);
+        if (region === 'america') return AMERICA_RESTO_IDS.has(dest.id);
+        if (region === 'all_inclusive') return ALL_INCLUSIVE_DEST_IDS.has(dest.id) || dest.categoria_region === 'brasil';
+        return dest.categoria_region === region;
+      }
+
       window.filtrarRadarRegion = function(region) {
         currentRegionFilter = region;
         
@@ -2188,11 +2218,7 @@
 
         renderSidebar();
 
-        const destinosFiltrados = region === 'todos' 
-          ? RADAR_DATA 
-          : (region === 'relampago' 
-              ? RADAR_DATA.filter(d => Boolean(d.oportunidad_relampago && d.oportunidad_relampago.activa))
-              : RADAR_DATA.filter(d => d.categoria_region === region));
+        const destinosFiltrados = RADAR_DATA.filter(d => destMatchesRegionFilter(d, region));
         
         if (!destinosFiltrados.some(d => d.id === currentDestinationId) && destinosFiltrados.length > 0) {
           window.renderRadarDestino(destinosFiltrados[0].id);
@@ -2733,9 +2759,7 @@
         if (!sb) return;
         sb.innerHTML = '';
 
-        let lista = currentRegionFilter === 'todos'
-          ? RADAR_DATA
-          : RADAR_DATA.filter(d => d.categoria_region === currentRegionFilter);
+        let lista = RADAR_DATA.filter(d => destMatchesRegionFilter(d, currentRegionFilter));
 
         if (currentSearchQuery) {
           lista = lista.filter(d => 
@@ -3470,8 +3494,14 @@
           btnBrasil.innerHTML = `<span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil</span>`;
         }
 
-        const btnCaribe = document.getElementById('fb-filter-caribe_usa');
-        if (btnCaribe) btnCaribe.textContent = '🏝️ América & Caribe';
+        const btnCaribe = document.getElementById('fb-filter-caribe');
+        if (btnCaribe) btnCaribe.textContent = '🏝️ Caribe & Playas';
+
+        const btnAmerica = document.getElementById('fb-filter-america');
+        if (btnAmerica) btnAmerica.textContent = '🌎 América';
+
+        const btnAllInclusive = document.getElementById('fb-filter-all_inclusive');
+        if (btnAllInclusive) btnAllInclusive.textContent = '🌴 All-Inclusive';
 
         const btnEuropa = document.getElementById('fb-filter-europa_mundo');
         if (btnEuropa) btnEuropa.textContent = '🌍 Europa & Mundo';
@@ -4766,6 +4796,7 @@
     // CONTROLADOR Y RENDERIZADO DEL RADAR DE RESORTS ALL-INCLUSIVE
     // ==============================================================================
     let currentResortsFilter = 'todos';
+    let currentResortsZona = 'todas';
     let currentResortsTemporada = 'todas';
     let currentResortsOrden = 'precio_asc';
 
@@ -4790,10 +4821,9 @@
           btnResorts.className = 'px-3.5 py-1.5 rounded-xl transition-all text-white shadow-xs font-bold flex items-center gap-1.5';
         }
 
-        // UX Inteligente: Si el destino activo arriba no es de Caribe o resorts (ej. Bariloche),
-        // cambiar automáticamente la región a 'caribe_usa' y enfocar Punta Cana
+        // UX Inteligente: Al abrir All-Inclusive, filtrar el sidebar únicamente por destinos All-Inclusive (incluyendo Brasil) y enfocar Punta Cana
         if (window.filtrarRadarRegion) {
-          window.filtrarRadarRegion('caribe_usa');
+          window.filtrarRadarRegion('all_inclusive');
         }
         if (window.renderRadarDestino) {
           window.renderRadarDestino('puntacana');
@@ -4820,6 +4850,19 @@
           btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-cyan-600 text-white shadow-xs';
         } else {
           btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-cyan-500 hover:text-white transition-colors';
+        }
+      });
+      window.renderizarResortsCards();
+    };
+
+    window.filtrarResortsZona = function(zona) {
+      currentResortsZona = zona;
+      const zonaBtns = document.querySelectorAll('#resorts-zona-filter button');
+      zonaBtns.forEach(btn => {
+        if (btn.getAttribute('data-zona') === zona) {
+          btn.className = 'px-3 py-1 rounded-xl text-xs font-bold bg-blue-600 text-white shadow-xs';
+        } else {
+          btn.className = 'px-3 py-1 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-blue-600 hover:text-white transition-colors';
         }
       });
       window.renderizarResortsCards();
@@ -4853,15 +4896,15 @@
     function obtenerFotoResort(nombre, cadena) {
       const n = (nombre || '').toLowerCase();
       if (n.includes('turquesa')) return 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=800&q=80';
-      if (n.includes('esmeralda')) return 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80';
+      if (n.includes('esmeralda')) return 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80';
       if (n.includes('legend')) return 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80';
       if (n.includes('aquamarine') || n.includes('ambar')) return 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80';
       if (n.includes('palladium') || n.includes('trs')) return 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80';
       if (n.includes('curacao') || n.includes('curazao')) return 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80';
-      if (n.includes('panama') || n.includes('bonita')) return 'https://images.unsplash.com/photo-1512353087810-25dfcd100962?auto=format&fit=crop&w=800&q=80';
+      if (n.includes('panama') || n.includes('bonita')) return 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80';
       if (n.includes('cartagena')) return 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=800&q=80';
       if (n.includes('costa rica') || n.includes('papagayo')) return 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=800&q=80';
-      if (n.includes('imbassai') || n.includes('brasil')) return 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=800&q=80';
+      if (n.includes('imbassai') || n.includes('brasil')) return 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80';
       return 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80';
     }
 
@@ -4877,13 +4920,24 @@
       const badgeCount = document.getElementById('resorts-count-badge');
       if (!grid || !window.RESORTS_DATA || !Array.isArray(window.RESORTS_DATA)) return;
 
-      // 1. Filtrar por Cadena
+      // 1. Filtrar por Cadena y Zona
       let items = currentResortsFilter === 'todos'
         ? [...window.RESORTS_DATA]
         : window.RESORTS_DATA.filter(r => {
             if (currentResortsFilter === 'Dreams / Secrets') return r.cadena.includes('Dreams') || r.cadena.includes('Secrets');
             return r.cadena.includes(currentResortsFilter);
           });
+
+      if (currentResortsZona !== 'todas') {
+        items = items.filter(r => {
+          const d = (r.destino || '').toLowerCase();
+          if (currentResortsZona === 'dominicana') return d.includes('dominicana') || d.includes('punta cana') || d.includes('romana');
+          if (currentResortsZona === 'brasil') return d.includes('brasil');
+          if (currentResortsZona === 'jamaica') return d.includes('jamaica');
+          if (currentResortsZona === 'otros') return !d.includes('dominicana') && !d.includes('punta cana') && !d.includes('romana') && !d.includes('brasil') && !d.includes('jamaica');
+          return true;
+        });
+      }
 
       // 2. Ordenar según el criterio seleccionado
       items.sort((a, b) => {
