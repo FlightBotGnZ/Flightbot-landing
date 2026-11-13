@@ -1,6 +1,6 @@
 /**
  * FlightBot - Theme & Currency Management Module
- * Rolli Brand Standard: Official Ruby Palette & Tri-Currency (NATIVO | ARS | USD)
+ * Rolli Brand Standard: Official Cobalt Blue Palette & Tri-Currency (NATIVO | ARS | USD)
  */
 
 (function () {
@@ -15,10 +15,17 @@
     'londres', 'berlin', 'frankfurt', 'amsterdam', 'atenas', 'oslo', 'reikiavik'
   ];
 
-  // 1. Inicialización de Tema (Ruby fijo, Dark/Light configurable)
+  // 1. Inicialización de Tema (Azul Cobalto fijo, Modo Claro por defecto al migrar)
   function initTheme() {
-    const savedMode = localStorage.getItem('fb_theme_mode') || 'dark';
-    document.documentElement.setAttribute('data-color', 'ruby');
+    try {
+      if (!localStorage.getItem('fb_theme_cobalt_v1')) {
+        localStorage.setItem('fb_theme_mode', 'light');
+        localStorage.setItem('fb_theme_color', 'blue');
+        localStorage.setItem('fb_theme_cobalt_v1', '1');
+      }
+    } catch (_) {}
+    const savedMode = localStorage.getItem('fb_theme_mode') || 'light';
+    document.documentElement.setAttribute('data-color', 'blue');
     if (savedMode === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
@@ -115,7 +122,7 @@
     const fBtnArs = document.getElementById('footer-btn-curr-ars');
     const fBtnUsd = document.getElementById('footer-btn-curr-usd');
 
-    const activeClasses = 'px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs cursor-pointer';
+    const activeClasses = 'px-2.5 py-1 rounded-md bg-blue-600 hover:bg-blue-700 text-white shadow-sm font-semibold transition-all text-xs cursor-pointer';
     const inactiveClasses = 'px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer';
 
     if (btnNativo) btnNativo.className = isNativo ? activeClasses : inactiveClasses;

@@ -217,12 +217,12 @@
         : d.precioOriginal;
 
       html += `
-        <div class="group relative rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:border-rose-500/50 transition-all flex flex-col justify-between">
+        <div class="group relative rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:border-blue-500/50 transition-all flex flex-col justify-between">
           <div class="relative h-48 w-full overflow-hidden">
             <img src="${d.img}" alt="${d.ciudad}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
             
-            <div class="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-rose-600 text-white shadow-md">
+            <div class="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider border backdrop-blur-md bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800 shadow-sm">
               <span>🔥 ${d.ahorroPct} piso histórico</span>
             </div>
 
@@ -248,10 +248,10 @@
             <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
               <div>
                 <span class="text-[9px] uppercase font-bold text-slate-400 block tracking-wider">Detectado por Rolli</span>
-                <span class="text-xl font-black font-mono text-rose-600 dark:text-rose-500">${priceFmt}</span>
+                <span class="text-xl font-black font-mono text-blue-600 dark:text-blue-400">${priceFmt}</span>
               </div>
 
-              <a href="/vuelos?dest=${d.id}" class="px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-rose-600 hover:bg-rose-700 shadow-sm transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5">
+              <a href="/vuelos?dest=${d.id}" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5">
                 <span>Ver Tarifa</span>
                 <span>➔</span>
               </a>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth dark" data-color="ruby">
+<html lang="es" class="scroll-smooth" data-color="blue">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +22,7 @@
   <meta property="article:tag" content="Guía de Viaje">
 
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%23e11d48' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%23e11d48'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%232563eb' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%232563eb'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/img/rolli-avatar-transparent.png">
@@ -47,8 +47,8 @@
 
     // Inicialización inmediata antes del renderizado para evitar FOUC
     (function() {
-      const savedColor = localStorage.getItem('fb_theme_color') || 'ruby';
-      const savedMode = localStorage.getItem('fb_theme_mode') || 'dark';
+      const savedColor = localStorage.getItem('fb_theme_color') || 'blue';
+      const savedMode = localStorage.getItem('fb_theme_mode') || 'light';
       document.documentElement.setAttribute('data-color', savedColor);
       if (savedMode === 'dark') {
         document.documentElement.classList.add('dark');
@@ -93,15 +93,15 @@
     }
 
     /* Variables de Acento Cromático Dinámicas (Rojo Rubí por defecto absoluto) */
-    :root, html, html[data-color="ruby"] {
-      --brand-primary: #e11d48; /* rose-600 */
-      --brand-hover: #be123c;   /* rose-700 */
-      --brand-text: #fb7185;    /* rose-400 */
-      --brand-text-light: #e11d48;
-      --brand-subtle: rgba(225, 29, 72, 0.12);
-      --brand-border: rgba(225, 29, 72, 0.25);
-      --brand-glow: rgba(225, 29, 72, 0.35);
-      --brand-gradient: linear-gradient(135deg, #e11d48 0%, #ef4444 100%);
+    :root, html, html[data-color="blue"] {
+      --brand-primary: #2563eb; /* rose-600 */
+      --brand-hover: #1d4ed8;   /* rose-700 */
+      --brand-text: #60a5fa;    /* rose-400 */
+      --brand-text-light: #2563eb;
+      --brand-subtle: rgba(37, 99, 235, 0.12);
+      --brand-border: rgba(37, 99, 235, 0.25);
+      --brand-glow: rgba(37, 99, 235, 0.35);
+      --brand-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
     }
     html[data-color="blue"] {
       --brand-primary: #2563eb; /* blue-600 */
@@ -197,8 +197,9 @@
   <!-- Vercel Web Analytics (mismo dominio, compatible con CSP script-src 'self') -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script>(function(){try{if(!localStorage.getItem('fb_theme_cobalt_v1')){localStorage.setItem('fb_theme_mode','light');localStorage.setItem('fb_theme_color','blue');localStorage.setItem('fb_theme_cobalt_v1','1');}var m=localStorage.getItem('fb_theme_mode')||'light';if(m==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('data-color','blue');}catch(_){}})();</script>
 </head>
-<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition">
+<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white theme-transition">
 
   
   <!-- Encabezado / Navegación Superior Universal (h-16 simétrico) -->
@@ -208,11 +209,11 @@
       
       <!-- 1. Marca / Logotipo Rolli + FlightBot + Slogan Oficial -->
       <a href="/" class="flex items-center gap-2.5 group shrink-0" title="FlightBot · Con Rolli Copiloto">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-rose-500 to-rose-700 shadow-md shadow-rose-900/20 group-hover:scale-105 transition-transform">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-blue-600 to-indigo-700 shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
           <img src="/img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow">
         </div>
         <div>
-          <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-rose-600">Bot</span></span>
+          <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-blue-600 dark:text-blue-400">Bot</span></span>
           <span class="block text-[9px] uppercase font-bold text-slate-400 -mt-1 tracking-widest">Con Rolli Copiloto</span>
         </div>
       </a>
@@ -266,7 +267,7 @@
         </a>
 
         <!-- Guías -->
-        <a href="/guias" id="nav-btn-guias" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-semibold rounded-lg transition-all duration-150 text-rose-600 bg-rose-50 dark:bg-rose-950/40 dark:text-rose-400" title="Guías de Viaje Editoriales">
+        <a href="/guias" id="nav-btn-guias" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm rounded-lg transition-all duration-150 text-blue-600 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-400 font-semibold" title="Guías de Viaje Editoriales">
           <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
             <path d="M6 6h10"/>
@@ -328,7 +329,7 @@
         <!-- B. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
-          <span id="theme-mode-icon">🌙</span>
+          <span id="theme-mode-icon">☀️</span>
         </button>
 
         <!-- C. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
@@ -444,7 +445,7 @@
         </a>
 
         <!-- Guías -->
-        <a href="/guias" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-rose-600 bg-rose-50 dark:bg-rose-950/40 dark:text-rose-400 font-semibold transition-all">
+        <a href="/guias" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-blue-600 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-400 font-semibold transition-all">
           <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
             <path d="M6 6h10"/>
@@ -477,7 +478,7 @@
         <div class="flex items-center justify-between pt-1">
           <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Moneda de referencia:</span>
           <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold">
-            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
+            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs">NATIVO</button>
             <button type="button" id="m-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
             <button type="button" id="m-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
           </div>
@@ -610,7 +611,7 @@
           <span class="font-medium">Dónde Hospedarse & Barrios</span>
         </a>
         <a href="#consejos-expertos" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/70 transition-colors dark:text-slate-300 text-slate-700">
-          <span class="w-6 h-6 rounded-lg bg-rose-500/10 text-rose-500 flex items-center justify-center text-xs font-bold">7</span>
+          <span class="w-6 h-6 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center text-xs font-bold">7</span>
           <span class="font-medium">Consejos Pro de Ahorro</span>
         </a>
         
@@ -732,7 +733,7 @@
         <div class="dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl p-6 flex flex-col justify-between shadow-sm theme-transition">
           <div>
             <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-bold px-2.5 py-1 rounded-full border border-rose-500/20 bg-rose-500/10 text-rose-500">🌸 Primavera</span>
+              <span class="text-xs font-bold px-2.5 py-1 rounded-full border border-blue-500/20 bg-blue-600/10 text-blue-600">🌸 Primavera</span>
               <span class="text-xs font-semibold dark:text-slate-400 text-slate-500">Marzo a Mayo</span>
             </div>
             <div class="text-lg font-extrabold dark:text-white text-slate-900 mb-2 font-mono" style="color: var(--brand-primary);">15°C a 29°C</div>
@@ -948,7 +949,7 @@
               <span>🏨</span> Ver Hoteles en Giza (Frente a las Pirámides)
             </a>
             <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center justify-center gap-1 text-xs font-bold py-2.5 px-3 rounded-xl transition-all border dark:border-slate-700 border-slate-200 dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500"
+               class="inline-flex items-center justify-center gap-1 text-xs font-bold py-2.5 px-3 rounded-xl transition-all border dark:border-slate-700 border-slate-200 dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-blue-600"
                title="Consultar tarifas en Telegram">
               <span>📱</span> Rolli
             </a>
@@ -972,7 +973,7 @@
               <span>🏨</span> Ver Hoteles en Zamalek (Isla Gezira en el Nilo)
             </a>
             <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center justify-center gap-1 text-xs font-bold py-2.5 px-3 rounded-xl transition-all border dark:border-slate-700 border-slate-200 dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500"
+               class="inline-flex items-center justify-center gap-1 text-xs font-bold py-2.5 px-3 rounded-xl transition-all border dark:border-slate-700 border-slate-200 dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-blue-600"
                title="Consultar tarifas en Telegram">
               <span>📱</span> Rolli
             </a>
@@ -996,7 +997,7 @@
               <span>🏨</span> Ver Hoteles en Downtown / Plaza Tahrir
             </a>
             <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center justify-center gap-1 text-xs font-bold py-2.5 px-3 rounded-xl transition-all border dark:border-slate-700 border-slate-200 dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500"
+               class="inline-flex items-center justify-center gap-1 text-xs font-bold py-2.5 px-3 rounded-xl transition-all border dark:border-slate-700 border-slate-200 dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-blue-600"
                title="Consultar tarifas en Telegram">
               <span>📱</span> Rolli
             </a>
@@ -1096,7 +1097,7 @@
 
     <!-- Bento Card de Conversión al Radar de Vuelos & Telegram -->
     <div class="rounded-3xl border dark:border-slate-800 border-slate-200 dark:bg-slate-900/80 bg-white p-8 sm:p-10 mb-16 shadow-xl theme-transition relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
+      <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
       <div class="max-w-3xl relative z-10">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 theme-transition"
              style="background-color: var(--brand-subtle); border: 1px solid var(--brand-border); color: var(--brand-primary);">
@@ -1380,7 +1381,7 @@
             <span>💱</span> Moneda de visualización:
           </span>
           <div class="inline-flex p-1 bg-slate-200/70 dark:bg-slate-900 rounded-lg text-xs font-semibold border dark:border-slate-800 border-slate-300/60" title="Seleccionar moneda para precios del sitio">
-            <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
+            <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
             <button type="button" id="footer-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">ARS</button>
             <button type="button" id="footer-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">USD</button>
           </div>
@@ -1408,7 +1409,7 @@
 
   <!-- Botón Flotante Volver Arriba -->
   <button id="fb-scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-          class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-slate-900/90 dark:bg-slate-800/90 text-white shadow-xl border border-slate-700/80 hover:bg-rose-600 dark:hover:bg-rose-600 transition-all opacity-0 pointer-events-none translate-y-4 duration-300"
+          class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-slate-900/90 dark:bg-slate-800/90 text-white shadow-xl border border-slate-700/80 hover:bg-blue-600 dark:hover:bg-blue-600 transition-all opacity-0 pointer-events-none translate-y-4 duration-300"
           title="Volver arriba">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -1469,7 +1470,7 @@
     }
 
     function updateThemeControls() {
-      const col = document.documentElement.getAttribute('data-color') || 'ruby';
+      const col = document.documentElement.getAttribute('data-color') || 'blue';
       const isDark = document.documentElement.classList.contains('dark');
       const btnR = document.getElementById('theme-btn-ruby');
       const btnB = document.getElementById('theme-btn-blue');
@@ -1477,11 +1478,11 @@
 
       if (btnR && btnB) {
         if (col === 'ruby') {
-          btnR.className = "w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
+          btnR.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
           btnB.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
         } else {
           btnB.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
-          btnR.className = "w-4 h-4 rounded-full bg-rose-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
+          btnR.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
         }
       }
       if (modeIcon) {
@@ -1594,7 +1595,7 @@
                 <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">Siempre Activo</span>
               </div>
               <p class="text-[11px] dark:text-slate-400 text-slate-500 mb-2">
-                Indispensable para el funcionamiento de la web. Recuerda tu paleta visual (<code class="text-rose-500 font-mono">fb_theme_color</code>), modo claro/oscuro (<code class="text-rose-500 font-mono">fb_theme_mode</code>) y tu consentimiento.
+                Indispensable para el funcionamiento de la web. Recuerda tu paleta visual (<code class="text-blue-600 font-mono">fb_theme_color</code>), modo claro/oscuro (<code class="text-blue-600 font-mono">fb_theme_mode</code>) y tu consentimiento.
               </p>
               <div class="text-[10px] text-slate-400 font-mono">Persistencia: localStorage (controlable por el usuario)</div>
             </div>
@@ -1605,7 +1606,7 @@
                 <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">Privado &amp; Offline</span>
               </div>
               <p class="text-[11px] dark:text-slate-400 text-slate-500 mb-2">
-                Tus tarjetas de embarque, PNRs de vuelo, vouchers y pólizas se guardan de forma cifrada en el almacenamiento local de tu navegador (<code class="text-rose-500 font-mono">fb_wallet_docs</code>). Nunca viajan a servidores sin tu acción explícita.
+                Tus tarjetas de embarque, PNRs de vuelo, vouchers y pólizas se guardan de forma cifrada en el almacenamiento local de tu navegador (<code class="text-blue-600 font-mono">fb_wallet_docs</code>). Nunca viajan a servidores sin tu acción explícita.
               </p>
               <div class="text-[10px] text-slate-400 font-mono">Ubicación: Exclusivamente en tu navegador</div>
             </div>
@@ -1642,7 +1643,7 @@
           </p>
           <ul class="list-disc pl-5 space-y-1.5">
             <li><strong>Zero PII en Servidores:</strong> No requerimos registro con tarjeta de crédito, número de pasaporte ni datos personales para explorar ofertas.</li>
-            <li><strong>Billetera Offline Segura:</strong> Tus documentos e itinerarios residen en el <code class="text-rose-500 font-mono">localStorage</code> de tu navegador. Tienes el control total para borrarlos con un solo clic.</li>
+            <li><strong>Billetera Offline Segura:</strong> Tus documentos e itinerarios residen en el <code class="text-blue-600 font-mono">localStorage</code> de tu navegador. Tienes el control total para borrarlos con un solo clic.</li>
             <li><strong>Sincronización Opcional con Telegram:</strong> La comunicación con el bot de Telegram se realiza a través de la API oficial cifrada de Telegram (TLS 1.3), con tokens efímeros y sin intermediarios.</li>
             <li><strong>Cero Venta de Información:</strong> Jamás vendemos, alquilamos ni compartimos tus búsquedas de vuelos con anunciantes ni bases de datos de terceros.</li>
           </ul>
@@ -1871,8 +1872,8 @@
               <g>
                 <rect x="5.5" y="6" width="17" height="13" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
                 <line x1="14" y1="6" x2="14" y2="2" stroke="#94a3b8" stroke-width="1.1" stroke-linecap="round"/>
-                <circle cx="14" cy="1.8" r="2.0" fill="#e11d48" opacity="0.35"/>
-                <circle cx="14" cy="1.8" r="1.5" fill="#e11d48"/>
+                <circle cx="14" cy="1.8" r="2.0" fill="#2563eb" opacity="0.35"/>
+                <circle cx="14" cy="1.8" r="1.5" fill="#2563eb"/>
                 <circle cx="13.5" cy="1.3" r="0.45" fill="#ffffff"/>
                 <rect x="8" y="9" width="12" height="6.5" rx="2.5" fill="#0f172a"/>
                 <circle cx="11" cy="12.2" r="1.2" fill="#38bdf8"/>
@@ -1883,8 +1884,8 @@
               </g>
               <defs>
                 <linearGradient id="fbSuitcaseAlwaysRedChat" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#e11d48"/>
-                  <stop offset="100%" stop-color="#be123c"/>
+                  <stop offset="0%" stop-color="#2563eb"/>
+                  <stop offset="100%" stop-color="#1d4ed8"/>
                 </linearGradient>
               </defs>
             </svg>
@@ -1893,7 +1894,7 @@
             <div class="flex items-center gap-2 whitespace-nowrap">
               <span class="font-extrabold text-sm tracking-tight text-white">F-Bot Rolli</span>
               <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-400/20 text-emerald-200 border border-emerald-300/30 flex-shrink-0">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 IA Activa
               </span>
             </div>
@@ -1996,13 +1997,13 @@
         // 1. Transformar anclas o preguntas sugeridas (href="#" o sin href) en chips interactivos clicables
         escaped = escaped.replace(
           /&lt;a\s+href=(?:&quot;|&#39;)?#?(?:&quot;|&#39;)?[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
-          '<span class="fb-chat-suggestion text-rose-500 dark:text-rose-400 underline hover:opacity-80 cursor-pointer font-medium" data-prompt="$1">$1</span>'
+          '<span class="fb-chat-suggestion text-blue-600 dark:text-blue-400 underline hover:opacity-80 cursor-pointer font-medium" data-prompt="$1">$1</span>'
         );
 
         // 2. Transformar enlaces externos legítimos (https:// o /guias/) en enlaces seguros
         escaped = escaped.replace(
           /&lt;a\s+href=(?:&quot;|&#39;)(https?:\/\/[^&"'\s]+|\/[^&"'\s]+)(?:&quot;|&#39;)[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
-          '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-rose-500 hover:underline font-semibold">$2</a>'
+          '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">$2</a>'
         );
 
         // 3. Purgar cualquier etiqueta <a> o </a> residual
@@ -2191,7 +2192,7 @@
         const wrap = document.createElement('div');
         wrap.id = 'fb-chat-typing';
         wrap.className = 'flex justify-start';
-        wrap.innerHTML = '<div class="px-4 py-2.5 rounded-2xl rounded-bl-sm dark:bg-slate-800 bg-white border dark:border-slate-700 border-slate-200 text-xs dark:text-slate-400 text-slate-500 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-bounce" style="animation-delay:0.15s"></span><span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-bounce" style="animation-delay:0.3s"></span><span class="ml-1">Consultando IA...</span></div>';
+        wrap.innerHTML = '<div class="px-4 py-2.5 rounded-2xl rounded-bl-sm dark:bg-slate-800 bg-white border dark:border-slate-700 border-slate-200 text-xs dark:text-slate-400 text-slate-500 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce" style="animation-delay:0.15s"></span><span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce" style="animation-delay:0.3s"></span><span class="ml-1">Consultando IA...</span></div>';
         container.appendChild(wrap);
         container.scrollTop = container.scrollHeight;
         return wrap;

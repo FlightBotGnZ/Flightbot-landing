@@ -37,7 +37,7 @@
     document.querySelectorAll('.fb-region-tab').forEach(tab => {
       const reg = tab.getAttribute('data-region');
       if (reg === region) {
-        tab.className = 'fb-region-tab px-4 py-2 rounded-xl text-xs font-bold text-white bg-rose-600 shadow-sm transition-all whitespace-nowrap';
+        tab.className = 'fb-region-tab px-4 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all whitespace-nowrap';
       } else {
         tab.className = 'fb-region-tab px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all whitespace-nowrap';
       }
@@ -85,7 +85,7 @@
       destinosFiltrados.forEach(dest => {
         const isSelected = dest.id === currentDestinationId;
         const activeClass = isSelected
-          ? 'bg-rose-50 dark:bg-rose-950/40 border-rose-500 shadow-sm'
+          ? 'bg-blue-50 dark:bg-blue-950/40 border-blue-500 shadow-sm'
           : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700';
 
         const precioFmt = (typeof window.formatearPrecioMoneda === 'function')
@@ -98,7 +98,7 @@
             <div class="flex items-center gap-2.5 min-w-0">
               ${generarBanderaHtml(dest, 'sm')}
               <div class="truncate">
-                <div class="text-xs font-bold dark:text-white text-slate-900 truncate group-hover:text-rose-600 transition-colors">
+                <div class="text-xs font-bold dark:text-white text-slate-900 truncate group-hover:text-blue-600 transition-colors">
                   ${limpiarNombreCiudad(dest.ciudad)}
                 </div>
                 <div class="text-[10px] font-mono text-slate-400">
@@ -108,7 +108,7 @@
             </div>
             <div class="text-right shrink-0">
               <span class="text-[9px] uppercase font-bold text-slate-400 block">Desde</span>
-              <span class="text-xs font-black font-mono text-rose-600 dark:text-rose-500">${precioFmt}</span>
+              <span class="text-xs font-black font-mono text-blue-600 dark:text-blue-400">${precioFmt}</span>
             </div>
           </button>
         `;
@@ -125,7 +125,7 @@
       const content = document.getElementById(`tab-content-${t}`);
       if (btn) {
         if (t === tab) {
-          btn.className = 'tab-btn px-4 py-2.5 text-xs font-extrabold border-b-2 border-rose-600 text-rose-600 transition-all flex items-center gap-2';
+          btn.className = 'tab-btn px-4 py-2.5 text-xs font-extrabold border-b-2 border-blue-600 text-blue-600 dark:text-blue-400 transition-all flex items-center gap-2';
         } else {
           btn.className = 'tab-btn px-4 py-2.5 text-xs font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-white transition-all flex items-center gap-2';
         }
@@ -157,21 +157,21 @@
     // A. Encabezado de la Ficha
     const headerHtml = `
       <div class="p-6 sm:p-8 bg-slate-900 text-white rounded-t-3xl relative overflow-hidden">
-        <div class="absolute -right-20 -bottom-20 w-64 h-64 rounded-full bg-rose-600/20 blur-3xl pointer-events-none"></div>
+        <div class="absolute -right-20 -bottom-20 w-64 h-64 rounded-full bg-blue-600/20 blur-3xl pointer-events-none"></div>
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
           <div class="flex items-center gap-4">
             ${generarBanderaHtml(dest, 'lg')}
             <div>
               <div class="flex items-center gap-2">
                 <h3 class="text-2xl sm:text-3xl font-black">${dest.ciudad}</h3>
-                <span class="px-2 py-0.5 rounded-lg text-xs font-mono font-bold bg-white/10 text-rose-400">${dest.iata}</span>
+                <span class="px-2 py-0.5 rounded-lg text-xs font-mono font-bold bg-white/10 text-blue-400">${dest.iata}</span>
               </div>
               <p class="text-xs text-slate-300 mt-1 max-w-xl leading-relaxed">${dest.resena || ''}</p>
             </div>
           </div>
           <div class="text-left sm:text-right shrink-0">
             <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">Piso Histórico Rolli</span>
-            <span class="text-2xl sm:text-3xl font-black font-mono text-rose-500">${precioDesdeFmt}</span>
+            <span class="text-2xl sm:text-3xl font-black font-mono text-blue-400">${precioDesdeFmt}</span>
             <span class="text-[10px] text-slate-400 block mt-0.5">Ida y vuelta final con tasas</span>
           </div>
         </div>
@@ -182,7 +182,7 @@
     const tabsNavHtml = `
       <div class="flex border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 gap-2">
         <button type="button" id="tab-btn-vuelos" onclick="window.setDetailTab('vuelos')"
-                class="tab-btn px-4 py-3 text-xs font-extrabold border-b-2 border-rose-600 text-rose-600 transition-all flex items-center gap-2">
+                class="tab-btn px-4 py-3 text-xs font-extrabold border-b-2 border-blue-600 text-blue-600 dark:text-blue-400 transition-all flex items-center gap-2">
           <span>✈️</span>
           <span>1. Tarifas Aéreas por Temporada</span>
         </button>
@@ -208,7 +208,7 @@
           : v.precio;
 
         vuelosHtml += `
-          <div class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-rose-500/40 transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xs">
+          <div class="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500/40 transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xs">
             <div class="flex items-start gap-3.5">
               <span class="text-2xl">${v.puesto || '✈️'}</span>
               <div>
@@ -227,10 +227,10 @@
             <div class="flex items-center justify-between w-full md:w-auto md:justify-end gap-4 shrink-0 pt-3 md:pt-0 border-t md:border-t-0 border-slate-100 dark:border-slate-800">
               <div class="text-left md:text-right">
                 <span class="text-[9px] uppercase font-bold text-slate-400 block">Total i/v</span>
-                <span class="text-lg font-black font-mono text-rose-600 dark:text-rose-500">${vPrice}</span>
+                <span class="text-lg font-black font-mono text-blue-600 dark:text-blue-400">${vPrice}</span>
               </div>
               <a href="https://t.me/GnZFlightBot?start=dest_${dest.id}" target="_blank" rel="noopener noreferrer"
-                 class="px-4 py-2.5 rounded-xl text-xs font-extrabold text-white bg-rose-600 hover:bg-rose-700 shadow-sm transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5 whitespace-nowrap">
+                 class="px-4 py-2.5 rounded-xl text-xs font-extrabold bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5 whitespace-nowrap">
                 <span>Alerta 24/7</span>
                 <span>➔</span>
               </a>
@@ -287,10 +287,10 @@
     // E. Contenido Tab 3: Clima & Tips de Rolli
     const tipsHtml = `
       <div class="space-y-4">
-        <div class="p-5 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-xs text-rose-800 dark:text-rose-200 flex items-start gap-3">
+        <div class="p-5 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-xs text-slate-700 dark:text-slate-200 flex items-start gap-3">
           <img src="img/rolli-avatar-transparent.png" alt="Rolli" class="w-10 h-10 object-contain shrink-0 filter drop-shadow">
           <div>
-            <h5 class="font-extrabold text-sm text-rose-600 dark:text-rose-400 mb-1">El Secreto de Rolli para viajar a ${dest.ciudad}:</h5>
+            <h5 class="font-extrabold text-sm text-blue-600 dark:text-blue-400 mb-1">El Secreto de Rolli para viajar a ${dest.ciudad}:</h5>
             <p class="leading-relaxed">
               "Para conseguir la tarifa más baja en ${dest.iata}, reservá con al menos 6 a 8 semanas de anticipación si viajás en temporada media. Los martes y miércoles a la madrugada suelen liberarse las cancelaciones con piso histórico."
             </p>
@@ -333,19 +333,31 @@
     window.setDetailTab(currentDetailTab);
   };
 
+  function escapeHtml(str) {
+    return String(str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function normTexto(str) {
+    return String(str || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+  }
+
   // 4. Inicializar Buscador Rápido del Hero
   function initHeroSearchBar() {
     const heroSelect = document.getElementById('hero-dest-select');
+    const heroInput = document.getElementById('hero-dest-input');
+    const heroDropdown = document.getElementById('hero-dest-dropdown');
+    const heroWrapper = document.getElementById('hero-dest-wrapper');
+    const heroClear = document.getElementById('hero-dest-clear');
     const heroBtn = document.getElementById('hero-search-btn');
     if (!heroSelect) return;
 
     const data = getRadarData();
     const totalDestinos = Array.isArray(data) ? data.length : 0;
-    let optionsHtml = `<option value="todos" class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">🌐 Todos los ${totalDestinos} destinos monitoreados</option>`;
-    data.forEach(d => {
-      optionsHtml += `<option value="${d.id}" class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">${d.iata} · ${limpiarNombreCiudad(d.ciudad)} (${d.pais})</option>`;
-    });
-    heroSelect.innerHTML = optionsHtml;
 
     // Actualizar contador dinámico en el badge del radar si existe en la página
     const radarBadgeCount = document.getElementById('radar-destinos-total-count');
@@ -353,25 +365,192 @@
       radarBadgeCount.textContent = totalDestinos;
     }
 
-    if (heroBtn) {
-      heroBtn.addEventListener('click', function () {
-        const selectedId = heroSelect.value;
-        const radarSec = document.getElementById('radar-vuelos');
-        if (radarSec) {
-          radarSec.scrollIntoView({ behavior: 'smooth' });
-          if (selectedId && selectedId !== 'todos') {
-            setTimeout(() => {
-              window.renderRadarDestino(selectedId);
-            }, 300);
-          }
+    function ejecutarBusquedaHero() {
+      const selectedId = heroSelect.value;
+      const radarSec = document.getElementById('radar-vuelos');
+      if (radarSec) {
+        radarSec.scrollIntoView({ behavior: 'smooth' });
+        if (selectedId && selectedId !== 'todos') {
+          setTimeout(() => {
+            window.renderRadarDestino(selectedId);
+          }, 300);
+        }
+      } else {
+        if (selectedId && selectedId !== 'todos') {
+          window.location.href = `/vuelos?dest=${encodeURIComponent(selectedId)}`;
         } else {
-          if (selectedId && selectedId !== 'todos') {
-            window.location.href = `/vuelos?dest=${encodeURIComponent(selectedId)}`;
-          } else {
-            window.location.href = '/vuelos';
-          }
+          window.location.href = '/vuelos';
+        }
+      }
+    }
+
+    if (heroInput && heroDropdown) {
+      let currentMatches = [];
+
+      if (totalDestinos > 0) {
+        heroInput.placeholder = `Todos los ${totalDestinos} destinos (o escribí ciudad/IATA)...`;
+      }
+
+      function toggleClearBtn() {
+        if (!heroClear) return;
+        if (heroInput.value.trim().length > 0) {
+          heroClear.classList.remove('hidden');
+        } else {
+          heroClear.classList.add('hidden');
+        }
+      }
+
+      function seleccionarDestinoHero(id, labelTexto) {
+        heroSelect.value = id || 'todos';
+        heroInput.value = labelTexto || '';
+        heroDropdown.classList.add('hidden');
+        toggleClearBtn();
+      }
+
+      function renderDropdownHero(query) {
+        const q = normTexto(query);
+        currentMatches = data.filter(d => {
+          if (!q) return true;
+          const ciudadLimpia = limpiarNombreCiudad(d.ciudad);
+          return (
+            normTexto(d.iata).includes(q) ||
+            normTexto(ciudadLimpia).includes(q) ||
+            normTexto(d.ciudad).includes(q) ||
+            normTexto(d.pais).includes(q) ||
+            normTexto(d.id).includes(q)
+          );
+        });
+
+        let html = '';
+
+        // Mostrar opción "Todos" si está vacío o coincide con la búsqueda
+        if (!q || 'todos'.includes(q) || 'destinos'.includes(q)) {
+          html += `
+            <button type="button" data-hero-id="todos" data-hero-label=""
+                    class="hero-dest-option w-full text-left p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-between gap-2 cursor-pointer">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="text-sm shrink-0">🌐</span>
+                <span class="text-xs font-bold text-slate-900 dark:text-white truncate">Todos los ${totalDestinos} destinos monitoreados</span>
+              </div>
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-500/10 text-rose-500 shrink-0">Radar</span>
+            </button>
+          `;
+        }
+
+        if (currentMatches.length === 0) {
+          html += `
+            <div class="p-3 text-center text-xs text-slate-500 dark:text-slate-400">
+              No encontramos destinos para "<strong>${escapeHtml(query)}</strong>".<br>
+              Probá con otra ciudad, país o código IATA (ej: MAD, MIA, BRC).
+            </div>
+          `;
+        } else {
+          html += currentMatches.map(d => {
+            const ciudadLimpia = limpiarNombreCiudad(d.ciudad);
+            const labelTexto = `${d.iata} · ${ciudadLimpia} (${d.pais})`;
+            return `
+              <button type="button" data-hero-id="${escapeHtml(d.id)}" data-hero-label="${escapeHtml(labelTexto)}"
+                      class="hero-dest-option w-full text-left p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-between gap-2 cursor-pointer group">
+                <div class="flex items-center gap-2.5 min-w-0">
+                  ${generarBanderaHtml(d, 'sm')}
+                  <div class="min-w-0">
+                    <div class="text-xs font-bold text-slate-900 dark:text-white truncate group-hover:text-rose-500 transition-colors">
+                      ${escapeHtml(ciudadLimpia)}
+                    </div>
+                    <div class="text-[11px] text-slate-500 dark:text-slate-400 truncate">
+                      ${escapeHtml(d.pais)}
+                    </div>
+                  </div>
+                </div>
+                <span class="text-[11px] font-mono font-extrabold px-2 py-0.5 rounded-lg bg-slate-200 dark:bg-slate-950 text-slate-800 dark:text-slate-200 shrink-0">
+                  ${escapeHtml(d.iata)}
+                </span>
+              </button>
+            `;
+          }).join('');
+        }
+
+        heroDropdown.innerHTML = html;
+        heroDropdown.classList.remove('hidden');
+
+        heroDropdown.querySelectorAll('.hero-dest-option').forEach(btn => {
+          btn.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            seleccionarDestinoHero(this.getAttribute('data-hero-id'), this.getAttribute('data-hero-label'));
+          });
+        });
+      }
+
+      heroInput.addEventListener('focus', function () {
+        // Si ya tiene un destino seleccionado formateado, mostrar toda la lista para facilitar el cambio
+        const query = heroSelect.value !== 'todos' ? '' : this.value;
+        renderDropdownHero(query);
+      });
+
+      heroInput.addEventListener('click', function () {
+        if (heroDropdown.classList.contains('hidden')) {
+          const query = heroSelect.value !== 'todos' ? '' : this.value;
+          renderDropdownHero(query);
         }
       });
+
+      heroInput.addEventListener('input', function () {
+        const val = this.value;
+        if (!val.trim()) {
+          heroSelect.value = 'todos';
+        } else {
+          // Si coincide exactamente con un IATA o ciudad única, preseleccionarlo
+          const q = normTexto(val);
+          const exact = data.find(d => normTexto(d.iata) === q || normTexto(limpiarNombreCiudad(d.ciudad)) === q);
+          if (exact) {
+            heroSelect.value = exact.id;
+          }
+        }
+        toggleClearBtn();
+        renderDropdownHero(val);
+      });
+
+      heroInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          heroDropdown.classList.add('hidden');
+          return;
+        }
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (this.value.trim() && currentMatches.length > 0) {
+            const first = currentMatches[0];
+            seleccionarDestinoHero(first.id, `${first.iata} · ${limpiarNombreCiudad(first.ciudad)} (${first.pais})`);
+          } else if (!this.value.trim()) {
+            seleccionarDestinoHero('todos', '');
+          }
+          ejecutarBusquedaHero();
+        }
+      });
+
+      if (heroClear) {
+        heroClear.addEventListener('click', function () {
+          seleccionarDestinoHero('todos', '');
+          heroInput.focus();
+          renderDropdownHero('');
+        });
+      }
+
+      document.addEventListener('click', function (e) {
+        if (heroWrapper && !heroWrapper.contains(e.target)) {
+          heroDropdown.classList.add('hidden');
+        }
+      });
+    } else if (heroSelect.tagName === 'SELECT') {
+      // Fallback para páginas que aún conserven <select id="hero-dest-select">
+      let optionsHtml = `<option value="todos" class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">🌐 Todos los ${totalDestinos} destinos monitoreados</option>`;
+      data.forEach(d => {
+        optionsHtml += `<option value="${d.id}" class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white">${d.iata} · ${limpiarNombreCiudad(d.ciudad)} (${d.pais})</option>`;
+      });
+      heroSelect.innerHTML = optionsHtml;
+    }
+
+    if (heroBtn) {
+      heroBtn.addEventListener('click', ejecutarBusquedaHero);
     }
   }
 

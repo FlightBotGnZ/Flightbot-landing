@@ -2,15 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root, html, html[data-color="ruby"] {
-  --brand-primary: #e11d48;
-  --brand-hover: #be123c;
-  --brand-text: #fb7185;
-  --brand-text-light: #e11d48;
-  --brand-subtle: rgba(225, 29, 72, 0.12);
-  --brand-border: rgba(225, 29, 72, 0.25);
-  --brand-glow: rgba(225, 29, 72, 0.35);
-  --brand-gradient: linear-gradient(135deg, #e11d48 0%, #ef4444 100%);
+:root, html, html[data-color="cobalt"], html[data-color="blue"], html[data-color="ruby"] {
+  --brand-primary: #2563eb;
+  --brand-hover: #1d4ed8;
+  --brand-text: #60a5fa;
+  --brand-text-light: #2563eb;
+  --brand-subtle: rgba(37, 99, 235, 0.12);
+  --brand-border: rgba(59, 130, 246, 0.25);
+  --brand-glow: rgba(37, 99, 235, 0.35);
+  --brand-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
 }
 
 .theme-transition {
@@ -50,26 +50,26 @@
 }
 
 .nav-dock-btn.is-active {
-  color: #e11d48;
-  background-color: rgba(225, 29, 72, 0.1);
+  color: #2563eb;
+  background-color: rgba(37, 99, 235, 0.1);
 }
 
 .dark .nav-dock-btn.is-active {
-  color: #fb7185;
-  background-color: rgba(225, 29, 72, 0.15);
+  color: #60a5fa;
+  background-color: rgba(37, 99, 235, 0.15);
 }
 
-/* Clases de utilidad para el tema Ruby en Pestañas */
+/* Clases de utilidad para compatibilidad Azul Cobalto en Pestañas */
 .text-ruby-600 {
-  color: #e11d48;
+  color: #2563eb;
 }
 .bg-ruby-50 {
-  background-color: #fff1f2;
+  background-color: #eff6ff;
 }
 .dark .dark\:text-ruby-400 {
-  color: #fb7185;
+  color: #60a5fa;
 }
 .dark .dark\:bg-ruby-950\/40 {
-  background-color: rgba(76, 5, 25, 0.4);
+  background-color: rgba(23, 37, 84, 0.4);
 }
 

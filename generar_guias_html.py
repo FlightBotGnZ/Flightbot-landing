@@ -48,8 +48,13 @@ SHARED_THEME_HEAD = """
 
     // Inicialización inmediata antes del renderizado para evitar FOUC
     (function() {
-      const savedColor = localStorage.getItem('fb_theme_color') || 'ruby';
-      const savedMode = localStorage.getItem('fb_theme_mode') || 'dark';
+      if (!localStorage.getItem('fb_theme_cobalt_v1')) {
+        localStorage.setItem('fb_theme_mode', 'light');
+        localStorage.setItem('fb_theme_color', 'blue');
+        localStorage.setItem('fb_theme_cobalt_v1', '1');
+      }
+      const savedColor = localStorage.getItem('fb_theme_color') || 'blue';
+      const savedMode = localStorage.getItem('fb_theme_mode') || 'light';
       document.documentElement.setAttribute('data-color', savedColor);
       if (savedMode === 'dark') {
         document.documentElement.classList.add('dark');
@@ -94,15 +99,15 @@ SHARED_THEME_HEAD = """
     }
 
     /* Variables de Acento Cromático Dinámicas (Rojo Rubí por defecto absoluto) */
-    :root, html, html[data-color="ruby"] {
-      --brand-primary: #e11d48; /* rose-600 */
-      --brand-hover: #be123c;   /* rose-700 */
-      --brand-text: #fb7185;    /* rose-400 */
-      --brand-text-light: #e11d48;
-      --brand-subtle: rgba(225, 29, 72, 0.12);
-      --brand-border: rgba(225, 29, 72, 0.25);
-      --brand-glow: rgba(225, 29, 72, 0.35);
-      --brand-gradient: linear-gradient(135deg, #e11d48 0%, #ef4444 100%);
+    :root, html, html[data-color="blue"] {
+      --brand-primary: #2563eb; /* rose-600 */
+      --brand-hover: #1d4ed8;   /* rose-700 */
+      --brand-text: #60a5fa;    /* rose-400 */
+      --brand-text-light: #2563eb;
+      --brand-subtle: rgba(37, 99, 235, 0.12);
+      --brand-border: rgba(37, 99, 235, 0.25);
+      --brand-glow: rgba(37, 99, 235, 0.35);
+      --brand-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
     }
     html[data-color="blue"] {
       --brand-primary: #2563eb; /* blue-600 */
@@ -169,7 +174,7 @@ SHARED_HEADER_SWITCHER = """
           <!-- Switcher de Color (Rojo Rubí vs Azul) -->
           <div class="flex items-center gap-1.5 pl-1.5 pr-2">
             <button onclick="setThemeColor('ruby')" id="theme-btn-ruby" title="Tema Rojo Rubí" aria-label="Tema Rojo Rubí"
-                    class="w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
+                    class="w-4 h-4 rounded-full bg-blue-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
             <button onclick="setThemeColor('blue')" id="theme-btn-blue" title="Tema Azul Océano" aria-label="Tema Azul Océano"
                     class="w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none shrink-0 relative after:absolute after:-inset-2.5 after:content-['']"></button>
           </div>
@@ -193,11 +198,11 @@ SHARED_NAV_HEADER = """
       
       <!-- 1. Marca / Logotipo Rolli + FlightBot + Slogan Oficial -->
       <a href="/" class="flex items-center gap-2.5 group shrink-0" title="FlightBot · Con Rolli Copiloto">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-rose-500 to-rose-700 shadow-md shadow-rose-900/20 group-hover:scale-105 transition-transform">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-blue-600 to-indigo-700 shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
           <img src="/img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow">
         </div>
         <div>
-          <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-rose-600">Bot</span></span>
+          <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-blue-600 dark:text-blue-400">Bot</span></span>
           <span class="block text-[9px] uppercase font-bold text-slate-400 -mt-1 tracking-widest">Con Rolli Copiloto</span>
         </div>
       </a>
@@ -251,7 +256,7 @@ SHARED_NAV_HEADER = """
         </a>
 
         <!-- Guías -->
-        <a href="/guias" id="nav-btn-guias" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-semibold rounded-lg transition-all duration-150 text-rose-600 bg-rose-50 dark:bg-rose-950/40 dark:text-rose-400" title="Guías de Viaje Editoriales">
+        <a href="/guias" id="nav-btn-guias" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm rounded-lg transition-all duration-150 text-blue-600 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-400 font-semibold" title="Guías de Viaje Editoriales">
           <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
             <path d="M6 6h10"/>
@@ -312,7 +317,7 @@ SHARED_NAV_HEADER = """
 
         <!-- B. Selector de Moneda: Diseño de cápsula compacta (NATIVO | ARS | USD) -->
         <div class="hidden md:inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
-          <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
+          <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs">NATIVO</button>
           <button type="button" id="btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
           <button type="button" id="btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
         </div>
@@ -320,7 +325,7 @@ SHARED_NAV_HEADER = """
         <!-- C. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
-          <span id="theme-mode-icon">🌙</span>
+          <span id="theme-mode-icon">☀️</span>
         </button>
 
         <!-- D. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
@@ -436,7 +441,7 @@ SHARED_NAV_HEADER = """
         </a>
 
         <!-- Guías -->
-        <a href="/guias" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-rose-600 bg-rose-50 dark:bg-rose-950/40 dark:text-rose-400 font-semibold transition-all">
+        <a href="/guias" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-blue-600 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-400 font-semibold transition-all">
           <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
             <path d="M6 6h10"/>
@@ -471,8 +476,8 @@ SHARED_NAV_HEADER = """
           <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Apariencia:</span>
           <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="m-theme-mode-btn"
                   class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/80 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all cursor-pointer">
-            <span id="m-theme-mode-icon">🌙</span>
-            <span id="m-theme-mode-text">Modo Oscuro</span>
+            <span id="m-theme-mode-icon">☀️</span>
+            <span id="m-theme-mode-text">Modo Claro</span>
           </button>
         </div>
 
@@ -480,7 +485,7 @@ SHARED_NAV_HEADER = """
         <div class="flex items-center justify-between pt-1">
           <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Moneda de referencia:</span>
           <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold">
-            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
+            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs">NATIVO</button>
             <button type="button" id="m-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
             <button type="button" id="m-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
           </div>
@@ -596,7 +601,7 @@ SHARED_PRIVACY_MODAL = """
                 <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">Siempre Activo</span>
               </div>
               <p class="text-[11px] dark:text-slate-400 text-slate-500 mb-2">
-                Indispensable para el funcionamiento de la web. Recuerda tu paleta visual (<code class="text-rose-500 font-mono">fb_theme_color</code>), modo claro/oscuro (<code class="text-rose-500 font-mono">fb_theme_mode</code>) y tu consentimiento.
+                Indispensable para el funcionamiento de la web. Recuerda tu paleta visual (<code class="text-blue-600 font-mono">fb_theme_color</code>), modo claro/oscuro (<code class="text-blue-600 font-mono">fb_theme_mode</code>) y tu consentimiento.
               </p>
               <div class="text-[10px] text-slate-400 font-mono">Persistencia: localStorage (controlable por el usuario)</div>
             </div>
@@ -607,7 +612,7 @@ SHARED_PRIVACY_MODAL = """
                 <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">Privado &amp; Offline</span>
               </div>
               <p class="text-[11px] dark:text-slate-400 text-slate-500 mb-2">
-                Tus tarjetas de embarque, PNRs de vuelo, vouchers y pólizas se guardan de forma cifrada en el almacenamiento local de tu navegador (<code class="text-rose-500 font-mono">fb_wallet_docs</code>). Nunca viajan a servidores sin tu acción explícita.
+                Tus tarjetas de embarque, PNRs de vuelo, vouchers y pólizas se guardan de forma cifrada en el almacenamiento local de tu navegador (<code class="text-blue-600 font-mono">fb_wallet_docs</code>). Nunca viajan a servidores sin tu acción explícita.
               </p>
               <div class="text-[10px] text-slate-400 font-mono">Ubicación: Exclusivamente en tu navegador</div>
             </div>
@@ -644,7 +649,7 @@ SHARED_PRIVACY_MODAL = """
           </p>
           <ul class="list-disc pl-5 space-y-1.5">
             <li><strong>Zero PII en Servidores:</strong> No requerimos registro con tarjeta de crédito, número de pasaporte ni datos personales para explorar ofertas.</li>
-            <li><strong>Billetera Offline Segura:</strong> Tus documentos e itinerarios residen en el <code class="text-rose-500 font-mono">localStorage</code> de tu navegador. Tienes el control total para borrarlos con un solo clic.</li>
+            <li><strong>Billetera Offline Segura:</strong> Tus documentos e itinerarios residen en el <code class="text-blue-600 font-mono">localStorage</code> de tu navegador. Tienes el control total para borrarlos con un solo clic.</li>
             <li><strong>Sincronización Opcional con Telegram:</strong> La comunicación con el bot de Telegram se realiza a través de la API oficial cifrada de Telegram (TLS 1.3), con tokens efímeros y sin intermediarios.</li>
             <li><strong>Cero Venta de Información:</strong> Jamás vendemos, alquilamos ni compartimos tus búsquedas de vuelos con anunciantes ni bases de datos de terceros.</li>
           </ul>
@@ -824,7 +829,7 @@ SHARED_THEME_SCRIPT = """
     }
 
     function updateThemeControls() {
-      const col = document.documentElement.getAttribute('data-color') || 'ruby';
+      const col = document.documentElement.getAttribute('data-color') || 'blue';
       const isDark = document.documentElement.classList.contains('dark');
       const btnR = document.getElementById('theme-btn-ruby');
       const btnB = document.getElementById('theme-btn-blue');
@@ -832,11 +837,11 @@ SHARED_THEME_SCRIPT = """
 
       if (btnR && btnB) {
         if (col === 'ruby') {
-          btnR.className = "w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
+          btnR.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
           btnB.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
         } else {
           btnB.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
-          btnR.className = "w-4 h-4 rounded-full bg-rose-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
+          btnR.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
         }
       }
       if (modeIcon) {
@@ -1008,8 +1013,8 @@ def construir_bloque_chatbox_ia(
               <g>
                 <rect x="5.5" y="6" width="17" height="13" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
                 <line x1="14" y1="6" x2="14" y2="2" stroke="#94a3b8" stroke-width="1.1" stroke-linecap="round"/>
-                <circle cx="14" cy="1.8" r="2.0" fill="#e11d48" opacity="0.35"/>
-                <circle cx="14" cy="1.8" r="1.5" fill="#e11d48"/>
+                <circle cx="14" cy="1.8" r="2.0" fill="#2563eb" opacity="0.35"/>
+                <circle cx="14" cy="1.8" r="1.5" fill="#2563eb"/>
                 <circle cx="13.5" cy="1.3" r="0.45" fill="#ffffff"/>
                 <rect x="8" y="9" width="12" height="6.5" rx="2.5" fill="#0f172a"/>
                 <circle cx="11" cy="12.2" r="1.2" fill="#38bdf8"/>
@@ -1020,8 +1025,8 @@ def construir_bloque_chatbox_ia(
               </g>
               <defs>
                 <linearGradient id="fbSuitcaseAlwaysRedChat" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#e11d48"/>
-                  <stop offset="100%" stop-color="#be123c"/>
+                  <stop offset="0%" stop-color="#2563eb"/>
+                  <stop offset="100%" stop-color="#1d4ed8"/>
                 </linearGradient>
               </defs>
             </svg>
@@ -1030,7 +1035,7 @@ def construir_bloque_chatbox_ia(
             <div class="flex items-center gap-2 whitespace-nowrap">
               <span class="font-extrabold text-sm tracking-tight text-white">F-Bot Rolli</span>
               <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-400/20 text-emerald-200 border border-emerald-300/30 flex-shrink-0">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 IA Activa
               </span>
             </div>
@@ -1133,13 +1138,13 @@ def construir_bloque_chatbox_ia(
         // 1. Transformar anclas o preguntas sugeridas (href="#" o sin href) en chips interactivos clicables
         escaped = escaped.replace(
           /&lt;a\s+href=(?:&quot;|&#39;)?#?(?:&quot;|&#39;)?[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
-          '<span class="fb-chat-suggestion text-rose-500 dark:text-rose-400 underline hover:opacity-80 cursor-pointer font-medium" data-prompt="$1">$1</span>'
+          '<span class="fb-chat-suggestion text-blue-600 dark:text-blue-400 underline hover:opacity-80 cursor-pointer font-medium" data-prompt="$1">$1</span>'
         );
 
         // 2. Transformar enlaces externos legítimos (https:// o /guias/) en enlaces seguros
         escaped = escaped.replace(
           /&lt;a\s+href=(?:&quot;|&#39;)(https?:\/\/[^&"'\s]+|\/[^&"'\s]+)(?:&quot;|&#39;)[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
-          '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-rose-500 hover:underline font-semibold">$2</a>'
+          '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">$2</a>'
         );
 
         // 3. Purgar cualquier etiqueta <a> o </a> residual
@@ -1327,7 +1332,7 @@ def construir_bloque_chatbox_ia(
         const wrap = document.createElement('div');
         wrap.id = 'fb-chat-typing';
         wrap.className = 'flex justify-start';
-        wrap.innerHTML = '<div class="px-4 py-2.5 rounded-2xl rounded-bl-sm dark:bg-slate-800 bg-white border dark:border-slate-700 border-slate-200 text-xs dark:text-slate-400 text-slate-500 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-bounce" style="animation-delay:0.15s"></span><span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-bounce" style="animation-delay:0.3s"></span><span class="ml-1">Consultando IA...</span></div>';
+        wrap.innerHTML = '<div class="px-4 py-2.5 rounded-2xl rounded-bl-sm dark:bg-slate-800 bg-white border dark:border-slate-700 border-slate-200 text-xs dark:text-slate-400 text-slate-500 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce" style="animation-delay:0.15s"></span><span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce" style="animation-delay:0.3s"></span><span class="ml-1">Consultando IA...</span></div>';
         container.appendChild(wrap);
         container.scrollTop = container.scrollHeight;
         return wrap;
@@ -1718,7 +1723,7 @@ def construir_bloque_planificador_rutas(destino_inicial: str = "bariloche", es_g
                 <span>🟡</span><span>Baches</span>
               </button>
               <button type="button" onclick="window.submitRoadFeedbackQuick('destruida')" title="Cráteres / Destruida"
-                      class="px-3 py-2 rounded-xl text-xs font-extrabold dark:bg-slate-900 bg-white hover:bg-rose-500/20 hover:text-rose-500 border dark:border-slate-700 border-slate-200 transition-all flex items-center gap-1.5 shadow-sm">
+                      class="px-3 py-2 rounded-xl text-xs font-extrabold dark:bg-slate-900 bg-white hover:bg-blue-600/20 hover:text-blue-600 border dark:border-slate-700 border-slate-200 transition-all flex items-center gap-1.5 shadow-sm">
                 <span>💥</span><span>Destruida</span>
               </button>
             </div>
@@ -1856,12 +1861,12 @@ def construir_bloque_planificador_rutas(destino_inicial: str = "bariloche", es_g
               <span>🍎</span>
               <span>Barrera Sanitaria y Alimentos en Ruta</span>
             </h3>
-            <span id="fb-road-food-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30">
+            <span id="fb-road-food-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-blue-600/15 text-blue-400 border border-blue-500/30">
               SENASA / FUNBAPA
             </span>
           </div>
           <div class="space-y-3 text-xs sm:text-sm leading-relaxed">
-            <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 dark:text-slate-200 text-slate-800" id="fb-road-food-prohibited"></div>
+            <div class="p-4 rounded-2xl bg-blue-600/10 border border-blue-500/20 dark:text-slate-200 text-slate-800" id="fb-road-food-prohibited"></div>
             <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 dark:text-slate-200 text-slate-800" id="fb-road-food-allowed"></div>
           </div>
         </div>
@@ -2130,7 +2135,7 @@ def construir_bloque_planificador_rutas(destino_inicial: str = "bariloche", es_g
           const card = document.createElement('div');
           card.className = 'p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between gap-3 hover:border-slate-700 transition-all';
           const iconoMarca = p.marca_petrolera === 'YPF' ? '⛽' : (p.marca_petrolera === 'Shell' ? '🐚' : '🔴');
-          const colorBadge = p.marca_petrolera === 'YPF' ? 'bg-sky-500/15 text-sky-400 border-sky-500/30' : (p.marca_petrolera === 'Shell' ? 'bg-amber-500/15 text-amber-400 border-amber-500/30' : 'bg-rose-500/15 text-rose-400 border-rose-500/30');
+          const colorBadge = p.marca_petrolera === 'YPF' ? 'bg-sky-500/15 text-sky-400 border-sky-500/30' : (p.marca_petrolera === 'Shell' ? 'bg-amber-500/15 text-amber-400 border-amber-500/30' : 'bg-blue-600/15 text-blue-400 border-blue-500/30');
           const catBadge = p.categoria === 'combustible' ? '🛢️ Combustible' : ('☕ ' + (p.tienda_nombre || 'Tienda'));
           const dias = Array.isArray(p.dias_vigencia) ? p.dias_vigencia.join(', ') : (p.dias_vigencia || 'Todos los días');
           card.innerHTML =
@@ -2142,7 +2147,7 @@ def construir_bloque_planificador_rutas(destino_inicial: str = "bariloche", es_g
               '<div class="font-bold text-sm dark:text-white text-slate-900 mb-1">' + p.entidad + '</div>' +
               '<div class="text-xs font-semibold text-emerald-500 dark:text-emerald-400 mb-2">' + p.descuento_texto + ' · ' + dias + '</div>' +
               '<div class="p-2.5 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 mb-2.5">' +
-                '<div class="text-[11px] font-bold text-rose-500 dark:text-rose-400 uppercase tracking-wide">🛡️ ' + p.tope_texto + '</div>' +
+                '<div class="text-[11px] font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wide">🛡️ ' + p.tope_texto + '</div>' +
                 '<div class="text-[11px] dark:text-slate-400 text-slate-500 mt-0.5">' + p.medio_pago + '</div>' +
               '</div>' +
               '<p class="text-xs dark:text-slate-300 text-slate-600 leading-relaxed mb-2">' + p.descripcion_corta + '</p>' +
@@ -2723,7 +2728,7 @@ def construir_bloque_planificador_rutas(destino_inicial: str = "bariloche", es_g
         if (foodBadge) {{
           foodBadge.textContent = ca.tiene_barrera ? '🛂 Barrera Sanitaria Activa' : '✅ Sin Decomiso de Alimentos';
           foodBadge.className = ca.tiene_barrera
-            ? 'px-3 py-1 rounded-full text-xs font-bold bg-rose-500/15 text-rose-400 border border-rose-500/30'
+            ? 'px-3 py-1 rounded-full text-xs font-bold bg-blue-600/15 text-blue-400 border border-blue-500/30'
             : 'px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30';
         }}
         if (foodProh) foodProh.innerHTML = '<strong>Organismo:</strong> ' + (ca.organismo || '') + '<br><br>' + (ca.prohibidos || '');
@@ -3454,7 +3459,7 @@ def generar_html_guia(guia: dict) -> str:
             <p class="text-xs dark:text-slate-400 text-slate-500">De la mística musical de St John's Wood al corazón parlamentario a orillas del Támesis</p>
           </div>
         </div>
-        <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-500/10 text-rose-500 border border-rose-500/20">
+        <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-600/10 text-blue-600 border border-blue-500/20">
           🇬🇧 Ruta EZE ➔ LHR Activa
         </span>
       </div>
@@ -3465,7 +3470,7 @@ def generar_html_guia(guia: dict) -> str:
           </div>
           <figcaption class="p-4">
             <div class="flex items-center justify-between gap-2 mb-1">
-              <span class="text-xs font-extrabold uppercase tracking-wider text-rose-500">🎸 St John's Wood · NW8</span>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-blue-600">🎸 St John's Wood · NW8</span>
               <span class="text-[11px] font-mono dark:text-slate-400 text-slate-500">Jubilee Line</span>
             </div>
             <div class="font-bold text-sm dark:text-white text-slate-900">Cruce Peatonal de Abbey Road &amp; Abbey Road Studios</div>
@@ -3508,7 +3513,7 @@ def generar_html_guia(guia: dict) -> str:
             ("verano", "☀️ Verano", "border-amber-500/20 bg-amber-500/10 text-amber-500"),
             ("otono", "🍂 Otoño", "border-orange-500/20 bg-orange-500/10 text-orange-500"),
             ("invierno", "❄️ Invierno", "border-cyan-500/20 bg-cyan-500/10 text-cyan-500"),
-            ("primavera", "🌸 Primavera", "border-rose-500/20 bg-rose-500/10 text-rose-500"),
+            ("primavera", "🌸 Primavera", "border-blue-500/20 bg-blue-600/10 text-blue-600"),
         ]
         for k_est, nom_est, badge_cls in estaciones_meta:
             if k_est in guia["clima_temporadas"]:
@@ -3650,7 +3655,7 @@ def generar_html_guia(guia: dict) -> str:
               <span>🏨</span> Ver Hoteles en {zona}
             </a>
             <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center justify-center gap-1 text-xs font-bold py-2.5 px-3 rounded-xl transition-all border dark:border-slate-700 border-slate-200 dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-rose-500"
+               class="inline-flex items-center justify-center gap-1 text-xs font-bold py-2.5 px-3 rounded-xl transition-all border dark:border-slate-700 border-slate-200 dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-blue-600"
                title="Consultar tarifas en Telegram">
               <span>📱</span> Rolli
             </a>
@@ -3803,7 +3808,7 @@ def generar_html_guia(guia: dict) -> str:
     }, indent=2, ensure_ascii=False)
 
     return f"""<!DOCTYPE html>
-<html lang="es" class="scroll-smooth dark" data-color="ruby">
+<html lang="es" class="scroll-smooth" data-color="blue">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -3826,7 +3831,7 @@ def generar_html_guia(guia: dict) -> str:
   <meta property="article:tag" content="Guía de Viaje">
 
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%23e11d48' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%23e11d48'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%232563eb' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%232563eb'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/img/rolli-avatar-transparent.png">
@@ -3843,7 +3848,7 @@ def generar_html_guia(guia: dict) -> str:
   <script>window.va = window.va || function () {{ (window.vaq = window.vaq || []).push(arguments); }};</script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
-<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition">
+<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white theme-transition">
 
   {SHARED_NAV_HEADER}
 
@@ -3969,7 +3974,7 @@ def generar_html_guia(guia: dict) -> str:
           <span class="font-medium">Dónde Hospedarse & Barrios</span>
         </a>
         <a href="#consejos-expertos" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/70 transition-colors dark:text-slate-300 text-slate-700">
-          <span class="w-6 h-6 rounded-lg bg-rose-500/10 text-rose-500 flex items-center justify-center text-xs font-bold">7</span>
+          <span class="w-6 h-6 rounded-lg bg-blue-600/10 text-blue-600 flex items-center justify-center text-xs font-bold">7</span>
           <span class="font-medium">Consejos Pro de Ahorro</span>
         </a>
         {bloque_enlace_ruta_indice}
@@ -4128,7 +4133,7 @@ def generar_html_guia(guia: dict) -> str:
 
     <!-- Bento Card de Conversión al Radar de Vuelos & Telegram -->
     <div class="rounded-3xl border dark:border-slate-800 border-slate-200 dark:bg-slate-900/80 bg-white p-8 sm:p-10 mb-16 shadow-xl theme-transition relative overflow-hidden">
-      <div class="absolute top-0 right-0 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
+      <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
       <div class="max-w-3xl relative z-10">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 theme-transition"
              style="background-color: var(--brand-subtle); border: 1px solid var(--brand-border); color: var(--brand-primary);">
@@ -4198,7 +4203,7 @@ def generar_html_guia(guia: dict) -> str:
 
   <!-- Botón Flotante Volver Arriba -->
   <button id="fb-scroll-top-btn" onclick="window.scrollTo({{top: 0, behavior: 'smooth'}})"
-          class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-slate-900/90 dark:bg-slate-800/90 text-white shadow-xl border border-slate-700/80 hover:bg-rose-600 dark:hover:bg-rose-600 transition-all opacity-0 pointer-events-none translate-y-4 duration-300"
+          class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-slate-900/90 dark:bg-slate-800/90 text-white shadow-xl border border-slate-700/80 hover:bg-blue-600 dark:hover:bg-blue-600 transition-all opacity-0 pointer-events-none translate-y-4 duration-300"
           title="Volver arriba">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -4259,7 +4264,7 @@ def generar_indice_guias(guias: list) -> str:
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>{g['icono']}</span>
                 <a href="/guias/{g['slug']}">{g['ciudad']}</a>
               </h3>
@@ -4276,7 +4281,7 @@ def generar_indice_guias(guias: list) -> str:
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">{g['cmd_vuelo']}</span>
-                <a href="/vuelos?destino={g['id']}" title="Buscar vuelos a {g['ciudad']} en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino={g['id']}" title="Buscar vuelos a {g['ciudad']} en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -4313,7 +4318,7 @@ def generar_indice_guias(guias: list) -> str:
     }, indent=2, ensure_ascii=False)
 
     return f"""<!DOCTYPE html>
-<html lang="es" class="scroll-smooth dark" data-color="ruby">
+<html lang="es" class="scroll-smooth" data-color="blue">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -4331,7 +4336,7 @@ def generar_indice_guias(guias: list) -> str:
   <meta name="twitter:image" content="https://www.flightbot.com.ar/img/og-preview.jpg">
 
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%23e11d48' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%23e11d48'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%232563eb' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%232563eb'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/img/rolli-avatar-transparent.png">
@@ -4348,7 +4353,7 @@ def generar_indice_guias(guias: list) -> str:
   <script>window.va = window.va || function () {{ (window.vaq = window.vaq || []).push(arguments); }};</script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
-<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition">
+<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white theme-transition">
 
   {SHARED_NAV_HEADER}
 
@@ -4376,12 +4381,12 @@ def generar_indice_guias(guias: list) -> str:
         </div>
         <div class="flex items-center justify-center gap-1.5 overflow-x-auto pb-2 no-scrollbar text-xs">
           <button type="button" onclick="filtrarGuiasRegion('todos', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold text-white transition-all shadow-sm shrink-0" style="background-color: var(--brand-primary);">Todos ({len(guias)})</button>
-          <button type="button" onclick="filtrarGuiasRegion('argentina', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje (11)</button>
-          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil (7)</button>
-          <button type="button" onclick="filtrarGuiasRegion('caribe_usa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">🏖️ Caribe & USA (13)</button>
-          <button type="button" onclick="filtrarGuiasRegion('europa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">🏰 Europa (13)</button>
-          <button type="button" onclick="filtrarGuiasRegion('resto_mundo', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">🌏 Asia, África &amp; Oceanía (15)</button>
-          <button type="button" onclick="filtrarGuiasRegion('playas', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">🌊 Playas (18)</button>
+          <button type="button" onclick="filtrarGuiasRegion('argentina', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje (11)</button>
+          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil (7)</button>
+          <button type="button" onclick="filtrarGuiasRegion('caribe_usa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🏖️ Caribe & USA (13)</button>
+          <button type="button" onclick="filtrarGuiasRegion('europa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🏰 Europa (13)</button>
+          <button type="button" onclick="filtrarGuiasRegion('resto_mundo', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🌏 Asia, África &amp; Oceanía (15)</button>
+          <button type="button" onclick="filtrarGuiasRegion('playas', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🌊 Playas (18)</button>
         </div>
       </div>
 
@@ -4461,7 +4466,7 @@ def generar_indice_guias(guias: list) -> str:
 
   <!-- Botón Flotante Volver Arriba -->
   <button id="fb-scroll-top-btn" onclick="window.scrollTo({{top: 0, behavior: 'smooth'}})"
-          class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-slate-900/90 dark:bg-slate-800/90 text-white shadow-xl border border-slate-700/80 hover:bg-rose-600 dark:hover:bg-rose-600 transition-all opacity-0 pointer-events-none translate-y-4 duration-300"
+          class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-slate-900/90 dark:bg-slate-800/90 text-white shadow-xl border border-slate-700/80 hover:bg-blue-600 dark:hover:bg-blue-600 transition-all opacity-0 pointer-events-none translate-y-4 duration-300"
           title="Volver arriba">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -4645,7 +4650,7 @@ def actualizar_landing_principal():
     if 'Blog</span>' not in html_actual:
         html_actual = html_actual.replace(
             '<a href="guias/index.html" class="font-bold transition-colors" style="color: var(--brand-primary);">Guías de Viaje</a>',
-            '<a href="guias/index.html" class="font-bold transition-colors flex items-center gap-1.5" style="color: var(--brand-primary);"><span class="px-1.5 py-0.5 rounded text-[10px] bg-rose-500/15 text-rose-500 border border-rose-500/25 uppercase tracking-wider font-extrabold">Blog</span> Blog & Guías</a>',
+            '<a href="guias/index.html" class="font-bold transition-colors flex items-center gap-1.5" style="color: var(--brand-primary);"><span class="px-1.5 py-0.5 rounded text-[10px] bg-blue-600/15 text-blue-600 border border-blue-500/25 uppercase tracking-wider font-extrabold">Blog</span> Blog & Guías</a>',
         )
 
     # 2. Asegurar mención editorial en sección de destinos
@@ -4672,13 +4677,13 @@ def actualizar_landing_principal():
     # 3. Asegurar enlaces 'Viajar en Ruta' y 'Promociones' en el menú superior si no existen aún
     if 'href="#rutas-auto"' not in html_actual:
         html_actual = html_actual.replace(
-            '<a href="#destinos" class="hover:text-rose-500 transition-colors">Destinos & Hoteles</a>',
-            '<a href="#destinos" class="hover:text-rose-500 transition-colors">Destinos & Hoteles</a>\n        <a href="#rutas-auto" class="hover:text-rose-500 transition-colors font-semibold">🚗 Viajar en Ruta</a>',
+            '<a href="#destinos" class="hover:text-blue-600 transition-colors">Destinos & Hoteles</a>',
+            '<a href="#destinos" class="hover:text-blue-600 transition-colors">Destinos & Hoteles</a>\n        <a href="#rutas-auto" class="hover:text-blue-600 transition-colors font-semibold">🚗 Viajar en Ruta</a>',
         )
     if 'href="#promociones"' not in html_actual:
         html_actual = html_actual.replace(
-            '<a href="#rutas-auto" class="hover:text-rose-500 transition-colors font-semibold">🚗 Viajar en Ruta</a>',
-            '<a href="#rutas-auto" class="hover:text-rose-500 transition-colors font-semibold">🚗 Viajar en Ruta</a>\n        <a href="#promociones" class="hover:text-rose-500 transition-colors font-semibold flex items-center gap-1.5"><span>💳</span> Promociones</a>',
+            '<a href="#rutas-auto" class="hover:text-blue-600 transition-colors font-semibold">🚗 Viajar en Ruta</a>',
+            '<a href="#rutas-auto" class="hover:text-blue-600 transition-colors font-semibold">🚗 Viajar en Ruta</a>\n        <a href="#promociones" class="hover:text-blue-600 transition-colors font-semibold flex items-center gap-1.5"><span>💳</span> Promociones</a>',
         )
 
     # 4. Inyectar o actualizar el Planificador de Viajes en Ruta antes de Preguntas Frecuentes

@@ -171,7 +171,7 @@
       <button id="fb-chat-fab" type="button" onclick="window.toggleFlightBotChat()"
               aria-label="Abrir Asistente IA de FlightBot"
               class="group flex items-center gap-3 px-4 py-3.5 rounded-full text-white font-bold text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
-              style="background: var(--brand-gradient, linear-gradient(135deg, #e11d48 0%, #be123c 100%)); box-shadow: 0 14px 30px -5px var(--brand-glow, rgba(225, 29, 72, 0.45));">
+              style="background: var(--brand-gradient, linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)); box-shadow: 0 14px 30px -5px var(--brand-glow, rgba(37, 99, 235, 0.45));">
         <span class="relative flex h-6 w-6 items-center justify-center">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-25"></span>
           <span class="relative text-base">💬</span>
@@ -226,13 +226,13 @@
     // 1. Transformar anclas o preguntas sugeridas (href="#" o sin href) en chips interactivos clicables
     escaped = escaped.replace(
       /&lt;a\s+href=(?:&quot;|&#39;)?#?(?:&quot;|&#39;)?[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
-      '<span class="fb-chat-suggestion text-rose-500 dark:text-rose-400 underline hover:opacity-80 cursor-pointer font-medium" data-prompt="$1">$1</span>'
+      '<span class="fb-chat-suggestion text-blue-600 dark:text-blue-400 underline hover:opacity-80 cursor-pointer font-medium" data-prompt="$1">$1</span>'
     );
 
     // 2. Transformar enlaces externos legítimos (https:// o /guias/) en enlaces seguros
     escaped = escaped.replace(
       /&lt;a\s+href=(?:&quot;|&#39;)(https?:\/\/[^&"'\s]+|\/[^&"'\s]+)(?:&quot;|&#39;)[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
-      '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-rose-500 hover:underline font-semibold">$2</a>'
+      '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">$2</a>'
     );
 
     // 3. Purgar cualquier etiqueta <a> o </a> residual
@@ -353,7 +353,7 @@
     const wrap = document.createElement('div');
     wrap.id = 'fb-chat-typing';
     wrap.className = 'flex justify-start items-end gap-2';
-    wrap.innerHTML = `<div class="w-7 h-7 rounded-xl bg-slate-800 border border-slate-700/80 shadow-xs flex-shrink-0 flex items-center justify-center p-0.5 overflow-hidden">${ROLLI_DNI_SVG}</div><div class="px-4 py-2.5 rounded-2xl rounded-bl-sm dark:bg-slate-800 bg-white border dark:border-slate-700 border-slate-200 text-xs dark:text-slate-400 text-slate-500 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-bounce" style="animation-delay:0.15s"></span><span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-bounce" style="animation-delay:0.3s"></span><span class="ml-1">Consultando IA...</span></div>`;
+    wrap.innerHTML = `<div class="w-7 h-7 rounded-xl bg-slate-800 border border-slate-700/80 shadow-xs flex-shrink-0 flex items-center justify-center p-0.5 overflow-hidden">${ROLLI_DNI_SVG}</div><div class="px-4 py-2.5 rounded-2xl rounded-bl-sm dark:bg-slate-800 bg-white border dark:border-slate-700 border-slate-200 text-xs dark:text-slate-400 text-slate-500 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce" style="animation-delay:0.15s"></span><span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-bounce" style="animation-delay:0.3s"></span><span class="ml-1">Consultando IA...</span></div>`;
     container.appendChild(wrap);
     container.scrollTop = container.scrollHeight;
     return wrap;

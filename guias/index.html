@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth dark" data-color="ruby">
+<html lang="es" class="scroll-smooth" data-color="blue">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
   <meta name="twitter:image" content="https://www.flightbot.com.ar/img/og-preview.jpg">
 
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%23e11d48' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%23e11d48'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%232563eb' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%232563eb'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/img/rolli-avatar-transparent.png">
@@ -42,8 +42,8 @@
 
     // Inicialización inmediata antes del renderizado para evitar FOUC
     (function() {
-      const savedColor = localStorage.getItem('fb_theme_color') || 'ruby';
-      const savedMode = localStorage.getItem('fb_theme_mode') || 'dark';
+      const savedColor = localStorage.getItem('fb_theme_color') || 'blue';
+      const savedMode = localStorage.getItem('fb_theme_mode') || 'light';
       document.documentElement.setAttribute('data-color', savedColor);
       if (savedMode === 'dark') {
         document.documentElement.classList.add('dark');
@@ -88,15 +88,15 @@
     }
 
     /* Variables de Acento Cromático Dinámicas (Rojo Rubí por defecto absoluto) */
-    :root, html, html[data-color="ruby"] {
-      --brand-primary: #e11d48; /* rose-600 */
-      --brand-hover: #be123c;   /* rose-700 */
-      --brand-text: #fb7185;    /* rose-400 */
-      --brand-text-light: #e11d48;
-      --brand-subtle: rgba(225, 29, 72, 0.12);
-      --brand-border: rgba(225, 29, 72, 0.25);
-      --brand-glow: rgba(225, 29, 72, 0.35);
-      --brand-gradient: linear-gradient(135deg, #e11d48 0%, #ef4444 100%);
+    :root, html, html[data-color="blue"] {
+      --brand-primary: #2563eb; /* rose-600 */
+      --brand-hover: #1d4ed8;   /* rose-700 */
+      --brand-text: #60a5fa;    /* rose-400 */
+      --brand-text-light: #2563eb;
+      --brand-subtle: rgba(37, 99, 235, 0.12);
+      --brand-border: rgba(37, 99, 235, 0.25);
+      --brand-glow: rgba(37, 99, 235, 0.35);
+      --brand-gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
     }
     html[data-color="blue"] {
       --brand-primary: #2563eb; /* blue-600 */
@@ -521,8 +521,9 @@
   <!-- Vercel Web Analytics (mismo dominio, compatible con CSP script-src 'self') -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script>(function(){try{if(!localStorage.getItem('fb_theme_cobalt_v1')){localStorage.setItem('fb_theme_mode','light');localStorage.setItem('fb_theme_color','blue');localStorage.setItem('fb_theme_cobalt_v1','1');}var m=localStorage.getItem('fb_theme_mode')||'light';if(m==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('data-color','blue');}catch(_){}})();</script>
 </head>
-<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white theme-transition">
+<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white theme-transition">
 
   
   <!-- Encabezado / Navegación Superior Universal (h-16 simétrico) -->
@@ -532,11 +533,11 @@
       
       <!-- 1. Marca / Logotipo Rolli + FlightBot + Slogan Oficial -->
       <a href="/" class="flex items-center gap-2.5 group shrink-0" title="FlightBot · Con Rolli Copiloto">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-rose-500 to-rose-700 shadow-md shadow-rose-900/20 group-hover:scale-105 transition-transform">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-blue-600 to-indigo-700 shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
           <img src="/img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow">
         </div>
         <div>
-          <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-rose-600">Bot</span></span>
+          <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-blue-600 dark:text-blue-400">Bot</span></span>
           <span class="block text-[9px] uppercase font-bold text-slate-400 -mt-1 tracking-widest">Con Rolli Copiloto</span>
         </div>
       </a>
@@ -590,7 +591,7 @@
         </a>
 
         <!-- Guías -->
-        <a href="/guias" id="nav-btn-guias" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-semibold rounded-lg transition-all duration-150 text-rose-600 bg-rose-50 dark:bg-rose-950/40 dark:text-rose-400" title="Guías de Viaje Editoriales">
+        <a href="/guias" id="nav-btn-guias" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm rounded-lg transition-all duration-150 text-blue-600 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-400 font-semibold" title="Guías de Viaje Editoriales">
           <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
             <path d="M6 6h10"/>
@@ -652,7 +653,7 @@
         <!-- B. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
-          <span id="theme-mode-icon">🌙</span>
+          <span id="theme-mode-icon">☀️</span>
         </button>
 
         <!-- C. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
@@ -768,7 +769,7 @@
         </a>
 
         <!-- Guías -->
-        <a href="/guias" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-rose-600 bg-rose-50 dark:bg-rose-950/40 dark:text-rose-400 font-semibold transition-all">
+        <a href="/guias" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-blue-600 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-400 font-semibold transition-all">
           <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
             <path d="M6 6h10"/>
@@ -801,7 +802,7 @@
         <div class="flex items-center justify-between pt-1">
           <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Moneda de referencia:</span>
           <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold">
-            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs">NATIVO</button>
+            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs">NATIVO</button>
             <button type="button" id="m-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
             <button type="button" id="m-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
           </div>
@@ -836,12 +837,12 @@
         </div>
         <div class="flex items-center justify-center gap-1.5 overflow-x-auto pb-2 no-scrollbar text-xs">
           <button type="button" onclick="filtrarGuiasRegion('todos', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold text-white transition-all shadow-sm shrink-0" style="background-color: var(--brand-primary);">Todos (57)</button>
-          <button type="button" onclick="filtrarGuiasRegion('argentina', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje (11)</button>
-          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil (7)</button>
-          <button type="button" onclick="filtrarGuiasRegion('caribe_usa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">🏖️ Caribe & USA (13)</button>
-          <button type="button" onclick="filtrarGuiasRegion('europa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">🏰 Europa (13)</button>
-          <button type="button" onclick="filtrarGuiasRegion('resto_mundo', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">🌏 Asia, África &amp; Oceanía (15)</button>
-          <button type="button" onclick="filtrarGuiasRegion('playas', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-rose-500 transition-all shrink-0">🌊 Playas (18)</button>
+          <button type="button" onclick="filtrarGuiasRegion('argentina', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje (11)</button>
+          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil (7)</button>
+          <button type="button" onclick="filtrarGuiasRegion('caribe_usa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🏖️ Caribe & USA (13)</button>
+          <button type="button" onclick="filtrarGuiasRegion('europa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🏰 Europa (13)</button>
+          <button type="button" onclick="filtrarGuiasRegion('resto_mundo', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🌏 Asia, África &amp; Oceanía (15)</button>
+          <button type="button" onclick="filtrarGuiasRegion('playas', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🌊 Playas (18)</button>
         </div>
       </div>
 
@@ -881,7 +882,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇧🇷 🏖️</span>
                 <a href="/guias/rio-de-janeiro">Río de Janeiro</a>
               </h3>
@@ -898,7 +899,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/rio</span>
-                <a href="/vuelos?destino=rio" title="Buscar vuelos a Río de Janeiro en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=rio" title="Buscar vuelos a Río de Janeiro en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -927,7 +928,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇮🇹 🏛️</span>
                 <a href="/guias/roma">Roma</a>
               </h3>
@@ -944,7 +945,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/roma</span>
-                <a href="/vuelos?destino=roma" title="Buscar vuelos a Roma en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=roma" title="Buscar vuelos a Roma en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -973,7 +974,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇪🇸 🥘</span>
                 <a href="/guias/madrid">Madrid</a>
               </h3>
@@ -990,7 +991,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/madrid</span>
-                <a href="/vuelos?destino=madrid" title="Buscar vuelos a Madrid en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=madrid" title="Buscar vuelos a Madrid en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1019,7 +1020,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇺🇸 🌴</span>
                 <a href="/guias/miami">Miami</a>
               </h3>
@@ -1036,7 +1037,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/miami</span>
-                <a href="/vuelos?destino=miami" title="Buscar vuelos a Miami en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=miami" title="Buscar vuelos a Miami en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1065,7 +1066,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇲🇽 🌮</span>
                 <a href="/guias/cancun-riviera-maya">Cancún</a>
               </h3>
@@ -1082,7 +1083,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/cancun</span>
-                <a href="/vuelos?destino=cancun" title="Buscar vuelos a Cancún en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=cancun" title="Buscar vuelos a Cancún en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1111,7 +1112,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇩🇴 🥥</span>
                 <a href="/guias/punta-cana">Punta Cana</a>
               </h3>
@@ -1128,7 +1129,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/puntacana</span>
-                <a href="/vuelos?destino=puntacana" title="Buscar vuelos a Punta Cana en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=puntacana" title="Buscar vuelos a Punta Cana en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1157,7 +1158,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇼 🏝️</span>
                 <a href="/guias/aruba">Aruba</a>
               </h3>
@@ -1174,7 +1175,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/aruba</span>
-                <a href="/vuelos?destino=aruba" title="Buscar vuelos a Aruba en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=aruba" title="Buscar vuelos a Aruba en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1203,7 +1204,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇷 🏔️</span>
                 <a href="/guias/bariloche-patagonia">Bariloche</a>
               </h3>
@@ -1220,7 +1221,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/bariloche</span>
-                <a href="/vuelos?destino=bariloche" title="Buscar vuelos a Bariloche en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=bariloche" title="Buscar vuelos a Bariloche en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1249,7 +1250,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇷 🍷</span>
                 <a href="/guias/mendoza-valle-de-uco">Mendoza</a>
               </h3>
@@ -1266,7 +1267,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/mendoza</span>
-                <a href="/vuelos?destino=mendoza" title="Buscar vuelos a Mendoza en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=mendoza" title="Buscar vuelos a Mendoza en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1295,7 +1296,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇷 🌊</span>
                 <a href="/guias/puerto-iguazu-cataratas">Puerto Iguazú</a>
               </h3>
@@ -1312,7 +1313,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/iguazu</span>
-                <a href="/vuelos?destino=iguazu" title="Buscar vuelos a Puerto Iguazú en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=iguazu" title="Buscar vuelos a Puerto Iguazú en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1341,7 +1342,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇮🇸 🌋</span>
                 <a href="/guias/reikiavik-islandia">Reikiavik</a>
               </h3>
@@ -1358,7 +1359,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/reikiavik</span>
-                <a href="/vuelos?destino=reikiavik" title="Buscar vuelos a Reikiavik en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=reikiavik" title="Buscar vuelos a Reikiavik en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1387,7 +1388,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇳🇴 ❄️</span>
                 <a href="/guias/oslo-noruega">Oslo</a>
               </h3>
@@ -1404,7 +1405,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/oslo</span>
-                <a href="/vuelos?destino=oslo" title="Buscar vuelos a Oslo en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=oslo" title="Buscar vuelos a Oslo en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1433,7 +1434,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇷 🧊</span>
                 <a href="/guias/el-calafate-glaciares-el-chalten">El Calafate & El Chaltén</a>
               </h3>
@@ -1450,7 +1451,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/calafate</span>
-                <a href="/vuelos?destino=calafate" title="Buscar vuelos a El Calafate & El Chaltén en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=calafate" title="Buscar vuelos a El Calafate & El Chaltén en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1479,7 +1480,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇷 🐧</span>
                 <a href="/guias/ushuaia-tierra-del-fuego">Ushuaia & Tierra del Fuego</a>
               </h3>
@@ -1496,7 +1497,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/ushuaia</span>
-                <a href="/vuelos?destino=ushuaia" title="Buscar vuelos a Ushuaia & Tierra del Fuego en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=ushuaia" title="Buscar vuelos a Ushuaia & Tierra del Fuego en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1525,7 +1526,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇷 🌵</span>
                 <a href="/guias/salta-valles-calchaquies">Salta & Valles Calchaquíes</a>
               </h3>
@@ -1542,7 +1543,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/salta</span>
-                <a href="/vuelos?destino=salta" title="Buscar vuelos a Salta & Valles Calchaquíes en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=salta" title="Buscar vuelos a Salta & Valles Calchaquíes en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1571,7 +1572,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇷 ⛰️</span>
                 <a href="/guias/jujuy-quebrada-de-humahuaca">Jujuy & Quebrada de Humahuaca</a>
               </h3>
@@ -1588,7 +1589,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/jujuy</span>
-                <a href="/vuelos?destino=jujuy" title="Buscar vuelos a Jujuy & Quebrada de Humahuaca en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=jujuy" title="Buscar vuelos a Jujuy & Quebrada de Humahuaca en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1617,7 +1618,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇷 ⛰️</span>
                 <a href="/guias/cordoba-sierras">Córdoba & Sierras</a>
               </h3>
@@ -1634,7 +1635,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/cordoba</span>
-                <a href="/vuelos?destino=cordoba" title="Buscar vuelos a Córdoba & Sierras en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=cordoba" title="Buscar vuelos a Córdoba & Sierras en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1663,7 +1664,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇷 🌲</span>
                 <a href="/guias/san-martin-de-los-andes-chapelco">San Martín de los Andes & Chapelco</a>
               </h3>
@@ -1680,7 +1681,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/sanmartin</span>
-                <a href="/vuelos?destino=sanmartin" title="Buscar vuelos a San Martín de los Andes & Chapelco en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=sanmartin" title="Buscar vuelos a San Martín de los Andes & Chapelco en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1709,7 +1710,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇷 🐋</span>
                 <a href="/guias/puerto-madryn-peninsula-valdes">Puerto Madryn & Península Valdés</a>
               </h3>
@@ -1726,7 +1727,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/madryn</span>
-                <a href="/vuelos?destino=madryn" title="Buscar vuelos a Puerto Madryn & Península Valdés en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=madryn" title="Buscar vuelos a Puerto Madryn & Península Valdés en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1755,7 +1756,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇧🇷 🏄</span>
                 <a href="/guias/florianopolis-ilha-da-magia">Florianópolis & Ilha da Magia</a>
               </h3>
@@ -1772,7 +1773,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/florianopolis</span>
-                <a href="/vuelos?destino=florianopolis" title="Buscar vuelos a Florianópolis & Ilha da Magia en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=florianopolis" title="Buscar vuelos a Florianópolis & Ilha da Magia en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1801,7 +1802,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇧🇷 🥁</span>
                 <a href="/guias/salvador-bahia-costa-dos-coqueiros">Salvador de Bahía & Costa dos Coqueiros</a>
               </h3>
@@ -1818,7 +1819,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/salvador</span>
-                <a href="/vuelos?destino=salvador" title="Buscar vuelos a Salvador de Bahía & Costa dos Coqueiros en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=salvador" title="Buscar vuelos a Salvador de Bahía & Costa dos Coqueiros en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1847,7 +1848,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇧🇷 🌴</span>
                 <a href="/guias/recife-porto-de-galinhas">Recife & Porto de Galinhas</a>
               </h3>
@@ -1864,7 +1865,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/recife</span>
-                <a href="/vuelos?destino=recife" title="Buscar vuelos a Recife & Porto de Galinhas en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=recife" title="Buscar vuelos a Recife & Porto de Galinhas en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1893,7 +1894,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇧🇷 🐠</span>
                 <a href="/guias/maceio-maragogi-caribe-brasileno">Maceió & Maragogi (Caribe Brasileño)</a>
               </h3>
@@ -1910,7 +1911,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/maceio</span>
-                <a href="/vuelos?destino=maceio" title="Buscar vuelos a Maceió & Maragogi (Caribe Brasileño) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=maceio" title="Buscar vuelos a Maceió & Maragogi (Caribe Brasileño) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1939,7 +1940,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇧🇷 🐬</span>
                 <a href="/guias/natal-praia-da-pipa">Natal & Praia da Pipa</a>
               </h3>
@@ -1956,7 +1957,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/natal</span>
-                <a href="/vuelos?destino=natal" title="Buscar vuelos a Natal & Praia da Pipa en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=natal" title="Buscar vuelos a Natal & Praia da Pipa en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -1985,7 +1986,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇺🇸 🏰</span>
                 <a href="/guias/orlando-disney-universal">Orlando (Disney & Universal)</a>
               </h3>
@@ -2002,7 +2003,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/orlando</span>
-                <a href="/vuelos?destino=orlando" title="Buscar vuelos a Orlando (Disney & Universal) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=orlando" title="Buscar vuelos a Orlando (Disney & Universal) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2031,7 +2032,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇨🇴 🐠</span>
                 <a href="/guias/san-andres-mar-7-colores">San Andrés & Mar de 7 Colores</a>
               </h3>
@@ -2048,7 +2049,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/sanandres</span>
-                <a href="/vuelos?destino=sanandres" title="Buscar vuelos a San Andrés & Mar de 7 Colores en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=sanandres" title="Buscar vuelos a San Andrés & Mar de 7 Colores en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2077,7 +2078,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇨🇱 🏔️</span>
                 <a href="/guias/santiago-de-chile-cordillera">Santiago de Chile & Cordillera</a>
               </h3>
@@ -2094,7 +2095,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/santiago</span>
-                <a href="/vuelos?destino=santiago" title="Buscar vuelos a Santiago de Chile & Cordillera en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=santiago" title="Buscar vuelos a Santiago de Chile & Cordillera en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2123,7 +2124,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇪🇸 🏖️</span>
                 <a href="/guias/barcelona-costa-brava">Barcelona & Costa Brava</a>
               </h3>
@@ -2140,7 +2141,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/barcelona</span>
-                <a href="/vuelos?destino=barcelona" title="Buscar vuelos a Barcelona & Costa Brava en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=barcelona" title="Buscar vuelos a Barcelona & Costa Brava en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2169,7 +2170,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇫🇷 🗼</span>
                 <a href="/guias/paris-ile-de-france">París & Île-de-France</a>
               </h3>
@@ -2186,7 +2187,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/paris</span>
-                <a href="/vuelos?destino=paris" title="Buscar vuelos a París & Île-de-France en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=paris" title="Buscar vuelos a París & Île-de-France en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2215,7 +2216,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇬🇧 💂</span>
                 <a href="/guias/londres-reino-unido">Londres</a>
               </h3>
@@ -2232,7 +2233,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/londres</span>
-                <a href="/vuelos?destino=londres" title="Buscar vuelos a Londres en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=londres" title="Buscar vuelos a Londres en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2261,7 +2262,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇩🇪 🎨</span>
                 <a href="/guias/berlin-cultura-vanguardista">Berlín & Cultura Vanguardista</a>
               </h3>
@@ -2278,7 +2279,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/berlin</span>
-                <a href="/vuelos?destino=berlin" title="Buscar vuelos a Berlín & Cultura Vanguardista en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=berlin" title="Buscar vuelos a Berlín & Cultura Vanguardista en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2307,7 +2308,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇩🇪 🏛️</span>
                 <a href="/guias/frankfurt-hub-alemania">Frankfurt (Hub Alemania)</a>
               </h3>
@@ -2324,7 +2325,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/frankfurt</span>
-                <a href="/vuelos?destino=frankfurt" title="Buscar vuelos a Frankfurt (Hub Alemania) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=frankfurt" title="Buscar vuelos a Frankfurt (Hub Alemania) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2353,7 +2354,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇬🇷 🏛️</span>
                 <a href="/guias/atenas-islas-griegas">Atenas & Islas Griegas</a>
               </h3>
@@ -2370,7 +2371,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/atenas</span>
-                <a href="/vuelos?destino=atenas" title="Buscar vuelos a Atenas & Islas Griegas en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=atenas" title="Buscar vuelos a Atenas & Islas Griegas en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2399,7 +2400,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇯🇵 ⛩️</span>
                 <a href="/guias/tokio-japon">Tokio (Narita / Haneda)</a>
               </h3>
@@ -2416,7 +2417,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/tokio</span>
-                <a href="/vuelos?destino=tokio" title="Buscar vuelos a Tokio (Narita / Haneda) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=tokio" title="Buscar vuelos a Tokio (Narita / Haneda) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2445,7 +2446,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇪🇬 🐫</span>
                 <a href="/guias/el-cairo-piramides-de-giza">El Cairo & Pirámides de Giza</a>
               </h3>
@@ -2462,7 +2463,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/elcairo</span>
-                <a href="/vuelos?destino=elcairo" title="Buscar vuelos a El Cairo & Pirámides de Giza en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=elcairo" title="Buscar vuelos a El Cairo & Pirámides de Giza en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2491,7 +2492,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇲🇦 🕌</span>
                 <a href="/guias/marrakech-atlas">Marrakech & Atlas</a>
               </h3>
@@ -2508,7 +2509,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/marrakech</span>
-                <a href="/vuelos?destino=marrakech" title="Buscar vuelos a Marrakech & Atlas en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=marrakech" title="Buscar vuelos a Marrakech & Atlas en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2537,7 +2538,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇿🇦 ⛰️</span>
                 <a href="/guias/ciudad-del-cabo-cape-town">Ciudad del Cabo (Cape Town)</a>
               </h3>
@@ -2554,7 +2555,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/ciudaddelcabo</span>
-                <a href="/vuelos?destino=ciudaddelcabo" title="Buscar vuelos a Ciudad del Cabo (Cape Town) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=ciudaddelcabo" title="Buscar vuelos a Ciudad del Cabo (Cape Town) en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2583,7 +2584,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇺🇸 🗽</span>
                 <a href="/guias/new-york-manhattan-broadway">Nueva York</a>
               </h3>
@@ -2600,7 +2601,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/newyork</span>
-                <a href="/vuelos?destino=newyork" title="Buscar vuelos a Nueva York en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=newyork" title="Buscar vuelos a Nueva York en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2629,7 +2630,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇨🇳 🏮</span>
                 <a href="/guias/pekin-ciudad-prohibida-gran-muralla">Pekín</a>
               </h3>
@@ -2646,7 +2647,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/pekin</span>
-                <a href="/vuelos?destino=pekin" title="Buscar vuelos a Pekín en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=pekin" title="Buscar vuelos a Pekín en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2675,7 +2676,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇹🇷 🕌</span>
                 <a href="/guias/estambul">Estambul</a>
               </h3>
@@ -2692,7 +2693,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/estambul</span>
-                <a href="/vuelos?destino=estambul" title="Buscar vuelos a Estambul en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=estambul" title="Buscar vuelos a Estambul en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2721,7 +2722,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇪 🏙️</span>
                 <a href="/guias/dubai">Dubái</a>
               </h3>
@@ -2738,7 +2739,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/dubai</span>
-                <a href="/vuelos?destino=dubai" title="Buscar vuelos a Dubái en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=dubai" title="Buscar vuelos a Dubái en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2767,7 +2768,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇵🇪 🦙</span>
                 <a href="/guias/cusco-machu-picchu">Cusco & Machu Picchu</a>
               </h3>
@@ -2784,7 +2785,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/cusco</span>
-                <a href="/vuelos?destino=cusco" title="Buscar vuelos a Cusco & Machu Picchu en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=cusco" title="Buscar vuelos a Cusco & Machu Picchu en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2813,7 +2814,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇹🇭 🛕</span>
                 <a href="/guias/bangkok">Bangkok</a>
               </h3>
@@ -2830,7 +2831,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/bangkok</span>
-                <a href="/vuelos?destino=bangkok" title="Buscar vuelos a Bangkok en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=bangkok" title="Buscar vuelos a Bangkok en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2859,7 +2860,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇲🇻 🏝️</span>
                 <a href="/guias/maldivas">Islas Maldivas</a>
               </h3>
@@ -2876,7 +2877,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/maldivas</span>
-                <a href="/vuelos?destino=maldivas" title="Buscar vuelos a Islas Maldivas en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=maldivas" title="Buscar vuelos a Islas Maldivas en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2905,7 +2906,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇨🇺 🚗</span>
                 <a href="/guias/cuba">La Habana</a>
               </h3>
@@ -2922,7 +2923,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/cuba</span>
-                <a href="/vuelos?destino=cuba" title="Buscar vuelos a La Habana en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=cuba" title="Buscar vuelos a La Habana en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2951,7 +2952,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇵🇦 🚢</span>
                 <a href="/guias/panama">Ciudad de Panamá</a>
               </h3>
@@ -2968,7 +2969,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/panama</span>
-                <a href="/vuelos?destino=panama" title="Buscar vuelos a Ciudad de Panamá en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=panama" title="Buscar vuelos a Ciudad de Panamá en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -2997,7 +2998,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇵🇫 🌺</span>
                 <a href="/guias/polinesia">Tahití & Bora Bora</a>
               </h3>
@@ -3014,7 +3015,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/polinesia</span>
-                <a href="/vuelos?destino=polinesia" title="Buscar vuelos a Tahití & Bora Bora en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=polinesia" title="Buscar vuelos a Tahití & Bora Bora en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -3043,7 +3044,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇦🇺 🦘</span>
                 <a href="/guias/sydney-australia">Sídney & Melbourne</a>
               </h3>
@@ -3060,7 +3061,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/sydney</span>
-                <a href="/vuelos?destino=sydney" title="Buscar vuelos a Sídney & Melbourne en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=sydney" title="Buscar vuelos a Sídney & Melbourne en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -3089,7 +3090,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇳🇿 🥝</span>
                 <a href="/guias/nueva-zelanda">Auckland & Queenstown</a>
               </h3>
@@ -3106,7 +3107,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/nuevazelanda</span>
-                <a href="/vuelos?destino=nuevazelanda" title="Buscar vuelos a Auckland & Queenstown en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=nuevazelanda" title="Buscar vuelos a Auckland & Queenstown en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -3135,7 +3136,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇲🇽 🌮</span>
                 <a href="/guias/ciudad-de-mexico">Ciudad de México</a>
               </h3>
@@ -3152,7 +3153,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/mexico</span>
-                <a href="/vuelos?destino=mexico" title="Buscar vuelos a Ciudad de México en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=mexico" title="Buscar vuelos a Ciudad de México en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -3181,7 +3182,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇵🇹 🚋</span>
                 <a href="/guias/lisboa">Lisboa & Oporto</a>
               </h3>
@@ -3198,7 +3199,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/lisboa</span>
-                <a href="/vuelos?destino=lisboa" title="Buscar vuelos a Lisboa & Oporto en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=lisboa" title="Buscar vuelos a Lisboa & Oporto en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -3227,7 +3228,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇰🇷 🏙️</span>
                 <a href="/guias/seul">Seúl</a>
               </h3>
@@ -3244,7 +3245,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/seul</span>
-                <a href="/vuelos?destino=seul" title="Buscar vuelos a Seúl en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=seul" title="Buscar vuelos a Seúl en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -3273,7 +3274,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇳🇱 🚲</span>
                 <a href="/guias/amsterdam">Ámsterdam</a>
               </h3>
@@ -3290,7 +3291,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/amsterdam</span>
-                <a href="/vuelos?destino=amsterdam" title="Buscar vuelos a Ámsterdam en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=amsterdam" title="Buscar vuelos a Ámsterdam en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -3319,7 +3320,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇨🇼 🏖️</span>
                 <a href="/guias/curazao">Curazao</a>
               </h3>
@@ -3336,7 +3337,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/curazao</span>
-                <a href="/vuelos?destino=curazao" title="Buscar vuelos a Curazao en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=curazao" title="Buscar vuelos a Curazao en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -3365,7 +3366,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇨🇷 🌿</span>
                 <a href="/guias/costa-rica">Costa Rica</a>
               </h3>
@@ -3382,7 +3383,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/costarica</span>
-                <a href="/vuelos?destino=costarica" title="Buscar vuelos a Costa Rica en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=costarica" title="Buscar vuelos a Costa Rica en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -3411,7 +3412,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🇨🇴 🏰</span>
                 <a href="/guias/cartagena">Cartagena de Indias</a>
               </h3>
@@ -3428,7 +3429,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/cartagena</span>
-                <a href="/vuelos?destino=cartagena" title="Buscar vuelos a Cartagena de Indias en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=cartagena" title="Buscar vuelos a Cartagena de Indias en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -3457,7 +3458,7 @@
                 <span>•</span>
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
-              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-rose-500 transition-colors theme-transition flex items-center gap-2">
+              <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
                 <span>🦖 🍇</span>
                 <a href="/guias/neuquen">Neuquén & Alto Valle</a>
               </h3>
@@ -3474,7 +3475,7 @@
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
                 <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">/neuquen</span>
-                <a href="/vuelos?destino=neuquen" title="Buscar vuelos a Neuquén & Alto Valle en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-rose-500/30 text-rose-500 hover:bg-rose-500 hover:text-white transition-all">
+                <a href="/vuelos?destino=neuquen" title="Buscar vuelos a Neuquén & Alto Valle en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
                   <span>✈️</span> Vuelos
                 </a>
               </div>
@@ -3533,7 +3534,7 @@
             <span>💱</span> Moneda de visualización:
           </span>
           <div class="inline-flex p-1 bg-slate-200/70 dark:bg-slate-900 rounded-lg text-xs font-semibold border dark:border-slate-800 border-slate-300/60" title="Seleccionar moneda para precios del sitio">
-            <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-rose-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
+            <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
             <button type="button" id="footer-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">ARS</button>
             <button type="button" id="footer-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">USD</button>
           </div>
@@ -3561,7 +3562,7 @@
 
   <!-- Botón Flotante Volver Arriba -->
   <button id="fb-scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-          class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-slate-900/90 dark:bg-slate-800/90 text-white shadow-xl border border-slate-700/80 hover:bg-rose-600 dark:hover:bg-rose-600 transition-all opacity-0 pointer-events-none translate-y-4 duration-300"
+          class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-slate-900/90 dark:bg-slate-800/90 text-white shadow-xl border border-slate-700/80 hover:bg-blue-600 dark:hover:bg-blue-600 transition-all opacity-0 pointer-events-none translate-y-4 duration-300"
           title="Volver arriba">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
@@ -3622,7 +3623,7 @@
     }
 
     function updateThemeControls() {
-      const col = document.documentElement.getAttribute('data-color') || 'ruby';
+      const col = document.documentElement.getAttribute('data-color') || 'blue';
       const isDark = document.documentElement.classList.contains('dark');
       const btnR = document.getElementById('theme-btn-ruby');
       const btnB = document.getElementById('theme-btn-blue');
@@ -3630,11 +3631,11 @@
 
       if (btnR && btnB) {
         if (col === 'ruby') {
-          btnR.className = "w-4 h-4 rounded-full bg-rose-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
+          btnR.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
           btnB.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
         } else {
           btnB.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-white dark:border-slate-900 transition-all scale-110 shadow-xs focus:outline-none";
-          btnR.className = "w-4 h-4 rounded-full bg-rose-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
+          btnR.className = "w-4 h-4 rounded-full bg-blue-600 border-2 border-transparent transition-all opacity-50 hover:opacity-100 focus:outline-none";
         }
       }
       if (modeIcon) {
@@ -3747,7 +3748,7 @@
                 <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">Siempre Activo</span>
               </div>
               <p class="text-[11px] dark:text-slate-400 text-slate-500 mb-2">
-                Indispensable para el funcionamiento de la web. Recuerda tu paleta visual (<code class="text-rose-500 font-mono">fb_theme_color</code>), modo claro/oscuro (<code class="text-rose-500 font-mono">fb_theme_mode</code>) y tu consentimiento.
+                Indispensable para el funcionamiento de la web. Recuerda tu paleta visual (<code class="text-blue-600 font-mono">fb_theme_color</code>), modo claro/oscuro (<code class="text-blue-600 font-mono">fb_theme_mode</code>) y tu consentimiento.
               </p>
               <div class="text-[10px] text-slate-400 font-mono">Persistencia: localStorage (controlable por el usuario)</div>
             </div>
@@ -3758,7 +3759,7 @@
                 <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">Privado &amp; Offline</span>
               </div>
               <p class="text-[11px] dark:text-slate-400 text-slate-500 mb-2">
-                Tus tarjetas de embarque, PNRs de vuelo, vouchers y pólizas se guardan de forma cifrada en el almacenamiento local de tu navegador (<code class="text-rose-500 font-mono">fb_wallet_docs</code>). Nunca viajan a servidores sin tu acción explícita.
+                Tus tarjetas de embarque, PNRs de vuelo, vouchers y pólizas se guardan de forma cifrada en el almacenamiento local de tu navegador (<code class="text-blue-600 font-mono">fb_wallet_docs</code>). Nunca viajan a servidores sin tu acción explícita.
               </p>
               <div class="text-[10px] text-slate-400 font-mono">Ubicación: Exclusivamente en tu navegador</div>
             </div>
@@ -3795,7 +3796,7 @@
           </p>
           <ul class="list-disc pl-5 space-y-1.5">
             <li><strong>Zero PII en Servidores:</strong> No requerimos registro con tarjeta de crédito, número de pasaporte ni datos personales para explorar ofertas.</li>
-            <li><strong>Billetera Offline Segura:</strong> Tus documentos e itinerarios residen en el <code class="text-rose-500 font-mono">localStorage</code> de tu navegador. Tienes el control total para borrarlos con un solo clic.</li>
+            <li><strong>Billetera Offline Segura:</strong> Tus documentos e itinerarios residen en el <code class="text-blue-600 font-mono">localStorage</code> de tu navegador. Tienes el control total para borrarlos con un solo clic.</li>
             <li><strong>Sincronización Opcional con Telegram:</strong> La comunicación con el bot de Telegram se realiza a través de la API oficial cifrada de Telegram (TLS 1.3), con tokens efímeros y sin intermediarios.</li>
             <li><strong>Cero Venta de Información:</strong> Jamás vendemos, alquilamos ni compartimos tus búsquedas de vuelos con anunciantes ni bases de datos de terceros.</li>
           </ul>
@@ -4024,8 +4025,8 @@
               <g>
                 <rect x="5.5" y="6" width="17" height="13" rx="5" fill="#ffffff" stroke="#cbd5e1" stroke-width="0.8"/>
                 <line x1="14" y1="6" x2="14" y2="2" stroke="#94a3b8" stroke-width="1.1" stroke-linecap="round"/>
-                <circle cx="14" cy="1.8" r="2.0" fill="#e11d48" opacity="0.35"/>
-                <circle cx="14" cy="1.8" r="1.5" fill="#e11d48"/>
+                <circle cx="14" cy="1.8" r="2.0" fill="#2563eb" opacity="0.35"/>
+                <circle cx="14" cy="1.8" r="1.5" fill="#2563eb"/>
                 <circle cx="13.5" cy="1.3" r="0.45" fill="#ffffff"/>
                 <rect x="8" y="9" width="12" height="6.5" rx="2.5" fill="#0f172a"/>
                 <circle cx="11" cy="12.2" r="1.2" fill="#38bdf8"/>
@@ -4036,8 +4037,8 @@
               </g>
               <defs>
                 <linearGradient id="fbSuitcaseAlwaysRedChat" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#e11d48"/>
-                  <stop offset="100%" stop-color="#be123c"/>
+                  <stop offset="0%" stop-color="#2563eb"/>
+                  <stop offset="100%" stop-color="#1d4ed8"/>
                 </linearGradient>
               </defs>
             </svg>
@@ -4046,7 +4047,7 @@
             <div class="flex items-center gap-2 whitespace-nowrap">
               <span class="font-extrabold text-sm tracking-tight text-white">F-Bot Rolli</span>
               <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-400/20 text-emerald-200 border border-emerald-300/30 flex-shrink-0">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 IA Activa
               </span>
             </div>
@@ -4149,13 +4150,13 @@
         // 1. Transformar anclas o preguntas sugeridas (href="#" o sin href) en chips interactivos clicables
         escaped = escaped.replace(
           /&lt;a\s+href=(?:&quot;|&#39;)?#?(?:&quot;|&#39;)?[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
-          '<span class="fb-chat-suggestion text-rose-500 dark:text-rose-400 underline hover:opacity-80 cursor-pointer font-medium" data-prompt="$1">$1</span>'
+          '<span class="fb-chat-suggestion text-blue-600 dark:text-blue-400 underline hover:opacity-80 cursor-pointer font-medium" data-prompt="$1">$1</span>'
         );
 
         // 2. Transformar enlaces externos legítimos (https:// o /guias/) en enlaces seguros
         escaped = escaped.replace(
           /&lt;a\s+href=(?:&quot;|&#39;)(https?:\/\/[^&"'\s]+|\/[^&"'\s]+)(?:&quot;|&#39;)[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
-          '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-rose-500 hover:underline font-semibold">$2</a>'
+          '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">$2</a>'
         );
 
         // 3. Purgar cualquier etiqueta <a> o </a> residual
@@ -4344,7 +4345,7 @@
         const wrap = document.createElement('div');
         wrap.id = 'fb-chat-typing';
         wrap.className = 'flex justify-start';
-        wrap.innerHTML = '<div class="px-4 py-2.5 rounded-2xl rounded-bl-sm dark:bg-slate-800 bg-white border dark:border-slate-700 border-slate-200 text-xs dark:text-slate-400 text-slate-500 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-bounce" style="animation-delay:0.15s"></span><span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-bounce" style="animation-delay:0.3s"></span><span class="ml-1">Consultando IA...</span></div>';
+        wrap.innerHTML = '<div class="px-4 py-2.5 rounded-2xl rounded-bl-sm dark:bg-slate-800 bg-white border dark:border-slate-700 border-slate-200 text-xs dark:text-slate-400 text-slate-500 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce"></span><span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce" style="animation-delay:0.15s"></span><span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-bounce" style="animation-delay:0.3s"></span><span class="ml-1">Consultando IA...</span></div>';
         container.appendChild(wrap);
         container.scrollTop = container.scrollHeight;
         return wrap;
