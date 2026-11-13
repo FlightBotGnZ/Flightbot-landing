@@ -20,6 +20,7 @@
   <!-- Módulos de Datos Modularizados -->
   <script src="js/radar-data.js" defer></script>
   <script src="js/cupones-data.js" defer></script>
+  <script src="js/resorts-data.js" defer></script>
   <script src="/js/auth.js" defer></script>
   <script src="js/chatbox.js" defer></script>
 
@@ -1188,6 +1189,21 @@
 
         <!-- Controles: Selector de Moneda Dual e Indicador de Monitoreo -->
         <div class="flex items-center gap-3 flex-wrap">
+          <!-- Segmented Control: Radar Vuelos vs Radar Resorts -->
+          <div class="inline-flex p-1 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm text-xs font-bold">
+            <button type="button" onclick="window.cambiarVistaRadar('vuelos')" id="btn-tab-vuelos"
+                    class="px-3.5 py-1.5 rounded-xl transition-all text-white shadow-xs font-bold flex items-center gap-1.5"
+                    style="background-color: var(--brand-primary);">
+              <span>✈️ Vuelos</span>
+              <span class="text-[10px] opacity-80 font-mono">57</span>
+            </button>
+            <button type="button" onclick="window.cambiarVistaRadar('resorts')" id="btn-tab-resorts"
+                    class="px-3.5 py-1.5 rounded-xl transition-all dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white font-bold flex items-center gap-1.5">
+              <span>🌴 Resorts All-Inclusive</span>
+              <span class="px-1.5 py-0.2 rounded-md bg-cyan-500/15 text-cyan-500 text-[10px] font-mono">21</span>
+            </button>
+          </div>
+
           <!-- Selector Tri-Moneda: Default (Cabotaje ARS, Europa EUR, Resto USD) / ARS / USD -->
           <div class="flex items-center p-1 rounded-2xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 shadow-sm text-xs font-bold">
             <span class="text-[10px] uppercase font-bold text-slate-400 px-2 hidden sm:inline">Moneda:</span>
@@ -1348,6 +1364,54 @@
       <div id="fb-radar-cards-container" class="w-full transition-all">
         <!-- Bloque 1: Top 3 Vuelos Más Económicos Vigentes (grid md:grid-cols-3 gap-6 mb-12) -->
         <!-- Bloque 2: Los 3 Hospedajes Más Recomendados (grid md:grid-cols-3 gap-6) -->
+      </div>
+
+      <!-- VISTA ALTERNATIVA RADAR RESORTS (All-Inclusive & Roiback) -->
+      <div id="fb-radar-resorts-container" class="hidden w-full transition-all mt-6">
+        <div class="p-6 sm:p-8 rounded-3xl dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200/90 shadow-xl mb-8">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b dark:border-slate-800 border-slate-200">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 font-mono bg-cyan-500/10 text-cyan-500 border border-cyan-500/20">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span>21 Resorts Monitoreados · Caribe, Brasil & Centroamérica</span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-black dark:text-white text-slate-900 tracking-tight">
+                🌴 Radar de Resorts All-Inclusive & Auditoría Roiback
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-3xl leading-relaxed">
+                Desglose directo de suites All-Inclusive 24h, termómetro estacional en 3 temporadas, semáforo de sargazo mes a mes y cupones de descuento oficiales directos para el checkout.
+              </p>
+            </div>
+
+            <!-- Filtro Rápido de Cadenas -->
+            <div class="flex items-center gap-2 flex-wrap" id="resorts-cadenas-filter">
+              <button type="button" onclick="window.filtrarResortsCadena('todos')" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-cyan-600 text-white shadow-xs">Todos (21)</button>
+              <button type="button" onclick="window.filtrarResortsCadena('Bahia Principe')" class="px-3 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-cyan-500 hover:text-white transition-colors">Bahia Principe</button>
+              <button type="button" onclick="window.filtrarResortsCadena('Grand Palladium')" class="px-3 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-cyan-500 hover:text-white transition-colors">Palladium</button>
+              <button type="button" onclick="window.filtrarResortsCadena('Dreams / Secrets')" class="px-3 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-cyan-500 hover:text-white transition-colors">Dreams / Hyatt</button>
+            </div>
+          </div>
+
+          <!-- Banner Informativo de Desbloqueo de Tarifas -->
+          <div class="mt-6 p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/25 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-cyan-900 dark:text-cyan-200">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">💡</span>
+              <div>
+                <strong>¿Cómo funciona la Tarifa Miembro + Cupón?</strong>
+                <p class="text-[11px] text-cyan-800 dark:text-cyan-300/80">Al registrarte gratis en el programa de lealtad de la cadena (o iniciar sesión con Google) + ingresar el código <code class="px-1.5 py-0.5 rounded bg-cyan-900/40 text-cyan-300 font-mono font-bold">HOT7</code>, ahorrás entre 15% y 24% frente a la tarifa lista pública.</p>
+              </div>
+            </div>
+            <a href="https://t.me/GnZFlightBot?start=resorts_vigilar" target="_blank" rel="noopener noreferrer"
+               class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-700 shadow-md shrink-0 whitespace-nowrap">
+              🔔 Vigilar Caídas con Rolli
+            </a>
+          </div>
+        </div>
+
+        <!-- Grid de Tarjetas de Resorts -->
+        <div id="fb-resorts-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Inyectado dinámicamente por JS desde RESORTS_DATA -->
+        </div>
       </div>
 
     </div>
@@ -4619,6 +4683,222 @@
         `;
       }).join("");
     };
+
+    // ==============================================================================
+    // CONTROLADOR Y RENDERIZADO DEL RADAR DE RESORTS ALL-INCLUSIVE
+    // ==============================================================================
+    let currentResortsFilter = 'todos';
+
+    window.cambiarVistaRadar = function(vista) {
+      const containerVuelos = document.getElementById('fb-radar-cards-container');
+      const containerResorts = document.getElementById('fb-radar-resorts-container');
+      const btnVuelos = document.getElementById('btn-tab-vuelos');
+      const btnResorts = document.getElementById('btn-tab-resorts');
+      
+      if (vista === 'resorts') {
+        if (containerVuelos) containerVuelos.classList.add('hidden');
+        if (containerResorts) {
+          containerResorts.classList.remove('hidden');
+          window.renderizarResortsCards();
+        }
+        if (btnVuelos) {
+          btnVuelos.style.backgroundColor = 'transparent';
+          btnVuelos.className = 'px-3.5 py-1.5 rounded-xl transition-all dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white font-bold flex items-center gap-1.5';
+        }
+        if (btnResorts) {
+          btnResorts.style.backgroundColor = 'var(--brand-primary)';
+          btnResorts.className = 'px-3.5 py-1.5 rounded-xl transition-all text-white shadow-xs font-bold flex items-center gap-1.5';
+        }
+      } else {
+        if (containerResorts) containerResorts.classList.add('hidden');
+        if (containerVuelos) containerVuelos.classList.remove('hidden');
+        if (btnResorts) {
+          btnResorts.style.backgroundColor = 'transparent';
+          btnResorts.className = 'px-3.5 py-1.5 rounded-xl transition-all dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white font-bold flex items-center gap-1.5';
+        }
+        if (btnVuelos) {
+          btnVuelos.style.backgroundColor = 'var(--brand-primary)';
+          btnVuelos.className = 'px-3.5 py-1.5 rounded-xl transition-all text-white shadow-xs font-bold flex items-center gap-1.5';
+        }
+      }
+    };
+
+    window.filtrarResortsCadena = function(cadena) {
+      currentResortsFilter = cadena;
+      const filterBtns = document.querySelectorAll('#resorts-cadenas-filter button');
+      filterBtns.forEach(btn => {
+        if ((cadena === 'todos' && btn.textContent.includes('Todos')) || btn.textContent.includes(cadena)) {
+          btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold bg-cyan-600 text-white shadow-xs';
+        } else {
+          btn.className = 'px-3 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 text-slate-700 dark:text-slate-300 hover:bg-cyan-500 hover:text-white transition-colors';
+        }
+      });
+      window.renderizarResortsCards();
+    };
+
+    function obtenerFotoResort(nombre, cadena) {
+      const n = (nombre || '').toLowerCase();
+      if (n.includes('turquesa')) return 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=800&q=80';
+      if (n.includes('esmeralda')) return 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80';
+      if (n.includes('legend')) return 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80';
+      if (n.includes('aquamarine') || n.includes('ambar')) return 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80';
+      if (n.includes('palladium') || n.includes('trs')) return 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80';
+      if (n.includes('curacao') || n.includes('curazao')) return 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80';
+      if (n.includes('panama') || n.includes('bonita')) return 'https://images.unsplash.com/photo-1512353087810-25dfcd100962?auto=format&fit=crop&w=800&q=80';
+      if (n.includes('cartagena')) return 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=800&q=80';
+      if (n.includes('costa rica') || n.includes('papagayo')) return 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=800&q=80';
+      if (n.includes('imbassai') || n.includes('brasil')) return 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=800&q=80';
+      return 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80';
+    }
+
+    window.renderizarResortsCards = function() {
+      const grid = document.getElementById('fb-resorts-cards-grid');
+      if (!grid || !window.RESORTS_DATA || !Array.isArray(window.RESORTS_DATA)) return;
+
+      const items = currentResortsFilter === 'todos'
+        ? window.RESORTS_DATA
+        : window.RESORTS_DATA.filter(r => {
+            if (currentResortsFilter === 'Dreams / Secrets') return r.cadena.includes('Dreams') || r.cadena.includes('Secrets');
+            return r.cadena.includes(currentResortsFilter);
+          });
+
+      grid.innerHTML = items.map(r => {
+        const foto = obtenerFotoResort(r.nombre, r.cadena);
+        const sargazoBadge = r.riesgo_sargazo.includes('Bajo') || r.riesgo_sargazo.includes('Muy Bajo')
+          ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">🟢 Sargazo Mínimo</span>'
+          : '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/30">🟡 Barrera Anti-Sargazo</span>';
+
+        const bookingUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(r.nombre)}&checkin=2027-01-29&checkout=2027-02-06&group_adults=2&no_rooms=1&lang=es`;
+        const officialUrl = `https://www.google.com/search?q=${encodeURIComponent(r.nombre + ' web oficial roiback ' + r.cupon_codigo)}`;
+
+        return `
+          <div class="group rounded-3xl overflow-hidden border dark:border-slate-800 border-slate-200 dark:bg-slate-900/90 bg-white shadow-lg hover:shadow-2xl transition-all flex flex-col justify-between">
+            <div>
+              <!-- Imagen y Badges -->
+              <div class="relative h-48 overflow-hidden bg-slate-950">
+                <img src="${foto}" alt="${r.nombre}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/40"></div>
+                
+                <div class="absolute top-3 left-3 flex items-center gap-1.5 flex-wrap">
+                  <span class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-600 text-white shadow-sm">
+                    ${r.cadena}
+                  </span>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-900/80 text-white backdrop-blur-md">
+                    ${r.all_inclusive}
+                  </span>
+                </div>
+
+                <div class="absolute top-3 right-3">
+                  ${sargazoBadge}
+                </div>
+
+                <div class="absolute bottom-3 left-3 right-3 text-white">
+                  <h4 class="font-black text-base sm:text-lg leading-tight drop-shadow-md">
+                    ${r.nombre}
+                  </h4>
+                  <div class="text-[11px] text-slate-300 truncate mt-0.5 flex items-center gap-1">
+                    <span>📍</span> <span>${r.destino}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cuerpo de la Tarjeta: Tarifas y Comparativa -->
+              <div class="p-5 space-y-4">
+                <!-- Auditoría de Precios -->
+                <div class="p-3.5 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200/80 space-y-2">
+                  <div class="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
+                    <span>💎 Tarifa Miembro + Cupón:</span>
+                    <span class="font-mono text-base font-black text-rose-600 dark:text-rose-400">US$ ${r.precio_noche_usd} <span class="text-[10px] font-normal text-slate-400">/noche</span></span>
+                  </div>
+                  <div class="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1.5 border-t dark:border-slate-800 border-slate-200">
+                    <span>Tarifa Lista Público:</span>
+                    <span class="font-mono line-through text-slate-400">US$ ${r.precio_lista_noche_usd}</span>
+                  </div>
+                  <div class="flex items-center justify-between text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span>Total 8 noches (2 adultos):</span>
+                    <span class="font-mono font-bold">US$ ${r.precio_8n_usd.toLocaleString('es-AR')} (-${r.descuento_pct}%)</span>
+                  </div>
+                </div>
+
+                <!-- Termómetro Estacional (Google Hotels) -->
+                <div class="space-y-1.5">
+                  <div class="text-[10px] uppercase font-bold text-slate-400 flex items-center justify-between">
+                    <span>Termómetro Estacional (Piso / Noche)</span>
+                    <span class="text-emerald-500">Ahorro hasta -38%</span>
+                  </div>
+                  <div class="grid grid-cols-3 gap-1.5 text-center text-[10px] font-mono">
+                    <div class="p-1.5 rounded-xl dark:bg-slate-800/80 bg-slate-100 border dark:border-slate-700/80 border-slate-200">
+                      <div class="text-slate-400 text-[9px] uppercase">☀️ Alta</div>
+                      <div class="font-bold dark:text-white text-slate-800">US$ ${r.termometro_estacional.alta}</div>
+                    </div>
+                    <div class="p-1.5 rounded-xl dark:bg-slate-800/80 bg-slate-100 border dark:border-slate-700/80 border-slate-200">
+                      <div class="text-slate-400 text-[9px] uppercase">🌤️ Media</div>
+                      <div class="font-bold text-emerald-500">US$ ${r.termometro_estacional.media}</div>
+                    </div>
+                    <div class="p-1.5 rounded-xl dark:bg-slate-800/80 bg-slate-100 border dark:border-slate-700/80 border-slate-200">
+                      <div class="text-slate-400 text-[9px] uppercase">🌴 Baja</div>
+                      <div class="font-bold text-cyan-400">US$ ${r.termometro_estacional.baja}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Logística Real y Playa -->
+                <div class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between pt-1 border-t dark:border-slate-800 border-slate-100">
+                  <span class="flex items-center gap-1">🏖️ ${r.logistica.distancia_playa}</span>
+                  <span class="flex items-center gap-1">${r.logistica.trencito ? '🛺 Trencito interno' : '🚶 Acceso directo'}</span>
+                  <span>👶 Apto cochecito</span>
+                </div>
+
+                <!-- Cupón interactivo -->
+                ${r.cupon_codigo ? `
+                <div class="p-2 rounded-xl bg-amber-500/10 border border-amber-500/25 flex items-center justify-between text-xs">
+                  <div class="flex items-center gap-1.5">
+                    <span>🎟️</span>
+                    <span class="text-slate-600 dark:text-slate-300 font-medium">Cupón: <b class="font-mono text-slate-900 dark:text-white">${r.cupon_codigo}</b></span>
+                  </div>
+                  <button type="button" onclick="window.copiarCodigo(this, '${r.cupon_codigo}')"
+                          class="px-2 py-0.5 rounded-lg text-[10px] font-bold bg-amber-500/20 text-amber-700 dark:text-amber-300 hover:bg-amber-500 hover:text-white transition-colors cursor-pointer">
+                    Copiar
+                  </button>
+                </div>` : ''}
+
+              </div>
+            </div>
+
+            <!-- Acciones y CTAs -->
+            <div class="p-5 pt-0 space-y-2">
+              <a href="${bookingUrl}" target="_blank" rel="noopener noreferrer sponsored"
+                 class="w-full py-2.5 px-3 rounded-xl text-xs font-bold text-white transition-all hover:brightness-110 flex items-center justify-center gap-1.5 shadow-md"
+                 style="background: var(--brand-gradient);">
+                <span>🏨 Cotizar en Booking.com</span>
+                <span>➔</span>
+              </a>
+              <div class="grid grid-cols-2 gap-2 text-center text-[11px]">
+                <a href="${officialUrl}" target="_blank" rel="noopener noreferrer"
+                   class="py-2 px-2 rounded-xl dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 text-slate-700 dark:text-slate-300 font-bold hover:border-cyan-500 transition-all flex items-center justify-center gap-1">
+                  <span>🎟️ Web Oficial</span>
+                </a>
+                <a href="https://t.me/GnZFlightBot?start=resort_${r.id}" target="_blank" rel="noopener noreferrer"
+                   class="py-2 px-2 rounded-xl dark:bg-slate-800 bg-slate-100 border dark:border-slate-700 border-slate-200 text-slate-700 dark:text-slate-300 font-bold hover:border-rose-500 transition-all flex items-center justify-center gap-1">
+                  <span>🔔 Rolli 24/7</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.location.hash === '#radar-resorts-section' || window.location.hash === '#resorts') {
+        setTimeout(() => {
+          window.cambiarVistaRadar('resorts');
+          const rEl = document.getElementById('radar-vuelos');
+          if (rEl) rEl.scrollIntoView({ behavior: 'smooth' });
+        }, 500);
+      }
+    });
 
     document.addEventListener("DOMContentLoaded", function() {
       if (window.renderizarCuponesDinamicos) {

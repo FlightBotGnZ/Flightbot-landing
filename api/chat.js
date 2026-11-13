@@ -336,8 +336,8 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  // Modelos de Gemini Flash verificados por baja latencia (~1.2 s) compatibles con Vercel Hobby (10 s max)
-  const modelos = ['gemini-3.5-flash-lite', 'gemini-3.5-flash', 'gemini-flash-lite-latest', 'gemini-flash-latest'];
+  // Modelos de Gemini Flash verificados por baja latencia (~1.0 s) compatibles con Vercel Hobby (10 s max)
+  const modelos = ['gemini-3.5-flash-lite', 'gemini-3.1-flash-lite', 'gemini-flash-lite-latest', 'gemini-3-flash-preview'];
 
   const systemInstruction = `Eres 'F-Bot Rolli', el asistente virtual y compañero de viaje inteligente de FlightBot (https://flightbot.com.ar).
 Tono y estilo:

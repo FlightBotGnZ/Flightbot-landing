@@ -10,9 +10,9 @@
 
 const CANDIDATOS_FLASH = [
   'gemini-3.5-flash-lite',
-  'gemini-3.5-flash',
+  'gemini-3.1-flash-lite',
   'gemini-flash-lite-latest',
-  'gemini-flash-latest'
+  'gemini-3-flash-preview'
 ];
 
 async function notificarTelegramFalla(operativos, fallidos, resultados) {
@@ -105,11 +105,12 @@ module.exports = async function handler(req, res) {
     }
   }
 
+  const hayDeprecados404 = resultados.some(r => r.status === 404);
   const estadoGral = operativos.length > 0 ? (fallidos.length === 0 ? 'healthy' : 'degraded') : 'down';
   const statusCode = estadoGral === 'down' ? 503 : 200;
 
-  // Notificar a Telegram si hay degradación o caída
-  if (fallidos.length > 0 || estadoGral === 'down') {
+  // Notificar a Telegram solo ante caída total o deprecación real (HTTP 404)
+  if (estadoGral === 'down' || hayDeprecados404) {
     await notificarTelegramFalla(operativos, fallidos, resultados);
   }
 
