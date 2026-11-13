@@ -1147,7 +1147,7 @@
                   ¿Querés validar el precio real en vivo o recibir alertas en Telegram si baja?
                 </strong>
                 <span class="text-slate-500 dark:text-slate-400 text-xs">
-                  Rolli te avisa gratis cuando una ruta cae a piso histórico, y con <code>/vuelos</code> en Telegram podés validar tarifas en vivo contra Google Flights (1 token si no está en caché 48 hs).
+                  Rolli te avisa gratis cuando una ruta cae a piso histórico, y con <code>/vuelos</code> en Telegram podés validar tarifas en vivo contra Google Flights (1 token si no se consultó en las últimas 48 hs).
                 </span>
               </div>
             </div>
@@ -1380,7 +1380,7 @@
                 🌴 Radar de Resorts All-Inclusive & Auditoría Roiback
               </h3>
               <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-3xl leading-relaxed">
-                Desglose directo de suites All-Inclusive 24h, termómetro estacional en 3 temporadas, semáforo de sargazo mes a mes y cupones de descuento oficiales directos para el checkout.
+                Desglose directo de suites All-Inclusive 24h, termómetro estacional en 3 temporadas, guía real de sargazo por zona y cupones de descuento oficiales directos para el checkout.
               </p>
             </div>
 
@@ -1431,7 +1431,6 @@
                   <option value="precio_asc">Menor precio por noche</option>
                   <option value="precio_desc">Mayor precio (Luxury first)</option>
                   <option value="descuento_desc">Mayor ahorro / % Descuento</option>
-                  <option value="sargazo_min">Menor riesgo de sargazo</option>
                 </select>
               </div>
               <span id="resorts-count-badge" class="px-2.5 py-1 rounded-xl text-[11px] font-mono font-bold bg-cyan-500/15 text-cyan-500 border border-cyan-500/30">
@@ -1453,6 +1452,37 @@
                class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-700 shadow-md shrink-0 whitespace-nowrap">
               🔔 Vigilar Caídas con Rolli
             </a>
+          </div>
+
+          <!-- Guía Real de Sargazo por Época y Destino -->
+          <div class="mt-4 p-4 sm:p-5 rounded-2xl dark:bg-slate-950/60 bg-slate-50 border dark:border-slate-800 border-slate-200/90">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-base">🌊</span>
+                <h4 class="text-xs sm:text-sm font-black dark:text-white text-slate-900">Guía Real de Sargazo: cuándo ir y dónde no hay nunca</h4>
+              </div>
+              <span class="hidden sm:inline-block text-[10px] font-semibold text-slate-400">Sin promesas de barreras mágicas</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] leading-relaxed">
+              <div class="p-3 rounded-xl bg-rose-500/5 border border-rose-500/20">
+                <div class="font-bold text-rose-600 dark:text-rose-400 mb-1">🔴 Época propensa (Mayo a Octubre)</div>
+                <p class="text-slate-600 dark:text-slate-400">
+                  Mayor recale en <strong>Punta Cana (Bávaro / Macao)</strong> y <strong>Riviera Maya</strong>. Aunque los hoteles instalen barreras flotantes, en picos de verano el sargazo igual puede pasar a la orilla.
+                </p>
+              </div>
+              <div class="p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
+                <div class="font-bold text-emerald-600 dark:text-emerald-400 mb-1">🟢 Chance nula / mínima (Nov a Marzo)</div>
+                <p class="text-slate-600 dark:text-slate-400">
+                  Aguas más frescas y cambio de corrientes: playas limpias en casi todo el Caribe. <strong>Abril y noviembre</strong> funcionan como meses de transición con riesgo bajo a moderado.
+                </p>
+              </div>
+              <div class="p-3 rounded-xl bg-cyan-500/5 border border-cyan-500/20">
+                <div class="font-bold text-cyan-700 dark:text-cyan-300 mb-1">🏝️ Playas y hoteles SIN sargazo todo el año</div>
+                <p class="text-slate-600 dark:text-slate-400">
+                  <strong>Caribe Sur & Pacífico:</strong> La Romana/Bayahíbe (<em>Bahia Principe Bouganville</em>), Curazao (<em>Dreams Curaçao</em>), Aruba, Cartagena (<em>Dreams Karibana</em>), Panamá y Costa Rica. <strong>Brasil:</strong> Imbassaí, Río y Búzios (0% todo el año).
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -3225,7 +3255,7 @@
                 <span class="text-base flex-shrink-0">📌</span>
                 <p class="leading-relaxed">
                   <strong class="dark:text-slate-200 text-slate-700 font-semibold">Tarifas de Referencia y Fechas:</strong>
-                  Valores detectados por el radar en el último sondeo en caché. El precio final y la disponibilidad real pueden variar al momento de emitir: confirmalo al instante en Google Flights, la aerolínea o usando <code>/vuelos</code> en Telegram.
+                  Valores detectados por el radar en el último sondeo reciente. El precio final y la disponibilidad real pueden variar al momento de emitir: confirmalo al instante en Google Flights, la aerolínea o usando <code>/vuelos</code> en Telegram.
                 </p>
               </div>
               <div class="flex items-start gap-2.5 pt-2 border-t dark:border-slate-800/80 border-slate-200/80">
@@ -3509,7 +3539,7 @@
             // Actualizar indicador visual del radar con punto verde
             const indicatorEl = document.getElementById('radar-live-indicator');
             if (indicatorEl) {
-              indicatorEl.innerHTML = '<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>Caché sincronizada';
+              indicatorEl.innerHTML = '<span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse mr-1.5"></span>Radar sincronizado';
               indicatorEl.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center shadow-xs transition-all';
             }
             const badgeEl = document.getElementById('radar-badge-monitoreo');
@@ -3525,7 +3555,7 @@
               syncEl.textContent = `Radar sincronizado hoy a las ${hh}:${mm} hs`;
             }
             if (badgeEl) {
-              badgeEl.innerHTML = `Radar de referencia · <strong>${destinosRemotos.length} Destinos oficiales</strong> · <span class="text-emerald-500 font-bold">Caché actualizada</span>`;
+              badgeEl.innerHTML = `Radar de referencia · <strong>${destinosRemotos.length} Destinos oficiales</strong> · <span class="text-emerald-500 font-bold">Tarifas actualizadas</span>`;
             }
           }
         } catch (_err) {
@@ -4866,15 +4896,6 @@
           return precioB - precioA;
         } else if (currentResortsOrden === 'descuento_desc') {
           return (b.descuento_pct || 0) - (a.descuento_pct || 0);
-        } else if (currentResortsOrden === 'sargazo_min') {
-          const score = (r) => {
-            const s = (r.riesgo_sargazo || '').toLowerCase();
-            if (s.includes('muy bajo') || s.includes('nula')) return 1;
-            if (s.includes('bajo')) return 2;
-            if (s.includes('moderado')) return 3;
-            return 4;
-          };
-          return score(a) - score(b);
         }
         return 0;
       });
@@ -4885,9 +4906,6 @@
 
       grid.innerHTML = items.map(r => {
         const foto = obtenerFotoResort(r.nombre, r.cadena);
-        const sargazoBadge = r.riesgo_sargazo.includes('Bajo') || r.riesgo_sargazo.includes('Muy Bajo')
-          ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">🟢 Sargazo Mínimo</span>'
-          : '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-400/30">🟡 Barrera Anti-Sargazo</span>';
 
         const precioNocheActual = calcularPrecioSegunTemporada(r, currentResortsTemporada);
         const total8Noches = Math.round(precioNocheActual * 8);
@@ -4908,17 +4926,13 @@
                 <img src="${foto}" alt="${r.nombre}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/40"></div>
                 
-                <div class="absolute top-3 left-3 flex items-center gap-1.5 flex-wrap">
+                <div class="absolute top-3 left-3 right-3 flex items-center gap-1.5 flex-wrap">
                   <span class="px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-blue-600 text-white shadow-sm">
                     ${r.cadena}
                   </span>
                   <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-900/80 text-white backdrop-blur-md">
                     ${r.all_inclusive}
                   </span>
-                </div>
-
-                <div class="absolute top-3 right-3">
-                  ${sargazoBadge}
                 </div>
 
                 <div class="absolute bottom-3 left-3 right-3 text-white">
