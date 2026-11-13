@@ -4758,6 +4758,15 @@
           btnResorts.style.backgroundColor = 'var(--brand-primary)';
           btnResorts.className = 'px-3.5 py-1.5 rounded-xl transition-all text-white shadow-xs font-bold flex items-center gap-1.5';
         }
+
+        // UX Inteligente: Si el destino activo arriba no es de Caribe o resorts (ej. Bariloche),
+        // cambiar automáticamente la región a 'caribe_usa' y enfocar Punta Cana
+        if (window.filtrarRadarRegion) {
+          window.filtrarRadarRegion('caribe_usa');
+        }
+        if (window.renderRadarDestino) {
+          window.renderRadarDestino('puntacana');
+        }
       } else {
         if (containerResorts) containerResorts.classList.add('hidden');
         if (containerVuelos) containerVuelos.classList.remove('hidden');
