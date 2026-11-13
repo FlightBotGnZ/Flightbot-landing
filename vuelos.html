@@ -4895,16 +4895,34 @@
 
     function obtenerFotoResort(nombre, cadena) {
       const n = (nombre || '').toLowerCase();
-      if (n.includes('turquesa')) return 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=800&q=80';
-      if (n.includes('esmeralda')) return 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80';
-      if (n.includes('legend')) return 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80';
-      if (n.includes('aquamarine') || n.includes('ambar')) return 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80';
-      if (n.includes('palladium') || n.includes('trs')) return 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80';
-      if (n.includes('curacao') || n.includes('curazao')) return 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80';
-      if (n.includes('panama') || n.includes('bonita')) return 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80';
-      if (n.includes('cartagena')) return 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=800&q=80';
-      if (n.includes('costa rica') || n.includes('papagayo')) return 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=800&q=80';
-      if (n.includes('imbassai') || n.includes('brasil')) return 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80';
+      // Mapa 1:1 verificado visualmente para los 21 resorts (cero repeticiones)
+      const mapaResorts = [
+        ['explore turquesa', 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=800&q=80'],
+        ['explore punta cana', 'https://images.unsplash.com/photo-1724346373649-0cbf29779d47?auto=format&fit=crop&w=800&q=80'],
+        ['aquamarine', 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80'],
+        ['bouganville', 'https://images.unsplash.com/photo-1752630169788-ec8867f4eee8?auto=format&fit=crop&w=800&q=80'],
+        ['legend', 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80'],
+        ['esmeralda', 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80'],
+        ['explore jamaica', 'https://images.unsplash.com/photo-1779325522847-fa8a361d3d04?auto=format&fit=crop&w=800&q=80'],
+        ['ambar', 'https://images.unsplash.com/photo-1647426130233-66a93ff4a516?auto=format&fit=crop&w=800&q=80'],
+        ['select bávaro', 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80'],
+        ['palladium punta cana', 'https://images.unsplash.com/photo-1777938577435-33527722bb2e?auto=format&fit=crop&w=800&q=80'],
+        ['palladium jamaica', 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=800&q=80'],
+        ['imbassa', 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'],
+        ['lady hamilton', 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80'],
+        ['trs turquesa', 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80'],
+        ['playa bonita', 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80'],
+        ['dreams flora', 'https://images.unsplash.com/photo-1725991547040-d335ac936630?auto=format&fit=crop&w=800&q=80'],
+        ['dreams onyx', 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80'],
+        ['curaçao', 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80'],
+        ['curacao', 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80'],
+        ['macao beach', 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80'],
+        ['papagayo', 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=800&q=80'],
+        ['karibana', 'https://images.unsplash.com/photo-1583531352515-8884af319dc1?auto=format&fit=crop&w=800&q=80']
+      ];
+      for (const [clave, url] of mapaResorts) {
+        if (n.includes(clave)) return url;
+      }
       return 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80';
     }
 
