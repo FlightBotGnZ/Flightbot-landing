@@ -208,7 +208,12 @@ module.exports = async function handler(req, res) {
   }
 
   // 3. Enriquecimiento en tiempo real con Travelpayouts / Aviasales Data API v2 ($0)
-  const tpToken = process.env.TRAVELPAYOUTS_API_KEY || process.env.TRAVELPAYOUTS_TOKEN || 'd02683a4563a9fbba03eb7a13be518ff';
+  const tpToken = (process.env.TRAVELPAYOUTS_API_KEY || process.env.TRAVELPAYOUTS_TOKEN || '').trim();
+  if (!tpToken) {
+    res.setHeader('X-Radar-Source', 'local-snapshot');
+    res.setHeader('Cache-Control', 's-maxage=600, stale-while-revalidate=1800');
+    return res.status(200).json(catalogo);
+  }
 
   try {
     const urlArs = `https://api.travelpayouts.com/v2/prices/latest?currency=ars&origin=BUE&period_type=year&page=1&limit=1000&show_to_affiliates=true&sorting=price&token=${tpToken}`;
@@ -343,35 +348,25 @@ module.exports = async function handler(req, res) {
           ? vueloBase.aerolinea
           : (esCabotaje ? 'JetSMART' : 'Aerolínea Oficial');
 
-        let factorAero = 1.0;
-        if (idx > 0 && (!ofertasValidas[idx] || ofertasValidas[idx].value === ofertasValidas[0].value)) {
-          const mismaAero = vuelosBase[0]?.aerolinea && aerolineaNombre.toLowerCase().trim() === vuelosBase[0].aerolinea.toLowerCase().trim();
-          if (mismaAero) {
-            factorAero = idx === 1 ? 1.04 : 1.12;
-          } else if (esCabotaje) {
-            factorAero = (aerolineaNombre.includes('Aerolíneas') || aerolineaNombre.includes('Austral')) ? 1.24 : 1.12;
-          } else {
-            factorAero = idx === 1 ? 1.12 : 1.22;
-          }
-        }
-
+        // Usar estrictamente la tarifa real devuelta por Travelpayouts sin multiplicadores sintéticos
+        const valorReal = Number(oferta.value);
         let precioFormateado = '';
         let precioNumArs = 0;
         let precioNumUsd = 0;
 
         if (esCabotaje) {
-          const valArs = Math.round(Number(oferta.value) * factorAero);
+          const valArs = Math.round(valorReal);
           precioNumArs = valArs;
           precioNumUsd = Math.max(1, Math.round(valArs / TIPO_CAMBIO_REF));
           precioFormateado = `${formatearArs(valArs)} (US$ ${precioNumUsd} aprox)`;
         } else if (esEuropa) {
-          const valUsd = Math.round(Number(oferta.value) * factorAero);
+          const valUsd = Math.round(valorReal);
           const valEur = Math.max(1, Math.round(valUsd * 0.92));
           precioNumUsd = valUsd;
           precioNumArs = Math.round(valUsd * TIPO_CAMBIO_REF);
           precioFormateado = `€ ${valEur.toLocaleString('es-AR')} (aprox. ${formatearArs(precioNumArs)})`;
         } else {
-          const valUsd = Math.round(Number(oferta.value) * factorAero);
+          const valUsd = Math.round(valorReal);
           precioNumUsd = valUsd;
           precioNumArs = Math.round(valUsd * TIPO_CAMBIO_REF);
           precioFormateado = `US$ ${valUsd.toLocaleString('es-AR')} (aprox. ${formatearArs(precioNumArs)})`;
@@ -393,34 +388,89 @@ module.exports = async function handler(req, res) {
 
       destActualizado.vuelos = nuevosVuelos;
 
-      // Sincronizar precio_desde y el termómetro de tarifas para mantener 100% coherencia visual
+      // Sincronizar precio_desde y el termómetro de tarifas con percentiles reales de las ofertas observadas
       if (nuevosVuelos.length > 0) {
         const primerVuelo = nuevosVuelos[0];
         let labelPin = '';
+        let valBase = 0;
+        const valoresObs = ofertasValidas
+          .map(o => Number(o.value || 0))
+          .filter(v => v > 0)
+          .map(v => esCabotaje ? Math.round(v) : (esEuropa ? Math.max(1, Math.round(v * 0.92)) : Math.round(v)))
+          .sort((a, b) => a - b);
+
         if (esCabotaje) {
           labelPin = formatearArs(primerVuelo.precio_ars);
           destActualizado.precio_desde = `${labelPin} (US$ ${primerVuelo.precio_usd})`;
+          valBase = primerVuelo.precio_ars;
         } else if (esEuropa) {
           const valEur = Math.max(1, Math.round(primerVuelo.precio_usd * 0.92));
           labelPin = `€ ${valEur.toLocaleString('es-AR')}`;
           destActualizado.precio_desde = labelPin;
+          valBase = valEur;
         } else {
           labelPin = `US$ ${primerVuelo.precio_usd.toLocaleString('es-AR')}`;
           destActualizado.precio_desde = labelPin;
+          valBase = primerVuelo.precio_usd;
         }
 
         if (destActualizado.termometro && typeof destActualizado.termometro === 'object') {
-          destActualizado.termometro.texto_pin = `📌 ${labelPin} es una tarifa récord baja`;
-          const valBase = esCabotaje
-            ? primerVuelo.precio_ars
-            : (esEuropa ? Math.max(1, Math.round(primerVuelo.precio_usd * 0.92)) : primerVuelo.precio_usd);
-          destActualizado.termometro.historial_valores = [
-            Math.round(valBase * 1.28),
-            Math.round(valBase * 1.19),
-            Math.round(valBase * 1.14),
-            Math.round(valBase * 1.07),
-            valBase
-          ];
+          const fmtMoneda = (n) => esCabotaje
+            ? formatearArs(n)
+            : (esEuropa ? `€ ${Math.round(n).toLocaleString('es-AR')}` : `US$ ${Math.round(n).toLocaleString('es-AR')}`);
+
+          if (valoresObs.length >= 2) {
+            const minReal = valoresObs[0];
+            const maxReal = valoresObs[valoresObs.length - 1];
+            const medianaReal = valoresObs[Math.floor(valoresObs.length / 2)];
+            const span = maxReal - minReal;
+            const posPct = span > 0
+              ? Math.max(8, Math.min(92, Math.round(((valBase - minReal) / span) * 100)))
+              : 25;
+            const nivelReal = posPct <= 35 ? 'bajo' : (posPct >= 75 ? 'alto' : 'normal');
+
+            destActualizado.termometro.nivel = nivelReal;
+            destActualizado.termometro.posicion_pct = posPct;
+            destActualizado.termometro.rango_min = fmtMoneda(minReal);
+            destActualizado.termometro.rango_max = fmtMoneda(maxReal);
+            destActualizado.termometro.observaciones_reales = valoresObs.length;
+            destActualizado.termometro.fuente_datos = 'ofertas_reales_aviasales';
+            destActualizado.termometro.texto_pin = nivelReal === 'bajo'
+              ? `${labelPin} · mínimo observado`
+              : `${labelPin} · tarifa vigente`;
+            if (nivelReal === 'bajo') {
+              destActualizado.termometro.mensaje = `Tarifa en el tramo más bajo de las ${valoresObs.length} salidas analizadas.`;
+            } else if (nivelReal === 'alto') {
+              destActualizado.termometro.mensaje = `Precio por encima del promedio observado (${fmtMoneda(medianaReal)}). Conviene activar alerta.`;
+            } else {
+              destActualizado.termometro.mensaje = `Tarifa habitual frente al promedio observado (${fmtMoneda(medianaReal)}).`;
+            }
+
+            // Construir serie de 5 valores reales observados (de mayor a menor hacia el mínimo vigente)
+            const serieDesc = [...valoresObs].reverse().slice(0, 5);
+            while (serieDesc.length < 5) {
+              serieDesc.unshift(serieDesc[0]);
+            }
+            destActualizado.termometro.historial_valores = serieDesc.map(v => Math.round(v));
+
+            // Detectar caída >= 20% frente a la mediana observada de la ruta
+            if (medianaReal > 0 && valBase <= medianaReal * 0.80) {
+              const descPct = Math.round(((medianaReal - valBase) / medianaReal) * 100);
+              destActualizado.oportunidad_relampago = {
+                ...(destActualizado.oportunidad_relampago || {}),
+                activa: true,
+                descuento_pct: descPct,
+                criterio: 'caida_20pct_observada',
+                fecha_ida: primerVuelo.fecha_ida,
+                fecha_vuelta: primerVuelo.fecha_vuelta,
+                fechas: primerVuelo.fechas,
+                noches: primerVuelo.noches
+              };
+            }
+          } else {
+            destActualizado.termometro.texto_pin = `${labelPin} · tarifa vigente`;
+            destActualizado.termometro.observaciones_reales = valoresObs.length || 1;
+          }
         }
       }
 

@@ -10,8 +10,17 @@
 
 const crypto = require('crypto');
 
-// Secreto de sesión (toma variable de entorno SESSION_SECRET o fallback derivado seguro)
-const SESSION_SECRET = process.env.SESSION_SECRET || 'flightbot-dev-secret-change-in-production-2026';
+// Secreto de sesión: obligatorio en producción; en desarrollo local genera clave efímera aleatoria en memoria
+const IS_PRODUCTION = process.env.VERCEL_ENV === 'production' || process.env.NODE_ENV === 'production';
+const EPHEMERAL_DEV_SECRET = IS_PRODUCTION ? '' : crypto.randomBytes(32).toString('hex');
+function obtenerSessionSecret() {
+  const configured = (process.env.SESSION_SECRET || '').trim();
+  if (configured) return configured;
+  if (IS_PRODUCTION) {
+    throw new Error('SESSION_SECRET no configurado en producción.');
+  }
+  return EPHEMERAL_DEV_SECRET;
+}
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || '';
 
 const TOKENS_BASE_SEMANAL = 4;
@@ -60,10 +69,11 @@ function firmarJwt(payload, expiresInSeconds = 2592000) { // 30 días
   const exp = Math.floor(Date.now() / 1000) + expiresInSeconds;
   const fullPayload = { ...payload, exp, iat: Math.floor(Date.now() / 1000) };
 
+  const secret = obtenerSessionSecret();
   const encodedHeader = base64UrlEncode(JSON.stringify(header));
   const encodedPayload = base64UrlEncode(JSON.stringify(fullPayload));
   const signature = crypto
-    .createHmac('sha256', SESSION_SECRET)
+    .createHmac('sha256', secret)
     .update(`${encodedHeader}.${encodedPayload}`)
     .digest('base64')
     .replace(/=/g, '')
@@ -82,21 +92,33 @@ function verificarJwt(token) {
   if (parts.length !== 3) return null;
 
   const [encodedHeader, encodedPayload, signature] = parts;
+  if (!encodedHeader || !encodedPayload || !signature) return null;
+
+  let secret;
+  try {
+    secret = obtenerSessionSecret();
+  } catch (_err) {
+    return null;
+  }
+
   const expectedSignature = crypto
-    .createHmac('sha256', SESSION_SECRET)
+    .createHmac('sha256', secret)
     .update(`${encodedHeader}.${encodedPayload}`)
     .digest('base64')
     .replace(/=/g, '')
     .replace(/\+/g, '-')
     .replace(/\//g, '_');
 
-  // Comparación en tiempo constante para evitar Timing Attacks (CWE-208)
-  if (!crypto.timingSafeEqual(Buffer.from(signature), Buffer.from(expectedSignature))) {
+  // Comparación en tiempo constante con validación previa de longitud (evita RangeError / CWE-208)
+  const sigBuf = Buffer.from(signature, 'utf8');
+  const expectedBuf = Buffer.from(expectedSignature, 'utf8');
+  if (sigBuf.length !== expectedBuf.length || !crypto.timingSafeEqual(sigBuf, expectedBuf)) {
     return null;
   }
 
   try {
     const payload = JSON.parse(base64UrlDecode(encodedPayload));
+    if (!payload || typeof payload !== 'object') return null;
     const now = Math.floor(Date.now() / 1000);
     if (payload.exp && payload.exp < now) {
       return null; // Token expirado
@@ -177,7 +199,7 @@ function sincronizarTokensUsuario(userState) {
 }
 
 module.exports = {
-  SESSION_SECRET,
+  obtenerSessionSecret,
   GOOGLE_CLIENT_ID,
   TOKENS_BASE_SEMANAL,
   TOKENS_MAX_ROLLOVER,

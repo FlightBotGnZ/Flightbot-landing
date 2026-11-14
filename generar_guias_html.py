@@ -1265,7 +1265,7 @@ def construir_bloque_chatbox_ia(
           }}
           // Resumen integral del destino
           return {{
-            respuesta: `${{guia.icono}} <b>Guía Flash · ${{guia.ciudad}} (${{guia.pais}}):</b><br>${{guia.resumen}}<br><br>📍 <b>Imperdibles:</b><br>• ${{guia.puntos.slice(0, 2).join('<br>• ')}}<br><br>🏨 <b>Mejor zona:</b> ${{guia.zonas[0]}}<br>✈️ <b>Cotizar en Telegram:</b> comando <code>${{guia.cmd_vuelo}}</code> o <code>/vuelos ${{guia.ciudad.split(' ')[0]}}</code>.`,
+            respuesta: `${{guia.icono}} <b>Guía Flash · ${{guia.ciudad}} (${{guia.pais}}):</b><br>${{guia.resumen}}<br><br>📍 <b>Imperdibles:</b><br>• ${{guia.puntos.slice(0, 2).join('<br>• ')}}<br><br>🏨 <b>Mejor zona:</b> ${{guia.zonas[0]}}<br>🔔 <b>Alertas de bajas de precio en Telegram:</b> comando <code>${{guia.cmd_vuelo}}</code>.`,
             quick_replies: [`🏨 ¿Dónde alojarse en ${{guia.ciudad}}?`, `🚆 Transporte en ${{guia.ciudad}}`, `🗺️ Escapadas desde ${{guia.ciudad}}`]
           }};
         }}
@@ -3654,10 +3654,10 @@ def generar_html_guia(guia: dict) -> str:
                style="background-color: #003b95;">
               <span>🏨</span> Ver Hoteles en {zona}
             </a>
-            <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" 
+            <a href="/vuelos?destino={guia['id']}"
                class="inline-flex items-center justify-center gap-1 text-xs font-bold py-2.5 px-3 rounded-xl transition-all border dark:border-slate-700 border-slate-200 dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 hover:text-blue-600"
-               title="Consultar tarifas en Telegram">
-              <span>📱</span> Rolli
+               title="Buscar vuelos a {guia['ciudad']} en el Radar Web">
+              <span>✈️</span> Vuelos
             </a>
           </div>
         </div>"""
@@ -3927,8 +3927,8 @@ def generar_html_guia(guia: dict) -> str:
             <div class="dark:text-slate-200 text-slate-800 font-semibold mt-0.5">{meta['moneda']}</div>
           </div>
           <div>
-            <div class="text-[11px] text-slate-500 uppercase font-bold tracking-wider">Comando Telegram</div>
-            <div class="font-mono font-bold mt-0.5" style="color: var(--brand-primary);">{cmd_vuelo}</div>
+            <div class="text-[11px] text-slate-500 uppercase font-bold tracking-wider">Alerta Telegram</div>
+            <div class="font-mono font-bold mt-0.5" style="color: var(--brand-primary);">🔔 {cmd_vuelo}</div>
           </div>
         </div>
       </div>
@@ -4280,9 +4280,8 @@ def generar_indice_guias(guias: list) -> str:
             </div>
             <div class="pt-4 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between gap-2 theme-transition">
               <div class="flex items-center gap-1.5">
-                <span class="text-xs dark:text-slate-500 text-slate-500 font-mono hidden sm:inline">{g['cmd_vuelo']}</span>
                 <a href="/vuelos?destino={g['id']}" title="Buscar vuelos a {g['ciudad']} en el Radar" class="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full border border-blue-500/30 text-blue-600 hover:bg-blue-600 hover:text-white transition-all">
-                  <span>✈️</span> Vuelos
+                  <span>✈️</span> Ver Vuelos
                 </a>
               </div>
               <a href="/guias/{g['slug']}" class="inline-flex items-center gap-1 text-xs font-bold transition-all hover:translate-x-0.5 shrink-0" style="color: var(--brand-primary);">

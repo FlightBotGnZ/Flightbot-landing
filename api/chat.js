@@ -126,7 +126,7 @@ const DESTINOS_KNOWLEDGE = {
   ushuaia: {
     aliases: ['ushuaia', 'tierra del fuego', 'fin del mundo', 'ush'],
     nombre: 'Ushuaia & Tierra del Fuego',
-    vuelos: 'Tarifa base US$ 130, récord US$ 85 (vuelos directos vía Aerolíneas Argentinas, JetSMART y Flybondi a USH).',
+    vuelos: 'Tarifa base US$ 130, récord US$ 85 (vuelos directos vía Aerolíneas Argentinas y JetSMART a USH).',
     resorts: 'Arakur Ushuaia Resort & Spa (Cerro Alarkén), Las Hayas Resort, Los Cauquenes y hoteles céntricos sobre Av. San Martín.',
     zonas: 'Centro de Ushuaia (caminable, restaurantes de centolla y cordero) y zona alta / montaña (vistas panorámicas al Canal Beagle).',
     ruta_auto: 'Gran Travesía Austral por RN 3: ~3.080 km. Se divide obligatoriamente en 3 días (Noche 1 en Puerto Madryn/Las Grutas, Noche 2 en Comodoro Rivadavia/San Julián). Requiere cruzar a Chile en Paso Integración Austral (Monte Aymond), tomar la barcaza TABSA en Primera Angostura cruzando el Estrecho de Magallanes y reingresar por Paso San Sebastián.',
@@ -167,7 +167,7 @@ const DESTINOS_KNOWLEDGE = {
   rio: {
     aliases: ['rio', 'río', 'rio de janeiro', 'río de janeiro', 'copacabana', 'ipanema', 'gig', 'sdu'],
     nombre: 'Río de Janeiro, Brasil',
-    vuelos: 'Tarifa base US$ 320, récord US$ 230 (vuelos directos diarios vía Aerolíneas, Gol, Flybondi, JetSMART).',
+    vuelos: 'Tarifa base US$ 320, récord US$ 230 (vuelos directos diarios vía Aerolíneas Argentinas, Gol, JetSMART y Emirates).',
     resorts: 'Grand Palladium Imbassaí en Bahía; en Río hoteles urbanos frente al mar en Copacabana, Ipanema y Leblon.',
     zonas: 'Ipanema y Leblon (seguras y elegantes), Copacabana (icónica) y Barra da Tijuca.',
     requisitos: 'DNI argentino o Pasaporte en regla.'
@@ -207,7 +207,7 @@ const DESTINOS_KNOWLEDGE = {
   bariloche: {
     aliases: ['bariloche', 'san carlos de bariloche', 'nahuel huapi', 'catedral', 'brc'],
     nombre: 'San Carlos de Bariloche, Río Negro',
-    vuelos: 'Tarifa base US$ 120, récord US$ 75 (Aerolíneas Argentinas, Flybondi, JetSMART).',
+    vuelos: 'Tarifa base US$ 120, récord US$ 75 (Aerolíneas Argentinas y JetSMART).',
     resorts: 'Hoteles en el Centro cívico y sobre Av. Bustillo (km 1 al 25 con vista al lago).',
     zonas: 'Centro (práctico sin auto) y Bustillo / Llao Llao (naturaleza y descanso).',
     requisitos: 'DNI argentino vigente.'
