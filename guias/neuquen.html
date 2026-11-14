@@ -12,7 +12,7 @@
   <meta property="og:type" content="article">
   <meta property="og:title" content="Guía de Viaje a Neuquén & Alto Valle 2026: Qué Ver, Transporte y Alojamiento">
   <meta property="og:description" content="Portal de la Patagonia Norte: bodegas australes en San Patricio del Chañar, la Ruta de los Dinosaurios en El Chocón y puerta de acceso a los Andes, lagos y volcanes neuquinos.">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1633987073919-115267fafe69?auto=format&fit=crop&w=1200&q=80">
   <meta property="article:published_time" content="2026-10-15T09:00:00+00:00">
   <meta property="article:modified_time" content="2026-10-21T08:00:00+00:00">
   <meta property="article:section" content="Ruta del Vino Patagónico, Dinosaurios & Valles Frutales">
@@ -31,7 +31,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <script src="/js/theme.js" defer></script>
   <script src="/js/auth.js" defer></script>
   <script>
     tailwind.config = {
@@ -47,6 +46,11 @@
 
     // Inicialización inmediata antes del renderizado para evitar FOUC
     (function() {
+      if (!localStorage.getItem('fb_theme_cobalt_v1')) {
+        localStorage.setItem('fb_theme_mode', 'light');
+        localStorage.setItem('fb_theme_color', 'blue');
+        localStorage.setItem('fb_theme_cobalt_v1', '1');
+      }
       const savedColor = localStorage.getItem('fb_theme_color') || 'blue';
       const savedMode = localStorage.getItem('fb_theme_mode') || 'light';
       document.documentElement.setAttribute('data-color', savedColor);
@@ -173,7 +177,7 @@
   "headline": "Guía de Viaje a Neuquén & Alto Valle 2026: Qué Ver, Transporte, Barrios y Ahorro",
   "description": "Portal de la Patagonia Norte: bodegas australes en San Patricio del Chañar, la Ruta de los Dinosaurios en El Chocón y puerta de acceso a los Andes, lagos y volcanes neuquinos.",
   "image": [
-    "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=1200&q=80"
+    "https://images.unsplash.com/photo-1633987073919-115267fafe69?auto=format&fit=crop&w=1200&q=80"
   ],
   "datePublished": "2026-10-15T09:00:00+00:00",
   "dateModified": "2026-10-21T08:00:00+00:00",
@@ -197,7 +201,6 @@
   <!-- Vercel Web Analytics (mismo dominio, compatible con CSP script-src 'self') -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <script>(function(){try{if(!localStorage.getItem('fb_theme_cobalt_v1')){localStorage.setItem('fb_theme_mode','light');localStorage.setItem('fb_theme_color','blue');localStorage.setItem('fb_theme_cobalt_v1','1');}var m=localStorage.getItem('fb_theme_mode')||'light';if(m==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('data-color','blue');}catch(_){}})();</script>
 </head>
 <body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white theme-transition">
 
@@ -322,24 +325,31 @@
                 </linearGradient>
               </defs>
             </svg>
-            <span id="nav-tokens-display" class="font-bold">(4)</span>
+            <span id="nav-tokens-display" class="font-bold">4<span class="hidden sm:inline">&nbsp;fichas</span></span>
           </button>
         </div>
 
-        <!-- B. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
+        <!-- B. Selector de Moneda: Diseño de cápsula compacta (NATIVO | ARS | USD) -->
+        <div class="hidden md:inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
+          <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs">NATIVO</button>
+          <button type="button" id="btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
+          <button type="button" id="btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
+        </div>
+
+        <!-- C. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
           <span id="theme-mode-icon">☀️</span>
         </button>
 
-        <!-- C. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
+        <!-- D. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
            class="hidden sm:inline-flex h-9 px-3 rounded-lg bg-[#229ED9] hover:bg-[#1E88E5] text-white text-xs font-semibold items-center gap-1.5 shadow-sm transition-all shrink-0"
            title="Chateá conmigo en Telegram para alertas instantáneas">
           <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
           </svg>
-          <span>Telegram</span>
+          <span class="hidden sm:inline">Telegram</span>
         </a>
 
         <!-- E. Botón Menú Móvil (lg:hidden h-9 w-9) -->
@@ -475,6 +485,17 @@
           <span>Abrir Rolli en Telegram (@GnZFlightBot)</span>
         </a>
 
+                <!-- Fila de Apariencia / Modo Oscuro Móvil -->
+        <div class="flex items-center justify-between pt-1">
+          <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Apariencia:</span>
+          <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="m-theme-mode-btn"
+                  class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/80 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all cursor-pointer">
+            <span id="m-theme-mode-icon">☀️</span>
+            <span id="m-theme-mode-text">Modo Claro</span>
+          </button>
+        </div>
+
+        <!-- Fila de Moneda Móvil -->
         <div class="flex items-center justify-between pt-1">
           <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Moneda de referencia:</span>
           <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold">
@@ -502,7 +523,7 @@
     <!-- Hero Card de la Guía Editorial -->
     <div class="relative rounded-3xl overflow-hidden border dark:border-slate-800 border-slate-200 dark:bg-slate-900 bg-white mb-12 shadow-2xl theme-transition">
       <div class="h-80 sm:h-96 relative">
-        <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=1200&q=80" alt="Neuquén & Alto Valle" class="w-full h-full object-cover">
+        <img src="https://images.unsplash.com/photo-1633987073919-115267fafe69?auto=format&fit=crop&w=1200&q=80" alt="Neuquén & Alto Valle" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-gradient-to-t dark:from-slate-900 dark:via-slate-900/60 from-slate-950 via-slate-950/40 to-transparent"></div>
         <div class="absolute top-6 left-6">
           <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-700 text-xs font-bold text-white shadow-lg">
@@ -1372,24 +1393,6 @@
           <strong class="dark:text-slate-300 text-slate-900">Divulgación de Afiliación (Affiliate Disclosure):</strong> 
           FlightBot participa en programas de marketing de afiliados, incluyendo Travelpayouts y Booking.com. Algunos de los enlaces sugeridos generan una pequeña comisión para mantener nuestra infraestructura y radares 24/7 sin ningún costo extra para el viajero. Toda recomendación de transporte y alojamiento es editorial, objetiva e independiente.
         </p>
-      </div>
-
-      <!-- Barra de Moneda y Tipo de Cambio de Referencia en el Pie de Página -->
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 py-4 mb-6 border-y dark:border-slate-800/80 border-slate-200/80">
-        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
-          <span class="text-xs font-semibold dark:text-slate-300 text-slate-700 flex items-center gap-1.5">
-            <span>💱</span> Moneda de visualización:
-          </span>
-          <div class="inline-flex p-1 bg-slate-200/70 dark:bg-slate-900 rounded-lg text-xs font-semibold border dark:border-slate-800 border-slate-300/60" title="Seleccionar moneda para precios del sitio">
-            <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
-            <button type="button" id="footer-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">ARS</button>
-            <button type="button" id="footer-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">USD</button>
-          </div>
-        </div>
-        <div class="text-[11px] dark:text-slate-400 text-slate-500 flex items-center gap-1.5">
-          <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-          <span>Cotización ref. Dólar MEP / Turístico: <strong class="dark:text-slate-200 text-slate-700 font-semibold">$1.350 ARS</strong></span>
-        </div>
       </div>
 
       <div class="flex flex-col sm:flex-row items-center justify-between text-slate-500 gap-4">
