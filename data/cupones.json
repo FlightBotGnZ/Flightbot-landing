@@ -1,23 +1,5 @@
 [
   {
-    "id": "arajet",
-    "portal": "Arajet",
-    "emoji": "🎃",
-    "badge": "50% OFF",
-    "titulo": "Especial Halloween",
-    "descripcion": "Punta Cana, Cancún y Santo Domingo",
-    "codigo": "HALLOTRIP",
-    "colorTheme": "purple",
-    "colorBorder": "border-purple-500/20",
-    "colorText": "text-purple-600 dark:text-purple-400",
-    "bgBadge": "bg-purple-500/10",
-    "gradienteBtn": "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)",
-    "btnTexto": "Aplicar en Arajet",
-    "url": "https://www.arajet.com/es",
-    "activo": true,
-    "actualizado_en": "2026-10-28"
-  },
-  {
     "id": "jetsmart",
     "portal": "JetSMART",
     "emoji": "✈️",

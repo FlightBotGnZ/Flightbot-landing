@@ -809,54 +809,19 @@
     setInterval(actualizarCuentaRegresiva, 1000);
     actualizarCuentaRegresiva();
 
-    // 3. Cupones Activos & Copiado en 1 Clic
-    const CUPONES_DEFAULT = [
-      {
-        portal: "Arajet",
-        badge: "50% OFF",
-        titulo: "Especial Caribe",
-        desc: "Punta Cana, Cancún y Santo Domingo",
-        codigo: "HALLOTRIP",
-        url: "https://www.arajet.com/es"
-      },
-      {
-        portal: "JetSMART",
-        badge: "35% OFF",
-        titulo: "Cabotaje Nacional",
-        desc: "Bariloche, Mendoza, Iguazú y Córdoba",
-        codigo: "VUELOJETS",
-        url: "https://jetsmart.com/ar/es/"
-      },
-      {
-        portal: "Aerolíneas Argentinas",
-        badge: "12 Cuotas",
-        titulo: "Cuotas BNA Sin Interés",
-        desc: "En vuelos directos por Argentina",
-        codigo: "AEROCUOTAS",
-        url: "https://www.aerolineas.com.ar"
-      },
-      {
-        portal: "Despegar",
-        badge: "15% OFF",
-        titulo: "Vuelo + Hospedaje",
-        desc: "Paquetes combinados en Sudamérica",
-        codigo: "DESPEGARVIAJA",
-        url: "https://www.despegar.com.ar"
-      },
-      {
-        portal: "Booking.com",
-        badge: "20% OFF",
-        titulo: "Genius Rewards",
-        desc: "Descuento en hoteles recomendados",
-        codigo: "GENIUSDEAL",
-        url: "https://www.booking.com"
-      }
-    ];
+    // 3. Cupones Activos & Copiado en 1 Clic (sin códigos vencidos hardcodeados)
+    const CUPONES_DEFAULT = [];
 
     function renderCupones() {
       const container = document.getElementById('cupones-grid');
       if (!container) return;
-      const data = (window.CUPONES_DATA && window.CUPONES_DATA.length) ? window.CUPONES_DATA : CUPONES_DEFAULT;
+      const data = ((window.CUPONES_DATA && window.CUPONES_DATA.length) ? window.CUPONES_DATA : CUPONES_DEFAULT)
+        .filter(c => c && c.activo !== false && c.codigo);
+
+      if (!data.length) {
+        container.innerHTML = '<div class="col-span-full text-center py-6 text-xs text-slate-500 dark:text-slate-400">No hay cupones promocionales activos detectados en este momento.</div>';
+        return;
+      }
 
       container.innerHTML = data.map((c, i) => `
         <div class="p-4 rounded-2xl dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200/90 shadow-xs hover:border-blue-500/40 transition-all flex flex-col justify-between group">
@@ -923,9 +888,71 @@
     const NOMBRES_MESES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     const NOMBRES_CORTOS = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 
-    // Motor de Horizontes Temporales: 2 salidas por mes (próximos 3 meses) + 1 a 180 días con auto-rollover
+    // Motor de Horizontes Temporales: prioriza salidas reales de Aviasales (/api/vuelos)
     function calcularHorizontesDestino(dest) {
-      // 1. Si el destino ya cuenta con ofertas reales cazadas de Aviasales, utilizarlas directamente
+      // 1. Si el destino ya cuenta con salidas reales de Aviasales desde SQLite, usarlas directamente sin multiplicar precios
+      if (dest && Array.isArray(dest.salidas_reales) && dest.salidas_reales.length > 0) {
+        const hoy = new Date();
+        let startYear = hoy.getFullYear();
+        let startMonth = hoy.getMonth();
+        const ultimoDiaMesActual = new Date(startYear, startMonth + 1, 0).getDate();
+        if (hoy.getDate() >= ultimoDiaMesActual - 4) {
+          startMonth += 1;
+          if (startMonth > 11) { startMonth = 0; startYear += 1; }
+        }
+        const rel = dest.oportunidad_relampago || {};
+        const baseAhorroNum = parseInt(rel.ahorro_porcentaje) || (dest.es_cabotaje ? 25 : 20);
+        const reales = dest.salidas_reales.map((s, idx) => ({
+          ...s,
+          opcion: s.opcion || (idx + 1),
+          etiqueta_opcion: s.etiqueta_opcion || (idx === 0 ? 'Mejor Tarifa' : `Salida ${String.fromCharCode(65 + idx)}`)
+        }));
+
+        const bucketMes = (mTarget, yTarget) => reales.filter(s => {
+          const d = new Date(`${s.fecha_ida}T00:00:00`);
+          return d.getMonth() === mTarget && d.getFullYear() === yTarget;
+        }).slice(0, 2);
+
+        const meses = [];
+        for (let i = 0; i < 3; i++) {
+          let y = startYear;
+          let m = startMonth + i;
+          if (m > 11) { y += Math.floor(m / 12); m = m % 12; }
+          let salidasMes = bucketMes(m, y);
+          if (!salidasMes.length) {
+            salidasMes = reales.slice(i * 2, i * 2 + 2);
+            if (!salidasMes.length) salidasMes = reales.slice(0, 2);
+          }
+          meses.push({
+            key: `mes${i + 1}`,
+            nombre: `${NOMBRES_MESES[m]} ${y}`,
+            nombre_corto: NOMBRES_CORTOS[m],
+            año: y,
+            ahorro_porcentaje: `${baseAhorroNum}% OFF`,
+            ahorro_pct_num: baseAhorroNum,
+            salidas: salidasMes
+          });
+        }
+
+        const lejanas = reales.filter(s => (s.dias_restantes || 0) >= 120);
+        const earlyList = lejanas.length ? lejanas.slice(0, 1) : [reales[reales.length - 1]];
+        const earlyBird = {
+          key: 'mes6',
+          nombre: 'Largo Plazo',
+          nombre_corto: '6 Meses',
+          año: startYear,
+          ahorro_porcentaje: `${baseAhorroNum}% OFF`,
+          ahorro_pct_num: baseAhorroNum,
+          salidas: earlyList
+        };
+        return {
+          meses,
+          early_bird: earlyBird,
+          mapa_tabs: { mes1: meses[0], mes2: meses[1], mes3: meses[2], mes6: earlyBird }
+        };
+      }
+
+      // 2. Si el destino ya cuenta con ofertas reales cazadas de Aviasales en JSON, utilizarlas directamente
       if (dest && dest.salidas_reales_cazadas && dest.salidas_reales_cazadas.meses && dest.salidas_reales_cazadas.meses.length === 3) {
         return dest.salidas_reales_cazadas;
       }
@@ -1309,17 +1336,20 @@
         const cuposRestantes = 2 + (hashChar % 3);
         const pctReservado = 76 + ((hashChar * 3) % 20);
 
-        // 3. Cupón Aplicable 1-Clic
-        let cuponInfo = null;
+        // 3. Cupón Aplicable 1-Clic (solo si existe un cupón activo real en CUPONES_DATA)
+        const cuponesActivos = (window.CUPONES_DATA || []).filter(c => c && c.activo !== false && c.codigo);
+        const buscarCupon = (id) => cuponesActivos.find(c => c.id === id);
+        let cuponMatch = null;
         if (dest.es_cabotaje) {
-          cuponInfo = { portal: 'JetSMART', codigo: 'VUELOJETS', beneficio: '35% OFF' };
+          cuponMatch = buscarCupon('jetsmart');
         } else if (['PUJ', 'CUN', 'AUA', 'HAV'].includes(dest.iata) || dest.categoria_region === 'caribe_usa') {
-          cuponInfo = { portal: 'Arajet', codigo: 'HALLOTRIP', beneficio: '50% OFF' };
+          cuponMatch = buscarCupon('arajet');
         } else if (dest.categoria_region === 'brasil') {
-          cuponInfo = { portal: 'Despegar', codigo: 'DESPEGARVIAJA', beneficio: '15% OFF' };
+          cuponMatch = buscarCupon('despegar');
         } else {
-          cuponInfo = { portal: 'Booking', codigo: 'GENIUSDEAL', beneficio: '20% OFF' };
+          cuponMatch = buscarCupon('booking');
         }
+        const cuponInfo = cuponMatch ? { portal: cuponMatch.portal, codigo: cuponMatch.codigo, beneficio: cuponMatch.badge } : null;
 
         // Renderizado de las salidas del mes seleccionado (2 salidas para mes 1/2/3, 1 para 6 meses)
         const salidasHtml = salidasMostradas.map(salida => {
@@ -1459,7 +1489,7 @@
 
             </div>
 
-            <!-- Footer Bento: Cupón 1-Clic -->
+            ${cuponInfo ? `<!-- Footer Bento: Cupón 1-Clic -->
             <div class="p-5 pt-0">
               <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -1473,7 +1503,7 @@
                   Copiar
                 </button>
               </div>
-            </div>
+            </div>` : ''}
 
           </div>
         `;
@@ -1516,9 +1546,24 @@
     }
 
     // Inicialización al cargar la página
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
       renderCupones();
       renderVuelos();
+
+      // Sincronizar en vivo con /api/vuelos (SQLite + Aviasales Radar 3h)
+      try {
+        const res = await fetch('/api/vuelos', { cache: 'no-store' });
+        if (res.ok) {
+          const raw = await res.json();
+          const destinosRemotos = Array.isArray(raw) ? raw : (raw && Array.isArray(raw.destinos) ? raw.destinos : null);
+          if (destinosRemotos && destinosRemotos.length > 0) {
+            window.RADAR_DATA = destinosRemotos;
+            renderVuelos();
+          }
+        }
+      } catch (errSync) {
+        console.warn('[FlightBot Relámpago] No se pudo sincronizar /api/vuelos:', errSync);
+      }
 
       // Año dinámico
       const y = new Date().getFullYear();
