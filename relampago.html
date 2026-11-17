@@ -890,96 +890,133 @@
 
     // Motor de Horizontes Temporales: prioriza salidas reales de Aviasales (/api/vuelos)
     function calcularHorizontesDestino(dest) {
-      // 1. Si el destino ya cuenta con salidas reales de Aviasales desde SQLite, usarlas directamente sin multiplicar precios
-      if (dest && Array.isArray(dest.salidas_reales) && dest.salidas_reales.length > 0) {
-        const hoy = new Date();
-        let startYear = hoy.getFullYear();
-        let startMonth = hoy.getMonth();
-        const ultimoDiaMesActual = new Date(startYear, startMonth + 1, 0).getDate();
-        if (hoy.getDate() >= ultimoDiaMesActual - 4) {
-          startMonth += 1;
-          if (startMonth > 11) { startMonth = 0; startYear += 1; }
-        }
-        const rel = dest.oportunidad_relampago || {};
-        const baseAhorroNum = parseInt(rel.ahorro_porcentaje) || (dest.es_cabotaje ? 25 : 20);
-        const reales = dest.salidas_reales.map((s, idx) => ({
+      const hoy = new Date();
+      hoy.setHours(0, 0, 0, 0);
+      const fechaMinima = new Date(hoy.getTime() + 3 * 24 * 60 * 60 * 1000);
+      const toLocalIso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      const fechaMinimaIso = toLocalIso(fechaMinima);
+
+      let startYear = hoy.getFullYear();
+      let startMonth = hoy.getMonth();
+      const ultimoDiaMesActual = new Date(startYear, startMonth + 1, 0).getDate();
+      if (hoy.getDate() >= ultimoDiaMesActual - 4) {
+        startMonth += 1;
+        if (startMonth > 11) { startMonth = 0; startYear += 1; }
+      }
+
+      const traducirMesesTexto = (txt) => String(txt || '')
+        .replace(/\bJan\b/g, 'Ene')
+        .replace(/\bApr\b/g, 'Abr')
+        .replace(/\bAug\b/g, 'Ago')
+        .replace(/\bDec\b/g, 'Dic');
+
+      const normalizarSalidaVigente = (s, idxFallback = 0) => {
+        const idaDate = new Date(`${s.fecha_ida}T00:00:00`);
+        const diasCalc = Number.isNaN(idaDate.getTime())
+          ? (s.dias_restantes || 5)
+          : Math.max(1, Math.round((idaDate - hoy) / (24 * 60 * 60 * 1000)));
+        return {
           ...s,
-          opcion: s.opcion || (idx + 1),
-          etiqueta_opcion: s.etiqueta_opcion || (idx === 0 ? 'Mejor Tarifa' : `Salida ${String.fromCharCode(65 + idx)}`)
-        }));
+          opcion: s.opcion || (idxFallback + 1),
+          etiqueta_opcion: s.etiqueta_opcion || (idxFallback === 0 ? 'Mejor Tarifa' : `Salida ${String.fromCharCode(65 + idxFallback)}`),
+          fechas_texto: traducirMesesTexto(s.fechas_texto),
+          dias_restantes: diasCalc
+        };
+      };
 
-        const bucketMes = (mTarget, yTarget) => reales.filter(s => {
-          const d = new Date(`${s.fecha_ida}T00:00:00`);
-          return d.getMonth() === mTarget && d.getFullYear() === yTarget;
-        }).slice(0, 2);
+      // 1. Si el destino ya cuenta con salidas reales de Aviasales desde SQLite, filtrar vigentes y recalcular días
+      if (dest && Array.isArray(dest.salidas_reales) && dest.salidas_reales.length > 0) {
+        const reales = dest.salidas_reales
+          .filter(s => s && s.fecha_ida && s.fecha_ida >= fechaMinimaIso)
+          .map((s, idx) => normalizarSalidaVigente(s, idx));
 
-        const meses = [];
-        for (let i = 0; i < 3; i++) {
-          let y = startYear;
-          let m = startMonth + i;
-          if (m > 11) { y += Math.floor(m / 12); m = m % 12; }
-          let salidasMes = bucketMes(m, y);
-          if (!salidasMes.length) {
-            salidasMes = reales.slice(i * 2, i * 2 + 2);
-            if (!salidasMes.length) salidasMes = reales.slice(0, 2);
+        if (reales.length >= 2) {
+          const rel = dest.oportunidad_relampago || {};
+          const baseAhorroNum = parseInt(rel.ahorro_porcentaje) || (dest.es_cabotaje ? 25 : 20);
+
+          const bucketMes = (mTarget, yTarget) => reales.filter(s => {
+            const d = new Date(`${s.fecha_ida}T00:00:00`);
+            return d.getMonth() === mTarget && d.getFullYear() === yTarget;
+          }).slice(0, 2);
+
+          const meses = [];
+          for (let i = 0; i < 3; i++) {
+            let y = startYear;
+            let m = startMonth + i;
+            if (m > 11) { y += Math.floor(m / 12); m = m % 12; }
+            let salidasMes = bucketMes(m, y);
+            if (!salidasMes.length) {
+              salidasMes = reales.slice(i * 2, i * 2 + 2);
+              if (!salidasMes.length) salidasMes = reales.slice(0, 2);
+            }
+            meses.push({
+              key: `mes${i + 1}`,
+              nombre: `${NOMBRES_MESES[m]} ${y}`,
+              nombre_corto: NOMBRES_CORTOS[m],
+              año: y,
+              ahorro_porcentaje: `${baseAhorroNum}% OFF`,
+              ahorro_pct_num: baseAhorroNum,
+              salidas: salidasMes
+            });
           }
-          meses.push({
-            key: `mes${i + 1}`,
-            nombre: `${NOMBRES_MESES[m]} ${y}`,
-            nombre_corto: NOMBRES_CORTOS[m],
-            año: y,
+
+          const lejanas = reales.filter(s => (s.dias_restantes || 0) >= 120);
+          const earlyList = lejanas.length ? lejanas.slice(0, 1) : [reales[reales.length - 1]];
+          const earlyBird = {
+            key: 'mes6',
+            nombre: 'Largo Plazo',
+            nombre_corto: '6 Meses',
+            año: startYear,
             ahorro_porcentaje: `${baseAhorroNum}% OFF`,
             ahorro_pct_num: baseAhorroNum,
-            salidas: salidasMes
-          });
+            salidas: earlyList
+          };
+          return {
+            meses,
+            early_bird: earlyBird,
+            mapa_tabs: { mes1: meses[0], mes2: meses[1], mes3: meses[2], mes6: earlyBird }
+          };
         }
-
-        const lejanas = reales.filter(s => (s.dias_restantes || 0) >= 120);
-        const earlyList = lejanas.length ? lejanas.slice(0, 1) : [reales[reales.length - 1]];
-        const earlyBird = {
-          key: 'mes6',
-          nombre: 'Largo Plazo',
-          nombre_corto: '6 Meses',
-          año: startYear,
-          ahorro_porcentaje: `${baseAhorroNum}% OFF`,
-          ahorro_pct_num: baseAhorroNum,
-          salidas: earlyList
-        };
-        return {
-          meses,
-          early_bird: earlyBird,
-          mapa_tabs: { mes1: meses[0], mes2: meses[1], mes3: meses[2], mes6: earlyBird }
-        };
       }
 
-      // 2. Si el destino ya cuenta con ofertas reales cazadas de Aviasales en JSON, utilizarlas directamente
+      // 2. Si el destino ya cuenta con ofertas reales cazadas de Aviasales en JSON, validar mes objetivo y fechas vigentes
       if (dest && dest.salidas_reales_cazadas && dest.salidas_reales_cazadas.meses && dest.salidas_reales_cazadas.meses.length === 3) {
-        return dest.salidas_reales_cazadas;
+        const caz = dest.salidas_reales_cazadas;
+        const mesObjetivoEsperado = `${NOMBRES_MESES[startMonth]} ${startYear}`;
+        const primerMesCoincide = caz.meses[0] && (caz.meses[0].nombre === mesObjetivoEsperado || caz.meses[0].nombre_mes === mesObjetivoEsperado);
+        const todasVigentes = primerMesCoincide && caz.meses.every(m =>
+          Array.isArray(m.salidas) && m.salidas.length > 0 && m.salidas.every(s => s.fecha_ida && s.fecha_ida >= fechaMinimaIso)
+        );
+        const eb = caz.early_bird;
+        const ebVigente = eb && Array.isArray(eb.salidas) && eb.salidas.length > 0 && eb.salidas.every(s => s.fecha_ida && s.fecha_ida >= fechaMinimaIso);
+        if (todasVigentes && ebVigente) {
+          const mesesNorm = caz.meses.map(m => ({
+            ...m,
+            salidas: m.salidas.map((s, idx) => normalizarSalidaVigente(s, idx))
+          }));
+          const ebNorm = {
+            ...eb,
+            salidas: eb.salidas.map((s, idx) => normalizarSalidaVigente(s, idx))
+          };
+          return {
+            meses: mesesNorm,
+            early_bird: ebNorm,
+            mapa_tabs: {
+              mes1: mesesNorm[0],
+              mes2: mesesNorm[1],
+              mes3: mesesNorm[2],
+              mes6: ebNorm
+            }
+          };
+        }
       }
 
-      const hoy = new Date();
       const noches = (dest.vuelos && dest.vuelos[0] && dest.vuelos[0].noches) || (dest.es_cabotaje ? 5 : (dest.categoria_region === 'europa_mundo' ? 14 : 7));
       const iata = (dest.iata || 'BUE').toUpperCase();
       const esCabotaje = Boolean(dest.es_cabotaje);
       const rel = dest.oportunidad_relampago || {};
       const baseArs = Number(rel.precio_ars) || 139240;
       const baseUsd = Number(rel.precio_usd_num) || 103;
-
-      let startYear = hoy.getFullYear();
-      let startMonth = hoy.getMonth(); // 0-indexed
-
-      // Umbral mínimo operativo: 5 días hacia adelante
-      const fechaMinima = new Date(hoy.getTime() + 5 * 24 * 60 * 60 * 1000);
-
-      // Si hoy ya pasó el día 25 del mes, el mes actual ya no tiene cupos viables: rueda al mes siguiente
-      const ultimoDiaMesActual = new Date(startYear, startMonth + 1, 0).getDate();
-      if (hoy.getDate() >= ultimoDiaMesActual - 4) {
-        startMonth += 1;
-        if (startMonth > 11) {
-          startMonth = 0;
-          startYear += 1;
-        }
-      }
 
       const meses = [];
       const factores = [0.95, 1.05, 1.12]; // Mes 1: Last-minute (-35%), Mes 2: Oportunidad (-25%), Mes 3: Temporada (-18%)
@@ -1315,7 +1352,7 @@
 
         // 1. Badge de Ahorro Real dinámico actualizado según el mes seleccionado
         const ahorroPctTexto = paqueteTab.ahorro_porcentaje || (rel.ahorro_porcentaje || '25% OFF');
-        const ahorroPctLimpio = ahorroPctTexto.replace(' OFF', '').trim();
+        const ahorroPctLimpio = String(ahorroPctTexto).replace(/%?\s*OFF/ig, '').replace(/%/g, '').trim();
         const ahorroPctNum = parseInt(paqueteTab.ahorro_pct_num || ahorroPctLimpio) || 25;
 
         // Monto de ahorro sincronizado con la tarifa de la salida mostrada
@@ -1365,8 +1402,10 @@
           const fechaIda = salida.fecha_ida;
           const fechaVuelta = salida.fecha_vuelta;
 
-          // Enlaces robustos sin fallas anti-error de Kiwi / Despegar / Booking
-          const urlGf = salida.google_flights_url;
+          // Enlaces robustos sin fallas anti-error de Google Flights / Kiwi / Despegar / Booking
+          const origGf = dest.es_cabotaje ? 'BUE' : 'EZE';
+          const currGf = (currentMoneda === 'USD' || (!dest.es_cabotaje && currentMoneda === 'DEFAULT')) ? 'USD' : 'ARS';
+          const urlGf = salida.google_flights_url || `https://www.google.com/travel/flights?q=Flights%20to%20${iata}%20from%20${origGf}%20on%20${fechaIda}%20through%20${fechaVuelta}&hl=es&curr=${currGf}`;
           const kiwiAffilId = 'travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785';
           const urlKiwi = `https://www.kiwi.com/deep?from=BUE&to=${iata}&departure=${fechaIda}&return=${fechaVuelta}&currency=${dest.es_cabotaje ? 'ARS' : 'USD'}&lang=es&affilid=${kiwiAffilId}`;
           const urlDespegar = `https://www.despegar.com.ar/vuelos/bue/${iata.toLowerCase()}?from=BUE&to=${iata}&departureDate=${fechaIda}&returnDate=${fechaVuelta}`;
