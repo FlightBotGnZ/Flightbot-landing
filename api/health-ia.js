@@ -8,12 +8,43 @@
  * - Auto-detección de modelos deprecados o degradados con alerta a Telegram.
  */
 
+const crypto = require('crypto');
+
 const CANDIDATOS_FLASH = [
   'gemini-3.5-flash-lite',
   'gemini-3.1-flash-lite',
   'gemini-flash-lite-latest',
   'gemini-3-flash-preview'
 ];
+
+// Cooldown en memoria serverless para evitar abuso de cuota Gemini o spam en Telegram
+const HEALTH_COOLDOWN_MS = 60000;
+let ultimoChequeoTs = 0;
+let ultimoPayloadCache = null;
+
+function validarAutorizacionCron(req) {
+  const cronSecret = (process.env.CRON_SECRET || '').trim();
+  const isProd = String(process.env.VERCEL_ENV || '').toLowerCase() === 'production';
+
+  if (!cronSecret) {
+    // En producción sin CRON_SECRET configurado, bloquear acceso público abierto
+    return { autorizado: !isProd, motivo: isProd ? 'CRON_SECRET no configurado en entorno productivo.' : 'ok' };
+  }
+
+  const authHeader = req && req.headers && req.headers.authorization ? String(req.headers.authorization).trim() : '';
+  const match = authHeader.match(/^Bearer\s+(.+)$/i);
+  if (!match) {
+    return { autorizado: false, motivo: 'Cabecera Authorization Bearer requerida.' };
+  }
+
+  const digestEsperado = crypto.createHash('sha256').update(cronSecret).digest();
+  const digestRecibido = crypto.createHash('sha256').update(match[1].trim()).digest();
+  if (!crypto.timingSafeEqual(digestEsperado, digestRecibido)) {
+    return { autorizado: false, motivo: 'Credencial de monitoreo inválida.' };
+  }
+
+  return { autorizado: true, motivo: 'ok' };
+}
 
 async function notificarTelegramFalla(operativos, fallidos, resultados) {
   const token = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
@@ -49,6 +80,27 @@ async function notificarTelegramFalla(operativos, fallidos, resultados) {
 module.exports = async function handler(req, res) {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+
+  if (req.method !== 'GET' && req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method Not Allowed' });
+  }
+
+  const authCheck = validarAutorizacionCron(req);
+  if (!authCheck.autorizado) {
+    return res.status(401).json({
+      status: 'unauthorized',
+      mensaje: authCheck.motivo,
+      timestamp: new Date().toISOString()
+    });
+  }
+
+  const ahora = Date.now();
+  if (ultimoPayloadCache && (ahora - ultimoChequeoTs) < HEALTH_COOLDOWN_MS) {
+    return res.status(ultimoPayloadCache.statusCode).json({
+      ...ultimoPayloadCache.body,
+      cached: true
+    });
+  }
 
   const apiKey = (process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || '').trim();
   if (!apiKey) {
@@ -114,14 +166,19 @@ module.exports = async function handler(req, res) {
     await notificarTelegramFalla(operativos, fallidos, resultados);
   }
 
-  return res.status(statusCode).json({
+  const responseBody = {
     status: estadoGral,
     modelos_operativos: operativos,
     modelos_fallidos: fallidos,
     detalles: resultados,
     modelo_recomendado: operativos[0] || null,
     timestamp: new Date().toISOString()
-  });
+  };
+
+  ultimoChequeoTs = Date.now();
+  ultimoPayloadCache = { statusCode, body: responseBody };
+
+  return res.status(statusCode).json(responseBody);
 };
 
 module.exports.default = module.exports;

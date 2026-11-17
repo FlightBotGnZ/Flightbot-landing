@@ -610,5 +610,315 @@ window.RESORTS_DATA = [
       "apto_bebe": true,
       "distancia_playa": "2-4 min a pie"
     }
+  },
+  {
+    "id": "riu_bambu_punta_cana",
+    "nombre": "Hotel Riu Bambu",
+    "cadena": "RIU",
+    "destino": "Punta Cana (PUJ), Rep. Dominicana",
+    "playa_ubicacion": "Playa Arena Gorda (Punta Cana · Parque Acuático Splash)",
+    "all_inclusive": "Sí (24 hs)",
+    "temporada_texto": "Alta (Ene-Feb · 2027-02-06 al 2027-02-13)",
+    "precio_noche_usd": 251.0,
+    "precio_8n_usd": 2008.0,
+    "precio_lista_8n_usd": 2008.0,
+    "precio_lista_noche_usd": 251.0,
+    "descuento_pct": 0,
+    "cupon_texto": "Tarifa directa monitoreada en Google Hotels",
+    "cupon_codigo": "",
+    "riesgo_sargazo": "Moderado-Alto",
+    "epoca_sargazo": "Mayo a Septiembre (Pico: Junio - Agosto)",
+    "termometro_estacional": {
+      "alta": 251,
+      "media": null,
+      "baja": null
+    },
+    "logistica": {
+      "primera_linea": true,
+      "trencito": false,
+      "apto_bebe": true,
+      "distancia_playa": "Acceso directo frente al mar"
+    },
+    "fuente": "google_hotels",
+    "foto_url": "img/resorts/riu_bambu_punta_cana.jpg"
+  },
+  {
+    "id": "riu_republica_punta_cana",
+    "nombre": "Hotel Riu Republica (Adults Only)",
+    "cadena": "RIU",
+    "destino": "Punta Cana (PUJ), Rep. Dominicana",
+    "playa_ubicacion": "Playa Arena Gorda (Punta Cana · Solo Adultos +18)",
+    "all_inclusive": "Sí (+18 · 24 hs)",
+    "temporada_texto": "Alta (Ene-Feb · 2027-02-06 al 2027-02-13)",
+    "precio_noche_usd": 261.0,
+    "precio_8n_usd": 2088.0,
+    "precio_lista_8n_usd": 2088.0,
+    "precio_lista_noche_usd": 261.0,
+    "descuento_pct": 0,
+    "cupon_texto": "Tarifa directa monitoreada en Google Hotels",
+    "cupon_codigo": "",
+    "riesgo_sargazo": "Moderado-Alto",
+    "epoca_sargazo": "Mayo a Septiembre (Pico: Junio - Agosto)",
+    "termometro_estacional": {
+      "alta": 261,
+      "media": null,
+      "baja": null
+    },
+    "logistica": {
+      "primera_linea": true,
+      "trencito": false,
+      "apto_bebe": false,
+      "distancia_playa": "Acceso directo frente al mar"
+    },
+    "fuente": "google_hotels",
+    "foto_url": "img/resorts/riu_republica_punta_cana.jpg"
+  },
+  {
+    "id": "occidental_caribe_punta_cana",
+    "nombre": "Occidental Caribe - All Inclusive",
+    "cadena": "Barceló",
+    "destino": "Punta Cana (PUJ), Rep. Dominicana",
+    "playa_ubicacion": "Playa Arena Gorda (Punta Cana)",
+    "all_inclusive": "Sí (24 hs)",
+    "temporada_texto": "Alta (Ene-Feb · 2027-02-06 al 2027-02-13)",
+    "precio_noche_usd": 202.0,
+    "precio_8n_usd": 1616.0,
+    "precio_lista_8n_usd": 1616.0,
+    "precio_lista_noche_usd": 202.0,
+    "descuento_pct": 0,
+    "cupon_texto": "Tarifa directa monitoreada en Google Hotels",
+    "cupon_codigo": "",
+    "riesgo_sargazo": "Moderado-Alto",
+    "epoca_sargazo": "Mayo a Septiembre (Pico: Junio - Agosto)",
+    "termometro_estacional": {
+      "alta": 202,
+      "media": 136,
+      "baja": 139
+    },
+    "logistica": {
+      "primera_linea": true,
+      "trencito": false,
+      "apto_bebe": true,
+      "distancia_playa": "Acceso directo a Arena Gorda"
+    },
+    "fuente": "google_hotels",
+    "foto_url": "img/resorts/occidental_caribe_punta_cana.jpg"
+  },
+  {
+    "id": "occidental_punta_cana",
+    "nombre": "Occidental Punta Cana - All Inclusive",
+    "cadena": "Barceló",
+    "destino": "Punta Cana (PUJ), Rep. Dominicana",
+    "playa_ubicacion": "Playa El Cortecito / Bávaro (Punta Cana)",
+    "all_inclusive": "Sí (24 hs)",
+    "temporada_texto": "Temporada Estacional Google Hotels",
+    "precio_noche_usd": 152.0,
+    "precio_8n_usd": 1216.0,
+    "precio_lista_8n_usd": 1216.0,
+    "precio_lista_noche_usd": 152.0,
+    "descuento_pct": 0,
+    "cupon_texto": "Tarifa directa monitoreada en Google Hotels",
+    "cupon_codigo": "",
+    "riesgo_sargazo": "Moderado",
+    "epoca_sargazo": "Mayo a Septiembre (Pico: Junio - Agosto)",
+    "termometro_estacional": {
+      "alta": null,
+      "media": 152,
+      "baja": 172
+    },
+    "logistica": {
+      "primera_linea": true,
+      "trencito": false,
+      "apto_bebe": true,
+      "distancia_playa": "Acceso directo a Playa Bávaro"
+    },
+    "fuente": "google_hotels",
+    "foto_url": "img/resorts/occidental_punta_cana.jpg"
+  },
+  {
+    "id": "barcelo_bavaro_palace",
+    "nombre": "Barceló Bávaro Palace - All Inclusive",
+    "cadena": "Barceló",
+    "destino": "Punta Cana (PUJ), Rep. Dominicana",
+    "playa_ubicacion": "Playa Bávaro (Sector Protegido por Arrecife)",
+    "all_inclusive": "Sí (24 hs)",
+    "temporada_texto": "Alta (Ene-Feb · 2027-02-06 al 2027-02-13)",
+    "precio_noche_usd": 302.0,
+    "precio_8n_usd": 2416.0,
+    "precio_lista_8n_usd": 2416.0,
+    "precio_lista_noche_usd": 302.0,
+    "descuento_pct": 0,
+    "cupon_texto": "Tarifa directa monitoreada en Google Hotels",
+    "cupon_codigo": "",
+    "riesgo_sargazo": "Bajo-Moderado",
+    "epoca_sargazo": "Mayo a Septiembre (Barrera de coral natural)",
+    "termometro_estacional": {
+      "alta": 302,
+      "media": 260,
+      "baja": null
+    },
+    "logistica": {
+      "primera_linea": true,
+      "trencito": true,
+      "apto_bebe": true,
+      "distancia_playa": "Acceso directo a 2 km de playa"
+    },
+    "fuente": "google_hotels",
+    "foto_url": "img/resorts/barcelo_bavaro_palace.jpg"
+  },
+  {
+    "id": "hard_rock_punta_cana",
+    "nombre": "Hard Rock Hotel & Casino Punta Cana",
+    "cadena": "Hard Rock",
+    "destino": "Punta Cana (PUJ), Rep. Dominicana",
+    "playa_ubicacion": "Playa Macao (Punta Cana · Complejo Casino & Golf)",
+    "all_inclusive": "Sí (24 hs)",
+    "temporada_texto": "Alta (Ene-Feb · 2027-02-06 al 2027-02-13)",
+    "precio_noche_usd": 513.0,
+    "precio_8n_usd": 4104.0,
+    "precio_lista_8n_usd": 4104.0,
+    "precio_lista_noche_usd": 513.0,
+    "descuento_pct": 0,
+    "cupon_texto": "Tarifa directa monitoreada en Google Hotels",
+    "cupon_codigo": "",
+    "riesgo_sargazo": "Moderado-Alto",
+    "epoca_sargazo": "Mayo a Septiembre (Pico: Junio - Agosto)",
+    "termometro_estacional": {
+      "alta": 513,
+      "media": 455,
+      "baja": 407
+    },
+    "logistica": {
+      "primera_linea": true,
+      "trencito": true,
+      "apto_bebe": true,
+      "distancia_playa": "Acceso directo + carritos internos"
+    },
+    "fuente": "google_hotels",
+    "foto_url": "img/resorts/hard_rock_punta_cana.jpg"
+  },
+  {
+    "id": "lopesan_costa_bavaro",
+    "nombre": "Lopesan Costa Bávaro Resort, Spa & Casino",
+    "cadena": "Lopesan",
+    "destino": "Punta Cana (PUJ), Rep. Dominicana",
+    "playa_ubicacion": "Playa Bávaro (Punta Cana · The Boulevard)",
+    "all_inclusive": "Sí (24 hs)",
+    "temporada_texto": "Temporada Estacional Google Hotels",
+    "precio_noche_usd": 276.0,
+    "precio_8n_usd": 2208.0,
+    "precio_lista_8n_usd": 2208.0,
+    "precio_lista_noche_usd": 276.0,
+    "descuento_pct": 0,
+    "cupon_texto": "Tarifa directa monitoreada en Google Hotels",
+    "cupon_codigo": "",
+    "riesgo_sargazo": "Moderado",
+    "epoca_sargazo": "Mayo a Septiembre (Pico: Junio - Agosto)",
+    "termometro_estacional": {
+      "alta": null,
+      "media": 276,
+      "baja": 275
+    },
+    "logistica": {
+      "primera_linea": true,
+      "trencito": false,
+      "apto_bebe": true,
+      "distancia_playa": "Acceso directo a Playa Bávaro"
+    },
+    "fuente": "google_hotels",
+    "foto_url": "img/resorts/lopesan_costa_bavaro.jpg"
+  },
+  {
+    "id": "royalton_splash_punta_cana",
+    "nombre": "Royalton Splash Punta Cana",
+    "cadena": "Royalton",
+    "destino": "Punta Cana (PUJ), Rep. Dominicana",
+    "playa_ubicacion": "Playa Arena Gorda (Punta Cana · Parque Acuático)",
+    "all_inclusive": "Sí (24 hs)",
+    "temporada_texto": "Alta (Ene-Feb · 2027-02-06 al 2027-02-13)",
+    "precio_noche_usd": 260.0,
+    "precio_8n_usd": 2080.0,
+    "precio_lista_8n_usd": 2080.0,
+    "precio_lista_noche_usd": 260.0,
+    "descuento_pct": 0,
+    "cupon_texto": "Tarifa directa monitoreada en Google Hotels",
+    "cupon_codigo": "",
+    "riesgo_sargazo": "Moderado-Alto",
+    "epoca_sargazo": "Mayo a Septiembre (Pico: Junio - Agosto)",
+    "termometro_estacional": {
+      "alta": 260,
+      "media": 160,
+      "baja": null
+    },
+    "logistica": {
+      "primera_linea": false,
+      "trencito": true,
+      "apto_bebe": true,
+      "distancia_playa": "5 min en carrito / acceso a Royalton"
+    },
+    "fuente": "google_hotels",
+    "foto_url": "img/resorts/royalton_splash_punta_cana.jpg"
+  },
+  {
+    "id": "melia_caribe_beach_punta_cana",
+    "nombre": "Meliá Caribe Beach Resort",
+    "cadena": "Meliá",
+    "destino": "Punta Cana (PUJ), Rep. Dominicana",
+    "playa_ubicacion": "Playa Bávaro (Punta Cana)",
+    "all_inclusive": "Sí (24 hs)",
+    "temporada_texto": "Temporada Estacional Google Hotels",
+    "precio_noche_usd": 233.0,
+    "precio_8n_usd": 1864.0,
+    "precio_lista_8n_usd": 1864.0,
+    "precio_lista_noche_usd": 233.0,
+    "descuento_pct": 0,
+    "cupon_texto": "Tarifa directa monitoreada en Google Hotels",
+    "cupon_codigo": "",
+    "riesgo_sargazo": "Moderado",
+    "epoca_sargazo": "Mayo a Septiembre (Pico: Junio - Agosto)",
+    "termometro_estacional": {
+      "alta": null,
+      "media": 233,
+      "baja": 191
+    },
+    "logistica": {
+      "primera_linea": true,
+      "trencito": true,
+      "apto_bebe": true,
+      "distancia_playa": "Acceso directo frente al mar"
+    },
+    "fuente": "google_hotels",
+    "foto_url": "img/resorts/melia_caribe_beach_punta_cana.jpg"
+  },
+  {
+    "id": "vista_sol_punta_cana",
+    "nombre": "Vista Sol Punta Cana Beach Resort & Spa",
+    "cadena": "Vista Sol",
+    "destino": "Punta Cana (PUJ), Rep. Dominicana",
+    "playa_ubicacion": "Playa El Cortecito / Bávaro (Punta Cana)",
+    "all_inclusive": "Sí (24 hs)",
+    "temporada_texto": "Alta (Ene-Feb · 2027-02-06 al 2027-02-13)",
+    "precio_noche_usd": 246.0,
+    "precio_8n_usd": 1968.0,
+    "precio_lista_8n_usd": 1968.0,
+    "precio_lista_noche_usd": 246.0,
+    "descuento_pct": 0,
+    "cupon_texto": "Tarifa directa monitoreada en Google Hotels",
+    "cupon_codigo": "",
+    "riesgo_sargazo": "Moderado",
+    "epoca_sargazo": "Mayo a Septiembre (Pico: Junio - Agosto)",
+    "termometro_estacional": {
+      "alta": 246,
+      "media": 153,
+      "baja": null
+    },
+    "logistica": {
+      "primera_linea": true,
+      "trencito": false,
+      "apto_bebe": true,
+      "distancia_playa": "Acceso directo frente al mar"
+    },
+    "fuente": "google_hotels",
+    "foto_url": "img/resorts/vista_sol_punta_cana.jpg"
   }
 ];

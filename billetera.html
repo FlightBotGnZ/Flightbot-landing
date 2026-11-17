@@ -2393,10 +2393,25 @@
 
   <!-- Lógica de Billetera y Motor de Temas -->
   <script>
+    // Helper de fechas dinámicas para tarjetas de demostración
+    const _addDaysIso = (days) => {
+      const d = new Date();
+      d.setDate(d.getDate() + days);
+      return d.toISOString().slice(0, 10);
+    };
+    const _fmtShortEs = (iso) => {
+      const m = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+      const [y, mm, dd] = String(iso).split('-');
+      return `${parseInt(dd, 10)} ${m[Math.max(0, parseInt(mm, 10) - 1)]} ${y}`;
+    };
+
+    const RETENCION_POST_VUELTA_DIAS = 14;
+
     // Datos iniciales de demostración de alta fidelidad
     const DEFAULT_WALLET_DOCS = [
       {
         id: "doc_1",
+        esEjemplo: true,
         tipo: "vuelo",
         titulo: "Air France · EZE ➔ CDG (Vuelo AF 229)",
         categoria: "✈️ Pasajes y Vuelos",
@@ -2407,14 +2422,15 @@
         origen_ciudad: "Buenos Aires (Ezeiza)",
         dest_iata: "CDG",
         dest_ciudad: "París (Charles de Gaulle)",
-        fecha: "2026-11-14",
-        fecha_display: "14 Nov 2026 · 23:55 hs",
+        fecha: _addDaysIso(30),
+        fecha_display: `${_fmtShortEs(_addDaysIso(30))} · 23:55 hs`,
         asiento: "18K (Ventana)",
-        pasajeros: ["Gonzalo M."],
+        pasajeros: ["Viajero Demo"],
         resumen: "Vuelo internacional nocturno directo de 13h 20m. Terminal 1 de Ezeiza. Equipaje de 23 kg despachado incluido."
       },
       {
         id: "doc_2",
+        esEjemplo: true,
         tipo: "vuelo",
         titulo: "JetSMART · AEP ➔ BRC (Vuelo WJ 3410)",
         categoria: "✈️ Pasajes y Vuelos",
@@ -2425,26 +2441,28 @@
         origen_ciudad: "Buenos Aires (Aeroparque)",
         dest_iata: "BRC",
         dest_ciudad: "Bariloche",
-        fecha: "2026-12-12",
-        fecha_display: "12 Dic 2026 · 06:40 hs",
+        fecha: _addDaysIso(45),
+        fecha_display: `${_fmtShortEs(_addDaysIso(45))} · 06:40 hs`,
         asiento: "04A",
-        pasajeros: ["Gonzalo M."],
+        pasajeros: ["Viajero Demo"],
         resumen: "Vuelo directo de cabotaje de 2h 20m. Salida temprana desde Aeroparque. Carry-on incluido."
       },
       {
         id: "doc_3",
+        esEjemplo: true,
         tipo: "hotel",
         titulo: "CitizenM Paris Gare de Lyon · 7 Noches",
         categoria: "🏨 Reservas de Hotel",
         pnr: "BK-9912048",
         hotel_nombre: "CitizenM Paris Gare de Lyon",
         direccion: "Rue de Van Gogh, 12e Arrondissement, París, Francia",
-        fecha: "2026-11-15",
-        fecha_display: "15 Nov 2026 ➔ 22 Nov 2026",
+        fecha: _addDaysIso(31),
+        fecha_display: `${_fmtShortEs(_addDaysIso(31))} ➔ ${_fmtShortEs(_addDaysIso(38))}`,
         resumen: "Habitación King con domótica y vista a la estación. Desayuno buffet incluido y cancelación gratuita."
       },
       {
         id: "doc_4",
+        esEjemplo: true,
         tipo: "asistencia",
         titulo: "Assist Card Cobertura Internacional US$ 150.000",
         categoria: "🩺 Asistencia al Viajero",
@@ -2452,8 +2470,8 @@
         empresa: "Assist Card",
         telefono_emergencia: "+1 (800) 874-2823",
         whatsapp: "+54 9 11 3988-2020",
-        fecha: "2026-11-14",
-        fecha_display: "Vigencia: 14 Nov - 30 Nov 2026",
+        fecha: _addDaysIso(30),
+        fecha_display: `Vigencia: ${_fmtShortEs(_addDaysIso(30))} - ${_fmtShortEs(_addDaysIso(46))}`,
         resumen: "Cobertura médica integral por enfermedad y accidente, pérdida de equipaje y repatriación sin deducible."
       }
     ];
@@ -2461,11 +2479,40 @@
     let walletDocs = [];
     let currentCategoria = 'todos';
 
+    function purgarDocumentosExpirados(lista) {
+      const ahora = Date.now();
+      const limiteMs = RETENCION_POST_VUELTA_DIAS * 24 * 60 * 60 * 1000;
+      let purgados = 0;
+      const vigentes = (Array.isArray(lista) ? lista : []).filter(doc => {
+        if (!doc || doc.esEjemplo || /^doc_[1-4]$/.test(String(doc.id || ''))) return true;
+        const isoMatch = String(doc.fecha_retorno_iso || doc.fecha || '').match(/\d{4}-\d{2}-\d{2}/);
+        let refMs = null;
+        if (isoMatch) {
+          const dt = new Date(isoMatch[0] + 'T23:59:59');
+          if (!Number.isNaN(dt.getTime())) refMs = dt.getTime();
+        } else if (doc.guardadoEn) {
+          const dtG = new Date(doc.guardadoEn);
+          if (!Number.isNaN(dtG.getTime())) refMs = dtG.getTime();
+        }
+        if (refMs !== null && (ahora - refMs) > limiteMs) {
+          purgados++;
+          return false;
+        }
+        return true;
+      });
+      return { vigentes, purgados };
+    }
+
     function cargarDocumentos() {
       const stored = localStorage.getItem('fb_wallet_docs');
       if (stored) {
         try {
-          walletDocs = JSON.parse(stored);
+          const parsed = JSON.parse(stored);
+          const { vigentes, purgados } = purgarDocumentosExpirados(parsed);
+          walletDocs = vigentes;
+          if (purgados > 0) {
+            localStorage.setItem('fb_wallet_docs', JSON.stringify(walletDocs));
+          }
         } catch (e) {
           walletDocs = [...DEFAULT_WALLET_DOCS];
         }
@@ -2770,12 +2817,15 @@
       const fecha = escapeHtmlBilletera(document.getElementById('doc-fecha').value.slice(0, 40));
       const detalles = escapeHtmlBilletera(document.getElementById('doc-detalles').value.slice(0, 300));
 
+      const isoMatch = fecha.match(/\d{4}-\d{2}-\d{2}/);
       const nuevo = {
         id: 'doc_' + Date.now(),
         tipo: tipo,
         titulo: titulo,
         pnr: pnr,
         fecha: fecha,
+        fecha_retorno_iso: isoMatch ? isoMatch[0] : '',
+        guardadoEn: new Date().toISOString(),
         fecha_display: fecha,
         asiento: "General",
         resumen: detalles || "Documento cargado manualmente en la bóveda local.",

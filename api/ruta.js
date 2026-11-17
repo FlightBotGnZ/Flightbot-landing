@@ -3,6 +3,8 @@
  * Cálculo vial y semáforo de rutas argentinas punto a punto.
  */
 
+const { isSafeRemoteHttpsUrl } = require('./_security');
+
 const ALLOWED_ORIGINS = new Set([
   'https://flightbot.com.ar',
   'https://www.flightbot.com.ar',
@@ -32,13 +34,17 @@ module.exports = async function handler(req, res) {
   }
 
   const backendUrl = process.env.BACKEND_API_URL;
-  if (backendUrl && backendUrl.startsWith('https://')) {
+  if (isSafeRemoteHttpsUrl(backendUrl)) {
     try {
-      const q = new URLSearchParams(req.query).toString();
-      const target = `${backendUrl.replace(/\/+$/, '')}/api/ruta?${q}`;
+      const q = new URLSearchParams(req.query || {}).toString();
+      const target = `${backendUrl.trim().replace(/\/+$/, '')}/api/ruta?${q}`;
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 4000);
-      const resp = await fetch(target, { signal: controller.signal });
+      const resp = await fetch(target, {
+        method: 'GET',
+        redirect: 'manual',
+        signal: controller.signal
+      });
       clearTimeout(timeout);
       if (resp.ok) {
         const data = await resp.json();

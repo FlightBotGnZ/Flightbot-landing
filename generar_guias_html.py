@@ -1141,13 +1141,7 @@ def construir_bloque_chatbox_ia(
           '<span class="fb-chat-suggestion text-blue-600 dark:text-blue-400 underline hover:opacity-80 cursor-pointer font-medium" data-prompt="$1">$1</span>'
         );
 
-        // 2. Transformar enlaces externos legítimos (https:// o /guias/) en enlaces seguros
-        escaped = escaped.replace(
-          /&lt;a\s+href=(?:&quot;|&#39;)(https?:\/\/[^&"'\s]+|\/[^&"'\s]+)(?:&quot;|&#39;)[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
-          '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">$2</a>'
-        );
-
-        // 3. Purgar cualquier etiqueta <a> o </a> residual
+        // 2. Purgar cualquier etiqueta <a> o </a> residual (no permitir enlaces externos generados por IA)
         escaped = escaped.replace(/&lt;\/?a[^&gt;]*&gt;/gi, '');
 
         return escaped
@@ -2888,15 +2882,35 @@ def construir_bloque_planificador_rutas(destino_inicial: str = "bariloche", es_g
             comms.forEach(c => {{
               const row = document.createElement('div');
               row.className = 'p-2.5 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 flex items-start gap-2.5';
-              row.innerHTML =
-                '<span class="text-base flex-shrink-0">' + (c.icono || '💬') + '</span>' +
-                '<div class="flex-1 min-w-0 leading-relaxed">' +
-                  '<div class="flex items-center justify-between gap-1 text-[11px] mb-0.5">' +
-                    '<span class="font-bold dark:text-slate-200 text-slate-800 truncate">' + (c.autor || 'Conductor') + '</span>' +
-                    '<span class="text-slate-400 flex-shrink-0 font-mono">' + (c.fecha_relativa || '') + '</span>' +
-                  '</div>' +
-                  '<p class="dark:text-slate-300 text-slate-600 break-words">' + (c.comentario || '') + '</p>' +
-                '</div>';
+
+              const iconSpan = document.createElement('span');
+              iconSpan.className = 'text-base flex-shrink-0';
+              iconSpan.textContent = c.icono || '💬';
+
+              const contentDiv = document.createElement('div');
+              contentDiv.className = 'flex-1 min-w-0 leading-relaxed';
+
+              const headerDiv = document.createElement('div');
+              headerDiv.className = 'flex items-center justify-between gap-1 text-[11px] mb-0.5';
+
+              const authorSpan = document.createElement('span');
+              authorSpan.className = 'font-bold dark:text-slate-200 text-slate-800 truncate';
+              authorSpan.textContent = c.autor || 'Conductor';
+
+              const dateSpan = document.createElement('span');
+              dateSpan.className = 'text-slate-400 flex-shrink-0 font-mono';
+              dateSpan.textContent = c.fecha_relativa || '';
+
+              const commentP = document.createElement('p');
+              commentP.className = 'dark:text-slate-300 text-slate-600 break-words';
+              commentP.textContent = c.comentario || '';
+
+              headerDiv.appendChild(authorSpan);
+              headerDiv.appendChild(dateSpan);
+              contentDiv.appendChild(headerDiv);
+              contentDiv.appendChild(commentP);
+              row.appendChild(iconSpan);
+              row.appendChild(contentDiv);
               reviewsList.appendChild(row);
             }});
           }}

@@ -8,6 +8,8 @@
  * - Despacho seguro a Telegram API si TELEGRAM_BOT_TOKEN está configurado.
  */
 
+const { extractClientIp, pruneRateLimitMap } = require('./_security');
+
 const ALLOWED_ORIGINS = new Set([
   'https://flightbot.com.ar',
   'https://www.flightbot.com.ar',
@@ -27,6 +29,7 @@ function verificarRateLimit(ip) {
   registro = registro.filter(t => ahora - t < ventanaMs);
   registro.push(ahora);
   RATE_LIMIT_FEEDBACK.set(ip, registro);
+  pruneRateLimitMap(RATE_LIMIT_FEEDBACK, ventanaMs);
 
   return registro.length <= maxEnvios;
 }
@@ -61,9 +64,7 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  const clientIp = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'ip-desconocida')
-    .split(',')[0]
-    .trim();
+  const clientIp = extractClientIp(req);
 
   if (!verificarRateLimit(clientIp)) {
     return res.status(429).json({

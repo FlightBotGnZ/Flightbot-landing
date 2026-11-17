@@ -2049,13 +2049,7 @@
           '<span class="fb-chat-suggestion text-blue-600 dark:text-blue-400 underline hover:opacity-80 cursor-pointer font-medium" data-prompt="$1">$1</span>'
         );
 
-        // 2. Transformar enlaces externos legítimos (https:// o /guias/) en enlaces seguros
-        escaped = escaped.replace(
-          /&lt;a\s+href=(?:&quot;|&#39;)(https?:\/\/[^&"'\s]+|\/[^&"'\s]+)(?:&quot;|&#39;)[^&gt;]*&gt;([\s\S]*?)&lt;\/a&gt;/gi,
-          '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline font-semibold">$2</a>'
-        );
-
-        // 3. Purgar cualquier etiqueta <a> o </a> residual
+        // 2. Purgar cualquier etiqueta <a> o </a> residual (no permitir enlaces externos generados por IA)
         escaped = escaped.replace(/&lt;\/?a[^&gt;]*&gt;/gi, '');
 
         return escaped

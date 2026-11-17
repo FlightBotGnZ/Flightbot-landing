@@ -3,6 +3,8 @@
  * Termómetro de asfalto comunitario y reseñas de conductores en tiempo real.
  */
 
+const { extractClientIp, pruneRateLimitMap } = require('../_security');
+
 const ALLOWED_ORIGINS = new Set([
   'https://flightbot.com.ar',
   'https://www.flightbot.com.ar',
@@ -10,6 +12,23 @@ const ALLOWED_ORIGINS = new Set([
   'http://localhost:8000',
   'http://127.0.0.1:8000'
 ]);
+
+const RATE_LIMIT_RUTA_FEEDBACK = new Map();
+const VALID_CALIFICACIONES = new Set(['billar', 'buena', 'precaucion', 'destruida']);
+
+function verificarRateLimitRuta(ip) {
+  const ahora = Date.now();
+  const ventanaMs = 120000; // 2 minutos
+  const maxEnvios = 5;
+
+  let registro = RATE_LIMIT_RUTA_FEEDBACK.get(ip) || [];
+  registro = registro.filter(t => ahora - t < ventanaMs);
+  registro.push(ahora);
+  RATE_LIMIT_RUTA_FEEDBACK.set(ip, registro);
+  pruneRateLimitMap(RATE_LIMIT_RUTA_FEEDBACK, ventanaMs);
+
+  return registro.length <= maxEnvios;
+}
 
 // Memoria volátil de comentarios recientes aportados por usuarios
 const COMENTARIOS_DINAMICOS = [
@@ -118,6 +137,14 @@ module.exports = async function handler(req, res) {
 
   // 2. ENVIAR RESEÑA O VOTO (POST)
   if (req.method === 'POST') {
+    const clientIp = extractClientIp(req);
+    if (!verificarRateLimitRuta(clientIp)) {
+      return res.status(429).json({
+        ok: false,
+        mensaje: 'Demasiados reportes recientes desde tu IP. Por favor aguardá unos minutos.'
+      });
+    }
+
     let body = req.body;
     if (typeof body === 'string') {
       try {
@@ -128,9 +155,15 @@ module.exports = async function handler(req, res) {
     }
     body = body || {};
 
-    const orig = normalizar(body.origen || 'Buenos Aires');
-    const dest = normalizar(body.destino || 'Destino');
+    const orig = normalizar(body.origen || 'Buenos Aires').slice(0, 60);
+    const dest = normalizar(body.destino || 'Destino').slice(0, 60);
     const calif = normalizar(body.calificacion || 'buena');
+    if (!VALID_CALIFICACIONES.has(calif)) {
+      return res.status(400).json({
+        ok: false,
+        mensaje: 'Calificación de ruta inválida.'
+      });
+    }
     const comentario = String(body.comentario || '').trim().slice(0, 300);
     const autor = String(body.autor || 'Conductor').trim().slice(0, 50);
 

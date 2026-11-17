@@ -1,6 +1,6 @@
 // Catálogo Dinámico de Cupones Activos y Promociones Flash
 // Generado automáticamente por scripts/cazador_cupones.py
-// Última actualización: 2026-10-28
+// Última actualización: 2026-11-16
 
 window.CUPONES_DATA = [
   {
@@ -97,10 +97,10 @@ window.CUPONES_DATA = [
     "id": "bahia_principe",
     "portal": "Bahia Principe",
     "emoji": "🌴",
-    "badge": "7% OFF Extra",
-    "titulo": "Resorts Riviera Maya & Caribe",
+    "badge": "50% OFF",
+    "titulo": "Especial Black Friday",
     "descripcion": "Descuento adicional en hoteles all-inclusive",
-    "codigo": "HOT7",
+    "codigo": "BF26",
     "colorTheme": "amber",
     "colorBorder": "border-amber-500/20",
     "colorText": "text-amber-600 dark:text-amber-400",
@@ -109,10 +109,9 @@ window.CUPONES_DATA = [
     "btnTexto": "Aplicar en Bahia Principe",
     "url": "https://www.bahia-principe.com/es/",
     "activo": true,
-    "actualizado_en": "2026-10-28"
+    "actualizado_en": "2026-11-16"
   }
 ];
-
 
 // Configuración Modular de Afiliados y Redirección Limpia
 window.FB_AFFILIATE_CONFIG = {

@@ -1560,11 +1560,11 @@
         <div>
           <h5 class="dark:text-white text-slate-900 font-semibold text-sm mb-3">Moneda y Cotización de Referencia</h5>
           <p class="dark:text-slate-400 text-slate-600 leading-relaxed mb-2.5">
-            Ref. orientativa Dólar MEP / Turístico (<strong class="dark:text-slate-200 text-slate-800">$1.350 ARS</strong>). <span class="dark:text-slate-500 text-slate-400 font-medium" id="footer-sync-time">Radar sincronizado hoy a las <span id="footer-sync-hhmm">14:50</span> hs.</span>
+            Ref. orientativa Dólar MEP / Turístico (<strong id="footer-usd-ref-rate" class="dark:text-slate-200 text-slate-800">Cotización en vivo</strong>). <span class="dark:text-slate-500 text-slate-400 font-medium" id="footer-sync-time">Radar sincronizado hoy a las <span id="footer-sync-hhmm">14:50</span> hs.</span>
           </p>
           <div class="flex items-center gap-2 flex-wrap">
             <span class="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Moneda activa:</span>
-            <div class="inline-flex p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold shadow-xs" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
+            <div id="footer-curr-selector-wrap" class="inline-flex p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold shadow-xs" title="Cotización de referencia en vivo">
               <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
               <button type="button" id="footer-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">ARS</button>
               <button type="button" id="footer-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">USD</button>
@@ -2240,11 +2240,26 @@
     // IMPLEMENTACIÓN DE LAS 5 MEJORAS DEL PRODUCTO FLIGHTBOT
     // =========================================================================
 
-    // TIPOS DE CAMBIO TURÍSTICOS DE REFERENCIA (MEP / TARJETA)
-    const TIPO_CAMBIO_USD_ARS = 1350;
-    const TIPO_CAMBIO_EUR_ARS = 1460;
-    const TIPO_CAMBIO_EUR_USD = 1.08;
+    // TIPOS DE CAMBIO TURÍSTICOS DINÁMICOS (se actualizan desde /api/vuelos y DolarAPI)
+    let TIPO_CAMBIO_USD_ARS = 1350;
+    let TIPO_CAMBIO_EUR_USD = 1.08;
+    let TIPO_CAMBIO_EUR_ARS = Math.round(TIPO_CAMBIO_USD_ARS * TIPO_CAMBIO_EUR_USD);
     const EUROPE_DEST_IDS = ['madrid', 'barcelona', 'lisboa', 'roma', 'paris', 'londres', 'berlin', 'frankfurt', 'amsterdam', 'atenas', 'oslo', 'reikiavik'];
+
+    function actualizarTiposCambioEnPantalla(usdArs, eurUsd) {
+      if (usdArs && Number(usdArs) > 100) {
+        TIPO_CAMBIO_USD_ARS = Math.round(Number(usdArs));
+      }
+      if (eurUsd && Number(eurUsd) > 0.5 && Number(eurUsd) < 2) {
+        TIPO_CAMBIO_EUR_USD = Number(eurUsd);
+      }
+      TIPO_CAMBIO_EUR_ARS = Math.round(TIPO_CAMBIO_USD_ARS * TIPO_CAMBIO_EUR_USD);
+      const refEl = document.getElementById('footer-usd-ref-rate');
+      const wrapEl = document.getElementById('footer-curr-selector-wrap');
+      const fmtRate = '$' + TIPO_CAMBIO_USD_ARS.toLocaleString('es-AR') + ' ARS';
+      if (refEl) refEl.textContent = fmtRate;
+      if (wrapEl) wrapEl.title = `Cotización de referencia en vivo: Dólar MEP / Turístico (${fmtRate})`;
+    }
 
     // Inicialización del modo de moneda: DEFAULT (Cabotaje ARS, Europa EUR, Resto USD) al iniciar
     if (!localStorage.getItem('fb_user_currency_v6')) {
@@ -3109,9 +3124,15 @@
           const fechasVigentes = (v.actualizado_en_vivo || tieneFechaFutura)
             ? v.fechas
             : (window.normalizarFechasVueloVigente ? window.normalizarFechasVueloVigente(v.fechas, dest) : v.fechas);
+          const fallbackIdaDt = new Date(hoy.getTime() + 60 * 86400000);
+          const fallbackVueltaDt = new Date(hoy.getTime() + 67 * 86400000);
+          const fallbackIsoDinamico = {
+            ida: fallbackIdaDt.toISOString().slice(0, 10),
+            vuelta: fallbackVueltaDt.toISOString().slice(0, 10)
+          };
           const fechasIso = (v.fecha_ida && v.fecha_vuelta)
             ? { ida: v.fecha_ida, vuelta: v.fecha_vuelta }
-            : (window.obtenerFechasISO ? window.obtenerFechasISO(fechasVigentes, v) : { ida: '2026-11-25', vuelta: '2026-12-01' });
+            : (window.obtenerFechasISO ? window.obtenerFechasISO(fechasVigentes, v) : fallbackIsoDinamico);
           const fechaIda = fechasIso.ida;
           const fechaVuelta = fechasIso.vuelta;
 
@@ -3565,12 +3586,24 @@
             return;
           }
 
+          const hdrUsdArs = res.headers ? res.headers.get('X-FlightBot-Usd-Ars') : null;
+          const hdrEurUsd = res.headers ? res.headers.get('X-FlightBot-Eur-Usd') : null;
+          if (hdrUsdArs) {
+            actualizarTiposCambioEnPantalla(hdrUsdArs, hdrEurUsd);
+          }
+
           const rawData = await res.json();
           const destinosRemotos = Array.isArray(rawData) 
             ? rawData 
             : (rawData && Array.isArray(rawData.destinos) ? rawData.destinos : (rawData && Array.isArray(rawData.data) ? rawData.data : null));
 
           if (destinosRemotos && destinosRemotos.length > 0) {
+            if (!hdrUsdArs) {
+              const refIntl = destinosRemotos.find(d => !d.es_cabotaje && d.categoria_region !== 'europa_mundo' && d.vuelos && d.vuelos[0] && d.vuelos[0].precio_usd > 0 && d.vuelos[0].precio_ars > 0);
+              if (refIntl) {
+                actualizarTiposCambioEnPantalla(refIntl.vuelos[0].precio_ars / refIntl.vuelos[0].precio_usd, TIPO_CAMBIO_EUR_USD);
+              }
+            }
             window.RADAR_DATA = destinosRemotos;
             renderSidebar();
             actualizarContadoresRadar();
@@ -4088,16 +4121,31 @@
         }
       };
 
+      function escaparHtmlVuelos(str) {
+        if (str === null || str === undefined) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function normalizarFechaIso(val) {
+        const clean = String(val || '').trim();
+        return /^\d{4}-\d{2}-\d{2}$/.test(clean) ? clean : '';
+      }
+
       function extraerIataOCiudad(txt) {
         if (!txt) return 'BUE';
         const match = txt.match(/\(([A-Z]{3})\)/i);
         if (match) return match[1].toUpperCase();
-        const trim = txt.trim().toUpperCase();
+        const trim = String(txt).trim().toUpperCase();
         if (/^[A-Z]{3}$/.test(trim)) return trim;
         
         // Buscar en el catálogo de aeropuertos si ingresó texto libre (ej: "panama" -> "PTY")
         if (typeof GLOBAL_AIRPORTS_CATALOG !== 'undefined') {
-          const q = (txt || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+          const q = String(txt || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
           const matchCat = GLOBAL_AIRPORTS_CATALOG.find(a => 
             a.iata.toLowerCase() === q ||
             a.ciudad.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').includes(q) ||
@@ -4106,7 +4154,9 @@
           if (matchCat) return matchCat.iata;
         }
 
-        return txt.trim();
+        // Fallback saneado: impedir inyección de caracteres HTML/URL en salidas libres
+        const saneado = trim.replace(/[^A-Z0-9\u00C0-\u017F\s-]/g, '').trim().slice(0, 40);
+        return saneado || 'BUE';
       }
 
       // ==============================================================================
@@ -4260,6 +4310,10 @@
       function construirFeedVuelos(originIata, destIata, departDate, returnDate, pax, cabin) {
         originIata = (originIata || 'BUE').toUpperCase();
         destIata = (destIata || '').toUpperCase();
+        const safeDepartDate = normalizarFechaIso(departDate);
+        const safeReturnDate = normalizarFechaIso(returnDate);
+        const encOrig = encodeURIComponent(originIata);
+        const encDest = encodeURIComponent(destIata);
         const bd = getPaxBreakdown();
         const paxNum = bd.totalPax || parseInt(pax, 10) || 1;
         const paxMult = bd.weightedMultiplier || paxNum;
@@ -4277,26 +4331,26 @@
         const hubData = AIRPORT_HUB_AIRLINES[destIata] || (matchRadar && AIRPORT_HUB_AIRLINES[matchRadar.iata]) || generarHubGenerico(destIata);
 
         // URLs base para enlaces específicos con desglose de pasajeros y edades
-        const isRound = flightSearchMode === 'roundtrip' && Boolean(returnDate);
+        const isRound = flightSearchMode === 'roundtrip' && Boolean(safeReturnDate);
         const adtForAirlines = bd.adults + bd.youths; // 12+ años abonan como adulto en IATA
         const paxGfSuffix = (bd.children > 0 || bd.infants > 0 || adtForAirlines > 1)
           ? `%20for%20${adtForAirlines}%20adults${bd.children > 0 ? '%20' + bd.children + '%20children' : ''}${bd.infants > 0 ? '%20' + bd.infants + '%20infants' : ''}`
           : '';
         const qGf = isRound
-          ? `Flights%20to%20${destIata}%20from%20${originIata}%20on%20${departDate}%20through%20${returnDate}${paxGfSuffix}`
-          : `Flights%20to%20${destIata}%20from%20${originIata}%20on%20${departDate}${paxGfSuffix}`;
+          ? `Flights%20to%20${encDest}%20from%20${encOrig}%20on%20${safeDepartDate}%20through%20${safeReturnDate}${paxGfSuffix}`
+          : `Flights%20to%20${encDest}%20from%20${encOrig}%20on%20${safeDepartDate}${paxGfSuffix}`;
 
         const kiwiPaxParams = `&adults=${adtForAirlines}&children=${bd.children}&infants=${bd.infants}`;
         const despegarPaxParams = `&adults=${ bd.adults }${bd.minorAges.length > 0 ? '&children=' + bd.minorAges.join(',') : ''}`;
 
         const baseGfUrl = `https://www.google.com/travel/flights?q=${qGf}&hl=es`;
-        const baseKiwiUrl = `https://www.kiwi.com/deep?from=${originIata}&to=${destIata}&departure=${departDate}${isRound ? '&return=' + returnDate : ''}${kiwiPaxParams}&lang=es&affilid=${KIWI_AFFIL_ID}`;
-        const baseDespegarUrl = `https://www.despegar.com.ar/vuelos/${originIata.toLowerCase()}/${destIata.toLowerCase()}?from=${originIata}&to=${destIata}&departureDate=${departDate}${isRound ? '&returnDate=' + returnDate : ''}${despegarPaxParams}`;
-        const baseTgUrl = `https://t.me/GnZFlightBot?start=alerta_${destIata}_${departDate}`;
+        const baseKiwiUrl = `https://www.kiwi.com/deep?from=${encOrig}&to=${encDest}&departure=${safeDepartDate}${isRound ? '&return=' + safeReturnDate : ''}${kiwiPaxParams}&lang=es&affilid=${KIWI_AFFIL_ID}`;
+        const baseDespegarUrl = `https://www.despegar.com.ar/vuelos/${encodeURIComponent(originIata.toLowerCase())}/${encodeURIComponent(destIata.toLowerCase())}?from=${encOrig}&to=${encDest}&departureDate=${safeDepartDate}${isRound ? '&returnDate=' + safeReturnDate : ''}${despegarPaxParams}`;
+        const baseTgUrl = `https://t.me/GnZFlightBot?start=alerta_${encodeURIComponent(destIata.replace(/[^A-Z0-9]/g, ''))}_${safeDepartDate}`;
 
-        // Determinar precios base
+        // Determinar precios base usando la cotización vigente dinámica
         let baseUsd = hubData.precio_base_usd || 450;
-        let baseArs = Math.round(baseUsd * 1350);
+        let baseArs = Math.round(baseUsd * TIPO_CAMBIO_USD_ARS);
 
         if (matchRadar && matchRadar.vuelos && matchRadar.vuelos[0]) {
           const v0 = matchRadar.vuelos[0];
@@ -4500,33 +4554,33 @@
             const vueltaHtml = card.vuelta ? `
               <div class="p-3 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800/80 border-slate-200/80 mb-2">
                 <div class="flex items-center justify-between text-xs font-extrabold dark:text-slate-200 text-slate-800 mb-1">
-                  <span>🛬 Vuelta: ${card.vuelta.horario}</span>
-                  <span class="font-normal text-[11px] text-slate-400">${card.vuelta.duracion}</span>
+                  <span>🛬 Vuelta: ${escaparHtmlVuelos(card.vuelta.horario)}</span>
+                  <span class="font-normal text-[11px] text-slate-400">${escaparHtmlVuelos(card.vuelta.duracion)}</span>
                 </div>
                 <div class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                   <span class="w-1.5 h-1.5 rounded-full ${card.vuelta.esDirecto ? 'bg-emerald-500' : 'bg-amber-500'}"></span>
-                  <span>${card.vuelta.escalas}</span>
+                  <span>${escaparHtmlVuelos(card.vuelta.escalas)}</span>
                 </div>
               </div>` : '';
 
             return `
-              <div class="rounded-3xl p-5 sm:p-6 border transition-all flex flex-col justify-between dark:bg-slate-900/90 bg-white shadow-lg hover:shadow-xl ${card.borderClass}">
+              <div class="rounded-3xl p-5 sm:p-6 border transition-all flex flex-col justify-between dark:bg-slate-900/90 bg-white shadow-lg hover:shadow-xl ${escaparHtmlVuelos(card.borderClass)}">
                 
                 <div>
                   <!-- Badge superior de categoría -->
                   <div class="flex items-center justify-between mb-4">
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wide ${card.badgeClass}">
-                      ${card.badge}
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wide ${escaparHtmlVuelos(card.badgeClass)}">
+                      ${escaparHtmlVuelos(card.badge)}
                     </span>
-                    <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500">${card.tagline}</span>
+                    <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500">${escaparHtmlVuelos(card.tagline)}</span>
                   </div>
 
                   <!-- Aerolínea y Cabina -->
                   <div class="flex items-center gap-2.5 mb-4">
-                    <span class="text-2xl">${card.emoji}</span>
+                    <span class="text-2xl">${escaparHtmlVuelos(card.emoji)}</span>
                     <div>
-                      <h4 class="font-black text-sm sm:text-base dark:text-white text-slate-900">${card.aerolinea}</h4>
-                      <span class="text-[11px] text-slate-400 dark:text-slate-500 font-mono">Vuelo ${card.vuelo_nro} · Cabina ${card.cabina}</span>
+                      <h4 class="font-black text-sm sm:text-base dark:text-white text-slate-900">${escaparHtmlVuelos(card.aerolinea)}</h4>
+                      <span class="text-[11px] text-slate-400 dark:text-slate-500 font-mono">Vuelo ${escaparHtmlVuelos(card.vuelo_nro)} · Cabina ${escaparHtmlVuelos(card.cabina)}</span>
                     </div>
                   </div>
 
@@ -4534,12 +4588,12 @@
                   <div class="mb-4">
                     <div class="p-3 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800/80 border-slate-200/80 mb-2">
                       <div class="flex items-center justify-between text-xs font-extrabold dark:text-slate-200 text-slate-800 mb-1">
-                        <span>🛫 Ida: ${card.ida.horario}</span>
-                        <span class="font-normal text-[11px] text-slate-400">${card.ida.duracion}</span>
+                        <span>🛫 Ida: ${escaparHtmlVuelos(card.ida.horario)}</span>
+                        <span class="font-normal text-[11px] text-slate-400">${escaparHtmlVuelos(card.ida.duracion)}</span>
                       </div>
                       <div class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                         <span class="w-1.5 h-1.5 rounded-full ${card.ida.esDirecto ? 'bg-emerald-500' : 'bg-amber-500'}"></span>
-                        <span>${card.ida.escalas}</span>
+                        <span>${escaparHtmlVuelos(card.ida.escalas)}</span>
                       </div>
                     </div>
                     ${vueltaHtml}
@@ -4547,7 +4601,7 @@
                     <!-- Franquicia de equipaje -->
                     <div class="mt-2.5 px-2 text-[11px] font-semibold text-slate-600 dark:text-slate-400 flex items-center gap-1.5">
                       <span>🎒</span>
-                      <span>${card.equipaje}</span>
+                      <span>${escaparHtmlVuelos(card.equipaje)}</span>
                     </div>
                   </div>
                 </div>
@@ -4558,14 +4612,14 @@
                     <div>
                       <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Precio Final Estimado</span>
                       <div class="text-xl sm:text-2xl font-black text-blue-600 dark:text-blue-600 font-mono tracking-tight">
-                        US$ ${card.precio_usd.toLocaleString('es-AR')}
-                        <span class="text-xs font-bold text-slate-400 font-sans">($ ${card.precio_ars.toLocaleString('es-AR')} ARS)</span>
+                        US$ ${Number(card.precio_usd || 0).toLocaleString('es-AR')}
+                        <span class="text-xs font-bold text-slate-400 font-sans">($ ${Number(card.precio_ars || 0).toLocaleString('es-AR')} ARS)</span>
                       </div>
                     </div>
                   </div>
 
                   <!-- Botón Principal: Ver este vuelo en Google Flights -->
-                  <a href="${card.url_google}" target="_blank" rel="noopener noreferrer"
+                  <a href="${escaparHtmlVuelos(card.url_google)}" target="_blank" rel="noopener noreferrer"
                      class="w-full py-3 px-3 rounded-xl text-white font-extrabold text-xs shadow-md hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer mb-2"
                      style="background: var(--brand-gradient);">
                     <span>✈️ Ver este vuelo en Google Flights</span>
@@ -4574,11 +4628,11 @@
 
                   <!-- Botones Secundarios: Kiwi y Despegar -->
                   <div class="grid grid-cols-2 gap-1.5">
-                    <a href="${card.url_kiwi}" target="_blank" rel="noopener noreferrer sponsored"
+                    <a href="${escaparHtmlVuelos(card.url_kiwi)}" target="_blank" rel="noopener noreferrer sponsored"
                        class="py-2 px-2 rounded-xl dark:bg-slate-800 bg-slate-100 hover:border-emerald-500 border dark:border-slate-700 border-slate-200 text-slate-700 dark:text-slate-300 font-bold text-[11px] text-center transition-all flex items-center justify-center gap-1">
                       <span>🥝 Kiwi.com</span>
                     </a>
-                    <a href="${card.url_despegar}" target="_blank" rel="noopener noreferrer sponsored"
+                    <a href="${escaparHtmlVuelos(card.url_despegar)}" target="_blank" rel="noopener noreferrer sponsored"
                        class="py-2 px-2 rounded-xl dark:bg-slate-800 bg-slate-100 hover:border-purple-500 border dark:border-slate-700 border-slate-200 text-slate-700 dark:text-slate-300 font-bold text-[11px] text-center transition-all flex items-center justify-center gap-1">
                       <span>🛫 Despegar</span>
                     </a>
@@ -4600,8 +4654,8 @@
         if (tbody) {
           tbody.innerHTML = feedData.alternativas.map(alt => {
             const vueltaTd = alt.vuelta ? `
-              <div>${alt.vuelta.horario}</div>
-              <div class="text-[10px] text-slate-400">${alt.vuelta.duracion}</div>
+              <div>${escaparHtmlVuelos(alt.vuelta.horario)}</div>
+              <div class="text-[10px] text-slate-400">${escaparHtmlVuelos(alt.vuelta.duracion)}</div>
             ` : '<span class="text-slate-400">Solo ida</span>';
 
             const escalaBadge = alt.esDirecto
@@ -4612,16 +4666,16 @@
               <tr class="hover:dark:bg-slate-800/40 hover:bg-slate-50/80 transition-colors">
                 <td class="py-3 px-4">
                   <div class="flex items-center gap-2">
-                    <span class="text-base">${alt.emoji}</span>
+                    <span class="text-base">${escaparHtmlVuelos(alt.emoji)}</span>
                     <div>
-                      <strong class="dark:text-white text-slate-900 block font-bold">${alt.aerolinea}</strong>
-                      <span class="text-[10px] text-slate-400 font-mono">${alt.vuelo_nro}</span>
+                      <strong class="dark:text-white text-slate-900 block font-bold">${escaparHtmlVuelos(alt.aerolinea)}</strong>
+                      <span class="text-[10px] text-slate-400 font-mono">${escaparHtmlVuelos(alt.vuelo_nro)}</span>
                     </div>
                   </div>
                 </td>
                 <td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">
-                  <div>${alt.ida.horario}</div>
-                  <div class="text-[10px] text-slate-400">${alt.ida.duracion}</div>
+                  <div>${escaparHtmlVuelos(alt.ida.horario)}</div>
+                  <div class="text-[10px] text-slate-400">${escaparHtmlVuelos(alt.ida.duracion)}</div>
                 </td>
                 <td class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">
                   ${vueltaTd}
@@ -4630,14 +4684,14 @@
                   ${escalaBadge}
                 </td>
                 <td class="py-3 px-4 text-[11px] text-slate-500 dark:text-slate-400">
-                  ${alt.equipaje}
+                  ${escaparHtmlVuelos(alt.equipaje)}
                 </td>
                 <td class="py-3 px-4 text-right font-mono font-bold">
-                  <div class="dark:text-blue-400 text-blue-600 font-extrabold">US$ ${alt.precio_usd.toLocaleString('es-AR')}</div>
-                  <div class="text-[10px] text-slate-400">($ ${alt.precio_ars.toLocaleString('es-AR')})</div>
+                  <div class="dark:text-blue-400 text-blue-600 font-extrabold">US$ ${Number(alt.precio_usd || 0).toLocaleString('es-AR')}</div>
+                  <div class="text-[10px] text-slate-400">($ ${Number(alt.precio_ars || 0).toLocaleString('es-AR')})</div>
                 </td>
                 <td class="py-3 px-4 text-center">
-                  <a href="${alt.url_google}" target="_blank" rel="noopener noreferrer"
+                  <a href="${escaparHtmlVuelos(alt.url_google)}" target="_blank" rel="noopener noreferrer"
                      class="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl font-extrabold text-[11px] text-white shadow-xs hover:brightness-110 active:scale-95 transition-all"
                      style="background: var(--brand-gradient);">
                     <span>Ver Vuelo</span>
@@ -4664,8 +4718,8 @@
       window.ejecutarBusquedaVuelos = function(metabuscador) {
         const originVal = document.getElementById('fb-search-origin').value || 'BUE';
         const destVal = document.getElementById('fb-search-dest').value;
-        const departVal = document.getElementById('fb-search-depart-date').value;
-        const returnVal = document.getElementById('fb-search-return-date').value;
+        const departVal = normalizarFechaIso(document.getElementById('fb-search-depart-date').value);
+        const returnVal = normalizarFechaIso(document.getElementById('fb-search-return-date').value);
         const paxVal = document.getElementById('fb-search-pax').value || '1';
         const cabinVal = document.getElementById('fb-search-cabin') ? document.getElementById('fb-search-cabin').value : 'economy';
 
@@ -4699,7 +4753,7 @@
         } else if (metabuscador === 'despegar') {
           const retParam = isRound && returnVal ? `&returnDate=${returnVal}` : '';
           const despegarPaxParams = `&adults=${bd.adults}${bd.minorAges.length > 0 ? '&children=' + bd.minorAges.join(',') : ''}`;
-          window.open(`https://www.despegar.com.ar/vuelos/${originIata.toLowerCase()}/${destIata.toLowerCase()}?from=${originIata.toUpperCase()}&to=${destIata.toUpperCase()}&departureDate=${departVal}${retParam}${despegarPaxParams}`, '_blank', 'noopener,noreferrer');
+          window.open(`https://www.despegar.com.ar/vuelos/${encodeURIComponent(originIata.toLowerCase())}/${encodeURIComponent(destIata.toLowerCase())}?from=${encodeURIComponent(originIata.toUpperCase())}&to=${encodeURIComponent(destIata.toUpperCase())}&departureDate=${departVal}${retParam}${despegarPaxParams}`, '_blank', 'noopener,noreferrer');
           return;
         }
 
@@ -4970,6 +5024,12 @@
         });
       }
 
+      // Filtrar tarjetas que no tienen tarifa real en la temporada seleccionada
+      items = items.filter(r => {
+        const p = calcularPrecioSegunTemporada(r, currentResortsTemporada);
+        return p !== null && p !== undefined && p > 0;
+      });
+
       // 2. Ordenar según el criterio seleccionado
       items.sort((a, b) => {
         const precioA = calcularPrecioSegunTemporada(a, currentResortsTemporada);
@@ -4990,7 +5050,7 @@
       }
 
       grid.innerHTML = items.map(r => {
-        const foto = obtenerFotoResort(r.nombre, r.cadena);
+        const foto = r.foto_url || obtenerFotoResort(r.nombre, r.cadena);
 
         const precioNocheActual = calcularPrecioSegunTemporada(r, currentResortsTemporada);
         const total8Noches = Math.round(precioNocheActual * 8);
@@ -5000,7 +5060,14 @@
         else if (currentResortsTemporada === 'media') tempHighlightLabel = '<span class="text-emerald-500 font-bold"> · Tarifa Media Mayo</span>';
         else if (currentResortsTemporada === 'baja') tempHighlightLabel = '<span class="text-cyan-400 font-bold"> · Tarifa Baja Sept</span>';
 
-        const bookingUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(r.nombre)}&checkin=2027-01-29&checkout=2027-02-06&group_adults=2&no_rooms=1&lang=es`;
+        const _resortFechasPorTemp = () => {
+          const y = new Date().getFullYear() + 1;
+          if (currentResortsTemporada === 'media') return { in: `${y}-05-10`, out: `${y}-05-18` };
+          if (currentResortsTemporada === 'baja') return { in: `${y}-09-12`, out: `${y}-09-20` };
+          return { in: `${y}-01-29`, out: `${y}-02-06` };
+        };
+        const _rF = _resortFechasPorTemp();
+        const bookingUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(r.nombre)}&checkin=${_rF.in}&checkout=${_rF.out}&group_adults=2&no_rooms=1&lang=es`;
         const officialUrl = `https://www.google.com/search?q=${encodeURIComponent(r.nombre + ' web oficial roiback ' + r.cupon_codigo)}`;
 
         return `
@@ -5057,15 +5124,15 @@
                   <div class="grid grid-cols-3 gap-1.5 text-center text-[10px] font-mono">
                     <div class="p-1.5 rounded-xl ${currentResortsTemporada === 'alta' ? 'ring-2 ring-amber-500 bg-amber-500/10' : 'dark:bg-slate-800/80 bg-slate-100'} border dark:border-slate-700/80 border-slate-200 cursor-pointer" onclick="window.filtrarResortsTemporada('alta')">
                       <div class="text-slate-400 text-[9px] uppercase">☀️ Alta</div>
-                      <div class="font-bold dark:text-white text-slate-800">US$ ${r.termometro_estacional.alta}</div>
+                      <div class="font-bold dark:text-white text-slate-800">${r.termometro_estacional.alta ? 'US$ ' + r.termometro_estacional.alta : '—'}</div>
                     </div>
                     <div class="p-1.5 rounded-xl ${currentResortsTemporada === 'media' ? 'ring-2 ring-emerald-500 bg-emerald-500/10' : 'dark:bg-slate-800/80 bg-slate-100'} border dark:border-slate-700/80 border-slate-200 cursor-pointer" onclick="window.filtrarResortsTemporada('media')">
                       <div class="text-slate-400 text-[9px] uppercase">🌤️ Media</div>
-                      <div class="font-bold text-emerald-500">US$ ${r.termometro_estacional.media}</div>
+                      <div class="font-bold text-emerald-500">${r.termometro_estacional.media ? 'US$ ' + r.termometro_estacional.media : '—'}</div>
                     </div>
                     <div class="p-1.5 rounded-xl ${currentResortsTemporada === 'baja' ? 'ring-2 ring-cyan-500 bg-cyan-500/10' : 'dark:bg-slate-800/80 bg-slate-100'} border dark:border-slate-700/80 border-slate-200 cursor-pointer" onclick="window.filtrarResortsTemporada('baja')">
                       <div class="text-slate-400 text-[9px] uppercase">🌴 Baja</div>
-                      <div class="font-bold text-cyan-400">US$ ${r.termometro_estacional.baja}</div>
+                      <div class="font-bold text-cyan-400">${r.termometro_estacional.baja ? 'US$ ' + r.termometro_estacional.baja : '—'}</div>
                     </div>
                   </div>
                 </div>

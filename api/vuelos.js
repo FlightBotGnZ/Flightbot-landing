@@ -18,7 +18,54 @@ const ALLOWED_ORIGINS = new Set([
 ]);
 
 const MESES_ABR = ['', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
-const TIPO_CAMBIO_REF = 1350; // Tipo de cambio de referencia para vuelos internacionales
+const TIPO_CAMBIO_FALLBACK = 1350;
+const EUR_USD_FALLBACK = 1.08;
+const CACHE_TASAS_TTL_MS = 3 * 60 * 60 * 1000;
+let _cacheTasasVivo = { ts: 0, usdArs: TIPO_CAMBIO_FALLBACK, eurUsd: EUR_USD_FALLBACK };
+
+async function obtenerTiposCambioEnVivo() {
+  const ahora = Date.now();
+  if (_cacheTasasVivo.ts > 0 && (ahora - _cacheTasasVivo.ts) < CACHE_TASAS_TTL_MS) {
+    return _cacheTasasVivo;
+  }
+
+  let usdArs = _cacheTasasVivo.usdArs || TIPO_CAMBIO_FALLBACK;
+  let eurUsd = _cacheTasasVivo.eurUsd || EUR_USD_FALLBACK;
+
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 2500);
+    const [resAr, resEur] = await Promise.allSettled([
+      fetch('https://dolarapi.com/v1/dolares', { signal: ctrl.signal }),
+      fetch('https://open.er-api.com/v6/latest/USD', { signal: ctrl.signal })
+    ]);
+    clearTimeout(timer);
+
+    if (resAr.status === 'fulfilled' && resAr.value.ok) {
+      const lista = await resAr.value.json();
+      if (Array.isArray(lista)) {
+        const bolsa = lista.find(x => String(x.casa || '').toLowerCase() === 'bolsa');
+        const oficial = lista.find(x => String(x.casa || '').toLowerCase() === 'oficial');
+        const venta = Number((bolsa && (bolsa.venta || bolsa.compra)) || (oficial && (oficial.venta || oficial.compra)) || 0);
+        if (venta > 100) usdArs = Math.round(venta);
+      }
+    }
+
+    if (resEur.status === 'fulfilled' && resEur.value.ok) {
+      const fx = await resEur.value.json();
+      const eurPerUsd = Number(fx && fx.rates && fx.rates.EUR || 0);
+      if (eurPerUsd > 0.2 && eurPerUsd < 2) {
+        eurUsd = Number((1 / eurPerUsd).toFixed(4));
+      }
+    }
+
+    _cacheTasasVivo = { ts: ahora, usdArs, eurUsd };
+  } catch (_err) {
+    // Conservar último valor conocido en memoria si falló la consulta externa
+  }
+
+  return _cacheTasasVivo;
+}
 
 const EUROPE_DEST_IDS = new Set([
   'madrid', 'barcelona', 'lisboa', 'roma', 'paris', 'londres',
@@ -41,30 +88,7 @@ const IATA_ALIASES = {
   'SJO': ['SJO', 'LIR']
 };
 
-// Validación Anti-SSRF para URLs salientes (CWE-918)
-function esUrlRemotaSegura(rawUrl) {
-  if (!rawUrl || typeof rawUrl !== 'string') return false;
-  try {
-    const parsed = new URL(rawUrl.trim());
-    if (parsed.protocol !== 'https:') return false;
-    const host = (parsed.hostname || '').toLowerCase();
-    if (
-      host === 'localhost' ||
-      host === '127.0.0.1' ||
-      host === '0.0.0.0' ||
-      host === '::1' ||
-      host.startsWith('10.') ||
-      host.startsWith('192.168.') ||
-      host.startsWith('169.254.') ||
-      /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(host)
-    ) {
-      return false;
-    }
-    return true;
-  } catch (_e) {
-    return false;
-  }
-}
+const { isSafeRemoteHttpsUrl } = require('./_security');
 
 // Carga resiliente de los datos locales de respaldo (radar-data.json / radar-data.js)
 function cargarDatosLocales() {
@@ -173,7 +197,7 @@ module.exports = async function handler(req, res) {
 
   // 1. Si existe BACKEND_API_URL configurado y activo, usarlo como prioridad
   const backendUrl = process.env.BACKEND_API_URL;
-  if (esUrlRemotaSegura(backendUrl)) {
+  if (isSafeRemoteHttpsUrl(backendUrl)) {
     try {
       const baseUrl = backendUrl.trim().replace(/\/+$/, '');
       const apiUrl = baseUrl.endsWith('/api/vuelos') ? baseUrl : `${baseUrl}/api/vuelos`;
@@ -183,6 +207,7 @@ module.exports = async function handler(req, res) {
 
       const remoteRes = await fetch(apiUrl, {
         method: 'GET',
+        redirect: 'manual',
         headers: {
           'Accept': 'application/json',
           'User-Agent': 'FlightBot-Vercel-Proxy/2.1'
@@ -207,7 +232,11 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Catálogo de vuelos no disponible' });
   }
 
-  // 3. Enriquecimiento en tiempo real con Travelpayouts / Aviasales Data API v2 ($0)
+  // 3. Enriquecimiento de tasas vivas y Travelpayouts / Aviasales Data API v2 ($0)
+  const { usdArs: TIPO_CAMBIO_VIVO, eurUsd: EUR_USD_VIVO } = await obtenerTiposCambioEnVivo();
+  res.setHeader('X-FlightBot-Usd-Ars', String(TIPO_CAMBIO_VIVO));
+  res.setHeader('X-FlightBot-Eur-Usd', String(EUR_USD_VIVO));
+
   const tpToken = (process.env.TRAVELPAYOUTS_API_KEY || process.env.TRAVELPAYOUTS_TOKEN || '').trim();
   if (!tpToken) {
     res.setHeader('X-Radar-Source', 'local-snapshot');
@@ -357,18 +386,18 @@ module.exports = async function handler(req, res) {
         if (esCabotaje) {
           const valArs = Math.round(valorReal);
           precioNumArs = valArs;
-          precioNumUsd = Math.max(1, Math.round(valArs / TIPO_CAMBIO_REF));
+          precioNumUsd = Math.max(1, Math.round(valArs / TIPO_CAMBIO_VIVO));
           precioFormateado = `${formatearArs(valArs)} (US$ ${precioNumUsd} aprox)`;
         } else if (esEuropa) {
           const valUsd = Math.round(valorReal);
-          const valEur = Math.max(1, Math.round(valUsd * 0.92));
+          const valEur = Math.max(1, Math.round(valUsd / EUR_USD_VIVO));
           precioNumUsd = valUsd;
-          precioNumArs = Math.round(valUsd * TIPO_CAMBIO_REF);
+          precioNumArs = Math.round(valUsd * TIPO_CAMBIO_VIVO);
           precioFormateado = `€ ${valEur.toLocaleString('es-AR')} (aprox. ${formatearArs(precioNumArs)})`;
         } else {
           const valUsd = Math.round(valorReal);
           precioNumUsd = valUsd;
-          precioNumArs = Math.round(valUsd * TIPO_CAMBIO_REF);
+          precioNumArs = Math.round(valUsd * TIPO_CAMBIO_VIVO);
           precioFormateado = `US$ ${valUsd.toLocaleString('es-AR')} (aprox. ${formatearArs(precioNumArs)})`;
         }
 
