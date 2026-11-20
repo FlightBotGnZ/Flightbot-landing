@@ -9,7 +9,10 @@
   const STORAGE_KEY_SESSION = 'fb_chat_session_id';
   const STORAGE_KEY_RESET = 'fb_chat_reset_trigger';
 
-  const FB_INITIAL_GREETING = "👋 ¡Hola! Soy <b>F-Bot Rolli</b>, tu compañero de viaje y asistente de FlightBot 🧳.<br><br>Preguntame por vuelos baratos, mejores barrios para hospedarte en nuestros 56 destinos globales, trenes de alta velocidad, equipaje de bebé, o rutas viales:";
+  function getInitialGreeting() {
+    const totalDest = (window.FLIGHTBOT_STATS && window.FLIGHTBOT_STATS.destinos) || 57;
+    return `👋 ¡Hola! Soy <b>F-Bot Rolli</b>, tu compañero de viaje y asistente de FlightBot 🧳.<br><br>Preguntame por vuelos baratos, mejores barrios para hospedarte en nuestros ${totalDest} destinos globales, trenes de alta velocidad, equipaje de bebé, o rutas viales:`;
+  }
   const FB_INITIAL_PILLS = [
     "✈️ Vuelos a Roma y Madrid",
     "🏖️ Hoteles en Punta Cana",
@@ -314,7 +317,7 @@
     const history = loadHistory();
     if (history.length === 0) {
       // Saludo inicial predeterminado o contextual de la guía
-      const greeting = window.FB_INITIAL_GREETING || FB_INITIAL_GREETING;
+      const greeting = window.FB_INITIAL_GREETING || getInitialGreeting();
       renderMessageDOM('bot', greeting);
       appendToHistory('bot', greeting);
     } else {
@@ -412,7 +415,7 @@
 
     const container = document.getElementById('fb-chat-messages');
     if (container) container.innerHTML = '';
-    const greeting = window.FB_INITIAL_GREETING || FB_INITIAL_GREETING;
+    const greeting = window.FB_INITIAL_GREETING || getInitialGreeting();
     renderMessageDOM('bot', greeting);
     appendToHistory('bot', greeting);
     const pills = window.FB_INITIAL_PILLS || FB_INITIAL_PILLS;
@@ -537,8 +540,9 @@
       };
     }
 
+    const totalGuias = (window.FLIGHTBOT_STATS && window.FLIGHTBOT_STATS.guias) || 57;
     return {
-      respuesta: "Puedo ayudarte con información de vuelos, equipaje, salas VIP y nuestras <b>56 Guías Oficiales</b> de destinos (Roma, Madrid, Miami, Río, Cancún, Punta Cana, Bariloche, Mendoza y más).<br><br>¿Hacia qué destino estás planeando tu próximo viaje?",
+      respuesta: `Puedo ayudarte con información de vuelos, equipaje, salas VIP y nuestras <b>${totalGuias} Guías Oficiales</b> de destinos (Roma, Madrid, Miami, Río, Cancún, Punta Cana, Bariloche, Mendoza y más).<br><br>¿Hacia qué destino estás planeando tu próximo viaje?`,
       quick_replies: FB_INITIAL_PILLS
     };
   }
@@ -625,7 +629,7 @@
       // Si otra pestaña reinició la conversación
       const container = document.getElementById('fb-chat-messages');
       if (container) container.innerHTML = '';
-      const greeting = window.FB_INITIAL_GREETING || FB_INITIAL_GREETING;
+      const greeting = window.FB_INITIAL_GREETING || getInitialGreeting();
       renderMessageDOM('bot', greeting);
       const pills = window.FB_INITIAL_PILLS || FB_INITIAL_PILLS;
       renderPills(pills);

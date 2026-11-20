@@ -18,10 +18,43 @@ const ALLOWED_ORIGINS = new Set([
 ]);
 
 const MESES_ABR = ['', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+const MESES_NOMBRES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 const TIPO_CAMBIO_FALLBACK = 1350;
 const EUR_USD_FALLBACK = 1.08;
 const CACHE_TASAS_TTL_MS = 3 * 60 * 60 * 1000;
 let _cacheTasasVivo = { ts: 0, usdArs: TIPO_CAMBIO_FALLBACK, eurUsd: EUR_USD_FALLBACK };
+
+// Taxonomía canónica única de 5 regiones (57 destinos)
+const CANONICAL_REGION_BY_ID = {
+  bariloche: 'cabotaje', cordoba: 'cabotaje', calafate: 'cabotaje',
+  jujuy: 'cabotaje', mendoza: 'cabotaje', neuquen: 'cabotaje',
+  iguazu: 'cabotaje', madryn: 'cabotaje', salta: 'cabotaje',
+  sanmartin: 'cabotaje', ushuaia: 'cabotaje',
+  florianopolis: 'brasil', maceio: 'brasil', natal: 'brasil',
+  recife: 'brasil', rio: 'brasil', salvador: 'brasil',
+  puntacana: 'caribe', cancun: 'caribe', aruba: 'caribe',
+  curazao: 'caribe', cuba: 'caribe', sanandres: 'caribe',
+  cartagena: 'caribe', panama: 'caribe', costarica: 'caribe',
+  santiago: 'america', cusco: 'america', newyork: 'america',
+  miami: 'america', orlando: 'america', mexico: 'america',
+  madrid: 'europa_mundo', barcelona: 'europa_mundo', lisboa: 'europa_mundo',
+  roma: 'europa_mundo', paris: 'europa_mundo', londres: 'europa_mundo',
+  berlin: 'europa_mundo', frankfurt: 'europa_mundo', amsterdam: 'europa_mundo',
+  atenas: 'europa_mundo', oslo: 'europa_mundo', reikiavik: 'europa_mundo',
+  estambul: 'europa_mundo', dubai: 'europa_mundo', maldivas: 'europa_mundo',
+  bangkok: 'europa_mundo', tokio: 'europa_mundo', seul: 'europa_mundo',
+  pekin: 'europa_mundo', sydney: 'europa_mundo', nuevazelanda: 'europa_mundo',
+  polinesia: 'europa_mundo', elcairo: 'europa_mundo', marrakech: 'europa_mundo',
+  ciudaddelcabo: 'europa_mundo'
+};
+
+function normalizarCategoriaRegion(dest) {
+  if (!dest || typeof dest !== 'object') return dest;
+  const id = String(dest.id || '').toLowerCase();
+  const reg = CANONICAL_REGION_BY_ID[id] || dest.categoria_region;
+  if (reg === dest.categoria_region) return dest;
+  return { ...dest, categoria_region: reg };
+}
 
 async function obtenerTiposCambioEnVivo() {
   const ahora = Date.now();
@@ -147,10 +180,10 @@ function formatearArs(monto) {
 }
 
 // Consulta a Travelpayouts Aviasales Data API v2 con timeout seguro
-async function consultarTravelpayouts(url) {
+async function consultarTravelpayouts(url, timeoutMs = 4500) {
   try {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 4500);
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
     const res = await fetch(url, {
       method: 'GET',
       headers: {
@@ -173,6 +206,218 @@ function esFlybondi(item) {
   const gate = String(item.gate || '').toLowerCase();
   const air = String(item.airline || '').toLowerCase();
   return gate.includes('flybondi') || air === 'fo' || air.includes('flybondi');
+}
+
+function construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, tipoCambioUsdArs) {
+  const iataRaw = String(dest.iata || '').toUpperCase();
+  const primaryIata = iataRaw.split('/')[0].trim() || 'BUE';
+  const esCabotaje = dest.es_cabotaje === true || dest.categoria_region === 'cabotaje';
+  const origGf = esCabotaje ? 'BUE' : 'EZE';
+  const minN = esCabotaje ? 3 : 4;
+  const maxN = esCabotaje ? 12 : 28;
+  const fechaMin3d = new Date(hoy.getTime() + (3 * 24 * 60 * 60 * 1000));
+  const min3dIso = `${fechaMin3d.getFullYear()}-${String(fechaMin3d.getMonth() + 1).padStart(2, '0')}-${String(fechaMin3d.getDate()).padStart(2, '0')}`;
+  const ahoraIso = new Date().toISOString();
+
+  const vistas = new Set();
+  const salidasReales = [];
+  for (const o of ofertasRaw) {
+    if (!o || !o.depart_date || !o.return_date || !o.value) continue;
+    const val = Number(o.value);
+    if (!Number.isFinite(val) || val <= 0) continue;
+    const depDate = new Date(o.depart_date + 'T00:00:00');
+    const retDate = new Date(o.return_date + 'T00:00:00');
+    if (Number.isNaN(depDate.getTime()) || Number.isNaN(retDate.getTime())) continue;
+    if (depDate < fechaMin3d || retDate <= depDate) continue;
+    const noches = Math.round((retDate - depDate) / (1000 * 60 * 60 * 24));
+    if (noches < minN || noches > maxN) continue;
+    if (esCabotaje && Number(o.number_of_changes || 0) > 0) continue;
+
+    const parKey = `${o.depart_date}_${o.return_date}`;
+    if (vistas.has(parKey)) continue;
+    vistas.add(parKey);
+
+    const diasRestantes = Math.max(1, Math.round((depDate - hoy) / (1000 * 60 * 60 * 24)));
+    const pArs = esCabotaje
+      ? Math.round(val / 100) * 100
+      : Math.round((Math.round(val) * tipoCambioUsdArs) / 100) * 100;
+    const pUsd = esCabotaje
+      ? Math.max(1, Math.round(val / tipoCambioUsdArs))
+      : Math.round(val);
+
+    let gate = String(o.gate || (esCabotaje ? 'JetSMART' : 'Aerolínea Oficial'));
+    if (gate.toLowerCase().includes('flybondi')) {
+      gate = esCabotaje ? 'JetSMART' : 'Aerolínea Oficial';
+    }
+
+    const idxVal = salidasReales.length;
+    salidasReales.push({
+      opcion: idxVal + 1,
+      etiqueta_opcion: idxVal === 0 ? 'Mejor Tarifa' : `Salida ${String.fromCharCode(65 + (idxVal % 26))}`,
+      fecha_ida: o.depart_date,
+      fecha_vuelta: o.return_date,
+      fechas_texto: formatearRangoFechas(o.depart_date, o.return_date),
+      noches,
+      dias_restantes: diasRestantes,
+      precio_ars: pArs,
+      precio_usd: pUsd,
+      escalas: Number(o.number_of_changes || 0),
+      aerolinea_gate: gate,
+      gate,
+      es_real_aviasales: true,
+      actualizado_utc: ahoraIso,
+      google_flights_url: `https://www.google.com/travel/flights?q=Flights%20to%20${primaryIata}%20from%20${origGf}%20on%20${o.depart_date}%20through%20${o.return_date}&hl=es`,
+      kiwi_url: `https://www.kiwi.com/deep?from=BUE&to=${primaryIata}&departure=${o.depart_date}&return=${o.return_date}&currency=${esCabotaje ? 'ARS' : 'USD'}&lang=es&affilid=travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785`
+    });
+    if (salidasReales.length >= 18) break;
+  }
+
+  if (salidasReales.length === 0) {
+    return null;
+  }
+
+  // Agrupar salidas_reales_cazadas en vivo (3 meses con rollover fin de mes + Early Bird 6M)
+  let startYear = hoy.getFullYear();
+  let startMonth = hoy.getMonth();
+  const ultimoDiaMes = new Date(startYear, startMonth + 1, 0).getDate();
+  if (hoy.getDate() >= ultimoDiaMes - 4) {
+    startMonth += 1;
+    if (startMonth > 11) {
+      startMonth = 0;
+      startYear += 1;
+    }
+  }
+
+  const prevCaz = dest.salidas_reales_cazadas && Array.isArray(dest.salidas_reales_cazadas.meses)
+    ? dest.salidas_reales_cazadas
+    : null;
+  const prevValidas = [];
+  if (prevCaz) {
+    for (const m of prevCaz.meses) {
+      for (const s of (m.salidas || [])) {
+        if (s && s.fecha_ida && s.fecha_ida >= min3dIso) {
+          prevValidas.push(s);
+        }
+      }
+    }
+    if (prevCaz.early_bird && Array.isArray(prevCaz.early_bird.salidas)) {
+      for (const s of prevCaz.early_bird.salidas) {
+        if (s && s.fecha_ida && s.fecha_ida >= min3dIso) {
+          prevValidas.push(s);
+        }
+      }
+    }
+  }
+
+  const relBase = dest.oportunidad_relampago || {};
+  const baseAhorroNum = parseInt(relBase.ahorro_porcentaje, 10) || (esCabotaje ? 25 : 20);
+  const meses = [];
+
+  for (let i = 0; i < 3; i++) {
+    let y = startYear;
+    let m = startMonth + i;
+    if (m > 11) {
+      y += Math.floor(m / 12);
+      m = m % 12;
+    }
+    const prefijo = `${y}-${String(m + 1).padStart(2, '0')}`;
+    const cands = salidasReales.filter(s => s.fecha_ida.startsWith(prefijo));
+    const sel = [];
+    for (const c of cands) {
+      if (sel.length === 0) {
+        sel.push({ ...c, opcion: 1, etiqueta_opcion: 'Salida A' });
+      } else if (sel.length < 2) {
+        const d1 = new Date(sel[0].fecha_ida + 'T00:00:00');
+        const d2 = new Date(c.fecha_ida + 'T00:00:00');
+        if (Math.abs((d2 - d1) / (1000 * 60 * 60 * 24)) >= 4) {
+          sel.push({ ...c, opcion: 2, etiqueta_opcion: 'Salida B' });
+        }
+      }
+    }
+    if (sel.length < 2) {
+      for (const p of prevValidas) {
+        if (p.fecha_ida.startsWith(prefijo) && !sel.some(x => x.fecha_ida === p.fecha_ida)) {
+          sel.push({
+            ...p,
+            opcion: sel.length + 1,
+            etiqueta_opcion: sel.length === 0 ? 'Salida A' : 'Salida B'
+          });
+          if (sel.length >= 2) break;
+        }
+      }
+    }
+    if (sel.length === 0) {
+      sel.push({ ...salidasReales[0], opcion: 1, etiqueta_opcion: 'Salida A' });
+    }
+
+    const ahorroMes = Math.max(10, Math.round(baseAhorroNum * (1 - (i * 0.17))));
+    meses.push({
+      key: `mes${i + 1}`,
+      nombre: `${MESES_NOMBRES[m]} ${y}`,
+      nombre_mes: `${MESES_NOMBRES[m]} ${y}`,
+      nombre_corto: MESES_ABR[m + 1],
+      año: y,
+      ahorro_porcentaje: `${ahorroMes}% OFF`,
+      ahorro_pct_num: ahorroMes,
+      salidas: sel
+    });
+  }
+
+  const lejanas = salidasReales.filter(s => s.dias_restantes >= 140);
+  const ebRef = lejanas[0] || salidasReales[salidasReales.length - 1];
+  const ebDate = new Date(ebRef.fecha_ida + 'T00:00:00');
+  const ahorroEb = Math.max(15, Math.round(baseAhorroNum * 0.92));
+  const earlyBird = {
+    key: 'mes6',
+    nombre: `A 6 Meses (${MESES_ABR[ebDate.getMonth() + 1]} ${ebDate.getFullYear()})`,
+    nombre_corto: '6 Meses',
+    año: ebDate.getFullYear(),
+    ahorro_porcentaje: `${ahorroEb}% OFF`,
+    ahorro_pct_num: ahorroEb,
+    salidas: [{ ...ebRef, opcion: 1, etiqueta_opcion: '🎯 Early Bird' }]
+  };
+
+  const salidasCercanas = salidasReales.filter(s => s.dias_restantes <= 90);
+  const flashTop = salidasCercanas[0] || salidasReales[0];
+  const precioFlashTexto = esCabotaje
+    ? formatearArs(flashTop.precio_ars)
+    : `US$ ${flashTop.precio_usd.toLocaleString('es-AR')}`;
+  const precioSecTexto = esCabotaje
+    ? `US$ ${flashTop.precio_usd} aprox`
+    : `aprox. ${formatearArs(flashTop.precio_ars)}`;
+
+  return {
+    salidas_reales: salidasReales,
+    salidas_reales_cazadas: {
+      iata: iataRaw,
+      ciudad: dest.ciudad,
+      actualizado_at: ahoraIso,
+      fuente: 'aviasales_live_vercel',
+      meses,
+      early_bird: earlyBird,
+      mapa_tabs: { mes1: meses[0], mes2: meses[1], mes3: meses[2], mes6: earlyBird }
+    },
+    oportunidad_relampago: {
+      ...(dest.oportunidad_relampago || {}),
+      activa: true,
+      subtitulo: `Salida en ${flashTop.dias_restantes} días · Tarifa real Aviasales`,
+      aerolinea: flashTop.aerolinea_gate,
+      fechas: flashTop.fechas_texto,
+      fechas_texto: flashTop.fechas_texto,
+      fecha_ida: flashTop.fecha_ida,
+      fecha_vuelta: flashTop.fecha_vuelta,
+      noches: flashTop.noches,
+      dias_para_el_vuelo: flashTop.dias_restantes,
+      precio_ars: flashTop.precio_ars,
+      precio_usd_num: flashTop.precio_usd,
+      precio: precioFlashTexto,
+      precio_usd: precioSecTexto,
+      google_flights_url: flashTop.google_flights_url,
+      kiwi_url: flashTop.kiwi_url,
+      actualizado_utc: ahoraIso,
+      fuente: 'Aviasales Live 3h'
+    }
+  };
 }
 
 module.exports = async function handler(req, res) {
@@ -217,7 +462,9 @@ module.exports = async function handler(req, res) {
       clearTimeout(timeout);
 
       if (remoteRes.ok) {
-        const data = await remoteRes.json();
+        const rawRemote = await remoteRes.json();
+        const data = Array.isArray(rawRemote) ? rawRemote.map(normalizarCategoriaRegion) : rawRemote;
+        res.setHeader('X-Radar-Source', 'backend-proxy');
         res.setHeader('Cache-Control', 's-maxage=10800, stale-while-revalidate=21600');
         return res.status(200).json(data);
       }
@@ -227,10 +474,11 @@ module.exports = async function handler(req, res) {
   }
 
   // 2. Cargar catálogo local base (57 destinos) para preservar fotos, descripciones, hoteles y estructura
-  const catalogo = cargarDatosLocales();
-  if (!Array.isArray(catalogo) || catalogo.length === 0) {
+  const catalogoRaw = cargarDatosLocales();
+  if (!Array.isArray(catalogoRaw) || catalogoRaw.length === 0) {
     return res.status(500).json({ error: 'Catálogo de vuelos no disponible' });
   }
+  const catalogo = catalogoRaw.map(normalizarCategoriaRegion);
 
   // 3. Enriquecimiento de tasas vivas y Travelpayouts / Aviasales Data API v2 ($0)
   const { usdArs: TIPO_CAMBIO_VIVO, eurUsd: EUR_USD_VIVO } = await obtenerTiposCambioEnVivo();
@@ -253,10 +501,10 @@ module.exports = async function handler(req, res) {
     const rutasEspecificasUsd = ['GIG', 'FLN', 'MIA', 'CUN', 'PUJ', 'AUA', 'JFK', 'MCO', 'MAD', 'BCN', 'FCO', 'CDG', 'LHR', 'LIS'];
 
     const promesasArs = rutasEspecificasArs.map(code =>
-      consultarTravelpayouts(`https://api.travelpayouts.com/v2/prices/latest?currency=ars&origin=BUE&destination=${code}&period_type=year&page=1&limit=15&show_to_affiliates=true&sorting=price&token=${tpToken}`)
+      consultarTravelpayouts(`https://api.travelpayouts.com/v2/prices/latest?currency=ars&origin=BUE&destination=${code}&period_type=year&page=1&limit=20&show_to_affiliates=true&sorting=price&token=${tpToken}`)
     );
     const promesasUsd = rutasEspecificasUsd.map(code =>
-      consultarTravelpayouts(`https://api.travelpayouts.com/v2/prices/latest?currency=usd&origin=BUE&destination=${code}&period_type=year&page=1&limit=15&show_to_affiliates=true&sorting=price&token=${tpToken}`)
+      consultarTravelpayouts(`https://api.travelpayouts.com/v2/prices/latest?currency=usd&origin=BUE&destination=${code}&period_type=year&page=1&limit=20&show_to_affiliates=true&sorting=price&token=${tpToken}`)
     );
 
     const [resGlobalArs, resGlobalUsd, ...resEspecificas] = await Promise.allSettled([
@@ -291,8 +539,40 @@ module.exports = async function handler(req, res) {
       }
     }
 
+    // Etapa 2: consultar en paralelo las rutas secundarias que quedaron con < 4 ofertas en Etapa 1
+    const faltantesUsd = new Set();
+    for (const dest of catalogo) {
+      const esCab = dest.es_cabotaje === true || dest.categoria_region === 'cabotaje';
+      if (esCab) continue;
+      const primaryIata = String(dest.iata || '').toUpperCase().split('/')[0].trim();
+      const codigos = IATA_ALIASES[primaryIata] || [primaryIata];
+      const totalObs = codigos.reduce((acc, c) => acc + ((mapUsd[c] || []).length), 0);
+      if (totalObs < 4 && primaryIata) {
+        faltantesUsd.add(codigos[0]);
+      }
+    }
+    if (faltantesUsd.size > 0) {
+      const promesasSec = Array.from(faltantesUsd).slice(0, 35).map(code =>
+        consultarTravelpayouts(
+          `https://api.travelpayouts.com/v2/prices/latest?currency=usd&origin=BUE&destination=${code}&period_type=year&page=1&limit=20&show_to_affiliates=true&sorting=price&token=${tpToken}`,
+          2200
+        )
+      );
+      const resSec = await Promise.allSettled(promesasSec);
+      for (const r of resSec) {
+        if (r.status !== 'fulfilled' || !Array.isArray(r.value)) continue;
+        for (const it of r.value) {
+          if (it && it.destination && !esFlybondi(it)) {
+            if (!mapUsd[it.destination]) mapUsd[it.destination] = [];
+            mapUsd[it.destination].push(it);
+          }
+        }
+      }
+    }
+
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
+    const ahoraIso = new Date().toISOString();
 
     // Mapear cada uno de los 57 destinos del catálogo con las mejores ofertas vivas
     const catalogoDinamico = catalogo.map(dest => {
@@ -313,13 +593,18 @@ module.exports = async function handler(req, res) {
       }
       ofertasRaw.sort((a, b) => Number(a.value || 0) - Number(b.value || 0));
 
+      // Construir salidas reales para Relámpago antes de aplicar el recorte largo del Radar
+      const relampagoVivo = construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, TIPO_CAMBIO_VIVO);
+
       // Umbral mínimo de compra anticipada según región y estadía lógica (3 a 21 noches)
       let diasCorte = 45;
       if (esCabotaje) {
         diasCorte = 45;
       } else if (dest.categoria_region === 'europa_mundo') {
         diasCorte = 90;
-      } else if (['MIA', 'MCO', 'JFK', 'AUA', 'CUN', 'CUR', 'HAV', 'MEX'].includes(primaryIata)) {
+      } else if (dest.categoria_region === 'brasil' || ['GIG', 'PUJ', 'SCL', 'CUZ'].includes(primaryIata)) {
+        diasCorte = 60;
+      } else if (['caribe', 'america', 'caribe_usa'].includes(dest.categoria_region) || ['MIA', 'MCO', 'JFK', 'AUA', 'CUN', 'CUR', 'HAV', 'MEX'].includes(primaryIata)) {
         diasCorte = 75;
       } else {
         diasCorte = 60;
@@ -356,12 +641,22 @@ module.exports = async function handler(req, res) {
         ofertasValidas = filtrarPorEstadia(ofertasRaw, fecha3d, 2, 28);
       }
 
-      if (ofertasValidas.length === 0) {
+      if (ofertasValidas.length === 0 && !relampagoVivo) {
         return dest; // Conservar datos base ya sincronizados si no hay cotización nueva en el feed
       }
 
       // Clonar destino para mutación limpia
       const destActualizado = JSON.parse(JSON.stringify(dest));
+      if (relampagoVivo) {
+        destActualizado.salidas_reales = relampagoVivo.salidas_reales;
+        destActualizado.salidas_reales_cazadas = relampagoVivo.salidas_reales_cazadas;
+        destActualizado.oportunidad_relampago = relampagoVivo.oportunidad_relampago;
+      }
+
+      if (ofertasValidas.length === 0) {
+        return destActualizado;
+      }
+
       const vuelosBase = Array.isArray(destActualizado.vuelos) ? destActualizado.vuelos : [];
 
       const nuevosVuelos = vuelosBase.map((vueloBase, idx) => {
@@ -485,15 +780,17 @@ module.exports = async function handler(req, res) {
             // Detectar caída >= 20% frente a la mediana observada de la ruta
             if (medianaReal > 0 && valBase <= medianaReal * 0.80) {
               const descPct = Math.round(((medianaReal - valBase) / medianaReal) * 100);
+              const existingRel = destActualizado.oportunidad_relampago || {};
+              const keepRelDates = Boolean(existingRel.fuente === 'Aviasales Live 3h' && existingRel.fecha_ida);
               destActualizado.oportunidad_relampago = {
-                ...(destActualizado.oportunidad_relampago || {}),
+                ...existingRel,
                 activa: true,
                 descuento_pct: descPct,
                 criterio: 'caida_20pct_observada',
-                fecha_ida: primerVuelo.fecha_ida,
-                fecha_vuelta: primerVuelo.fecha_vuelta,
-                fechas: primerVuelo.fechas,
-                noches: primerVuelo.noches
+                fecha_ida: keepRelDates ? existingRel.fecha_ida : primerVuelo.fecha_ida,
+                fecha_vuelta: keepRelDates ? existingRel.fecha_vuelta : primerVuelo.fecha_vuelta,
+                fechas: keepRelDates ? existingRel.fechas : primerVuelo.fechas,
+                noches: keepRelDates ? existingRel.noches : primerVuelo.noches
               };
             }
           } else {
@@ -507,10 +804,14 @@ module.exports = async function handler(req, res) {
     });
 
     // 4. Servir con caché en Edge CDN de Vercel (3 horas frescas = 10800s, alineado a la cadencia 3h)
+    res.setHeader('X-Radar-Source', 'live-travelpayouts');
+    res.setHeader('X-Radar-Updated-At', ahoraIso);
+    res.setHeader('Access-Control-Expose-Headers', 'X-FlightBot-Usd-Ars, X-FlightBot-Eur-Usd, X-Radar-Source, X-Radar-Updated-At');
     res.setHeader('Cache-Control', 's-maxage=10800, stale-while-revalidate=21600');
     return res.status(200).json(catalogoDinamico);
   } catch (_err) {
     // 5. Fallback resiliente al catálogo local si falla el pipeline de Travelpayouts
+    res.setHeader('X-Radar-Source', 'local-fallback');
     res.setHeader('Cache-Control', 's-maxage=600, stale-while-revalidate=1800');
     return res.status(200).json(catalogo);
   }

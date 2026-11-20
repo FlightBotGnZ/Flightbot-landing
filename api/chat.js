@@ -9,12 +9,32 @@
  * - Resiliencia: Fallback a Concierge Curado si la cuota de IA se agota o la key no está configurada.
  */
 
+const fs = require('fs');
+const path = require('path');
+
 const {
   extractClientIp,
   pruneRateLimitMap,
   detectPromptInjection,
   sanitizeGeminiHtml
 } = require('./_security');
+
+let _cachedTotalDestinos = null;
+function obtenerTotalDestinosCatalogo() {
+  if (_cachedTotalDestinos !== null) return _cachedTotalDestinos;
+  try {
+    const radarPath = path.join(__dirname, '..', 'js', 'radar-data.json');
+    if (fs.existsSync(radarPath)) {
+      const data = JSON.parse(fs.readFileSync(radarPath, 'utf8'));
+      if (Array.isArray(data) && data.length > 0) {
+        _cachedTotalDestinos = data.length;
+        return _cachedTotalDestinos;
+      }
+    }
+  } catch (_e) {}
+  _cachedTotalDestinos = 57;
+  return _cachedTotalDestinos;
+}
 
 const ALLOWED_ORIGINS = new Set([
   'https://flightbot.com.ar',
@@ -109,7 +129,7 @@ function obtenerRespuestaCurada(texto) {
     }
   }
   return {
-    respuesta: "👋 ¡Hola! Soy <b>F-Bot Rolli</b>, el asistente inteligente de FlightBot 🧳.<br><br>Puedo ayudarte a cotizar pasajes, conocer cuándo conviene viajar a nuestros 56 destinos globales, equipaje para bebés, salas VIP o el estado del asfalto en las rutas argentinas.<br><br>¿Hacia qué destino estás planeando tu próximo viaje?",
+    respuesta: `👋 ¡Hola! Soy <b>F-Bot Rolli</b>, el asistente inteligente de FlightBot 🧳.<br><br>Puedo ayudarte a cotizar pasajes, conocer cuándo conviene viajar a nuestros ${obtenerTotalDestinosCatalogo()} destinos globales, equipaje para bebés, salas VIP o el estado del asfalto en las rutas argentinas.<br><br>¿Hacia qué destino estás planeando tu próximo viaje?`,
     quick_replies: [
       "✈️ Vuelos a Madrid y Roma",
       "🏖️ Playas de Punta Cana",
@@ -350,7 +370,7 @@ Especialidades:
 3. Acceso a salas VIP en aeropuertos con tarjetas bancarias (Priority Pass, Visa Signature/Infinite, Mastercard Black).
 4. Rutas en auto por Argentina y semáforo del estado de las rutas.
 5. Travesía a Ushuaia en Auto (Modo Ruta · 3 Días): ~3.080 km por RN 3. Explicá con total claridad que es 100% posible pero requiere 3 días (2 noches en ruta: Noche 1 Las Grutas/Madryn, Noche 2 Comodoro/San Julián). Requiere cruzar a Chile (Paso Monte Aymond y San Sebastián), tomar la barcaza TABSA en Primera Angostura (Estrecho de Magallanes), DNI físico tarjeta vigente (Chile no acepta digital), cédula y seguro Mercosur con cobertura en Chile, grabado de cristales, partida de nacimiento original para menores y Certificado Veterinario Internacional (CVI) de SENASA si viajan mascotas. Nafta 20-25% más barata por exención impositiva en Patagonia.
-5. Recomendaciones de barrios y transporte en nuestros 56 destinos turísticos globales.
+5. Recomendaciones de barrios y transporte en nuestros ${obtenerTotalDestinosCatalogo()} destinos turísticos globales.
 Reglas estrictas de seguridad (OWASP GenAI):
   - Responde siempre en formato HTML limpio usando únicamente etiquetas <b>, <i>, <code>, <br>, sin markdown crudo (#, **, \`\`\`).
 - Si en la consulta recibís '[DATOS OFICIALES VERIFICADOS DE FLIGHTBOT]', usá obligatoriamente esas tarifas, hoteles y zonas como verdad indiscutible para responder con máxima precisión y autoridad.

@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="css/styles.css">
 
   <!-- Scripts Modularizados con Carga Diferida (defer) -->
+  <script src="js/site-stats.js" defer></script>
   <script src="js/theme.js" defer></script>
   <script src="js/radar-data.js" defer></script>
   <script src="js/road-data.js" defer></script>
@@ -908,7 +909,7 @@
                   🏨
                 </div>
                 <div>
-                  <span class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Alojamiento Seleccionado · 45 Destinos</span>
+                  <span id="home-hoteles-dest-count" class="text-[10px] uppercase font-bold text-slate-400 block tracking-wider">Alojamiento Seleccionado · <span data-fb-stat="destinos">57</span> Destinos</span>
                   <h3 class="text-xl sm:text-2xl font-black dark:text-white text-slate-900 leading-tight">Top 3 de Hoteles por Destino</h3>
                 </div>
               </div>
@@ -926,36 +927,36 @@
               <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex flex-col justify-between space-y-2">
                 <div>
                   <span class="inline-block text-[10px] font-bold text-amber-600 dark:text-amber-400 mb-1">👑 Ícono Exclusivo</span>
-                  <h4 class="text-xs font-black dark:text-white text-slate-900 leading-snug">Llao Llao Resort, Golf-Spa</h4>
+                  <h4 id="home-hotel-brc-nom-0" class="text-xs font-black dark:text-white text-slate-900 leading-snug">Llao Llao Resort, Golf-Spa</h4>
                   <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Villa Llao Llao · ⭐ 9.4</p>
                 </div>
                 <div class="pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-[11px]">
                   <span class="text-slate-400">Desde</span>
-                  <span class="font-mono font-black text-indigo-600 dark:text-indigo-400">US$ 237/n</span>
+                  <span id="home-hotel-brc-precio-0" class="font-mono font-black text-indigo-600 dark:text-indigo-400">US$ 237/n</span>
                 </div>
               </div>
 
               <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex flex-col justify-between space-y-2">
                 <div>
                   <span class="inline-block text-[10px] font-bold text-rose-600 dark:text-rose-400 mb-1">❤️ Favorito Huéspedes</span>
-                  <h4 class="text-xs font-black dark:text-white text-slate-900 leading-snug">Cacique Inacayal Lake & Spa</h4>
+                  <h4 id="home-hotel-brc-nom-1" class="text-xs font-black dark:text-white text-slate-900 leading-snug">Cacique Inacayal Lake & Spa</h4>
                   <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Costanera · ⭐ 9.1</p>
                 </div>
                 <div class="pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-[11px]">
                   <span class="text-slate-400">Desde</span>
-                  <span class="font-mono font-black text-indigo-600 dark:text-indigo-400">US$ 107/n</span>
+                  <span id="home-hotel-brc-precio-1" class="font-mono font-black text-indigo-600 dark:text-indigo-400">US$ 107/n</span>
                 </div>
               </div>
 
               <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 flex flex-col justify-between space-y-2">
                 <div>
                   <span class="inline-block text-[10px] font-bold text-emerald-600 dark:text-emerald-400 mb-1">💎 Calidad-Precio</span>
-                  <h4 class="text-xs font-black dark:text-white text-slate-900 leading-snug">Villa Huinid Pioneros</h4>
+                  <h4 id="home-hotel-brc-nom-2" class="text-xs font-black dark:text-white text-slate-900 leading-snug">Villa Huinid Pioneros</h4>
                   <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Av. Bustillo Km 2,6 · ⭐ 9.0</p>
                 </div>
                 <div class="pt-2 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between text-[11px]">
                   <span class="text-slate-400">Desde</span>
-                  <span class="font-mono font-black text-indigo-600 dark:text-indigo-400">US$ 58/n</span>
+                  <span id="home-hotel-brc-precio-2" class="font-mono font-black text-indigo-600 dark:text-indigo-400">US$ 58/n</span>
                 </div>
               </div>
             </div>
@@ -984,7 +985,7 @@
 
             <h3 class="text-lg font-black dark:text-white text-slate-900 mb-1.5">Radar de Resorts & Roiback</h3>
             <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              Auditoría en vivo de 21 mega-resorts en el Caribe y Brasil. Desbloqueo de cupones directos, termómetro estacional y semáforo de sargazo.
+              Auditoría en vivo de <span data-fb-stat="resorts">31</span> mega-resorts en el Caribe y Brasil. Desbloqueo de cupones directos, termómetro estacional y semáforo de sargazo.
             </p>
 
             <!-- Mini Auditoría Visual de Resort -->
@@ -1048,8 +1049,8 @@
               <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800 leading-relaxed dark:text-slate-200 text-slate-800 space-y-1.5">
                 <p>🚨 <b>TARIFA RÉCORD DETECTADA</b></p>
                 <p>📍 <b>Buenos Aires (BUE) ➔ Bariloche (BRC)</b></p>
-                <p>📉 Precio ida y vuelta: <span class="font-black font-mono text-blue-600 dark:text-blue-400">$ 137.460 ARS</span> <span class="text-emerald-500 font-bold">(-32% histórico)</span></p>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400">✈️ JetSMART · Directo · 14 May - 19 May (5 noches) · 4 cupos disponibles.</p>
+                <p>📉 Precio ida y vuelta: <span id="home-tg-brc-precio" class="font-black font-mono text-blue-600 dark:text-blue-400">$ 137.460 ARS</span> <span id="home-tg-brc-ahorro" class="text-emerald-500 font-bold">(-32% histórico)</span></p>
+                <p id="home-tg-brc-detalle" class="text-[11px] text-slate-500 dark:text-slate-400">✈️ JetSMART · Directo · 14 May - 19 May (5 noches) · 4 cupos disponibles.</p>
               </div>
             </div>
           </div>
@@ -1470,8 +1471,7 @@
           .replace(/&lt;i&gt;([\s\S]*?)&lt;\/i&gt;/gi, '<em>$1</em>')
           .replace(/&lt;code&gt;([\s\S]*?)&lt;\/code&gt;/gi, '<code class="px-1.5 py-0.5 rounded dark:bg-slate-700 bg-slate-200 font-mono text-xs">$1</code>')
           .replace(/&lt;br\s*\/?&gt;/gi, '<br>')
-          .replace(/
-/g, '<br>');
+          .replace(/\n/g, '<br>');
       }
 
       // Detectar guía mencionada en el texto o usar el contexto de la página actual
@@ -1587,8 +1587,9 @@
         }
 
         // 5. Fallback general orientador
+        const totalGuias = (window.FLIGHTBOT_STATS && window.FLIGHTBOT_STATS.guias) || 57;
         return {
-          respuesta: "🤖 Puedo ayudarte con nuestras <b>57 Guías Oficiales</b> (Roma, Madrid, Miami, Río, Cancún, Punta Cana, Aruba, Bariloche, Mendoza e Iguazú), comparativas de <b>trenes vs. avión</b>, mejores barrios para alojarte, <b>equipaje de bebé</b> y <b>salas VIP</b>.<br><br>¿Sobre qué destino o tema te gustaría consultar?",
+          respuesta: `🤖 Puedo ayudarte con nuestras <b>${totalGuias} Guías Oficiales</b> (Roma, Madrid, Miami, Río, Cancún, Punta Cana, Aruba, Bariloche, Mendoza e Iguazú), comparativas de <b>trenes vs. avión</b>, mejores barrios para alojarte, <b>equipaje de bebé</b> y <b>salas VIP</b>.<br><br>¿Sobre qué destino o tema te gustaría consultar?`,
           quick_replies: FB_INITIAL_PILLS
         };
       }
@@ -1794,6 +1795,102 @@
       // Auditoría de seguridad de enlaces rel="noopener noreferrer sponsored"
       return true;
     }
+
+    function hidratarPortadaDesdeRadar(lista) {
+      if (!Array.isArray(lista) || !lista.length) return;
+      if (typeof window.hidratarEstadisticasSitio === 'function') {
+        window.hidratarEstadisticasSitio();
+      }
+      if (typeof window.hidratarComparadorDesdeRadar === 'function') {
+        window.hidratarComparadorDesdeRadar(lista);
+      }
+
+      const brc = lista.find(d => d && d.id === 'bariloche');
+      if (brc) {
+        if (Array.isArray(brc.hoteles)) {
+          brc.hoteles.slice(0, 3).forEach((h, idx) => {
+            const nomEl = document.getElementById(`home-hotel-brc-nom-${idx}`);
+            const pEl = document.getElementById(`home-hotel-brc-precio-${idx}`);
+            if (nomEl && h.nombre) nomEl.textContent = h.nombre;
+            if (pEl) {
+              const rawPrecio = h.precio_noche || (h.precio_noche_usd ? `US$ ${h.precio_noche_usd}/n` : '');
+              const fmt = (typeof window.formatearPrecioMoneda === 'function' && rawPrecio)
+                ? window.formatearPrecioMoneda(rawPrecio, brc)
+                : (h.precio_noche_usd ? `US$ ${h.precio_noche_usd}/n` : rawPrecio);
+              if (fmt) pEl.textContent = fmt.replace(' / noche', '/n');
+            }
+          });
+        }
+
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
+        const minIso = new Date(hoy.getTime() + 3 * 86400000).toISOString().split('T')[0];
+        let sBrc = Array.isArray(brc.salidas_reales) ? brc.salidas_reales.find(s => s && s.fecha_ida >= minIso) : null;
+        if (!sBrc && brc.salidas_reales_cazadas && Array.isArray(brc.salidas_reales_cazadas.meses)) {
+          for (const m of brc.salidas_reales_cazadas.meses) {
+            const hit = (m.salidas || []).find(s => s && s.fecha_ida >= minIso);
+            if (hit) { sBrc = hit; break; }
+          }
+        }
+        const v0 = Array.isArray(brc.vuelos) && brc.vuelos[0] ? brc.vuelos[0] : null;
+        const pArs = (sBrc && Number(sBrc.precio_ars)) || (v0 && Number(v0.precio_ars)) || 0;
+        const fTxt = (sBrc && sBrc.fechas_texto) || (v0 && v0.fechas) || '';
+        const noches = (sBrc && sBrc.noches) || (v0 && v0.noches) || 5;
+        const aero = (v0 && v0.aerolinea) || 'JetSMART';
+        const pct = String((brc.oportunidad_relampago && brc.oportunidad_relampago.ahorro_porcentaje) || '').match(/\d+/);
+
+        const tgPrecio = document.getElementById('home-tg-brc-precio');
+        if (tgPrecio && pArs > 0) {
+          const rawStr = `$ ${pArs.toLocaleString('es-AR')} ARS`;
+          tgPrecio.textContent = (typeof window.formatearPrecioMoneda === 'function')
+            ? window.formatearPrecioMoneda(rawStr, brc)
+            : rawStr;
+        }
+        const tgAhorro = document.getElementById('home-tg-brc-ahorro');
+        if (tgAhorro && pct) {
+          tgAhorro.textContent = `(-${pct[0]}% histórico)`;
+        }
+        const tgDet = document.getElementById('home-tg-brc-detalle');
+        if (tgDet && fTxt) {
+          const dias = (sBrc && Number(sBrc.dias_restantes)) || 14;
+          const cupos = dias <= 10 ? 2 : (dias <= 25 ? 3 : 4);
+          tgDet.textContent = `✈️ ${aero} · Directo · ${fTxt} (${noches} noches) · ${cupos} cupos disponibles.`;
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async function() {
+      if (Array.isArray(window.RADAR_DATA)) {
+        hidratarPortadaDesdeRadar(window.RADAR_DATA);
+      }
+      window.addEventListener('flightbot:currencyChange', function() {
+        if (Array.isArray(window.RADAR_DATA)) hidratarPortadaDesdeRadar(window.RADAR_DATA);
+      });
+      window.addEventListener('flightbot:fxUpdate', function() {
+        if (Array.isArray(window.RADAR_DATA)) hidratarPortadaDesdeRadar(window.RADAR_DATA);
+      });
+      if (window.location.protocol !== 'file:') {
+        try {
+          const res = await fetch('/api/vuelos', { cache: 'no-store' });
+          if (res.ok) {
+            const hUsd = res.headers ? res.headers.get('X-FlightBot-Usd-Ars') : null;
+            const hEur = res.headers ? res.headers.get('X-FlightBot-Eur-Usd') : null;
+            if (hUsd && typeof window.setTiposCambioVivos === 'function') {
+              window.setTiposCambioVivos(hUsd, hEur, 'api_vuelos');
+            }
+            const raw = await res.json();
+            const remotos = Array.isArray(raw) ? raw : (raw && Array.isArray(raw.destinos) ? raw.destinos : null);
+            if (remotos && remotos.length > 0) {
+              window.RADAR_DATA = remotos;
+              hidratarPortadaDesdeRadar(remotos);
+              if (typeof window.sincronizarRolliConRadar === 'function') {
+                window.sincronizarRolliConRadar(remotos);
+              }
+            }
+          }
+        } catch (_) {}
+      }
+    });
   </script>
 
 

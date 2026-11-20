@@ -149,6 +149,7 @@
   <!-- Vercel Web Analytics (mismo dominio, compatible con CSP script-src 'self') -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script src="/js/site-stats.js" defer></script>
   <script src="/js/theme.js" defer></script>
   <script>(function(){try{if(!localStorage.getItem('fb_theme_cobalt_v1')){localStorage.setItem('fb_theme_mode','light');localStorage.setItem('fb_theme_color','blue');localStorage.setItem('fb_theme_cobalt_v1','1');}var m=localStorage.getItem('fb_theme_mode')||'light';if(m==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('data-color','blue');}catch(_){}})();</script>
 </head>
@@ -2722,11 +2723,21 @@
     function actualizarMetricas() {
       const metricTotal = document.getElementById('metric-total');
       const metricHoteles = document.getElementById('metric-hoteles');
+      const countVuelos = walletDocs.filter(d => d.tipo === 'vuelo').length;
+      const countHoteles = walletDocs.filter(d => d.tipo === 'hotel').length;
+      const countAsis = walletDocs.filter(d => d.tipo === 'asistencia').length;
       if (metricTotal) metricTotal.textContent = `${walletDocs.length} archivo${walletDocs.length === 1 ? '' : 's'}`;
       if (metricHoteles) {
-        const countH = walletDocs.filter(d => d.tipo === 'hotel').length;
-        metricHoteles.textContent = `${countH} reserva${countH === 1 ? '' : 's'}`;
+        metricHoteles.textContent = `${countHoteles} reserva${countHoteles === 1 ? '' : 's'}`;
       }
+      const btnTodos = document.getElementById('tab-todos');
+      const btnVuelo = document.getElementById('tab-vuelo');
+      const btnHotel = document.getElementById('tab-hotel');
+      const btnAsis = document.getElementById('tab-asistencia');
+      if (btnTodos) btnTodos.textContent = `Todos (${walletDocs.length})`;
+      if (btnVuelo) btnVuelo.textContent = `✈️ Vuelos (${countVuelos})`;
+      if (btnHotel) btnHotel.textContent = `🏨 Hoteles (${countHoteles})`;
+      if (btnAsis) btnAsis.textContent = `🩺 Asistencia Médica (${countAsis})`;
     }
 
     window.filtrarCategoria = function(cat) {

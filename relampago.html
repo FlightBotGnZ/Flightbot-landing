@@ -142,6 +142,7 @@
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script src="/js/auth.js" defer></script>
+  <script src="/js/site-stats.js" defer></script>
   <script src="/js/theme.js" defer></script>
   <script>(function(){try{if(!localStorage.getItem('fb_theme_cobalt_v1')){localStorage.setItem('fb_theme_mode','light');localStorage.setItem('fb_theme_color','blue');localStorage.setItem('fb_theme_cobalt_v1','1');}var m=localStorage.getItem('fb_theme_mode')||'light';if(m==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('data-color','blue');}catch(_){}})();</script>
 </head>
@@ -466,23 +467,29 @@
           Tarifas de salida inmediata (próximos 20 a 35 días) detectadas por nuestro algoritmo. Asientos remanentes a precios récord con hasta <strong>35% de descuento</strong> vs. el radar planificado.
         </p>
 
-        <!-- Indicador Principal de Vencimiento de Ventana Flash -->
-        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 text-xs shadow-sm mb-6">
-          <span class="text-base animate-pulse">⏱️</span>
-          <span class="font-medium dark:text-slate-300 text-slate-700">Ventana de tarifas activas vence en:</span>
-          <span id="global-countdown" class="font-mono font-black text-blue-600 px-2 py-0.5 rounded-lg dark:bg-slate-950 bg-slate-100 border dark:border-slate-800 border-slate-200"></span>
-          <script>
-            (function(){
-              var now = new Date();
-              var fin = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
-              var diff = Math.max(0, fin - now);
-              var h = String(Math.floor(diff / 3600000)).padStart(2, '0');
-              var m = String(Math.floor((diff / 60000) % 60)).padStart(2, '0');
-              var s = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
-              var el = document.getElementById('global-countdown');
-              if (el) el.textContent = h + 'h ' + m + 'm ' + s + 's';
-            })();
-          </script>
+        <!-- Indicador Principal de Vencimiento de Ventana Flash y Frescura -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 mb-6">
+          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 text-xs shadow-sm">
+            <span class="text-base animate-pulse">⏱️</span>
+            <span class="font-medium dark:text-slate-300 text-slate-700">Ventana de tarifas activas vence en:</span>
+            <span id="global-countdown" class="font-mono font-black text-blue-600 px-2 py-0.5 rounded-lg dark:bg-slate-950 bg-slate-100 border dark:border-slate-800 border-slate-200"></span>
+            <script>
+              (function(){
+                var now = new Date();
+                var fin = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+                var diff = Math.max(0, fin - now);
+                var h = String(Math.floor(diff / 3600000)).padStart(2, '0');
+                var m = String(Math.floor((diff / 60000) % 60)).padStart(2, '0');
+                var s = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+                var el = document.getElementById('global-countdown');
+                if (el) el.textContent = h + 'h ' + m + 'm ' + s + 's';
+              })();
+            </script>
+          </div>
+          <div id="relampago-sync-badge" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-2xl dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 text-xs shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span id="relampago-sync-status" class="font-semibold dark:text-slate-300 text-slate-700">Tarifas sincronizadas</span>
+          </div>
         </div>
 
         <!-- Tira Bento de Telemetría Flash (4 Métricas Clave) -->
@@ -492,7 +499,7 @@
               ⚡
             </div>
             <div class="min-w-0">
-              <div class="text-xs font-black dark:text-white text-slate-900 truncate">45 Vuelos Flash</div>
+              <div id="hero-stat-vuelos-count" class="text-xs font-black dark:text-white text-slate-900 truncate">57 Vuelos Flash</div>
               <div class="text-[11px] dark:text-slate-400 text-slate-500 truncate">Salida en 20-35 días</div>
             </div>
           </div>
@@ -501,7 +508,7 @@
               📉
             </div>
             <div class="min-w-0">
-              <div class="text-xs font-black dark:text-white text-slate-900 truncate">Hasta 35% OFF</div>
+              <div id="hero-stat-max-off" class="text-xs font-black dark:text-white text-slate-900 truncate">Hasta 35% OFF</div>
               <div class="text-[11px] dark:text-slate-400 text-slate-500 truncate">Vs. precio planificado</div>
             </div>
           </div>
@@ -550,7 +557,7 @@
       </div>
     </section>
 
-    <!-- MÓDULO 2: GRILLA DE VUELOS RELÁMPAGO (45 DESTINOS) -->
+    <!-- MÓDULO 2: GRILLA DE VUELOS RELÁMPAGO (57 DESTINOS) -->
     <section class="w-full py-14">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -559,8 +566,8 @@
             <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 mb-1">
               <span>✈️</span> Salidas en los próximos 20 a 35 días
             </div>
-            <h2 class="text-2xl sm:text-3xl font-black dark:text-white text-slate-900">
-              45 Oportunidades Relámpago Vigentes
+            <h2 id="titulo-relampago-count" class="text-2xl sm:text-3xl font-black dark:text-white text-slate-900">
+              57 Oportunidades Relámpago Vigentes
             </h2>
           </div>
 
@@ -588,18 +595,21 @@
             <span class="text-[11px] font-extrabold dark:text-slate-400 text-slate-500 uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
               <span>📍</span> Región:
             </span>
-            <button type="button" onclick="filtrarRegion('todos')" id="chip-todos" class="chip-region px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap text-white shadow-xs" style="background-color: var(--brand-primary);">Todos (45)</button>
+            <button type="button" onclick="filtrarRegion('todos')" id="chip-todos" class="chip-region px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap text-white shadow-xs" style="background-color: var(--brand-primary);">Todos (57)</button>
             <button type="button" onclick="filtrarRegion('cabotaje')" id="chip-cabotaje" class="chip-region px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
-              <span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje</span>
+              <span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje <span id="chip-count-cabotaje"></span></span>
             </button>
             <button type="button" onclick="filtrarRegion('brasil')" id="chip-brasil" class="chip-region px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
-              <span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil</span>
+              <span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil <span id="chip-count-brasil"></span></span>
             </button>
-            <button type="button" onclick="filtrarRegion('caribe_usa')" id="chip-caribe_usa" class="chip-region px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
-              🏝️ Caribe &amp; EE.UU.
+            <button type="button" onclick="filtrarRegion('caribe')" id="chip-caribe" class="chip-region px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
+              🏝️ Caribe &amp; Playas <span id="chip-count-caribe"></span>
+            </button>
+            <button type="button" onclick="filtrarRegion('america')" id="chip-america" class="chip-region px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
+              🌎 América <span id="chip-count-america"></span>
             </button>
             <button type="button" onclick="filtrarRegion('europa_mundo')" id="chip-europa_mundo" class="chip-region px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
-              🌍 Europa &amp; Mundo
+              🌍 Europa &amp; Mundo <span id="chip-count-europa_mundo"></span>
             </button>
           </div>
 
@@ -617,8 +627,8 @@
             <button type="button" onclick="filtrarPresupuesto('brasil_350')" id="chip-pres-brasil_350" class="chip-presupuesto px-3 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
               Brasil &lt; US$ 350
             </button>
-            <button type="button" onclick="filtrarPresupuesto('caribe_600')" id="chip-pres-caribe_600" class="chip-presupuesto px-3 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
-              Caribe/USA &lt; US$ 600
+            <button type="button" onclick="filtrarPresupuesto('caribe_650')" id="chip-pres-caribe_650" class="chip-presupuesto px-3 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
+              Caribe &amp; América &lt; US$ 650
             </button>
             <button type="button" onclick="filtrarPresupuesto('europa_950')" id="chip-pres-europa_950" class="chip-presupuesto px-3 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
               Europa &lt; US$ 950
@@ -631,7 +641,7 @@
               <span>🗓️</span> Horizonte:
             </span>
             <button type="button" onclick="filtrarHorizonte('todos')" id="chip-horiz-todos" class="chip-horizonte px-3 py-1.5 rounded-xl font-bold whitespace-nowrap text-white shadow-xs" style="background-color: var(--brand-primary);">
-              🌟 Todos los Meses (6+1)
+              🌟 Todos los Meses
             </button>
             <button type="button" onclick="filtrarHorizonte('mes1')" id="chip-horiz-mes1" class="chip-horizonte px-3 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
               ⚡ Este Mes (<span id="txt-h-mes1">Nov</span>)
@@ -888,6 +898,45 @@
     const NOMBRES_MESES = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     const NOMBRES_CORTOS = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
 
+    const CARIBE_PLAYA_IDS = new Set(['puntacana', 'cancun', 'aruba', 'curazao', 'cuba', 'sanandres', 'cartagena', 'panama', 'costarica']);
+    const AMERICA_RESTO_IDS = new Set(['santiago', 'cusco', 'newyork', 'miami', 'orlando', 'mexico']);
+
+    function obtenerRegionDestino(dest) {
+      if (!dest) return 'europa_mundo';
+      const reg = dest.categoria_region;
+      if (reg === 'cabotaje' || dest.es_cabotaje) return 'cabotaje';
+      if (reg === 'brasil') return 'brasil';
+      if (reg === 'caribe' || CARIBE_PLAYA_IDS.has(dest.id)) return 'caribe';
+      if (reg === 'america' || AMERICA_RESTO_IDS.has(dest.id)) return 'america';
+      if (reg === 'caribe_usa') return CARIBE_PLAYA_IDS.has(dest.id) ? 'caribe' : 'america';
+      return reg || 'europa_mundo';
+    }
+
+    function actualizarEstadoSincronizacionRelampago(fuenteLabel, headerUpdatedAt) {
+      const el = document.getElementById('relampago-sync-status');
+      if (!el) return;
+      let latestIso = headerUpdatedAt || '';
+      if (Array.isArray(window.RADAR_DATA)) {
+        for (const d of window.RADAR_DATA) {
+          const tsCaz = d && d.salidas_reales_cazadas && d.salidas_reales_cazadas.actualizado_at;
+          const tsRel = d && d.oportunidad_relampago && (d.oportunidad_relampago.actualizado_utc || d.oportunidad_relampago.actualizado_at);
+          const candidate = tsRel || tsCaz || '';
+          if (candidate && (!latestIso || candidate > latestIso)) {
+            latestIso = candidate;
+          }
+        }
+      }
+      if (latestIso) {
+        const dt = new Date(latestIso);
+        if (!Number.isNaN(dt.getTime())) {
+          const fechaTxt = dt.toLocaleString('es-AR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+          el.textContent = fuenteLabel ? `${fuenteLabel} · ${fechaTxt} hs` : `Actualizado: ${fechaTxt} hs`;
+          return;
+        }
+      }
+      el.textContent = fuenteLabel || 'Tarifas sincronizadas';
+    }
+
     // Motor de Horizontes Temporales: prioriza salidas reales de Aviasales (/api/vuelos)
     function calcularHorizontesDestino(dest) {
       const hoy = new Date();
@@ -924,20 +973,56 @@
         };
       };
 
-      // 1. Si el destino ya cuenta con salidas reales de Aviasales desde SQLite, filtrar vigentes y recalcular días
+      // 1. Si el destino ya cuenta con salidas reales en vivo de Aviasales (/api/vuelos), agrupar por mes completando con cazadas vigentes
       if (dest && Array.isArray(dest.salidas_reales) && dest.salidas_reales.length > 0) {
         const reales = dest.salidas_reales
           .filter(s => s && s.fecha_ida && s.fecha_ida >= fechaMinimaIso)
           .map((s, idx) => normalizarSalidaVigente(s, idx));
 
-        if (reales.length >= 2) {
+        const cazadasPool = [];
+        if (dest.salidas_reales_cazadas && Array.isArray(dest.salidas_reales_cazadas.meses)) {
+          for (const mCaz of dest.salidas_reales_cazadas.meses) {
+            for (const sCaz of (mCaz.salidas || [])) {
+              if (sCaz && sCaz.fecha_ida && sCaz.fecha_ida >= fechaMinimaIso) {
+                cazadasPool.push(normalizarSalidaVigente(sCaz, cazadasPool.length));
+              }
+            }
+          }
+        }
+
+        if (reales.length >= 1) {
           const rel = dest.oportunidad_relampago || {};
           const baseAhorroNum = parseInt(rel.ahorro_porcentaje) || (dest.es_cabotaje ? 25 : 20);
 
-          const bucketMes = (mTarget, yTarget) => reales.filter(s => {
-            const d = new Date(`${s.fecha_ida}T00:00:00`);
-            return d.getMonth() === mTarget && d.getFullYear() === yTarget;
-          }).slice(0, 2);
+          const bucketMes = (mTarget, yTarget) => {
+            const prefijo = `${yTarget}-${String(mTarget + 1).padStart(2, '0')}`;
+            const delMes = [];
+            for (const s of reales) {
+              if (!s.fecha_ida.startsWith(prefijo)) continue;
+              if (delMes.length === 0) {
+                delMes.push({ ...s, opcion: 1, etiqueta_opcion: 'Salida A' });
+              } else if (delMes.length < 2) {
+                const d0 = new Date(`${delMes[0].fecha_ida}T00:00:00`);
+                const d1 = new Date(`${s.fecha_ida}T00:00:00`);
+                if (Math.abs((d1 - d0) / (24 * 60 * 60 * 1000)) >= 4) {
+                  delMes.push({ ...s, opcion: 2, etiqueta_opcion: 'Salida B' });
+                }
+              }
+            }
+            if (delMes.length < 2) {
+              for (const sCaz of cazadasPool) {
+                if (sCaz.fecha_ida.startsWith(prefijo) && !delMes.some(x => x.fecha_ida === sCaz.fecha_ida)) {
+                  delMes.push({
+                    ...sCaz,
+                    opcion: delMes.length + 1,
+                    etiqueta_opcion: delMes.length === 0 ? 'Salida A' : 'Salida B'
+                  });
+                  if (delMes.length >= 2) break;
+                }
+              }
+            }
+            return delMes;
+          };
 
           const meses = [];
           for (let i = 0; i < 3; i++) {
@@ -946,29 +1031,33 @@
             if (m > 11) { y += Math.floor(m / 12); m = m % 12; }
             let salidasMes = bucketMes(m, y);
             if (!salidasMes.length) {
-              salidasMes = reales.slice(i * 2, i * 2 + 2);
-              if (!salidasMes.length) salidasMes = reales.slice(0, 2);
+              const sliceAlt = reales.slice(i * 2, i * 2 + 2);
+              salidasMes = sliceAlt.length ? sliceAlt : reales.slice(0, 2);
             }
+            const ahorroMes = Math.max(10, Math.round(baseAhorroNum * (1 - (i * 0.17))));
             meses.push({
               key: `mes${i + 1}`,
               nombre: `${NOMBRES_MESES[m]} ${y}`,
               nombre_corto: NOMBRES_CORTOS[m],
               año: y,
-              ahorro_porcentaje: `${baseAhorroNum}% OFF`,
-              ahorro_pct_num: baseAhorroNum,
+              ahorro_porcentaje: `${ahorroMes}% OFF`,
+              ahorro_pct_num: ahorroMes,
               salidas: salidasMes
             });
           }
 
           const lejanas = reales.filter(s => (s.dias_restantes || 0) >= 120);
-          const earlyList = lejanas.length ? lejanas.slice(0, 1) : [reales[reales.length - 1]];
+          const ebCaz = dest.salidas_reales_cazadas && dest.salidas_reales_cazadas.early_bird && Array.isArray(dest.salidas_reales_cazadas.early_bird.salidas)
+            ? dest.salidas_reales_cazadas.early_bird.salidas.filter(s => s && s.fecha_ida && s.fecha_ida >= fechaMinimaIso).map((s, idx) => normalizarSalidaVigente(s, idx))
+            : [];
+          const earlyList = lejanas.length ? lejanas.slice(0, 1) : (ebCaz.length ? ebCaz.slice(0, 1) : [reales[reales.length - 1]]);
           const earlyBird = {
             key: 'mes6',
             nombre: 'Largo Plazo',
             nombre_corto: '6 Meses',
             año: startYear,
-            ahorro_porcentaje: `${baseAhorroNum}% OFF`,
-            ahorro_pct_num: baseAhorroNum,
+            ahorro_porcentaje: `${Math.max(15, Math.round(baseAhorroNum * 0.92))}% OFF`,
+            ahorro_pct_num: Math.max(15, Math.round(baseAhorroNum * 0.92)),
             salidas: earlyList
           };
           return {
@@ -1153,7 +1242,7 @@
 
     function filtrarPresupuesto(p) {
       currentPresupuesto = p;
-      ['chip-pres-todos', 'chip-pres-cabotaje_120k', 'chip-pres-brasil_350', 'chip-pres-caribe_600', 'chip-pres-europa_950'].forEach(id => {
+      ['chip-pres-todos', 'chip-pres-cabotaje_120k', 'chip-pres-brasil_350', 'chip-pres-caribe_650', 'chip-pres-europa_950'].forEach(id => {
         const el = document.getElementById(id);
         if (el) {
           el.style.backgroundColor = '';
@@ -1216,7 +1305,7 @@
 
     function filtrarRegion(reg) {
       currentRegion = reg;
-      ['chip-todos', 'chip-cabotaje', 'chip-brasil', 'chip-caribe_usa', 'chip-europa_mundo'].forEach(id => {
+      ['chip-todos', 'chip-cabotaje', 'chip-brasil', 'chip-caribe', 'chip-america', 'chip-europa_mundo'].forEach(id => {
         const el = document.getElementById(id);
         if (el) {
           el.style.backgroundColor = '';
@@ -1291,24 +1380,55 @@
         }
       } catch (err) {}
 
-      let lista = window.RADAR_DATA.filter(d => Boolean(d.oportunidad_relampago && d.oportunidad_relampago.activa));
+      const todosActivos = window.RADAR_DATA.filter(d => Boolean(d.oportunidad_relampago && d.oportunidad_relampago.activa));
+
+      // Actualizar contadores reales del Hero y filtros regionales
+      try {
+        const elHeroCount = document.getElementById('hero-stat-vuelos-count');
+        if (elHeroCount) elHeroCount.textContent = `${todosActivos.length} Vuelos Flash`;
+
+        const maxOff = todosActivos.reduce((acc, d) => {
+          const pct = parseInt((d.oportunidad_relampago && d.oportunidad_relampago.ahorro_porcentaje) || '0', 10) || 0;
+          return Math.max(acc, pct);
+        }, 0) || 35;
+        const elMaxOff = document.getElementById('hero-stat-max-off');
+        if (elMaxOff) elMaxOff.textContent = `Hasta ${maxOff}% OFF`;
+
+        const elChipTodos = document.getElementById('chip-todos');
+        if (elChipTodos) elChipTodos.textContent = `Todos (${todosActivos.length})`;
+
+        ['cabotaje', 'brasil', 'caribe', 'america', 'europa_mundo'].forEach(reg => {
+          const elReg = document.getElementById(`chip-count-${reg}`);
+          if (elReg) {
+            const cnt = todosActivos.filter(d => obtenerRegionDestino(d) === reg).length;
+            elReg.textContent = `(${cnt})`;
+          }
+        });
+      } catch (errStats) {}
+
+      let lista = todosActivos.slice();
 
       if (currentRegion !== 'todos') {
-        lista = lista.filter(d => d.categoria_region === currentRegion);
+        lista = lista.filter(d => obtenerRegionDestino(d) === currentRegion);
       }
 
       if (currentPresupuesto !== 'todos') {
         lista = lista.filter(d => {
           const rel = d.oportunidad_relampago;
-          if (!rel) return false;
+          const horiz = calcularHorizontesDestino(d);
+          const tabKey = cardPestanasActivas[d.id] || (currentHorizonte === 'todos' ? 'mes1' : currentHorizonte);
+          const salRef = (horiz && horiz.mapa_tabs && horiz.mapa_tabs[tabKey] && horiz.mapa_tabs[tabKey].salidas && horiz.mapa_tabs[tabKey].salidas[0]) || null;
+          const precioArsRef = Number((salRef && salRef.precio_ars) || (rel && rel.precio_ars) || 0);
+          const precioUsdRef = Number((salRef && salRef.precio_usd) || (rel && rel.precio_usd_num) || 0);
+          const reg = obtenerRegionDestino(d);
           if (currentPresupuesto === 'cabotaje_120k') {
-            return d.es_cabotaje && (rel.precio_ars <= 135000 || rel.precio_usd_num <= 100);
+            return d.es_cabotaje && ((precioArsRef > 0 && precioArsRef <= 135000) || (precioUsdRef > 0 && precioUsdRef <= 100));
           } else if (currentPresupuesto === 'brasil_350') {
-            return d.categoria_region === 'brasil' && rel.precio_usd_num <= 380;
-          } else if (currentPresupuesto === 'caribe_600') {
-            return (d.categoria_region === 'caribe_usa' || ['PUJ', 'CUN', 'AUA', 'MIA', 'MCO', 'ADZ'].includes(d.iata)) && rel.precio_usd_num <= 650;
+            return reg === 'brasil' && precioUsdRef > 0 && precioUsdRef <= 380;
+          } else if (currentPresupuesto === 'caribe_650' || currentPresupuesto === 'caribe_600') {
+            return (reg === 'caribe' || reg === 'america') && precioUsdRef > 0 && precioUsdRef <= 650;
           } else if (currentPresupuesto === 'europa_950') {
-            return (d.categoria_region === 'europa_mundo' || ['MAD', 'FCO', 'BCN', 'CDG', 'AMS', 'BER', 'FRA', 'PEK'].includes(d.iata)) && rel.precio_usd_num <= 1050;
+            return reg === 'europa_mundo' && precioUsdRef > 0 && precioUsdRef <= 1050;
           }
           return true;
         });
@@ -1320,6 +1440,11 @@
           d.iata.toLowerCase().includes(searchQuery) ||
           d.pais.toLowerCase().includes(searchQuery)
         );
+      }
+
+      const elTituloCount = document.getElementById('titulo-relampago-count');
+      if (elTituloCount) {
+        elTituloCount.textContent = `${lista.length} ${lista.length === 1 ? 'Oportunidad Relámpago Vigente' : 'Oportunidades Relámpago Vigentes'}`;
       }
 
       if (lista.length === 0) {
@@ -1368,20 +1493,21 @@
           ahorroMontoTexto = `Ahorrás US$ ${ahorroUsd}`;
         }
 
-        // 2. Barra de Escasez y Cupos restantes
-        const hashChar = (dest.id.charCodeAt(0) + (dest.id.charCodeAt(dest.id.length - 1) || 0));
-        const cuposRestantes = 2 + (hashChar % 3);
-        const pctReservado = 76 + ((hashChar * 3) % 20);
+        // 2. Barra de Escasez y Cupos restantes basada en cercanía real de salida y nivel de descuento
+        const diasRef = Number(salidaRef.dias_restantes) || 15;
+        const cuposRestantes = diasRef <= 10 ? 2 : (diasRef <= 25 || ahorroPctNum >= 30 ? 3 : 4);
+        const pctReservado = Math.min(96, Math.max(72, Math.round(68 + (ahorroPctNum * 0.6) + Math.max(0, 20 - diasRef) * 0.4)));
 
         // 3. Cupón Aplicable 1-Clic (solo si existe un cupón activo real en CUPONES_DATA)
         const cuponesActivos = (window.CUPONES_DATA || []).filter(c => c && c.activo !== false && c.codigo);
         const buscarCupon = (id) => cuponesActivos.find(c => c.id === id);
         let cuponMatch = null;
+        const regDest = obtenerRegionDestino(dest);
         if (dest.es_cabotaje) {
           cuponMatch = buscarCupon('jetsmart');
-        } else if (['PUJ', 'CUN', 'AUA', 'HAV'].includes(dest.iata) || dest.categoria_region === 'caribe_usa') {
+        } else if (regDest === 'caribe') {
           cuponMatch = buscarCupon('arajet');
-        } else if (dest.categoria_region === 'brasil') {
+        } else if (regDest === 'brasil') {
           cuponMatch = buscarCupon('despegar');
         } else {
           cuponMatch = buscarCupon('booking');
@@ -1486,16 +1612,16 @@
               <!-- Selector Táctil de Meses (Horizonte Temporal: Opción 3) -->
               <div class="flex items-center gap-1 p-1 bg-slate-100 dark:bg-slate-950/80 rounded-xl mb-3.5 border dark:border-slate-800 border-slate-200/80 text-[11px] font-bold">
                 <button type="button" onclick="window.cambiarPestanaCard('${dest.id}', 'mes1')" class="flex-1 py-1 rounded-lg text-center transition-all ${tabActiva === 'mes1' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:text-white'}">
-                  ${horizontes.meses[0].nombre_corto} (2)
+                  ${horizontes.meses[0].nombre_corto} (${(horizontes.meses[0].salidas || []).length})
                 </button>
                 <button type="button" onclick="window.cambiarPestanaCard('${dest.id}', 'mes2')" class="flex-1 py-1 rounded-lg text-center transition-all ${tabActiva === 'mes2' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:text-white'}">
-                  ${horizontes.meses[1].nombre_corto} (2)
+                  ${horizontes.meses[1].nombre_corto} (${(horizontes.meses[1].salidas || []).length})
                 </button>
                 <button type="button" onclick="window.cambiarPestanaCard('${dest.id}', 'mes3')" class="flex-1 py-1 rounded-lg text-center transition-all ${tabActiva === 'mes3' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:text-white'}">
-                  ${horizontes.meses[2].nombre_corto} (2)
+                  ${horizontes.meses[2].nombre_corto} (${(horizontes.meses[2].salidas || []).length})
                 </button>
                 <button type="button" onclick="window.cambiarPestanaCard('${dest.id}', 'mes6')" class="flex-1 py-1 rounded-lg text-center transition-all ${tabActiva === 'mes6' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:text-white'}">
-                  6M (1)
+                  6M (${((horizontes.early_bird && horizontes.early_bird.salidas) || []).length})
                 </button>
               </div>
 
@@ -1588,16 +1714,29 @@
     document.addEventListener('DOMContentLoaded', async () => {
       renderCupones();
       renderVuelos();
+      actualizarEstadoSincronizacionRelampago('Catálogo local', '');
 
-      // Sincronizar en vivo con /api/vuelos (SQLite + Aviasales Radar 3h)
+      window.addEventListener('flightbot:fxUpdate', () => renderVuelos());
+
+      // Sincronizar en vivo con /api/vuelos (Travelpayouts Live 3h / SQLite)
       try {
         const res = await fetch('/api/vuelos', { cache: 'no-store' });
         if (res.ok) {
+          const hUsd = res.headers ? res.headers.get('X-FlightBot-Usd-Ars') : null;
+          const hEur = res.headers ? res.headers.get('X-FlightBot-Eur-Usd') : null;
+          const hUpd = res.headers ? res.headers.get('X-Radar-Updated-At') : null;
+          if (hUsd && typeof window.setTiposCambioVivos === 'function') {
+            window.setTiposCambioVivos(hUsd, hEur, 'api_vuelos');
+          }
           const raw = await res.json();
           const destinosRemotos = Array.isArray(raw) ? raw : (raw && Array.isArray(raw.destinos) ? raw.destinos : null);
           if (destinosRemotos && destinosRemotos.length > 0) {
             window.RADAR_DATA = destinosRemotos;
             renderVuelos();
+            actualizarEstadoSincronizacionRelampago('Radar en vivo', hUpd);
+            if (typeof window.hidratarEstadisticasSitio === 'function') {
+              window.hidratarEstadisticasSitio();
+            }
           }
         }
       } catch (errSync) {

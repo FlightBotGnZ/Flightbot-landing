@@ -317,6 +317,36 @@
     }
   };
 
+  const MAPA_COMP_RADAR = {
+    bariloche: { id: 'bariloche', iata: 'BRC' },
+    mendoza: { id: 'mendoza', iata: 'MDZ' },
+    cordoba: { id: 'cordoba', iata: 'COR' },
+    iguazu: { id: 'iguazu', iata: 'IGR' },
+    salta: { id: 'salta', iata: 'SLA' },
+    madryn: { id: 'puerto_madryn', iata: 'REL' },
+    sanmartin: { id: 'san_martin', iata: 'CPC' },
+    ushuaia: { id: 'ushuaia', iata: 'USH' }
+  };
+
+  function hidratarPreciosDesdeRadar(radarList) {
+    if (!Array.isArray(radarList) || !radarList.length) return;
+    let cambio = false;
+    Object.keys(MAPA_COMP_RADAR).forEach(k => {
+      if (!COMPARADOR_KB[k]) return;
+      const ref = MAPA_COMP_RADAR[k];
+      const dest = radarList.find(d => d && (d.id === ref.id || d.iata === ref.iata));
+      if (dest && Array.isArray(dest.vuelos) && dest.vuelos[0] && Number(dest.vuelos[0].precio_ars) > 0) {
+        COMPARADOR_KB[k].precioAvionBase = Math.round(Number(dest.vuelos[0].precio_ars));
+        cambio = true;
+      }
+    });
+    if (cambio && typeof window.recalcularComparadorAutoAvion === 'function') {
+      window.recalcularComparadorAutoAvion();
+    }
+  }
+
+  window.hidratarComparadorDesdeRadar = hidratarPreciosDesdeRadar;
+
   // Inicialización al cargar el DOM
   document.addEventListener('DOMContentLoaded', function () {
     const paxSlider = document.getElementById('comp-pax-slider');
@@ -329,6 +359,10 @@
     if (selectDest) {
       selectDest.addEventListener('change', window.recalcularComparadorAutoAvion);
     }
+    if (Array.isArray(window.RADAR_DATA)) {
+      hidratarPreciosDesdeRadar(window.RADAR_DATA);
+    }
+    window.addEventListener('flightbot:fxUpdate', window.recalcularComparadorAutoAvion);
     window.recalcularComparadorAutoAvion();
   });
 })();

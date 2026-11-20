@@ -29,6 +29,19 @@
     return `<img src="${localUrl}" onerror="this.onerror=null; this.src='${cdnUrl}'" alt="${dest.pais}" class="w-10 h-7 object-cover rounded-md shadow-xs flex-shrink-0" loading="lazy" />`;
   }
 
+  const CARIBE_PLAYA_IDS = new Set(['puntacana', 'cancun', 'aruba', 'curazao', 'cuba', 'sanandres', 'cartagena', 'panama', 'costarica']);
+  const AMERICA_RESTO_IDS = new Set(['santiago', 'cusco', 'newyork', 'miami', 'orlando', 'mexico']);
+  const ALL_INCLUSIVE_DEST_IDS = new Set(['puntacana', 'cancun', 'aruba', 'curazao', 'cartagena', 'panama', 'costarica', 'salvador', 'maceio', 'maragogi', 'portodegalinhas']);
+
+  function destMatchesRegionFilter(dest, region) {
+    if (!dest || region === 'todos') return true;
+    if (region === 'relampago') return Boolean(dest.oportunidad_relampago && dest.oportunidad_relampago.activa);
+    if (region === 'caribe') return dest.categoria_region === 'caribe' || CARIBE_PLAYA_IDS.has(dest.id);
+    if (region === 'america') return dest.categoria_region === 'america' || (dest.categoria_region !== 'caribe' && AMERICA_RESTO_IDS.has(dest.id));
+    if (region === 'all_inclusive') return ALL_INCLUSIVE_DEST_IDS.has(dest.id) || dest.categoria_region === 'brasil';
+    return dest.categoria_region === region;
+  }
+
   // Filtrado por región
   window.filtrarRadarRegion = function (region) {
     currentRegionFilter = region;
@@ -46,11 +59,7 @@
     renderSidebarYSelectorMovil();
 
     const data = getRadarData();
-    const destinosFiltrados = data.filter(d => {
-      if (region === 'todos') return true;
-      if (region === 'relampago') return Boolean(d.oportunidad_relampago && d.oportunidad_relampago.activa);
-      return d.categoria_region === region;
-    });
+    const destinosFiltrados = data.filter(d => destMatchesRegionFilter(d, region));
 
     if (destinosFiltrados.length > 0 && !destinosFiltrados.some(d => d.id === currentDestinationId)) {
       window.renderRadarDestino(destinosFiltrados[0].id);
@@ -63,11 +72,7 @@
     const listContainer = document.getElementById('radar-destinos-list');
     const mobileSelect = document.getElementById('radar-mobile-dest-select');
 
-    const destinosFiltrados = data.filter(d => {
-      if (currentRegionFilter === 'todos') return true;
-      if (currentRegionFilter === 'relampago') return Boolean(d.oportunidad_relampago && d.oportunidad_relampago.activa);
-      return d.categoria_region === currentRegionFilter;
-    });
+    const destinosFiltrados = data.filter(d => destMatchesRegionFilter(d, currentRegionFilter));
 
     // 1. Selector colapsable para Móvil (evita scrolls infinitos)
     if (mobileSelect) {

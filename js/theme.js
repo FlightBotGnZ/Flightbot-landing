@@ -6,10 +6,102 @@
 (function () {
   'use strict';
 
-  // Constantes de cotización de referencia (MEP / Tarjeta)
-  const TIPO_CAMBIO_USD_ARS = 1350;
-  const TIPO_CAMBIO_EUR_ARS = 1460;
-  const TIPO_CAMBIO_EUR_USD = 1.08;
+  // Constantes de cotización de referencia (MEP / Tarjeta) sincronizables con DolarAPI (caché 30m) y RADAR_DATA
+  const FX_CACHE_KEY = 'fb_fx_rates_v1';
+  const FX_TTL_MS = 30 * 60 * 1000;
+  let TIPO_CAMBIO_USD_ARS = 1350;
+  let TIPO_CAMBIO_EUR_USD = 1.08;
+  let TIPO_CAMBIO_EUR_ARS = 1460;
+  let fxDesdeCacheOVivo = false;
+
+  function aplicarTasasEnMemoria(usdArs, eurArs, eurUsd) {
+    const u = Number(usdArs);
+    if (u >= 500 && u <= 5000) {
+      TIPO_CAMBIO_USD_ARS = Math.round(u);
+    }
+    const eu = Number(eurUsd);
+    if (eu >= 0.8 && eu <= 1.6) {
+      TIPO_CAMBIO_EUR_USD = eu;
+    }
+    const ea = Number(eurArs);
+    if (ea >= 500 && ea <= 6500) {
+      TIPO_CAMBIO_EUR_ARS = Math.round(ea);
+    } else {
+      TIPO_CAMBIO_EUR_ARS = Math.round(TIPO_CAMBIO_USD_ARS * TIPO_CAMBIO_EUR_USD);
+    }
+  }
+
+  function cargarDivisasDesdeCache() {
+    try {
+      const raw = localStorage.getItem(FX_CACHE_KEY);
+      if (!raw) return false;
+      const parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed.ts !== 'number') return false;
+      if ((Date.now() - parsed.ts) >= FX_TTL_MS) return false;
+      if (Number(parsed.usdArs) >= 500 && Number(parsed.usdArs) <= 5000) {
+        aplicarTasasEnMemoria(parsed.usdArs, parsed.eurArs, parsed.eurUsd);
+        fxDesdeCacheOVivo = true;
+        return true;
+      }
+    } catch (_) {}
+    return false;
+  }
+
+  function guardarDivisasEnCache(usdArs, eurArs, eurUsd, fuente) {
+    try {
+      localStorage.setItem(FX_CACHE_KEY, JSON.stringify({
+        ts: Date.now(),
+        usdArs: Math.round(Number(usdArs)),
+        eurArs: Math.round(Number(eurArs)),
+        eurUsd: Number(eurUsd),
+        fuente: fuente || 'dolarapi'
+      }));
+    } catch (_) {}
+  }
+
+  function resolverTipoCambioDesdeRadar() {
+    if (fxDesdeCacheOVivo) return;
+    try {
+      if (!Array.isArray(window.RADAR_DATA) || !window.RADAR_DATA.length) return;
+      const cab = window.RADAR_DATA.find((d) => d && d.es_cabotaje && Array.isArray(d.vuelos) && d.vuelos[0] && Number(d.vuelos[0].precio_ars) > 0 && Number(d.vuelos[0].precio_usd) > 0);
+      if (cab) {
+        const ratio = Number(cab.vuelos[0].precio_ars) / Number(cab.vuelos[0].precio_usd);
+        if (ratio >= 500 && ratio <= 5000) {
+          TIPO_CAMBIO_USD_ARS = Math.round(ratio / 10) * 10;
+          TIPO_CAMBIO_EUR_ARS = Math.round((TIPO_CAMBIO_USD_ARS * TIPO_CAMBIO_EUR_USD) / 10) * 10;
+        }
+      }
+    } catch (_) {}
+  }
+
+  cargarDivisasDesdeCache();
+
+  window.getTipoCambioUsdArs = function () {
+    resolverTipoCambioDesdeRadar();
+    return TIPO_CAMBIO_USD_ARS;
+  };
+
+  window.getTiposCambioVivos = function () {
+    resolverTipoCambioDesdeRadar();
+    return {
+      usdArs: TIPO_CAMBIO_USD_ARS,
+      eurArs: TIPO_CAMBIO_EUR_ARS,
+      eurUsd: TIPO_CAMBIO_EUR_USD
+    };
+  };
+
+  window.setTiposCambioVivos = function (usdArs, eurUsd, fuente) {
+    const u = Number(usdArs);
+    if (!(u >= 500 && u <= 5000)) return;
+    const eu = (Number(eurUsd) >= 0.8 && Number(eurUsd) <= 1.6) ? Number(eurUsd) : TIPO_CAMBIO_EUR_USD;
+    const ea = Math.round(u * eu);
+    aplicarTasasEnMemoria(u, ea, eu);
+    fxDesdeCacheOVivo = true;
+    guardarDivisasEnCache(TIPO_CAMBIO_USD_ARS, TIPO_CAMBIO_EUR_ARS, TIPO_CAMBIO_EUR_USD, fuente || 'backend');
+    if (typeof sincronizarTextosCotizacionFooter === 'function') {
+      sincronizarTextosCotizacionFooter();
+    }
+  };
   const EUROPE_DEST_IDS = [
     'madrid', 'barcelona', 'lisboa', 'roma', 'paris',
     'londres', 'berlin', 'frankfurt', 'amsterdam', 'atenas', 'oslo', 'reikiavik'
@@ -141,6 +233,7 @@
   // 4. Formateador inteligente de precios en moneda activa
   window.formatearPrecioMoneda = function (precioOriginalStr, dest) {
     if (!precioOriginalStr) return '';
+    resolverTipoCambioDesdeRadar();
     let str = String(precioOriginalStr).trim();
 
     let suffix = '';
@@ -241,9 +334,134 @@
     }
   };
 
+  function sincronizarTextosCotizacionFooter() {
+    resolverTipoCambioDesdeRadar();
+    const cotizTxt = `$${TIPO_CAMBIO_USD_ARS.toLocaleString('es-AR')} ARS`;
+    document.querySelectorAll('footer strong, footer span, [data-fb-fx="usd"], [title*="MEP"], [title*="1.350"], #footer-usd-ref-rate').forEach(function (el) {
+      if (el.id === 'footer-usd-ref-rate' || el.getAttribute('data-fb-fx') === 'usd') {
+        el.textContent = cotizTxt;
+      } else if (el.children.length === 0 && el.textContent && /\$\s*\d[\d\.]*\s*ARS/i.test(el.textContent)) {
+        el.textContent = el.textContent.replace(/\$\s*\d[\d\.]*\s*ARS/gi, cotizTxt);
+      }
+      const ttl = el.getAttribute && el.getAttribute('title');
+      if (ttl && /\$\s*\d[\d\.]*\s*ARS/i.test(ttl)) {
+        el.setAttribute('title', ttl.replace(/\$\s*\d[\d\.]*\s*ARS/gi, cotizTxt));
+      }
+    });
+  }
+
+  function emitirCambioDivisas() {
+    sincronizarTextosCotizacionFooter();
+    window.dispatchEvent(new CustomEvent('flightbot:fxUpdate', {
+      detail: {
+        usdArs: TIPO_CAMBIO_USD_ARS,
+        eurArs: TIPO_CAMBIO_EUR_ARS,
+        eurUsd: TIPO_CAMBIO_EUR_USD
+      }
+    }));
+    if (typeof window.renderRadarDestino === 'function' && window.currentDestinationId) {
+      window.renderRadarDestino(window.currentDestinationId);
+    }
+    if (typeof window.recalcularComparadorAutoAvion === 'function') {
+      window.recalcularComparadorAutoAvion();
+    }
+    if (typeof window.actualizarBurbujaYTarjetasRolli === 'function') {
+      window.actualizarBurbujaYTarjetasRolli();
+    }
+  }
+
+  async function actualizarDivisasEnVivo() {
+    if (cargarDivisasDesdeCache()) {
+      sincronizarTextosCotizacionFooter();
+      return;
+    }
+    if (typeof fetch !== 'function' || window.location.protocol === 'file:') return;
+    try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(function () { ctrl.abort(); }, 5000);
+      const [resUsd, resEur] = await Promise.all([
+        fetch('https://dolarapi.com/v1/dolares/bolsa', { signal: ctrl.signal, cache: 'no-store' }),
+        fetch('https://dolarapi.com/v1/cotizaciones/eur', { signal: ctrl.signal, cache: 'no-store' }).catch(function () { return null; })
+      ]);
+      clearTimeout(timer);
+
+      let usdArs = null;
+      if (resUsd && resUsd.ok) {
+        const dUsd = await resUsd.json();
+        const val = Number(dUsd && (dUsd.venta || dUsd.compra));
+        if (val >= 500 && val <= 5000) usdArs = Math.round(val);
+      }
+
+      let eurArs = null;
+      let eurUsd = TIPO_CAMBIO_EUR_USD;
+      if (resEur && resEur.ok) {
+        const dEur = await resEur.json();
+        const valE = Number(dEur && (dEur.venta || dEur.compra));
+        if (valE >= 500 && valE <= 6500) eurArs = Math.round(valE);
+      }
+
+      if (usdArs) {
+        if (eurArs && usdArs > 0) {
+          const ratio = Number((eurArs / usdArs).toFixed(4));
+          if (ratio >= 0.8 && ratio <= 1.6) eurUsd = ratio;
+        } else {
+          eurArs = Math.round(usdArs * eurUsd);
+        }
+        aplicarTasasEnMemoria(usdArs, eurArs, eurUsd);
+        fxDesdeCacheOVivo = true;
+        guardarDivisasEnCache(TIPO_CAMBIO_USD_ARS, TIPO_CAMBIO_EUR_ARS, TIPO_CAMBIO_EUR_USD, 'dolarapi');
+        emitirCambioDivisas();
+      }
+    } catch (_) {
+      // Silencioso: conserva la caché previa, ratio de RADAR_DATA o fallback
+    }
+  }
+
+  function hidratarEstadisticasSitio() {
+    const base = (window.FLIGHTBOT_STATS && typeof window.FLIGHTBOT_STATS === 'object') ? window.FLIGHTBOT_STATS : {};
+    const destinos = Array.isArray(window.RADAR_DATA) && window.RADAR_DATA.length
+      ? window.RADAR_DATA.length
+      : Number(base.destinos || 57);
+    const rutasTop = Number(base.rutas_top || 8);
+    const rutasSecundarias = Math.max(0, destinos - rutasTop);
+    const resorts = Array.isArray(window.RESORTS_DATA) && window.RESORTS_DATA.length
+      ? window.RESORTS_DATA.length
+      : Number(base.resorts || 31);
+    const cupones = Array.isArray(window.CUPONES_DATA)
+      ? window.CUPONES_DATA.filter(function (c) { return c && c.activo !== false && c.codigo; }).length
+      : Number(base.cupones || 5);
+    const domEscapadas = document.querySelectorAll('.esc-card').length;
+    const escapadas = domEscapadas > 0 ? domEscapadas : Number(base.escapadas || 24);
+    const domGuias = document.querySelectorAll('#guias-grid article').length;
+    const guias = domGuias > 0 ? domGuias : Number(base.guias || 57);
+
+    const mapa = {
+      destinos: destinos,
+      rutas_top: rutasTop,
+      rutas_secundarias: rutasSecundarias,
+      resorts: resorts,
+      cupones: cupones,
+      escapadas: escapadas,
+      guias: guias
+    };
+
+    document.querySelectorAll('[data-fb-stat]').forEach(function (el) {
+      const clave = el.getAttribute('data-fb-stat');
+      if (clave && Object.prototype.hasOwnProperty.call(mapa, clave)) {
+        el.textContent = String(mapa[clave]);
+      }
+    });
+    return mapa;
+  }
+
+  window.hidratarEstadisticasSitio = hidratarEstadisticasSitio;
+
   // 5. Inicialización al cargar el DOM
   document.addEventListener('DOMContentLoaded', function () {
     updateThemeControls();
     updateCurrencyControls();
+    hidratarEstadisticasSitio();
+    sincronizarTextosCotizacionFooter();
+    actualizarDivisasEnVivo();
   });
 })();

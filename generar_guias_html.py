@@ -1149,7 +1149,7 @@ def construir_bloque_chatbox_ia(
           .replace(/&lt;i&gt;([\s\S]*?)&lt;\/i&gt;/gi, '<em>$1</em>')
           .replace(/&lt;code&gt;([\s\S]*?)&lt;\/code&gt;/gi, '<code class="px-1.5 py-0.5 rounded dark:bg-slate-700 bg-slate-200 font-mono text-xs">$1</code>')
           .replace(/&lt;br\s*\/?&gt;/gi, '<br>')
-          .replace(/\n/g, '<br>');
+          .replace(/\\n/g, '<br>');
       }}
 
       // Detectar guía mencionada en el texto o usar el contexto de la página actual
@@ -4394,11 +4394,11 @@ def generar_indice_guias(guias: list) -> str:
         </div>
         <div class="flex items-center justify-center gap-1.5 overflow-x-auto pb-2 no-scrollbar text-xs">
           <button type="button" onclick="filtrarGuiasRegion('todos', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold text-white transition-all shadow-sm shrink-0" style="background-color: var(--brand-primary);">Todos ({len(guias)})</button>
-          <button type="button" onclick="filtrarGuiasRegion('argentina', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje (11)</button>
-          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil (7)</button>
-          <button type="button" onclick="filtrarGuiasRegion('caribe_usa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🏖️ Caribe & USA (13)</button>
-          <button type="button" onclick="filtrarGuiasRegion('europa', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🏰 Europa (13)</button>
-          <button type="button" onclick="filtrarGuiasRegion('resto_mundo', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🌏 Asia, África &amp; Oceanía (15)</button>
+          <button type="button" onclick="filtrarGuiasRegion('cabotaje', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje (11)</button>
+          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil (6)</button>
+          <button type="button" onclick="filtrarGuiasRegion('caribe', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🏝️ Caribe &amp; Playas (9)</button>
+          <button type="button" onclick="filtrarGuiasRegion('america', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🌎 América (6)</button>
+          <button type="button" onclick="filtrarGuiasRegion('europa_mundo', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🌍 Europa &amp; Mundo (25)</button>
           <button type="button" onclick="filtrarGuiasRegion('playas', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🌊 Playas (18)</button>
         </div>
       </div>
@@ -4517,29 +4517,56 @@ def generar_indice_guias(guias: list) -> str:
         .trim();
     }}
 
-    function cumpleFiltroRegion(pais, region, ciudad, filtro) {{
+    const GUIA_REGION_POR_CMD = {{
+      '/bariloche': 'cabotaje', '/mendoza': 'cabotaje', '/iguazu': 'cabotaje',
+      '/calafate': 'cabotaje', '/ushuaia': 'cabotaje', '/salta': 'cabotaje',
+      '/jujuy': 'cabotaje', '/cordoba': 'cabotaje', '/sanmartin': 'cabotaje',
+      '/madryn': 'cabotaje', '/neuquen': 'cabotaje',
+      '/rio': 'brasil', '/florianopolis': 'brasil', '/salvador': 'brasil',
+      '/recife': 'brasil', '/maceio': 'brasil', '/natal': 'brasil',
+      '/cancun': 'caribe', '/puntacana': 'caribe', '/aruba': 'caribe',
+      '/sanandres': 'caribe', '/cuba': 'caribe', '/panama': 'caribe',
+      '/curazao': 'caribe', '/costarica': 'caribe', '/cartagena': 'caribe',
+      '/miami': 'america', '/orlando': 'america', '/santiago': 'america',
+      '/newyork': 'america', '/cusco': 'america', '/mexico': 'america',
+      '/roma': 'europa_mundo', '/madrid': 'europa_mundo', '/reikiavik': 'europa_mundo',
+      '/oslo': 'europa_mundo', '/barcelona': 'europa_mundo', '/paris': 'europa_mundo',
+      '/londres': 'europa_mundo', '/berlin': 'europa_mundo', '/frankfurt': 'europa_mundo',
+      '/atenas': 'europa_mundo', '/tokio': 'europa_mundo', '/elcairo': 'europa_mundo',
+      '/marrakech': 'europa_mundo', '/ciudaddelcabo': 'europa_mundo', '/pekin': 'europa_mundo',
+      '/estambul': 'europa_mundo', '/dubai': 'europa_mundo', '/bangkok': 'europa_mundo',
+      '/maldivas': 'europa_mundo', '/polinesia': 'europa_mundo', '/sydney': 'europa_mundo',
+      '/nuevazelanda': 'europa_mundo', '/lisboa': 'europa_mundo', '/seul': 'europa_mundo',
+      '/amsterdam': 'europa_mundo'
+    }};
+
+    const GUIA_PLAYAS_CMDS = new Set([
+      '/rio', '/florianopolis', '/salvador', '/maceio', '/natal', '/recife',
+      '/cancun', '/puntacana', '/aruba', '/curazao', '/costarica', '/cuba',
+      '/sanandres', '/cartagena', '/miami', '/maldivas', '/polinesia', '/atenas'
+    ]);
+
+    function cumpleFiltroRegion(pais, region, ciudad, filtro, cmd) {{
       if (filtro === 'todos') return true;
-      if (filtro === 'argentina') {{
-        return pais.includes('argentina') || region.includes('argentina') || region.includes('patagonia') || region.includes('cuyo') || region.includes('litoral');
+      const cmdNorm = (cmd || '').toLowerCase().trim();
+      const catCanonica = GUIA_REGION_POR_CMD[cmdNorm] || '';
+      if (filtro === 'cabotaje' || filtro === 'argentina') {{
+        return catCanonica === 'cabotaje';
       }}
       if (filtro === 'brasil') {{
-        return pais.includes('brasil') || region.includes('brasil');
+        return catCanonica === 'brasil';
       }}
-      if (filtro === 'caribe_usa') {{
-        const paisesCaribeUsa = ['estados unidos', 'mexico', 'republica dominicana', 'aruba', 'curazao', 'costa rica', 'cuba', 'panama', 'colombia'];
-        return paisesCaribeUsa.some(p => pais.includes(p)) || region.includes('caribe') || region.includes('florida');
+      if (filtro === 'caribe') {{
+        return catCanonica === 'caribe';
       }}
-      if (filtro === 'europa') {{
-        const paisesEuropa = ['espana', 'italia', 'francia', 'reino unido', 'alemania', 'paises bajos', 'portugal', 'grecia', 'islandia', 'noruega', 'turquia'];
-        return paisesEuropa.some(p => pais.includes(p)) || region.includes('europa');
+      if (filtro === 'america') {{
+        return catCanonica === 'america';
       }}
-      if (filtro === 'resto_mundo') {{
-        const paisesMundo = ['japon', 'corea', 'china', 'tailandia', 'emiratos arabes', 'dubai', 'egipto', 'marruecos', 'sudafrica', 'maldivas', 'polinesia', 'australia', 'nueva zelanda', 'chile', 'peru'];
-        return paisesMundo.some(p => pais.includes(p)) || region.includes('asia') || region.includes('africa') || region.includes('oceania') || region.includes('sudamerica');
+      if (filtro === 'europa_mundo') {{
+        return catCanonica === 'europa_mundo';
       }}
       if (filtro === 'playas') {{
-        const destinosPlaya = ['rio de janeiro', 'florianopolis', 'salvador', 'maceio', 'natal', 'recife', 'cancun', 'punta cana', 'aruba', 'curazao', 'costa rica', 'cuba', 'san andres', 'cartagena', 'miami', 'maldivas', 'polinesia', 'grecia', 'islas griegas'];
-        return destinosPlaya.some(p => pais.includes(p) || ciudad.includes(p) || region.includes(p));
+        return GUIA_PLAYAS_CMDS.has(cmdNorm);
       }}
       return true;
     }}
@@ -4557,7 +4584,7 @@ def generar_indice_guias(guias: list) -> str:
         const cmd = normalizarTexto(art.getAttribute('data-cmd'));
         const textoCompleto = normalizarTexto(art.textContent);
 
-        const coincideRegion = cumpleFiltroRegion(pais, region, ciudad, fbRegionActiva);
+        const coincideRegion = cumpleFiltroRegion(pais, region, ciudad, fbRegionActiva, cmd);
         const coincideTexto = !query || 
           ciudad.includes(query) || 
           pais.includes(query) || 

@@ -304,7 +304,75 @@
     setInterval(tickCountdown, 1000);
   }
 
+  function sincronizarDealsConRadar(radarList) {
+    if (!Array.isArray(radarList) || !radarList.length) return;
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    const minDate = new Date(hoy.getTime() + 3 * 24 * 60 * 60 * 1000);
+    const minIso = `${minDate.getFullYear()}-${String(minDate.getMonth() + 1).padStart(2, '0')}-${String(minDate.getDate()).padStart(2, '0')}`;
+
+    ROLLI_DEALS.forEach((deal) => {
+      const dest = radarList.find((d) => d && d.id === deal.id);
+      if (!dest) return;
+
+      // Elegir la mejor fuente vigente: salidas_reales -> salidas_reales_cazadas -> vuelos[0]
+      let salida = null;
+      if (Array.isArray(dest.salidas_reales)) {
+        salida = dest.salidas_reales.find((s) => s && s.fecha_ida && s.fecha_ida >= minIso) || null;
+      }
+      if (!salida && dest.salidas_reales_cazadas && Array.isArray(dest.salidas_reales_cazadas.meses)) {
+        for (const m of dest.salidas_reales_cazadas.meses) {
+          const hit = (m.salidas || []).find((s) => s && s.fecha_ida && s.fecha_ida >= minIso);
+          if (hit) { salida = hit; break; }
+        }
+      }
+
+      const v0 = Array.isArray(dest.vuelos) && dest.vuelos[0] ? dest.vuelos[0] : null;
+      const rel = dest.oportunidad_relampago || {};
+
+      let precioStr = deal.precioOriginal;
+      if (salida) {
+        if (dest.es_cabotaje && Number(salida.precio_ars) > 0) {
+          precioStr = `$ ${Number(salida.precio_ars).toLocaleString('es-AR')} ARS`;
+        } else if (Number(salida.precio_usd) > 0) {
+          precioStr = `US$ ${Math.round(Number(salida.precio_usd))}`;
+        }
+      } else if (v0) {
+        if (dest.es_cabotaje && Number(v0.precio_ars) > 0) {
+          precioStr = `$ ${Number(v0.precio_ars).toLocaleString('es-AR')} ARS`;
+        } else if (Number(v0.precio_usd) > 0) {
+          precioStr = `US$ ${Math.round(Number(v0.precio_usd))}`;
+        }
+      }
+
+      const fechasStr = salida && salida.fechas_texto
+        ? `${salida.fechas_texto} (${salida.noches || (v0 && v0.noches) || 5} noches)`
+        : (v0 && v0.fechas ? `${v0.fechas}${v0.noches ? ` (${v0.noches} noches)` : ''}` : deal.fechas);
+
+      if (v0 && v0.aerolinea) deal.aerolinea = v0.aerolinea;
+      if (v0 && v0.escalas) deal.escalas = v0.escalas.split('(')[0].trim();
+
+      const pctMatch = String(rel.ahorro_porcentaje || '').match(/\d+/);
+      if (pctMatch) deal.ahorroPct = `-${pctMatch[0]}%`;
+
+      const dias = salida && Number(salida.dias_restantes) ? Number(salida.dias_restantes) : 14;
+      deal.cupos = dias <= 10 ? 2 : (dias <= 25 ? 3 : 4);
+      deal.precioOriginal = precioStr;
+      deal.fechas = fechasStr;
+      deal.speech = `Tarifa destacada para ${deal.ciudad}: ${precioStr} ida y vuelta (${fechasStr}).`;
+    });
+  }
+
+  window.sincronizarRolliConRadar = function (radarList) {
+    sincronizarDealsConRadar(radarList || window.RADAR_DATA);
+    renderOferta(currentDealIdx);
+    renderFlashDealsGrid();
+  };
+
   function bootRolliSpeech() {
+    if (Array.isArray(window.RADAR_DATA)) {
+      sincronizarDealsConRadar(window.RADAR_DATA);
+    }
     renderOferta(0);
     renderFlashDealsGrid();
     startRotation();

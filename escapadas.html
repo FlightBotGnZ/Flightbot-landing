@@ -145,6 +145,7 @@
   <!-- Vercel Web Analytics (mismo dominio, compatible con CSP script-src 'self') -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <script src="/js/site-stats.js" defer></script>
   <script src="/js/theme.js" defer></script>
   <script>(function(){try{if(!localStorage.getItem('fb_theme_cobalt_v1')){localStorage.setItem('fb_theme_mode','light');localStorage.setItem('fb_theme_color','blue');localStorage.setItem('fb_theme_cobalt_v1','1');}var m=localStorage.getItem('fb_theme_mode')||'light';if(m==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('data-color','blue');}catch(_){}})();</script>
 </head>
@@ -470,7 +471,7 @@
             🚗
           </div>
           <div class="min-w-0">
-            <div class="text-xs font-black dark:text-white text-slate-900 truncate">23 Escapadas</div>
+            <div class="text-xs font-black dark:text-white text-slate-900 truncate"><span data-fb-stat="escapadas" class="fb-escapadas-count">24</span> Escapadas</div>
             <div class="text-[11px] dark:text-slate-400 text-slate-500 truncate">4 anillos de distancia</div>
           </div>
         </div>
@@ -512,7 +513,7 @@
           <span>⚖️</span> Auto vs Avión
         </a>
         <a href="#escapadas-catalogo" class="px-3.5 py-2.5 rounded-xl dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 text-slate-700 dark:text-slate-200 hover:text-blue-600 shadow-xs flex items-center gap-1.5 transition-all">
-          <span>🚗</span> 23 Escapadas por Anillo
+          <span>🚗</span> <span data-fb-stat="escapadas" class="fb-escapadas-count">24</span> Escapadas por Anillo
         </a>
       </div>
     </div>
@@ -2380,15 +2381,15 @@
 <!-- FLIGHTBOT_ROAD_PLANNER_END -->
 
 
-  <!-- SECCIÓN: CATÁLOGO DE 23 ESCAPADAS POR ANILLO -->
+  <!-- SECCIÓN: CATÁLOGO DE ESCAPADAS POR ANILLO -->
   <section id="escapadas-catalogo" class="relative py-14 border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/60 bg-slate-50 theme-transition">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
       <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 border shadow-xs"
            style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
-        <span>🚗</span> 23 Destinos Editoriales
+        <span>🚗</span> <span data-fb-stat="escapadas" class="fb-escapadas-count">24</span> Destinos Editoriales
       </div>
       <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight dark:text-white text-slate-900 mb-3">
-        Catálogo de 23 Escapadas por Anillo de Distancia
+        Catálogo de <span data-fb-stat="escapadas" class="fb-escapadas-count">24</span> Escapadas por Anillo de Distancia
       </h2>
       <p class="text-sm sm:text-base dark:text-slate-400 text-slate-600 max-w-2xl mx-auto mb-8">
         Itinerarios verificados, paradas recomendadas, peajes y consumo exacto de combustible saliendo desde Buenos Aires.
@@ -4468,12 +4469,86 @@
         if (sec) sec.scrollIntoView({ behavior: 'smooth' });
       };
 
-      document.addEventListener('DOMContentLoaded', function() {
+      window.actualizarContadoresEscapadas = function() {
+        const cards = document.querySelectorAll('.esc-card');
+        const total = cards.length;
+        const counts = { todas: total, finde_corto: 0, finde_largo: 0, vacaciones_semana: 0, gran_ruta: 0 };
+        cards.forEach(c => {
+          const cat = c.getAttribute('data-cat');
+          if (cat && Object.prototype.hasOwnProperty.call(counts, cat)) {
+            counts[cat] += 1;
+          }
+        });
+        document.querySelectorAll('.fb-escapadas-count').forEach(el => {
+          el.textContent = String(total);
+        });
+        Object.keys(counts).forEach(cat => {
+          const btn = document.getElementById('btn-filtro-' + cat);
+          if (!btn) return;
+          const clean = btn.textContent.replace(/\s*\(\d+\)$/, '').trim();
+          btn.textContent = `${clean} (${counts[cat]})`;
+        });
+      };
+
+      const MAPA_COMP_RADAR = {
+        bariloche: { id: 'bariloche', iata: 'BRC' },
+        mendoza: { id: 'mendoza', iata: 'MDZ' },
+        cordoba: { id: 'cordoba', iata: 'COR' },
+        iguazu: { id: 'iguazu', iata: 'IGR' },
+        salta: { id: 'salta', iata: 'SLA' },
+        madryn: { id: 'puerto_madryn', iata: 'REL' },
+        sanmartin: { id: 'san_martin', iata: 'CPC' },
+        ushuaia: { id: 'ushuaia', iata: 'USH' }
+      };
+
+      function hidratarPreciosAvionComparador(radarList) {
+        if (!Array.isArray(radarList) || !radarList.length) return;
+        let cambio = false;
+        Object.keys(MAPA_COMP_RADAR).forEach(compKey => {
+          const ref = MAPA_COMP_RADAR[compKey];
+          const dest = radarList.find(d => d && (d.id === ref.id || d.iata === ref.iata));
+          if (dest && Array.isArray(dest.vuelos) && dest.vuelos[0] && Number(dest.vuelos[0].precio_ars) > 0) {
+            COMPARADOR_KB[compKey].precioAvionBase = Math.round(Number(dest.vuelos[0].precio_ars));
+            cambio = true;
+          }
+        });
+        if (cambio && typeof window.recalcularComparadorAutoAvion === 'function') {
+          window.recalcularComparadorAutoAvion();
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', async function() {
         if (typeof window.actualizarContadoresEscapadas === 'function') {
           window.actualizarContadoresEscapadas();
         }
+        if (Array.isArray(window.RADAR_DATA)) {
+          hidratarPreciosAvionComparador(window.RADAR_DATA);
+        }
         if (typeof window.recalcularComparadorAutoAvion === 'function') {
           window.recalcularComparadorAutoAvion();
+        }
+        window.addEventListener('flightbot:fxUpdate', function() {
+          if (typeof window.recalcularComparadorAutoAvion === 'function') {
+            window.recalcularComparadorAutoAvion();
+          }
+        });
+        if (window.location.protocol !== 'file:') {
+          try {
+            const res = await fetch('/api/vuelos', { cache: 'no-store' });
+            if (res.ok) {
+              const hUsd = res.headers ? res.headers.get('X-FlightBot-Usd-Ars') : null;
+              const hEur = res.headers ? res.headers.get('X-FlightBot-Eur-Usd') : null;
+              if (hUsd && typeof window.setTiposCambioVivos === 'function') {
+                window.setTiposCambioVivos(hUsd, hEur, 'api_vuelos');
+              }
+              const raw = await res.json();
+              const remotos = Array.isArray(raw) ? raw : (raw && Array.isArray(raw.destinos) ? raw.destinos : null);
+              if (remotos && remotos.length > 0) {
+                window.RADAR_DATA = remotos;
+                hidratarPreciosAvionComparador(remotos);
+              }
+            }
+          } catch (_) {}
         }
       });
     })();
