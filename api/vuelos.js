@@ -269,9 +269,37 @@ function construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, tipoCambioUsdArs
   const pool72 = candidatas.filter(x => x.antiguedadHs !== null && x.antiguedadHs <= MAX_RELAMPAGO_FRESH_HOURS);
   const pool120 = candidatas.filter(x => x.antiguedadHs !== null && x.antiguedadHs <= MAX_RELAMPAGO_FALLBACK_HOURS);
   const sinTimestamp = candidatas.every(x => x.antiguedadHs === null);
-  const poolElegido = pool72.length > 0
+  let poolElegido = pool72.length > 0
     ? pool72
     : (pool120.length > 0 ? pool120 : (sinTimestamp ? candidatas : []));
+
+  // Descartar outliers viejos (> 18h) cuyo precio supere en > 1.55x el mínimo real disponible
+  if (poolElegido.length > 0) {
+    const minValGlobal = Math.min(...poolElegido.map(x => x.val));
+    const poolSinOutliers = poolElegido.filter(
+      x => !(x.antiguedadHs !== null && x.antiguedadHs > 18 && x.val > minValGlobal * 1.55)
+    );
+    if (poolSinOutliers.length > 0) {
+      poolElegido = poolSinOutliers;
+    }
+  }
+
+  const tierFrescura = (hs) => {
+    if (hs === null || hs === undefined || !Number.isFinite(Number(hs))) return 1;
+    const n = Number(hs);
+    if (n <= 18) return 0;
+    if (n <= 24) return 1;
+    if (n <= 48) return 2;
+    return 3;
+  };
+
+  // Priorizar ofertas más frescas (<= 18h, <= 24h) y luego menor precio
+  poolElegido.sort((a, b) => {
+    const ta = tierFrescura(a.antiguedadHs);
+    const tb = tierFrescura(b.antiguedadHs);
+    if (ta !== tb) return ta - tb;
+    return a.val - b.val;
+  });
 
   const vistas = new Set();
   const salidasReales = [];
@@ -316,7 +344,7 @@ function construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, tipoCambioUsdArs
       google_flights_url: `https://www.google.com/travel/flights?q=Flights%20to%20${primaryIata}%20from%20${origGf}%20on%20${o.depart_date}%20through%20${o.return_date}&hl=es`,
       kiwi_url: `https://www.kiwi.com/deep?from=BUE&to=${primaryIata}&departure=${o.depart_date}&return=${o.return_date}&currency=${esCabotaje ? 'ARS' : 'USD'}&lang=es&affilid=travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785`
     });
-    if (salidasReales.length >= 18) break;
+    if (salidasReales.length >= 30) break;
   }
 
   if (salidasReales.length === 0) {
@@ -342,14 +370,30 @@ function construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, tipoCambioUsdArs
   if (prevCaz) {
     for (const m of prevCaz.meses) {
       for (const s of (m.salidas || [])) {
-        if (s && s.fecha_ida && s.fecha_ida >= min3dIso) {
+        if (
+          s &&
+          s.es_real_aviasales === true &&
+          s.antiguedad_hs !== null &&
+          s.antiguedad_hs !== undefined &&
+          Number(s.antiguedad_hs) <= 24 &&
+          s.fecha_ida &&
+          s.fecha_ida >= min3dIso
+        ) {
           prevValidas.push(s);
         }
       }
     }
     if (prevCaz.early_bird && Array.isArray(prevCaz.early_bird.salidas)) {
       for (const s of prevCaz.early_bird.salidas) {
-        if (s && s.fecha_ida && s.fecha_ida >= min3dIso) {
+        if (
+          s &&
+          s.es_real_aviasales === true &&
+          s.antiguedad_hs !== null &&
+          s.antiguedad_hs !== undefined &&
+          Number(s.antiguedad_hs) <= 24 &&
+          s.fecha_ida &&
+          s.fecha_ida >= min3dIso
+        ) {
           prevValidas.push(s);
         }
       }
@@ -358,8 +402,10 @@ function construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, tipoCambioUsdArs
 
   const relBase = dest.oportunidad_relampago || {};
   const baseAhorroNum = parseInt(relBase.ahorro_porcentaje, 10) || (esCabotaje ? 25 : 20);
-  const meses = [];
+  const paresUsados = new Set();
+  const slotsMes = [];
 
+  // Pasada 1: reservar para cada mes sus propias mejores salidas (frescura + precio)
   for (let i = 0; i < 3; i++) {
     let y = startYear;
     let m = startMonth + i;
@@ -368,33 +414,93 @@ function construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, tipoCambioUsdArs
       m = m % 12;
     }
     const prefijo = `${y}-${String(m + 1).padStart(2, '0')}`;
-    const cands = salidasReales.filter(s => s.fecha_ida.startsWith(prefijo));
+    const cands = salidasReales
+      .filter(s => s.fecha_ida.startsWith(prefijo))
+      .sort((a, b) => {
+        const ta = tierFrescura(a.antiguedad_hs);
+        const tb = tierFrescura(b.antiguedad_hs);
+        return ta !== tb ? ta - tb : (a.precio_usd - b.precio_usd);
+      });
     const sel = [];
     for (const c of cands) {
+      const k = `${c.fecha_ida}_${c.fecha_vuelta}`;
+      if (paresUsados.has(k)) continue;
       if (sel.length === 0) {
         sel.push({ ...c, opcion: 1, etiqueta_opcion: 'Salida A' });
+        paresUsados.add(k);
       } else if (sel.length < 2) {
         const d1 = new Date(sel[0].fecha_ida + 'T00:00:00');
         const d2 = new Date(c.fecha_ida + 'T00:00:00');
-        if (Math.abs((d2 - d1) / (1000 * 60 * 60 * 24)) >= 4) {
+        if (Math.abs((d2 - d1) / (1000 * 60 * 60 * 24)) >= 3) {
           sel.push({ ...c, opcion: 2, etiqueta_opcion: 'Salida B' });
+          paresUsados.add(k);
+          break;
         }
       }
     }
+    slotsMes.push({ y, m, prefijo, sel });
+  }
+
+  // Pasada 2: completar con fechas cercanas reales y frescas (sin duplicar entre pestañas)
+  const meses = [];
+  for (let i = 0; i < 3; i++) {
+    const { y, m, prefijo, sel } = slotsMes[i];
+    const centroMes = new Date(y, m, 15);
+    if (sel.length < 2) {
+      const cercanas = salidasReales
+        .filter(s => {
+          const k = `${s.fecha_ida}_${s.fecha_vuelta}`;
+          if (paresUsados.has(k)) return false;
+          if (s.antiguedad_hs !== null && s.antiguedad_hs !== undefined && Number(s.antiguedad_hs) > 48) return false;
+          if ((s.dias_restantes || 0) >= 140) return false;
+          const d = new Date(s.fecha_ida + 'T00:00:00');
+          return Math.abs((d - centroMes) / (1000 * 60 * 60 * 24)) <= 45;
+        })
+        .sort((a, b) => {
+          const ta = tierFrescura(a.antiguedad_hs);
+          const tb = tierFrescura(b.antiguedad_hs);
+          if (ta !== tb) return ta - tb;
+          const da = Math.abs((new Date(a.fecha_ida + 'T00:00:00') - centroMes) / 86400000);
+          const db = Math.abs((new Date(b.fecha_ida + 'T00:00:00') - centroMes) / 86400000);
+          if (Math.abs(da - db) > 7) return da - db;
+          return a.precio_usd - b.precio_usd;
+        });
+
+      for (const c of cercanas) {
+        if (sel.length >= 2) break;
+        if (sel.length === 1) {
+          const d1 = new Date(sel[0].fecha_ida + 'T00:00:00');
+          const d2 = new Date(c.fecha_ida + 'T00:00:00');
+          if (Math.abs((d2 - d1) / (1000 * 60 * 60 * 24)) < 3) continue;
+        }
+        const k = `${c.fecha_ida}_${c.fecha_vuelta}`;
+        sel.push({
+          ...c,
+          opcion: sel.length + 1,
+          etiqueta_opcion: sel.length === 0 ? 'Salida A' : 'Salida B'
+        });
+        paresUsados.add(k);
+      }
+    }
+
     if (sel.length < 2) {
       for (const p of prevValidas) {
-        if (p.fecha_ida.startsWith(prefijo) && !sel.some(x => x.fecha_ida === p.fecha_ida)) {
+        if (p.fecha_ida.startsWith(prefijo) && !paresUsados.has(`${p.fecha_ida}_${p.fecha_vuelta}`)) {
+          const k = `${p.fecha_ida}_${p.fecha_vuelta}`;
           sel.push({
             ...p,
             opcion: sel.length + 1,
             etiqueta_opcion: sel.length === 0 ? 'Salida A' : 'Salida B'
           });
+          paresUsados.add(k);
           if (sel.length >= 2) break;
         }
       }
     }
     if (sel.length === 0) {
-      sel.push({ ...salidasReales[0], opcion: 1, etiqueta_opcion: 'Salida A' });
+      const disp = salidasReales.find(s => !paresUsados.has(`${s.fecha_ida}_${s.fecha_vuelta}`)) || salidasReales[0];
+      sel.push({ ...disp, opcion: 1, etiqueta_opcion: 'Salida A' });
+      paresUsados.add(`${disp.fecha_ida}_${disp.fecha_vuelta}`);
     }
 
     const ahorroMes = Math.max(10, Math.round(baseAhorroNum * (1 - (i * 0.17))));
@@ -550,10 +656,10 @@ module.exports = async function handler(req, res) {
     const rutasEspecificasUsd = ['GIG', 'FLN', 'MIA', 'CUN', 'PUJ', 'AUA', 'JFK', 'MCO', 'MAD', 'BCN', 'FCO', 'CDG', 'LHR', 'LIS'];
 
     const promesasArs = rutasEspecificasArs.map(code =>
-      consultarTravelpayouts(`https://api.travelpayouts.com/v2/prices/latest?currency=ars&origin=BUE&destination=${code}&period_type=year&page=1&limit=20&show_to_affiliates=true&sorting=price&token=${tpToken}`)
+      consultarTravelpayouts(`https://api.travelpayouts.com/v2/prices/latest?currency=ars&origin=BUE&destination=${code}&period_type=year&page=1&limit=100&show_to_affiliates=true&sorting=price&token=${tpToken}`)
     );
     const promesasUsd = rutasEspecificasUsd.map(code =>
-      consultarTravelpayouts(`https://api.travelpayouts.com/v2/prices/latest?currency=usd&origin=BUE&destination=${code}&period_type=year&page=1&limit=20&show_to_affiliates=true&sorting=price&token=${tpToken}`)
+      consultarTravelpayouts(`https://api.travelpayouts.com/v2/prices/latest?currency=usd&origin=BUE&destination=${code}&period_type=year&page=1&limit=100&show_to_affiliates=true&sorting=price&token=${tpToken}`)
     );
 
     const [resGlobalArs, resGlobalUsd, ...resEspecificas] = await Promise.allSettled([
@@ -603,7 +709,7 @@ module.exports = async function handler(req, res) {
     if (faltantesUsd.size > 0) {
       const promesasSec = Array.from(faltantesUsd).slice(0, 35).map(code =>
         consultarTravelpayouts(
-          `https://api.travelpayouts.com/v2/prices/latest?currency=usd&origin=BUE&destination=${code}&period_type=year&page=1&limit=20&show_to_affiliates=true&sorting=price&token=${tpToken}`,
+          `https://api.travelpayouts.com/v2/prices/latest?currency=usd&origin=BUE&destination=${code}&period_type=year&page=1&limit=100&show_to_affiliates=true&sorting=price&token=${tpToken}`,
           2200
         )
       );

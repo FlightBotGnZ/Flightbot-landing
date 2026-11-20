@@ -983,7 +983,13 @@
         if (dest.salidas_reales_cazadas && Array.isArray(dest.salidas_reales_cazadas.meses)) {
           for (const mCaz of dest.salidas_reales_cazadas.meses) {
             for (const sCaz of (mCaz.salidas || [])) {
-              if (sCaz && sCaz.fecha_ida && sCaz.fecha_ida >= fechaMinimaIso) {
+              if (
+                sCaz &&
+                sCaz.es_real_aviasales !== false &&
+                (sCaz.antiguedad_hs === null || sCaz.antiguedad_hs === undefined || Number(sCaz.antiguedad_hs) <= 24) &&
+                sCaz.fecha_ida &&
+                sCaz.fecha_ida >= fechaMinimaIso
+              ) {
                 cazadasPool.push(normalizarSalidaVigente(sCaz, cazadasPool.length));
               }
             }
@@ -993,46 +999,110 @@
         if (reales.length >= 1) {
           const rel = dest.oportunidad_relampago || {};
           const baseAhorroNum = parseInt(rel.ahorro_porcentaje) || (dest.es_cabotaje ? 25 : 20);
+          const tierFrescuraCard = (s) => {
+            const hs = s && s.antiguedad_hs;
+            if (hs === null || hs === undefined || !Number.isFinite(Number(hs))) return 1;
+            const n = Number(hs);
+            if (n <= 18) return 0;
+            if (n <= 24) return 1;
+            if (n <= 48) return 2;
+            return 3;
+          };
+          const realesOrdenadas = reales.slice().sort((a, b) => {
+            const ta = tierFrescuraCard(a);
+            const tb = tierFrescuraCard(b);
+            if (ta !== tb) return ta - tb;
+            return (Number(a.precio_usd) || 0) - (Number(b.precio_usd) || 0);
+          });
 
-          const bucketMes = (mTarget, yTarget) => {
-            const prefijo = `${yTarget}-${String(mTarget + 1).padStart(2, '0')}`;
+          const paresUsados = new Set();
+          const slotsMes = [];
+          for (let i = 0; i < 3; i++) {
+            let y = startYear;
+            let m = startMonth + i;
+            if (m > 11) { y += Math.floor(m / 12); m = m % 12; }
+            const prefijo = `${y}-${String(m + 1).padStart(2, '0')}`;
             const delMes = [];
-            for (const s of reales) {
+            for (const s of realesOrdenadas) {
               if (!s.fecha_ida.startsWith(prefijo)) continue;
+              const k = `${s.fecha_ida}_${s.fecha_vuelta || ''}`;
+              if (paresUsados.has(k)) continue;
               if (delMes.length === 0) {
                 delMes.push({ ...s, opcion: 1, etiqueta_opcion: 'Salida A' });
+                paresUsados.add(k);
               } else if (delMes.length < 2) {
                 const d0 = new Date(`${delMes[0].fecha_ida}T00:00:00`);
                 const d1 = new Date(`${s.fecha_ida}T00:00:00`);
-                if (Math.abs((d1 - d0) / (24 * 60 * 60 * 1000)) >= 4) {
+                if (Math.abs((d1 - d0) / (24 * 60 * 60 * 1000)) >= 3) {
                   delMes.push({ ...s, opcion: 2, etiqueta_opcion: 'Salida B' });
+                  paresUsados.add(k);
+                  break;
                 }
               }
             }
+            slotsMes.push({ y, m, prefijo, delMes });
+          }
+
+          const meses = [];
+          for (let i = 0; i < 3; i++) {
+            const { y, m, prefijo, delMes } = slotsMes[i];
+            const centroMes = new Date(y, m, 15);
             if (delMes.length < 2) {
               for (const sCaz of cazadasPool) {
-                if (sCaz.fecha_ida.startsWith(prefijo) && !delMes.some(x => x.fecha_ida === sCaz.fecha_ida)) {
+                const k = `${sCaz.fecha_ida}_${sCaz.fecha_vuelta || ''}`;
+                if (sCaz.fecha_ida.startsWith(prefijo) && !paresUsados.has(k)) {
                   delMes.push({
                     ...sCaz,
                     opcion: delMes.length + 1,
                     etiqueta_opcion: delMes.length === 0 ? 'Salida A' : 'Salida B'
                   });
+                  paresUsados.add(k);
                   if (delMes.length >= 2) break;
                 }
               }
             }
-            return delMes;
-          };
-
-          const meses = [];
-          for (let i = 0; i < 3; i++) {
-            let y = startYear;
-            let m = startMonth + i;
-            if (m > 11) { y += Math.floor(m / 12); m = m % 12; }
-            let salidasMes = bucketMes(m, y);
+            if (delMes.length < 2) {
+              const cercanas = realesOrdenadas
+                .filter(s => {
+                  const k = `${s.fecha_ida}_${s.fecha_vuelta || ''}`;
+                  if (paresUsados.has(k)) return false;
+                  if (s.antiguedad_hs !== null && s.antiguedad_hs !== undefined && Number(s.antiguedad_hs) > 48) return false;
+                  if ((s.dias_restantes || 0) >= 140) return false;
+                  const d = new Date(`${s.fecha_ida}T00:00:00`);
+                  return Math.abs((d - centroMes) / 86400000) <= 45;
+                })
+                .sort((a, b) => {
+                  const ta = tierFrescuraCard(a);
+                  const tb = tierFrescuraCard(b);
+                  if (ta !== tb) return ta - tb;
+                  const da = Math.abs((new Date(`${a.fecha_ida}T00:00:00`) - centroMes) / 86400000);
+                  const db = Math.abs((new Date(`${b.fecha_ida}T00:00:00`) - centroMes) / 86400000);
+                  if (Math.abs(da - db) > 7) return da - db;
+                  return (Number(a.precio_usd) || 0) - (Number(b.precio_usd) || 0);
+                });
+              for (const s of cercanas) {
+                if (delMes.length >= 2) break;
+                if (delMes.length === 1) {
+                  const d0 = new Date(`${delMes[0].fecha_ida}T00:00:00`);
+                  const d1 = new Date(`${s.fecha_ida}T00:00:00`);
+                  if (Math.abs((d1 - d0) / 86400000) < 3) continue;
+                }
+                const k = `${s.fecha_ida}_${s.fecha_vuelta || ''}`;
+                delMes.push({
+                  ...s,
+                  opcion: delMes.length + 1,
+                  etiqueta_opcion: delMes.length === 0 ? 'Salida A' : 'Salida B'
+                });
+                paresUsados.add(k);
+              }
+            }
+            let salidasMes = delMes;
             if (!salidasMes.length) {
-              const sliceAlt = reales.slice(i * 2, i * 2 + 2);
-              salidasMes = sliceAlt.length ? sliceAlt : reales.slice(0, 2);
+              const disp = realesOrdenadas.find(s => !paresUsados.has(`${s.fecha_ida}_${s.fecha_vuelta || ''}`)) || realesOrdenadas[0];
+              if (disp) {
+                salidasMes = [{ ...disp, opcion: 1, etiqueta_opcion: 'Salida A' }];
+                paresUsados.add(`${disp.fecha_ida}_${disp.fecha_vuelta || ''}`);
+              }
             }
             const ahorroMes = Math.max(10, Math.round(baseAhorroNum * (1 - (i * 0.17))));
             meses.push({
