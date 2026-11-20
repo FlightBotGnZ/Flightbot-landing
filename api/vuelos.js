@@ -208,6 +208,29 @@ function esFlybondi(item) {
   return gate.includes('flybondi') || air === 'fo' || air.includes('flybondi');
 }
 
+const MAX_RELAMPAGO_FRESH_HOURS = 72;
+const MAX_RELAMPAGO_FALLBACK_HOURS = 120;
+
+function calcularAntiguedadHoras(foundAtStr) {
+  if (!foundAtStr) return null;
+  const raw = String(foundAtStr).trim();
+  if (!raw) return null;
+  const normalized = /(?:Z|[+-]\d{2}:?\d{2})$/i.test(raw) ? raw : `${raw}Z`;
+  const ts = Date.parse(normalized);
+  if (Number.isNaN(ts)) return null;
+  return Math.max(0, (Date.now() - ts) / (1000 * 60 * 60));
+}
+
+function formatearDeteccionRolli(antiguedadHs) {
+  if (antiguedadHs === null || antiguedadHs === undefined || !Number.isFinite(Number(antiguedadHs))) {
+    return 'Detectado por Rolli';
+  }
+  const hs = Number(antiguedadHs);
+  if (hs < 1) return 'Detectado por Rolli hace minutos';
+  if (hs < 48) return `Detectado por Rolli hace ${Math.max(1, Math.round(hs))} hs`;
+  return `Detectado por Rolli hace ${Math.max(2, Math.round(hs / 24))} días`;
+}
+
 function construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, tipoCambioUsdArs) {
   const iataRaw = String(dest.iata || '').toUpperCase();
   const primaryIata = iataRaw.split('/')[0].trim() || 'BUE';
@@ -219,8 +242,8 @@ function construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, tipoCambioUsdArs
   const min3dIso = `${fechaMin3d.getFullYear()}-${String(fechaMin3d.getMonth() + 1).padStart(2, '0')}-${String(fechaMin3d.getDate()).padStart(2, '0')}`;
   const ahoraIso = new Date().toISOString();
 
-  const vistas = new Set();
-  const salidasReales = [];
+  // Filtrar primero por validez de fechas, noches y escalas
+  const candidatas = [];
   for (const o of ofertasRaw) {
     if (!o || !o.depart_date || !o.return_date || !o.value) continue;
     const val = Number(o.value);
@@ -232,6 +255,28 @@ function construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, tipoCambioUsdArs
     const noches = Math.round((retDate - depDate) / (1000 * 60 * 60 * 24));
     if (noches < minN || noches > maxN) continue;
     if (esCabotaje && Number(o.number_of_changes || 0) > 0) continue;
+    candidatas.push({
+      oferta: o,
+      val,
+      depDate,
+      retDate,
+      noches,
+      antiguedadHs: calcularAntiguedadHoras(o.found_at)
+    });
+  }
+
+  // Filtro estricto de frescura: priorizar <= 72h, respaldo <= 120h, descartar > 120h (cachés viejas)
+  const pool72 = candidatas.filter(x => x.antiguedadHs !== null && x.antiguedadHs <= MAX_RELAMPAGO_FRESH_HOURS);
+  const pool120 = candidatas.filter(x => x.antiguedadHs !== null && x.antiguedadHs <= MAX_RELAMPAGO_FALLBACK_HOURS);
+  const sinTimestamp = candidatas.every(x => x.antiguedadHs === null);
+  const poolElegido = pool72.length > 0
+    ? pool72
+    : (pool120.length > 0 ? pool120 : (sinTimestamp ? candidatas : []));
+
+  const vistas = new Set();
+  const salidasReales = [];
+  for (const item of poolElegido) {
+    const { oferta: o, val, depDate, noches, antiguedadHs } = item;
 
     const parKey = `${o.depart_date}_${o.return_date}`;
     if (vistas.has(parKey)) continue;
@@ -264,6 +309,8 @@ function construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, tipoCambioUsdArs
       escalas: Number(o.number_of_changes || 0),
       aerolinea_gate: gate,
       gate,
+      found_at: o.found_at || null,
+      antiguedad_hs: antiguedadHs !== null ? Math.round(antiguedadHs * 10) / 10 : null,
       es_real_aviasales: true,
       actualizado_utc: ahoraIso,
       google_flights_url: `https://www.google.com/travel/flights?q=Flights%20to%20${primaryIata}%20from%20${origGf}%20on%20${o.depart_date}%20through%20${o.return_date}&hl=es`,
@@ -400,7 +447,7 @@ function construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, tipoCambioUsdArs
     oportunidad_relampago: {
       ...(dest.oportunidad_relampago || {}),
       activa: true,
-      subtitulo: `Salida en ${flashTop.dias_restantes} días · Tarifa real Aviasales`,
+      subtitulo: `Salida en ${flashTop.dias_restantes} días · ${formatearDeteccionRolli(flashTop.antiguedad_hs)}`,
       aerolinea: flashTop.aerolinea_gate,
       fechas: flashTop.fechas_texto,
       fechas_texto: flashTop.fechas_texto,
@@ -412,6 +459,8 @@ function construirSalidasRelampagoEnVivo(dest, ofertasRaw, hoy, tipoCambioUsdArs
       precio_usd_num: flashTop.precio_usd,
       precio: precioFlashTexto,
       precio_usd: precioSecTexto,
+      found_at: flashTop.found_at || null,
+      antiguedad_hs: flashTop.antiguedad_hs,
       google_flights_url: flashTop.google_flights_url,
       kiwi_url: flashTop.kiwi_url,
       actualizado_utc: ahoraIso,
