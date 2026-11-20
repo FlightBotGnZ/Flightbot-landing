@@ -1364,6 +1364,7 @@
     }
 
     function formatearDeteccionRolliCard(salida, rel) {
+      const rolliIcon = '<img src="/img/rolli-avatar-transparent.png" alt="Rolli" class="w-3.5 h-3.5 rounded-full object-contain inline-block shrink-0" />';
       let hs = null;
       const foundRaw = (salida && salida.found_at) || (rel && rel.found_at) || '';
       if (foundRaw) {
@@ -1380,14 +1381,14 @@
         hs = Number(rel.antiguedad_hs);
       }
       if (hs !== null && Number.isFinite(hs)) {
-        if (hs < 1) return '🤖 Detectado por Rolli hace minutos';
-        if (hs < 48) return `🤖 Detectado por Rolli hace ${Math.max(1, Math.round(hs))} hs`;
-        return `🤖 Detectado por Rolli hace ${Math.max(2, Math.round(hs / 24))} días`;
+        if (hs < 1) return `${rolliIcon} <span>Detectado por Rolli hace minutos</span>`;
+        if (hs < 48) return `${rolliIcon} <span>Detectado por Rolli hace ${Math.max(1, Math.round(hs))} hs</span>`;
+        return `${rolliIcon} <span>Detectado por Rolli hace ${Math.max(2, Math.round(hs / 24))} días</span>`;
       }
       if (salida && salida.es_real_aviasales === false) {
-        return '🤖 Tarifa de referencia · Rolli';
+        return `${rolliIcon} <span>Tarifa de referencia · Rolli</span>`;
       }
-      return '🤖 Detectado por Rolli';
+      return `${rolliIcon} <span>Detectado por Rolli</span>`;
     }
 
     function renderVuelos() {
@@ -1585,7 +1586,7 @@
                 <div>
                   <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold block">Tarifa Récord</span>
                   <span class="text-base font-black font-mono text-blue-600 dark:text-blue-400">${precioSalidaStr}</span>
-                  <span class="block text-[10px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">${formatearDeteccionRolliCard(salida, rel)}</span>
+                  <span class="flex items-center gap-1 text-[10px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">${formatearDeteccionRolliCard(salida, rel)}</span>
                 </div>
                 <div class="flex items-center gap-1.5">
                   <a href="${urlGf}" target="_blank" rel="noopener noreferrer sponsored" class="px-2.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-sm font-extrabold text-[11px] shadow-xs transition-transform hover:scale-105 inline-flex items-center gap-1" title="Ver en Google Flights">
