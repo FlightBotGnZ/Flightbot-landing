@@ -1632,7 +1632,7 @@
           const urlGf = salida.google_flights_url || `https://www.google.com/travel/flights?q=Flights%20to%20${iata}%20from%20${origGf}%20on%20${fechaIda}%20through%20${fechaVuelta}&hl=es&curr=${currGf}`;
           const kiwiAffilId = 'travelpayoutsdeeplink_flightbot-landing.vercel.app_fd35e8e828cf46f19c2af3768-791785';
           const urlKiwi = `https://www.kiwi.com/deep?from=BUE&to=${iata}&departure=${fechaIda}&return=${fechaVuelta}&currency=${dest.es_cabotaje ? 'ARS' : 'USD'}&lang=es&affilid=${kiwiAffilId}`;
-          const urlDespegar = `https://www.despegar.com.ar/vuelos/bue/${iata.toLowerCase()}?from=BUE&to=${iata}&departureDate=${fechaIda}&returnDate=${fechaVuelta}`;
+          const urlDespegar = `https://www.despegar.com.ar/shop/flights/results/roundtrip/BUE/${encodeURIComponent(String(iata || '').toUpperCase())}/${fechaIda}/${fechaVuelta}/1/0/0?from=SB`;
           const hotelRef = (dest.hoteles && dest.hoteles[0]) ? dest.hoteles[0] : { nombre: '' };
           const urlBooking = generarBookingHotelUrl(hotelRef, dest, fechaIda, fechaVuelta);
 

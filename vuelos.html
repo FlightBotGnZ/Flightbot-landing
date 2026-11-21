@@ -3163,7 +3163,7 @@
           const flightCardGfUrl = `https://www.google.com/travel/flights?q=Flights%20to%20${dest.iata}%20from%20BUE%20on%20${fechaIda}%20through%20${fechaVuelta}${aeroFiltroGf}&hl=es`;
           const kiwiAeroParam = aeroLimpia ? `&airlines=${encodeURIComponent(aeroLimpia)}` : '';
           const kiwiUrl = `https://www.kiwi.com/deep?from=BUE&to=${dest.iata}&departure=${fechaIda}&return=${fechaVuelta}&currency=${dest.es_cabotaje ? 'ARS' : 'USD'}${kiwiAeroParam}&lang=es&affilid=${kiwiAffilId}`;
-          const despegarUrl = `https://www.despegar.com.ar/vuelos/bue/${(dest.iata || '').toLowerCase()}?from=BUE&to=${(dest.iata || '').toUpperCase()}&departureDate=${fechaIda}&returnDate=${fechaVuelta}`;
+          const despegarUrl = `https://www.despegar.com.ar/shop/flights/results/roundtrip/BUE/${encodeURIComponent((dest.iata || '').toUpperCase())}/${fechaIda}/${fechaVuelta}/1/0/0?from=SB`;
           const bookingHotelUrl = `https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(ciudadLimpia)}&checkin=${fechaIda}&checkout=${fechaVuelta}`;
 
           const precioFormateado = window.formatearPrecioMoneda ? window.formatearPrecioMoneda(v.precio, dest) : v.precio;
@@ -4363,11 +4363,12 @@
           : `Flights%20to%20${encDest}%20from%20${encOrig}%20on%20${safeDepartDate}${paxGfSuffix}`;
 
         const kiwiPaxParams = `&adults=${adtForAirlines}&children=${bd.children}&infants=${bd.infants}`;
-        const despegarPaxParams = `&adults=${ bd.adults }${bd.minorAges.length > 0 ? '&children=' + bd.minorAges.join(',') : ''}`;
 
         const baseGfUrl = `https://www.google.com/travel/flights?q=${qGf}&hl=es`;
         const baseKiwiUrl = `https://www.kiwi.com/deep?from=${encOrig}&to=${encDest}&departure=${safeDepartDate}${isRound ? '&return=' + safeReturnDate : ''}${kiwiPaxParams}&lang=es&affilid=${KIWI_AFFIL_ID}`;
-        const baseDespegarUrl = `https://www.despegar.com.ar/vuelos/${encodeURIComponent(originIata.toLowerCase())}/${encodeURIComponent(destIata.toLowerCase())}?from=${encOrig}&to=${encDest}&departureDate=${safeDepartDate}${isRound ? '&returnDate=' + safeReturnDate : ''}${despegarPaxParams}`;
+        const baseDespegarUrl = isRound
+          ? `https://www.despegar.com.ar/shop/flights/results/roundtrip/${encOrig}/${encDest}/${safeDepartDate}/${safeReturnDate}/${adtForAirlines}/${bd.children}/${bd.infants}?from=SB`
+          : `https://www.despegar.com.ar/shop/flights/results/oneway/${encOrig}/${encDest}/${safeDepartDate}/${adtForAirlines}/${bd.children}/${bd.infants}?from=SB`;
         const baseTgUrl = `https://t.me/GnZFlightBot?start=alerta_${encodeURIComponent(destIata.replace(/[^A-Z0-9]/g, ''))}_${safeDepartDate}`;
 
         // Determinar precios base usando la cotización vigente dinámica
@@ -4773,9 +4774,12 @@
           window.open(`https://www.kiwi.com/deep?from=${encodeURIComponent(originIata)}&to=${encodeURIComponent(destIata)}&departure=${departVal}${retParam}${kiwiPaxParams}&lang=es&affilid=${KIWI_AFFIL_ID}`, '_blank', 'noopener,noreferrer');
           return;
         } else if (metabuscador === 'despegar') {
-          const retParam = isRound && returnVal ? `&returnDate=${returnVal}` : '';
-          const despegarPaxParams = `&adults=${bd.adults}${bd.minorAges.length > 0 ? '&children=' + bd.minorAges.join(',') : ''}`;
-          window.open(`https://www.despegar.com.ar/vuelos/${encodeURIComponent(originIata.toLowerCase())}/${encodeURIComponent(destIata.toLowerCase())}?from=${encodeURIComponent(originIata.toUpperCase())}&to=${encodeURIComponent(destIata.toUpperCase())}&departureDate=${departVal}${retParam}${despegarPaxParams}`, '_blank', 'noopener,noreferrer');
+          const encOrig = encodeURIComponent(originIata.toUpperCase());
+          const encDest = encodeURIComponent(destIata.toUpperCase());
+          const despegarShopUrl = (isRound && returnVal)
+            ? `https://www.despegar.com.ar/shop/flights/results/roundtrip/${encOrig}/${encDest}/${departVal}/${returnVal}/${adtForAirlines}/${bd.children}/${bd.infants}?from=SB`
+            : `https://www.despegar.com.ar/shop/flights/results/oneway/${encOrig}/${encDest}/${departVal}/${adtForAirlines}/${bd.children}/${bd.infants}?from=SB`;
+          window.open(despegarShopUrl, '_blank', 'noopener,noreferrer');
           return;
         }
 
