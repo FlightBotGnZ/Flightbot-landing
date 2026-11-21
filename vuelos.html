@@ -4371,45 +4371,64 @@
           : `https://www.despegar.com.ar/shop/flights/results/oneway/${encOrig}/${encDest}/${safeDepartDate}/${adtForAirlines}/${bd.children}/${bd.infants}?from=SB`;
         const baseTgUrl = `https://t.me/GnZFlightBot?start=alerta_${encodeURIComponent(destIata.replace(/[^A-Z0-9]/g, ''))}_${safeDepartDate}`;
 
-        // Determinar precios base usando la cotización vigente dinámica
+        // Determinar precios base y opciones reales desde RADAR_DATA cuando el destino está monitoreado
+        const radarVuelos = (matchRadar && Array.isArray(matchRadar.vuelos)) ? matchRadar.vuelos : [];
+        const vRadar0 = radarVuelos[0] || null;
+        const vRadar1 = radarVuelos[1] || vRadar0;
+        const vRadar2 = radarVuelos[2] || vRadar1;
+
         let baseUsd = hubData.precio_base_usd || 450;
         let baseArs = Math.round(baseUsd * TIPO_CAMBIO_USD_ARS);
 
-        if (matchRadar && matchRadar.vuelos && matchRadar.vuelos[0]) {
-          const v0 = matchRadar.vuelos[0];
-          if (v0.precio_usd) baseUsd = v0.precio_usd;
-          if (v0.precio_ars) baseArs = v0.precio_ars;
+        if (vRadar0) {
+          if (vRadar0.precio_usd) baseUsd = Number(vRadar0.precio_usd);
+          if (vRadar0.precio_ars) baseArs = Number(vRadar0.precio_ars);
         }
+
+        const resolverPrecioRadar = (vObj, multFallback) => {
+          const pUsd = (vObj && Number(vObj.precio_usd) > 0)
+            ? Number(vObj.precio_usd)
+            : Math.round(baseUsd * multFallback);
+          const pArs = (vObj && Number(vObj.precio_ars) > 0)
+            ? Number(vObj.precio_ars)
+            : Math.round(baseArs * multFallback);
+          return {
+            usd: Math.round(pUsd * paxMult),
+            ars: Math.round(pArs * paxMult)
+          };
+        };
 
         // Construcción de las 3 Tarjetas Destacadas
         const top3 = [];
 
         // Tarjeta 1: 🥇 Mejor Precio Detectado
+        const pCard1 = resolverPrecioRadar(vRadar0, 1);
+        const dirCard1 = vRadar0 ? /directo/i.test(vRadar0.escalas || '') : hubData.directo;
         top3.push({
           puesto: 1,
           badge: '🥇 Mejor Precio Detectado',
           badgeClass: 'bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border border-emerald-500/30',
           borderClass: 'dark:border-emerald-500/30 border-emerald-500/20 hover:border-emerald-500/50',
-          tagline: 'Tarifa mínima confirmada',
-          aerolinea: hubData.aerolinea_lider,
+          tagline: (vRadar0 && vRadar0.destacado) ? vRadar0.destacado : 'Tarifa mínima confirmada',
+          aerolinea: (vRadar0 && vRadar0.aerolinea) ? vRadar0.aerolinea : hubData.aerolinea_lider,
           emoji: hubData.emoji,
           vuelo_nro: `${destIata.slice(0, 2)} ${Math.floor(1000 + Math.random() * 8999)}`,
           cabina: cabin === 'business' ? 'Ejecutiva' : (cabin === 'premium' ? 'Premium' : 'Turista'),
           ida: {
             horario: hubData.frecuencias_ida[0] || '08:00 - 15:30',
             duracion: hubData.duracion,
-            escalas: hubData.directo ? `Directo (${originIata} ➔ ${destIata})` : `1 escala regular (${hubData.duracion})`,
-            esDirecto: hubData.directo
+            escalas: (vRadar0 && vRadar0.escalas) ? vRadar0.escalas : (dirCard1 ? `Directo (${originIata} ➔ ${destIata})` : `1 escala regular (${hubData.duracion})`),
+            esDirecto: dirCard1
           },
           vuelta: isRound ? {
             horario: hubData.frecuencias_vuelta[0] || '17:00 - 00:30 (+1)',
             duracion: hubData.duracion,
-            escalas: hubData.directo ? `Directo (${destIata} ➔ ${originIata})` : `1 escala regular (${hubData.duracion})`,
-            esDirecto: hubData.directo
+            escalas: (vRadar0 && vRadar0.escalas) ? vRadar0.escalas : (dirCard1 ? `Directo (${destIata} ➔ ${originIata})` : `1 escala regular (${hubData.duracion})`),
+            esDirecto: dirCard1
           } : null,
           equipaje: hubData.equipaje,
-          precio_usd: Math.round(baseUsd * paxMult),
-          precio_ars: Math.round(baseArs * paxMult),
+          precio_usd: pCard1.usd,
+          precio_ars: pCard1.ars,
           url_google: `${baseGfUrl}&curr=USD`,
           url_kiwi: baseKiwiUrl,
           url_despegar: baseDespegarUrl,
@@ -4418,34 +4437,34 @@
 
         // Tarjeta 2: ⚡ Vuelo Más Rápido (Directo / Non-stop)
         const altRapida = hubData.alternativas && hubData.alternativas[0] ? hubData.alternativas[0] : hubData;
-        const precioUsdRapido = Math.round(baseUsd * (altRapida.mult || 1.1) * paxMult);
-        const precioArsRapido = Math.round(baseArs * (altRapida.mult || 1.1) * paxMult);
+        const pCard2 = resolverPrecioRadar(vRadar1, altRapida.mult || 1.1);
+        const dirCard2 = vRadar1 ? /directo/i.test(vRadar1.escalas || '') : hubData.directo;
 
         top3.push({
           puesto: 2,
           badge: '⚡ Vuelo Más Rápido',
           badgeClass: 'bg-sky-500/10 text-sky-500 dark:text-sky-400 border border-sky-500/30',
           borderClass: 'dark:border-sky-500/30 border-sky-500/20 hover:border-sky-500/50',
-          tagline: 'Menor tiempo de viaje',
-          aerolinea: altRapida.aerolinea || hubData.aerolinea_lider,
+          tagline: (vRadar1 && vRadar1.destacado) ? vRadar1.destacado : 'Menor tiempo de viaje',
+          aerolinea: (vRadar1 && vRadar1.aerolinea) ? vRadar1.aerolinea : (altRapida.aerolinea || hubData.aerolinea_lider),
           emoji: altRapida.emoji || '⚡',
           vuelo_nro: `${destIata.slice(0, 2)} ${Math.floor(1000 + Math.random() * 8999)}`,
           cabina: cabin === 'business' ? 'Ejecutiva' : (cabin === 'premium' ? 'Premium' : 'Turista'),
           ida: {
             horario: altRapida.ida || hubData.frecuencias_ida[1] || '11:20 - 18:45',
             duracion: altRapida.duracion || hubData.duracion,
-            escalas: altRapida.escalas || (hubData.directo ? `Directo (${originIata} ➔ ${destIata})` : `Conexión rápida`),
-            esDirecto: hubData.directo
+            escalas: (vRadar1 && vRadar1.escalas) ? vRadar1.escalas : (altRapida.escalas || (dirCard2 ? `Directo (${originIata} ➔ ${destIata})` : `Conexión rápida`)),
+            esDirecto: dirCard2
           },
           vuelta: isRound ? {
             horario: altRapida.vuelta || hubData.frecuencias_vuelta[1] || '19:30 - 02:50 (+1)',
             duracion: altRapida.duracion || hubData.duracion,
-            escalas: altRapida.escalas || (hubData.directo ? `Directo (${destIata} ➔ ${originIata})` : `Conexión rápida`),
-            esDirecto: hubData.directo
+            escalas: (vRadar1 && vRadar1.escalas) ? vRadar1.escalas : (altRapida.escalas || (dirCard2 ? `Directo (${destIata} ➔ ${originIata})` : `Conexión rápida`)),
+            esDirecto: dirCard2
           } : null,
           equipaje: altRapida.equipaje || hubData.equipaje,
-          precio_usd: precioUsdRapido,
-          precio_ars: precioArsRapido,
+          precio_usd: pCard2.usd,
+          precio_ars: pCard2.ars,
           url_google: `${baseGfUrl}&curr=USD`,
           url_kiwi: baseKiwiUrl,
           url_despegar: baseDespegarUrl,
@@ -4454,55 +4473,77 @@
 
         // Tarjeta 3: 🧳 Mejor Horario / Equipaje Completo
         const altEquipaje = (hubData.alternativas && hubData.alternativas[1]) || (hubData.alternativas && hubData.alternativas[0]) || hubData;
-        const precioUsdEquipaje = Math.round(baseUsd * (altEquipaje.mult ? altEquipaje.mult * 1.12 : 1.25) * paxMult);
-        const precioArsEquipaje = Math.round(baseArs * (altEquipaje.mult ? altEquipaje.mult * 1.12 : 1.25) * paxMult);
+        const pCard3 = resolverPrecioRadar(vRadar2, altEquipaje.mult ? altEquipaje.mult * 1.12 : 1.25);
+        const dirCard3 = vRadar2 ? /directo/i.test(vRadar2.escalas || '') : hubData.directo;
 
         top3.push({
           puesto: 3,
           badge: '🧳 Equipaje & Comodidad',
           badgeClass: 'bg-amber-500/10 text-amber-500 dark:text-amber-400 border border-amber-500/30',
           borderClass: 'dark:border-amber-500/30 border-amber-500/20 hover:border-amber-500/50',
-          tagline: 'Franquicia completa y horarios pico',
-          aerolinea: altEquipaje.aerolinea || 'Aerolíneas Argentinas',
+          tagline: (vRadar2 && vRadar2.destacado) ? vRadar2.destacado : 'Franquicia completa y horarios pico',
+          aerolinea: (vRadar2 && vRadar2.aerolinea) ? vRadar2.aerolinea : (altEquipaje.aerolinea || 'Aerolíneas Argentinas'),
           emoji: altEquipaje.emoji || '🧳',
           vuelo_nro: `${destIata.slice(0, 2)} ${Math.floor(1000 + Math.random() * 8999)}`,
           cabina: cabin === 'business' ? 'Ejecutiva' : (cabin === 'premium' ? 'Premium' : 'Turista'),
           ida: {
             horario: altEquipaje.ida || hubData.frecuencias_ida[2] || '18:40 - 01:55 (+1)',
             duracion: altEquipaje.duracion || hubData.duracion,
-            escalas: altEquipaje.escalas || (hubData.directo ? `Directo (${originIata} ➔ ${destIata})` : `1 escala`),
-            esDirecto: hubData.directo
+            escalas: (vRadar2 && vRadar2.escalas) ? vRadar2.escalas : (altEquipaje.escalas || (dirCard3 ? `Directo (${originIata} ➔ ${destIata})` : `1 escala`)),
+            esDirecto: dirCard3
           },
           vuelta: isRound ? {
             horario: altEquipaje.vuelta || hubData.frecuencias_vuelta[2] || '21:00 - 04:20 (+1)',
             duracion: altEquipaje.duracion || hubData.duracion,
-            escalas: altEquipaje.escalas || (hubData.directo ? `Directo (${destIata} ➔ ${originIata})` : `1 escala`),
-            esDirecto: hubData.directo
+            escalas: (vRadar2 && vRadar2.escalas) ? vRadar2.escalas : (altEquipaje.escalas || (dirCard3 ? `Directo (${destIata} ➔ ${originIata})` : `1 escala`)),
+            esDirecto: dirCard3
           } : null,
           equipaje: '🧳 Carry-on + 1 Valija en bodega de 23kg',
-          precio_usd: precioUsdEquipaje,
-          precio_ars: precioArsEquipaje,
+          precio_usd: pCard3.usd,
+          precio_ars: pCard3.ars,
           url_google: `${baseGfUrl}&curr=USD`,
           url_kiwi: baseKiwiUrl,
           url_despegar: baseDespegarUrl,
           url_telegram: baseTgUrl
         });
 
-        // Construcción del Listado / Tabla de Otras Alternativas (4 a 6 filas adicionales)
+        // Construcción del Listado / Tabla de Otras Alternativas (usando salidas reales del radar si existen)
         const alternativasTabla = [];
         const horariosEjemploIda = ['05:30 - 12:45', '09:15 - 16:30', '13:00 - 20:15', '17:20 - 00:35 (+1)', '22:15 - 05:30 (+1)'];
         const horariosEjemploVuelta = ['08:00 - 15:15', '12:30 - 19:45', '16:15 - 23:30', '20:45 - 04:00 (+1)', '23:30 - 06:45 (+1)'];
-        const aerolineasNombres = [hubData.aerolinea_lider, 'LATAM Airlines', 'Avianca', 'Aerolíneas Argentinas', 'Copa Airlines'];
+        const aerolineasNombres = Array.from(new Set([
+          ...radarVuelos.map(v => v && v.aerolinea).filter(Boolean),
+          hubData.aerolinea_lider,
+          'LATAM Airlines',
+          'Aerolíneas Argentinas',
+          'Copa Airlines'
+        ]));
+
+        const salidasRealesPool = [];
+        if (matchRadar && matchRadar.salidas_reales_cazadas && Array.isArray(matchRadar.salidas_reales_cazadas.meses)) {
+          matchRadar.salidas_reales_cazadas.meses.forEach(m => {
+            if (Array.isArray(m.salidas)) {
+              m.salidas.forEach(s => {
+                if (s && Number(s.precio_usd) > 0) salidasRealesPool.push(s);
+              });
+            }
+          });
+        }
+        salidasRealesPool.sort((a, b) => Number(a.precio_usd || 99999) - Number(b.precio_usd || 99999));
 
         for (let i = 0; i < 5; i++) {
-          const aero = aerolineasNombres[i % aerolineasNombres.length];
+          const sReal = salidasRealesPool[i] || null;
+          const aero = (sReal && sReal.aerolinea) ? sReal.aerolinea : aerolineasNombres[i % aerolineasNombres.length];
           const multFila = 0.95 + (i * 0.08);
-          const pUsdFila = Math.round(baseUsd * multFila * paxMult);
-          const pArsFila = Math.round(baseArs * multFila * paxMult);
-          const esDirecta = (i % 2 === 0) && hubData.directo;
+          const pUsdFila = sReal ? Math.round(Number(sReal.precio_usd) * paxMult) : Math.round(baseUsd * multFila * paxMult);
+          const pArsFila = (sReal && Number(sReal.precio_ars) > 0) ? Math.round(Number(sReal.precio_ars) * paxMult) : Math.round(baseArs * multFila * paxMult);
+          const esDirecta = sReal && typeof sReal.es_directo === 'boolean'
+            ? sReal.es_directo
+            : ((i % 2 === 0) && dirCard1);
+          const fechaLabel = (sReal && sReal.fechas_texto) ? ` (${sReal.fechas_texto})` : '';
 
           alternativasTabla.push({
-            aerolinea: aero,
+            aerolinea: `${aero}${fechaLabel}`,
             emoji: '✈️',
             vuelo_nro: `${destIata.slice(0, 2)} ${Math.floor(1000 + i * 37)}`,
             ida: {
@@ -4520,7 +4561,7 @@
             equipaje: i === 1 ? '🧳 Carry-on + Bodega' : '🎒 Mochila incluida',
             precio_usd: pUsdFila,
             precio_ars: pArsFila,
-            url_google: `${baseGfUrl}&curr=USD`
+            url_google: (sReal && sReal.google_flights_url) ? sReal.google_flights_url : `${baseGfUrl}&curr=USD`
           });
         }
 
