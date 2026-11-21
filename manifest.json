@@ -1,0 +1,47 @@
+{
+  "name": "FlightBot · Billetera y Radar de Vuelos",
+  "short_name": "FlightBot",
+  "description": "Radar 24/7 de vuelos, planificador de rutas y billetera de documentos de viaje 100% offline.",
+  "start_url": "/billetera",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#020617",
+  "theme_color": "#e11d48",
+  "lang": "es-AR",
+  "categories": ["travel", "utilities", "productivity"],
+  "icons": [
+    {
+      "src": "/img/rolli-head.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/rolli-avatar-dark.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Billetera Offline",
+      "short_name": "Billetera",
+      "description": "Ver pasajes, PNRs y pólizas sin conexión",
+      "url": "/billetera"
+    },
+    {
+      "name": "Radar de Vuelos",
+      "short_name": "Vuelos",
+      "description": "Explorar tarifas detectadas por el radar",
+      "url": "/vuelos"
+    },
+    {
+      "name": "Modo Ruta",
+      "short_name": "Rutas",
+      "description": "Planificador de escapadas y combustible",
+      "url": "/escapadas"
+    }
+  ]
+}

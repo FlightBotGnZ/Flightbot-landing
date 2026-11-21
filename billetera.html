@@ -14,6 +14,9 @@
   <meta name="twitter:image" content="https://www.flightbot.com.ar/img/og-preview.jpg">
   <title>Billetera de Documentos & Itinerario · FlightBot</title>
   <meta name="description" content="Tus boarding passes, vouchers de hotel y pólizas médicas organizados en tiempo real. Disponible 100% offline para aeropuertos y modo avión.">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="manifest" href="/manifest.json">
+  <script src="js/wallet-crypto.js" defer></script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%232563eb' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%232563eb'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" type="image/x-icon" href="/favicon.ico">
@@ -2047,8 +2050,8 @@
       <div class="space-y-2">
         <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider border shadow-xs"
              style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          Bóveda Segura Local-First · Modo Offline Activo
+          <span id="pwa-offline-dot" class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span id="pwa-offline-badge">Bóveda Local-First · Iniciando PWA Offline...</span>
         </div>
         <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight dark:text-white text-slate-900">
           Mi Billetera de Viaje &amp; Itinerario
@@ -2068,6 +2071,23 @@
                 class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold dark:bg-slate-900 bg-white hover:dark:bg-slate-800 hover:bg-slate-100 border dark:border-slate-700 border-slate-300 dark:text-slate-200 text-slate-800 transition-all shadow-xs flex items-center gap-2">
           <span>📲</span> ¿Cómo Sincronizar?
         </button>
+        <button type="button" id="btn-vault-pin" onclick="window.abrirModalPin()"
+                class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold dark:bg-slate-900 bg-white hover:dark:bg-slate-800 hover:bg-slate-100 border border-purple-500/40 dark:text-purple-300 text-purple-700 transition-all shadow-xs flex items-center gap-2">
+          <span>🔒</span> Proteger con PIN
+        </button>
+        <button type="button" onclick="window.borrarDatosBilletera()"
+                class="px-3.5 py-2.5 rounded-xl text-xs font-bold dark:bg-rose-950/40 bg-rose-50 hover:bg-rose-500/20 border border-rose-500/30 text-rose-500 transition-all shadow-xs flex items-center gap-1.5"
+                title="Purgar inmediatamente todos los documentos y claves locales">
+          <span>🗑️</span> Restablecer Bóveda
+        </button>
+      </div>
+    </div>
+
+    <!-- Advertencia de Higiene de Datos en Terminales Compartidas -->
+    <div class="px-4 py-3 rounded-2xl border border-amber-500/30 dark:bg-amber-950/20 bg-amber-50 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+      <div class="flex items-start sm:items-center gap-2 dark:text-amber-200/90 text-amber-900">
+        <span class="text-base leading-none">⚠️</span>
+        <span><b>Aviso de privacidad:</b> Tus pasajes y PNRs se almacenan localmente en este dispositivo. Activá un <b>PIN AES-256</b> o usá <b>Restablecer Bóveda</b> si estás en una computadora pública o compartida (hotel, cibercafé).</span>
       </div>
     </div>
 
@@ -2111,8 +2131,8 @@
         </div>
         <div class="min-w-0">
           <div class="text-[10px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500 truncate">Seguridad Bóveda</div>
-          <div class="text-xl sm:text-2xl font-black text-emerald-500">Cifrada</div>
-          <div class="text-xs dark:text-slate-400 text-slate-600 font-medium truncate">Aislamiento por usuario</div>
+          <div id="metric-vault-status" class="text-xl sm:text-2xl font-black text-amber-500">Local sin PIN</div>
+          <div id="metric-vault-detail" class="text-xs dark:text-slate-400 text-slate-600 font-medium truncate">Activá PIN AES-256-GCM</div>
         </div>
       </div>
     </div>
@@ -2392,6 +2412,47 @@
     </div>
   </footer>
 
+  <!-- Modal de Cifrado / Desbloqueo de Bóveda con PIN (Web Crypto AES-256-GCM) -->
+  <div id="modal-vault-pin" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="vault-pin-title">
+    <div class="dark:bg-slate-900 bg-white rounded-3xl border dark:border-slate-800 border-slate-200 max-w-md w-full p-6 sm:p-7 shadow-2xl space-y-5 relative">
+      <button type="button" id="vault-pin-close-btn" onclick="window.cerrarModalPin()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-lg font-bold">✕</button>
+      <div class="space-y-1">
+        <div class="text-xs font-extrabold uppercase tracking-wider text-purple-500">🔐 Cifrado Real AES-256-GCM</div>
+        <h4 id="vault-pin-title" class="text-xl font-extrabold dark:text-white text-slate-900">Proteger Bóveda con PIN</h4>
+        <p id="vault-pin-subtitle" class="text-xs dark:text-slate-400 text-slate-600 leading-relaxed">
+          Tus pasajes, PNRs y pólizas se cifrarán en tu navegador usando PBKDF2 (150.000 iteraciones) y AES-256-GCM. El PIN nunca sale de tu dispositivo.
+        </p>
+      </div>
+
+      <form id="form-vault-pin" onsubmit="window.procesarFormularioPin(event)" class="space-y-4">
+        <div>
+          <label for="vault-pin-input" class="block text-xs font-bold dark:text-slate-300 text-slate-700 mb-1.5">PIN de Bóveda (mínimo 4 caracteres)</label>
+          <input type="password" id="vault-pin-input" minlength="4" maxlength="32" required autocomplete="off"
+                 placeholder="Ej: 4829 o clave personal"
+                 class="w-full px-3.5 py-2.5 rounded-xl text-sm font-mono dark:bg-slate-950 bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500">
+        </div>
+        <div id="vault-pin-confirm-wrap">
+          <label for="vault-pin-confirm" class="block text-xs font-bold dark:text-slate-300 text-slate-700 mb-1.5">Confirmar PIN</label>
+          <input type="password" id="vault-pin-confirm" minlength="4" maxlength="32" autocomplete="off"
+                 placeholder="Repetí tu PIN"
+                 class="w-full px-3.5 py-2.5 rounded-xl text-sm font-mono dark:bg-slate-950 bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500">
+        </div>
+        <p id="vault-pin-error" class="hidden text-xs font-semibold text-rose-500"></p>
+        <div class="flex flex-col sm:flex-row items-center gap-2 pt-1">
+          <button type="submit" id="vault-pin-submit-btn"
+                  class="w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white shadow-md hover:brightness-110 transition-all"
+                  style="background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);">
+            🔒 Activar Cifrado AES-256
+          </button>
+          <button type="button" id="vault-pin-disable-btn" onclick="window.desactivarCifradoPin()"
+                  class="hidden w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-700 border-slate-300 hover:text-rose-500 transition-all">
+            Quitar PIN
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Lógica de Billetera y Motor de Temas -->
   <script>
     // Helper de fechas dinámicas para tarjetas de demostración
@@ -2504,7 +2565,210 @@
       return { vigentes, purgados };
     }
 
+    // Estado de sesión en memoria para bóveda cifrada con Web Crypto (el PIN nunca se persiste)
+    let activeVaultPin = null;
+    let vaultPinModalMode = 'setup'; // 'setup' | 'unlock' | 'manage'
+
+    function actualizarEstadoSeguridadUI() {
+      const statusEl = document.getElementById('metric-vault-status');
+      const detailEl = document.getElementById('metric-vault-detail');
+      const pinBtn = document.getElementById('btn-vault-pin');
+      const hasVault = window.WalletCrypto && window.WalletCrypto.hasEncryptedVault();
+
+      if (hasVault) {
+        if (statusEl) {
+          statusEl.textContent = activeVaultPin ? 'AES-256 Activa' : 'Bloqueada';
+          statusEl.className = 'text-xl sm:text-2xl font-black text-emerald-500';
+        }
+        if (detailEl) {
+          detailEl.textContent = activeVaultPin ? 'PBKDF2 + AES-256-GCM' : 'Requiere PIN para abrir';
+        }
+        if (pinBtn) {
+          pinBtn.innerHTML = activeVaultPin ? '<span>🔓</span> Gestionar PIN' : '<span>🔑</span> Desbloquear Bóveda';
+        }
+      } else {
+        if (statusEl) {
+          statusEl.textContent = 'Local sin PIN';
+          statusEl.className = 'text-xl sm:text-2xl font-black text-amber-500';
+        }
+        if (detailEl) {
+          detailEl.textContent = 'Activá PIN AES-256-GCM';
+        }
+        if (pinBtn) {
+          pinBtn.innerHTML = '<span>🔒</span> Proteger con PIN';
+        }
+      }
+    }
+
+    async function persistirDocumentos() {
+      const cryptoMod = window.WalletCrypto;
+      if (cryptoMod && activeVaultPin) {
+        const encryptedPayload = await cryptoMod.encryptVault(walletDocs, activeVaultPin);
+        localStorage.setItem(cryptoMod.VAULT_STORAGE_KEY, encryptedPayload);
+        localStorage.removeItem('fb_wallet_docs');
+      } else {
+        localStorage.setItem('fb_wallet_docs', JSON.stringify(walletDocs));
+      }
+      actualizarEstadoSeguridadUI();
+    }
+
+    function renderizarEstadoBloqueado() {
+      const container = document.getElementById('wallet-cards-container');
+      if (!container) return;
+      container.innerHTML = `
+        <div class="col-span-1 md:col-span-2 text-center py-14 px-6 rounded-3xl border border-purple-500/30 dark:bg-slate-900/80 bg-white space-y-4">
+          <div class="text-4xl">🔐</div>
+          <h4 class="text-lg font-extrabold dark:text-white text-slate-900">Tu Bóveda está cifrada con AES-256-GCM</h4>
+          <p class="text-xs dark:text-slate-400 text-slate-600 max-w-md mx-auto">
+            Ingresá tu PIN personal para descifrar tus pasajes, códigos PNR y pólizas en este dispositivo.
+          </p>
+          <div class="flex items-center justify-center gap-3">
+            <button type="button" onclick="window.abrirModalPin('unlock')" class="px-5 py-2.5 rounded-xl text-xs font-bold text-white shadow-md hover:brightness-110" style="background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);">
+              🔑 Ingresar PIN
+            </button>
+            <button type="button" onclick="window.borrarDatosBilletera()" class="px-4 py-2.5 rounded-xl text-xs font-bold text-rose-500 border border-rose-500/30 hover:bg-rose-500/10">
+              🗑️ Restablecer Bóveda
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    window.abrirModalPin = function(forcedMode) {
+      const modal = document.getElementById('modal-vault-pin');
+      const titleEl = document.getElementById('vault-pin-title');
+      const subtitleEl = document.getElementById('vault-pin-subtitle');
+      const confirmWrap = document.getElementById('vault-pin-confirm-wrap');
+      const confirmInput = document.getElementById('vault-pin-confirm');
+      const submitBtn = document.getElementById('vault-pin-submit-btn');
+      const disableBtn = document.getElementById('vault-pin-disable-btn');
+      const closeBtn = document.getElementById('vault-pin-close-btn');
+      const errEl = document.getElementById('vault-pin-error');
+      const pinInput = document.getElementById('vault-pin-input');
+
+      if (!modal) return;
+      if (errEl) { errEl.classList.add('hidden'); errEl.textContent = ''; }
+      if (pinInput) pinInput.value = '';
+      if (confirmInput) confirmInput.value = '';
+
+      const hasVault = window.WalletCrypto && window.WalletCrypto.hasEncryptedVault();
+      if (forcedMode === 'unlock' || (hasVault && !activeVaultPin)) {
+        vaultPinModalMode = 'unlock';
+        titleEl.textContent = 'Desbloquear Bóveda';
+        subtitleEl.textContent = 'Ingresá tu PIN para descifrar localmente tus documentos de viaje.';
+        confirmWrap.classList.add('hidden');
+        confirmInput.required = false;
+        submitBtn.textContent = '🔓 Desbloquear';
+        disableBtn.classList.add('hidden');
+        if (closeBtn) closeBtn.classList.remove('hidden');
+      } else if (hasVault && activeVaultPin) {
+        vaultPinModalMode = 'manage';
+        titleEl.textContent = 'Cambiar o Quitar PIN';
+        subtitleEl.textContent = 'Podés actualizar tu PIN AES-256 o desactivar el cifrado para volver a almacenamiento local simple.';
+        confirmWrap.classList.remove('hidden');
+        confirmInput.required = true;
+        submitBtn.textContent = '🔒 Actualizar PIN';
+        disableBtn.classList.remove('hidden');
+        if (closeBtn) closeBtn.classList.remove('hidden');
+      } else {
+        vaultPinModalMode = 'setup';
+        titleEl.textContent = 'Proteger Bóveda con PIN';
+        subtitleEl.textContent = 'Tus pasajes, PNRs y pólizas se cifrarán en tu navegador usando PBKDF2 (150.000 iteraciones) y AES-256-GCM. El PIN nunca sale de tu dispositivo.';
+        confirmWrap.classList.remove('hidden');
+        confirmInput.required = true;
+        submitBtn.textContent = '🔒 Activar Cifrado AES-256';
+        disableBtn.classList.add('hidden');
+        if (closeBtn) closeBtn.classList.remove('hidden');
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      if (pinInput) setTimeout(() => pinInput.focus(), 50);
+    };
+
+    window.cerrarModalPin = function() {
+      const modal = document.getElementById('modal-vault-pin');
+      if (!modal) return;
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    };
+
+    window.procesarFormularioPin = async function(e) {
+      e.preventDefault();
+      const errEl = document.getElementById('vault-pin-error');
+      const pinVal = (document.getElementById('vault-pin-input')?.value || '').trim();
+      const confirmVal = (document.getElementById('vault-pin-confirm')?.value || '').trim();
+      const cryptoMod = window.WalletCrypto;
+
+      const showError = (msg) => {
+        if (errEl) {
+          errEl.textContent = msg;
+          errEl.classList.remove('hidden');
+        }
+      };
+
+      if (!cryptoMod || !cryptoMod.isSupported()) {
+        showError('Tu navegador no soporta Web Crypto API en este contexto.');
+        return;
+      }
+      if (!cryptoMod.validatePin(pinVal)) {
+        showError('El PIN debe tener entre 4 y 32 caracteres.');
+        return;
+      }
+
+      try {
+        if (vaultPinModalMode === 'unlock') {
+          const rawVault = localStorage.getItem(cryptoMod.VAULT_STORAGE_KEY);
+          const decryptedDocs = await cryptoMod.decryptVault(rawVault, pinVal);
+          const { vigentes, purgados } = purgarDocumentosExpirados(decryptedDocs);
+          walletDocs = vigentes;
+          activeVaultPin = pinVal;
+          if (purgados > 0) {
+            await persistirDocumentos();
+          }
+          window.cerrarModalPin();
+          renderizarDocumentos();
+          actualizarMetricas();
+          actualizarEstadoSeguridadUI();
+        } else {
+          if (pinVal !== confirmVal) {
+            showError('Los PIN ingresados no coinciden.');
+            return;
+          }
+          activeVaultPin = pinVal;
+          await persistirDocumentos();
+          window.cerrarModalPin();
+          actualizarEstadoSeguridadUI();
+        }
+      } catch (err) {
+        showError(err && err.message ? err.message : 'No se pudo procesar el PIN.');
+      }
+    };
+
+    window.desactivarCifradoPin = function() {
+      const cryptoMod = window.WalletCrypto;
+      if (!confirm('¿Desactivar el cifrado con PIN? Tus documentos seguirán guardados localmente en este navegador sin contraseña.')) {
+        return;
+      }
+      activeVaultPin = null;
+      if (cryptoMod) {
+        localStorage.removeItem(cryptoMod.VAULT_STORAGE_KEY);
+      }
+      localStorage.setItem('fb_wallet_docs', JSON.stringify(walletDocs));
+      window.cerrarModalPin();
+      actualizarEstadoSeguridadUI();
+    };
+
     function cargarDocumentos() {
+      const cryptoMod = window.WalletCrypto;
+      if (cryptoMod && cryptoMod.hasEncryptedVault() && !activeVaultPin) {
+        walletDocs = [];
+        renderizarEstadoBloqueado();
+        actualizarMetricas();
+        actualizarEstadoSeguridadUI();
+        return;
+      }
+
       const stored = localStorage.getItem('fb_wallet_docs');
       if (stored) {
         try {
@@ -2523,6 +2787,7 @@
       }
       renderizarDocumentos();
       actualizarMetricas();
+      actualizarEstadoSeguridadUI();
     }
 
     function renderizarDocumentos(filtroTexto = '') {
@@ -2848,7 +3113,9 @@
       };
 
       walletDocs.unshift(nuevo);
-      localStorage.setItem('fb_wallet_docs', JSON.stringify(walletDocs));
+      persistirDocumentos().catch(() => {
+        localStorage.setItem('fb_wallet_docs', JSON.stringify(walletDocs));
+      });
       window.cerrarModalSubida();
       renderizarDocumentos();
       actualizarMetricas();
@@ -2856,8 +3123,12 @@
     };
 
     window.borrarDatosBilletera = function() {
-      if (confirm('¿Deseas restablecer los documentos de prueba de la billetera local?')) {
+      if (confirm('¿Deseas purgar todos los documentos y claves locales de esta billetera y restablecer los datos de ejemplo?')) {
+        activeVaultPin = null;
         localStorage.removeItem('fb_wallet_docs');
+        if (window.WalletCrypto) {
+          localStorage.removeItem(window.WalletCrypto.VAULT_STORAGE_KEY);
+        }
         cargarDocumentos();
       }
     };
@@ -2924,6 +3195,24 @@
     document.addEventListener('DOMContentLoaded', () => {
       cargarDocumentos();
       updateThemeControls();
+
+      if (window.WalletCrypto && typeof window.WalletCrypto.registerPwaServiceWorker === 'function') {
+        window.WalletCrypto.registerPwaServiceWorker(({ isOnline, swReady }) => {
+          const badge = document.getElementById('pwa-offline-badge');
+          const dot = document.getElementById('pwa-offline-dot');
+          if (!badge || !dot) return;
+          if (!isOnline) {
+            badge.textContent = 'Modo Avión · Operando 100% Offline';
+            dot.className = 'w-2 h-2 rounded-full bg-amber-400 animate-pulse';
+          } else if (swReady) {
+            badge.textContent = 'Bóveda PWA Instalable · Caché Offline Lista';
+            dot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
+          } else {
+            badge.textContent = 'Bóveda Local-First · Modo Navegador';
+            dot.className = 'w-2 h-2 rounded-full bg-sky-400';
+          }
+        });
+      }
     });
   </script>
 
