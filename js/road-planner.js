@@ -628,14 +628,98 @@ window.calcularRutaWeb = function() {
   const mapsBtn = document.getElementById('res-maps-btn');
   if (mapsBtn) {
     mapsBtn.href = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origen)}&destination=${encodeURIComponent(destino)}&travelmode=driving`;
+    // Inyectar botón de compartir enlace de ruta junto a Google Maps una sola vez
+    if (!document.getElementById('res-share-route-btn') && mapsBtn.parentElement) {
+      const shareBtn = document.createElement('button');
+      shareBtn.id = 'res-share-route-btn';
+      shareBtn.type = 'button';
+      shareBtn.className = 'px-4 py-2.5 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-800 border dark:border-slate-700 border-slate-200 hover:border-blue-500 transition-all cursor-pointer';
+      shareBtn.textContent = '🔗 Copiar enlace de ruta';
+      shareBtn.addEventListener('click', function () {
+        if (typeof window.compartirRutaActual === 'function') {
+          window.compartirRutaActual(shareBtn);
+        }
+      });
+      mapsBtn.parentElement.appendChild(shareBtn);
+    }
+  }
+
+  // Sincronizar parámetros compartibles en la barra de direcciones sin recargar
+  if (window.history && typeof window.history.replaceState === 'function') {
+    try {
+      const nextUrl = new URL(window.location.href);
+      nextUrl.searchParams.set('origen', origen.slice(0, 60));
+      nextUrl.searchParams.set('destino', destino.slice(0, 60));
+      nextUrl.searchParams.set('combustible', fuel);
+      nextUrl.searchParams.set('vehiculo', veh);
+      nextUrl.searchParams.set('pax', String(pax));
+      window.history.replaceState({}, '', nextUrl.toString());
+    } catch (_e) {}
   }
 };
 
+// Construye y copia una URL compartible con los parámetros actuales del planificador vial
+window.construirUrlRutaCompartible = function () {
+  const origenInp = document.getElementById('road-origen-input') || document.getElementById('fb-road-orig');
+  const destInp = document.getElementById('road-destino-input') || document.getElementById('fb-road-dest');
+  const fuelSel = document.getElementById('road-fuel-select') || document.getElementById('fb-road-fuel');
+  const vehSel = document.getElementById('road-veh-select') || document.getElementById('fb-road-veh');
+  const paxSel = document.getElementById('road-pax-select') || document.getElementById('fb-road-pax');
+
+  const url = new URL(window.location.origin + window.location.pathname);
+  if (origenInp && origenInp.value) url.searchParams.set('origen', origenInp.value.trim().slice(0, 60));
+  if (destInp && destInp.value) url.searchParams.set('destino', destInp.value.trim().slice(0, 60));
+  if (fuelSel && fuelSel.value) url.searchParams.set('combustible', fuelSel.value);
+  if (vehSel && vehSel.value) url.searchParams.set('vehiculo', vehSel.value);
+  if (paxSel && paxSel.value) url.searchParams.set('pax', paxSel.value);
+  return url.toString();
+};
+
+window.compartirRutaActual = function (btnEl) {
+  const shareUrl = window.construirUrlRutaCompartible();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      if (btnEl) {
+        const prev = btnEl.textContent;
+        btnEl.textContent = '✓ Enlace copiado';
+        setTimeout(() => { btnEl.textContent = prev; }, 1800);
+      }
+    }).catch(() => {});
+  }
+};
+
+// Aplica query params (?origen=...&destino=...&combustible=...&vehiculo=...&pax=...) con validación estricta
+function aplicarParametrosUrlRuta() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const origenParam = (params.get('origen') || '').trim().slice(0, 60);
+    const destinoParam = (params.get('destino') || '').trim().slice(0, 60);
+    const fuelParam = (params.get('combustible') || '').trim().toLowerCase();
+    const vehParam = (params.get('vehiculo') || '').trim().toLowerCase();
+    const paxParam = parseInt(params.get('pax') || '', 10);
+
+    const origenInp = document.getElementById('road-origen-input') || document.getElementById('fb-road-orig');
+    const destInp = document.getElementById('road-destino-input') || document.getElementById('fb-road-dest');
+    const fuelSel = document.getElementById('road-fuel-select') || document.getElementById('fb-road-fuel');
+    const vehSel = document.getElementById('road-veh-select') || document.getElementById('fb-road-veh');
+    const paxSel = document.getElementById('road-pax-select') || document.getElementById('fb-road-pax');
+
+    if (origenInp && origenParam) origenInp.value = origenParam;
+    if (destInp && destinoParam) destInp.value = destinoParam;
+    if (fuelSel && ['nafta', 'premium', 'diesel', 'gnc'].includes(fuelParam)) fuelSel.value = fuelParam;
+    if (vehSel && ['compacto', 'sedan', 'suv', 'pickup'].includes(vehParam)) vehSel.value = vehParam;
+    if (paxSel && Number.isFinite(paxParam) && paxParam >= 1 && paxParam <= 8) paxSel.value = String(paxParam);
+  } catch (_e) {}
+}
+
 // Inicialización automática
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
+function _iniciarPlanificadorRuta() {
+  aplicarParametrosUrlRuta();
   if (typeof window.calcularRutaWeb === 'function') window.calcularRutaWeb();
+}
+
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  _iniciarPlanificadorRuta();
 } else {
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof window.calcularRutaWeb === 'function') window.calcularRutaWeb();
-  });
+  document.addEventListener('DOMContentLoaded', _iniciarPlanificadorRuta);
 }

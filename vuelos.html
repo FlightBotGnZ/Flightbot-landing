@@ -22,6 +22,8 @@
   <script src="js/cupones-data.js" defer></script>
   <script src="js/resorts-data.js" defer></script>
   <script src="/js/auth.js" defer></script>
+  <link rel="manifest" href="/manifest.json">
+  <script src="js/price-verdict.js" defer></script>
   <script src="js/chatbox.js" defer></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -3459,8 +3461,18 @@
         updateSidebarSelection(dest.id);
         actualizarPildoraDestinoActivo(dest);
 
-        const headerHtml = generarCabeceraYTermometroHtml(dest);
+        const verdictHtml = (window.FlightBotVerdict && typeof window.FlightBotVerdict.renderVerdictWidgetHtml === 'function')
+          ? window.FlightBotVerdict.renderVerdictWidgetHtml(dest)
+          : '';
+        const headerHtml = generarCabeceraYTermometroHtml(dest) + verdictHtml;
         const cardsHtml = generarTarjetasFullWidthHtml(dest);
+        if (!isInitial && window.history && typeof window.history.replaceState === 'function' && dest && dest.id) {
+          try {
+            const nextUrl = new URL(window.location.href);
+            nextUrl.searchParams.set('dest', dest.id);
+            window.history.replaceState({}, '', nextUrl.toString());
+          } catch (_e) {}
+        }
 
         if (isInitial) {
           if (headerContainer) headerContainer.innerHTML = headerHtml;
@@ -3495,7 +3507,7 @@
 
             // Función para compartir ofertas de vuelo
       window.compartirOferta = function(ciudad, puesto, aerolinea, precio, fechas, iata) {
-        const texto = `✈️ ¡Mirá esta oferta que encontré en FlightBot!\n📍 ${ciudad} (${iata})\n${puesto} ${aerolinea}\n📅 ${fechas}\n💵 ${precio}\n\nDescubrila acá: ${window.location.origin}/#radar-vuelos`;
+        const texto = `✈️ ¡Mirá esta oferta que encontré en FlightBot!\n📍 ${ciudad} (${iata})\n${puesto} ${aerolinea}\n📅 ${fechas}\n💵 ${precio}\n\nDescubrila acá: ${window.location.origin}/vuelos?dest=${encodeURIComponent(currentDestinationId || iata || '')}`;
         if (navigator.share) {
           navigator.share({
             title: `Oferta a ${ciudad} - FlightBot`,
