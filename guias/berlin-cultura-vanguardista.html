@@ -31,6 +31,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   
+  <script src="/js/site-stats.js" defer></script>
+  <script src="/js/theme.js" defer></script>
   <script src="/js/auth.js" defer></script>
   <script>
     tailwind.config = {
@@ -325,24 +327,17 @@
                 </linearGradient>
               </defs>
             </svg>
-            <span id="nav-tokens-display" class="font-bold">4<span class="hidden sm:inline">&nbsp;fichas</span></span>
+            <span id="nav-tokens-display" class="font-bold">(4)</span>
           </button>
         </div>
 
-        <!-- B. Selector de Moneda: Diseño de cápsula compacta (NATIVO | ARS | USD) -->
-        <div class="hidden md:inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
-          <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs">NATIVO</button>
-          <button type="button" id="btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
-          <button type="button" id="btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
-        </div>
-
-        <!-- C. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
+        <!-- B. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
           <span id="theme-mode-icon">☀️</span>
         </button>
 
-        <!-- D. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
+        <!-- C. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
            class="hidden sm:inline-flex h-9 px-3 rounded-lg bg-[#229ED9] hover:bg-[#1E88E5] text-white text-xs font-semibold items-center gap-1.5 shadow-sm transition-all shrink-0"
            title="Chateá conmigo en Telegram para alertas instantáneas">
@@ -527,7 +522,7 @@
         <div class="absolute inset-0 bg-gradient-to-t dark:from-slate-900 dark:via-slate-900/60 from-slate-950 via-slate-950/40 to-transparent"></div>
         <div class="absolute top-6 left-6">
           <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-700 text-xs font-bold text-white shadow-lg">
-            <span>🇩🇪 🎨</span> Alemania
+            <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/de.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/de.png'" alt="Alemania" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🎨</span></span> <span>Alemania</span>
           </span>
         </div>
       </div>
@@ -1157,227 +1152,227 @@
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
         
             <a href="/guias/rio-de-janeiro" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇧🇷 🏖️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏖️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Río de Janeiro</span>
             </a>
             <a href="/guias/roma" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇮🇹 🏛️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/it.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/it.png'" alt="Italia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏛️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Roma</span>
             </a>
             <a href="/guias/madrid" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇪🇸 🥘</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/es.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/es.png'" alt="España" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🥘</span></span>
               <span class="font-medium dark:text-white text-slate-900">Madrid</span>
             </a>
             <a href="/guias/miami" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇺🇸 🌴</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/us.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/us.png'" alt="Estados Unidos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌴</span></span>
               <span class="font-medium dark:text-white text-slate-900">Miami</span>
             </a>
             <a href="/guias/cancun-riviera-maya" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇲🇽 🌮</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/mx.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/mx.png'" alt="México" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌮</span></span>
               <span class="font-medium dark:text-white text-slate-900">Cancún</span>
             </a>
             <a href="/guias/punta-cana" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇩🇴 🥥</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/do.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/do.png'" alt="República Dominicana" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🥥</span></span>
               <span class="font-medium dark:text-white text-slate-900">Punta Cana</span>
             </a>
             <a href="/guias/aruba" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇼 🏝️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/aw.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/aw.png'" alt="Aruba" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏝️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Aruba</span>
             </a>
             <a href="/guias/bariloche-patagonia" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇷 🏔️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏔️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Bariloche</span>
             </a>
             <a href="/guias/mendoza-valle-de-uco" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇷 🍷</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🍷</span></span>
               <span class="font-medium dark:text-white text-slate-900">Mendoza</span>
             </a>
             <a href="/guias/puerto-iguazu-cataratas" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇷 🌊</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina / Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌊</span></span>
               <span class="font-medium dark:text-white text-slate-900">Puerto Iguazú</span>
             </a>
             <a href="/guias/reikiavik-islandia" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇮🇸 🌋</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/is.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/is.png'" alt="Islandia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌋</span></span>
               <span class="font-medium dark:text-white text-slate-900">Reikiavik</span>
             </a>
             <a href="/guias/oslo-noruega" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇳🇴 ❄️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/no.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/no.png'" alt="Noruega" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>❄️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Oslo</span>
             </a>
             <a href="/guias/el-calafate-glaciares-el-chalten" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇷 🧊</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🧊</span></span>
               <span class="font-medium dark:text-white text-slate-900">El Calafate & El Chaltén</span>
             </a>
             <a href="/guias/ushuaia-tierra-del-fuego" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇷 🐧</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐧</span></span>
               <span class="font-medium dark:text-white text-slate-900">Ushuaia & Tierra del Fuego</span>
             </a>
             <a href="/guias/salta-valles-calchaquies" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇷 🌵</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌵</span></span>
               <span class="font-medium dark:text-white text-slate-900">Salta & Valles Calchaquíes</span>
             </a>
             <a href="/guias/jujuy-quebrada-de-humahuaca" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇷 ⛰️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>⛰️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Jujuy & Quebrada de Humahuaca</span>
             </a>
             <a href="/guias/cordoba-sierras" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇷 ⛰️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>⛰️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Córdoba & Sierras</span>
             </a>
             <a href="/guias/san-martin-de-los-andes-chapelco" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇷 🌲</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌲</span></span>
               <span class="font-medium dark:text-white text-slate-900">San Martín de los Andes & Chapelco</span>
             </a>
             <a href="/guias/puerto-madryn-peninsula-valdes" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇷 🐋</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐋</span></span>
               <span class="font-medium dark:text-white text-slate-900">Puerto Madryn & Península Valdés</span>
             </a>
             <a href="/guias/florianopolis-ilha-da-magia" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇧🇷 🏄</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏄</span></span>
               <span class="font-medium dark:text-white text-slate-900">Florianópolis & Ilha da Magia</span>
             </a>
             <a href="/guias/salvador-bahia-costa-dos-coqueiros" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇧🇷 🥁</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🥁</span></span>
               <span class="font-medium dark:text-white text-slate-900">Salvador de Bahía & Costa dos Coqueiros</span>
             </a>
             <a href="/guias/recife-porto-de-galinhas" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇧🇷 🌴</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌴</span></span>
               <span class="font-medium dark:text-white text-slate-900">Recife & Porto de Galinhas</span>
             </a>
             <a href="/guias/maceio-maragogi-caribe-brasileno" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇧🇷 🐠</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐠</span></span>
               <span class="font-medium dark:text-white text-slate-900">Maceió & Maragogi (Caribe Brasileño)</span>
             </a>
             <a href="/guias/natal-praia-da-pipa" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇧🇷 🐬</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐬</span></span>
               <span class="font-medium dark:text-white text-slate-900">Natal & Praia da Pipa</span>
             </a>
             <a href="/guias/orlando-disney-universal" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇺🇸 🏰</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/us.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/us.png'" alt="Estados Unidos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏰</span></span>
               <span class="font-medium dark:text-white text-slate-900">Orlando (Disney & Universal)</span>
             </a>
             <a href="/guias/san-andres-mar-7-colores" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇨🇴 🐠</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/co.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/co.png'" alt="Colombia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐠</span></span>
               <span class="font-medium dark:text-white text-slate-900">San Andrés & Mar de 7 Colores</span>
             </a>
             <a href="/guias/santiago-de-chile-cordillera" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇨🇱 🏔️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cl.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cl.png'" alt="Chile" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏔️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Santiago de Chile & Cordillera</span>
             </a>
             <a href="/guias/barcelona-costa-brava" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇪🇸 🏖️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/es.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/es.png'" alt="España" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏖️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Barcelona & Costa Brava</span>
             </a>
             <a href="/guias/paris-ile-de-france" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇫🇷 🗼</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/fr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/fr.png'" alt="Francia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🗼</span></span>
               <span class="font-medium dark:text-white text-slate-900">París & Île-de-France</span>
             </a>
             <a href="/guias/londres-reino-unido" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇬🇧 💂</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/gb.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/gb.png'" alt="Reino Unido" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>💂</span></span>
               <span class="font-medium dark:text-white text-slate-900">Londres</span>
             </a>
             <a href="/guias/frankfurt-hub-alemania" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇩🇪 🏛️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/de.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/de.png'" alt="Alemania" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏛️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Frankfurt (Hub Alemania)</span>
             </a>
             <a href="/guias/atenas-islas-griegas" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇬🇷 🏛️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/gr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/gr.png'" alt="Grecia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏛️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Atenas & Islas Griegas</span>
             </a>
             <a href="/guias/tokio-japon" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇯🇵 ⛩️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/jp.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/jp.png'" alt="Japón" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>⛩️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Tokio (Narita / Haneda)</span>
             </a>
             <a href="/guias/el-cairo-piramides-de-giza" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇪🇬 🐫</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/eg.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/eg.png'" alt="Egipto" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐫</span></span>
               <span class="font-medium dark:text-white text-slate-900">El Cairo & Pirámides de Giza</span>
             </a>
             <a href="/guias/marrakech-atlas" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇲🇦 🕌</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ma.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ma.png'" alt="Marruecos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🕌</span></span>
               <span class="font-medium dark:text-white text-slate-900">Marrakech & Atlas</span>
             </a>
             <a href="/guias/ciudad-del-cabo-cape-town" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇿🇦 ⛰️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/za.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/za.png'" alt="Sudáfrica" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>⛰️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Ciudad del Cabo (Cape Town)</span>
             </a>
             <a href="/guias/new-york-manhattan-broadway" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇺🇸 🗽</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/us.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/us.png'" alt="Estados Unidos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🗽</span></span>
               <span class="font-medium dark:text-white text-slate-900">Nueva York</span>
             </a>
             <a href="/guias/pekin-ciudad-prohibida-gran-muralla" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇨🇳 🏮</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cn.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cn.png'" alt="China" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏮</span></span>
               <span class="font-medium dark:text-white text-slate-900">Pekín</span>
             </a>
             <a href="/guias/estambul" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇹🇷 🕌</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/tr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/tr.png'" alt="Turquía" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🕌</span></span>
               <span class="font-medium dark:text-white text-slate-900">Estambul</span>
             </a>
             <a href="/guias/dubai" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇪 🏙️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ae.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ae.png'" alt="Emiratos Árabes Unidos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏙️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Dubái</span>
             </a>
             <a href="/guias/cusco-machu-picchu" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇵🇪 🦙</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/pe.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/pe.png'" alt="Perú" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🦙</span></span>
               <span class="font-medium dark:text-white text-slate-900">Cusco & Machu Picchu</span>
             </a>
             <a href="/guias/bangkok" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇹🇭 🛕</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/th.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/th.png'" alt="Tailandia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🛕</span></span>
               <span class="font-medium dark:text-white text-slate-900">Bangkok</span>
             </a>
             <a href="/guias/maldivas" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇲🇻 🏝️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/mv.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/mv.png'" alt="República de Maldivas" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏝️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Islas Maldivas</span>
             </a>
             <a href="/guias/cuba" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇨🇺 🚗</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cu.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cu.png'" alt="Cuba" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🚗</span></span>
               <span class="font-medium dark:text-white text-slate-900">La Habana</span>
             </a>
             <a href="/guias/panama" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇵🇦 🚢</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/pa.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/pa.png'" alt="Panamá" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🚢</span></span>
               <span class="font-medium dark:text-white text-slate-900">Ciudad de Panamá</span>
             </a>
             <a href="/guias/polinesia" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇵🇫 🌺</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/pf.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/pf.png'" alt="Polinesia Francesa" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌺</span></span>
               <span class="font-medium dark:text-white text-slate-900">Tahití & Bora Bora</span>
             </a>
             <a href="/guias/sydney-australia" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇦🇺 🦘</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/au.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/au.png'" alt="Australia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🦘</span></span>
               <span class="font-medium dark:text-white text-slate-900">Sídney & Melbourne</span>
             </a>
             <a href="/guias/nueva-zelanda" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇳🇿 🥝</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/nz.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/nz.png'" alt="Nueva Zelanda" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🥝</span></span>
               <span class="font-medium dark:text-white text-slate-900">Auckland & Queenstown</span>
             </a>
             <a href="/guias/ciudad-de-mexico" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇲🇽 🌮</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/mx.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/mx.png'" alt="México" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌮</span></span>
               <span class="font-medium dark:text-white text-slate-900">Ciudad de México</span>
             </a>
             <a href="/guias/lisboa" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇵🇹 🚋</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/pt.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/pt.png'" alt="Portugal" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🚋</span></span>
               <span class="font-medium dark:text-white text-slate-900">Lisboa & Oporto</span>
             </a>
             <a href="/guias/seul" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇰🇷 🏙️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/kr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/kr.png'" alt="Corea del Sur" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏙️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Seúl</span>
             </a>
             <a href="/guias/amsterdam" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇳🇱 🚲</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/nl.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/nl.png'" alt="Países Bajos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🚲</span></span>
               <span class="font-medium dark:text-white text-slate-900">Ámsterdam</span>
             </a>
             <a href="/guias/curazao" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇨🇼 🏖️</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cw.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cw.png'" alt="Curazao" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏖️</span></span>
               <span class="font-medium dark:text-white text-slate-900">Curazao</span>
             </a>
             <a href="/guias/costa-rica" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇨🇷 🌿</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cr.png'" alt="Costa Rica" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌿</span></span>
               <span class="font-medium dark:text-white text-slate-900">Costa Rica</span>
             </a>
             <a href="/guias/cartagena" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🇨🇴 🏰</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/co.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/co.png'" alt="Colombia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏰</span></span>
               <span class="font-medium dark:text-white text-slate-900">Cartagena de Indias</span>
             </a>
             <a href="/guias/neuquen" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>🦖 🍇</span>
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🦖 🍇</span></span>
               <span class="font-medium dark:text-white text-slate-900">Neuquén & Alto Valle</span>
             </a>
       </div>
@@ -1388,6 +1383,19 @@
   <!-- Pie de Página y Descargo de Afiliación -->
   <footer class="py-12 dark:bg-slate-950 bg-slate-100 border-t dark:border-slate-800 border-slate-200 text-xs dark:text-slate-400 text-slate-600 mt-20 theme-transition">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pb-4 mb-6 border-b dark:border-slate-800/80 border-slate-200/80">
+        <span class="text-[11px] font-medium dark:text-slate-400 text-slate-500">Cotización orientativa: Dólar MEP / Turístico (<strong id="footer-usd-ref-rate" class="dark:text-slate-200 text-slate-800">$1.350 ARS</strong>)</span>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Moneda:</span>
+          <div class="inline-flex p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold shadow-xs" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
+            <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
+            <button type="button" id="footer-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">ARS</button>
+            <button type="button" id="footer-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">USD</button>
+          </div>
+        </div>
+      </div>
+
       <div class="dark:bg-slate-900/70 bg-white p-4 rounded-xl border dark:border-slate-800/80 border-slate-200 mb-6 shadow-sm theme-transition">
         <p class="dark:text-slate-400 text-slate-600 leading-relaxed">
           <strong class="dark:text-slate-300 text-slate-900">Divulgación de Afiliación (Affiliate Disclosure):</strong> 

@@ -651,24 +651,17 @@
                 </linearGradient>
               </defs>
             </svg>
-            <span id="nav-tokens-display" class="font-bold">4<span class="hidden sm:inline">&nbsp;fichas</span></span>
+            <span id="nav-tokens-display" class="font-bold">(4)</span>
           </button>
         </div>
 
-        <!-- B. Selector de Moneda: Diseño de cápsula compacta (NATIVO | ARS | USD) -->
-        <div class="hidden md:inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
-          <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs">NATIVO</button>
-          <button type="button" id="btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
-          <button type="button" id="btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
-        </div>
-
-        <!-- C. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
+        <!-- B. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
           <span id="theme-mode-icon">☀️</span>
         </button>
 
-        <!-- D. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
+        <!-- C. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
            class="hidden sm:inline-flex h-9 px-3 rounded-lg bg-[#229ED9] hover:bg-[#1E88E5] text-white text-xs font-semibold items-center gap-1.5 shadow-sm transition-all shrink-0"
            title="Chateá conmigo en Telegram para alertas instantáneas">
@@ -858,10 +851,10 @@
                  style="--tw-ring-color: var(--brand-primary);">
           <span class="absolute left-4 top-3.5 text-base text-slate-400">🔍</span>
         </div>
-        <div class="flex items-center justify-center gap-1.5 overflow-x-auto pb-2 no-scrollbar text-xs">
+        <div class="flex flex-wrap items-center justify-center gap-2 pb-2 text-xs">
           <button type="button" onclick="filtrarGuiasRegion('todos', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold text-white transition-all shadow-sm shrink-0" style="background-color: var(--brand-primary);">Todos (57)</button>
-          <button type="button" onclick="filtrarGuiasRegion('cabotaje', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje (11)</button>
-          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil (6)</button>
+          <button type="button" onclick="filtrarGuiasRegion('cabotaje', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block"> Cabotaje (11)</button>
+          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block"> Brasil (6)</button>
           <button type="button" onclick="filtrarGuiasRegion('caribe', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🏝️ Caribe &amp; Playas (9)</button>
           <button type="button" onclick="filtrarGuiasRegion('america', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🌎 América (6)</button>
           <button type="button" onclick="filtrarGuiasRegion('europa_mundo', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🌍 Europa &amp; Mundo (25)</button>
@@ -892,8 +885,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               América del Sur
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇧🇷 🏖️ Brasil
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏖️</span></span><span>Brasil</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -906,7 +899,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇧🇷 🏖️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏖️</span></span>
                 <a href="/guias/rio-de-janeiro">Río de Janeiro</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -937,8 +930,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Europa
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇮🇹 🏛️ Italia
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/it.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/it.png'" alt="Italia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏛️</span></span><span>Italia</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -951,7 +944,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇮🇹 🏛️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/it.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/it.png'" alt="Italia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏛️</span></span>
                 <a href="/guias/roma">Roma</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -982,8 +975,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Europa
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇪🇸 🥘 España
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/es.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/es.png'" alt="España" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🥘</span></span><span>España</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -996,7 +989,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇪🇸 🥘</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/es.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/es.png'" alt="España" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🥘</span></span>
                 <a href="/guias/madrid">Madrid</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1027,8 +1020,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               América del Norte
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇺🇸 🌴 Estados Unidos
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/us.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/us.png'" alt="Estados Unidos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌴</span></span><span>Estados Unidos</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1041,7 +1034,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇺🇸 🌴</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/us.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/us.png'" alt="Estados Unidos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌴</span></span>
                 <a href="/guias/miami">Miami</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1072,8 +1065,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Caribe & México
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇲🇽 🌮 México
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/mx.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/mx.png'" alt="México" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌮</span></span><span>México</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1086,7 +1079,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇲🇽 🌮</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/mx.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/mx.png'" alt="México" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌮</span></span>
                 <a href="/guias/cancun-riviera-maya">Cancún</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1117,8 +1110,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Caribe
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇩🇴 🥥 República Dominicana
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/do.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/do.png'" alt="República Dominicana" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🥥</span></span><span>República Dominicana</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1131,7 +1124,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇩🇴 🥥</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/do.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/do.png'" alt="República Dominicana" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🥥</span></span>
                 <a href="/guias/punta-cana">Punta Cana</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1162,8 +1155,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Caribe Holandés
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇼 🏝️ Aruba
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/aw.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/aw.png'" alt="Aruba" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏝️</span></span><span>Aruba</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1176,7 +1169,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇼 🏝️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/aw.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/aw.png'" alt="Aruba" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏝️</span></span>
                 <a href="/guias/aruba">Aruba</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1207,8 +1200,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Patagonia
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇷 🏔️ Argentina
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏔️</span></span><span>Argentina</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1221,7 +1214,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇷 🏔️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏔️</span></span>
                 <a href="/guias/bariloche-patagonia">Bariloche</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1252,8 +1245,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Cuyo
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇷 🍷 Argentina
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🍷</span></span><span>Argentina</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1266,7 +1259,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇷 🍷</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🍷</span></span>
                 <a href="/guias/mendoza-valle-de-uco">Mendoza</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1297,8 +1290,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Triple Frontera
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇷 🌊 Argentina / Brasil
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina / Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌊</span></span><span>Argentina / Brasil</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1311,7 +1304,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇷 🌊</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina / Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌊</span></span>
                 <a href="/guias/puerto-iguazu-cataratas">Puerto Iguazú</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1342,8 +1335,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Europa del Norte / Atlántico Norte
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇮🇸 🌋 Islandia
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/is.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/is.png'" alt="Islandia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌋</span></span><span>Islandia</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1356,7 +1349,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇮🇸 🌋</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/is.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/is.png'" alt="Islandia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌋</span></span>
                 <a href="/guias/reikiavik-islandia">Reikiavik</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1387,8 +1380,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Escandinavia / Europa del Norte
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇳🇴 ❄️ Noruega
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/no.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/no.png'" alt="Noruega" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>❄️</span></span><span>Noruega</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1401,7 +1394,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇳🇴 ❄️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/no.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/no.png'" alt="Noruega" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>❄️</span></span>
                 <a href="/guias/oslo-noruega">Oslo</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1432,8 +1425,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Patagonia Austral
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇷 🧊 Argentina
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🧊</span></span><span>Argentina</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1446,7 +1439,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇷 🧊</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🧊</span></span>
                 <a href="/guias/el-calafate-glaciares-el-chalten">El Calafate & El Chaltén</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1477,8 +1470,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇷 🐧 Argentina
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐧</span></span><span>Argentina</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1491,7 +1484,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇷 🐧</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐧</span></span>
                 <a href="/guias/ushuaia-tierra-del-fuego">Ushuaia & Tierra del Fuego</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1522,8 +1515,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇷 🌵 Argentina
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌵</span></span><span>Argentina</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1536,7 +1529,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇷 🌵</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌵</span></span>
                 <a href="/guias/salta-valles-calchaquies">Salta & Valles Calchaquíes</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1567,8 +1560,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Quebrada
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇷 ⛰️ Argentina
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>⛰️</span></span><span>Argentina</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1581,7 +1574,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇷 ⛰️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>⛰️</span></span>
                 <a href="/guias/jujuy-quebrada-de-humahuaca">Jujuy & Quebrada de Humahuaca</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1612,8 +1605,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇷 ⛰️ Argentina
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>⛰️</span></span><span>Argentina</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1626,7 +1619,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇷 ⛰️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>⛰️</span></span>
                 <a href="/guias/cordoba-sierras">Córdoba & Sierras</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1657,8 +1650,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Patagonia Cordillerana
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇷 🌲 Argentina
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌲</span></span><span>Argentina</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1671,7 +1664,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇷 🌲</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌲</span></span>
                 <a href="/guias/san-martin-de-los-andes-chapelco">San Martín de los Andes & Chapelco</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1702,8 +1695,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Costa Patagónica
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇷 🐋 Argentina
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐋</span></span><span>Argentina</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1716,7 +1709,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇷 🐋</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐋</span></span>
                 <a href="/guias/puerto-madryn-peninsula-valdes">Puerto Madryn & Península Valdés</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1747,8 +1740,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Brasil
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇧🇷 🏄 Brasil
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏄</span></span><span>Brasil</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1761,7 +1754,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇧🇷 🏄</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏄</span></span>
                 <a href="/guias/florianopolis-ilha-da-magia">Florianópolis & Ilha da Magia</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1792,8 +1785,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Brasil & Nordeste
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇧🇷 🥁 Brasil
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🥁</span></span><span>Brasil</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1806,7 +1799,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇧🇷 🥁</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🥁</span></span>
                 <a href="/guias/salvador-bahia-costa-dos-coqueiros">Salvador de Bahía & Costa dos Coqueiros</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1837,8 +1830,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Brasil & Nordeste
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇧🇷 🌴 Brasil
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌴</span></span><span>Brasil</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1851,7 +1844,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇧🇷 🌴</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌴</span></span>
                 <a href="/guias/recife-porto-de-galinhas">Recife & Porto de Galinhas</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1882,8 +1875,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Brasil & Alagoas
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇧🇷 🐠 Brasil
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐠</span></span><span>Brasil</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1896,7 +1889,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇧🇷 🐠</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐠</span></span>
                 <a href="/guias/maceio-maragogi-caribe-brasileno">Maceió & Maragogi (Caribe Brasileño)</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1927,8 +1920,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Brasil & Rio Grande do Norte
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇧🇷 🐬 Brasil
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐬</span></span><span>Brasil</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1941,7 +1934,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇧🇷 🐬</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐬</span></span>
                 <a href="/guias/natal-praia-da-pipa">Natal & Praia da Pipa</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -1972,8 +1965,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Estados Unidos & Florida
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇺🇸 🏰 Estados Unidos
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/us.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/us.png'" alt="Estados Unidos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏰</span></span><span>Estados Unidos</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -1986,7 +1979,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇺🇸 🏰</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/us.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/us.png'" alt="Estados Unidos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏰</span></span>
                 <a href="/guias/orlando-disney-universal">Orlando (Disney & Universal)</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2017,8 +2010,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Caribe Colombiano
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇨🇴 🐠 Colombia
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/co.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/co.png'" alt="Colombia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐠</span></span><span>Colombia</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2031,7 +2024,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇨🇴 🐠</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/co.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/co.png'" alt="Colombia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐠</span></span>
                 <a href="/guias/san-andres-mar-7-colores">San Andrés & Mar de 7 Colores</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2062,8 +2055,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Chile & Zona Central
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇨🇱 🏔️ Chile
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cl.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cl.png'" alt="Chile" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏔️</span></span><span>Chile</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2076,7 +2069,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇨🇱 🏔️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cl.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cl.png'" alt="Chile" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏔️</span></span>
                 <a href="/guias/santiago-de-chile-cordillera">Santiago de Chile & Cordillera</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2107,8 +2100,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               España & Cataluña
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇪🇸 🏖️ España
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/es.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/es.png'" alt="España" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏖️</span></span><span>España</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2121,7 +2114,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇪🇸 🏖️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/es.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/es.png'" alt="España" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏖️</span></span>
                 <a href="/guias/barcelona-costa-brava">Barcelona & Costa Brava</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2152,8 +2145,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Francia & Europa
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇫🇷 🗼 Francia
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/fr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/fr.png'" alt="Francia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🗼</span></span><span>Francia</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2166,7 +2159,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇫🇷 🗼</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/fr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/fr.png'" alt="Francia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🗼</span></span>
                 <a href="/guias/paris-ile-de-france">París & Île-de-France</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2197,8 +2190,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Reino Unido & Europa
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇬🇧 💂 Reino Unido
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/gb.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/gb.png'" alt="Reino Unido" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>💂</span></span><span>Reino Unido</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2211,7 +2204,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇬🇧 💂</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/gb.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/gb.png'" alt="Reino Unido" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>💂</span></span>
                 <a href="/guias/londres-reino-unido">Londres</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2242,8 +2235,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Alemania & Europa Central
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇩🇪 🎨 Alemania
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/de.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/de.png'" alt="Alemania" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🎨</span></span><span>Alemania</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2256,7 +2249,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇩🇪 🎨</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/de.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/de.png'" alt="Alemania" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🎨</span></span>
                 <a href="/guias/berlin-cultura-vanguardista">Berlín & Cultura Vanguardista</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2287,8 +2280,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Alemania & Hesse
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇩🇪 🏛️ Alemania
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/de.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/de.png'" alt="Alemania" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏛️</span></span><span>Alemania</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2301,7 +2294,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇩🇪 🏛️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/de.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/de.png'" alt="Alemania" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏛️</span></span>
                 <a href="/guias/frankfurt-hub-alemania">Frankfurt (Hub Alemania)</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2332,8 +2325,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Grecia & Mediterráneo
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇬🇷 🏛️ Grecia
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/gr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/gr.png'" alt="Grecia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏛️</span></span><span>Grecia</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2346,7 +2339,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇬🇷 🏛️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/gr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/gr.png'" alt="Grecia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏛️</span></span>
                 <a href="/guias/atenas-islas-griegas">Atenas & Islas Griegas</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2377,8 +2370,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Japón & Asia
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇯🇵 ⛩️ Japón
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/jp.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/jp.png'" alt="Japón" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>⛩️</span></span><span>Japón</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2391,7 +2384,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇯🇵 ⛩️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/jp.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/jp.png'" alt="Japón" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>⛩️</span></span>
                 <a href="/guias/tokio-japon">Tokio (Narita / Haneda)</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2422,8 +2415,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Egipto & Norte de África
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇪🇬 🐫 Egipto
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/eg.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/eg.png'" alt="Egipto" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐫</span></span><span>Egipto</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2436,7 +2429,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇪🇬 🐫</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/eg.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/eg.png'" alt="Egipto" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🐫</span></span>
                 <a href="/guias/el-cairo-piramides-de-giza">El Cairo & Pirámides de Giza</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2467,8 +2460,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Marruecos & Norte de África
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇲🇦 🕌 Marruecos
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ma.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ma.png'" alt="Marruecos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🕌</span></span><span>Marruecos</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2481,7 +2474,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇲🇦 🕌</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ma.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ma.png'" alt="Marruecos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🕌</span></span>
                 <a href="/guias/marrakech-atlas">Marrakech & Atlas</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2512,8 +2505,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Sudáfrica & África Austral
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇿🇦 ⛰️ Sudáfrica
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/za.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/za.png'" alt="Sudáfrica" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>⛰️</span></span><span>Sudáfrica</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2526,7 +2519,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇿🇦 ⛰️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/za.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/za.png'" alt="Sudáfrica" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>⛰️</span></span>
                 <a href="/guias/ciudad-del-cabo-cape-town">Ciudad del Cabo (Cape Town)</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2557,8 +2550,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               América del Norte
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇺🇸 🗽 Estados Unidos
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/us.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/us.png'" alt="Estados Unidos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🗽</span></span><span>Estados Unidos</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2571,7 +2564,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇺🇸 🗽</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/us.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/us.png'" alt="Estados Unidos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🗽</span></span>
                 <a href="/guias/new-york-manhattan-broadway">Nueva York</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2602,8 +2595,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Asia & Pacífico
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇨🇳 🏮 China
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cn.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cn.png'" alt="China" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏮</span></span><span>China</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2616,7 +2609,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇨🇳 🏮</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cn.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cn.png'" alt="China" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏮</span></span>
                 <a href="/guias/pekin-ciudad-prohibida-gran-muralla">Pekín</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2647,8 +2640,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Turquía
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇹🇷 🕌 Turquía
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/tr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/tr.png'" alt="Turquía" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🕌</span></span><span>Turquía</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2661,7 +2654,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇹🇷 🕌</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/tr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/tr.png'" alt="Turquía" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🕌</span></span>
                 <a href="/guias/estambul">Estambul</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2692,8 +2685,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Emiratos Árabes Unidos
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇪 🏙️ Emiratos Árabes Unidos
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ae.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ae.png'" alt="Emiratos Árabes Unidos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏙️</span></span><span>Emiratos Árabes Unidos</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2706,7 +2699,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇪 🏙️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ae.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ae.png'" alt="Emiratos Árabes Unidos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏙️</span></span>
                 <a href="/guias/dubai">Dubái</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2737,8 +2730,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Perú
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇵🇪 🦙 Perú
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/pe.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/pe.png'" alt="Perú" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🦙</span></span><span>Perú</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2751,7 +2744,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇵🇪 🦙</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/pe.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/pe.png'" alt="Perú" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🦙</span></span>
                 <a href="/guias/cusco-machu-picchu">Cusco & Machu Picchu</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2782,8 +2775,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Tailandia
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇹🇭 🛕 Tailandia
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/th.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/th.png'" alt="Tailandia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🛕</span></span><span>Tailandia</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2796,7 +2789,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇹🇭 🛕</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/th.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/th.png'" alt="Tailandia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🛕</span></span>
                 <a href="/guias/bangkok">Bangkok</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2827,8 +2820,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               República de Maldivas
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇲🇻 🏝️ República de Maldivas
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/mv.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/mv.png'" alt="República de Maldivas" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏝️</span></span><span>República de Maldivas</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2841,7 +2834,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇲🇻 🏝️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/mv.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/mv.png'" alt="República de Maldivas" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏝️</span></span>
                 <a href="/guias/maldivas">Islas Maldivas</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2872,8 +2865,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Cuba
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇨🇺 🚗 Cuba
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cu.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cu.png'" alt="Cuba" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🚗</span></span><span>Cuba</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2886,7 +2879,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇨🇺 🚗</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cu.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cu.png'" alt="Cuba" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🚗</span></span>
                 <a href="/guias/cuba">La Habana</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2917,8 +2910,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Panamá
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇵🇦 🚢 Panamá
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/pa.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/pa.png'" alt="Panamá" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🚢</span></span><span>Panamá</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2931,7 +2924,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇵🇦 🚢</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/pa.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/pa.png'" alt="Panamá" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🚢</span></span>
                 <a href="/guias/panama">Ciudad de Panamá</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -2962,8 +2955,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Polinesia Francesa
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇵🇫 🌺 Polinesia Francesa
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/pf.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/pf.png'" alt="Polinesia Francesa" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌺</span></span><span>Polinesia Francesa</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -2976,7 +2969,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇵🇫 🌺</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/pf.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/pf.png'" alt="Polinesia Francesa" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌺</span></span>
                 <a href="/guias/polinesia">Tahití & Bora Bora</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -3007,8 +3000,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Australia
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇦🇺 🦘 Australia
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/au.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/au.png'" alt="Australia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🦘</span></span><span>Australia</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -3021,7 +3014,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇦🇺 🦘</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/au.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/au.png'" alt="Australia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🦘</span></span>
                 <a href="/guias/sydney-australia">Sídney & Melbourne</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -3052,8 +3045,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Nueva Zelanda
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇳🇿 🥝 Nueva Zelanda
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/nz.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/nz.png'" alt="Nueva Zelanda" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🥝</span></span><span>Nueva Zelanda</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -3066,7 +3059,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇳🇿 🥝</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/nz.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/nz.png'" alt="Nueva Zelanda" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🥝</span></span>
                 <a href="/guias/nueva-zelanda">Auckland & Queenstown</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -3097,8 +3090,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               México
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇲🇽 🌮 México
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/mx.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/mx.png'" alt="México" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌮</span></span><span>México</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -3111,7 +3104,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇲🇽 🌮</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/mx.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/mx.png'" alt="México" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌮</span></span>
                 <a href="/guias/ciudad-de-mexico">Ciudad de México</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -3142,8 +3135,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Portugal
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇵🇹 🚋 Portugal
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/pt.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/pt.png'" alt="Portugal" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🚋</span></span><span>Portugal</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -3156,7 +3149,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇵🇹 🚋</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/pt.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/pt.png'" alt="Portugal" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🚋</span></span>
                 <a href="/guias/lisboa">Lisboa & Oporto</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -3187,8 +3180,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Corea del Sur
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇰🇷 🏙️ Corea del Sur
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/kr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/kr.png'" alt="Corea del Sur" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏙️</span></span><span>Corea del Sur</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -3201,7 +3194,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇰🇷 🏙️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/kr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/kr.png'" alt="Corea del Sur" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏙️</span></span>
                 <a href="/guias/seul">Seúl</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -3232,8 +3225,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Países Bajos
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇳🇱 🚲 Países Bajos
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/nl.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/nl.png'" alt="Países Bajos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🚲</span></span><span>Países Bajos</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -3246,7 +3239,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇳🇱 🚲</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/nl.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/nl.png'" alt="Países Bajos" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🚲</span></span>
                 <a href="/guias/amsterdam">Ámsterdam</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -3277,8 +3270,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Caribe Holandés
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇨🇼 🏖️ Curazao
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cw.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cw.png'" alt="Curazao" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏖️</span></span><span>Curazao</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -3291,7 +3284,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇨🇼 🏖️</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cw.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cw.png'" alt="Curazao" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏖️</span></span>
                 <a href="/guias/curazao">Curazao</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -3322,8 +3315,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Centroamérica
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇨🇷 🌿 Costa Rica
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cr.png'" alt="Costa Rica" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌿</span></span><span>Costa Rica</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -3336,7 +3329,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇨🇷 🌿</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/cr.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/cr.png'" alt="Costa Rica" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🌿</span></span>
                 <a href="/guias/costa-rica">Costa Rica</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -3367,8 +3360,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Caribe & Sudamérica
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🇨🇴 🏰 Colombia
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/co.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/co.png'" alt="Colombia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏰</span></span><span>Colombia</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -3381,7 +3374,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🇨🇴 🏰</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/co.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/co.png'" alt="Colombia" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🏰</span></span>
                 <a href="/guias/cartagena">Cartagena de Indias</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -3412,8 +3405,8 @@
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               Argentina & Alto Valle
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              🦖 🍇 Argentina
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🦖 🍇</span></span><span>Argentina</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -3426,7 +3419,7 @@
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>🦖 🍇</span>
+                <span class="inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs"><span>🦖 🍇</span></span>
                 <a href="/guias/neuquen">Neuquén & Alto Valle</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -3487,6 +3480,19 @@
 
   <footer class="py-12 dark:bg-slate-950 bg-slate-100 border-t dark:border-slate-800 border-slate-200 text-xs dark:text-slate-400 text-slate-600 theme-transition">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pb-4 mb-6 border-b dark:border-slate-800/80 border-slate-200/80">
+        <span class="text-[11px] font-medium dark:text-slate-400 text-slate-500">Cotización orientativa: Dólar MEP / Turístico (<strong id="footer-usd-ref-rate" class="dark:text-slate-200 text-slate-800">$1.350 ARS</strong>)</span>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Moneda:</span>
+          <div class="inline-flex p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold shadow-xs" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
+            <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
+            <button type="button" id="footer-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">ARS</button>
+            <button type="button" id="footer-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">USD</button>
+          </div>
+        </div>
+      </div>
+
       <div class="dark:bg-slate-900/70 bg-white p-4 rounded-xl border dark:border-slate-800/80 border-slate-200 mb-6 shadow-sm theme-transition">
         <p class="dark:text-slate-400 text-slate-600 leading-relaxed">
           <strong class="dark:text-slate-300 text-slate-900">Divulgación de Afiliación (Affiliate Disclosure):</strong> 
@@ -4225,9 +4231,8 @@
         }
 
         // 5. Fallback general orientador
-        const totalGuias = (window.FLIGHTBOT_STATS && window.FLIGHTBOT_STATS.guias) || 57;
         return {
-          respuesta: `Puedo ayudarte con nuestras <b>${totalGuias} Guías Oficiales</b> (Roma, Madrid, Miami, Río, Cancún, Punta Cana, Aruba, Bariloche, Mendoza e Iguazú), comparativas de <b>trenes vs. avión</b>, mejores barrios para alojarte, <b>equipaje de bebé</b> y <b>salas VIP</b>.<br><br>¿Sobre qué destino o tema te gustaría consultar?`,
+          respuesta: "Puedo ayudarte con nuestras <b>57 Guías Oficiales</b> (Roma, Madrid, Miami, Río, Cancún, Punta Cana, Aruba, Bariloche, Mendoza e Iguazú), comparativas de <b>trenes vs. avión</b>, mejores barrios para alojarte, <b>equipaje de bebé</b> y <b>salas VIP</b>.<br><br>¿Sobre qué destino o tema te gustaría consultar?",
           quick_replies: FB_INITIAL_PILLS
         };
       }
@@ -4428,7 +4433,7 @@
     function normalizarTexto(txt) {
       return (txt || '')
         .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[̀-ͯ]/g, '')
         .toLowerCase()
         .trim();
     }
@@ -4593,7 +4598,8 @@
           const ciudad = normalizarTexto(art.getAttribute('data-ciudad'));
           const pais = normalizarTexto(art.getAttribute('data-pais'));
           const region = normalizarTexto(art.getAttribute('data-region'));
-          return cumpleFiltroRegion(pais, region, ciudad, regFiltro);
+          const cmd = normalizarTexto(art.getAttribute('data-cmd'));
+          return cumpleFiltroRegion(pais, region, ciudad, regFiltro, cmd);
         }).length;
         // Preservar iconos <img> internos actualizando solo el nodo de texto con (N)
         for (const node of btn.childNodes) {

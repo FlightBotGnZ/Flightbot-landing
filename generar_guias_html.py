@@ -8,6 +8,7 @@ Soporta el Motor de Temas Dual (Rojo Rubí / Azul Océano) y Modo Claro / Oscuro
 
 from __future__ import annotations
 
+import html
 import json
 import os
 import re
@@ -32,7 +33,73 @@ LANDING_DIR = os.path.abspath(os.path.dirname(__file__))
 OUTPUT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "guias"))
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
+# Mapeo de países a códigos ISO 3166-1 alpha-2 para usar banderas PNG locales (evita fallos de emoji en Windows)
+PAIS_A_CODIGO_ISO: dict[str, str] = {
+    "Argentina": "ar",
+    "Argentina / Brasil": "ar",
+    "Brasil": "br",
+    "Chile": "cl",
+    "Colombia": "co",
+    "Perú": "pe",
+    "México": "mx",
+    "Cuba": "cu",
+    "República Dominicana": "do",
+    "Aruba": "aw",
+    "Curazao": "cw",
+    "Costa Rica": "cr",
+    "Panamá": "pa",
+    "Estados Unidos": "us",
+    "España": "es",
+    "Italia": "it",
+    "Francia": "fr",
+    "Reino Unido": "gb",
+    "Alemania": "de",
+    "Países Bajos": "nl",
+    "Portugal": "pt",
+    "Grecia": "gr",
+    "Noruega": "no",
+    "Islandia": "is",
+    "Turquía": "tr",
+    "Emiratos Árabes Unidos": "ae",
+    "Egipto": "eg",
+    "Marruecos": "ma",
+    "Sudáfrica": "za",
+    "Japón": "jp",
+    "China": "cn",
+    "Corea del Sur": "kr",
+    "Tailandia": "th",
+    "República de Maldivas": "mv",
+    "Polinesia Francesa": "pf",
+    "Australia": "au",
+    "Nueva Zelanda": "nz",
+}
+
+
+def _formatear_icono_bandera_html(icono: str, pais: str, incluir_tema: bool = True) -> str:
+    """Convierte emojis de bandera en etiquetas <img> PNG locales con fallback y conserva el emoji temático."""
+    iso = PAIS_A_CODIGO_ISO.get(pais, "")
+    banderas = re.findall(r"[\U0001F1E6-\U0001F1FF]{2}", icono or "")
+    if not iso and banderas:
+        iso = "".join(chr(ord(c) - 0x1F1E6 + ord("a")) for c in banderas[0])
+    tema = re.sub(r"[\U0001F1E6-\U0001F1FF]+", "", icono or "").strip()
+    pais_esc = html.escape(pais or iso.upper(), quote=True)
+    partes: list[str] = []
+    if iso:
+        partes.append(
+            f'<img src="/img/flags/{iso}.png" '
+            f"onerror=\"this.onerror=null; this.src='https://flagcdn.com/w80/{iso}.png'\" "
+            f'alt="{pais_esc}" class="w-4 h-3 object-cover rounded-[2px] inline-block shrink-0 shadow-xs">'
+        )
+    if incluir_tema and tema:
+        partes.append(f"<span>{tema}</span>")
+    if not partes:
+        return ""
+    return f'<span class="inline-flex items-center gap-1.5 shrink-0">{"".join(partes)}</span>'
+
+
 SHARED_THEME_HEAD = """
+  <script src="/js/site-stats.js" defer></script>
+  <script src="/js/theme.js" defer></script>
   <script src="/js/auth.js" defer></script>
   <script>
     tailwind.config = {
@@ -311,24 +378,17 @@ SHARED_NAV_HEADER = """
                 </linearGradient>
               </defs>
             </svg>
-            <span id="nav-tokens-display" class="font-bold">4<span class="hidden sm:inline">&nbsp;fichas</span></span>
+            <span id="nav-tokens-display" class="font-bold">(4)</span>
           </button>
         </div>
 
-        <!-- B. Selector de Moneda: Diseño de cápsula compacta (NATIVO | ARS | USD) -->
-        <div class="hidden md:inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
-          <button type="button" id="btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs">NATIVO</button>
-          <button type="button" id="btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
-          <button type="button" id="btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
-        </div>
-
-        <!-- C. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
+        <!-- B. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
           <span id="theme-mode-icon">☀️</span>
         </button>
 
-        <!-- D. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
+        <!-- C. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
            class="hidden sm:inline-flex h-9 px-3 rounded-lg bg-[#229ED9] hover:bg-[#1E88E5] text-white text-xs font-semibold items-center gap-1.5 shadow-sm transition-all shrink-0"
            title="Chateá conmigo en Telegram para alertas instantáneas">
@@ -494,6 +554,20 @@ SHARED_NAV_HEADER = """
 
     </div>
   </header>
+"""
+
+SHARED_FOOTER_CURRENCY_BAR = """
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pb-4 mb-6 border-b dark:border-slate-800/80 border-slate-200/80">
+        <span class="text-[11px] font-medium dark:text-slate-400 text-slate-500">Cotización orientativa: Dólar MEP / Turístico (<strong id="footer-usd-ref-rate" class="dark:text-slate-200 text-slate-800">$1.350 ARS</strong>)</span>
+        <div class="flex items-center gap-2">
+          <span class="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Moneda:</span>
+          <div class="inline-flex p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold shadow-xs" title="Cotización de referencia: Dólar MEP / Turístico ($1.350 ARS)">
+            <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
+            <button type="button" id="footer-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">ARS</button>
+            <button type="button" id="footer-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">USD</button>
+          </div>
+        </div>
+      </div>
 """
 
 
@@ -3467,7 +3541,8 @@ def generar_html_guia(guia: dict) -> str:
     # Galería de postales editoriales destacadas (Abbey Road + Big Ben para Londres)
     postales_destacadas_html = ""
     if guia["id"] == "londres":
-        postales_destacadas_html = """
+        bandera_gb_html = _formatear_icono_bandera_html("🇬🇧", "Reino Unido", incluir_tema=False)
+        postales_destacadas_html = f"""
     <!-- Galería Editorial: Abbey Road & Big Ben -->
     <section class="mb-16">
       <div class="flex items-center justify-between gap-3 mb-5">
@@ -3479,7 +3554,7 @@ def generar_html_guia(guia: dict) -> str:
           </div>
         </div>
         <span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-600/10 text-blue-600 border border-blue-500/20">
-          🇬🇧 Ruta EZE ➔ LHR Activa
+          {bandera_gb_html} <span>Ruta EZE ➔ LHR Activa</span>
         </span>
       </div>
       <div class="grid md:grid-cols-2 gap-6">
@@ -3685,9 +3760,10 @@ def generar_html_guia(guia: dict) -> str:
     otras_guias_html = ""
     for g_id, g_item in GUIAS_DESTINOS.items():
         if g_id != guia["id"]:
+            icono_item_html = _formatear_icono_bandera_html(g_item["icono"], g_item["pais"])
             otras_guias_html += f"""
             <a href="/guias/{g_item['slug']}" class="p-3 rounded-xl dark:bg-slate-900 bg-white hover:bg-slate-100 dark:hover:bg-slate-800 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-700 text-sm flex items-center gap-2 transition-all shadow-sm theme-transition">
-              <span>{g_item['icono']}</span>
+              {icono_item_html}
               <span class="font-medium dark:text-white text-slate-900">{g_item['ciudad']}</span>
             </a>"""
 
@@ -3888,7 +3964,7 @@ def generar_html_guia(guia: dict) -> str:
         <div class="absolute inset-0 bg-gradient-to-t dark:from-slate-900 dark:via-slate-900/60 from-slate-950 via-slate-950/40 to-transparent"></div>
         <div class="absolute top-6 left-6">
           <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-700 text-xs font-bold text-white shadow-lg">
-            <span>{icono}</span> {pais}
+            {_formatear_icono_bandera_html(icono, pais)} <span>{pais}</span>
           </span>
         </div>
       </div>
@@ -4198,6 +4274,7 @@ def generar_html_guia(guia: dict) -> str:
   <!-- Pie de Página y Descargo de Afiliación -->
   <footer class="py-12 dark:bg-slate-950 bg-slate-100 border-t dark:border-slate-800 border-slate-200 text-xs dark:text-slate-400 text-slate-600 mt-20 theme-transition">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {SHARED_FOOTER_CURRENCY_BAR}
       <div class="dark:bg-slate-900/70 bg-white p-4 rounded-xl border dark:border-slate-800/80 border-slate-200 mb-6 shadow-sm theme-transition">
         <p class="dark:text-slate-400 text-slate-600 leading-relaxed">
           <strong class="dark:text-slate-300 text-slate-900">Divulgación de Afiliación (Affiliate Disclosure):</strong> 
@@ -4263,6 +4340,7 @@ def generar_indice_guias(guias: list) -> str:
             "mejor_epoca": "Todo el año",
         })
         img_loading_attr = 'loading="eager"' if idx_guia < 3 else 'loading="lazy" decoding="async"'
+        icono_bandera_html = _formatear_icono_bandera_html(g["icono"], g["pais"])
         tarjetas_html += f"""
         <article data-ciudad="{g['ciudad'].lower()}" data-pais="{g['pais'].lower()}" data-region="{g_meta['region'].lower()}" data-cmd="{g['cmd_vuelo'].lower()}" class="group dark:bg-slate-900 bg-white border dark:border-slate-800 border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:border-slate-700 transition-all flex flex-col shadow-sm theme-transition">
           <div class="h-48 bg-slate-800 relative overflow-hidden">
@@ -4270,8 +4348,8 @@ def generar_indice_guias(guias: list) -> str:
             <div class="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-sm text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/10 shadow-sm">
               {g_meta['region']}
             </div>
-            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm">
-              {g['icono']} {g['pais']}
+            <div class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-sm text-xs font-bold text-white px-3 py-1 rounded-full border border-white/10 shadow-sm inline-flex items-center gap-1.5">
+              {icono_bandera_html}<span>{g['pais']}</span>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
@@ -4284,7 +4362,7 @@ def generar_indice_guias(guias: list) -> str:
                 <span class="text-emerald-500 font-semibold">✓ Verificado</span>
               </div>
               <h3 class="text-xl font-bold dark:text-white text-slate-900 mb-1 group-hover:text-blue-600 transition-colors theme-transition flex items-center gap-2">
-                <span>{g['icono']}</span>
+                {icono_bandera_html}
                 <a href="/guias/{g['slug']}">{g['ciudad']}</a>
               </h3>
               <div class="text-xs font-semibold mb-2" style="color: var(--brand-primary);">
@@ -4397,10 +4475,10 @@ def generar_indice_guias(guias: list) -> str:
                  style="--tw-ring-color: var(--brand-primary);">
           <span class="absolute left-4 top-3.5 text-base text-slate-400">🔍</span>
         </div>
-        <div class="flex items-center justify-center gap-1.5 overflow-x-auto pb-2 no-scrollbar text-xs">
+        <div class="flex flex-wrap items-center justify-center gap-2 pb-2 text-xs">
           <button type="button" onclick="filtrarGuiasRegion('todos', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold text-white transition-all shadow-sm shrink-0" style="background-color: var(--brand-primary);">Todos ({len(guias)})</button>
-          <button type="button" onclick="filtrarGuiasRegion('cabotaje', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje (11)</button>
-          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="../img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil (6)</button>
+          <button type="button" onclick="filtrarGuiasRegion('cabotaje', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-[2px] inline-block"> Cabotaje (11)</button>
+          <button type="button" onclick="filtrarGuiasRegion('brasil', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all inline-flex items-center gap-1.5 shrink-0"><img src="/img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-[2px] inline-block"> Brasil (6)</button>
           <button type="button" onclick="filtrarGuiasRegion('caribe', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🏝️ Caribe &amp; Playas (9)</button>
           <button type="button" onclick="filtrarGuiasRegion('america', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🌎 América (6)</button>
           <button type="button" onclick="filtrarGuiasRegion('europa_mundo', this)" class="guia-filtro-btn px-3.5 py-1.5 rounded-xl font-bold dark:bg-slate-900 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">🌍 Europa &amp; Mundo (25)</button>
@@ -4461,6 +4539,7 @@ def generar_indice_guias(guias: list) -> str:
 
   <footer class="py-12 dark:bg-slate-950 bg-slate-100 border-t dark:border-slate-800 border-slate-200 text-xs dark:text-slate-400 text-slate-600 theme-transition">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {SHARED_FOOTER_CURRENCY_BAR}
       <div class="dark:bg-slate-900/70 bg-white p-4 rounded-xl border dark:border-slate-800/80 border-slate-200 mb-6 shadow-sm theme-transition">
         <p class="dark:text-slate-400 text-slate-600 leading-relaxed">
           <strong class="dark:text-slate-300 text-slate-900">Divulgación de Afiliación (Affiliate Disclosure):</strong> 
@@ -4671,11 +4750,38 @@ def generar_indice_guias(guias: list) -> str:
       filtrarGuiasRegion('todos', primerBoton);
     }}
 
+    function actualizarContadoresBotonesGuias() {{
+      const articulos = Array.from(document.querySelectorAll('#guias-grid article'));
+      document.querySelectorAll('.guia-filtro-btn').forEach(btn => {{
+        const onclickAttr = btn.getAttribute('onclick') || '';
+        const match = onclickAttr.match(/filtrarGuiasRegion\\('([^']+)'/);
+        if (!match) return;
+        const regFiltro = match[1];
+        const cnt = articulos.filter(art => {{
+          const ciudad = normalizarTexto(art.getAttribute('data-ciudad'));
+          const pais = normalizarTexto(art.getAttribute('data-pais'));
+          const region = normalizarTexto(art.getAttribute('data-region'));
+          const cmd = normalizarTexto(art.getAttribute('data-cmd'));
+          return cumpleFiltroRegion(pais, region, ciudad, regFiltro, cmd);
+        }}).length;
+        // Preservar iconos <img> internos actualizando solo el nodo de texto con (N)
+        for (const node of btn.childNodes) {{
+          if (node.nodeType === 3 && /\\(\\d+\\)/.test(node.textContent || '')) {{
+            node.textContent = node.textContent.replace(/\\(\\d+\\)/, `(${{cnt}})`);
+          }}
+        }}
+      }});
+    }}
+
     // Inicializar contador al cargar
-    if (document.readyState === 'loading') {{
-      document.addEventListener('DOMContentLoaded', aplicarFiltrosGuias);
-    }} else {{
+    function iniciarCatalogoGuias() {{
+      actualizarContadoresBotonesGuias();
       aplicarFiltrosGuias();
+    }}
+    if (document.readyState === 'loading') {{
+      document.addEventListener('DOMContentLoaded', iniciarCatalogoGuias);
+    }} else {{
+      iniciarCatalogoGuias();
     }}
   </script>
 
@@ -4773,8 +4879,7 @@ def ejecutar_generacion():
         f.write(generar_indice_guias(guias))
     print("  [OK] Creado: index.html (Catálogo General)")
 
-    # Sincronizar landing/index.html con el mismo widget de Chatbox IA
-    actualizar_landing_principal()
+    # Nota: No sobrescribir landing/index.html desde aquí porque ya mantiene su diseño unificado propio.
     print("Generación completada con éxito!")
 
 
