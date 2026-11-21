@@ -148,6 +148,8 @@
   <script src="/js/site-stats.js" defer></script>
   <script src="/js/theme.js" defer></script>
   <script>(function(){try{if(!localStorage.getItem('fb_theme_cobalt_v1')){localStorage.setItem('fb_theme_mode','light');localStorage.setItem('fb_theme_color','blue');localStorage.setItem('fb_theme_cobalt_v1','1');}var m=localStorage.getItem('fb_theme_mode')||'light';if(m==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('data-color','blue');}catch(_){}})();</script>
+  <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
+  <script src="js/telegram-webapp.js" defer></script>
 </head>
 <body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white theme-transition min-h-screen flex flex-col justify-between overflow-x-hidden">
 
@@ -160,7 +162,7 @@
       <!-- 1. Marca / Logotipo Rolli + FlightBot + Slogan Oficial -->
       <a href="/" class="flex items-center gap-2.5 group shrink-0" title="FlightBot · Con Rolli Copiloto">
         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-blue-600 to-indigo-700 shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
-          <img src="/img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow">
+          <img src="/img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow" loading="lazy" decoding="async">
         </div>
         <div>
           <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-blue-600 dark:text-blue-400">Bot</span></span>
@@ -642,7 +644,7 @@
           <button type="button" onclick="window.setQuickDest('Tandil')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">⛰️ Tandil</button>
           <button type="button" onclick="window.setQuickDest('San Martín de los Andes')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🌲 San Martín</button>
           <button type="button" onclick="window.setQuickDest('Puerto Iguazú')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all">🌴 Cataratas</button>
-          <button type="button" onclick="window.setQuickDest('Florianópolis')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-3.5 h-2.5 object-cover rounded-xs inline-block"> Florianópolis</button>
+          <button type="button" onclick="window.setQuickDest('Florianópolis')" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-700 dark:text-slate-200 text-slate-700 whitespace-nowrap transition-all flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-3.5 h-2.5 object-cover rounded-xs inline-block" loading="lazy" decoding="async"> Florianópolis</button>
         </div>
 
         <!-- Contenedor con Efecto Escénico Discreto al Buscar -->
@@ -2431,7 +2433,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/San_Antonio_de_Areco%2C_Atardecer_en_Puente_Viejo_01.jpg/960px-San_Antonio_de_Areco%2C_Atardecer_en_Puente_Viejo_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="San Antonio de Areco" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/San_Antonio_de_Areco%2C_Atardecer_en_Puente_Viejo_01.jpg/960px-San_Antonio_de_Areco%2C_Atardecer_en_Puente_Viejo_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="San Antonio de Areco" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -2502,7 +2504,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1760918347920-a750a13b1e6d?auto=format&fit=crop&w=800&q=80" alt="Chascomús y Laguna" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1760918347920-a750a13b1e6d?auto=format&fit=crop&w=800&q=80" alt="Chascomús y Laguna" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -2573,7 +2575,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1673491100948-8ef540ceedf4?auto=format&fit=crop&w=800&q=80" alt="Tomás Jofré & Mercedes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1673491100948-8ef540ceedf4?auto=format&fit=crop&w=800&q=80" alt="Tomás Jofré & Mercedes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -2644,7 +2646,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1532665469716-ef45431df414?auto=format&fit=crop&w=800&q=80" alt="San Pedro & Vuelta de Obligado" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1532665469716-ef45431df414?auto=format&fit=crop&w=800&q=80" alt="San Pedro & Vuelta de Obligado" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -2715,7 +2717,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1518847076759-2c8d95183cc7?auto=format&fit=crop&w=800&q=80" alt="Partido de La Costa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1518847076759-2c8d95183cc7?auto=format&fit=crop&w=800&q=80" alt="Partido de La Costa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -2786,7 +2788,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1561816646-b5b12a9b92ed?auto=format&fit=crop&w=800&q=80" alt="Mar del Plata & Chapadmalal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1561816646-b5b12a9b92ed?auto=format&fit=crop&w=800&q=80" alt="Mar del Plata & Chapadmalal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -2857,7 +2859,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Bajada_a_Playa_de_Pinamar_-_panoramio.jpg/960px-Bajada_a_Playa_de_Pinamar_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Pinamar, Cariló & Villa Gesell" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Bajada_a_Playa_de_Pinamar_-_panoramio.jpg/960px-Bajada_a_Playa_de_Pinamar_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Pinamar, Cariló & Villa Gesell" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -2928,7 +2930,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1583720799149-783a9d4145e3?auto=format&fit=crop&w=800&q=80" alt="Tandil & Sierras del Tandil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1583720799149-783a9d4145e3?auto=format&fit=crop&w=800&q=80" alt="Tandil & Sierras del Tandil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -2999,7 +3001,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1787095661274-39f70febc685?auto=format&fit=crop&w=800&q=80" alt="Sierra de la Ventana & Villa Ventana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1787095661274-39f70febc685?auto=format&fit=crop&w=800&q=80" alt="Sierra de la Ventana & Villa Ventana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -3070,7 +3072,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1578104462680-8274c2bf96b4?auto=format&fit=crop&w=800&q=80" alt="Colón & Parque El Palmar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1578104462680-8274c2bf96b4?auto=format&fit=crop&w=800&q=80" alt="Colón & Parque El Palmar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -3141,7 +3143,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1561916579-94d08e12a094?auto=format&fit=crop&w=800&q=80" alt="Córdoba: Valle de Calamuchita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1561916579-94d08e12a094?auto=format&fit=crop&w=800&q=80" alt="Córdoba: Valle de Calamuchita" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-sky-500/10 text-sky-400 border-sky-500/20 backdrop-blur-md">
@@ -3212,7 +3214,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1708145179897-1008406599d7?auto=format&fit=crop&w=800&q=80" alt="Córdoba: Valle de Traslasierra" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1708145179897-1008406599d7?auto=format&fit=crop&w=800&q=80" alt="Córdoba: Valle de Traslasierra" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-sky-500/10 text-sky-400 border-sky-500/20 backdrop-blur-md">
@@ -3283,7 +3285,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Monte_Hermoso%2C_playa_01.jpg/960px-Monte_Hermoso%2C_playa_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Monte Hermoso & Pehuen Có" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Monte_Hermoso%2C_playa_01.jpg/960px-Monte_Hermoso%2C_playa_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Monte Hermoso & Pehuen Có" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-sky-500/10 text-sky-400 border-sky-500/20 backdrop-blur-md">
@@ -3354,7 +3356,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Mirador_del_Sol.jpg/960px-Mirador_del_Sol.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Villa de Merlo (San Luis)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Mirador_del_Sol.jpg/960px-Mirador_del_Sol.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Villa de Merlo (San Luis)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-sky-500/10 text-sky-400 border-sky-500/20 backdrop-blur-md">
@@ -3425,7 +3427,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1657523955071-61f1f771f466?auto=format&fit=crop&w=800&q=80" alt="Bariloche & Ruta de los 7 Lagos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1657523955071-61f1f771f466?auto=format&fit=crop&w=800&q=80" alt="Bariloche & Ruta de los 7 Lagos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-purple-500/10 text-purple-400 border-purple-500/20 backdrop-blur-md">
@@ -3496,7 +3498,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" alt="Mendoza: Valle de Uco & Alta Montaña" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80" alt="Mendoza: Valle de Uco & Alta Montaña" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-purple-500/10 text-purple-400 border-purple-500/20 backdrop-blur-md">
@@ -3567,7 +3569,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80" alt="Ushuaia & Tierra del Fuego: Travesía Fin del Mundo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80" alt="Ushuaia & Tierra del Fuego: Travesía Fin del Mundo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-purple-500/10 text-purple-400 border-purple-500/20 backdrop-blur-md">
@@ -3656,7 +3658,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Paseo_de_la_Costa_de_Vicente_L%C3%B3pez.jpg/960px-Paseo_de_la_Costa_de_Vicente_L%C3%B3pez.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Costanera Vicente López & Olivos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Paseo_de_la_Costa_de_Vicente_L%C3%B3pez.jpg/960px-Paseo_de_la_Costa_de_Vicente_L%C3%B3pez.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Costanera Vicente López & Olivos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -3727,7 +3729,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Carlos_Keen%2C_entorno_de_la_estaci%C3%B3n.jpg/960px-Carlos_Keen%2C_entorno_de_la_estaci%C3%B3n.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Carlos Keen & Luján" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Carlos_Keen%2C_entorno_de_la_estaci%C3%B3n.jpg/960px-Carlos_Keen%2C_entorno_de_la_estaci%C3%B3n.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Carlos Keen & Luján" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -3798,7 +3800,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Atardecer_en_la_Laguna_de_Lobos_%28Villa_Log%C3%BCercio%29.jpg/960px-Atardecer_en_la_Laguna_de_Lobos_%28Villa_Log%C3%BCercio%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Lobos & Laguna de Lobos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Atardecer_en_la_Laguna_de_Lobos_%28Villa_Log%C3%BCercio%29.jpg/960px-Atardecer_en_la_Laguna_de_Lobos_%28Villa_Log%C3%BCercio%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Lobos & Laguna de Lobos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -3869,7 +3871,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Parroquia_Nuestra_Se%C3%B1ora_de_Luj%C3%A1n_en_Uribelarrea_Ca%C3%B1uelas_01.JPG/960px-Parroquia_Nuestra_Se%C3%B1ora_de_Luj%C3%A1n_en_Uribelarrea_Ca%C3%B1uelas_01.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Uribelarrea (Cañuelas)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Parroquia_Nuestra_Se%C3%B1ora_de_Luj%C3%A1n_en_Uribelarrea_Ca%C3%B1uelas_01.JPG/960px-Parroquia_Nuestra_Se%C3%B1ora_de_Luj%C3%A1n_en_Uribelarrea_Ca%C3%B1uelas_01.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Uribelarrea (Cañuelas)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -3940,7 +3942,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Camping_%C3%91andubaysal_-_panoramio.jpg/960px-Camping_%C3%91andubaysal_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Gualeguaychú & Playas de Río" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Camping_%C3%91andubaysal_-_panoramio.jpg/960px-Camping_%C3%91andubaysal_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Gualeguaychú & Playas de Río" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-emerald-500/10 text-emerald-400 border-emerald-500/20 backdrop-blur-md">
@@ -4011,7 +4013,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Rosario_National_Flag_Memorial-20110510-RM-142842.jpg/960px-Rosario_National_Flag_Memorial-20110510-RM-142842.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Rosario & Costanera del Paraná" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Rosario_National_Flag_Memorial-20110510-RM-142842.jpg/960px-Rosario_National_Flag_Memorial-20110510-RM-142842.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Rosario & Costanera del Paraná" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">
@@ -4082,7 +4084,7 @@
           <div>
             <!-- Foto de Portada del Destino -->
             <div class="relative h-44 w-full overflow-hidden">
-              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Playa_de_Necochea_%28Argentina%29.JPG/960px-Playa_de_Necochea_%28Argentina%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Necochea & Quequén" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+              <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Playa_de_Necochea_%28Argentina%29.JPG/960px-Playa_de_Necochea_%28Argentina%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Necochea & Quequén" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <div class="absolute top-3 left-3">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold border bg-amber-500/10 text-amber-400 border-amber-500/20 backdrop-blur-md">

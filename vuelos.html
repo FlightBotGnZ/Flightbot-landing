@@ -326,6 +326,8 @@
   <script src="/js/site-stats.js" defer></script>
   <script src="/js/theme.js" defer></script>
   <script>(function(){try{if(!localStorage.getItem('fb_theme_cobalt_v1')){localStorage.setItem('fb_theme_mode','light');localStorage.setItem('fb_theme_color','blue');localStorage.setItem('fb_theme_cobalt_v1','1');}var m=localStorage.getItem('fb_theme_mode')||'light';if(m==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('data-color','blue');}catch(_){}})();</script>
+  <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
+  <script src="js/telegram-webapp.js" defer></script>
 </head>
 <body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white theme-transition overflow-x-hidden">
 
@@ -341,7 +343,7 @@
       <!-- 1. Marca / Logotipo Rolli + FlightBot + Slogan Oficial -->
       <a href="/" class="flex items-center gap-2.5 group shrink-0" title="FlightBot · Con Rolli Copiloto">
         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-blue-600 to-indigo-700 shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
-          <img src="/img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow">
+          <img src="/img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow" loading="lazy" decoding="async">
         </div>
         <div>
           <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-blue-600 dark:text-blue-400">Bot</span></span>
@@ -1311,10 +1313,10 @@
               Todos
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('cabotaje')" id="fb-filter-cabotaje" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-              <span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje</span>
+              <span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block" loading="lazy" decoding="async"> Cabotaje</span>
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('brasil')" id="fb-filter-brasil" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
-              <span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil</span>
+              <span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block" loading="lazy" decoding="async"> Brasil</span>
             </button>
             <button type="button" onclick="window.filtrarRadarRegion('caribe')" id="fb-filter-caribe" class="fb-filter-chip w-auto flex-shrink-0 px-3.5 py-1.5 rounded-xl font-bold whitespace-nowrap transition-all border dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
               🏝️ Caribe & Playas
@@ -2239,9 +2241,9 @@
         const cdnUrl = `https://flagcdn.com/w80/${code}.png`;
         const localUrl = `img/flags/${code}.png`;
         if (tamano === 'sm') {
-          return `<img src="${localUrl}" onerror="this.onerror=null; this.src='${cdnUrl}'" alt="${dest.pais}" class="w-7 h-5 object-cover rounded shadow-sm border border-slate-200/60 dark:border-slate-700/80 flex-shrink-0 group-hover:scale-110 transition-transform" loading="lazy" />`;
+          return `<img src="${localUrl}" onerror="this.onerror=null; this.src='${cdnUrl}'" alt="${dest.pais}" class="w-7 h-5 object-cover rounded shadow-sm border border-slate-200/60 dark:border-slate-700/80 flex-shrink-0 group-hover:scale-110 transition-transform" loading="lazy" / decoding="async">`;
         }
-        return `<img src="${localUrl}" onerror="this.onerror=null; this.src='${cdnUrl}'" alt="${dest.pais}" class="w-12 h-8 sm:w-14 sm:h-9 object-cover rounded-md shadow-md border border-slate-200/60 dark:border-slate-700/80 flex-shrink-0" loading="lazy" />`;
+        return `<img src="${localUrl}" onerror="this.onerror=null; this.src='${cdnUrl}'" alt="${dest.pais}" class="w-12 h-8 sm:w-14 sm:h-9 object-cover rounded-md shadow-md border border-slate-200/60 dark:border-slate-700/80 flex-shrink-0" loading="lazy" / decoding="async">`;
       }
 
 
@@ -3269,7 +3271,7 @@
             <div>
               <div class="relative h-48 overflow-hidden bg-slate-800">
                 <img src="${h.foto}" alt="${h.nombre}"
-                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" / decoding="async">
                 <div class="absolute top-3 left-3 bg-slate-950/85 backdrop-blur-md text-[11px] font-bold text-white px-2.5 py-1 rounded-full border border-white/20 shadow-sm">
                   ${h.badge}
                 </div>
@@ -3554,12 +3556,12 @@
 
         const btnCabotaje = document.getElementById('fb-filter-cabotaje');
         if (btnCabotaje) {
-          btnCabotaje.innerHTML = `<span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block"> Cabotaje</span>`;
+          btnCabotaje.innerHTML = `<span class="inline-flex items-center gap-1.5"><img src="img/flags/ar.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/ar.png'" alt="Argentina" class="w-4 h-3 object-cover rounded-xs inline-block" loading="lazy" decoding="async"> Cabotaje</span>`;
         }
 
         const btnBrasil = document.getElementById('fb-filter-brasil');
         if (btnBrasil) {
-          btnBrasil.innerHTML = `<span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block"> Brasil</span>`;
+          btnBrasil.innerHTML = `<span class="inline-flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block" loading="lazy" decoding="async"> Brasil</span>`;
         }
 
         const btnCaribe = document.getElementById('fb-filter-caribe');
@@ -5166,7 +5168,7 @@
             <div>
               <!-- Imagen y Badges -->
               <div class="relative h-48 overflow-hidden bg-slate-950">
-                <img src="${foto}" alt="${r.nombre}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                <img src="${foto}" alt="${r.nombre}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-black/40"></div>
                 
                 <div class="absolute top-3 left-3 right-3 flex items-center gap-1.5 flex-wrap">

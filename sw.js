@@ -4,7 +4,7 @@
  * No cachea mutaciones ni respuestas de /api/ para preservar frescura y seguridad.
  */
 
-const CACHE_VERSION = 'flightbot-pwa-v1';
+const CACHE_VERSION = 'flightbot-pwa-v2';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 
@@ -14,6 +14,7 @@ const PRECACHE_URLS = [
   '/billetera.html',
   '/',
   '/index.html',
+  '/css/styles.css',
   '/manifest.json',
   '/js/wallet-crypto.js',
   '/img/rolli-head.svg',
@@ -60,8 +61,14 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(request.url);
 
+  // Nunca interceptar orígenes externos (Tailwind CDN, Google Fonts, Telegram, DolarAPI):
+  // un fetch() dentro del Service Worker queda sujeto a connect-src de la CSP del propio SW.
+  if (url.origin !== self.location.origin) {
+    return;
+  }
+
   // Nunca interceptar ni cachear llamadas dinámicas a la API
-  if (url.origin === self.location.origin && url.pathname.startsWith('/api/')) {
+  if (url.pathname.startsWith('/api/')) {
     return;
   }
 
@@ -70,7 +77,7 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(request)
         .then((networkResponse) => {
-          if (networkResponse && networkResponse.ok && url.origin === self.location.origin) {
+          if (networkResponse && networkResponse.ok) {
             const copy = networkResponse.clone();
             caches.open(STATIC_CACHE).then((cache) => cache.put(request, copy));
           }
@@ -80,35 +87,28 @@ self.addEventListener('fetch', (event) => {
           const cachedExact = await caches.match(request);
           if (cachedExact) return cachedExact;
           if (url.pathname.includes('billetera')) {
-            return (await caches.match('/billetera.html')) || (await caches.match('/billetera'));
+            return (await caches.match('/billetera.html')) || (await caches.match('/billetera')) || Response.error();
           }
-          return (await caches.match('/index.html')) || (await caches.match('/'));
+          return (await caches.match('/index.html')) || (await caches.match('/')) || Response.error();
         })
     );
     return;
   }
 
-  // Assets estáticos (JS, CSS, fuentes, imágenes locales y CDN de estilos): Stale-While-Revalidate
-  const isCacheableExternal =
-    url.hostname === 'cdn.tailwindcss.com' ||
-    url.hostname === 'fonts.googleapis.com' ||
-    url.hostname === 'fonts.gstatic.com';
+  // Assets estáticos del mismo origen (JS, CSS, imágenes locales): Stale-While-Revalidate
+  event.respondWith(
+    caches.match(request).then((cachedResponse) => {
+      const networkFetch = fetch(request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.ok && networkResponse.type === 'basic') {
+            const copy = networkResponse.clone();
+            caches.open(RUNTIME_CACHE).then((cache) => cache.put(request, copy));
+          }
+          return networkResponse;
+        })
+        .catch(() => cachedResponse || Response.error());
 
-  if (url.origin === self.location.origin || isCacheableExternal) {
-    event.respondWith(
-      caches.match(request).then((cachedResponse) => {
-        const networkFetch = fetch(request)
-          .then((networkResponse) => {
-            if (networkResponse && (networkResponse.ok || networkResponse.type === 'opaque')) {
-              const copy = networkResponse.clone();
-              caches.open(RUNTIME_CACHE).then((cache) => cache.put(request, copy));
-            }
-            return networkResponse;
-          })
-          .catch(() => cachedResponse);
-
-        return cachedResponse || networkFetch;
-      })
-    );
-  }
+      return cachedResponse || networkFetch;
+    })
+  );
 });
