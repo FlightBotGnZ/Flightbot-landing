@@ -575,6 +575,7 @@
             mensaje: text,
             session_id: getSessionId(),
             contexto_pagina: pageCtx,
+            lang: (window.FB_I18N && window.FB_I18N.getLang) ? window.FB_I18N.getLang() : 'es',
             historial: recentHistory
           }),
           signal: ctrl.signal

@@ -100,6 +100,8 @@ def _formatear_icono_bandera_html(icono: str, pais: str, incluir_tema: bool = Tr
 SHARED_THEME_HEAD = """
   <script src="/js/site-stats.js" defer></script>
   <script src="/js/theme.js" defer></script>
+  <script src="/js/i18n-dict.js" defer></script>
+  <script src="/js/i18n.js" defer></script>
   <script src="/js/auth.js" defer></script>
   <script>
     tailwind.config = {

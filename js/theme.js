@@ -244,15 +244,16 @@
     resolverTipoCambioDesdeRadar();
     let str = String(precioOriginalStr).trim();
 
+    const isEn = !!(window.FB_I18N && window.FB_I18N.isEn && window.FB_I18N.isEn());
     let suffix = '';
     if (str.includes(' / noche')) {
-      suffix = ' / noche';
+      suffix = isEn ? ' / night' : ' / noche';
       str = str.replace(' / noche', '');
     } else if (str.includes('/noche')) {
-      suffix = ' / noche';
+      suffix = isEn ? ' / night' : ' / noche';
       str = str.replace('/noche', '');
     } else if (str.includes(' c/u')) {
-      suffix = ' c/u';
+      suffix = isEn ? ' ea.' : ' c/u';
       str = str.replace(' c/u', '');
     }
 
