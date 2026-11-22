@@ -2318,33 +2318,40 @@
         const subInfoLecturas = (typeof t.observaciones_reales === 'number' && t.observaciones_reales > 0)
           ? `Termómetro del Radar · ${t.observaciones_reales} lecturas`
           : 'Termómetro del Radar en Vivo';
+        const sharePillsHtml = (window.FlightBotVerdict && typeof window.FlightBotVerdict.renderVerdictWidgetHtml === 'function')
+          ? window.FlightBotVerdict.renderVerdictWidgetHtml(dest)
+          : '';
 
         return `
           <!-- MÓDULO TERMÓMETRO DE PRECIOS (ESTILO GOOGLE FLIGHTS) -->
           <div class="dark:bg-slate-900/90 bg-white border dark:border-slate-800 border-slate-200 rounded-3xl p-6 sm:p-7 shadow-sm theme-transition flex-1 flex flex-col justify-between">
             
             <!-- Encabezado del Diagnóstico -->
-            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-6">
-              <div>
-                <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+            <div class="mb-6">
+              <div class="flex flex-wrap items-center justify-between gap-2.5 mb-2.5">
+                <div class="flex items-center gap-2 flex-wrap">
                   <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-extrabold uppercase tracking-wide border ${badgeClass}">
                     ${badgeText}
                   </span>
                   <span class="text-xs font-mono dark:text-slate-400 text-slate-500">${subInfoLecturas}</span>
                 </div>
-                <h4 class="text-base sm:text-lg font-extrabold dark:text-white text-slate-900 leading-snug">
-                  ${t.mensaje}
-                </h4>
-                <p class="text-xs sm:text-sm dark:text-slate-400 text-slate-600 mt-1">
-                  Los vuelos más económicos para viajes similares a <strong>${dest.ciudad}</strong> suelen valer entre <strong class="dark:text-slate-200 text-slate-800">${window.formatearPrecioMoneda ? window.formatearPrecioMoneda(t.rango_min, dest) : t.rango_min} — ${window.formatearPrecioMoneda ? window.formatearPrecioMoneda(t.rango_max, dest) : t.rango_max}</strong>.
-                </p>
+
+                <div class="flex flex-wrap items-center gap-2">
+                  ${sharePillsHtml}
+                  <a href="https://t.me/GnZFlightBot?start=alerta_${dest.id}" target="_blank" rel="noopener noreferrer"
+                     class="px-3 py-1.5 rounded-xl text-xs font-bold border dark:border-slate-700 border-slate-300 dark:text-slate-200 text-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 shadow-sm">
+                    <span>🔔</span>
+                    <span>Activar Alerta de Precio</span>
+                  </a>
+                </div>
               </div>
 
-              <a href="https://t.me/GnZFlightBot?start=alerta_${dest.id}" target="_blank" rel="noopener noreferrer"
-                 class="px-3.5 py-2 rounded-xl text-xs font-bold border dark:border-slate-700 border-slate-300 dark:text-slate-200 text-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 self-start sm:self-auto flex-shrink-0 shadow-sm">
-                <span>🔔</span>
-                <span>Activar Alerta de Precio</span>
-              </a>
+              <h4 class="text-base sm:text-lg font-extrabold dark:text-white text-slate-900 leading-snug">
+                ${t.mensaje}
+              </h4>
+              <p class="text-xs sm:text-sm dark:text-slate-400 text-slate-600 mt-1">
+                Los vuelos más económicos para viajes similares a <strong>${dest.ciudad}</strong> suelen valer entre <strong class="dark:text-slate-200 text-slate-800">${window.formatearPrecioMoneda ? window.formatearPrecioMoneda(t.rango_min, dest) : t.rango_min} — ${window.formatearPrecioMoneda ? window.formatearPrecioMoneda(t.rango_max, dest) : t.rango_max}</strong>.
+              </p>
             </div>
 
             <!-- Barra Gráfica de Espectro (Termómetro Horizontal con Pin Marcador) -->
@@ -2803,10 +2810,7 @@
         updateSidebarSelection(dest.id);
         actualizarPildoraDestinoActivo(dest);
 
-        const verdictHtml = (window.FlightBotVerdict && typeof window.FlightBotVerdict.renderVerdictWidgetHtml === 'function')
-          ? window.FlightBotVerdict.renderVerdictWidgetHtml(dest)
-          : '';
-        const headerHtml = generarCabeceraYTermometroHtml(dest) + verdictHtml;
+        const headerHtml = generarCabeceraYTermometroHtml(dest);
         const cardsHtml = generarTarjetasFullWidthHtml(dest);
         if (!isInitial && window.history && typeof window.history.replaceState === 'function' && dest && dest.id) {
           try {

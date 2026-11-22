@@ -184,53 +184,31 @@
     }
   }
 
-  // Renderiza la tarjeta completa del semáforo + sparkline + botones de compartir enlace
+  // Renderiza las píldoras de compartir enlace y WhatsApp integradas en la tarjeta superior del Termómetro
   function renderVerdictWidgetHtml(dest) {
+    if (!dest) return '';
     const metrics = extractPriceMetrics(dest);
-    if (!metrics) return '';
-
-    const verdict = computeBuyVerdict(metrics.currentPrice, metrics.minPrice, metrics.avgPrice);
-    const svg = buildPriceSparklineSvg(metrics.series, metrics.avgPrice, verdict.strokeColor);
+    const verdict = metrics
+      ? computeBuyVerdict(metrics.currentPrice, metrics.minPrice, metrics.avgPrice)
+      : { label: 'Tarifa monitoreada' };
     const shareUrl = buildShareDestinationUrl(dest.id);
-    const ciudadSafe = escapeHtml(dest.ciudad || dest.nombre || dest.iata || 'Destino');
+    const pricePart = metrics ? formatMoney(metrics.currentPrice, metrics.isCabotaje) + ' · ' : '';
     const waText = encodeURIComponent(
       '✈️ Mirá este análisis de vuelos a ' + (dest.ciudad || dest.iata || '') +
-      ' (' + formatMoney(metrics.currentPrice, metrics.isCabotaje) + ' · ' + verdict.label + '): ' + shareUrl
+      ' (' + pricePart + verdict.label + '): ' + shareUrl
     );
     const waHref = 'https://wa.me/?text=' + waText;
     const safeShareAttr = escapeHtml(shareUrl).replace(/'/g, '&#39;');
 
     return (
-      '<div id="fb-price-verdict-widget" class="mt-4 p-4 rounded-2xl border dark:border-slate-800 border-slate-200 dark:bg-slate-900/75 bg-white shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-4">' +
-        '<div class="space-y-1.5 flex-1 min-w-0">' +
-          '<div class="flex flex-wrap items-center gap-2">' +
-            '<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-extrabold border ' + verdict.badgeClass + '">' +
-              verdict.emoji + ' ¿Conviene comprar hoy? · ' + escapeHtml(verdict.label) +
-            '</span>' +
-            '<span class="text-[11px] font-mono dark:text-slate-400 text-slate-500">' +
-              'Mín: <b>' + escapeHtml(formatMoney(metrics.minPrice, metrics.isCabotaje)) + '</b> · ' +
-              'Prom: <b>' + escapeHtml(formatMoney(metrics.avgPrice, metrics.isCabotaje)) + '</b>' +
-            '</span>' +
-          '</div>' +
-          '<p class="text-xs dark:text-slate-300 text-slate-600 leading-relaxed">' + escapeHtml(verdict.recommendation) + '</p>' +
-        '</div>' +
-        '<div class="flex flex-wrap items-center gap-3 shrink-0">' +
-          '<div class="flex flex-col items-end">' +
-            svg +
-            '<span class="text-[10px] font-mono text-slate-400">Tendencia ' + ciudadSafe + '</span>' +
-          '</div>' +
-          '<div class="flex items-center gap-2">' +
-            '<button type="button" onclick="window.FlightBotVerdict && window.FlightBotVerdict.copyShareUrl(\'' + safeShareAttr + '\', this)" ' +
-                    'class="px-3 py-2 rounded-xl text-xs font-bold dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-800 border dark:border-slate-700 border-slate-200 hover:border-blue-500 transition-all cursor-pointer">' +
-              '🔗 Copiar enlace' +
-            '</button>' +
-            '<a href="' + waHref + '" target="_blank" rel="noopener noreferrer" ' +
-               'class="px-3 py-2 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-all">' +
-              '📲 WhatsApp' +
-            '</a>' +
-          '</div>' +
-        '</div>' +
-      '</div>'
+      '<button type="button" onclick="window.FlightBotVerdict && window.FlightBotVerdict.copyShareUrl(\'' + safeShareAttr + '\', this)" ' +
+              'class="px-3 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 dark:text-slate-200 text-slate-700 border dark:border-slate-700 border-slate-300 hover:border-blue-500 dark:hover:bg-slate-800 hover:bg-slate-200/70 transition-all cursor-pointer flex items-center gap-1.5 shadow-sm">' +
+        '🔗 Copiar enlace' +
+      '</button>' +
+      '<a href="' + waHref + '" target="_blank" rel="noopener noreferrer" ' +
+         'class="px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-all flex items-center gap-1.5 shadow-sm">' +
+        '📲 WhatsApp' +
+      '</a>'
     );
   }
 
