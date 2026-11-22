@@ -4,7 +4,7 @@
  * No cachea mutaciones ni respuestas de /api/ para preservar frescura y seguridad.
  */
 
-const CACHE_VERSION = 'flightbot-pwa-v5';
+const CACHE_VERSION = 'flightbot-pwa-v6';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 

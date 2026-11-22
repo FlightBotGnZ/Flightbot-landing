@@ -184,8 +184,8 @@
     }
   }
 
-  // Renderiza las píldoras de compartir enlace y WhatsApp integradas en la tarjeta superior del Termómetro
-  function renderVerdictWidgetHtml(dest) {
+  // Renderiza las píldoras compactas de compartir enlace y WhatsApp para la tarjeta superior del Termómetro
+  function renderSharePillsHtml(dest) {
     if (!dest) return '';
     const metrics = extractPriceMetrics(dest);
     const verdict = metrics
@@ -202,14 +202,19 @@
 
     return (
       '<button type="button" onclick="window.FlightBotVerdict && window.FlightBotVerdict.copyShareUrl(\'' + safeShareAttr + '\', this)" ' +
-              'class="px-3 py-1.5 rounded-xl text-xs font-bold dark:bg-slate-800/90 bg-slate-100 dark:text-slate-200 text-slate-700 border dark:border-slate-700 border-slate-300 hover:border-blue-500 dark:hover:bg-slate-800 hover:bg-slate-200/70 transition-all cursor-pointer flex items-center gap-1.5 shadow-sm">' +
+              'class="px-3 py-1.5 rounded-full text-[11px] font-bold dark:bg-slate-800/90 bg-slate-100 dark:text-slate-200 text-slate-700 border dark:border-slate-700 border-slate-300 hover:border-blue-500 dark:hover:bg-slate-800 hover:bg-slate-200/70 transition-all cursor-pointer inline-flex items-center gap-1.5 shadow-sm whitespace-nowrap">' +
         '🔗 Copiar enlace' +
       '</button>' +
       '<a href="' + waHref + '" target="_blank" rel="noopener noreferrer" ' +
-         'class="px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-all flex items-center gap-1.5 shadow-sm">' +
+         'class="px-3 py-1.5 rounded-full text-[11px] font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-all inline-flex items-center gap-1.5 shadow-sm whitespace-nowrap">' +
         '📲 WhatsApp' +
       '</a>'
     );
+  }
+
+  // Alias retrocompatible que delega en las píldoras de compartir (sin renderizar sparkline inferior)
+  function renderVerdictWidgetHtml(dest) {
+    return renderSharePillsHtml(dest);
   }
 
   const FlightBotVerdict = {
@@ -218,6 +223,7 @@
     buildPriceSparklineSvg: buildPriceSparklineSvg,
     buildShareDestinationUrl: buildShareDestinationUrl,
     copyShareUrl: copyShareUrl,
+    renderSharePillsHtml: renderSharePillsHtml,
     renderVerdictWidgetHtml: renderVerdictWidgetHtml
   };
 
