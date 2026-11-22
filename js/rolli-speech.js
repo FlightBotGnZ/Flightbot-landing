@@ -227,6 +227,19 @@
     const container = document.getElementById('flash-deals-container');
     if (!container) return;
 
+    if (
+      typeof window !== 'undefined' &&
+      window.FlightBotFlashDeals &&
+      typeof window.FlightBotFlashDeals.computeTopDiscountDeals === 'function' &&
+      typeof window.FlightBotFlashDeals.renderTopDealsOnHome === 'function'
+    ) {
+      const dynamicDeals = window.FlightBotFlashDeals.computeTopDiscountDeals(window.RADAR_DATA, 3);
+      if (Array.isArray(dynamicDeals) && dynamicDeals.length > 0) {
+        window.FlightBotFlashDeals.renderTopDealsOnHome();
+        return;
+      }
+    }
+
     let html = '';
     const topDeals = ROLLI_DEALS.slice(0, 3);
     topDeals.forEach((d) => {

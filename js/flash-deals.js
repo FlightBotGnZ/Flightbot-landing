@@ -22,6 +22,23 @@
     return '$ ' + Math.round(Number(amount) || 0).toLocaleString('es-AR') + ' ARS';
   }
 
+  // Resuelve la foto oficial del destino desde la base centralizada de guías (FB_GUIAS_KB)
+  function resolveDestinationImage(destId, fallbackUrl) {
+    const safeFallback = (typeof fallbackUrl === 'string' && fallbackUrl.startsWith('https://'))
+      ? fallbackUrl
+      : 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=80';
+    const guideKb = (globalScope && globalScope.FB_GUIAS_KB && typeof globalScope.FB_GUIAS_KB === 'object')
+      ? globalScope.FB_GUIAS_KB
+      : null;
+    if (!guideKb || !destId) return safeFallback;
+
+    const entry = guideKb[destId];
+    const rawImg = entry && typeof entry.imagen_unsplash === 'string' ? entry.imagen_unsplash.trim() : '';
+    if (!rawImg || !rawImg.startsWith('https://')) return safeFallback;
+
+    return rawImg.replace(/([?&])w=\d+/i, '$1w=800');
+  }
+
   // Calcula el ranking de destinos reales ordenados por mayor rebaja porcentual vs promedio
   function computeTopDiscountDeals(radarList, limit) {
     const maxItems = Number(limit) > 0 ? Number(limit) : 3;
@@ -76,9 +93,7 @@
       const posPct = typeof term.posicion_pct === 'number' ? term.posicion_pct : 50;
       const firstHotel = Array.isArray(dest.hoteles) && dest.hoteles[0] ? dest.hoteles[0] : {};
       const foto = String(firstHotel.foto || '').trim();
-      const safeFoto = foto.startsWith('https://')
-        ? foto
-        : 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=80';
+      const safeFoto = resolveDestinationImage(String(dest.id), foto);
 
       const codeCountry = String(dest.codigo_pais || 'ar').toLowerCase().replace(/[^a-z]/g, '').slice(0, 2) || 'ar';
       const iataShort = String(dest.iata || '').split('/')[0].trim().slice(0, 4).toUpperCase();
