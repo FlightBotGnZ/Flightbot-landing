@@ -157,18 +157,6 @@
       <!-- 3. Bloque Derecho Simétrico: Moneda + Dark Mode + Telegram -->
       <div class="flex items-center gap-2 shrink-0">
 
-        <!-- A. Selector de Moneda Global (NATIVO | ARS | USD) -->
-        <div class="hidden md:inline-flex items-center p-1 rounded-lg bg-slate-100 dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 text-xs font-semibold shrink-0"
-             role="group" aria-label="Selector de moneda global"
-             title="Cambiar moneda de visualización (NATIVO | ARS | USD)">
-          <button type="button" id="nav-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null"
-                  class="px-2 py-1 rounded-md text-white font-semibold aurora-cta-btn aurora-curr-active transition-all text-[11px] cursor-pointer">NATIVO</button>
-          <button type="button" id="nav-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null"
-                  class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-[11px] cursor-pointer">ARS</button>
-          <button type="button" id="nav-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null"
-                  class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-[11px] cursor-pointer">USD</button>
-        </div>
-
         <!-- B. Switch Dark Mode (Cuadrado perfecto h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-indigo-950/40 dark:bg-[#111324] items-center justify-center text-slate-700 dark:text-cyan-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 transition-all focus:outline-none shrink-0 cursor-pointer">
@@ -531,7 +519,7 @@
         <!-- 1. Bariloche -->
         <div class="group relative rounded-3xl overflow-hidden bg-white dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 shadow-md hover:shadow-xl transition-all flex flex-col justify-between aurora-card">
           <div class="relative h-48 w-full overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1548685913-fe6678babe8d?auto=format&fit=crop&w=800&q=80" alt="Bariloche" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80" alt="Bariloche" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent"></div>
             <div class="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase tracking-wider backdrop-blur-md aurora-deal-badge bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-extrabold shadow-sm">
               <span>⚡ -32% piso histórico</span>
@@ -568,7 +556,7 @@
         <!-- 2. Punta Cana -->
         <div class="group relative rounded-3xl overflow-hidden bg-white dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 shadow-md hover:shadow-xl transition-all flex flex-col justify-between aurora-card">
           <div class="relative h-48 w-full overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" alt="Punta Cana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+            <img src="https://images.unsplash.com/photo-1678816331175-a61a6835e889?auto=format&fit=crop&w=800&q=80" alt="Punta Cana" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent"></div>
             <div class="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase tracking-wider backdrop-blur-md aurora-deal-badge bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-extrabold shadow-sm">
               <span>⚡ -38% piso histórico</span>

@@ -37,6 +37,24 @@ html.dark body {
   color: #f1f5f9;
 }
 
+/* Selección de texto de alto contraste al marcar/copiar (Modo Claro y Modo Oscuro) */
+::selection {
+  background-color: rgba(79, 70, 229, 0.28) !important;
+  color: #0f172a !important;
+}
+::-moz-selection {
+  background-color: rgba(79, 70, 229, 0.28) !important;
+  color: #0f172a !important;
+}
+html.dark ::selection {
+  background-color: rgba(34, 211, 238, 0.35) !important;
+  color: #ffffff !important;
+}
+html.dark ::-moz-selection {
+  background-color: rgba(34, 211, 238, 0.35) !important;
+  color: #ffffff !important;
+}
+
 .dark .dark\:bg-\[\#0b0c16\] { background-color: #0b0c16 !important; }
 .dark .dark\:bg-\[\#0b0c16\]\/85 { background-color: rgba(11, 12, 22, 0.85) !important; }
 .dark .dark\:bg-\[\#0b0c16\]\/95 { background-color: rgba(11, 12, 22, 0.95) !important; }

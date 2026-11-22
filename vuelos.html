@@ -388,18 +388,6 @@
       <!-- 3. Bloque Derecho Simétrico: Moneda + Dark Mode + Telegram -->
       <div class="flex items-center gap-2 shrink-0">
 
-        <!-- A. Selector de Moneda Global (NATIVO | ARS | USD) -->
-        <div class="hidden md:inline-flex items-center p-1 rounded-lg bg-slate-100 dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 text-xs font-semibold shrink-0"
-             role="group" aria-label="Selector de moneda global"
-             title="Cambiar moneda de visualización (NATIVO | ARS | USD)">
-          <button type="button" id="nav-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null"
-                  class="px-2 py-1 rounded-md text-white font-semibold aurora-cta-btn aurora-curr-active transition-all text-[11px] cursor-pointer">NATIVO</button>
-          <button type="button" id="nav-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null"
-                  class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-[11px] cursor-pointer">ARS</button>
-          <button type="button" id="nav-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null"
-                  class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-[11px] cursor-pointer">USD</button>
-        </div>
-
         <!-- B. Switch Dark Mode (Cuadrado perfecto h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
                 class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-indigo-950/40 dark:bg-[#111324] items-center justify-center text-slate-700 dark:text-cyan-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 transition-all focus:outline-none shrink-0 cursor-pointer">
@@ -1397,70 +1385,63 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="py-12 bg-slate-100 dark:bg-[#0b0c16] border-t border-slate-200 dark:border-indigo-950/40 text-xs dark:text-slate-400 text-slate-600 theme-transition">
+  <footer class="py-12 bg-slate-100 dark:bg-[#0b0c16] border-t border-slate-200 dark:border-indigo-950/40 text-xs text-slate-600 dark:text-slate-400 theme-transition">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-8 mb-8 pb-8 border-b dark:border-slate-800 border-slate-200">
+
+      <div class="grid md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-slate-200 dark:border-indigo-950/40">
         <div>
           <div class="flex items-center gap-2 mb-3">
-            <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold text-xs" style="background-color: var(--brand-primary);">F</div>
-            <span class="text-base font-bold dark:text-white text-slate-900">FlightBot</span>
+            <div class="w-7 h-7 rounded-lg aurora-logo-badge flex items-center justify-center p-0.5">
+              <img src="img/rolli-avatar-transparent.png" alt="Rolli" class="w-full h-full object-contain" loading="lazy" decoding="async">
+            </div>
+            <span class="text-base font-black text-slate-900 dark:text-white">Flight<span class="text-cyan-300-aurora">Bot</span></span>
           </div>
-          <p class="dark:text-slate-400 text-slate-600 leading-relaxed">
-            Plataforma y asistente de inteligencia de viajes. Automatizamos la detección de ofertas en vuelos y alojamientos para viajeros de todo el mundo.
+          <p class="leading-relaxed">
+            Plataforma de inteligencia viajera creada en Argentina. Rolli vigila precios 24/7 para que no pagues de más en tus escapadas y vacaciones.
           </p>
         </div>
 
         <div>
-          <h5 class="dark:text-white text-slate-900 font-semibold text-sm mb-3">Canales de Contacto</h5>
+          <h5 class="text-slate-900 dark:text-white font-semibold text-sm mb-3">Contacto Directo</h5>
           <ul class="space-y-2">
-            <li>Telegram Oficial: <a href="https://t.me/GnZFlightBot" target="_blank" class="hover:underline font-semibold" style="color: var(--brand-primary);">@GnZFlightBot</a></li>
-            <li>Soporte y Consultas: <a href="mailto:soporte.flightbot@gmail.com" class="hover:underline font-semibold" style="color: var(--brand-primary);">soporte.flightbot@gmail.com</a></li>
-            <li class="pt-1">
-              <a href="https://t.me/GnZFlightBot?start=feedback_beta" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold border border-amber-500/30 bg-amber-500/10 text-amber-500 hover:bg-amber-500/20 transition-all">
-                <span>🛠️</span>
-                <span>Feedback Beta / Reportar Error</span>
-              </a>
-            </li>
+            <li>Telegram: <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer" class="font-bold text-cyan-300-aurora hover:underline">@GnZFlightBot</a></li>
+            <li>Soporte: <a href="mailto:soporte.flightbot@gmail.com" class="hover-cyan-aurora transition-colors">soporte.flightbot@gmail.com</a></li>
           </ul>
         </div>
 
         <div>
-          <h5 class="dark:text-white text-slate-900 font-semibold text-sm mb-3">Moneda y Cotización de Referencia</h5>
-          <p class="dark:text-slate-400 text-slate-600 leading-relaxed mb-2.5">
-            Ref. orientativa Dólar MEP / Turístico (<strong id="footer-usd-ref-rate" class="dark:text-slate-200 text-slate-800">Cotización en vivo</strong>). <span class="dark:text-slate-500 text-slate-400 font-medium" id="footer-sync-time">Radar sincronizado hoy a las <span id="footer-sync-hhmm">14:50</span> hs.</span>
+          <h5 class="text-slate-900 dark:text-white font-semibold text-sm mb-3">Moneda y Cotización de Referencia</h5>
+          <p class="leading-relaxed mb-2.5">
+            Referencia orientativa Dólar MEP / Turístico (<strong id="footer-usd-ref-rate" class="text-slate-800 dark:text-slate-200">$1.350 ARS</strong>). No intermediamos pagos ni guardamos tarjetas.
           </p>
           <div class="flex items-center gap-2 flex-wrap">
             <span class="text-[11px] font-semibold text-slate-500 dark:text-slate-400">Moneda activa:</span>
-            <div id="footer-curr-selector-wrap" class="inline-flex p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-semibold shadow-xs" title="Cotización de referencia en vivo">
-              <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
-              <button type="button" id="footer-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">ARS</button>
-              <button type="button" id="footer-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs cursor-pointer">USD</button>
+            <div class="inline-flex p-1 bg-white dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 rounded-lg text-xs font-semibold shadow-xs" title="Cambiar moneda de visualización global (NATIVO | ARS | USD)">
+              <button type="button" id="footer-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold aurora-cta-btn aurora-curr-active shadow-xs transition-all text-xs cursor-pointer">NATIVO</button>
+              <button type="button" id="footer-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-xs cursor-pointer">ARS</button>
+              <button type="button" id="footer-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-xs cursor-pointer">USD</button>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Aviso Legal y Divulgación de Afiliación para Travelpayouts / Booking -->
-      <div class="dark:bg-slate-900/70 bg-white p-4 rounded-xl border dark:border-slate-800/80 border-slate-200 mb-6 shadow-sm theme-transition">
-        <p class="dark:text-slate-400 text-slate-600 leading-relaxed">
-          <strong class="dark:text-slate-300 text-slate-700">Divulgación de Afiliación (Affiliate Disclosure):</strong> 
-          FlightBot participa en programas de marketing de afiliados, incluyendo Travelpayouts y Booking.com. Algunos de los enlaces que recomendamos pueden generar una comisión para nuestro proyecto si decides realizar una reserva, sin que esto implique ningún coste adicional para ti. Toda recomendación se basa en criterios objetivos de calidad, seguridad y valor para el viajero.
+      <!-- Divulgación de Afiliación -->
+      <div class="bg-white dark:bg-[#111324]/80 p-4 rounded-2xl border border-slate-200 dark:border-indigo-950/40 mb-6">
+        <p class="leading-relaxed">
+          <strong class="text-slate-700 dark:text-slate-200">Aviso de Afiliación:</strong> FlightBot participa en programas de afiliados de Booking.com y Travelpayouts. Algunos enlaces pueden generar una comisión de referencia sin costo adicional para vos. Flybondi se encuentra excluido del catálogo por motivos operativos y judiciales.
         </p>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-between dark:text-slate-500 text-slate-500 gap-4">
-        <div>&copy; <span class="current-year">2026</span> FlightBot. Todos los derechos reservados.</div>
-        <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
-          <a href="/faq" class="hover:underline flex items-center gap-1 font-bold" style="color: var(--brand-primary);"><span>❓</span> Preguntas Frecuentes</a>
-          <a href="/escapadas" class="hover:underline flex items-center gap-1 font-semibold dark:text-slate-300 text-slate-700"><span>🚗</span> Modo Ruta</a>
-          <a href="/billetera" class="hover:underline flex items-center gap-1 font-semibold dark:text-slate-300 text-slate-700"><span>🧳</span> Billetera</a>
-          <a href="/guias/" class="hover:underline flex items-center gap-1 font-semibold dark:text-slate-300 text-slate-700"><span>📖</span> Guías</a>
-          <a href="https://t.me/GnZFlightBot?start=feedback_beta" target="_blank" rel="noopener noreferrer" class="hover:underline flex items-center gap-1 font-bold text-amber-500"><span>🛠️</span> Feedback Beta</a>
-          <a href="javascript:void(0)" onclick="openPrivacyModal('privacy')" class="hover:underline">Privacidad</a>
-          <a href="javascript:void(0)" onclick="openPrivacyModal('cookies')" class="hover:underline">Cookies</a>
-          <a href="javascript:void(0)" onclick="openPrivacyModal('terms')" class="hover:underline">Términos</a>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>&copy; 2026 FlightBot. Diseñado para viajeros astutos.</div>
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="/faq" class="hover-cyan-aurora transition-colors">Preguntas Frecuentes</a>
+          <a href="/escapadas" class="hover-cyan-aurora transition-colors">Modo Ruta</a>
+          <a href="/billetera" class="hover-cyan-aurora transition-colors">Billetera</a>
+          <a href="/guias" class="hover-cyan-aurora transition-colors">Guías</a>
         </div>
       </div>
+
     </div>
   </footer>
 

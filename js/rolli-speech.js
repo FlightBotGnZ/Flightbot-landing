@@ -6,6 +6,24 @@
 (function () {
   'use strict';
 
+  // Resuelve la foto oficial del destino desde el catálogo centralizado de guías (FB_GUIAS_KB)
+  function resolveDestinationImage(destId, fallbackUrl) {
+    const safeFallback = (typeof fallbackUrl === 'string' && fallbackUrl.startsWith('https://'))
+      ? fallbackUrl
+      : 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=80';
+    const guideKb = (typeof window !== 'undefined' && window.FB_GUIAS_KB && typeof window.FB_GUIAS_KB === 'object')
+      ? window.FB_GUIAS_KB
+      : null;
+    if (!guideKb || !destId) return safeFallback;
+
+    const entry = guideKb[destId];
+    const rawImg = entry && typeof entry.imagen_unsplash === 'string' ? entry.imagen_unsplash.trim() : '';
+    if (!rawImg || !rawImg.startsWith('https://')) return safeFallback;
+
+    // Ajusta el ancho a 800px para las tarjetas de portada manteniendo la misma foto verificada
+    return rawImg.replace(/([?&])w=\d+/i, '$1w=800');
+  }
+
   // Catálogo de oportunidades destacadas detectadas por Rolli
   const ROLLI_DEALS = [
     {
@@ -23,7 +41,7 @@
       tag: 'Detectado por Rolli',
       tiempoDeteccion: 'hace 18 min',
       speech: 'Tarifa mínima récord para Bariloche: $ 137.460 ARS final con tasas. Vuelo directo sin escalas.',
-      img: 'https://images.unsplash.com/photo-1548685913-fe6678babe8d?auto=format&fit=crop&w=800&q=80'
+      img: 'https://images.unsplash.com/photo-1651640821812-6328be4b6994?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'puntacana',
@@ -40,7 +58,7 @@
       tag: 'Detectado por Rolli',
       tiempoDeteccion: 'hace 12 min',
       speech: 'Punta Cana directo a US$ 621 ida y vuelta. Un 38% por debajo del promedio histórico registrado.',
-      img: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80'
+      img: 'https://images.unsplash.com/photo-1678816331175-a61a6835e889?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'rio',
@@ -91,7 +109,7 @@
       tag: 'Detectado por Rolli',
       tiempoDeteccion: 'hace 41 min',
       speech: 'Cupos confirmados en American Airlines para Miami a US$ 638 directo ida y vuelta.',
-      img: 'https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=800&q=80'
+      img: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80'
     },
     {
       id: 'iguazu',
@@ -108,7 +126,7 @@
       tag: 'Detectado por Rolli',
       tiempoDeteccion: 'hace 52 min',
       speech: 'Cataratas del Iguazú a $ 118.900 ARS ida y vuelta final. Escapada directa sin pagar de más.',
-      img: 'https://images.unsplash.com/photo-1582650625119-3a31f8418b7d?auto=format&fit=crop&w=800&q=80'
+      img: 'https://images.unsplash.com/photo-1545832063-74f2d924b61a?auto=format&fit=crop&w=800&q=80'
     }
   ];
 
@@ -215,11 +233,12 @@
       const priceFmt = (typeof window.formatearPrecioMoneda === 'function')
         ? window.formatearPrecioMoneda(d.precioOriginal, d.id)
         : d.precioOriginal;
+      const cardImg = resolveDestinationImage(d.id, d.img);
 
       html += `
         <div class="group relative rounded-3xl overflow-hidden bg-white dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 shadow-md hover:shadow-xl transition-all flex flex-col justify-between aurora-card">
           <div class="relative h-48 w-full overflow-hidden">
-            <img src="${d.img}" alt="${d.ciudad}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
+            <img src="${cardImg}" alt="${d.ciudad}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent"></div>
             
             <div class="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase tracking-wider backdrop-blur-md aurora-deal-badge bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-extrabold shadow-sm">
@@ -359,6 +378,7 @@
       deal.cupos = dias <= 10 ? 2 : (dias <= 25 ? 3 : 4);
       deal.precioOriginal = precioStr;
       deal.fechas = fechasStr;
+      deal.img = resolveDestinationImage(deal.id, deal.img);
       deal.speech = `Tarifa destacada para ${deal.ciudad}: ${precioStr} ida y vuelta (${fechasStr}).`;
     });
   }
