@@ -485,25 +485,19 @@
             </button>
           </div>
 
-          <!-- Fila 3: Filtro por Horizonte Temporal (Opción 3: Combinado) -->
+          <!-- Fila 3: Filtro por Horizonte Temporal -->
           <div class="flex items-center gap-1.5 overflow-x-auto w-full pb-1 fb-custom-scrollbar text-xs pt-2.5 border-t dark:border-slate-800/80 border-slate-100">
             <span class="text-[11px] font-extrabold dark:text-slate-400 text-slate-500 uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
               <span>🗓️</span> Horizonte:
             </span>
             <button type="button" onclick="filtrarHorizonte('todos')" id="chip-horiz-todos" class="chip-horizonte px-3 py-1.5 rounded-xl font-bold whitespace-nowrap text-white shadow-xs" style="background-color: var(--brand-primary);">
-              🌟 Todos los Meses
+              🌟 Todos
             </button>
-            <button type="button" onclick="filtrarHorizonte('mes1')" id="chip-horiz-mes1" class="chip-horizonte px-3 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
-              ⚡ Este Mes (<span id="txt-h-mes1">Nov</span>)
+            <button type="button" onclick="filtrarHorizonte('proximos_3m')" id="chip-horiz-proximos_3m" class="chip-horizonte px-3 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
+              ⚡ Próximos 3 meses
             </button>
-            <button type="button" onclick="filtrarHorizonte('mes2')" id="chip-horiz-mes2" class="chip-horizonte px-3 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
-              📅 Próximo Mes (<span id="txt-h-mes2">Dic</span>)
-            </button>
-            <button type="button" onclick="filtrarHorizonte('mes3')" id="chip-horiz-mes3" class="chip-horizonte px-3 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
-              🏖️ En 3 Meses (<span id="txt-h-mes3">Ene</span>)
-            </button>
-            <button type="button" onclick="filtrarHorizonte('mes6')" id="chip-horiz-mes6" class="chip-horizonte px-3 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
-              🎯 A 6 Meses (<span id="txt-h-mes6">180d</span>)
+            <button type="button" onclick="filtrarHorizonte('planificar_6m')" id="chip-horiz-planificar_6m" class="chip-horizonte px-3 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
+              🗓️ Para planificar (6+ meses)
             </button>
           </div>
         </div>
@@ -767,10 +761,11 @@
     // 4. Grilla de Vuelos Relámpago con Horizontes Temporales (Opción 3)
     let currentRegion = 'todos';
     let currentPresupuesto = 'todos';
-    let currentHorizonte = 'todos'; // 'todos' | 'mes1' | 'mes2' | 'mes3' | 'mes6'
+    let currentHorizonte = 'todos'; // 'todos' | 'proximos_3m' | 'planificar_6m'
     let searchQuery = '';
     let currentMoneda = (localStorage.getItem('fb_user_currency') === 'ARS' || localStorage.getItem('fb_user_currency') === 'USD') ? localStorage.getItem('fb_user_currency') : 'DEFAULT';
-    let cardPestanasActivas = {}; // { [destId]: 'mes1' | 'mes2' | 'mes3' | 'mes6' }
+    let cardPestanasActivas = {}; // { [destId]: 'proximos_3m' | 'planificar_6m' }
+    let cardSlideActivos = {}; // { [`${destId}:${tabKey}`]: number }
     window.addEventListener('flightbot:currencyChange', function(e) {
       const c = (e && e.detail && e.detail.currency) || 'NATIVO';
       currentMoneda = (c === 'ARS' || c === 'USD') ? c : 'DEFAULT';
@@ -819,21 +814,13 @@
       el.textContent = fuenteLabel || 'Tarifas sincronizadas';
     }
 
-    // Motor de Horizontes Temporales: prioriza salidas reales de Aviasales (/api/vuelos)
+    // Motor de Horizontes Temporales v2: Próximos 3 meses (hasta 3 ofertas reales) + Para planificar (6+ meses)
     function calcularHorizontesDestino(dest) {
       const hoy = new Date();
       hoy.setHours(0, 0, 0, 0);
-      const fechaMinima = new Date(hoy.getTime() + 3 * 24 * 60 * 60 * 1000);
+      const fechaMinima = new Date(hoy.getTime() + 5 * 24 * 60 * 60 * 1000);
       const toLocalIso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
       const fechaMinimaIso = toLocalIso(fechaMinima);
-
-      let startYear = hoy.getFullYear();
-      let startMonth = hoy.getMonth();
-      const ultimoDiaMesActual = new Date(startYear, startMonth + 1, 0).getDate();
-      if (hoy.getDate() >= ultimoDiaMesActual - 4) {
-        startMonth += 1;
-        if (startMonth > 11) { startMonth = 0; startYear += 1; }
-      }
 
       const traducirMesesTexto = (txt) => String(txt || '')
         .replace(/\bJan\b/g, 'Ene')
@@ -849,345 +836,136 @@
         return {
           ...s,
           opcion: s.opcion || (idxFallback + 1),
-          etiqueta_opcion: s.etiqueta_opcion || (idxFallback === 0 ? 'Mejor Tarifa' : `Salida ${String.fromCharCode(65 + idxFallback)}`),
+          etiqueta_opcion: s.etiqueta_opcion || (idxFallback === 0 ? '🔥 Mejor Tarifa' : `⚡ Opción ${idxFallback + 1}`),
           fechas_texto: traducirMesesTexto(s.fechas_texto),
           dias_restantes: diasCalc
         };
       };
 
-      // 1. Si el destino ya cuenta con salidas reales en vivo de Aviasales (/api/vuelos), agrupar por mes completando con cazadas vigentes
-      if (dest && Array.isArray(dest.salidas_reales) && dest.salidas_reales.length > 0) {
-        const reales = dest.salidas_reales
-          .filter(s => s && s.fecha_ida && s.fecha_ida >= fechaMinimaIso)
-          .map((s, idx) => normalizarSalidaVigente(s, idx));
+      const rel = (dest && dest.oportunidad_relampago) || {};
+      const baseAhorroNum = parseInt(rel.ahorro_porcentaje) || (dest && dest.es_cabotaje ? 25 : 20);
+      const ahorroEbNum = Math.max(15, Math.round(baseAhorroNum * 0.92));
 
-        const cazadasPool = [];
-        if (dest.salidas_reales_cazadas && Array.isArray(dest.salidas_reales_cazadas.meses)) {
-          for (const mCaz of dest.salidas_reales_cazadas.meses) {
-            for (const sCaz of (mCaz.salidas || [])) {
-              if (
-                sCaz &&
-                sCaz.es_real_aviasales !== false &&
-                (sCaz.antiguedad_hs === null || sCaz.antiguedad_hs === undefined || Number(sCaz.antiguedad_hs) <= 24) &&
-                sCaz.fecha_ida &&
-                sCaz.fecha_ida >= fechaMinimaIso
-              ) {
-                cazadasPool.push(normalizarSalidaVigente(sCaz, cazadasPool.length));
-              }
-            }
-          }
+      const tierFrescuraCard = (s) => {
+        const hs = s && s.antiguedad_hs;
+        if (hs === null || hs === undefined || !Number.isFinite(Number(hs))) return 1;
+        const n = Number(hs);
+        if (n <= 18) return 0;
+        if (n <= 24) return 1;
+        if (n <= 48) return 2;
+        return 3;
+      };
+
+      const ordenarOfertas = (arr) => arr.slice().sort((a, b) => {
+        const ta = tierFrescuraCard(a);
+        const tb = tierFrescuraCard(b);
+        if (ta !== tb) return ta - tb;
+        const pa = dest && dest.es_cabotaje ? (Number(a.precio_ars) || 0) : (Number(a.precio_usd) || 0);
+        const pb = dest && dest.es_cabotaje ? (Number(b.precio_ars) || 0) : (Number(b.precio_usd) || 0);
+        return pa - pb;
+      });
+
+      // Recolectar pool de ofertas reales vigentes (prioridad: /api/vuelos > cazador v2 > cazador legacy > oportunidad_relampago)
+      const poolMap = new Map();
+      const agregarAlPool = (s) => {
+        if (!s || !s.fecha_ida || s.fecha_ida < fechaMinimaIso) return;
+        if (s.es_real_aviasales === false) return;
+        if (s.antiguedad_hs !== null && s.antiguedad_hs !== undefined && Number(s.antiguedad_hs) > 72) return;
+        const key = `${s.fecha_ida}_${s.fecha_vuelta || ''}`;
+        if (!poolMap.has(key)) {
+          poolMap.set(key, normalizarSalidaVigente(s, poolMap.size));
         }
+      };
 
-        if (reales.length >= 1) {
-          const rel = dest.oportunidad_relampago || {};
-          const baseAhorroNum = parseInt(rel.ahorro_porcentaje) || (dest.es_cabotaje ? 25 : 20);
-          const tierFrescuraCard = (s) => {
-            const hs = s && s.antiguedad_hs;
-            if (hs === null || hs === undefined || !Number.isFinite(Number(hs))) return 1;
-            const n = Number(hs);
-            if (n <= 18) return 0;
-            if (n <= 24) return 1;
-            if (n <= 48) return 2;
-            return 3;
-          };
-          const realesOrdenadas = reales.slice().sort((a, b) => {
-            const ta = tierFrescuraCard(a);
-            const tb = tierFrescuraCard(b);
-            if (ta !== tb) return ta - tb;
-            return (Number(a.precio_usd) || 0) - (Number(b.precio_usd) || 0);
-          });
+      if (dest && Array.isArray(dest.salidas_reales)) {
+        dest.salidas_reales.forEach(agregarAlPool);
+      }
 
-          const paresUsados = new Set();
-          const slotsMes = [];
-          for (let i = 0; i < 3; i++) {
-            let y = startYear;
-            let m = startMonth + i;
-            if (m > 11) { y += Math.floor(m / 12); m = m % 12; }
-            const prefijo = `${y}-${String(m + 1).padStart(2, '0')}`;
-            const delMes = [];
-            for (const s of realesOrdenadas) {
-              if (!s.fecha_ida.startsWith(prefijo)) continue;
-              const k = `${s.fecha_ida}_${s.fecha_vuelta || ''}`;
-              if (paresUsados.has(k)) continue;
-              if (delMes.length === 0) {
-                delMes.push({ ...s, opcion: 1, etiqueta_opcion: 'Salida A' });
-                paresUsados.add(k);
-              } else if (delMes.length < 2) {
-                const d0 = new Date(`${delMes[0].fecha_ida}T00:00:00`);
-                const d1 = new Date(`${s.fecha_ida}T00:00:00`);
-                if (Math.abs((d1 - d0) / (24 * 60 * 60 * 1000)) >= 3) {
-                  delMes.push({ ...s, opcion: 2, etiqueta_opcion: 'Salida B' });
-                  paresUsados.add(k);
-                  break;
-                }
-              }
-            }
-            slotsMes.push({ y, m, prefijo, delMes });
-          }
-
-          const meses = [];
-          for (let i = 0; i < 3; i++) {
-            const { y, m, prefijo, delMes } = slotsMes[i];
-            const centroMes = new Date(y, m, 15);
-            if (delMes.length < 2) {
-              for (const sCaz of cazadasPool) {
-                const k = `${sCaz.fecha_ida}_${sCaz.fecha_vuelta || ''}`;
-                if (sCaz.fecha_ida.startsWith(prefijo) && !paresUsados.has(k)) {
-                  delMes.push({
-                    ...sCaz,
-                    opcion: delMes.length + 1,
-                    etiqueta_opcion: delMes.length === 0 ? 'Salida A' : 'Salida B'
-                  });
-                  paresUsados.add(k);
-                  if (delMes.length >= 2) break;
-                }
-              }
-            }
-            if (delMes.length < 2) {
-              const cercanas = realesOrdenadas
-                .filter(s => {
-                  const k = `${s.fecha_ida}_${s.fecha_vuelta || ''}`;
-                  if (paresUsados.has(k)) return false;
-                  if (s.antiguedad_hs !== null && s.antiguedad_hs !== undefined && Number(s.antiguedad_hs) > 48) return false;
-                  if ((s.dias_restantes || 0) >= 140) return false;
-                  const d = new Date(`${s.fecha_ida}T00:00:00`);
-                  return Math.abs((d - centroMes) / 86400000) <= 45;
-                })
-                .sort((a, b) => {
-                  const ta = tierFrescuraCard(a);
-                  const tb = tierFrescuraCard(b);
-                  if (ta !== tb) return ta - tb;
-                  const da = Math.abs((new Date(`${a.fecha_ida}T00:00:00`) - centroMes) / 86400000);
-                  const db = Math.abs((new Date(`${b.fecha_ida}T00:00:00`) - centroMes) / 86400000);
-                  if (Math.abs(da - db) > 7) return da - db;
-                  return (Number(a.precio_usd) || 0) - (Number(b.precio_usd) || 0);
-                });
-              for (const s of cercanas) {
-                if (delMes.length >= 2) break;
-                if (delMes.length === 1) {
-                  const d0 = new Date(`${delMes[0].fecha_ida}T00:00:00`);
-                  const d1 = new Date(`${s.fecha_ida}T00:00:00`);
-                  if (Math.abs((d1 - d0) / 86400000) < 3) continue;
-                }
-                const k = `${s.fecha_ida}_${s.fecha_vuelta || ''}`;
-                delMes.push({
-                  ...s,
-                  opcion: delMes.length + 1,
-                  etiqueta_opcion: delMes.length === 0 ? 'Salida A' : 'Salida B'
-                });
-                paresUsados.add(k);
-              }
-            }
-            let salidasMes = delMes;
-            if (!salidasMes.length) {
-              const disp = realesOrdenadas.find(s => !paresUsados.has(`${s.fecha_ida}_${s.fecha_vuelta || ''}`)) || realesOrdenadas[0];
-              if (disp) {
-                salidasMes = [{ ...disp, opcion: 1, etiqueta_opcion: 'Salida A' }];
-                paresUsados.add(`${disp.fecha_ida}_${disp.fecha_vuelta || ''}`);
-              }
-            }
-            const ahorroMes = Math.max(10, Math.round(baseAhorroNum * (1 - (i * 0.17))));
-            meses.push({
-              key: `mes${i + 1}`,
-              nombre: `${NOMBRES_MESES[m]} ${y}`,
-              nombre_corto: NOMBRES_CORTOS[m],
-              año: y,
-              ahorro_porcentaje: `${ahorroMes}% OFF`,
-              ahorro_pct_num: ahorroMes,
-              salidas: salidasMes
-            });
-          }
-
-          const lejanas = reales.filter(s => (s.dias_restantes || 0) >= 120);
-          const ebCaz = dest.salidas_reales_cazadas && dest.salidas_reales_cazadas.early_bird && Array.isArray(dest.salidas_reales_cazadas.early_bird.salidas)
-            ? dest.salidas_reales_cazadas.early_bird.salidas.filter(s => s && s.fecha_ida && s.fecha_ida >= fechaMinimaIso).map((s, idx) => normalizarSalidaVigente(s, idx))
-            : [];
-          const earlyList = lejanas.length ? lejanas.slice(0, 1) : (ebCaz.length ? ebCaz.slice(0, 1) : [reales[reales.length - 1]]);
-          const earlyBird = {
-            key: 'mes6',
-            nombre: 'Largo Plazo',
-            nombre_corto: '6 Meses',
-            año: startYear,
-            ahorro_porcentaje: `${Math.max(15, Math.round(baseAhorroNum * 0.92))}% OFF`,
-            ahorro_pct_num: Math.max(15, Math.round(baseAhorroNum * 0.92)),
-            salidas: earlyList
-          };
-          return {
-            meses,
-            early_bird: earlyBird,
-            mapa_tabs: { mes1: meses[0], mes2: meses[1], mes3: meses[2], mes6: earlyBird }
-          };
+      const caz = dest && dest.salidas_reales_cazadas;
+      if (caz && caz.esquema === 'multi_horizonte_v2') {
+        const s3m = (caz.proximos_3_meses && Array.isArray(caz.proximos_3_meses.salidas)) ? caz.proximos_3_meses.salidas : [];
+        const s6m = (caz.para_planificar && Array.isArray(caz.para_planificar.salidas)) ? caz.para_planificar.salidas : [];
+        s3m.forEach(agregarAlPool);
+        s6m.forEach(agregarAlPool);
+      } else if (caz) {
+        if (Array.isArray(caz.meses)) {
+          caz.meses.forEach(m => (m.salidas || []).forEach(agregarAlPool));
+        }
+        if (caz.early_bird && Array.isArray(caz.early_bird.salidas)) {
+          caz.early_bird.salidas.forEach(agregarAlPool);
         }
       }
 
-      // 2. Si el destino ya cuenta con ofertas reales cazadas de Aviasales en JSON, validar mes objetivo y fechas vigentes
-      if (dest && dest.salidas_reales_cazadas && dest.salidas_reales_cazadas.meses && dest.salidas_reales_cazadas.meses.length === 3) {
-        const caz = dest.salidas_reales_cazadas;
-        const mesObjetivoEsperado = `${NOMBRES_MESES[startMonth]} ${startYear}`;
-        const primerMesCoincide = caz.meses[0] && (caz.meses[0].nombre === mesObjetivoEsperado || caz.meses[0].nombre_mes === mesObjetivoEsperado);
-        const todasVigentes = primerMesCoincide && caz.meses.every(m =>
-          Array.isArray(m.salidas) && m.salidas.length > 0 && m.salidas.every(s => s.fecha_ida && s.fecha_ida >= fechaMinimaIso)
-        );
-        const eb = caz.early_bird;
-        const ebVigente = eb && Array.isArray(eb.salidas) && eb.salidas.length > 0 && eb.salidas.every(s => s.fecha_ida && s.fecha_ida >= fechaMinimaIso);
-        if (todasVigentes && ebVigente) {
-          const mesesNorm = caz.meses.map(m => ({
-            ...m,
-            salidas: m.salidas.map((s, idx) => normalizarSalidaVigente(s, idx))
-          }));
-          const ebNorm = {
-            ...eb,
-            salidas: eb.salidas.map((s, idx) => normalizarSalidaVigente(s, idx))
-          };
-          return {
-            meses: mesesNorm,
-            early_bird: ebNorm,
-            mapa_tabs: {
-              mes1: mesesNorm[0],
-              mes2: mesesNorm[1],
-              mes3: mesesNorm[2],
-              mes6: ebNorm
-            }
-          };
-        }
-      }
-
-      const noches = (dest.vuelos && dest.vuelos[0] && dest.vuelos[0].noches) || (dest.es_cabotaje ? 5 : (dest.categoria_region === 'europa_mundo' ? 14 : 7));
-      const iata = (dest.iata || 'BUE').toUpperCase();
-      const esCabotaje = Boolean(dest.es_cabotaje);
-      const rel = dest.oportunidad_relampago || {};
-      const baseArs = Number(rel.precio_ars) || 139240;
-      const baseUsd = Number(rel.precio_usd_num) || 103;
-
-      const meses = [];
-      const factores = [0.95, 1.05, 1.12]; // Mes 1: Last-minute (-35%), Mes 2: Oportunidad (-25%), Mes 3: Temporada (-18%)
-      const baseAhorroNum = parseInt(rel.ahorro_porcentaje) || (dest.es_cabotaje ? 30 : 25);
-      // Descuentos decrecientes y dinámicos según horizonte temporal:
-      // Mes 1: descuento base inminente (ej. 24%)
-      // Mes 2: descuento intermedio (ej. 20%)
-      // Mes 3: descuento estándar de temporada (ej. 16%)
-      const factoresAhorro = [1.0, 0.83, 0.67];
-
-      for (let i = 0; i < 3; i++) {
-        const ahorroMesNum = Math.max(10, Math.round(baseAhorroNum * factoresAhorro[i]));
-        let y = startYear;
-        let m = startMonth + i;
-        if (m > 11) {
-          y += Math.floor(m / 12);
-          m = m % 12;
-        }
-
-        const factor = factores[i];
-        const pArs = Math.round((baseArs * factor) / 100) * 100;
-        const pUsd = Math.round(baseUsd * factor);
-
-        // Salida 1 (Quincena 1: días 9-15)
-        let ida1 = new Date(y, m, 9);
-        while (ida1.getDay() !== 5 && ida1.getDay() !== 4) {
-          ida1.setDate(ida1.getDate() + 1);
-        }
-        if (ida1 < fechaMinima) {
-          ida1 = new Date(fechaMinima.getTime() + 2 * 24 * 60 * 60 * 1000);
-        }
-        const vue1 = new Date(ida1.getTime() + noches * 24 * 60 * 60 * 1000);
-
-        // Salida 2 (Quincena 2: días 21-27)
-        let ida2 = new Date(y, m, 21);
-        while (ida2.getDay() !== 5 && ida2.getDay() !== 4) {
-          ida2.setDate(ida2.getDate() + 1);
-        }
-        if ((ida2 - ida1) / (24 * 60 * 60 * 1000) < 7) {
-          ida2 = new Date(ida1.getTime() + 8 * 24 * 60 * 60 * 1000);
-        }
-        const vue2 = new Date(ida2.getTime() + noches * 24 * 60 * 60 * 1000);
-
-        const fmt = (d) => `${d.getDate()} ${NOMBRES_CORTOS[d.getMonth()]}`;
-        const iso = (d) => d.toISOString().split('T')[0];
-
-        const salidas = [
-          {
-            opcion: 1,
-            etiqueta_opcion: 'Salida A',
-            fecha_ida: iso(ida1),
-            fecha_vuelta: iso(vue1),
-            fechas_texto: `${fmt(ida1)} - ${fmt(vue1)} ${vue1.getFullYear()}`,
-            noches: noches,
-            dias_restantes: Math.max(1, Math.round((ida1 - hoy) / (24 * 60 * 60 * 1000))),
-            precio_ars: pArs,
-            precio_usd: pUsd,
-            google_flights_url: `https://www.google.com/travel/flights?q=Flights%20to%20${iata}%20from%20${esCabotaje ? 'BUE' : 'EZE'}%20on%20${iso(ida1)}%20through%20${iso(vue1)}&hl=es`,
-            kiwi_url: `https://www.kiwi.com/es/search/results/buenos-aires-argentina/${iata.toLowerCase()}/${iso(ida1)}/${iso(vue1)}?affilid=flightbot`
-          },
-          {
-            opcion: 2,
-            etiqueta_opcion: 'Salida B',
-            fecha_ida: iso(ida2),
-            fecha_vuelta: iso(vue2),
-            fechas_texto: `${fmt(ida2)} - ${fmt(vue2)} ${vue2.getFullYear()}`,
-            noches: noches,
-            dias_restantes: Math.max(1, Math.round((ida2 - hoy) / (24 * 60 * 60 * 1000))),
-            precio_ars: Math.round(pArs * 1.03 / 100) * 100,
-            precio_usd: Math.round(pUsd * 1.03),
-            google_flights_url: `https://www.google.com/travel/flights?q=Flights%20to%20${iata}%20from%20${esCabotaje ? 'BUE' : 'EZE'}%20on%20${iso(ida2)}%20through%20${iso(vue2)}&hl=es`,
-            kiwi_url: `https://www.kiwi.com/es/search/results/buenos-aires-argentina/${iata.toLowerCase()}/${iso(ida2)}/${iso(vue2)}?affilid=flightbot`
-          }
-        ];
-
-        meses.push({
-          key: `mes${i + 1}`,
-          nombre: `${NOMBRES_MESES[m]} ${y}`,
-          nombre_corto: NOMBRES_CORTOS[m],
-          año: y,
-          ahorro_porcentaje: `${ahorroMesNum}% OFF`,
-          ahorro_pct_num: ahorroMesNum,
-          salidas: salidas
+      if (poolMap.size === 0 && rel && rel.fecha_ida && rel.fecha_ida >= fechaMinimaIso && rel.found_at) {
+        agregarAlPool({
+          fecha_ida: rel.fecha_ida,
+          fecha_vuelta: rel.fecha_vuelta || rel.fecha_ida,
+          fechas_texto: rel.fechas_texto || rel.fechas || rel.fecha_ida,
+          noches: rel.noches || 7,
+          dias_restantes: rel.dias_para_el_vuelo,
+          precio_usd: rel.precio_usd_num,
+          precio_ars: rel.precio_ars,
+          google_flights_url: rel.google_flights_url,
+          kiwi_url: rel.kiwi_url,
+          aerolinea_gate: rel.aerolinea,
+          found_at: rel.found_at,
+          antiguedad_hs: rel.antiguedad_hs,
+          es_real_aviasales: true
         });
       }
 
-      // Early Bird a 180 días con umbral de rotación a 150 días
-      let ida180 = new Date(hoy.getTime() + 180 * 24 * 60 * 60 * 1000);
-      while (ida180.getDay() !== 5) {
-        ida180.setDate(ida180.getDate() + 1);
-      }
-      const vue180 = new Date(ida180.getTime() + noches * 24 * 60 * 60 * 1000);
-      const pArs180 = Math.round((baseArs * 0.96) / 100) * 100;
-      const pUsd180 = Math.round(baseUsd * 0.96);
-      const dias180 = Math.round((ida180 - hoy) / (24 * 60 * 60 * 1000));
-      const fmt = (d) => `${d.getDate()} ${NOMBRES_CORTOS[d.getMonth()]}`;
-      const iso = (d) => d.toISOString().split('T')[0];
+      const poolOrdenado = ordenarOfertas(Array.from(poolMap.values()));
 
-      const ahorro180Num = Math.max(15, Math.round(baseAhorroNum * 0.92));
-      const earlyBird = {
-        key: 'mes6',
-        nombre: `A 6 Meses (${NOMBRES_CORTOS[ida180.getMonth()]} ${ida180.getFullYear()})`,
-        nombre_corto: '6 Meses',
-        año: ida180.getFullYear(),
-        ahorro_porcentaje: `${ahorro180Num}% OFF`,
-        ahorro_pct_num: ahorro180Num,
-        salidas: [{
-          opcion: 1,
-          etiqueta_opcion: '🎯 Early Bird',
-          fecha_ida: iso(ida180),
-          fecha_vuelta: iso(vue180),
-          fechas_texto: `${fmt(ida180)} - ${fmt(vue180)} ${vue180.getFullYear()}`,
-          noches: noches,
-          dias_restantes: dias180,
-          umbral_rotacion_dias: 150,
-          precio_ars: pArs180,
-          precio_usd: pUsd180,
-          google_flights_url: `https://www.google.com/travel/flights?q=Flights%20to%20${iata}%20from%20${esCabotaje ? 'BUE' : 'EZE'}%20on%20${iso(ida180)}%20through%20${iso(vue180)}&hl=es`,
-          kiwi_url: `https://www.kiwi.com/es/search/results/buenos-aires-argentina/${iata.toLowerCase()}/${iso(ida180)}/${iso(vue180)}?affilid=flightbot`
-        }]
+      // 1. Próximos 3 meses (5d a 90d): hasta 3 ofertas reales con >= 5 días de separación
+      const candidatas3m = poolOrdenado.filter(s => (s.dias_restantes || 0) <= 90);
+      const salidas3m = [];
+      for (const cand of candidatas3m) {
+        if (salidas3m.length >= 3) break;
+        const dCand = new Date(`${cand.fecha_ida}T00:00:00`).getTime();
+        const muyCerca = salidas3m.some(e => {
+          const dEl = new Date(`${e.fecha_ida}T00:00:00`).getTime();
+          return Math.abs(dCand - dEl) < (5 * 24 * 60 * 60 * 1000);
+        });
+        if (muyCerca) continue;
+        salidas3m.push({
+          ...cand,
+          opcion: salidas3m.length + 1,
+          etiqueta_opcion: salidas3m.length === 0 ? '🔥 Mejor Tarifa' : `⚡ Opción ${salidas3m.length + 1}`
+        });
+      }
+
+      // 2. Para planificar (6+ meses): mejor oferta real >= 150 días (priorizando >= 180 días), sin inventar
+      const candidatas180 = poolOrdenado.filter(s => (s.dias_restantes || 0) >= 180);
+      const candidatas150 = poolOrdenado.filter(s => (s.dias_restantes || 0) >= 150);
+      const poolPlanificar = candidatas180.length ? candidatas180 : candidatas150;
+      const salidas6m = poolPlanificar.length
+        ? [{ ...poolPlanificar[0], opcion: 1, etiqueta_opcion: '🗓️ Para planificar' }]
+        : [];
+
+      const bloque3m = {
+        key: 'proximos_3m',
+        nombre: 'Próximos 3 meses',
+        nombre_corto: '3 Meses',
+        ahorro_porcentaje: `${baseAhorroNum}% OFF`,
+        ahorro_pct_num: baseAhorroNum,
+        salidas: salidas3m
+      };
+
+      const bloque6m = {
+        key: 'planificar_6m',
+        nombre: 'Para planificar (6+ meses)',
+        nombre_corto: '6+ Meses',
+        ahorro_porcentaje: `${ahorroEbNum}% OFF`,
+        ahorro_pct_num: ahorroEbNum,
+        salidas: salidas6m
       };
 
       return {
-        meses: meses,
-        early_bird: earlyBird,
+        proximos_3_meses: bloque3m,
+        para_planificar: bloque6m,
         mapa_tabs: {
-          mes1: meses[0],
-          mes2: meses[1],
-          mes3: meses[2],
-          mes6: earlyBird
+          proximos_3m: bloque3m,
+          planificar_6m: bloque6m
         }
       };
     }
@@ -1211,7 +989,7 @@
 
     function filtrarHorizonte(h) {
       currentHorizonte = h;
-      ['chip-horiz-todos', 'chip-horiz-mes1', 'chip-horiz-mes2', 'chip-horiz-mes3', 'chip-horiz-mes6'].forEach(id => {
+      ['chip-horiz-todos', 'chip-horiz-proximos_3m', 'chip-horiz-planificar_6m'].forEach(id => {
         const el = document.getElementById(id);
         if (el) {
           el.style.backgroundColor = '';
@@ -1224,7 +1002,7 @@
         activeChip.className = 'chip-horizonte px-3 py-1.5 rounded-xl font-bold whitespace-nowrap text-white shadow-xs';
       }
 
-      // Sincronizar las pastillas de todas las tarjetas si se seleccionó un mes específico
+      // Sincronizar las pestañas de todas las tarjetas si se seleccionó un horizonte específico
       if (h !== 'todos' && window.RADAR_DATA) {
         window.RADAR_DATA.forEach(d => {
           cardPestanasActivas[d.id] = h;
@@ -1235,6 +1013,21 @@
 
     window.cambiarPestanaCard = function(destId, tabKey) {
       cardPestanasActivas[destId] = tabKey;
+      renderVuelos();
+    };
+
+    window.cambiarSlideCard = function(destId, tabKey, totalSlides, delta) {
+      if (!totalSlides || totalSlides <= 1) return;
+      const slideKey = `${destId}:${tabKey}`;
+      const actual = Number(cardSlideActivos[slideKey] || 0);
+      const siguiente = (actual + delta + totalSlides) % totalSlides;
+      cardSlideActivos[slideKey] = siguiente;
+      renderVuelos();
+    };
+
+    window.irASlideCard = function(destId, tabKey, index) {
+      const slideKey = `${destId}:${tabKey}`;
+      cardSlideActivos[slideKey] = Math.max(0, Number(index) || 0);
       renderVuelos();
     };
 
@@ -1347,19 +1140,6 @@
       const container = document.getElementById('vuelos-relampago-grid');
       if (!container || !window.RADAR_DATA) return;
 
-      // Actualizar etiquetas dinámicas de los botones de horizonte de la cabecera
-      try {
-        const dummyHoriz = calcularHorizontesDestino(window.RADAR_DATA[0]);
-        if (dummyHoriz && dummyHoriz.meses) {
-          const l1 = document.getElementById('txt-h-mes1');
-          const l2 = document.getElementById('txt-h-mes2');
-          const l3 = document.getElementById('txt-h-mes3');
-          if (l1) l1.innerText = dummyHoriz.meses[0].nombre_corto;
-          if (l2) l2.innerText = dummyHoriz.meses[1].nombre_corto;
-          if (l3) l3.innerText = dummyHoriz.meses[2].nombre_corto;
-        }
-      } catch (err) {}
-
       const todosActivos = window.RADAR_DATA.filter(d => Boolean(d.oportunidad_relampago && d.oportunidad_relampago.activa));
 
       // Actualizar contadores reales del Hero y filtros regionales
@@ -1392,11 +1172,19 @@
         lista = lista.filter(d => obtenerRegionDestino(d) === currentRegion);
       }
 
+      if (currentHorizonte !== 'todos') {
+        lista = lista.filter(d => {
+          const horiz = calcularHorizontesDestino(d);
+          const bloque = horiz && horiz.mapa_tabs && horiz.mapa_tabs[currentHorizonte];
+          return bloque && Array.isArray(bloque.salidas) && bloque.salidas.length > 0;
+        });
+      }
+
       if (currentPresupuesto !== 'todos') {
         lista = lista.filter(d => {
           const rel = d.oportunidad_relampago;
           const horiz = calcularHorizontesDestino(d);
-          const tabKey = cardPestanasActivas[d.id] || (currentHorizonte === 'todos' ? 'mes1' : currentHorizonte);
+          const tabKey = cardPestanasActivas[d.id] || (currentHorizonte === 'todos' ? 'proximos_3m' : currentHorizonte);
           const salRef = (horiz && horiz.mapa_tabs && horiz.mapa_tabs[tabKey] && horiz.mapa_tabs[tabKey].salidas && horiz.mapa_tabs[tabKey].salidas[0]) || null;
           const precioArsRef = Number((salRef && salRef.precio_ars) || (rel && rel.precio_ars) || 0);
           const precioUsdRef = Number((salRef && salRef.precio_usd) || (rel && rel.precio_usd_num) || 0);
@@ -1442,9 +1230,13 @@
 
       container.innerHTML = lista.map(dest => {
         const horizontes = calcularHorizontesDestino(dest);
-        const tabActiva = cardPestanasActivas[dest.id] || (currentHorizonte === 'todos' ? 'mes1' : currentHorizonte);
-        const paqueteTab = horizontes.mapa_tabs[tabActiva] || horizontes.meses[0];
+        const tabActiva = cardPestanasActivas[dest.id] || (currentHorizonte === 'todos' ? 'proximos_3m' : currentHorizonte);
+        const paqueteTab = horizontes.mapa_tabs[tabActiva] || horizontes.proximos_3_meses;
         const salidasMostradas = paqueteTab.salidas || [];
+        const totalSlides = salidasMostradas.length;
+        const slideKey = `${dest.id}:${tabActiva}`;
+        const slideIdx = totalSlides > 0 ? Math.min(Math.max(0, Number(cardSlideActivos[slideKey] || 0)), totalSlides - 1) : 0;
+        const salidaActiva = totalSlides > 0 ? salidasMostradas[slideIdx] : null;
 
         const nombreCiudad = dest.ciudad.split(' (')[0].split(' &')[0].trim();
         const subtituloPais = obtenerSubtituloPais(dest);
@@ -1455,14 +1247,14 @@
         const targetMs = getDealExpirationTarget(dest.id, tabActiva, 'salida');
         const tiempoInicial = formatCountdown(targetMs);
 
-        // 1. Badge de Ahorro Real dinámico actualizado según el mes seleccionado
+        // 1. Badge de Ahorro Real dinámico actualizado según el horizonte seleccionado
         const ahorroPctTexto = paqueteTab.ahorro_porcentaje || (rel.ahorro_porcentaje || '25% OFF');
         const ahorroPctLimpio = String(ahorroPctTexto).replace(/%?\s*OFF/ig, '').replace(/%/g, '').trim();
         const ahorroPctNum = parseInt(paqueteTab.ahorro_pct_num || ahorroPctLimpio) || 25;
 
-        // Monto de ahorro sincronizado con la tarifa de la salida mostrada
+        // Monto de ahorro sincronizado con la tarifa de la salida visible en el carrusel
         let ahorroMontoTexto = '';
-        const salidaRef = salidasMostradas[0] || {};
+        const salidaRef = salidaActiva || {};
         if (dest.es_cabotaje) {
           const precioRefArs = Number(salidaRef.precio_ars) || Number(rel.precio_ars) || 95000;
           const ahorroArs = Math.round(precioRefArs * (ahorroPctNum / 100));
@@ -1494,16 +1286,23 @@
         }
         const cuponInfo = cuponMatch ? { portal: cuponMatch.portal, codigo: cuponMatch.codigo, beneficio: cuponMatch.badge } : null;
 
-        // Renderizado de las salidas del mes seleccionado (2 salidas para mes 1/2/3, 1 para 6 meses)
-        const salidasHtml = salidasMostradas.map(salida => {
+        // Renderizado de la oferta activa en el carrusel (con indicador #1 / #2 / #3 y flechas ‹ ›)
+        let salidasHtml = '';
+        if (salidaActiva) {
+          const salida = salidaActiva;
+          const ordenActual = slideIdx + 1;
           let precioSalidaStr = `$ ${Number(salida.precio_ars).toLocaleString('es-AR')} ARS`;
           if (currentMoneda === 'USD' || (!dest.es_cabotaje && currentMoneda === 'DEFAULT')) {
             precioSalidaStr = `US$ ${salida.precio_usd}`;
           }
 
-          const badgeOpcionColor = salida.etiqueta_opcion.includes('Early')
+          const esPlanificar = tabActiva === 'planificar_6m';
+          const badgeOpcionColor = esPlanificar
             ? 'bg-amber-500/15 text-amber-500 border border-amber-500/30'
-            : (salida.opcion === 1 ? 'bg-blue-600/15 text-blue-600 border border-blue-500/30' : 'bg-sky-500/15 text-sky-500 border border-sky-500/30');
+            : (ordenActual === 1 ? 'bg-blue-600/15 text-blue-600 border border-blue-500/30' : 'bg-sky-500/15 text-sky-500 border border-sky-500/30');
+          const badgeTexto = esPlanificar
+            ? '🗓️ Para planificar'
+            : (ordenActual === 1 ? '#1 · Mejor Tarifa' : `#${ordenActual} · Oferta ${ordenActual}`);
 
           const fechaIda = salida.fecha_ida;
           const fechaVuelta = salida.fecha_vuelta;
@@ -1518,11 +1317,30 @@
           const hotelRef = (dest.hoteles && dest.hoteles[0]) ? dest.hoteles[0] : { nombre: '' };
           const urlBooking = generarBookingHotelUrl(hotelRef, dest, fechaIda, fechaVuelta);
 
-          return `
+          const dotsHtml = totalSlides > 1
+            ? `<div class="flex items-center gap-1">${salidasMostradas.map((_, iDot) => `
+                <button type="button" onclick="window.irASlideCard('${dest.id}', '${tabActiva}', ${iDot})" aria-label="Ver oferta ${iDot + 1}" class="h-1.5 rounded-full transition-all cursor-pointer ${iDot === slideIdx ? 'w-4 bg-blue-600 dark:bg-blue-400' : 'w-1.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'}"></button>
+              `).join('')}</div>`
+            : '';
+
+          const carruselNavHtml = totalSlides > 1
+            ? `
+              <div class="flex items-center justify-between pt-2 border-t dark:border-slate-800/60 border-slate-200/60">
+                <button type="button" onclick="window.cambiarSlideCard('${dest.id}', '${tabActiva}', ${totalSlides}, -1)" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:text-slate-200 text-slate-700 font-black text-xs transition-colors cursor-pointer" title="Oferta anterior">‹ Anterior</button>
+                <div class="flex items-center gap-2">
+                  ${dotsHtml}
+                  <span class="text-[11px] font-mono font-extrabold dark:text-slate-300 text-slate-700">${ordenActual} / ${totalSlides}</span>
+                </div>
+                <button type="button" onclick="window.cambiarSlideCard('${dest.id}', '${tabActiva}', ${totalSlides}, 1)" class="px-2.5 py-1 rounded-lg dark:bg-slate-800 bg-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:text-slate-200 text-slate-700 font-black text-xs transition-colors cursor-pointer" title="Siguiente oferta">Siguiente ›</button>
+              </div>
+            `
+            : '';
+
+          salidasHtml = `
             <div class="p-3.5 rounded-2xl dark:bg-[#0b0c16]/70 bg-slate-50 border dark:border-slate-800/80 border-slate-200/80 space-y-2.5 mb-3 text-xs transition-all hover:border-blue-500/40">
-              <div class="flex items-center justify-between">
+              <div class="flex items-center justify-between gap-2">
                 <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded-md ${badgeOpcionColor}">
-                  ${salida.etiqueta_opcion}
+                  ${badgeTexto}
                 </span>
                 <span class="font-bold text-amber-500 text-[11px] flex items-center gap-1">
                   <span>⏳</span> Salida en ${salida.dias_restantes} días
@@ -1559,9 +1377,27 @@
                   <span>🏨</span> Booking
                 </a>
               </div>
+
+              ${carruselNavHtml}
             </div>
           `;
-        }).join('');
+        } else {
+          const msgVacio = tabActiva === 'planificar_6m'
+            ? 'Sin ofertas relámpago detectadas a 6+ meses todavía para esta ruta.'
+            : 'Sin ofertas relámpago vigentes en los próximos 3 meses.';
+          salidasHtml = `
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16]/70 bg-slate-50 border border-dashed dark:border-slate-700 border-slate-300 text-center space-y-2.5 mb-3 text-xs">
+              <span class="text-2xl block">📡</span>
+              <p class="font-semibold dark:text-slate-300 text-slate-600 leading-relaxed">${msgVacio}</p>
+              <a href="https://t.me/GnZFlightBot?start=alerta_${encodeURIComponent(String(iata || '').toLowerCase())}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-[11px] transition-colors">
+                <span>🔔</span> Avisarme por Telegram si baja
+              </a>
+            </div>
+          `;
+        }
+
+        const count3m = (horizontes.proximos_3_meses && horizontes.proximos_3_meses.salidas || []).length;
+        const count6m = (horizontes.para_planificar && horizontes.para_planificar.salidas || []).length;
 
         return `
           <div class="rounded-3xl dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200 shadow-sm hover:border-blue-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group">
@@ -1590,23 +1426,17 @@
                 ${subtituloPais}
               </div>
 
-              <!-- Selector Táctil de Meses (Horizonte Temporal: Opción 3) -->
+              <!-- Selector de 2 Horizontes: Próximos 3 meses vs Para planificar (+6M) -->
               <div class="flex items-center gap-1 p-1 bg-slate-100 dark:bg-[#0b0c16]/80 rounded-xl mb-3.5 border dark:border-slate-800 border-slate-200/80 text-[11px] font-bold">
-                <button type="button" onclick="window.cambiarPestanaCard('${dest.id}', 'mes1')" class="flex-1 py-1 rounded-lg text-center transition-all ${tabActiva === 'mes1' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:text-white'}">
-                  ${horizontes.meses[0].nombre_corto} (${(horizontes.meses[0].salidas || []).length})
+                <button type="button" onclick="window.cambiarPestanaCard('${dest.id}', 'proximos_3m')" class="flex-1 py-1.5 px-2 rounded-lg text-center transition-all cursor-pointer ${tabActiva === 'proximos_3m' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}">
+                  ⚡ Próx. 3 meses (${count3m})
                 </button>
-                <button type="button" onclick="window.cambiarPestanaCard('${dest.id}', 'mes2')" class="flex-1 py-1 rounded-lg text-center transition-all ${tabActiva === 'mes2' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:text-white'}">
-                  ${horizontes.meses[1].nombre_corto} (${(horizontes.meses[1].salidas || []).length})
-                </button>
-                <button type="button" onclick="window.cambiarPestanaCard('${dest.id}', 'mes3')" class="flex-1 py-1 rounded-lg text-center transition-all ${tabActiva === 'mes3' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:text-white'}">
-                  ${horizontes.meses[2].nombre_corto} (${(horizontes.meses[2].salidas || []).length})
-                </button>
-                <button type="button" onclick="window.cambiarPestanaCard('${dest.id}', 'mes6')" class="flex-1 py-1 rounded-lg text-center transition-all ${tabActiva === 'mes6' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:text-white'}">
-                  6M (${((horizontes.early_bird && horizontes.early_bird.salidas) || []).length})
+                <button type="button" onclick="window.cambiarPestanaCard('${dest.id}', 'planificar_6m')" class="flex-1 py-1.5 px-2 rounded-lg text-center transition-all cursor-pointer ${tabActiva === 'planificar_6m' ? 'bg-amber-500 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}">
+                  🗓️ Planificar +6M (${count6m})
                 </button>
               </div>
 
-              <!-- Subtarjetas de Salidas del Mes Seleccionado -->
+              <!-- Carrusel de Salida Activa -->
               <div class="space-y-1 mb-3.5">
                 ${salidasHtml}
               </div>
