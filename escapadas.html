@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth" data-color="blue">
+<html lang="es" class="scroll-smooth dark" data-color="aurora-mint">
 <head>
   <link rel="canonical" href="https://www.flightbot.com.ar/escapadas.html">
 
@@ -42,18 +42,18 @@
 
   <style>
     :root {
-      --brand-primary: #2563eb;
+      --brand-primary: #22d3ee;
       --brand-primary-hover: #1d4ed8;
-      --brand-glow: rgba(37, 99, 235, 0.35);
+      --brand-glow: rgba(99, 102, 241, 0.35);
       --brand-subtle: rgba(37, 99, 235, 0.1);
       --brand-border: rgba(37, 99, 235, 0.25);
       --brand-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     }
 
     [data-color="blue"] {
-      --brand-primary: #2563eb;
+      --brand-primary: #22d3ee;
       --brand-primary-hover: #1d4ed8;
-      --brand-glow: rgba(37, 99, 235, 0.35);
+      --brand-glow: rgba(99, 102, 241, 0.35);
       --brand-subtle: rgba(37, 99, 235, 0.1);
       --brand-border: rgba(37, 99, 235, 0.25);
       --brand-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
@@ -130,7 +130,7 @@
   <script>
     (function() {
       const savedTheme = localStorage.getItem('fb_theme_mode') || 'light';
-      const savedColor = localStorage.getItem('fb_theme_color') || 'blue';
+      const savedColor = 'aurora-mint';
       if (savedTheme === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
@@ -140,6 +140,7 @@
     })();
   </script>
   <script src="js/guias-data.js" defer></script>
+  <script src="js/guias-kb.js" defer></script>
   <script src="js/chatbox.js" defer></script>
   <script src="/js/auth.js" defer></script>
   <!-- Vercel Web Analytics (mismo dominio, compatible con CSP script-src 'self') -->
@@ -147,156 +148,96 @@
   <script defer src="/_vercel/insights/script.js"></script>
   <script src="/js/site-stats.js" defer></script>
   <script src="/js/theme.js" defer></script>
-  <script>(function(){try{if(!localStorage.getItem('fb_theme_cobalt_v1')){localStorage.setItem('fb_theme_mode','light');localStorage.setItem('fb_theme_color','blue');localStorage.setItem('fb_theme_cobalt_v1','1');}var m=localStorage.getItem('fb_theme_mode')||'light';if(m==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('data-color','blue');}catch(_){}})();</script>
+  <script>(function(){try{if(!localStorage.getItem('fb_theme_aurora_v2')){localStorage.setItem('fb_theme_mode','dark');localStorage.setItem('fb_theme_color','aurora-mint');localStorage.setItem('fb_theme_aurora_v2','1');}var m=localStorage.getItem('fb_theme_mode')||'dark';if(m==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('data-color','aurora-mint');}catch(_){}})();</script>
   <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
   <script src="js/telegram-webapp.js" defer></script>
+  <link rel="stylesheet" href="css/aurora-mint.css">
 </head>
-<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white theme-transition min-h-screen flex flex-col justify-between overflow-x-hidden">
+<body class="dark:bg-[#0b0c16] dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-600 selection:text-white theme-transition min-h-screen flex flex-col justify-between overflow-x-hidden">
 
   <!-- Header / Barra de Navegación -->
     <!-- HEADER & NAVBAR DE NAVEGACIÓN UNIFICADA -->
     <!-- HEADER & NAVBAR DE NAVEGACIÓN UNIFICADA -->
-  <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/85 bg-white/90 border-b dark:border-slate-800/80 border-slate-200 theme-transition">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3 relative">
-      
-      <!-- 1. Marca / Logotipo Rolli + FlightBot + Slogan Oficial -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-[#0b0c16]/85 border-b border-slate-200 dark:border-indigo-950/40 theme-transition">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 lg:gap-3 relative">
+
+      <!-- 1. Marca / Logotipo Rolli + FlightBot -->
       <a href="/" class="flex items-center gap-2.5 group shrink-0" title="FlightBot · Con Rolli Copiloto">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-blue-600 to-indigo-700 shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
-          <img src="/img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow" loading="lazy" decoding="async">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 aurora-logo-badge group-hover:scale-105 transition-transform">
+          <img src="img/rolli-avatar-transparent.png" alt="Rolli FlightBot" class="w-full h-full object-contain filter drop-shadow" loading="lazy" decoding="async">
         </div>
         <div>
-          <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-blue-600 dark:text-blue-400">Bot</span></span>
+          <span class="text-xl font-black tracking-tight text-slate-900 dark:text-white">Flight<span class="text-cyan-300-aurora">Bot</span></span>
           <span class="block text-[9px] uppercase font-bold text-slate-400 -mt-1 tracking-widest">Con Rolli Copiloto</span>
         </div>
       </a>
 
-      <!-- 2. Menú de Navegación Principal Homogéneo (Desktop - Sin Emojis) -->
-      <nav class="hidden lg:flex items-center gap-1 xl:gap-1.5 mx-auto shrink-0">
-        <!-- Inicio -->
-        <a href="/" id="nav-btn-inicio" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Inicio de FlightBot">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
+      <!-- 2. Menú de Navegación Principal Simétrico (7 pestañas) -->
+      <nav aria-label="Navegación principal" class="hidden lg:flex items-center gap-0.5 xl:gap-1 mx-auto shrink-0">
+        <a href="/" id="nav-btn-inicio" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-cyan-300 hover-cyan-aurora" title="Inicio de FlightBot">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <span>Inicio</span>
         </a>
-
-        <!-- Vuelos -->
-        <a href="/vuelos" id="nav-btn-vuelos" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Buscador y Radar de Vuelos">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
-          </svg>
+        <a href="/vuelos" id="nav-btn-vuelos" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-cyan-300 hover-cyan-aurora" title="Buscador y Radar de Vuelos">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
           <span>Vuelos</span>
         </a>
-
-        <!-- Relámpago -->
-        <a href="/relampago" id="nav-btn-relampago" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Ofertas Relámpago y Oportunidades Flash">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
+        <a href="/relampago" id="nav-btn-relampago" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-cyan-300 hover-cyan-aurora" title="Ofertas Relámpago y Oportunidades Flash">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           <span>Relámpago</span>
         </a>
-
-        <!-- Modo Ruta -->
-        <a href="/escapadas" id="nav-btn-escapadas" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm rounded-lg transition-all duration-150 text-blue-600 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-400 font-semibold" title="Semáforo de Rutas, Peajes y Combustible">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
-            <circle cx="7" cy="17" r="2"/>
-            <path d="M9 17h6"/>
-            <circle cx="17" cy="17" r="2"/>
-          </svg>
+        <a href="/escapadas" id="nav-btn-escapadas" aria-current="page" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm rounded-lg transition-all duration-150 font-semibold nav-tab-active-aurora text-cyan-300 bg-indigo-950/50 border border-indigo-800/40" title="Semáforo de Rutas, Peajes y Combustible">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
           <span>Modo Ruta</span>
         </a>
-
-        <!-- Billetera -->
-        <a href="/billetera" id="nav-btn-billetera" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Billetera Offline y Beneficios VIP">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
-            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
-            <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
-          </svg>
+        <a href="/billetera" id="nav-btn-billetera" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-cyan-300 hover-cyan-aurora" title="Billetera Offline y Beneficios VIP">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
           <span>Billetera</span>
         </a>
-
-        <!-- Guías -->
-        <a href="/guias" id="nav-btn-guias" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Guías de Viaje Editoriales">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
-            <path d="M6 6h10"/>
-            <path d="M6 10h10"/>
-          </svg>
+        <a href="/guias" id="nav-btn-guias" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-cyan-300 hover-cyan-aurora" title="Guías de Viaje Editoriales">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
           <span>Guías</span>
         </a>
-
-        <!-- FAQ -->
-        <a href="/faq" id="nav-btn-faq" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Preguntas Frecuentes">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-            <path d="M12 17h.01"/>
-          </svg>
+        <a href="/faq" id="nav-btn-faq" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-cyan-300 hover-cyan-aurora" title="Preguntas Frecuentes">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
           <span>FAQ</span>
         </a>
       </nav>
 
-      <!-- 3. Bloque Derecho Compacto y Alineado (flex items-center gap-2) -->
+      <!-- 3. Bloque Derecho Simétrico: Moneda + Dark Mode + Telegram -->
       <div class="flex items-center gap-2 shrink-0">
-        
-        <!-- A. Widget Ficha Plateada Rolli (Arcade Token) -->
-        <div id="auth-nav-container" class="flex items-center">
-          <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.toggleModal() : null"
-                  id="btn-nav-tokens"
-                  class="inline-flex items-center justify-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-800/80 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-700 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
-                  title="Billetera de fichas: 4 fichas semanales">
-            <svg class="w-4 h-4 shrink-0 drop-shadow-sm" viewBox="0 0 100 100" fill="none">
-              <circle cx="50" cy="50" r="46" fill="url(#metalBase3Nav)" stroke="url(#metalRim3Nav)" stroke-width="4"/>
-              <circle cx="50" cy="50" r="34" fill="url(#metalInner3Nav)" stroke="#475569" stroke-width="2"/>
-              <path d="M50 28 L53 44 L68 52 L68 56 L53 52 L53 64 L58 68 L58 71 L50 69 L42 71 L42 68 L47 64 L47 52 L32 56 L32 52 L47 44 Z" fill="#1e293b" stroke="#0f172a" stroke-width="1"/>
-              <text x="50" y="24" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">FLIGHT</text>
-              <text x="50" y="80" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">BOT</text>
-              <path d="M22 32 C30 18, 70 18, 78 32 C68 24, 32 24, 22 32 Z" fill="#ffffff" opacity="0.45"/>
-              <defs>
-                <linearGradient id="metalBase3Nav" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#ffffff"/>
-                  <stop offset="0.3" stop-color="#e2e8f0"/>
-                  <stop offset="0.7" stop-color="#94a3b8"/>
-                  <stop offset="1" stop-color="#475569"/>
-                </linearGradient>
-                <linearGradient id="metalRim3Nav" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#ffffff"/>
-                  <stop offset="0.5" stop-color="#64748b"/>
-                  <stop offset="1" stop-color="#cbd5e1"/>
-                </linearGradient>
-                <linearGradient id="metalInner3Nav" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#cbd5e1"/>
-                  <stop offset="0.5" stop-color="#94a3b8"/>
-                  <stop offset="1" stop-color="#64748b"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <span id="nav-tokens-display" class="font-bold">(4)</span>
-          </button>
+
+        <!-- A. Selector de Moneda Global (NATIVO | ARS | USD) -->
+        <div class="hidden md:inline-flex items-center p-1 rounded-lg bg-slate-100 dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 text-xs font-semibold shrink-0"
+             role="group" aria-label="Selector de moneda global"
+             title="Cambiar moneda de visualización (NATIVO | ARS | USD)">
+          <button type="button" id="nav-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null"
+                  class="px-2 py-1 rounded-md text-white font-semibold aurora-cta-btn aurora-curr-active transition-all text-[11px] cursor-pointer">NATIVO</button>
+          <button type="button" id="nav-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null"
+                  class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-[11px] cursor-pointer">ARS</button>
+          <button type="button" id="nav-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null"
+                  class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-[11px] cursor-pointer">USD</button>
         </div>
 
-        <!-- B. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
+        <!-- B. Switch Dark Mode (Cuadrado perfecto h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
-                class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
-          <span id="theme-mode-icon">☀️</span>
+                class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-indigo-950/40 dark:bg-[#111324] items-center justify-center text-slate-700 dark:text-cyan-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 transition-all focus:outline-none shrink-0 cursor-pointer">
+          <span id="theme-mode-icon">🌙</span>
         </button>
 
-        <!-- D. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
+        <!-- C. Botón Telegram -->
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
            class="hidden sm:inline-flex h-9 px-3 rounded-lg bg-[#229ED9] hover:bg-[#1E88E5] text-white text-xs font-semibold items-center gap-1.5 shadow-sm transition-all shrink-0"
            title="Chateá conmigo en Telegram para alertas instantáneas">
           <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
           </svg>
-          <span class="hidden sm:inline">Telegram</span>
+          <span>Telegram</span>
         </a>
 
-        <!-- E. Botón Menú Móvil (lg:hidden h-9 w-9) -->
+        <!-- D. Botón Menú Móvil -->
         <button type="button" id="mobile-nav-toggle" onclick="window.toggleMobileNav ? window.toggleMobileNav() : null" aria-label="Abrir Menú"
-                class="lg:hidden h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shrink-0">
+                class="lg:hidden h-9 w-9 rounded-lg border border-slate-200 dark:border-indigo-950/40 dark:bg-[#111324] flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 transition-colors shrink-0">
           <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
@@ -308,117 +249,41 @@
       </div>
     </div>
 
-    <!-- Menú Móvil (Drawer) Limpio con Iconos Vectoriales y Ficha Plateada -->
-    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-4 transition-all shadow-xl space-y-3">
-      
-      <!-- Contenedor Ficha Plateada Móvil -->
-      <div id="mobile-auth-drawer-container">
-        <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.toggleModal() : null" class="w-full flex items-center justify-between py-2.5 px-3.5 rounded-xl font-bold text-xs bg-white dark:bg-slate-900 border dark:border-slate-800 border-slate-200 text-slate-800 dark:text-slate-100 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer">
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 shrink-0 drop-shadow-sm" viewBox="0 0 100 100" fill="none">
-              <circle cx="50" cy="50" r="46" fill="url(#metalBase3Mob)" stroke="url(#metalRim3Mob)" stroke-width="4"/>
-              <circle cx="50" cy="50" r="34" fill="url(#metalInner3Mob)" stroke="#475569" stroke-width="2"/>
-              <path d="M50 28 L53 44 L68 52 L68 56 L53 52 L53 64 L58 68 L58 71 L50 69 L42 71 L42 68 L47 64 L47 52 L32 56 L32 52 L47 44 Z" fill="#1e293b" stroke="#0f172a" stroke-width="1"/>
-              <text x="50" y="24" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">FLIGHT</text>
-              <text x="50" y="80" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">BOT</text>
-              <path d="M22 32 C30 18, 70 18, 78 32 C68 24, 32 24, 22 32 Z" fill="#ffffff" opacity="0.45"/>
-              <defs>
-                <linearGradient id="metalBase3Mob" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#ffffff"/>
-                  <stop offset="0.3" stop-color="#e2e8f0"/>
-                  <stop offset="0.7" stop-color="#94a3b8"/>
-                  <stop offset="1" stop-color="#475569"/>
-                </linearGradient>
-                <linearGradient id="metalRim3Mob" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#ffffff"/>
-                  <stop offset="0.5" stop-color="#64748b"/>
-                  <stop offset="1" stop-color="#cbd5e1"/>
-                </linearGradient>
-                <linearGradient id="metalInner3Mob" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#cbd5e1"/>
-                  <stop offset="0.5" stop-color="#94a3b8"/>
-                  <stop offset="1" stop-color="#64748b"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <span>Fichas de Búsqueda</span>
-          </div>
-          <span id="mobile-tokens-display" class="px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-300 bg-slate-800 border border-slate-700">
-            4 disponibles
-          </span>
-        </button>
-      </div>
-
+    <!-- Menú Móvil (Drawer) Limpio -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t border-slate-200 dark:border-indigo-950/40 bg-white/95 dark:bg-[#0b0c16]/95 backdrop-blur-xl px-4 py-4 transition-all shadow-xl space-y-3">
       <div class="flex flex-col space-y-1">
-        <!-- Inicio -->
-        <a href="/" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
+        <a href="/" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover-cyan-aurora hover:bg-slate-100 dark:hover:bg-indigo-950/40 font-medium transition-colors">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <span>Inicio</span>
         </a>
-
-        <!-- Vuelos -->
-        <a href="/vuelos" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
-          </svg>
+        <a href="/vuelos" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover-cyan-aurora hover:bg-slate-100 dark:hover:bg-indigo-950/40 font-medium transition-colors">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
           <span>Vuelos</span>
         </a>
-
-        <!-- Relámpago -->
-        <a href="/relampago" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
+        <a href="/relampago" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover-cyan-aurora hover:bg-slate-100 dark:hover:bg-indigo-950/40 font-medium transition-colors">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           <span>Relámpago</span>
         </a>
-
-        <!-- Modo Ruta -->
-        <a href="/escapadas" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-blue-600 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-400 font-semibold transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
-            <circle cx="7" cy="17" r="2"/>
-            <path d="M9 17h6"/>
-            <circle cx="17" cy="17" r="2"/>
-          </svg>
+        <a href="/escapadas" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 font-semibold transition-all nav-tab-active-aurora">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
           <span>Modo Ruta</span>
         </a>
-
-        <!-- Billetera -->
-        <a href="/billetera" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
-            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
-            <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
-          </svg>
+        <a href="/billetera" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover-cyan-aurora hover:bg-slate-100 dark:hover:bg-indigo-950/40 font-medium transition-colors">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
           <span>Billetera</span>
         </a>
-
-        <!-- Guías -->
-        <a href="/guias" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
-            <path d="M6 6h10"/>
-            <path d="M6 10h10"/>
-          </svg>
+        <a href="/guias" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover-cyan-aurora hover:bg-slate-100 dark:hover:bg-indigo-950/40 font-medium transition-colors">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
           <span>Guías</span>
         </a>
-
-        <!-- FAQ -->
-        <a href="/faq" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-            <path d="M12 17h.01"/>
-          </svg>
+        <a href="/faq" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover-cyan-aurora hover:bg-slate-100 dark:hover:bg-indigo-950/40 font-medium transition-colors">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
           <span>FAQ</span>
         </a>
       </div>
 
-      <!-- Pie del Drawer: Botón Telegram y Selector de Moneda Móvil -->
-      <div class="pt-3 border-t dark:border-slate-800 border-slate-200 space-y-3">
+      <!-- Pie del Drawer: Botón Telegram, Switch Dark Mode y Moneda -->
+      <div class="pt-3 border-t border-slate-200 dark:border-indigo-950/40 space-y-3">
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
            class="h-11 w-full rounded-xl bg-[#229ED9] hover:bg-[#1E88E5] text-white text-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition-all">
           <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
@@ -427,27 +292,24 @@
           <span>Abrir Rolli en Telegram (@GnZFlightBot)</span>
         </a>
 
-                <!-- Fila de Apariencia / Modo Oscuro Móvil -->
         <div class="flex items-center justify-between pt-1">
           <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Apariencia:</span>
           <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="m-theme-mode-btn"
-                  class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/80 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all cursor-pointer">
-            <span id="m-theme-mode-icon">☀️</span>
-            <span id="m-theme-mode-text">Modo Claro</span>
+                  class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-indigo-950/40 bg-slate-100 dark:bg-[#111324] text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-indigo-950/40 transition-all cursor-pointer">
+            <span id="m-theme-mode-icon">🌙</span>
+            <span id="m-theme-mode-text">Modo Oscuro</span>
           </button>
         </div>
 
-        <!-- Fila de Moneda Móvil -->
         <div class="flex items-center justify-between pt-1">
           <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Moneda de referencia:</span>
-          <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold">
-            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs">NATIVO</button>
-            <button type="button" id="m-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
-            <button type="button" id="m-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
+          <div class="inline-flex p-1 bg-slate-100 dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 rounded-lg text-xs font-semibold">
+            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold aurora-cta-btn aurora-curr-active shadow-xs transition-all text-xs">NATIVO</button>
+            <button type="button" id="m-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-xs">ARS</button>
+            <button type="button" id="m-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-xs">USD</button>
           </div>
         </div>
       </div>
-
     </div>
   </header>
 
@@ -564,7 +426,7 @@
             <input id="fb-road-origin" type="text" list="fb-road-ciudades-list" value="Buenos Aires"
                    onkeydown="if(event.key === 'Enter') { event.preventDefault(); window.triggerRoadSearch(); }"
                    placeholder="Ej: Buenos Aires, Pellegrini 1500 Rosario, Córdoba..."
-                   class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
+                   class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-[#0b0c16] bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
           </div>
 
           <!-- 2. Selector de Destino (Cualquier Ciudad o Pueblo) -->
@@ -575,7 +437,7 @@
             <input id="fb-road-dest" type="text" list="fb-road-ciudades-list" value="Bariloche"
                    onkeydown="if(event.key === 'Enter') { event.preventDefault(); window.triggerRoadSearch(); }"
                    placeholder="Ej: Bariloche, Bustillo km 5 Bariloche, Villa Gral. Belgrano..."
-                   class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
+                   class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-[#0b0c16] bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
           </div>
 
           <!-- 3. Botón de Búsqueda y Actualización de Hoja de Ruta -->
@@ -596,7 +458,7 @@
               ⛽ Combustible / Motor
             </label>
             <select id="fb-road-fuel" onchange="window.triggerRoadSearch()"
-                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
+                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-[#0b0c16] bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
               <option value="nafta">⛽ Nafta Súper / Infinia</option>
               <option value="diesel">🛢️ Diésel Premium</option>
               <option value="gnc">🔵 GNC (Gas Natural)</option>
@@ -610,7 +472,7 @@
               🚘 Tipo de Vehículo
             </label>
             <select id="fb-road-veh" onchange="window.triggerRoadSearch()"
-                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
+                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-[#0b0c16] bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
               <option value="compacto">🚗 Auto Compacto (-15%)</option>
               <option value="sedan" selected="selected">🚘 Sedán / Mediano</option>
               <option value="suv">🚙 SUV / Rural (+18%)</option>
@@ -624,7 +486,7 @@
               👥 Dividir Gastos
             </label>
             <select id="fb-road-pax" onchange="window.triggerRoadSearch()"
-                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
+                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-[#0b0c16] bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all">
               <option value="1">1 Viajero (Solo)</option>
               <option value="2" selected="selected">2 Viajeros (Pareja)</option>
               <option value="3">3 Viajeros</option>
@@ -676,7 +538,7 @@
         </div>
 
         <!-- Termómetro Comunitario de Asfalto (Un billar / Buena / Baches / Destruida) -->
-        <div id="fb-road-community-box" class="mt-6 p-6 rounded-3xl dark:bg-slate-950/80 bg-slate-50 border dark:border-slate-800 border-slate-200 transition-all">
+        <div id="fb-road-community-box" class="mt-6 p-6 rounded-3xl dark:bg-[#0b0c16]/80 bg-slate-50 border dark:border-slate-800 border-slate-200 transition-all">
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-4">
             <div>
               <div class="flex items-center gap-2 mb-1 flex-wrap">
@@ -739,10 +601,10 @@
             <div class="flex flex-col sm:flex-row gap-2">
               <input id="fb-comm-input-text" type="text" maxlength="240"
                      placeholder="¿Querés sumar una advertencia puntual? Ej: 'Km 140 pozos en mano norte' (Opcional)"
-                     class="flex-1 px-3.5 py-2 rounded-xl text-xs dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none">
+                     class="flex-1 px-3.5 py-2 rounded-xl text-xs dark:bg-[#0b0c16] bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none">
               <input id="fb-comm-input-autor" type="text" maxlength="30"
                      placeholder="Tu nombre / Auto (Opcional)"
-                     class="w-full sm:w-48 px-3.5 py-2 rounded-xl text-xs dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none">
+                     class="w-full sm:w-48 px-3.5 py-2 rounded-xl text-xs dark:bg-[#0b0c16] bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none">
               <button type="button" onclick="window.submitRoadCommentWithCurrentVote()"
                       class="px-4 py-2 rounded-xl text-xs font-bold text-white shadow transition-all hover:brightness-110 whitespace-nowrap"
                       style="background-color: var(--brand-primary);">
@@ -774,12 +636,12 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5">
-              <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+              <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200">
                 <div class="text-[11px] uppercase font-bold text-slate-500" id="fb-road-fuel-label">⛽ Combustible (I/V)</div>
                 <div class="text-xl font-extrabold dark:text-white text-slate-900 mt-1" id="fb-road-fuel-cost">$0 ARS</div>
                 <div class="text-xs dark:text-slate-400 text-slate-500 mt-0.5" id="fb-road-fuel-units">0 Litros</div>
               </div>
-              <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+              <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200">
                 <div class="text-[11px] uppercase font-bold text-slate-500">🎟️ Peajes (Ida y Vuelta)</div>
                 <div class="text-xl font-extrabold dark:text-white text-slate-900 mt-1" id="fb-road-tolls-cost">$0 ARS</div>
                 <div class="text-xs dark:text-slate-400 text-slate-500 mt-0.5" id="fb-road-tolls-oneway">$0 por tramo</div>
@@ -791,7 +653,7 @@
               </div>
             </div>
 
-            <div class="p-4 rounded-2xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 text-xs sm:text-sm dark:text-slate-300 text-slate-600 leading-relaxed">
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16]/70 bg-slate-50 border dark:border-slate-800 border-slate-200 text-xs sm:text-sm dark:text-slate-300 text-slate-600 leading-relaxed">
               <div class="font-bold dark:text-white text-slate-900 mb-1">🎟️ Detalle de Peajes y TelePASE en este Corredor:</div>
               <p id="fb-road-tolls-detail"></p>
             </div>
@@ -825,12 +687,12 @@
               </span>
             </div>
 
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 text-xs sm:text-sm leading-relaxed">
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 text-xs sm:text-sm leading-relaxed">
               <div class="font-bold dark:text-white text-slate-900 mb-1">🌅 ¿Por qué salir en este horario?</div>
               <p id="fb-road-departure-reason" class="dark:text-slate-300 text-slate-600"></p>
             </div>
 
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 text-xs sm:text-sm leading-relaxed">
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 text-xs sm:text-sm leading-relaxed">
               <div class="font-bold dark:text-white text-slate-900 mb-1">⛽ Disponibilidad 24 hs de Estaciones de Servicio:</div>
               <p id="fb-road-stations-24h" class="dark:text-slate-300 text-slate-600"></p>
             </div>
@@ -871,7 +733,7 @@
               📍 Destino Nacional de Cabotaje
             </label>
             <select id="comp-destino-select" onchange="window.recalcularComparadorAutoAvion()"
-                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:border-blue-500 focus:ring-blue-500 transition-all cursor-pointer">
+                    class="w-full px-4 py-3 rounded-xl text-sm font-bold dark:bg-[#0b0c16] bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none focus:ring-2 focus:border-blue-500 focus:ring-blue-500 transition-all cursor-pointer">
               <option value="mardel">Mar del Plata & Chapadmalal (Autovía 2)</option>
               <option value="bariloche" selected>San Carlos de Bariloche (RN 5 + Desierto + RN 237)</option>
               <option value="mendoza">Mendoza Capital & Valle de Uco (RN 7)</option>
@@ -891,11 +753,11 @@
               👥 Cantidad de Pasajeros
             </label>
             <div class="grid grid-cols-5 gap-1.5" id="comp-pasajeros-container">
-              <button type="button" onclick="window.setComparadorPasajeros(1)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">1</button>
+              <button type="button" onclick="window.setComparadorPasajeros(1)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">1</button>
               <button type="button" onclick="window.setComparadorPasajeros(2)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-blue-600 border-blue-500 shadow-xs">2</button>
-              <button type="button" onclick="window.setComparadorPasajeros(3)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">3</button>
-              <button type="button" onclick="window.setComparadorPasajeros(4)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">4</button>
-              <button type="button" onclick="window.setComparadorPasajeros(5)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">5</button>
+              <button type="button" onclick="window.setComparadorPasajeros(3)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">3</button>
+              <button type="button" onclick="window.setComparadorPasajeros(4)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">4</button>
+              <button type="button" onclick="window.setComparadorPasajeros(5)" class="comp-pax-btn py-3 min-h-[44px] flex items-center justify-center rounded-xl text-xs font-bold border transition-all dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">5</button>
             </div>
           </div>
 
@@ -918,11 +780,11 @@
                 🚕 Uber / Traslados
               </button>
               <button type="button" onclick="window.setComparadorMovilidad('alquiler')" id="comp-mov-alquiler"
-                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
+                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
                 🚗 Alquilar Auto 7 días
               </button>
               <button type="button" onclick="window.setComparadorMovilidad('ninguna')" id="comp-mov-ninguna"
-                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
+                      class="comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200">
                 🚶 A pie / Centro ($0)
               </button>
             </div>
@@ -933,7 +795,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6 items-stretch">
           
           <!-- Columna 1: Auto -->
-          <div class="p-5 sm:p-6 rounded-3xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between shadow-sm">
+          <div class="p-5 sm:p-6 rounded-3xl dark:bg-[#0b0c16]/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between shadow-sm">
             <div>
               <div class="flex items-center justify-between gap-2 mb-3.5">
                 <span class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-500/10 text-blue-500 border border-blue-500/20 shrink-0">
@@ -987,7 +849,7 @@
           </div>
 
           <!-- Columna 2: Avión -->
-          <div class="p-5 sm:p-6 rounded-3xl dark:bg-slate-950/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between shadow-sm">
+          <div class="p-5 sm:p-6 rounded-3xl dark:bg-[#0b0c16]/70 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between shadow-sm">
             <div>
               <div class="flex items-center justify-between gap-2 mb-3.5">
                 <span class="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-600/10 text-blue-600 border border-blue-500/20 shrink-0">
@@ -1041,7 +903,7 @@
           </div>
 
           <!-- Columna 3: Tarjeta ¿Qué Conviene? (Veredicto en Vivo a la Derecha) -->
-          <div id="comp-veredicto-card" class="p-5 sm:p-6 rounded-3xl dark:bg-slate-950/90 bg-white border-2 dark:border-slate-800 border-slate-200 flex flex-col justify-between shadow-xl transition-all relative overflow-hidden group">
+          <div id="comp-veredicto-card" class="p-5 sm:p-6 rounded-3xl dark:bg-[#0b0c16]/90 bg-white border-2 dark:border-slate-800 border-slate-200 flex flex-col justify-between shadow-xl transition-all relative overflow-hidden group">
             
             <!-- Resplandor ambiental de fondo -->
             <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full blur-3xl pointer-events-none opacity-20"
@@ -1165,7 +1027,7 @@
         <div class="space-y-4">
           
           <!-- Pestaña 1: YPF + Full -->
-          <div class="rounded-2xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-sm dark:bg-slate-950/60 bg-slate-50 theme-transition">
+          <div class="rounded-2xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-sm dark:bg-[#0b0c16]/60 bg-slate-50 theme-transition">
             <button type="button" onclick="window.toggleFuelAccordion('ypf')"
                     class="w-full px-5 py-4 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
                     style="background: linear-gradient(135deg, #0284c7 0%, #1e3a8a 100%);">
@@ -1192,7 +1054,7 @@
           </div>
 
           <!-- Pestaña 2: Shell + Select -->
-          <div class="rounded-2xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-sm dark:bg-slate-950/60 bg-slate-50 theme-transition">
+          <div class="rounded-2xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-sm dark:bg-[#0b0c16]/60 bg-slate-50 theme-transition">
             <button type="button" onclick="window.toggleFuelAccordion('shell')"
                     class="w-full px-5 py-4 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
                     style="background: linear-gradient(135deg, #eab308 0%, #dc2626 100%);">
@@ -1219,7 +1081,7 @@
           </div>
 
           <!-- Pestaña 3: Axion + Spot! -->
-          <div class="rounded-2xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-sm dark:bg-slate-950/60 bg-slate-50 theme-transition">
+          <div class="rounded-2xl border dark:border-slate-800 border-slate-200 overflow-hidden shadow-sm dark:bg-[#0b0c16]/60 bg-slate-50 theme-transition">
             <button type="button" onclick="window.toggleFuelAccordion('axion')"
                     class="w-full px-5 py-4 flex items-center justify-between text-left text-white transition-all hover:brightness-105"
                     style="background: linear-gradient(135deg, #701a75 0%, #e11d48 100%);">
@@ -1279,8 +1141,8 @@
             </span>
           </div>
           <div class="space-y-3 text-xs sm:text-sm leading-relaxed">
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800" id="fb-road-pets-docs"></div>
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-600" id="fb-road-pets-rules"></div>
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 dark:text-slate-200 text-slate-800" id="fb-road-pets-docs"></div>
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 dark:text-slate-300 text-slate-600" id="fb-road-pets-rules"></div>
           </div>
         </div>
       </div>
@@ -1304,12 +1166,12 @@
           <div>
             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Nombre Completo</label>
             <input id="fb-prof-modal-nombre" type="text" maxlength="50" placeholder="Ej: Gonzalo Pérez"
-                   class="w-full px-3.5 py-2.5 rounded-xl text-xs dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none">
+                   class="w-full px-3.5 py-2.5 rounded-xl text-xs dark:bg-[#0b0c16] bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none">
           </div>
           <div>
             <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Edad (Años)</label>
             <input id="fb-prof-modal-edad" type="number" min="12" max="100" placeholder="Ej: 34"
-                   class="w-full px-3.5 py-2.5 rounded-xl text-xs dark:bg-slate-950 bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none">
+                   class="w-full px-3.5 py-2.5 rounded-xl text-xs dark:bg-[#0b0c16] bg-slate-50 dark:text-white text-slate-900 border dark:border-slate-700 border-slate-300 focus:outline-none">
           </div>
         </div>
         <div class="flex items-center gap-2">
@@ -1383,7 +1245,7 @@
         const promos = (typeof FB_ROAD_KB !== 'undefined' && FB_ROAD_KB.promociones_combustible) ? FB_ROAD_KB.promociones_combustible : [];
         promos.forEach(p => {
           const card = document.createElement('div');
-          card.className = 'p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between gap-3 hover:border-slate-700 transition-all';
+          card.className = 'p-5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between gap-3 hover:border-slate-700 transition-all';
           const iconoMarca = p.marca_petrolera === 'YPF' ? '⛽' : (p.marca_petrolera === 'Shell' ? '🐚' : '🔴');
           const colorBadge = p.marca_petrolera === 'YPF' ? 'bg-sky-500/15 text-sky-400 border-sky-500/30' : (p.marca_petrolera === 'Shell' ? 'bg-amber-500/15 text-amber-400 border-amber-500/30' : 'bg-blue-600/15 text-blue-400 border-blue-500/30');
           const catBadge = p.categoria === 'combustible' ? '🛢️ Combustible' : ('☕ ' + (p.tienda_nombre || 'Tienda'));
@@ -1907,13 +1769,13 @@
         if (alertasBox) {
           let alertasHtml = '';
           if (base.alerta_desierto) {
-            alertasHtml += '<div class="p-3.5 rounded-xl dark:bg-slate-950/85 bg-white/90 border dark:border-slate-800 border-slate-200 leading-relaxed">' + base.alerta_desierto + '</div>';
+            alertasHtml += '<div class="p-3.5 rounded-xl dark:bg-[#0b0c16]/85 bg-white/90 border dark:border-slate-800 border-slate-200 leading-relaxed">' + base.alerta_desierto + '</div>';
           }
           if (base.alerta_frontera) {
-            alertasHtml += '<div class="p-3.5 rounded-xl dark:bg-slate-950/85 bg-white/90 border dark:border-slate-800 border-slate-200 leading-relaxed">' + base.alerta_frontera + '</div>';
+            alertasHtml += '<div class="p-3.5 rounded-xl dark:bg-[#0b0c16]/85 bg-white/90 border dark:border-slate-800 border-slate-200 leading-relaxed">' + base.alerta_frontera + '</div>';
           }
           if (base.alerta_gnc && (fuelKey === 'gnc' || base.alerta_gnc.indexOf('ATENCIÓN GNC') !== -1 || base.alerta_gnc.indexOf('SIN GNC') !== -1)) {
-            alertasHtml += '<div class="p-3.5 rounded-xl dark:bg-slate-950/85 bg-white/90 border dark:border-slate-800 border-slate-200 leading-relaxed">' + base.alerta_gnc + '</div>';
+            alertasHtml += '<div class="p-3.5 rounded-xl dark:bg-[#0b0c16]/85 bg-white/90 border dark:border-slate-800 border-slate-200 leading-relaxed">' + base.alerta_gnc + '</div>';
           }
           alertasBox.innerHTML = alertasHtml;
         }
@@ -1999,7 +1861,7 @@
           stopsGrid.innerHTML = '';
           (base.paradores || []).forEach(p => {
             const card = document.createElement('div');
-            card.className = 'p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between gap-2';
+            card.className = 'p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between gap-2';
             let badges = '';
             if (p.abierto_24hs) {
               badges += '<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">🕒 24 hs</span>';
@@ -2042,7 +1904,7 @@
               pill.href = 'https://www.google.com/maps/search/?api=1&query=' + qMap;
               pill.target = '_blank';
               pill.rel = 'noopener noreferrer';
-              pill.className = 'flex items-center gap-2.5 p-3.5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 hover:border-sky-500/50 hover:dark:bg-slate-900 transition-all text-xs';
+              pill.className = 'flex items-center gap-2.5 p-3.5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 hover:border-sky-500/50 hover:dark:bg-slate-900 transition-all text-xs';
               let extras = '';
               if (h.gnc) extras += '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-sky-500/15 text-sky-400">GNC</span>';
               if (h.ev) extras += '<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/15 text-purple-400">EV</span>';
@@ -2384,7 +2246,7 @@
 
 
   <!-- SECCIÓN: CATÁLOGO DE ESCAPADAS POR ANILLO -->
-  <section id="escapadas-catalogo" class="relative py-14 border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/60 bg-slate-50 theme-transition">
+  <section id="escapadas-catalogo" class="relative py-14 border-t dark:border-slate-800 border-slate-200 dark:bg-[#0b0c16]/60 bg-slate-50 theme-transition">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-8">
       <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 border shadow-xs"
            style="background-color: var(--brand-subtle); border-color: var(--brand-border); color: var(--brand-primary);">
@@ -2406,19 +2268,19 @@
             🌟 Todas las Guías
           </button>
           <button type="button" onclick="window.filtrarEscapadas('finde_corto')" id="btn-filtro-finde_corto" data-cat="finde_corto"
-                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:dark:bg-slate-800">
+                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold border transition-all dark:bg-[#0b0c16]/40 bg-slate-100 dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:dark:bg-slate-800">
             🟢 Finde Corto (&lt; 3.5 hs · hasta 250 km)
           </button>
           <button type="button" onclick="window.filtrarEscapadas('finde_largo')" id="btn-filtro-finde_largo" data-cat="finde_largo"
-                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:dark:bg-slate-800">
+                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold border transition-all dark:bg-[#0b0c16]/40 bg-slate-100 dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:dark:bg-slate-800">
             🟡 Finde Largo (4 a 6.5 hs · 350-550 km)
           </button>
           <button type="button" onclick="window.filtrarEscapadas('vacaciones_semana')" id="btn-filtro-vacaciones_semana" data-cat="vacaciones_semana"
-                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:dark:bg-slate-800">
+                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold border transition-all dark:bg-[#0b0c16]/40 bg-slate-100 dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:dark:bg-slate-800">
             🔵 Vacaciones 1 Semana (7 a 11 hs · 600-950 km)
           </button>
           <button type="button" onclick="window.filtrarEscapadas('gran_ruta')" id="btn-filtro-gran_ruta" data-cat="gran_ruta"
-                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:dark:bg-slate-800">
+                  class="esc-filtro-btn snap-item flex-shrink-0 px-4 py-2 rounded-xl text-xs font-bold border transition-all dark:bg-[#0b0c16]/40 bg-slate-100 dark:border-slate-800 border-slate-200 text-slate-600 dark:text-slate-300 hover:dark:bg-slate-800">
             🟣 Grandes Rutas (+1000 km)
           </button>
         </div>
@@ -4156,7 +4018,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="py-12 border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950 bg-white theme-transition">
+  <footer class="py-12 border-t dark:border-slate-800 border-slate-200 dark:bg-[#0b0c16] bg-white theme-transition">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="flex items-center justify-center gap-2 mb-3">
         <span class="text-2xl font-extrabold brand-gradient-text">FlightBot</span>
@@ -4239,7 +4101,7 @@
     // Sincronizar estado visual de los controles de tema al cargar
     document.addEventListener('DOMContentLoaded', function() {
       const savedTheme = localStorage.getItem('fb_theme_mode') || 'light';
-      const savedColor = localStorage.getItem('fb_theme_color') || 'blue';
+      const savedColor = 'aurora-mint';
       setThemeColor(savedColor);
       const icon = document.getElementById('theme-mode-icon');
       if (icon) {
@@ -4280,7 +4142,7 @@
         if (idx + 1 === n) {
           btn.className = 'comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-blue-600 border-blue-500 shadow-xs';
         } else {
-          btn.className = 'comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200';
+          btn.className = 'comp-pax-btn py-2.5 rounded-xl text-xs font-bold border transition-all dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200';
         }
       });
       window.recalcularComparadorAutoAvion();
@@ -4294,7 +4156,7 @@
         if (k === tipo) {
           btn.className = 'comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all text-white dark:bg-slate-800 bg-blue-600 border-blue-500 shadow-xs';
         } else {
-          btn.className = 'comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-slate-950/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200';
+          btn.className = 'comp-mov-btn px-3 py-1.5 rounded-xl text-xs font-bold border transition-all dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-400 text-slate-600 hover:dark:bg-slate-800 dark:border-slate-800 border-slate-200';
         }
       });
       window.recalcularComparadorAutoAvion();

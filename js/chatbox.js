@@ -92,68 +92,60 @@
     wrap.id = 'fb-chat-global-container';
     wrap.className = 'fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-end gap-3 pointer-events-auto';
     wrap.innerHTML = `
-      <!-- Ventana Desplegable del Chatbox -->
+      <!-- Ventana Desplegable del Chatbox (Aurora Mint · Limpia sin controles obsoletos) -->
       <div id="fb-chat-window"
-           class="hidden fixed bottom-24 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[400px] h-[540px] max-h-[78vh] dark:bg-slate-900/95 bg-white/95 backdrop-blur-xl border dark:border-slate-700/80 border-slate-200 rounded-3xl shadow-2xl flex flex-col overflow-hidden theme-transition"
-           style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45), 0 0 25px -5px var(--brand-glow);">
+           class="hidden fixed bottom-24 right-4 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[390px] h-[520px] max-h-[76vh] bg-white/95 dark:bg-[#111324]/95 backdrop-blur-xl border border-slate-200 dark:border-indigo-800/40 rounded-3xl shadow-2xl flex flex-col overflow-hidden theme-transition"
+           style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.55), 0 0 28px -6px rgba(99, 102, 241, 0.35);">
 
-        <!-- Cabecera del Chatbox con Rolli DNI -->
-        <div class="px-4 py-3.5 flex items-center justify-between text-white"
-             style="background: var(--brand-gradient);">
+        <!-- Cabecera Minimalista Aurora Mint -->
+        <div class="px-4 py-3.5 flex items-center justify-between text-white aurora-cta-btn"
+             style="background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #06b6d4 100%);">
           <div class="flex items-center gap-2.5 min-w-0">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center shadow-inner border border-white/20 flex-shrink-0 p-1 cursor-help overflow-hidden"
-                 title="F-Bot Rolli · Asistente IA de Viajes">
+            <div class="w-9 h-9 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center shadow-inner border border-white/25 flex-shrink-0 p-1 overflow-hidden"
+                 title="Rolli IA · Copiloto de Viajes">
               ${ROLLI_DNI_SVG}
             </div>
             <div class="min-w-0">
               <div class="flex items-center gap-2 whitespace-nowrap">
-                <span class="font-extrabold text-sm tracking-tight text-white">F-Bot Rolli</span>
-                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-400/20 text-emerald-200 border border-emerald-300/30 flex-shrink-0">
+                <span class="font-extrabold text-sm tracking-tight text-white">Rolli IA</span>
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-200 border border-emerald-400/35 flex-shrink-0">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                  IA Activa
+                  En línea
                 </span>
               </div>
               <div id="fb-chat-status" class="text-[11px] text-white/85 font-medium truncate">
-                Mascota &amp; Asistente IA de Viajes
+                Copiloto de Viajes · Tiempo Real
               </div>
             </div>
           </div>
-          <div class="flex items-center gap-1.5">
-            <button type="button" onclick="window.resetFlightBotChat()" title="Reiniciar conversación" aria-label="Reiniciar conversación"
-                    class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/25 flex items-center justify-center text-white/90 transition-all text-xs cursor-pointer">
-              ↺
-            </button>
-            <button type="button" id="fb-chat-expand-btn" onclick="window.toggleFlightBotChatExpand()" title="Maximizar tamaño" aria-label="Maximizar tamaño"
-                    class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/25 flex items-center justify-center text-white/90 transition-all text-xs cursor-pointer">
-              ⛶
-            </button>
-            <button type="button" onclick="window.toggleFlightBotChat(false)" title="Minimizar chat" aria-label="Minimizar chat"
-                    class="w-8 h-8 rounded-xl bg-white/10 hover:bg-white/25 flex items-center justify-center text-white/90 transition-all text-sm font-bold cursor-pointer">
-              ✕
-            </button>
-          </div>
+          <button type="button" onclick="window.toggleFlightBotChat(false)" aria-label="Ocultar asistente Rolli"
+                  class="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white transition-colors cursor-pointer flex-shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
         </div>
 
         <!-- Historial de Mensajes -->
         <div id="fb-chat-messages"
-             class="flex-1 p-4 overflow-y-auto space-y-3 dark:bg-slate-950/60 bg-slate-50/80 text-sm scroll-smooth">
+             class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50/80 dark:bg-[#0b0c16]/80 text-sm scroll-smooth">
         </div>
 
         <!-- Sugerencias Rápidas (Quick Replies) -->
         <div id="fb-chat-pills"
-             class="px-3 py-2.5 dark:bg-slate-900/90 bg-white border-t dark:border-slate-800 border-slate-200 flex gap-2 overflow-x-auto no-scrollbar">
+             class="px-3 py-2.5 bg-white dark:bg-[#111324] border-t border-slate-200 dark:border-indigo-950/40 flex gap-2 overflow-x-auto no-scrollbar">
         </div>
 
         <!-- Formulario de Entrada -->
         <form id="fb-chat-form" onsubmit="window.handleFlightBotSubmit(event)"
-              class="p-3 dark:bg-slate-900 bg-white border-t dark:border-slate-800 border-slate-200 flex items-center gap-2">
+              class="p-3 bg-white dark:bg-[#111324] border-t border-slate-200 dark:border-indigo-950/40 flex items-center gap-2">
           <input id="fb-chat-input" type="text" maxlength="320" autocomplete="off"
-                 placeholder="Preguntá sobre vuelos, destinos, tarifas o consejos..."
-                 class="flex-1 px-4 py-2.5 rounded-2xl text-xs sm:text-sm dark:bg-slate-800/90 bg-slate-100 dark:text-white text-slate-900 placeholder-slate-400 border dark:border-slate-700 border-slate-200 focus:outline-none focus:ring-2 transition-all"
-                 style="--tw-ring-color: var(--brand-primary);" />
+                 placeholder="Preguntá sobre vuelos, rutas o destinos..."
+                 class="flex-1 px-4 py-2.5 rounded-2xl text-xs sm:text-sm bg-slate-100 dark:bg-[#0b0c16] text-slate-900 dark:text-white placeholder-slate-400 border border-slate-200 dark:border-indigo-950/60 focus:outline-none focus:ring-2 transition-all"
+                 style="--tw-ring-color: #22d3ee;" />
           <button id="fb-chat-send" type="submit" title="Enviar consulta" aria-label="Enviar consulta"
-                  class="w-10 h-10 rounded-2xl text-white flex items-center justify-center shadow-md hover:brightness-110 active:scale-95 transition-all flex-shrink-0 cursor-pointer"
-                  style="background: var(--brand-gradient);">
+                  class="w-10 h-10 rounded-2xl text-white flex items-center justify-center shadow-md hover:brightness-110 active:scale-95 transition-all flex-shrink-0 cursor-pointer aurora-cta-btn"
+                  style="background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #06b6d4 100%);">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
               <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
             </svg>
@@ -161,25 +153,25 @@
         </form>
 
         <!-- Pie del Chatbox con acceso directo a Telegram -->
-        <div class="px-4 py-1.5 dark:bg-slate-950 bg-slate-100 border-t dark:border-slate-800/80 border-slate-200 flex items-center justify-between text-[11px] dark:text-slate-400 text-slate-500">
-          <span>Asistente en tiempo real</span>
+        <div class="px-4 py-2 bg-slate-100 dark:bg-[#0b0c16] border-t border-slate-200 dark:border-indigo-950/40 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+          <span>Respuestas al instante</span>
           <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
-             class="font-bold hover:underline flex items-center gap-1" style="color: var(--brand-primary);">
-            Abrir en Telegram &rarr;
+             class="font-bold text-cyan-300-aurora hover:underline flex items-center gap-1">
+            Continuar en Telegram &rarr;
           </a>
         </div>
       </div>
 
-      <!-- Botón Flotante Principal (Trigger Idéntico a Guías y Vuelos) -->
+      <!-- Burbuja Flotante Moderna Aurora Mint -->
       <button id="fb-chat-fab" type="button" onclick="window.toggleFlightBotChat()"
-              aria-label="Abrir Asistente IA de FlightBot"
-              class="group flex items-center gap-3 px-4 py-3.5 rounded-full text-white font-bold text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
-              style="background: var(--brand-gradient, linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)); box-shadow: 0 14px 30px -5px var(--brand-glow, rgba(37, 99, 235, 0.45));">
-        <span class="relative flex h-6 w-6 items-center justify-center">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-25"></span>
-          <span class="relative text-base">💬</span>
+              aria-label="Abrir chat con Rolli IA"
+              class="group flex items-center gap-2.5 pl-2.5 pr-4 py-2.5 rounded-full text-white font-extrabold text-xs sm:text-sm shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer aurora-cta-btn"
+              style="background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #06b6d4 100%); box-shadow: 0 14px 30px -6px rgba(99, 102, 241, 0.42);">
+        <span class="relative flex h-8 w-8 items-center justify-center rounded-full bg-white/15 border border-white/25 p-1">
+          ${ROLLI_DNI_SVG}
+          <span class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-indigo-600 animate-pulse"></span>
         </span>
-        <span class="pr-1">F-Bot Rolli · Chat IA</span>
+        <span>Preguntale a Rolli</span>
       </button>
     `;
     document.body.appendChild(wrap);

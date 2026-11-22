@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="" data-color="blue">
+<html lang="es" class="scroll-smooth dark" data-color="aurora-mint">
 <head>
   <link rel="canonical" href="https://www.flightbot.com.ar/billetera.html">
 
@@ -14,7 +14,7 @@
   <meta name="twitter:image" content="https://www.flightbot.com.ar/img/og-preview.jpg">
   <title>Billetera de Documentos & Itinerario · FlightBot</title>
   <meta name="description" content="Tus boarding passes, vouchers de hotel y pólizas médicas organizados en tiempo real. Disponible 100% offline para aeropuertos y modo avión.">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#0b0c16">
   <link rel="manifest" href="/manifest.json">
   <script src="js/wallet-crypto.js" defer></script>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cellipse cx='20' cy='37' rx='14' ry='2' fill='%23000' opacity='.35'/%3E%3Crect x='23' y='19' width='12' height='16' rx='3' fill='%232563eb' stroke='%23fff' stroke-width='.8'/%3E%3Cline x1='25' y1='23' x2='33' y2='23' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='27' x2='33' y2='27' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Cline x1='25' y1='31' x2='33' y2='31' stroke='%23fff' stroke-opacity='.4' stroke-width='.7'/%3E%3Ccircle cx='25.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Ccircle cx='32.5' cy='36' r='1.3' fill='%231e293b' stroke='%23fff' stroke-width='.6'/%3E%3Cpath d='M26 19 V13 H32 V19' stroke='%23cbd5e1' stroke-width='1.1'/%3E%3Cpath d='M17 24 Q22 20 27 13' stroke='%23e2e8f0' stroke-width='1.8'/%3E%3Crect x='7' y='17' width='14' height='16' rx='7' fill='%23f8fafc' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Crect x='10' y='22' width='8' height='6' rx='2' fill='%230f172a'/%3E%3Cpath d='M11 25 L12.5 23.5 L14 26 L15.5 24 L17 25' stroke='%2310b981' stroke-width='.8'/%3E%3Crect x='5.5' y='6' width='17' height='13' rx='5' fill='%23fff' stroke='%23cbd5e1' stroke-width='.8'/%3E%3Cline x1='14' y1='6' x2='14' y2='2' stroke='%2394a3b8' stroke-width='1.1'/%3E%3Ccircle cx='14' cy='1.8' r='1.6' fill='%232563eb'/%3E%3Crect x='8' y='9' width='12' height='6.5' rx='2.5' fill='%230f172a'/%3E%3Ccircle cx='11' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3Ccircle cx='17' cy='12.2' r='1.2' fill='%2338bdf8'/%3E%3C/svg%3E">
@@ -43,18 +43,18 @@
 
   <style>
     :root {
-      --brand-primary: #2563eb;
+      --brand-primary: #22d3ee;
       --brand-primary-hover: #1d4ed8;
-      --brand-glow: rgba(37, 99, 235, 0.35);
+      --brand-glow: rgba(99, 102, 241, 0.35);
       --brand-subtle: rgba(37, 99, 235, 0.1);
       --brand-border: rgba(37, 99, 235, 0.25);
       --brand-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
     }
 
     [data-color="blue"] {
-      --brand-primary: #2563eb;
+      --brand-primary: #22d3ee;
       --brand-primary-hover: #1d4ed8;
-      --brand-glow: rgba(37, 99, 235, 0.35);
+      --brand-glow: rgba(99, 102, 241, 0.35);
       --brand-subtle: rgba(37, 99, 235, 0.1);
       --brand-border: rgba(37, 99, 235, 0.25);
       --brand-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
@@ -137,7 +137,7 @@
   <script>
     (function() {
       const savedTheme = localStorage.getItem('fb_theme_mode') || 'light';
-      const savedColor = localStorage.getItem('fb_theme_color') || 'blue';
+      const savedColor = 'aurora-mint';
       if (savedTheme === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
@@ -147,6 +147,7 @@
     })();
   </script>
   <script src="js/guias-data.js" defer></script>
+  <script src="js/guias-kb.js" defer></script>
   <script src="js/chatbox.js" defer></script>
   <script src="/js/auth.js" defer></script>
   <!-- Vercel Web Analytics (mismo dominio, compatible con CSP script-src 'self') -->
@@ -154,156 +155,96 @@
   <script defer src="/_vercel/insights/script.js"></script>
   <script src="/js/site-stats.js" defer></script>
   <script src="/js/theme.js" defer></script>
-  <script>(function(){try{if(!localStorage.getItem('fb_theme_cobalt_v1')){localStorage.setItem('fb_theme_mode','light');localStorage.setItem('fb_theme_color','blue');localStorage.setItem('fb_theme_cobalt_v1','1');}var m=localStorage.getItem('fb_theme_mode')||'light';if(m==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('data-color','blue');}catch(_){}})();</script>
+  <script>(function(){try{if(!localStorage.getItem('fb_theme_aurora_v2')){localStorage.setItem('fb_theme_mode','dark');localStorage.setItem('fb_theme_color','aurora-mint');localStorage.setItem('fb_theme_aurora_v2','1');}var m=localStorage.getItem('fb_theme_mode')||'dark';if(m==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('data-color','aurora-mint');}catch(_){}})();</script>
   <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
   <script src="js/telegram-webapp.js" defer></script>
+  <link rel="stylesheet" href="css/aurora-mint.css">
 </head>
-<body class="dark:bg-slate-950 dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white theme-transition min-h-screen flex flex-col justify-between overflow-x-hidden">
+<body class="dark:bg-[#0b0c16] dark:text-slate-100 bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-600 selection:text-white theme-transition min-h-screen flex flex-col justify-between overflow-x-hidden">
 
   <!-- Encabezado / Navegación Superior -->
     <!-- HEADER & NAVBAR DE NAVEGACIÓN UNIFICADA -->
     <!-- HEADER & NAVBAR DE NAVEGACIÓN UNIFICADA -->
-  <header class="sticky top-0 z-50 backdrop-blur-md dark:bg-slate-950/85 bg-white/90 border-b dark:border-slate-800/80 border-slate-200 theme-transition">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3 relative">
-      
-      <!-- 1. Marca / Logotipo Rolli + FlightBot + Slogan Oficial -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-[#0b0c16]/85 border-b border-slate-200 dark:border-indigo-950/40 theme-transition">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 lg:gap-3 relative">
+
+      <!-- 1. Marca / Logotipo Rolli + FlightBot -->
       <a href="/" class="flex items-center gap-2.5 group shrink-0" title="FlightBot · Con Rolli Copiloto">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 bg-gradient-to-br from-blue-600 to-indigo-700 shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
-          <img src="/img/rolli-avatar-transparent.png" alt="Rolli Flightbot" class="w-full h-full object-contain filter drop-shadow" loading="lazy" decoding="async">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl flex items-center justify-center p-1 aurora-logo-badge group-hover:scale-105 transition-transform">
+          <img src="img/rolli-avatar-transparent.png" alt="Rolli FlightBot" class="w-full h-full object-contain filter drop-shadow" loading="lazy" decoding="async">
         </div>
         <div>
-          <span class="text-xl font-black tracking-tight dark:text-white text-slate-900">Flight<span class="text-blue-600 dark:text-blue-400">Bot</span></span>
+          <span class="text-xl font-black tracking-tight text-slate-900 dark:text-white">Flight<span class="text-cyan-300-aurora">Bot</span></span>
           <span class="block text-[9px] uppercase font-bold text-slate-400 -mt-1 tracking-widest">Con Rolli Copiloto</span>
         </div>
       </a>
 
-      <!-- 2. Menú de Navegación Principal Homogéneo (Desktop - Sin Emojis) -->
-      <nav class="hidden lg:flex items-center gap-1 xl:gap-1.5 mx-auto shrink-0">
-        <!-- Inicio -->
-        <a href="/" id="nav-btn-inicio" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Inicio de FlightBot">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
+      <!-- 2. Menú de Navegación Principal Simétrico (7 pestañas) -->
+      <nav aria-label="Navegación principal" class="hidden lg:flex items-center gap-0.5 xl:gap-1 mx-auto shrink-0">
+        <a href="/" id="nav-btn-inicio" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-cyan-300 hover-cyan-aurora" title="Inicio de FlightBot">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <span>Inicio</span>
         </a>
-
-        <!-- Vuelos -->
-        <a href="/vuelos" id="nav-btn-vuelos" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Buscador y Radar de Vuelos">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
-          </svg>
+        <a href="/vuelos" id="nav-btn-vuelos" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-cyan-300 hover-cyan-aurora" title="Buscador y Radar de Vuelos">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
           <span>Vuelos</span>
         </a>
-
-        <!-- Relámpago -->
-        <a href="/relampago" id="nav-btn-relampago" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Ofertas Relámpago y Oportunidades Flash">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
+        <a href="/relampago" id="nav-btn-relampago" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-cyan-300 hover-cyan-aurora" title="Ofertas Relámpago y Oportunidades Flash">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           <span>Relámpago</span>
         </a>
-
-        <!-- Modo Ruta -->
-        <a href="/escapadas" id="nav-btn-escapadas" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Semáforo de Rutas, Peajes y Combustible">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
-            <circle cx="7" cy="17" r="2"/>
-            <path d="M9 17h6"/>
-            <circle cx="17" cy="17" r="2"/>
-          </svg>
+        <a href="/escapadas" id="nav-btn-escapadas" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-cyan-300 hover-cyan-aurora" title="Semáforo de Rutas, Peajes y Combustible">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
           <span>Modo Ruta</span>
         </a>
-
-        <!-- Billetera -->
-        <a href="/billetera" id="nav-btn-billetera" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm rounded-lg transition-all duration-150 text-blue-600 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-400 font-semibold" title="Billetera Offline y Beneficios VIP">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
-            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
-            <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
-          </svg>
+        <a href="/billetera" id="nav-btn-billetera" aria-current="page" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm rounded-lg transition-all duration-150 font-semibold nav-tab-active-aurora text-cyan-300 bg-indigo-950/50 border border-indigo-800/40" title="Billetera Offline y Beneficios VIP">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
           <span>Billetera</span>
         </a>
-
-        <!-- Guías -->
-        <a href="/guias" id="nav-btn-guias" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Guías de Viaje Editoriales">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
-            <path d="M6 6h10"/>
-            <path d="M6 10h10"/>
-          </svg>
+        <a href="/guias" id="nav-btn-guias" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-cyan-300 hover-cyan-aurora" title="Guías de Viaje Editoriales">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
           <span>Guías</span>
         </a>
-
-        <!-- FAQ -->
-        <a href="/faq" id="nav-btn-faq" class="flex items-center gap-1.5 px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-all duration-150 text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800" title="Preguntas Frecuentes">
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-            <path d="M12 17h.01"/>
-          </svg>
+        <a href="/faq" id="nav-btn-faq" class="flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg transition-colors duration-150 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover:text-cyan-300 hover-cyan-aurora" title="Preguntas Frecuentes">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
           <span>FAQ</span>
         </a>
       </nav>
 
-      <!-- 3. Bloque Derecho Compacto y Alineado (flex items-center gap-2) -->
+      <!-- 3. Bloque Derecho Simétrico: Moneda + Dark Mode + Telegram -->
       <div class="flex items-center gap-2 shrink-0">
-        
-        <!-- A. Widget Ficha Plateada Rolli (Arcade Token) -->
-        <div id="auth-nav-container" class="flex items-center">
-          <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.toggleModal() : null"
-                  id="btn-nav-tokens"
-                  class="inline-flex items-center justify-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 dark:bg-slate-800/80 bg-slate-100 hover:bg-slate-200 dark:hover:bg-slate-800 border dark:border-slate-700 border-slate-200 transition-all shadow-xs cursor-pointer shrink-0"
-                  title="Billetera de fichas: 4 fichas semanales">
-            <svg class="w-4 h-4 shrink-0 drop-shadow-sm" viewBox="0 0 100 100" fill="none">
-              <circle cx="50" cy="50" r="46" fill="url(#metalBase3Nav)" stroke="url(#metalRim3Nav)" stroke-width="4"/>
-              <circle cx="50" cy="50" r="34" fill="url(#metalInner3Nav)" stroke="#475569" stroke-width="2"/>
-              <path d="M50 28 L53 44 L68 52 L68 56 L53 52 L53 64 L58 68 L58 71 L50 69 L42 71 L42 68 L47 64 L47 52 L32 56 L32 52 L47 44 Z" fill="#1e293b" stroke="#0f172a" stroke-width="1"/>
-              <text x="50" y="24" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">FLIGHT</text>
-              <text x="50" y="80" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">BOT</text>
-              <path d="M22 32 C30 18, 70 18, 78 32 C68 24, 32 24, 22 32 Z" fill="#ffffff" opacity="0.45"/>
-              <defs>
-                <linearGradient id="metalBase3Nav" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#ffffff"/>
-                  <stop offset="0.3" stop-color="#e2e8f0"/>
-                  <stop offset="0.7" stop-color="#94a3b8"/>
-                  <stop offset="1" stop-color="#475569"/>
-                </linearGradient>
-                <linearGradient id="metalRim3Nav" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#ffffff"/>
-                  <stop offset="0.5" stop-color="#64748b"/>
-                  <stop offset="1" stop-color="#cbd5e1"/>
-                </linearGradient>
-                <linearGradient id="metalInner3Nav" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#cbd5e1"/>
-                  <stop offset="0.5" stop-color="#94a3b8"/>
-                  <stop offset="1" stop-color="#64748b"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <span id="nav-tokens-display" class="font-bold">(4)</span>
-          </button>
+
+        <!-- A. Selector de Moneda Global (NATIVO | ARS | USD) -->
+        <div class="hidden md:inline-flex items-center p-1 rounded-lg bg-slate-100 dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 text-xs font-semibold shrink-0"
+             role="group" aria-label="Selector de moneda global"
+             title="Cambiar moneda de visualización (NATIVO | ARS | USD)">
+          <button type="button" id="nav-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null"
+                  class="px-2 py-1 rounded-md text-white font-semibold aurora-cta-btn aurora-curr-active transition-all text-[11px] cursor-pointer">NATIVO</button>
+          <button type="button" id="nav-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null"
+                  class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-[11px] cursor-pointer">ARS</button>
+          <button type="button" id="nav-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null"
+                  class="px-2 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-[11px] cursor-pointer">USD</button>
         </div>
 
-        <!-- B. Botón Dark Mode: Cuadrado perfecto (h-9 w-9) -->
+        <!-- B. Switch Dark Mode (Cuadrado perfecto h-9 w-9) -->
         <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="theme-mode-btn" title="Alternar Modo Claro / Oscuro"
-                class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 items-center justify-center text-slate-700 dark:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all focus:outline-none shrink-0">
-          <span id="theme-mode-icon">☀️</span>
+                class="hidden sm:flex h-9 w-9 rounded-lg border border-slate-200 dark:border-indigo-950/40 dark:bg-[#111324] items-center justify-center text-slate-700 dark:text-cyan-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 transition-all focus:outline-none shrink-0 cursor-pointer">
+          <span id="theme-mode-icon">🌙</span>
         </button>
 
-        <!-- D. Botón Telegram: h-9 px-3 rounded-lg bg-[#229ED9] -->
+        <!-- C. Botón Telegram -->
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
            class="hidden sm:inline-flex h-9 px-3 rounded-lg bg-[#229ED9] hover:bg-[#1E88E5] text-white text-xs font-semibold items-center gap-1.5 shadow-sm transition-all shrink-0"
            title="Chateá conmigo en Telegram para alertas instantáneas">
           <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .36z"/>
           </svg>
-          <span class="hidden sm:inline">Telegram</span>
+          <span>Telegram</span>
         </a>
 
-        <!-- E. Botón Menú Móvil (lg:hidden h-9 w-9) -->
+        <!-- D. Botón Menú Móvil -->
         <button type="button" id="mobile-nav-toggle" onclick="window.toggleMobileNav ? window.toggleMobileNav() : null" aria-label="Abrir Menú"
-                class="lg:hidden h-9 w-9 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shrink-0">
+                class="lg:hidden h-9 w-9 rounded-lg border border-slate-200 dark:border-indigo-950/40 dark:bg-[#111324] flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-indigo-950/40 transition-colors shrink-0">
           <svg id="nav-icon-menu" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
@@ -315,117 +256,41 @@
       </div>
     </div>
 
-    <!-- Menú Móvil (Drawer) Limpio con Iconos Vectoriales y Ficha Plateada -->
-    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t dark:border-slate-800 border-slate-200 dark:bg-slate-950/95 bg-white/95 backdrop-blur-xl px-4 py-4 transition-all shadow-xl space-y-3">
-      
-      <!-- Contenedor Ficha Plateada Móvil -->
-      <div id="mobile-auth-drawer-container">
-        <button onclick="window.FB_AUTH_UI ? window.FB_AUTH_UI.toggleModal() : null" class="w-full flex items-center justify-between py-2.5 px-3.5 rounded-xl font-bold text-xs bg-white dark:bg-slate-900 border dark:border-slate-800 border-slate-200 text-slate-800 dark:text-slate-100 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer">
-          <div class="flex items-center gap-2">
-            <svg class="w-5 h-5 shrink-0 drop-shadow-sm" viewBox="0 0 100 100" fill="none">
-              <circle cx="50" cy="50" r="46" fill="url(#metalBase3Mob)" stroke="url(#metalRim3Mob)" stroke-width="4"/>
-              <circle cx="50" cy="50" r="34" fill="url(#metalInner3Mob)" stroke="#475569" stroke-width="2"/>
-              <path d="M50 28 L53 44 L68 52 L68 56 L53 52 L53 64 L58 68 L58 71 L50 69 L42 71 L42 68 L47 64 L47 52 L32 56 L32 52 L47 44 Z" fill="#1e293b" stroke="#0f172a" stroke-width="1"/>
-              <text x="50" y="24" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">FLIGHT</text>
-              <text x="50" y="80" text-anchor="middle" font-size="6.5" font-weight="900" fill="#475569" letter-spacing="1">BOT</text>
-              <path d="M22 32 C30 18, 70 18, 78 32 C68 24, 32 24, 22 32 Z" fill="#ffffff" opacity="0.45"/>
-              <defs>
-                <linearGradient id="metalBase3Mob" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#ffffff"/>
-                  <stop offset="0.3" stop-color="#e2e8f0"/>
-                  <stop offset="0.7" stop-color="#94a3b8"/>
-                  <stop offset="1" stop-color="#475569"/>
-                </linearGradient>
-                <linearGradient id="metalRim3Mob" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#ffffff"/>
-                  <stop offset="0.5" stop-color="#64748b"/>
-                  <stop offset="1" stop-color="#cbd5e1"/>
-                </linearGradient>
-                <linearGradient id="metalInner3Mob" x1="20" y1="20" x2="80" y2="80" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#cbd5e1"/>
-                  <stop offset="0.5" stop-color="#94a3b8"/>
-                  <stop offset="1" stop-color="#64748b"/>
-                </linearGradient>
-              </defs>
-            </svg>
-            <span>Fichas de Búsqueda</span>
-          </div>
-          <span id="mobile-tokens-display" class="px-2 py-0.5 rounded-full text-[11px] font-bold text-slate-300 bg-slate-800 border border-slate-700">
-            4 disponibles
-          </span>
-        </button>
-      </div>
-
+    <!-- Menú Móvil (Drawer) Limpio -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden border-t border-slate-200 dark:border-indigo-950/40 bg-white/95 dark:bg-[#0b0c16]/95 backdrop-blur-xl px-4 py-4 transition-all shadow-xl space-y-3">
       <div class="flex flex-col space-y-1">
-        <!-- Inicio -->
-        <a href="/" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
+        <a href="/" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover-cyan-aurora hover:bg-slate-100 dark:hover:bg-indigo-950/40 font-medium transition-colors">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <span>Inicio</span>
         </a>
-
-        <!-- Vuelos -->
-        <a href="/vuelos" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
-          </svg>
+        <a href="/vuelos" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover-cyan-aurora hover:bg-slate-100 dark:hover:bg-indigo-950/40 font-medium transition-colors">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
           <span>Vuelos</span>
         </a>
-
-        <!-- Relámpago -->
-        <a href="/relampago" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
+        <a href="/relampago" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover-cyan-aurora hover:bg-slate-100 dark:hover:bg-indigo-950/40 font-medium transition-colors">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           <span>Relámpago</span>
         </a>
-
-        <!-- Modo Ruta -->
-        <a href="/escapadas" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/>
-            <circle cx="7" cy="17" r="2"/>
-            <path d="M9 17h6"/>
-            <circle cx="17" cy="17" r="2"/>
-          </svg>
+        <a href="/escapadas" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover-cyan-aurora hover:bg-slate-100 dark:hover:bg-indigo-950/40 font-medium transition-colors">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
           <span>Modo Ruta</span>
         </a>
-
-        <!-- Billetera -->
-        <a href="/billetera" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-blue-600 bg-blue-50 dark:bg-blue-950/40 dark:text-blue-400 font-semibold transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
-            <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
-            <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
-          </svg>
+        <a href="/billetera" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 font-semibold transition-all nav-tab-active-aurora">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
           <span>Billetera</span>
         </a>
-
-        <!-- Guías -->
-        <a href="/guias" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
-            <path d="M6 6h10"/>
-            <path d="M6 10h10"/>
-          </svg>
+        <a href="/guias" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover-cyan-aurora hover:bg-slate-100 dark:hover:bg-indigo-950/40 font-medium transition-colors">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
           <span>Guías</span>
         </a>
-
-        <!-- FAQ -->
-        <a href="/faq" onclick="window.toggleMobileNav(false)" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 font-medium transition-all">
-          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-            <path d="M12 17h.01"/>
-          </svg>
+        <a href="/faq" onclick="window.toggleMobileNav ? window.toggleMobileNav(false) : null" class="px-4 py-3 text-base rounded-xl flex items-center gap-3 text-slate-700 dark:text-slate-200 hover-cyan-aurora hover:bg-slate-100 dark:hover:bg-indigo-950/40 font-medium transition-colors">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
           <span>FAQ</span>
         </a>
       </div>
 
-      <!-- Pie del Drawer: Botón Telegram y Selector de Moneda Móvil -->
-      <div class="pt-3 border-t dark:border-slate-800 border-slate-200 space-y-3">
+      <!-- Pie del Drawer: Botón Telegram, Switch Dark Mode y Moneda -->
+      <div class="pt-3 border-t border-slate-200 dark:border-indigo-950/40 space-y-3">
         <a href="https://t.me/GnZFlightBot" target="_blank" rel="noopener noreferrer"
            class="h-11 w-full rounded-xl bg-[#229ED9] hover:bg-[#1E88E5] text-white text-sm font-semibold flex items-center justify-center gap-2 shadow-sm transition-all">
           <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
@@ -434,27 +299,24 @@
           <span>Abrir Rolli en Telegram (@GnZFlightBot)</span>
         </a>
 
-                <!-- Fila de Apariencia / Modo Oscuro Móvil -->
         <div class="flex items-center justify-between pt-1">
           <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Apariencia:</span>
           <button type="button" onclick="window.toggleThemeMode ? window.toggleThemeMode() : null" id="m-theme-mode-btn"
-                  class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/80 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 transition-all cursor-pointer">
-            <span id="m-theme-mode-icon">☀️</span>
-            <span id="m-theme-mode-text">Modo Claro</span>
+                  class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-indigo-950/40 bg-slate-100 dark:bg-[#111324] text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-indigo-950/40 transition-all cursor-pointer">
+            <span id="m-theme-mode-icon">🌙</span>
+            <span id="m-theme-mode-text">Modo Oscuro</span>
           </button>
         </div>
 
-        <!-- Fila de Moneda Móvil -->
         <div class="flex items-center justify-between pt-1">
           <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Moneda de referencia:</span>
-          <div class="inline-flex p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg text-xs font-semibold">
-            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold bg-blue-600 shadow-xs transition-all text-xs">NATIVO</button>
-            <button type="button" id="m-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">ARS</button>
-            <button type="button" id="m-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium transition-all text-xs">USD</button>
+          <div class="inline-flex p-1 bg-slate-100 dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 rounded-lg text-xs font-semibold">
+            <button type="button" id="m-btn-curr-nativo" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('NATIVO') : null" class="px-2.5 py-1 rounded-md text-white font-semibold aurora-cta-btn aurora-curr-active shadow-xs transition-all text-xs">NATIVO</button>
+            <button type="button" id="m-btn-curr-ars" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('ARS') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-xs">ARS</button>
+            <button type="button" id="m-btn-curr-usd" onclick="window.cambiarMonedaGlobal ? window.cambiarMonedaGlobal('USD') : null" class="px-2.5 py-1 rounded-md text-slate-600 dark:text-slate-400 hover-cyan-aurora font-medium transition-colors text-xs">USD</button>
           </div>
         </div>
       </div>
-
     </div>
   </header>
 
@@ -481,7 +343,7 @@
     <div id="panel-tarjetas-vip" class="space-y-8 animate-fadeIn">
 <!-- FLIGHTBOT_PROMOS_START -->
   <!-- Sección: Promociones, Cuotas & Asistencia al Viajero por Tarjeta -->
-  <section id="promociones" class="w-full py-24 dark:bg-slate-950 bg-slate-50 border-t dark:border-slate-800 border-slate-200 theme-transition relative">
+  <section id="promociones" class="w-full py-24 dark:bg-[#0b0c16] bg-slate-50 border-t dark:border-slate-800 border-slate-200 theme-transition relative">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Encabezado de la Sección -->
@@ -558,7 +420,7 @@
           <div>
             <label class="block font-bold text-slate-400 mb-1.5 uppercase text-[10px] tracking-wider">Banco o Billetera</label>
             <select id="fb-promos-filter-banco" onchange="window.onPromosDropdownChange()"
-                    class="w-full px-3.5 py-2.5 rounded-xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:border-blue-500 focus:ring-blue-500 transition-all">
+                    class="w-full px-3.5 py-2.5 rounded-xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:border-blue-500 focus:ring-blue-500 transition-all">
               <option value="todos">Todos los Bancos y Billeteras</option>
               <option value="galicia">Banco Galicia</option>
               <option value="santander">Banco Santander</option>
@@ -576,7 +438,7 @@
           <div>
             <label class="block font-bold text-slate-400 mb-1.5 uppercase text-[10px] tracking-wider">Nivel / Categoría de Tarjeta</label>
             <select id="fb-promos-filter-categoria" onchange="window.onPromosDropdownChange()"
-                    class="w-full px-3.5 py-2.5 rounded-xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:border-blue-500 focus:ring-blue-500 transition-all">
+                    class="w-full px-3.5 py-2.5 rounded-xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:border-blue-500 focus:ring-blue-500 transition-all">
               <option value="todas">Todas las Categorías</option>
               <option value="black">Black / Signature / The Platinum Card (Alta Gama)</option>
               <option value="platinum">Platinum</option>
@@ -588,7 +450,7 @@
           <div>
             <label class="block font-bold text-slate-400 mb-1.5 uppercase text-[10px] tracking-wider">Marca Emisora</label>
             <select id="fb-promos-filter-marca" onchange="window.onPromosDropdownChange()"
-                    class="w-full px-3.5 py-2.5 rounded-xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:border-blue-500 focus:ring-blue-500 transition-all">
+                    class="w-full px-3.5 py-2.5 rounded-xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:border-blue-500 focus:ring-blue-500 transition-all">
               <option value="todas">Todas las Marcas</option>
               <option value="visa">Visa</option>
               <option value="mastercard">Mastercard</option>
@@ -607,7 +469,7 @@
         </div>
 
         <!-- Banner Dinámico de Diagnóstico y Resultados Rápidos en Pantalla -->
-        <div id="fb-search-active-summary" class="hidden mt-6 p-4 sm:p-5 rounded-2xl dark:bg-slate-950/80 bg-slate-50 border dark:border-slate-800 border-slate-200 theme-transition shadow-sm">
+        <div id="fb-search-active-summary" class="hidden mt-6 p-4 sm:p-5 rounded-2xl dark:bg-[#0b0c16]/80 bg-slate-50 border dark:border-slate-800 border-slate-200 theme-transition shadow-sm">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div class="space-y-1.5 flex-1">
               <div class="flex items-center gap-2 flex-wrap">
@@ -695,7 +557,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             
             <!-- Centurion Lounge -->
-            <div id="vip-card-centurion" class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
+            <div id="vip-card-centurion" class="p-5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
               <div>
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-blue-500/15 text-blue-400 border border-blue-500/30">
@@ -719,7 +581,7 @@
             </div>
 
             <!-- Star Alliance Lounge -->
-            <div id="vip-card-staralliance" class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
+            <div id="vip-card-staralliance" class="p-5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
               <div>
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">
@@ -743,7 +605,7 @@
             </div>
 
             <!-- Ezeiza Lounge -->
-            <div id="vip-card-ezeiza" class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
+            <div id="vip-card-ezeiza" class="p-5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
               <div>
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-400 border border-purple-500/30">
@@ -767,7 +629,7 @@
             </div>
 
             <!-- Aeropuertos VIPClub Ezeiza -->
-            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
+            <div class="p-5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
               <div>
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
@@ -791,7 +653,7 @@
             </div>
 
             <!-- Salón Cóndor Aerolíneas Argentinas -->
-            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
+            <div class="p-5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
               <div>
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-sky-500/15 text-sky-400 border border-sky-500/30">
@@ -815,7 +677,7 @@
             </div>
 
             <!-- Sala VIP Mastercard Black -->
-            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
+            <div class="p-5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between hover:border-slate-700 transition-all">
               <div>
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-blue-600/15 text-blue-400 border border-blue-500/30">
@@ -845,7 +707,7 @@
         <div id="vip-panel-aeroparque" class="hidden space-y-4">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             
-            <div id="vip-card-amae-aep" class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div id="vip-card-amae-aep" class="p-5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
               <div>
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-sky-500/15 text-sky-400 border border-sky-500/30">
@@ -868,7 +730,7 @@
               </div>
             </div>
 
-            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div class="p-5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
               <div>
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
@@ -898,7 +760,7 @@
         <div id="vip-panel-interior" class="hidden space-y-4">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
               <div>
                 <div class="text-xs font-extrabold text-amber-400 mb-1">🏔️ Bariloche (BRC)</div>
                 <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">AMAE Lounge Bariloche</h4>
@@ -909,7 +771,7 @@
               </div>
             </div>
 
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
               <div>
                 <div class="text-xs font-extrabold text-blue-400 mb-1">🍷 Mendoza (MDZ)</div>
                 <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">AMAE Lounge El Plumerillo</h4>
@@ -920,7 +782,7 @@
               </div>
             </div>
 
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
               <div>
                 <div class="text-xs font-extrabold text-emerald-400 mb-1">🌴 Iguazú (IGR)</div>
                 <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">AMAE Lounge Cataratas</h4>
@@ -931,7 +793,7 @@
               </div>
             </div>
 
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
               <div>
                 <div class="text-xs font-extrabold text-sky-400 mb-1">✈️ Córdoba (COR)</div>
                 <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Aeropuertos VIPClub Córdoba</h4>
@@ -949,7 +811,7 @@
         <div id="vip-panel-internacional" class="hidden space-y-4">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
               <div>
                 <div class="text-xs font-extrabold text-red-500 mb-1 flex items-center gap-1.5"><img src="img/flags/es.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/es.png'" alt="España" class="w-4 h-3 object-cover rounded-xs inline-block" loading="lazy" decoding="async"> Madrid (MAD)</div>
                 <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Salas VIP Aena Barajas</h4>
@@ -960,7 +822,7 @@
               </div>
             </div>
 
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
               <div>
                 <div class="text-xs font-extrabold text-blue-500 mb-1 flex items-center gap-1.5"><img src="img/flags/us.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/us.png'" alt="Estados Unidos" class="w-4 h-3 object-cover rounded-xs inline-block" loading="lazy" decoding="async"> Miami (MIA)</div>
                 <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Centurion &amp; Turkish Lounge</h4>
@@ -971,7 +833,7 @@
               </div>
             </div>
 
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
               <div>
                 <div class="text-xs font-extrabold text-green-500 mb-1 flex items-center gap-1.5"><img src="img/flags/it.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/it.png'" alt="Italia" class="w-4 h-3 object-cover rounded-xs inline-block" loading="lazy" decoding="async"> Roma (FCO)</div>
                 <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Plaza Premium Fiumicino</h4>
@@ -982,7 +844,7 @@
               </div>
             </div>
 
-            <div class="p-4 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
+            <div class="p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200 flex flex-col justify-between">
               <div>
                 <div class="text-xs font-extrabold text-amber-500 mb-1 flex items-center gap-1.5"><img src="img/flags/br.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/br.png'" alt="Brasil" class="w-4 h-3 object-cover rounded-xs inline-block" loading="lazy" decoding="async"> Río de Janeiro (GIG)</div>
                 <h4 class="text-sm font-extrabold dark:text-white text-slate-900 mb-1">Plaza Premium Galeão</h4>
@@ -1000,7 +862,7 @@
         <div id="vip-panel-apps" class="hidden space-y-4">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
             
-            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+            <div class="p-5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200">
               <div class="w-10 h-10 rounded-xl bg-blue-500/15 text-blue-400 flex items-center justify-center font-extrabold text-lg mb-3">
                 1
               </div>
@@ -1016,7 +878,7 @@
               </ul>
             </div>
 
-            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+            <div class="p-5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200">
               <div class="w-10 h-10 rounded-xl bg-blue-600/15 text-blue-400 flex items-center justify-center font-extrabold text-lg mb-3">
                 2
               </div>
@@ -1032,7 +894,7 @@
               </ul>
             </div>
 
-            <div class="p-5 rounded-2xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+            <div class="p-5 rounded-2xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200">
               <div class="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center font-extrabold text-lg mb-3">
                 3
               </div>
@@ -1570,7 +1432,7 @@
           btn.onclick = () => window.toggleWalletCard(card.id);
           btn.className = isSelected
             ? "px-3.5 py-2 rounded-2xl text-xs font-extrabold text-white flex items-center gap-2 border transition-all scale-105 shadow-md"
-            : "px-3.5 py-2 rounded-2xl text-xs font-semibold dark:bg-slate-950/80 bg-slate-100 hover:dark:bg-slate-800 hover:bg-slate-200 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-300 flex items-center gap-2 transition-all opacity-85 hover:opacity-100";
+            : "px-3.5 py-2 rounded-2xl text-xs font-semibold dark:bg-[#0b0c16]/80 bg-slate-100 hover:dark:bg-slate-800 hover:bg-slate-200 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-300 flex items-center gap-2 transition-all opacity-85 hover:opacity-100";
 
           if (isSelected) {
             btn.style.background = "var(--brand-gradient)";
@@ -1930,7 +1792,7 @@
 
               <!-- Botón Desplegable con Flechita (Guarda / Desglosa detalles) -->
               <button type="button" onclick="window.togglePromoCardDetails('${p.id}')"
-                      class="w-full px-3.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between dark:bg-slate-950/70 bg-slate-50 hover:dark:bg-slate-800 hover:bg-slate-100 border dark:border-slate-800 border-slate-200 transition-all cursor-pointer">
+                      class="w-full px-3.5 py-2 rounded-xl text-xs font-bold flex items-center justify-between dark:bg-[#0b0c16]/70 bg-slate-50 hover:dark:bg-slate-800 hover:bg-slate-100 border dark:border-slate-800 border-slate-200 transition-all cursor-pointer">
                 <span id="promo-btn-text-${p.id}" class="dark:text-slate-300 text-slate-700">Ver Detalles &amp; Cobertura</span>
                 <span id="promo-arrow-${p.id}" class="text-sm font-bold transition-transform duration-300 text-blue-600">▼</span>
               </button>
@@ -1941,7 +1803,7 @@
                   ${p.descripcion}
                 </p>
                 ${schengenBadge ? `<div class="mb-2">${schengenBadge}</div>` : ''}
-                <div class="p-3 rounded-xl dark:bg-slate-950/80 bg-slate-50 border dark:border-slate-800/80 border-slate-200 text-[11px] dark:text-slate-400 text-slate-500 leading-relaxed">
+                <div class="p-3 rounded-xl dark:bg-[#0b0c16]/80 bg-slate-50 border dark:border-slate-800/80 border-slate-200 text-[11px] dark:text-slate-400 text-slate-500 leading-relaxed">
                   <strong class="dark:text-slate-300 text-slate-700">Requisitos:</strong> ${p.requisito}
                 </div>
                 <div class="pt-2 border-t dark:border-slate-800 border-slate-100 flex items-center justify-between">
@@ -2148,15 +2010,15 @@
           Todos (4)
         </button>
         <button type="button" onclick="window.filtrarCategoria('vuelo')" id="tab-vuelo"
-                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">
+                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">
           ✈️ Vuelos (2)
         </button>
         <button type="button" onclick="window.filtrarCategoria('hotel')" id="tab-hotel"
-                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">
+                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">
           🏨 Hoteles (1)
         </button>
         <button type="button" onclick="window.filtrarCategoria('asistencia')" id="tab-asistencia"
-                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">
+                class="px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0">
           🩺 Asistencia Médica (1)
         </button>
       </div>
@@ -2164,7 +2026,7 @@
       <div class="w-full sm:w-72 relative">
         <input type="text" id="wallet-search" oninput="window.filtrarBusqueda(this.value)"
                placeholder="Buscar PNR, aerolínea, hotel..."
-               class="w-full pl-9 pr-4 py-2 rounded-xl text-xs dark:bg-slate-950/60 bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:border-blue-500 focus:ring-blue-500 transition-all" />
+               class="w-full pl-9 pr-4 py-2 rounded-xl text-xs dark:bg-[#0b0c16]/60 bg-slate-100 border dark:border-slate-800 border-slate-200 dark:text-white text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-1 focus:border-blue-500 focus:ring-blue-500 transition-all" />
         <span class="absolute left-3 top-2 text-xs text-slate-400">🔍</span>
       </div>
     </div>
@@ -2232,7 +2094,7 @@
       </div>
 
       <!-- Detalles del Pasajero -->
-      <div class="grid grid-cols-3 gap-3 p-4 rounded-2xl dark:bg-slate-950 bg-slate-100 text-xs font-mono">
+      <div class="grid grid-cols-3 gap-3 p-4 rounded-2xl dark:bg-[#0b0c16] bg-slate-100 text-xs font-mono">
         <div>
           <span class="text-slate-400 text-[10px] block">PASAJERO</span>
           <strong id="bp-modal-passenger" class="dark:text-white text-slate-900">Gonzalo M.</strong>
@@ -2362,15 +2224,15 @@
       </div>
 
       <div class="space-y-3 text-xs dark:text-slate-300 text-slate-700">
-        <div class="flex items-start gap-3 p-3 rounded-xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+        <div class="flex items-start gap-3 p-3 rounded-xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200">
           <span class="font-bold text-blue-600">1.</span>
           <div>Escribí <code class="font-mono text-blue-400">/billetera</code> o <code class="font-mono text-blue-400">/miviaje</code> en <b>@GnZFlightBot</b>.</div>
         </div>
-        <div class="flex items-start gap-3 p-3 rounded-xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+        <div class="flex items-start gap-3 p-3 rounded-xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200">
           <span class="font-bold text-blue-600">2.</span>
           <div>Enviá el PDF de tu pasaje o boarding pass.</div>
         </div>
-        <div class="flex items-start gap-3 p-3 rounded-xl dark:bg-slate-950 bg-slate-50 border dark:border-slate-800 border-slate-200">
+        <div class="flex items-start gap-3 p-3 rounded-xl dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-800 border-slate-200">
           <span class="font-bold text-blue-600">3.</span>
           <div>La IA extraerá todos los campos y te entregará tu enlace privado para verlo en la computadora.</div>
         </div>
@@ -2385,7 +2247,7 @@
   </div>
 
   <!-- Pie de Página -->
-  <footer class="border-t dark:border-slate-800 border-slate-200 py-8 dark:bg-slate-950 bg-slate-50 theme-transition text-xs">
+  <footer class="border-t dark:border-slate-800 border-slate-200 py-8 dark:bg-[#0b0c16] bg-slate-50 theme-transition text-xs">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 dark:text-slate-500 text-slate-600">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pb-4 border-b dark:border-slate-800/80 border-slate-200/80">
         <span class="text-[11px] font-medium dark:text-slate-400 text-slate-500">Cotización orientativa: <strong class="dark:text-slate-200 text-slate-800">Dólar MEP / Turístico ($1.350 ARS)</strong></span>
@@ -2431,13 +2293,13 @@
           <label for="vault-pin-input" class="block text-xs font-bold dark:text-slate-300 text-slate-700 mb-1.5">PIN de Bóveda (mínimo 4 caracteres)</label>
           <input type="password" id="vault-pin-input" minlength="4" maxlength="32" required autocomplete="off"
                  placeholder="Ej: 4829 o clave personal"
-                 class="w-full px-3.5 py-2.5 rounded-xl text-sm font-mono dark:bg-slate-950 bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                 class="w-full px-3.5 py-2.5 rounded-xl text-sm font-mono dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500">
         </div>
         <div id="vault-pin-confirm-wrap">
           <label for="vault-pin-confirm" class="block text-xs font-bold dark:text-slate-300 text-slate-700 mb-1.5">Confirmar PIN</label>
           <input type="password" id="vault-pin-confirm" minlength="4" maxlength="32" autocomplete="off"
                  placeholder="Repetí tu PIN"
-                 class="w-full px-3.5 py-2.5 rounded-xl text-sm font-mono dark:bg-slate-950 bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                 class="w-full px-3.5 py-2.5 rounded-xl text-sm font-mono dark:bg-[#0b0c16] bg-slate-50 border dark:border-slate-700 border-slate-300 dark:text-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-purple-500">
         </div>
         <p id="vault-pin-error" class="hidden text-xs font-semibold text-rose-500"></p>
         <div class="flex flex-col sm:flex-row items-center gap-2 pt-1">
@@ -2864,7 +2726,7 @@
                   </div>
                 </div>
 
-                <div class="p-3 rounded-2xl dark:bg-slate-950/80 bg-slate-50 border dark:border-slate-800/80 border-slate-200 flex items-center justify-between text-xs">
+                <div class="p-3 rounded-2xl dark:bg-[#0b0c16]/80 bg-slate-50 border dark:border-slate-800/80 border-slate-200 flex items-center justify-between text-xs">
                   <div>
                     <span class="text-[10px] uppercase text-slate-400 block font-bold">Origen</span>
                     <strong class="font-mono text-base dark:text-white text-slate-900">${d.origen_iata}</strong>
@@ -2916,7 +2778,7 @@
                   </div>
                 </div>
 
-                <div class="p-3 rounded-2xl dark:bg-slate-950/80 bg-slate-50 border dark:border-slate-800/80 border-slate-200 text-xs">
+                <div class="p-3 rounded-2xl dark:bg-[#0b0c16]/80 bg-slate-50 border dark:border-slate-800/80 border-slate-200 text-xs">
                   <span class="text-[10px] uppercase text-slate-400 block font-bold mb-0.5">Dirección</span>
                   <div class="dark:text-slate-300 text-slate-700">${d.direccion}</div>
                 </div>
@@ -2958,7 +2820,7 @@
                   </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-2 p-3 rounded-2xl dark:bg-slate-950/80 bg-slate-50 border dark:border-slate-800/80 border-slate-200 text-xs">
+                <div class="grid grid-cols-2 gap-2 p-3 rounded-2xl dark:bg-[#0b0c16]/80 bg-slate-50 border dark:border-slate-800/80 border-slate-200 text-xs">
                   <div>
                     <span class="text-[10px] uppercase text-slate-400 block font-bold">Teléfono 24/7</span>
                     <a href="tel:${d.telefono_emergencia}" class="text-emerald-500 font-bold font-mono hover:underline">${d.telefono_emergencia}</a>
@@ -3017,7 +2879,7 @@
           btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold transition-all text-white shadow-xs shrink-0";
           btn.style.background = "var(--brand-gradient)";
         } else {
-          btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-slate-950/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0";
+          btn.className = "px-3.5 py-2 rounded-xl text-xs font-bold dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:text-blue-600 transition-all shrink-0";
           btn.style.background = "";
         }
       });
@@ -3283,7 +3145,7 @@
       </div>
 
       <!-- Barra de Pestañas -->
-      <div class="flex border-b dark:border-slate-800 border-slate-200 px-6 gap-2 text-xs font-bold overflow-x-auto no-scrollbar shrink-0 bg-slate-50/50 dark:bg-slate-950/40" style="scrollbar-width: none; -ms-overflow-style: none;">
+      <div class="flex border-b dark:border-slate-800 border-slate-200 px-6 gap-2 text-xs font-bold overflow-x-auto no-scrollbar shrink-0 bg-slate-50/50 dark:bg-[#0b0c16]/40" style="scrollbar-width: none; -ms-overflow-style: none;">
         <button type="button" onclick="switchPrivacyTab('cookies')" id="fb-tab-btn-cookies" 
                 class="py-3 px-3 border-b-2 border-transparent transition-all whitespace-nowrap text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-pointer">
           🍪 Cookies &amp; Almacenamiento
@@ -3401,7 +3263,7 @@
       </div>
 
       <!-- Footer Modal -->
-      <div class="p-4 sm:p-5 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between shrink-0 bg-slate-50 dark:bg-slate-950/60">
+      <div class="p-4 sm:p-5 border-t dark:border-slate-800 border-slate-200 flex items-center justify-between shrink-0 bg-slate-50 dark:bg-[#0b0c16]/60">
         <span class="text-[11px] dark:text-slate-400 text-slate-500">Última actualización: Octubre <span class="current-year">2026</span></span>
         <button type="button" onclick="closePrivacyModal()" 
                 class="px-4 py-2 rounded-xl text-xs font-semibold dark:bg-slate-800 bg-slate-200 dark:text-white text-slate-900 hover:opacity-90 transition-opacity cursor-pointer">

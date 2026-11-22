@@ -217,22 +217,22 @@
         : d.precioOriginal;
 
       html += `
-        <div class="group relative rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:border-blue-500/50 transition-all flex flex-col justify-between">
+        <div class="group relative rounded-3xl overflow-hidden bg-white dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 shadow-md hover:shadow-xl transition-all flex flex-col justify-between aurora-card">
           <div class="relative h-48 w-full overflow-hidden">
-            <img src="${d.img}" alt="${d.ciudad}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+            <img src="${d.img}" alt="${d.ciudad}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent"></div>
             
-            <div class="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider border backdrop-blur-md bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800 shadow-sm">
-              <span>🔥 ${d.ahorroPct} piso histórico</span>
+            <div class="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase tracking-wider backdrop-blur-md aurora-deal-badge bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-extrabold shadow-sm">
+              <span>⚡ ${d.ahorroPct} piso histórico</span>
             </div>
 
-            <div class="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-slate-900/80 backdrop-blur-md text-white border border-white/20">
-              <img src="img/flags/${d.flagCode}.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/${d.flagCode}.png'" alt="${d.pais}" class="w-4 h-3 object-cover rounded-xs" />
+            <div class="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#0b0c16]/80 backdrop-blur-md text-white border border-white/15">
+              <img src="img/flags/${d.flagCode}.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/${d.flagCode}.png'" alt="${d.pais}" class="w-4 h-3 object-cover rounded-xs" loading="lazy" decoding="async" />
               <span>${d.iata}</span>
             </div>
 
             <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-white">
-              <div>
+              <div class="text-left">
                 <h3 class="text-xl font-black leading-tight drop-shadow-sm">${d.ciudad}</h3>
                 <span class="text-xs text-slate-200">${d.aerolinea} · ${d.escalas}</span>
               </div>
@@ -242,16 +242,16 @@
           <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
             <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
               <span class="font-medium">🗓️ ${d.fechas}</span>
-              <span class="font-bold text-amber-500">🔥 ${d.cupos} cupos</span>
+              <span class="font-bold text-emerald-400-aurora">${d.cupos} cupos</span>
             </div>
 
-            <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-              <div>
+            <div class="pt-3 border-t border-slate-100 dark:border-indigo-950/40 flex items-center justify-between">
+              <div class="text-left">
                 <span class="text-[9px] uppercase font-bold text-slate-400 block tracking-wider">Detectado por Rolli</span>
-                <span class="text-xl font-black font-mono text-blue-600 dark:text-blue-400">${priceFmt}</span>
+                <span class="text-xl font-black font-mono text-cyan-300-aurora">${priceFmt}</span>
               </div>
 
-              <a href="/vuelos?dest=${d.id}" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5">
+              <a href="/vuelos?dest=${d.id}" class="px-4 py-2.5 rounded-xl text-xs font-extrabold aurora-cta-btn transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5">
                 <span>Ver Tarifa</span>
                 <span>➔</span>
               </a>

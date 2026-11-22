@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Sistema de Diseño Oficial Aurora Mint */
+@import "./aurora-mint.css";

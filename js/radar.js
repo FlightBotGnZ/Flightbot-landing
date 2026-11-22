@@ -50,9 +50,9 @@
     document.querySelectorAll('.fb-region-tab').forEach(tab => {
       const reg = tab.getAttribute('data-region');
       if (reg === region) {
-        tab.className = 'fb-region-tab px-4 py-2 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all whitespace-nowrap';
+        tab.className = 'fb-region-tab px-4 py-2 rounded-xl text-xs font-bold aurora-cta-btn text-white shadow-sm transition-all whitespace-nowrap';
       } else {
-        tab.className = 'fb-region-tab px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all whitespace-nowrap';
+        tab.className = 'fb-region-tab px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 bg-white dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 hover:bg-slate-100 dark:hover:bg-indigo-950/40 hover-cyan-aurora transition-all whitespace-nowrap';
       }
     });
 
@@ -90,8 +90,8 @@
       destinosFiltrados.forEach(dest => {
         const isSelected = dest.id === currentDestinationId;
         const activeClass = isSelected
-          ? 'bg-blue-50 dark:bg-blue-950/40 border-blue-500 shadow-sm'
-          : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700';
+          ? 'bg-indigo-50 dark:bg-indigo-950/50 border-cyan-400/60 shadow-sm'
+          : 'bg-white dark:bg-[#111324]/80 border-slate-200 dark:border-indigo-950/40 hover:border-cyan-400/40';
 
         const precioFmt = (typeof window.formatearPrecioMoneda === 'function')
           ? window.formatearPrecioMoneda(dest.precio_desde, dest)
