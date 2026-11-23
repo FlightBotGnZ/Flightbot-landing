@@ -374,9 +374,9 @@
     });
   }
 
-  // Crea e inyecta el selector ES | EN en el header, drawer móvil y footer si no existen
+  // Crea e inyecta el selector ES | EN en el header (desktop/tablet) y drawer móvil si no existen
   function ensureLanguageSwitchers() {
-    // 1. Selector en Desktop & Mobile Header (antes de #theme-mode-btn o al final del header)
+    // 1. Selector en Desktop/Tablet Header (oculto en mobile <640px para no recargar la navbar; en mobile vive en el drawer)
     if (!document.getElementById('lang-switcher-header')) {
       const themeBtn = document.getElementById('theme-mode-btn');
       const headerRight = themeBtn
@@ -386,7 +386,7 @@
         const wrapper = document.createElement('div');
         wrapper.id = 'lang-switcher-header';
         wrapper.setAttribute('data-no-i18n', '1');
-        wrapper.className = 'inline-flex items-center gap-0.5 p-0.5 rounded-lg border border-slate-200 dark:border-indigo-950/40 bg-slate-100/90 dark:bg-[#111324] shrink-0 shadow-xs';
+        wrapper.className = 'hidden sm:inline-flex items-center gap-0.5 p-0.5 rounded-lg border border-slate-200 dark:border-indigo-950/40 bg-slate-100/90 dark:bg-[#111324] shrink-0 shadow-xs';
         wrapper.setAttribute('role', 'group');
         wrapper.setAttribute('aria-label', 'Language / Idioma');
         wrapper.setAttribute('title', 'Idioma / Language (ES | EN)');
@@ -431,30 +431,6 @@
       mobileDrawer.appendChild(mWrap);
     }
 
-    // 3. Selector en Footer (junto a los controles de moneda si existen, o al pie)
-    const footerCurrBtn = document.getElementById('footer-btn-curr-nativo');
-    const footerTarget = footerCurrBtn ? footerCurrBtn.parentElement && footerCurrBtn.parentElement.parentElement : null;
-    if (footerTarget && !document.getElementById('lang-switcher-footer')) {
-      const fWrap = document.createElement('div');
-      fWrap.id = 'lang-switcher-footer';
-      fWrap.setAttribute('data-no-i18n', '1');
-      fWrap.className = 'mt-2 flex items-center gap-2';
-
-      const fLabel = document.createElement('span');
-      fLabel.id = 'lang-switcher-footer-label';
-      fLabel.className = 'text-[11px] font-medium text-slate-500 dark:text-slate-400';
-      fLabel.textContent = currentLang === 'en' ? 'Language:' : 'Idioma:';
-
-      const fPill = document.createElement('div');
-      fPill.className = 'inline-flex items-center p-0.5 rounded-lg border border-slate-200 dark:border-indigo-950/40 bg-slate-100/80 dark:bg-[#111324]';
-      fPill.appendChild(createLangButton('es', 'ES', 'f-lang-btn-es'));
-      fPill.appendChild(createLangButton('en', 'EN', 'f-lang-btn-en'));
-
-      fWrap.appendChild(fLabel);
-      fWrap.appendChild(fPill);
-      footerTarget.appendChild(fWrap);
-    }
-
     updateLanguageButtons();
   }
 
@@ -476,8 +452,7 @@
 
     const pairs = [
       ['lang-btn-es', 'lang-btn-en'],
-      ['m-lang-btn-es', 'm-lang-btn-en'],
-      ['f-lang-btn-es', 'f-lang-btn-en']
+      ['m-lang-btn-es', 'm-lang-btn-en']
     ];
     pairs.forEach(function (pair) {
       const bEs = document.getElementById(pair[0]);
@@ -488,9 +463,6 @@
 
     const mLabel = document.getElementById('lang-switcher-mobile-label');
     if (mLabel) mLabel.textContent = currentLang === 'en' ? '🌐 Language' : '🌐 Idioma';
-
-    const fLabel = document.getElementById('lang-switcher-footer-label');
-    if (fLabel) fLabel.textContent = currentLang === 'en' ? 'Language:' : 'Idioma:';
   }
 
   // Observador de mutaciones para traducir contenido dinámico insertado después de la carga
