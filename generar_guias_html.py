@@ -104,17 +104,6 @@ SHARED_THEME_HEAD = """
   <script src="/js/i18n.js" defer></script>
   <script src="/js/auth.js" defer></script>
   <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          },
-        }
-      }
-    };
-
     // Inicialización inmediata antes del renderizado para evitar FOUC
     (function() {
       if (!localStorage.getItem('fb_theme_aurora_v2')) {
@@ -3249,7 +3238,7 @@ def generar_html_guia(guia: dict) -> str:
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20261123">
   <link rel="stylesheet" href="../css/aurora-mint.css">
   {SHARED_THEME_HEAD}
 
@@ -3791,7 +3780,7 @@ def generar_indice_guias(guias: list) -> str:
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20261123">
   <link rel="stylesheet" href="../css/aurora-mint.css">
   {SHARED_THEME_HEAD}
 

@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/styles.css?v=20261123">
   <link rel="stylesheet" href="../css/aurora-mint.css">
   
   <script src="/js/site-stats.js" defer></script>
@@ -38,17 +38,6 @@
   <script src="/js/i18n.js" defer></script>
   <script src="/js/auth.js" defer></script>
   <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          },
-        }
-      }
-    };
-
     // Inicialización inmediata antes del renderizado para evitar FOUC
     (function() {
       if (!localStorage.getItem('fb_theme_aurora_v2')) {
@@ -67,7 +56,6 @@
     })();
   </script>
   <style>
-    
     /* Estilos del Dock de Navegación Superior Simétrico */
     .nav-dock-btn {
       padding: 0.375rem 0.625rem;
@@ -101,21 +89,11 @@
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
     }
 
-    /* Variables de Acento Cromático Dinámicas (Rojo Rubí por defecto absoluto) */
+    /* Variables de Acento Cromático Dinámicas */
     :root, html, html[data-color="aurora-mint"] {
-      --brand-primary: #22d3ee; /* rose-600 */
-      --brand-hover: #4f46e5;   /* rose-700 */
-      --brand-text: #60a5fa;    /* rose-400 */
-      --brand-text-light: #2563eb;
-      --brand-subtle: rgba(37, 99, 235, 0.12);
-      --brand-border: rgba(37, 99, 235, 0.25);
-      --brand-glow: rgba(99, 102, 241, 0.35);
-      --brand-gradient: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #06b6d4 100%);
-    }
-    html[data-color="aurora-mint"] {
-      --brand-primary: #22d3ee; /* blue-600 */
-      --brand-hover: #4f46e5;   /* blue-700 */
-      --brand-text: #60a5fa;    /* blue-400 */
+      --brand-primary: #22d3ee;
+      --brand-hover: #4f46e5;
+      --brand-text: #60a5fa;
       --brand-text-light: #2563eb;
       --brand-subtle: rgba(37, 99, 235, 0.12);
       --brand-border: rgba(37, 99, 235, 0.25);
@@ -132,7 +110,7 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* Transición Fluida para la Ventana del Chatbox IA y Soporte de Expansión/Maximizado */
+    /* Transición Fluida para la Ventana del Chatbox IA */
     #fb-chat-window {
       transform-origin: bottom right;
       transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
@@ -159,7 +137,6 @@
       height: 700px !important;
       max-height: 86vh !important;
     }
-  
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
@@ -167,42 +144,7 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
-
   </style>
-
-
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://flightbot.com.ar/guias/madrid.html"
-  },
-  "headline": "Guía de Viaje a Madrid 2026: Qué Ver, Transporte, Barrios y Ahorro",
-  "description": "Capital viva de la cultura y la gastronomía, con la red de trenes de alta velocidad más competitiva y el mayor puente aéreo low-cost de Europa.",
-  "image": [
-    "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?auto=format&fit=crop&w=1200&q=80"
-  ],
-  "datePublished": "2026-10-15T09:00:00+00:00",
-  "dateModified": "2026-10-21T08:00:00+00:00",
-  "author": {
-    "@type": "Organization",
-    "name": "Equipo Editorial de FlightBot",
-    "url": "https://t.me/GnZFlightBot"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "FlightBot Travel Intelligence",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=200&q=80"
-    }
-  },
-  "articleSection": "Cultura, Gastronomía & Hub Ferroviario",
-  "inLanguage": "es"
-}
-  </script>
   <!-- Vercel Web Analytics (mismo dominio, compatible con CSP script-src 'self') -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
