@@ -6,6 +6,16 @@
 (function () {
   'use strict';
 
+  // Escapa caracteres HTML para prevenir XSS en inserciones dinámicas
+  function escapeHtml(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   // Resuelve la foto oficial del destino desde el catálogo centralizado de guías (FB_GUIAS_KB)
   function resolveDestinationImage(destId, fallbackUrl) {
     const safeFallback = (typeof fallbackUrl === 'string' && fallbackUrl.startsWith('https://'))
@@ -246,44 +256,55 @@
       const priceFmt = (typeof window.formatearPrecioMoneda === 'function')
         ? window.formatearPrecioMoneda(d.precioOriginal, d.id)
         : d.precioOriginal;
-      const cardImg = resolveDestinationImage(d.id, d.img);
+      const cardImg = escapeHtml(resolveDestinationImage(d.id, d.img));
+      const ciudadSafe = escapeHtml(d.ciudad);
+      const ahorroSafe = escapeHtml(d.ahorroPct);
+      const paisSafe = escapeHtml(d.pais);
+      const iataSafe = escapeHtml(d.iata);
+      const aeroSafe = escapeHtml(d.aerolinea);
+      const escalasSafe = escapeHtml(d.escalas);
+      const fechasSafe = escapeHtml(d.fechas);
+      const cuposSafe = escapeHtml(d.cupos);
+      const priceSafe = escapeHtml(priceFmt);
+      const flagSafe = encodeURIComponent(String(d.flagCode || ''));
+      const idSafe = encodeURIComponent(String(d.id || ''));
 
       html += `
         <div class="group relative rounded-3xl overflow-hidden bg-white dark:bg-[#111324] border border-slate-200 dark:border-indigo-950/40 shadow-md hover:shadow-xl transition-all flex flex-col justify-between aurora-card">
           <div class="relative h-48 w-full overflow-hidden">
-            <img src="${cardImg}" alt="${d.ciudad}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
+            <img src="${cardImg}" alt="${ciudadSafe}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent"></div>
             
             <div class="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase tracking-wider backdrop-blur-md aurora-deal-badge bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-extrabold shadow-sm">
-              <span>⚡ ${d.ahorroPct} piso histórico</span>
+              <span>⚡ ${ahorroSafe} piso histórico</span>
             </div>
 
             <div class="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#0b0c16]/80 backdrop-blur-md text-white border border-white/15">
-              <img src="img/flags/${d.flagCode}.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/${d.flagCode}.png'" alt="${d.pais}" class="w-4 h-3 object-cover rounded-xs" loading="lazy" decoding="async" />
-              <span>${d.iata}</span>
+              <img src="img/flags/${flagSafe}.png" onerror="this.onerror=null; this.src='https://flagcdn.com/w80/${flagSafe}.png'" alt="${paisSafe}" class="w-4 h-3 object-cover rounded-xs" loading="lazy" decoding="async" />
+              <span>${iataSafe}</span>
             </div>
 
             <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-white">
               <div class="text-left">
-                <h3 class="text-xl font-black leading-tight drop-shadow-sm">${d.ciudad}</h3>
-                <span class="text-xs text-slate-200">${d.aerolinea} · ${d.escalas}</span>
+                <h3 class="text-xl font-black leading-tight drop-shadow-sm">${ciudadSafe}</h3>
+                <span class="text-xs text-slate-200">${aeroSafe} · ${escalasSafe}</span>
               </div>
             </div>
           </div>
 
           <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
             <div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-              <span class="font-medium">🗓️ ${d.fechas}</span>
-              <span class="font-bold text-emerald-400-aurora">${d.cupos} cupos</span>
+              <span class="font-medium">🗓️ ${fechasSafe}</span>
+              <span class="font-bold text-emerald-400-aurora">${cuposSafe} cupos</span>
             </div>
 
             <div class="pt-3 border-t border-slate-100 dark:border-indigo-950/40 flex items-center justify-between">
               <div class="text-left">
                 <span class="text-[9px] uppercase font-bold text-slate-400 block tracking-wider">Detectado por Rolli</span>
-                <span class="text-xl font-black font-mono text-cyan-300-aurora">${priceFmt}</span>
+                <span class="text-xl font-black font-mono text-cyan-300-aurora">${priceSafe}</span>
               </div>
 
-              <a href="/vuelos?dest=${d.id}" class="px-4 py-2.5 rounded-xl text-xs font-extrabold aurora-cta-btn transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5">
+              <a href="/vuelos?dest=${idSafe}" class="px-4 py-2.5 rounded-xl text-xs font-extrabold aurora-cta-btn transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5">
                 <span>Ver Tarifa</span>
                 <span>➔</span>
               </a>
