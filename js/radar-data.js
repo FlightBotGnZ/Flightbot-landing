@@ -153,7 +153,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20BRC%20from%20AEP%20on%202027-03-15%20through%202027-03-24&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/brc/2027-03-15/2027-03-24?affilid=flightbot",
       "fechas_texto": "15 Mar - 24 Mar 2027",
-      "actualizado_at": "2026-11-24T00:32:03.512599+00:00",
+      "actualizado_at": "2026-11-24T01:33:34.488113+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T23:57:44",
       "antiguedad_hs": 24.0
@@ -161,7 +161,7 @@
     "salidas_reales_cazadas": {
       "iata": "BRC",
       "ciudad": "Bariloche & Región de los Lagos",
-      "actualizado_at": "2026-11-24T00:32:03.512599+00:00",
+      "actualizado_at": "2026-11-24T01:33:34.488113+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -586,7 +586,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20COR%20from%20AEP%20on%202027-02-27%20through%202027-03-05&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/cor/2027-02-27/2027-03-05?affilid=flightbot",
       "fechas_texto": "27 Feb - 05 Mar 2027",
-      "actualizado_at": "2026-11-24T00:32:03.850217+00:00",
+      "actualizado_at": "2026-11-24T01:33:34.729504+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T21:57:48",
       "antiguedad_hs": 26.0
@@ -594,7 +594,7 @@
     "salidas_reales_cazadas": {
       "iata": "COR",
       "ciudad": "Córdoba & Sierras",
-      "actualizado_at": "2026-11-24T00:32:03.850217+00:00",
+      "actualizado_at": "2026-11-24T01:33:34.729504+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -876,7 +876,7 @@
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
     "categoria_region": "cabotaje",
-    "precio_desde": "$ 251.049 ARS (US$ 144)",
+    "precio_desde": "$ 251.068 ARS (US$ 144)",
     "comando_tg": "/calafate",
     "resena": "Portal de entrada al imponente Glaciar Perito Moreno y sus estruendosos desprendimientos de hielo. Minitrekking sobre el glaciar, estancias gauchas y navegación entre témpanos.",
     "vuelos": [
@@ -886,12 +886,12 @@
         "escalas": "Directo (AEP ➔ FTE)",
         "fechas": "14 May - 17 May 2027",
         "noches": 3,
-        "precio": "$ 251.049 ARS (US$ 144 aprox)",
+        "precio": "$ 251.068 ARS (US$ 144 aprox)",
         "destacado": "Tarifa récord más baja",
         "fecha_ida": "2027-05-14",
         "fecha_vuelta": "2027-05-17",
         "actualizado_en_vivo": true,
-        "precio_ars": 251049,
+        "precio_ars": 251068,
         "precio_usd": 144
       },
       {
@@ -900,12 +900,12 @@
         "escalas": "Directo (AEP ➔ FTE)",
         "fechas": "21 May - 24 May 2027",
         "noches": 3,
-        "precio": "$ 251.049 ARS (US$ 144 aprox)",
+        "precio": "$ 251.068 ARS (US$ 144 aprox)",
         "destacado": "Vuelo directo de 3h 15m",
         "fecha_ida": "2027-05-21",
         "fecha_vuelta": "2027-05-24",
         "actualizado_en_vivo": true,
-        "precio_ars": 251049,
+        "precio_ars": 251068,
         "precio_usd": 144
       },
       {
@@ -914,12 +914,12 @@
         "escalas": "Directo (AEP ➔ FTE)",
         "fechas": "28 May - 31 May 2027",
         "noches": 3,
-        "precio": "$ 251.049 ARS (US$ 144 aprox)",
+        "precio": "$ 251.068 ARS (US$ 144 aprox)",
         "destacado": "Múltiples frecuencias",
         "fecha_ida": "2027-05-28",
         "fecha_vuelta": "2027-05-31",
         "actualizado_en_vivo": true,
-        "precio_ars": 251049,
+        "precio_ars": 251068,
         "precio_usd": 144
       }
     ],
@@ -975,11 +975,11 @@
     ],
     "termometro": {
       "nivel": "alto",
-      "posicion_pct": 86,
+      "posicion_pct": 87,
       "rango_min": "$ 249.562 ARS",
       "rango_max": "$ 251.294 ARS",
-      "mensaje": "Precio por encima de la mediana histórica ($ 251.049 ARS). Conviene activar alerta.",
-      "texto_pin": "$ 251.049 ARS · tarifa vigente",
+      "mensaje": "Precio por encima de la mediana histórica ($ 251.056 ARS). Conviene activar alerta.",
+      "texto_pin": "$ 251.068 ARS · tarifa vigente",
       "consejo": "Octubre y noviembre ofrecen clima ideal y pasarelas con menos concurrencia masiva.",
       "historial_dias": [
         "Hace 52 d",
@@ -989,14 +989,14 @@
         "Hoy"
       ],
       "historial_valores": [
-        251294,
         250659,
         251063,
         251063,
-        251049
+        251049,
+        251068
       ],
       "historial_formato": "$ ",
-      "observaciones_reales": 11,
+      "observaciones_reales": 12,
       "fuente_datos": "historico_sqlite"
     },
     "codigo_pais": "ar",
@@ -1011,15 +1011,15 @@
       "fecha_vuelta": "2027-05-17",
       "noches": 3,
       "dias_para_el_vuelo": 171,
-      "precio": "$ 251.000 ARS",
+      "precio": "$ 251.100 ARS",
       "precio_usd": "US$ 144 aprox",
-      "precio_ars": 251000,
+      "precio_ars": 251100,
       "precio_usd_num": 144,
       "ahorro_porcentaje": "29% OFF",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20FTE%20from%20AEP%20on%202027-05-14%20through%202027-05-17&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/fte/2027-05-14/2027-05-17?affilid=flightbot",
       "fechas_texto": "14 May - 17 May 2027",
-      "actualizado_at": "2026-11-24T00:32:04.197824+00:00",
+      "actualizado_at": "2026-11-24T01:33:35.087680+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T23:28:53",
       "antiguedad_hs": 48.5
@@ -1027,7 +1027,7 @@
     "salidas_reales_cazadas": {
       "iata": "FTE",
       "ciudad": "El Calafate & Glaciares",
-      "actualizado_at": "2026-11-24T00:32:04.197824+00:00",
+      "actualizado_at": "2026-11-24T01:33:35.087680+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -1112,8 +1112,8 @@
               "noches": 3,
               "dias_restantes": 171,
               "precio_usd": 144,
-              "precio_ars": 251000,
-              "precio_texto": "$ 251.000 ARS",
+              "precio_ars": 251100,
+              "precio_texto": "$ 251.100 ARS",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20FTE%20from%20AEP%20on%202027-05-14%20through%202027-05-17&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/fte/2027-05-14/2027-05-17?affilid=flightbot",
               "aerolinea_gate": "Clickavia",
@@ -1170,8 +1170,8 @@
             "noches": 3,
             "dias_restantes": 171,
             "precio_usd": 144,
-            "precio_ars": 251000,
-            "precio_texto": "$ 251.000 ARS",
+            "precio_ars": 251100,
+            "precio_texto": "$ 251.100 ARS",
             "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20FTE%20from%20AEP%20on%202027-05-14%20through%202027-05-17&hl=es",
             "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/fte/2027-05-14/2027-05-17?affilid=flightbot",
             "aerolinea_gate": "Clickavia",
@@ -1265,8 +1265,8 @@
               "noches": 3,
               "dias_restantes": 171,
               "precio_usd": 144,
-              "precio_ars": 251000,
-              "precio_texto": "$ 251.000 ARS",
+              "precio_ars": 251100,
+              "precio_texto": "$ 251.100 ARS",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20FTE%20from%20AEP%20on%202027-05-14%20through%202027-05-17&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/fte/2027-05-14/2027-05-17?affilid=flightbot",
               "aerolinea_gate": "Clickavia",
@@ -1322,8 +1322,8 @@
               "noches": 3,
               "dias_restantes": 171,
               "precio_usd": 144,
-              "precio_ars": 251000,
-              "precio_texto": "$ 251.000 ARS",
+              "precio_ars": 251100,
+              "precio_texto": "$ 251.100 ARS",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20FTE%20from%20AEP%20on%202027-05-14%20through%202027-05-17&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/fte/2027-05-14/2027-05-17?affilid=flightbot",
               "aerolinea_gate": "Clickavia",
@@ -1369,12 +1369,12 @@
         "escalas": "Directo (AEP ➔ JUJ)",
         "fechas": "14 Mar - 19 Mar 2027",
         "noches": 5,
-        "precio": "$ 231.128 ARS (US$ 133 aprox)",
+        "precio": "$ 231.147 ARS (US$ 133 aprox)",
         "destacado": "Vuelo directo de 2h 15m",
         "fecha_ida": "2027-03-14",
         "fecha_vuelta": "2027-03-19",
         "actualizado_en_vivo": true,
-        "precio_ars": 231128,
+        "precio_ars": 231147,
         "precio_usd": 133
       },
       {
@@ -1488,7 +1488,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20JUJ%20from%20AEP%20on%202027-01-03%20through%202027-01-08&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/juj/2027-01-03/2027-01-08?affilid=flightbot",
       "fechas_texto": "03 Ene - 08 Ene 2027",
-      "actualizado_at": "2026-11-24T00:32:04.401773+00:00",
+      "actualizado_at": "2026-11-24T01:33:35.283929+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T17:37:01",
       "antiguedad_hs": 54.4
@@ -1496,7 +1496,7 @@
     "salidas_reales_cazadas": {
       "iata": "JUJ",
       "ciudad": "Jujuy & Quebrada de Humahuaca",
-      "actualizado_at": "2026-11-24T00:32:04.401773+00:00",
+      "actualizado_at": "2026-11-24T01:33:35.283929+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -1741,7 +1741,7 @@
     "iata": "MDZ",
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
-    "precio_desde": "$ 154.541 ARS (US$ 89)",
+    "precio_desde": "$ 154.560 ARS (US$ 89)",
     "comando_tg": "/mendoza",
     "resena": "Capital internacional del vino y los viñedos al pie de la cordillera de los Andes. Bodegas futuristas en Valle de Uco con menús de pasos maridados, la noche de calle Arístides y el imponente Cerro Aconcagua.",
     "vuelos": [
@@ -1751,12 +1751,12 @@
         "escalas": "Directo (AEP ➔ MDZ)",
         "fechas": "11 Dic - 14 Dic 2026",
         "noches": 3,
-        "precio": "$ 154.541 ARS (US$ 89 aprox)",
+        "precio": "$ 154.560 ARS (US$ 89 aprox)",
         "destacado": "Tarifa récord más baja",
         "fecha_ida": "2026-12-11",
         "fecha_vuelta": "2026-12-14",
         "actualizado_en_vivo": true,
-        "precio_ars": 154541,
+        "precio_ars": 154560,
         "precio_usd": 89
       },
       {
@@ -1779,12 +1779,12 @@
         "escalas": "Directo (AEP ➔ MDZ)",
         "fechas": "25 Dic - 28 Dic 2026",
         "noches": 3,
-        "precio": "$ 154.541 ARS (US$ 89 aprox)",
+        "precio": "$ 154.560 ARS (US$ 89 aprox)",
         "destacado": "Gran disponibilidad de horarios",
         "fecha_ida": "2026-12-25",
         "fecha_vuelta": "2026-12-28",
         "actualizado_en_vivo": true,
-        "precio_ars": 154541,
+        "precio_ars": 154560,
         "precio_usd": 89
       }
     ],
@@ -1842,9 +1842,9 @@
       "nivel": "alto",
       "posicion_pct": 92,
       "rango_min": "$ 134.199 ARS",
-      "rango_max": "$ 154.557 ARS",
-      "mensaje": "Precio por encima de la mediana histórica ($ 135.174 ARS). Conviene activar alerta.",
-      "texto_pin": "$ 154.541 ARS · tarifa vigente",
+      "rango_max": "$ 154.560 ARS",
+      "mensaje": "Precio por encima de la mediana histórica ($ 135.193 ARS). Conviene activar alerta.",
+      "texto_pin": "$ 154.560 ARS · tarifa vigente",
       "consejo": "Tarifa ideal para escapadas de enoturismo a bodegas de Valle de Uco. Aerolíneas Argentinas y JetSMART compiten fuerte en este corredor.",
       "historial_dias": [
         "Hace 52 d",
@@ -1854,14 +1854,14 @@
         "Hoy"
       ],
       "historial_valores": [
-        136060,
         135733,
         154557,
         154557,
-        154541
+        154541,
+        154560
       ],
       "historial_formato": "$ ",
-      "observaciones_reales": 24,
+      "observaciones_reales": 25,
       "fuente_datos": "historico_sqlite"
     },
     "codigo_pais": "ar",
@@ -1877,15 +1877,15 @@
       "fecha_vuelta": "2026-12-14",
       "noches": 3,
       "dias_para_el_vuelo": 17,
-      "precio": "$ 154.500 ARS",
+      "precio": "$ 154.600 ARS",
       "precio_usd": "US$ 89 aprox",
-      "precio_ars": 154500,
+      "precio_ars": 154600,
       "precio_usd_num": 89,
       "ahorro_porcentaje": "30% OFF",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MDZ%20from%20AEP%20on%202026-12-11%20through%202026-12-14&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/mdz/2026-12-11/2026-12-14?affilid=flightbot",
       "fechas_texto": "11 Dic - 14 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:04.625039+00:00",
+      "actualizado_at": "2026-11-24T01:33:35.704837+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T15:46:08",
       "antiguedad_hs": 32.2
@@ -1893,7 +1893,7 @@
     "salidas_reales_cazadas": {
       "iata": "MDZ",
       "ciudad": "Mendoza & Valle de Uco",
-      "actualizado_at": "2026-11-24T00:32:04.625039+00:00",
+      "actualizado_at": "2026-11-24T01:33:35.704837+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -1960,8 +1960,8 @@
               "noches": 3,
               "dias_restantes": 17,
               "precio_usd": 89,
-              "precio_ars": 154500,
-              "precio_texto": "$ 154.500 ARS",
+              "precio_ars": 154600,
+              "precio_texto": "$ 154.600 ARS",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MDZ%20from%20AEP%20on%202026-12-11%20through%202026-12-14&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/mdz/2026-12-11/2026-12-14?affilid=flightbot",
               "aerolinea_gate": "Tickets",
@@ -2131,8 +2131,8 @@
               "noches": 3,
               "dias_restantes": 17,
               "precio_usd": 89,
-              "precio_ars": 154500,
-              "precio_texto": "$ 154.500 ARS",
+              "precio_ars": 154600,
+              "precio_texto": "$ 154.600 ARS",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MDZ%20from%20AEP%20on%202026-12-11%20through%202026-12-14&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/mdz/2026-12-11/2026-12-14?affilid=flightbot",
               "aerolinea_gate": "Tickets",
@@ -2247,7 +2247,7 @@
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
     "categoria_region": "cabotaje",
-    "precio_desde": "$ 152.962 ARS (US$ 88)",
+    "precio_desde": "$ 152.981 ARS (US$ 88)",
     "comando_tg": "/neuquen",
     "resena": "Corazón energético y productivo de la Patagonia Norte: ruta del vino en San Patricio del Chañar, museos con los dinosaurios más gigantes del planeta en Villa El Chocón y río Limay.",
     "vuelos": [
@@ -2257,12 +2257,12 @@
         "escalas": "Directo (AEP ➔ NQN)",
         "fechas": "24 Feb - 03 Mar 2027",
         "noches": 7,
-        "precio": "$ 152.962 ARS (US$ 88 aprox)",
+        "precio": "$ 152.981 ARS (US$ 88 aprox)",
         "destacado": "Tarifa récord más baja",
         "fecha_ida": "2027-02-24",
         "fecha_vuelta": "2027-03-03",
         "actualizado_en_vivo": true,
-        "precio_ars": 152962,
+        "precio_ars": 152981,
         "precio_usd": 88
       },
       {
@@ -2271,12 +2271,12 @@
         "escalas": "Directo (AEP ➔ NQN)",
         "fechas": "03 Mar - 10 Mar 2027",
         "noches": 7,
-        "precio": "$ 152.962 ARS (US$ 88 aprox)",
+        "precio": "$ 152.981 ARS (US$ 88 aprox)",
         "destacado": "Vuelo directo de 1h 50m",
         "fecha_ida": "2027-03-03",
         "fecha_vuelta": "2027-03-10",
         "actualizado_en_vivo": true,
-        "precio_ars": 152962,
+        "precio_ars": 152981,
         "precio_usd": 88
       },
       {
@@ -2285,12 +2285,12 @@
         "escalas": "Directo (AEP ➔ NQN)",
         "fechas": "10 Mar - 17 Mar 2027",
         "noches": 7,
-        "precio": "$ 152.962 ARS (US$ 88 aprox)",
+        "precio": "$ 152.981 ARS (US$ 88 aprox)",
         "destacado": "Gran cantidad de frecuencias",
         "fecha_ida": "2027-03-10",
         "fecha_vuelta": "2027-03-17",
         "actualizado_en_vivo": true,
-        "precio_ars": 152962,
+        "precio_ars": 152981,
         "precio_usd": 88
       }
     ],
@@ -2349,8 +2349,8 @@
       "posicion_pct": 8,
       "rango_min": "$ 152.962 ARS",
       "rango_max": "$ 165.682 ARS",
-      "mensaje": "¡Tarifa en zona baja! Está dentro del 25% más económico registrado (22 lecturas).",
-      "texto_pin": "$ 152.962 ARS · mínimo vigente",
+      "mensaje": "¡Tarifa en zona baja! Está dentro del 25% más económico registrado (23 lecturas).",
+      "texto_pin": "$ 152.981 ARS · mínimo vigente",
       "consejo": "Excelente base para conectar con el circuito de bodegas de San Patricio del Chañar a 45 minutos.",
       "historial_dias": [
         "Hace 52 d",
@@ -2360,14 +2360,14 @@
         "Hoy"
       ],
       "historial_valores": [
-        165682,
         165624,
         152979,
         152979,
-        152962
+        152962,
+        152981
       ],
       "historial_formato": "$ ",
-      "observaciones_reales": 22,
+      "observaciones_reales": 23,
       "fuente_datos": "historico_sqlite"
     },
     "codigo_pais": "ar",
@@ -2390,7 +2390,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20NQN%20from%20AEP%20on%202027-02-24%20through%202027-03-03&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/nqn/2027-02-24/2027-03-03?affilid=flightbot",
       "fechas_texto": "24 Feb - 03 Mar 2027",
-      "actualizado_at": "2026-11-24T00:32:04.819721+00:00",
+      "actualizado_at": "2026-11-24T01:33:35.900523+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T16:58:40",
       "antiguedad_hs": 31.0
@@ -2398,7 +2398,7 @@
     "salidas_reales_cazadas": {
       "iata": "NQN",
       "ciudad": "Neuquén & Alto Valle",
-      "actualizado_at": "2026-11-24T00:32:04.819721+00:00",
+      "actualizado_at": "2026-11-24T01:33:35.900523+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -2643,7 +2643,7 @@
     "iata": "IGR",
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
-    "precio_desde": "$ 154.541 ARS (US$ 89)",
+    "precio_desde": "$ 154.560 ARS (US$ 89)",
     "comando_tg": "/iguazu",
     "resena": "Una de las 7 Maravillas Naturales del Mundo: el estruendo de la Garganta del Diablo, pasarelas entre la selva subtropical misionera y la confluencia de los ríos Iguazú y Paraná en el Hito 3 Fronteras.",
     "vuelos": [
@@ -2653,12 +2653,12 @@
         "escalas": "Directo (AEP/EZE ➔ IGR)",
         "fechas": "31 Dic - 07 Ene 2027",
         "noches": 7,
-        "precio": "$ 154.541 ARS (US$ 89 aprox)",
+        "precio": "$ 154.560 ARS (US$ 89 aprox)",
         "destacado": "Tarifa récord más baja",
         "fecha_ida": "2026-12-31",
         "fecha_vuelta": "2027-01-07",
         "actualizado_en_vivo": true,
-        "precio_ars": 154541,
+        "precio_ars": 154560,
         "precio_usd": 89
       },
       {
@@ -2681,12 +2681,12 @@
         "escalas": "Directo (AEP ➔ IGR)",
         "fechas": "14 Ene - 21 Ene 2027",
         "noches": 7,
-        "precio": "$ 154.541 ARS (US$ 89 aprox)",
+        "precio": "$ 154.560 ARS (US$ 89 aprox)",
         "destacado": "Llega al Parque Nacional a tiempo",
         "fecha_ida": "2027-01-14",
         "fecha_vuelta": "2027-01-21",
         "actualizado_en_vivo": true,
-        "precio_ars": 154541,
+        "precio_ars": 154560,
         "precio_usd": 89
       }
     ],
@@ -2745,8 +2745,8 @@
       "posicion_pct": 92,
       "rango_min": "$ 120.358 ARS",
       "rango_max": "$ 156.520 ARS",
-      "mensaje": "Precio por encima de la mediana histórica ($ 154.549 ARS). Conviene activar alerta.",
-      "texto_pin": "$ 154.541 ARS · tarifa vigente",
+      "mensaje": "Precio por encima de la mediana histórica ($ 154.557 ARS). Conviene activar alerta.",
+      "texto_pin": "$ 154.560 ARS · tarifa vigente",
       "consejo": "Excelente momento para comprar tickets de primavera. Horarios ideales saliendo de mañana temprano desde Aeroparque.",
       "historial_dias": [
         "Hace 52 d",
@@ -2756,14 +2756,14 @@
         "Hoy"
       ],
       "historial_valores": [
-        154692,
         154307,
         154557,
         154557,
-        154541
+        154541,
+        154560
       ],
       "historial_formato": "$ ",
-      "observaciones_reales": 24,
+      "observaciones_reales": 25,
       "fuente_datos": "historico_sqlite"
     },
     "codigo_pais": "ar",
@@ -2787,7 +2787,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20IGR%20from%20AEP%20on%202027-01-06%20through%202027-01-08&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/igr/2027-01-06/2027-01-08?affilid=flightbot",
       "fechas_texto": "06 Ene - 08 Ene 2027",
-      "actualizado_at": "2026-11-24T00:32:05.164807+00:00",
+      "actualizado_at": "2026-11-24T01:33:36.255718+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T16:58:37",
       "antiguedad_hs": 31.0
@@ -2795,7 +2795,7 @@
     "salidas_reales_cazadas": {
       "iata": "IGR",
       "ciudad": "Puerto Iguazú & Triple Frontera",
-      "actualizado_at": "2026-11-24T00:32:05.164807+00:00",
+      "actualizado_at": "2026-11-24T01:33:36.255718+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -3292,7 +3292,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20REL%20from%20AEP%20on%202026-11-30%20through%202026-12-05&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/rel/2026-11-30/2026-12-05?affilid=flightbot",
       "fechas_texto": "30 Nov - 05 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:05.364635+00:00",
+      "actualizado_at": "2026-11-24T01:33:36.462873+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -3300,7 +3300,7 @@
     "salidas_reales_cazadas": {
       "iata": "REL",
       "ciudad": "Puerto Madryn & Península Valdés",
-      "actualizado_at": "2026-11-24T00:32:05.364635+00:00",
+      "actualizado_at": "2026-11-24T01:33:36.462873+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -3689,7 +3689,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20SLA%20from%20AEP%20on%202027-05-20%20through%202027-05-23&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/sla/2027-05-20/2027-05-23?affilid=flightbot",
       "fechas_texto": "20 May - 23 May 2027",
-      "actualizado_at": "2026-11-24T00:32:05.583538+00:00",
+      "actualizado_at": "2026-11-24T01:33:36.659304+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T23:30:10",
       "antiguedad_hs": 24.5
@@ -3697,7 +3697,7 @@
     "salidas_reales_cazadas": {
       "iata": "SLA",
       "ciudad": "Salta & Valles Calchaquíes",
-      "actualizado_at": "2026-11-24T00:32:05.583538+00:00",
+      "actualizado_at": "2026-11-24T01:33:36.659304+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -3943,7 +3943,7 @@
     "tipo_ruta": "Cabotaje Nacional",
     "es_cabotaje": true,
     "categoria_region": "cabotaje",
-    "precio_desde": "$ 206.567 ARS (US$ 119)",
+    "precio_desde": "$ 206.587 ARS (US$ 119)",
     "comando_tg": "/sanmartin",
     "resena": "Paraíso patagónico a orillas del Lago Lácar y cabecera de la mítica Ruta de los 7 Lagos. Bosques andinos milenarios, esquí en Cerro Chapelco y aldea de estilo alpino.",
     "vuelos": [
@@ -3953,12 +3953,12 @@
         "escalas": "Directo (AEP ➔ CPC)",
         "fechas": "15 May - 26 May 2027",
         "noches": 11,
-        "precio": "$ 206.567 ARS (US$ 119 aprox)",
+        "precio": "$ 206.587 ARS (US$ 119 aprox)",
         "destacado": "Tarifa récord más baja",
         "fecha_ida": "2027-05-15",
         "fecha_vuelta": "2027-05-26",
         "actualizado_en_vivo": true,
-        "precio_ars": 206567,
+        "precio_ars": 206587,
         "precio_usd": 119
       },
       {
@@ -3967,12 +3967,12 @@
         "escalas": "Directo (AEP ➔ CPC)",
         "fechas": "22 May - 02 Jun 2027",
         "noches": 11,
-        "precio": "$ 206.567 ARS (US$ 119 aprox)",
+        "precio": "$ 206.587 ARS (US$ 119 aprox)",
         "destacado": "Vuelo directo de 2h 20m",
         "fecha_ida": "2027-05-22",
         "fecha_vuelta": "2027-06-02",
         "actualizado_en_vivo": true,
-        "precio_ars": 206567,
+        "precio_ars": 206587,
         "precio_usd": 119
       },
       {
@@ -3981,12 +3981,12 @@
         "escalas": "Directo (EZE ➔ CPC)",
         "fechas": "29 May - 09 Jun 2027",
         "noches": 11,
-        "precio": "$ 206.567 ARS (US$ 119 aprox)",
+        "precio": "$ 206.587 ARS (US$ 119 aprox)",
         "destacado": "Excelente disponibilidad",
         "fecha_ida": "2027-05-29",
         "fecha_vuelta": "2027-06-09",
         "actualizado_en_vivo": true,
-        "precio_ars": 206567,
+        "precio_ars": 206587,
         "precio_usd": 119
       }
     ],
@@ -4045,8 +4045,8 @@
       "posicion_pct": 92,
       "rango_min": "$ 203.936 ARS",
       "rango_max": "$ 206.756 ARS",
-      "mensaje": "Precio por encima de la mediana histórica ($ 205.408 ARS). Conviene activar alerta.",
-      "texto_pin": "$ 206.567 ARS · tarifa vigente",
+      "mensaje": "Precio por encima de la mediana histórica ($ 205.426 ARS). Conviene activar alerta.",
+      "texto_pin": "$ 206.587 ARS · tarifa vigente",
       "consejo": "Aterrizar en el aeropuerto Chapelco ahorra 3 horas de transfer terrestre respecto a volar vía Bariloche.",
       "historial_dias": [
         "Hace 52 d",
@@ -4056,14 +4056,14 @@
         "Hoy"
       ],
       "historial_valores": [
-        206756,
         206255,
         206583,
         206583,
-        206567
+        206567,
+        206587
       ],
       "historial_formato": "$ ",
-      "observaciones_reales": 24,
+      "observaciones_reales": 25,
       "fuente_datos": "historico_sqlite"
     },
     "codigo_pais": "ar",
@@ -4086,7 +4086,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CPC%20from%20AEP%20on%202026-11-30%20through%202026-12-05&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/cpc/2026-11-30/2026-12-05?affilid=flightbot",
       "fechas_texto": "30 Nov - 05 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:05.822109+00:00",
+      "actualizado_at": "2026-11-24T01:33:37.073733+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -4094,7 +4094,7 @@
     "salidas_reales_cazadas": {
       "iata": "CPC",
       "ciudad": "San Martín de los Andes & Chapelco",
-      "actualizado_at": "2026-11-24T00:32:05.822109+00:00",
+      "actualizado_at": "2026-11-24T01:33:37.073733+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -4364,12 +4364,12 @@
         "escalas": "Directo (AEP ➔ USH)",
         "fechas": "04 Jun - 12 Jun 2027",
         "noches": 8,
-        "precio": "$ 248.431 ARS (US$ 143 aprox)",
+        "precio": "$ 248.451 ARS (US$ 143 aprox)",
         "destacado": "Vuelo directo de 3h 35m",
         "fecha_ida": "2027-06-04",
         "fecha_vuelta": "2027-06-12",
         "actualizado_en_vivo": true,
-        "precio_ars": 248431,
+        "precio_ars": 248451,
         "precio_usd": 143
       },
       {
@@ -4483,7 +4483,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20USH%20from%20AEP%20on%202027-06-04%20through%202027-06-10&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ush/2027-06-04/2027-06-10?affilid=flightbot",
       "fechas_texto": "04 Jun - 10 Jun 2027",
-      "actualizado_at": "2026-11-24T00:32:06.173480+00:00",
+      "actualizado_at": "2026-11-24T01:33:42.719089+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T11:03:14",
       "antiguedad_hs": 60.9
@@ -4491,7 +4491,7 @@
     "salidas_reales_cazadas": {
       "iata": "USH",
       "ciudad": "Ushuaia & Tierra del Fuego",
-      "actualizado_at": "2026-11-24T00:32:06.173480+00:00",
+      "actualizado_at": "2026-11-24T01:33:42.719089+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -4576,8 +4576,8 @@
               "noches": 8,
               "dias_restantes": 192,
               "precio_usd": 143,
-              "precio_ars": 248400,
-              "precio_texto": "$ 248.400 ARS",
+              "precio_ars": 248500,
+              "precio_texto": "$ 248.500 ARS",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20USH%20from%20AEP%20on%202027-06-04%20through%202027-06-12&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ush/2027-06-04/2027-06-12?affilid=flightbot",
               "aerolinea_gate": "City.Travel",
@@ -4605,8 +4605,8 @@
               "noches": 7,
               "dias_restantes": 49,
               "precio_usd": 213,
-              "precio_ars": 371600,
-              "precio_texto": "$ 371.600 ARS",
+              "precio_ars": 371700,
+              "precio_texto": "$ 371.700 ARS",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20USH%20from%20AEP%20on%202027-01-12%20through%202027-01-19&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ush/2027-01-12/2027-01-19?affilid=flightbot",
               "aerolinea_gate": "Kiwi.com",
@@ -4747,8 +4747,8 @@
               "noches": 8,
               "dias_restantes": 192,
               "precio_usd": 143,
-              "precio_ars": 248400,
-              "precio_texto": "$ 248.400 ARS",
+              "precio_ars": 248500,
+              "precio_texto": "$ 248.500 ARS",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20USH%20from%20AEP%20on%202027-06-04%20through%202027-06-12&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ush/2027-06-04/2027-06-12?affilid=flightbot",
               "aerolinea_gate": "City.Travel",
@@ -4776,8 +4776,8 @@
               "noches": 7,
               "dias_restantes": 49,
               "precio_usd": 213,
-              "precio_ars": 371600,
-              "precio_texto": "$ 371.600 ARS",
+              "precio_ars": 371700,
+              "precio_texto": "$ 371.700 ARS",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20USH%20from%20AEP%20on%202027-01-12%20through%202027-01-19&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ush/2027-01-12/2027-01-19?affilid=flightbot",
               "aerolinea_gate": "Kiwi.com",
@@ -4988,7 +4988,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20FLN%20from%20EZE%20on%202026-12-09%20through%202026-12-16&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/fln/2026-12-09/2026-12-16?affilid=flightbot",
       "fechas_texto": "09 Dic - 16 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:06.373793+00:00",
+      "actualizado_at": "2026-11-24T01:33:43.349427+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T15:16:16",
       "antiguedad_hs": 32.7
@@ -4996,7 +4996,7 @@
     "salidas_reales_cazadas": {
       "iata": "FLN",
       "ciudad": "Florianópolis & Ilha da Magia",
-      "actualizado_at": "2026-11-24T00:32:06.373793+00:00",
+      "actualizado_at": "2026-11-24T01:33:43.349427+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -5493,7 +5493,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MCZ%20from%20EZE%20on%202027-01-30%20through%202027-02-16&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/mcz/2027-01-30/2027-02-16?affilid=flightbot",
       "fechas_texto": "30 Ene - 16 Feb 2027",
-      "actualizado_at": "2026-11-24T00:32:06.788835+00:00",
+      "actualizado_at": "2026-11-24T01:33:43.584355+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-20T11:52:07",
       "antiguedad_hs": 108.1
@@ -5501,7 +5501,7 @@
     "salidas_reales_cazadas": {
       "iata": "MCZ",
       "ciudad": "Maceió & Maragogi (Caribe Brasileño)",
-      "actualizado_at": "2026-11-24T00:32:06.788835+00:00",
+      "actualizado_at": "2026-11-24T01:33:43.584355+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -5890,7 +5890,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20NAT%20from%20EZE%20on%202027-03-01%20through%202027-03-10&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/nat/2027-03-01/2027-03-10?affilid=flightbot",
       "fechas_texto": "01 Mar - 10 Mar 2027",
-      "actualizado_at": "2026-11-24T00:32:06.981848+00:00",
+      "actualizado_at": "2026-11-24T01:33:43.778496+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T01:54:40",
       "antiguedad_hs": 70.1
@@ -5898,7 +5898,7 @@
     "salidas_reales_cazadas": {
       "iata": "NAT",
       "ciudad": "Natal & Praia da Pipa",
-      "actualizado_at": "2026-11-24T00:32:06.981848+00:00",
+      "actualizado_at": "2026-11-24T01:33:43.778496+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -6287,7 +6287,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20REC%20from%20EZE%20on%202027-03-09%20through%202027-03-16&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/rec/2027-03-09/2027-03-16?affilid=flightbot",
       "fechas_texto": "09 Mar - 16 Mar 2027",
-      "actualizado_at": "2026-11-24T00:32:07.195989+00:00",
+      "actualizado_at": "2026-11-24T01:33:43.971779+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T20:20:28",
       "antiguedad_hs": 51.7
@@ -6295,7 +6295,7 @@
     "salidas_reales_cazadas": {
       "iata": "REC",
       "ciudad": "Recife & Porto de Galinhas",
-      "actualizado_at": "2026-11-24T00:32:07.195989+00:00",
+      "actualizado_at": "2026-11-24T01:33:43.971779+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -6403,6 +6403,24 @@
             {
               "opcion": 1,
               "etiqueta_opcion": "Salida A",
+              "fecha_ida": "2027-01-18",
+              "fecha_vuelta": "2027-02-01",
+              "fechas_texto": "18 Ene - 01 Feb 2027",
+              "noches": 14,
+              "dias_restantes": 55,
+              "precio_usd": 577,
+              "precio_ars": 1005800,
+              "precio_texto": "US$ 577",
+              "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20REC%20from%20EZE%20on%202027-01-18%20through%202027-02-01&hl=es",
+              "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/rec/2027-01-18/2027-02-01?affilid=flightbot",
+              "aerolinea_gate": "City.Travel",
+              "found_at": "2026-11-24T01:32:37",
+              "antiguedad_hs": 22.5,
+              "es_real_aviasales": true
+            },
+            {
+              "opcion": 2,
+              "etiqueta_opcion": "Salida B",
               "fecha_ida": "2027-01-10",
               "fecha_vuelta": "2027-01-17",
               "fechas_texto": "10 Ene - 17 Ene 2027",
@@ -6556,6 +6574,24 @@
             {
               "opcion": 1,
               "etiqueta_opcion": "Salida A",
+              "fecha_ida": "2027-01-18",
+              "fecha_vuelta": "2027-02-01",
+              "fechas_texto": "18 Ene - 01 Feb 2027",
+              "noches": 14,
+              "dias_restantes": 55,
+              "precio_usd": 577,
+              "precio_ars": 1005800,
+              "precio_texto": "US$ 577",
+              "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20REC%20from%20EZE%20on%202027-01-18%20through%202027-02-01&hl=es",
+              "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/rec/2027-01-18/2027-02-01?affilid=flightbot",
+              "aerolinea_gate": "City.Travel",
+              "found_at": "2026-11-24T01:32:37",
+              "antiguedad_hs": 22.5,
+              "es_real_aviasales": true
+            },
+            {
+              "opcion": 2,
+              "etiqueta_opcion": "Salida B",
               "fecha_ida": "2027-01-10",
               "fecha_vuelta": "2027-01-17",
               "fechas_texto": "10 Ene - 17 Ene 2027",
@@ -6756,7 +6792,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20GIG%20from%20EZE%20on%202026-12-05%20through%202026-12-13&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/gig/2026-12-05/2026-12-13?affilid=flightbot",
       "fechas_texto": "05 Dic - 13 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:07.541056+00:00",
+      "actualizado_at": "2026-11-24T01:33:44.313006+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T06:19:53",
       "antiguedad_hs": 41.7
@@ -6764,7 +6800,7 @@
     "salidas_reales_cazadas": {
       "iata": "GIG",
       "ciudad": "Río de Janeiro",
-      "actualizado_at": "2026-11-24T00:32:07.541056+00:00",
+      "actualizado_at": "2026-11-24T01:33:44.313006+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -6877,9 +6913,9 @@
               "fechas_texto": "13 Ene - 20 Ene 2027",
               "noches": 7,
               "dias_restantes": 50,
-              "precio_usd": 431,
-              "precio_ars": 751300,
-              "precio_texto": "US$ 431",
+              "precio_usd": 432,
+              "precio_ars": 753000,
+              "precio_texto": "US$ 432",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20GIG%20from%20EZE%20on%202027-01-13%20through%202027-01-20&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/gig/2027-01-13/2027-01-20?affilid=flightbot",
               "aerolinea_gate": "Kiwi.com",
@@ -7048,9 +7084,9 @@
               "fechas_texto": "13 Ene - 20 Ene 2027",
               "noches": 7,
               "dias_restantes": 50,
-              "precio_usd": 431,
-              "precio_ars": 751300,
-              "precio_texto": "US$ 431",
+              "precio_usd": 432,
+              "precio_ars": 753000,
+              "precio_texto": "US$ 432",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20GIG%20from%20EZE%20on%202027-01-13%20through%202027-01-20&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/gig/2027-01-13/2027-01-20?affilid=flightbot",
               "aerolinea_gate": "Kiwi.com",
@@ -7261,7 +7297,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20SSA%20from%20EZE%20on%202027-07-17%20through%202027-07-24&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ssa/2027-07-17/2027-07-24?affilid=flightbot",
       "fechas_texto": "17 Jul - 24 Jul 2027",
-      "actualizado_at": "2026-11-24T00:32:07.762466+00:00",
+      "actualizado_at": "2026-11-24T01:33:44.800060+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-20T15:29:26",
       "antiguedad_hs": 104.5
@@ -7269,7 +7305,7 @@
     "salidas_reales_cazadas": {
       "iata": "SSA",
       "ciudad": "Salvador de Bahía & Costa dos Coqueiros",
-      "actualizado_at": "2026-11-24T00:32:07.762466+00:00",
+      "actualizado_at": "2026-11-24T01:33:44.800060+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -7658,7 +7694,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20SCL%20from%20EZE%20on%202027-02-02%20through%202027-02-08&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/scl/2027-02-02/2027-02-08?affilid=flightbot",
       "fechas_texto": "02 Feb - 08 Feb 2027",
-      "actualizado_at": "2026-11-24T00:32:08.113470+00:00",
+      "actualizado_at": "2026-11-24T01:33:45.138863+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T21:54:40",
       "antiguedad_hs": 50.1
@@ -7666,7 +7702,7 @@
     "salidas_reales_cazadas": {
       "iata": "SCL",
       "ciudad": "Santiago de Chile & Cordillera",
-      "actualizado_at": "2026-11-24T00:32:08.113470+00:00",
+      "actualizado_at": "2026-11-24T01:33:45.138863+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -8163,7 +8199,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20ADZ%20from%20EZE%20on%202026-12-06%20through%202026-12-11&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/adz/2026-12-06/2026-12-11?affilid=flightbot",
       "fechas_texto": "06 Dic - 11 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:08.311493+00:00",
+      "actualizado_at": "2026-11-24T01:33:45.331934+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-21T23:22:43",
       "antiguedad_hs": 72.6
@@ -8171,7 +8207,7 @@
     "salidas_reales_cazadas": {
       "iata": "ADZ",
       "ciudad": "San Andrés & Mar de 7 Colores",
-      "actualizado_at": "2026-11-24T00:32:08.311493+00:00",
+      "actualizado_at": "2026-11-24T01:33:45.331934+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -8544,7 +8580,7 @@
     "salidas_reales_cazadas": {
       "iata": "CTG",
       "ciudad": "Cartagena de Indias & Islas del Rosario",
-      "actualizado_at": "2026-11-24T00:32:08.516280+00:00",
+      "actualizado_at": "2026-11-24T01:33:45.526446+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -8797,7 +8833,7 @@
       "precio_usd": "aprox. $ 1.441.500 ARS",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CTG%20from%20EZE%20on%202026-12-15%20through%202026-12-20&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ctg/2026-12-15/2026-12-20?affilid=flightbot",
-      "actualizado_at": "2026-11-24T00:32:08.516280+00:00",
+      "actualizado_at": "2026-11-24T01:33:45.526446+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-20T21:33:07",
       "antiguedad_hs": 98.4
@@ -8927,7 +8963,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CUZ%20from%20EZE%20on%202027-03-15%20through%202027-03-20&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/cuz/2027-03-15/2027-03-20?affilid=flightbot",
       "fechas_texto": "15 Mar - 20 Mar 2027",
-      "actualizado_at": "2026-11-24T00:32:08.714096+00:00",
+      "actualizado_at": "2026-11-24T01:33:45.722035+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T23:41:58",
       "antiguedad_hs": 48.3
@@ -8935,7 +8971,7 @@
     "salidas_reales_cazadas": {
       "iata": "CUZ",
       "ciudad": "Cusco & Machu Picchu",
-      "actualizado_at": "2026-11-24T00:32:08.714096+00:00",
+      "actualizado_at": "2026-11-24T01:33:45.722035+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -9360,7 +9396,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20JFK%20from%20EZE%20on%202027-02-15%20through%202027-02-28&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/jfk/2027-02-15/2027-02-28?affilid=flightbot",
       "fechas_texto": "15 Feb - 28 Feb 2027",
-      "actualizado_at": "2026-11-24T00:32:09.438569+00:00",
+      "actualizado_at": "2026-11-24T01:33:46.292736+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T12:46:10",
       "antiguedad_hs": 35.2
@@ -9368,7 +9404,7 @@
     "salidas_reales_cazadas": {
       "iata": "JFK / EWR",
       "ciudad": "Nueva York (Manhattan & Broadway)",
-      "actualizado_at": "2026-11-24T00:32:09.438569+00:00",
+      "actualizado_at": "2026-11-24T01:33:46.292736+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -9613,7 +9649,7 @@
     "iata": "MIA",
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
-    "precio_desde": "US$ 642",
+    "precio_desde": "US$ 752",
     "comando_tg": "/miami",
     "resena": "Playas turquesas, distritos de diseño como Wynwood y el centro financiero de Brickell. Punto de partida estratégico para conectar con Orlando en el tren de alta velocidad Brightline (3h 30m) o recorrer los cayos por la Overseas Highway.",
     "vuelos": [
@@ -9621,10 +9657,24 @@
         "puesto": "🥇",
         "aerolinea": "Avianca / Copa Airlines",
         "escalas": "1 escala corta",
+        "fechas": "20 Feb - 25 Feb 2027",
+        "noches": 5,
+        "precio": "US$ 752 (aprox. $ 1.310.811 ARS)",
+        "destacado": "Tarifa récord más baja",
+        "fecha_ida": "2027-02-20",
+        "fecha_vuelta": "2027-02-25",
+        "actualizado_en_vivo": true,
+        "precio_ars": 1310811,
+        "precio_usd": 752
+      },
+      {
+        "puesto": "🥈",
+        "aerolinea": "American Airlines",
+        "escalas": "Directo (EZE ➔ MIA)",
         "fechas": "15 Mar - 22 Mar 2027",
         "noches": 7,
         "precio": "US$ 642 (aprox. $ 1.119.070 ARS)",
-        "destacado": "Tarifa récord más baja",
+        "destacado": "Vuelo directo nocturno",
         "fecha_ida": "2027-03-15",
         "fecha_vuelta": "2027-03-22",
         "actualizado_en_vivo": true,
@@ -9632,32 +9682,18 @@
         "precio_usd": 642
       },
       {
-        "puesto": "🥈",
-        "aerolinea": "American Airlines",
+        "puesto": "🥉",
+        "aerolinea": "Aerolíneas Argentinas",
         "escalas": "Directo (EZE ➔ MIA)",
         "fechas": "18 Mar - 31 Mar 2027",
         "noches": 13,
         "precio": "US$ 675 (aprox. $ 1.176.592 ARS)",
-        "destacado": "Vuelo directo nocturno",
+        "destacado": "Atención en español y valijas",
         "fecha_ida": "2027-03-18",
         "fecha_vuelta": "2027-03-31",
         "actualizado_en_vivo": true,
         "precio_ars": 1176592,
         "precio_usd": 675
-      },
-      {
-        "puesto": "🥉",
-        "aerolinea": "Aerolíneas Argentinas",
-        "escalas": "Directo (EZE ➔ MIA)",
-        "fechas": "25 Feb - 04 Mar 2027",
-        "noches": 7,
-        "precio": "US$ 689 (aprox. $ 1.200.996 ARS)",
-        "destacado": "Atención en español y valijas",
-        "fecha_ida": "2027-02-25",
-        "fecha_vuelta": "2027-03-04",
-        "actualizado_en_vivo": true,
-        "precio_ars": 1200996,
-        "precio_usd": 689
       }
     ],
     "hoteles": [
@@ -9711,12 +9747,12 @@
       }
     ],
     "termometro": {
-      "nivel": "bajo",
-      "posicion_pct": 12,
+      "nivel": "alto",
+      "posicion_pct": 92,
       "rango_min": "US$ 629",
-      "rango_max": "US$ 733",
-      "mensaje": "¡Tarifa en zona baja! Está dentro del 25% más económico registrado (23 lecturas).",
-      "texto_pin": "US$ 642 · mínimo vigente",
+      "rango_max": "US$ 752",
+      "mensaje": "Precio por encima de la mediana histórica (US$ 671). Conviene activar alerta.",
+      "texto_pin": "US$ 752 · tarifa vigente",
       "consejo": "Tarifa de ida y vuelta muy competitiva con 1 escala corta (Avianca / Copa). Se ubica cerca del piso habitual de los últimos 60 días.",
       "historial_dias": [
         "Hace 52 d",
@@ -9726,14 +9762,14 @@
         "Hoy"
       ],
       "historial_valores": [
-        638,
         637,
         638,
         638,
-        642
+        642,
+        752
       ],
       "historial_formato": "US$ ",
-      "observaciones_reales": 23,
+      "observaciones_reales": 24,
       "fuente_datos": "historico_sqlite"
     },
     "codigo_pais": "us",
@@ -9757,7 +9793,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MIA%20from%20EZE%20on%202027-03-15%20through%202027-03-22&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/mia/2027-03-15/2027-03-22?affilid=flightbot",
       "fechas_texto": "15 Mar - 22 Mar 2027",
-      "actualizado_at": "2026-11-24T00:32:09.659692+00:00",
+      "actualizado_at": "2026-11-24T01:33:46.538166+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T21:38:41",
       "antiguedad_hs": 50.4
@@ -9765,7 +9801,7 @@
     "salidas_reales_cazadas": {
       "iata": "MIA",
       "ciudad": "Miami & Sur de Florida",
-      "actualizado_at": "2026-11-24T00:32:09.659692+00:00",
+      "actualizado_at": "2026-11-24T01:33:46.538166+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -10226,7 +10262,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MCO%20from%20EZE%20on%202027-07-07%20through%202027-07-21&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/mco/2027-07-07/2027-07-21?affilid=flightbot",
       "fechas_texto": "07 Jul - 21 Jul 2027",
-      "actualizado_at": "2026-11-24T00:32:09.889880+00:00",
+      "actualizado_at": "2026-11-24T01:33:46.829650+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T15:00:58",
       "antiguedad_hs": 33.0
@@ -10234,7 +10270,7 @@
     "salidas_reales_cazadas": {
       "iata": "MCO",
       "ciudad": "Orlando (Disney & Universal)",
-      "actualizado_at": "2026-11-24T00:32:09.889880+00:00",
+      "actualizado_at": "2026-11-24T01:33:46.829650+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -10623,7 +10659,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CUN%20from%20EZE%20on%202027-05-01%20through%202027-05-16&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/cun/2027-05-01/2027-05-16?affilid=flightbot",
       "fechas_texto": "01 May - 16 May 2027",
-      "actualizado_at": "2026-11-24T00:32:10.096913+00:00",
+      "actualizado_at": "2026-11-24T01:33:47.028668+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T17:57:04",
       "antiguedad_hs": 54.0
@@ -10631,7 +10667,7 @@
     "salidas_reales_cazadas": {
       "iata": "CUN",
       "ciudad": "Cancún & Riviera Maya",
-      "actualizado_at": "2026-11-24T00:32:10.096913+00:00",
+      "actualizado_at": "2026-11-24T01:33:47.028668+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -11004,7 +11040,7 @@
     "salidas_reales_cazadas": {
       "iata": "MEX",
       "ciudad": "Ciudad de México (CDMX) & Teotihuacán",
-      "actualizado_at": "2026-11-24T00:32:10.316816+00:00",
+      "actualizado_at": "2026-11-24T01:33:47.298756+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -11293,7 +11329,7 @@
       "precio_usd": "aprox. $ 1.399.700 ARS",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MEX%20from%20EZE%20on%202026-11-30%20through%202026-12-06&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/mex/2026-11-30/2026-12-06?affilid=flightbot",
-      "actualizado_at": "2026-11-24T00:32:10.316816+00:00",
+      "actualizado_at": "2026-11-24T01:33:47.298756+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T22:03:58",
       "antiguedad_hs": 49.9
@@ -11451,7 +11487,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20PUJ%20from%20EZE%20on%202027-05-01%20through%202027-05-09&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/puj/2027-05-01/2027-05-09?affilid=flightbot",
       "fechas_texto": "01 May - 09 May 2027",
-      "actualizado_at": "2026-11-24T00:32:10.536980+00:00",
+      "actualizado_at": "2026-11-24T01:33:47.693470+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T19:03:45",
       "antiguedad_hs": 52.9
@@ -11459,7 +11495,7 @@
     "salidas_reales_cazadas": {
       "iata": "PUJ",
       "ciudad": "Punta Cana",
-      "actualizado_at": "2026-11-24T00:32:10.536980+00:00",
+      "actualizado_at": "2026-11-24T01:33:47.693470+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -11884,7 +11920,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20AUA%20from%20EZE%20on%202027-04-07%20through%202027-04-17&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/aua/2027-04-07/2027-04-17?affilid=flightbot",
       "fechas_texto": "07 Abr - 17 Abr 2027",
-      "actualizado_at": "2026-11-24T00:32:10.741489+00:00",
+      "actualizado_at": "2026-11-24T01:33:47.903274+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T02:10:19",
       "antiguedad_hs": 45.8
@@ -11892,7 +11928,7 @@
     "salidas_reales_cazadas": {
       "iata": "AUA",
       "ciudad": "Aruba (Caribe Holandés)",
-      "actualizado_at": "2026-11-24T00:32:10.741489+00:00",
+      "actualizado_at": "2026-11-24T01:33:47.903274+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -12265,7 +12301,7 @@
     "salidas_reales_cazadas": {
       "iata": "CUR",
       "ciudad": "Curazao & Willemstad",
-      "actualizado_at": "2026-11-24T00:32:11.015483+00:00",
+      "actualizado_at": "2026-11-24T01:33:48.097260+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -12518,7 +12554,7 @@
       "precio_usd": "aprox. $ 1.133.000 ARS",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CUR%20from%20EZE%20on%202026-11-30%20through%202026-12-07&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/cur/2026-11-30/2026-12-07?affilid=flightbot",
-      "actualizado_at": "2026-11-24T00:32:11.015483+00:00",
+      "actualizado_at": "2026-11-24T01:33:48.097260+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -12660,7 +12696,7 @@
     "salidas_reales_cazadas": {
       "iata": "HAV",
       "ciudad": "La Habana & Playas de Varadero",
-      "actualizado_at": "2026-11-24T00:32:11.505305+00:00",
+      "actualizado_at": "2026-11-24T01:33:48.498064+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -12913,7 +12949,7 @@
       "precio_usd": "aprox. $ 1.676.900 ARS",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20HAV%20from%20EZE%20on%202027-02-22%20through%202027-03-07&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/hav/2027-02-22/2027-03-07?affilid=flightbot",
-      "actualizado_at": "2026-11-24T00:32:11.505305+00:00",
+      "actualizado_at": "2026-11-24T01:33:48.498064+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T14:06:55",
       "antiguedad_hs": 33.9,
@@ -13058,7 +13094,7 @@
     "salidas_reales_cazadas": {
       "iata": "PTY",
       "ciudad": "Ciudad de Panamá, San Blas & Bocas del Toro",
-      "actualizado_at": "2026-11-24T00:32:11.706902+00:00",
+      "actualizado_at": "2026-11-24T01:33:48.693548+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -13311,7 +13347,7 @@
       "precio_usd": "aprox. $ 1.434.600 ARS",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20PTY%20from%20EZE%20on%202026-11-30%20through%202026-12-07&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/pty/2026-11-30/2026-12-07?affilid=flightbot",
-      "actualizado_at": "2026-11-24T00:32:11.706902+00:00",
+      "actualizado_at": "2026-11-24T01:33:48.693548+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -13453,7 +13489,7 @@
     "salidas_reales_cazadas": {
       "iata": "SJO",
       "ciudad": "Costa Rica: Volcán Arenal, Manuel Antonio & Guanacaste",
-      "actualizado_at": "2026-11-24T00:32:12.223725+00:00",
+      "actualizado_at": "2026-11-24T01:33:49.110094+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -13742,7 +13778,7 @@
       "precio_usd": "aprox. $ 1.230.600 ARS",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20SJO%20from%20EZE%20on%202027-02-15%20through%202027-02-28&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/sjo/2027-02-15/2027-02-28?affilid=flightbot",
-      "actualizado_at": "2026-11-24T00:32:12.223725+00:00",
+      "actualizado_at": "2026-11-24T01:33:49.110094+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T12:46:06",
       "antiguedad_hs": 35.2
@@ -13906,7 +13942,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MAD%20from%20EZE%20on%202027-02-06%20through%202027-02-20&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/mad/2027-02-06/2027-02-20?affilid=flightbot",
       "fechas_texto": "06 Feb - 20 Feb 2027",
-      "actualizado_at": "2026-11-24T00:32:12.568576+00:00",
+      "actualizado_at": "2026-11-24T01:33:49.472527+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T08:50:43",
       "antiguedad_hs": 39.2
@@ -13914,7 +13950,7 @@
     "salidas_reales_cazadas": {
       "iata": "MAD",
       "ciudad": "Madrid",
-      "actualizado_at": "2026-11-24T00:32:12.568576+00:00",
+      "actualizado_at": "2026-11-24T01:33:49.472527+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -14268,7 +14304,7 @@
     "tipo_ruta": "Internacional",
     "es_cabotaje": false,
     "categoria_region": "europa_mundo",
-    "precio_desde": "€ 978",
+    "precio_desde": "€ 979",
     "comando_tg": "/barcelona",
     "resena": "Modernismo deslumbrante de Gaudí con la Sagrada Familia y Park Güell, callejones del Barrio Gótico, gastronomía catalana y trenes de alta velocidad AVE a Madrid en solo 2h 30m.",
     "vuelos": [
@@ -14278,14 +14314,14 @@
         "escalas": "Directo (EZE ➔ BCN)",
         "fechas": "18 May - 25 May 2027",
         "noches": 7,
-        "precio": "€ 978",
+        "precio": "€ 979",
         "destacado": "Vuelo directo más veloz",
         "fecha_ida": "2027-05-18",
         "fecha_vuelta": "2027-05-25",
         "actualizado_en_vivo": true,
-        "precio_ars": 1861760,
-        "precio_usd": 1068,
-        "precio_eur": 978
+        "precio_ars": 1863664,
+        "precio_usd": 1069,
+        "precio_eur": 979
       },
       {
         "puesto": "🥈",
@@ -14373,11 +14409,11 @@
     ],
     "termometro": {
       "nivel": "alto",
-      "posicion_pct": 89,
+      "posicion_pct": 90,
       "rango_min": "€ 908",
       "rango_max": "€ 987",
-      "mensaje": "Precio por encima de la mediana histórica (€ 971). Conviene activar alerta.",
-      "texto_pin": "€ 978 · tarifa vigente",
+      "mensaje": "Precio por encima de la mediana histórica (€ 972). Conviene activar alerta.",
+      "texto_pin": "€ 979 · tarifa vigente",
       "consejo": "Level ofrece el único vuelo directo sin escalas desde Ezeiza perforando los US$ 1.000.",
       "historial_dias": [
         "Hace 52 d",
@@ -14387,14 +14423,14 @@
         "Hoy"
       ],
       "historial_valores": [
-        973,
         971,
         972,
         972,
-        978
+        978,
+        979
       ],
       "historial_formato": "€ ",
-      "observaciones_reales": 23,
+      "observaciones_reales": 24,
       "fuente_datos": "historico_sqlite"
     },
     "codigo_pais": "es",
@@ -14417,7 +14453,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20BCN%20from%20EZE%20on%202027-05-28%20through%202027-06-17&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/bcn/2027-05-28/2027-06-17?affilid=flightbot",
       "fechas_texto": "28 May - 17 Jun 2027",
-      "actualizado_at": "2026-11-24T00:32:12.784999+00:00",
+      "actualizado_at": "2026-11-24T01:33:49.672578+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T13:02:50",
       "antiguedad_hs": 59.0
@@ -14425,7 +14461,7 @@
     "salidas_reales_cazadas": {
       "iata": "BCN",
       "ciudad": "Barcelona & Costa Brava",
-      "actualizado_at": "2026-11-24T00:32:12.784999+00:00",
+      "actualizado_at": "2026-11-24T01:33:49.672578+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -14840,7 +14876,7 @@
     "salidas_reales_cazadas": {
       "iata": "LIS",
       "ciudad": "Lisboa, Sintra & Oporto",
-      "actualizado_at": "2026-11-24T00:32:13.242248+00:00",
+      "actualizado_at": "2026-11-24T01:33:50.063729+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -15093,7 +15129,7 @@
       "precio_usd": "aprox. $ 1.659.400 ARS",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20LIS%20from%20EZE%20on%202026-11-30%20through%202026-12-09&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/lis/2026-11-30/2026-12-09?affilid=flightbot",
-      "actualizado_at": "2026-11-24T00:32:13.242248+00:00",
+      "actualizado_at": "2026-11-24T01:33:50.063729+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -15257,7 +15293,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20FCO%20from%20EZE%20on%202027-04-13%20through%202027-04-30&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/fco/2027-04-13/2027-04-30?affilid=flightbot",
       "fechas_texto": "13 Abr - 30 Abr 2027",
-      "actualizado_at": "2026-11-24T00:32:13.454217+00:00",
+      "actualizado_at": "2026-11-24T01:33:50.254862+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T14:12:25",
       "antiguedad_hs": 33.8
@@ -15265,7 +15301,7 @@
     "salidas_reales_cazadas": {
       "iata": "FCO",
       "ciudad": "Roma",
-      "actualizado_at": "2026-11-24T00:32:13.454217+00:00",
+      "actualizado_at": "2026-11-24T01:33:50.254862+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -15660,7 +15696,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CDG%20from%20EZE%20on%202026-12-08%20through%202026-12-29&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/cdg/2026-12-08/2026-12-29?affilid=flightbot",
       "fechas_texto": "08 Dic - 29 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:14.059666+00:00",
+      "actualizado_at": "2026-11-24T01:33:50.828375+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T18:20:14",
       "antiguedad_hs": 29.7
@@ -15668,7 +15704,7 @@
     "salidas_reales_cazadas": {
       "iata": "CDG",
       "ciudad": "París & Île-de-France",
-      "actualizado_at": "2026-11-24T00:32:14.059666+00:00",
+      "actualizado_at": "2026-11-24T01:33:50.828375+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -16063,7 +16099,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20LHR%20from%20EZE%20on%202027-06-08%20through%202027-06-29&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/lhr/2027-06-08/2027-06-29?affilid=flightbot",
       "fechas_texto": "08 Jun - 29 Jun 2027",
-      "actualizado_at": "2026-11-24T00:32:14.798081+00:00",
+      "actualizado_at": "2026-11-24T01:33:51.427967+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T17:58:08",
       "antiguedad_hs": 54.0
@@ -16071,7 +16107,7 @@
     "salidas_reales_cazadas": {
       "iata": "LHR",
       "ciudad": "Londres",
-      "actualizado_at": "2026-11-24T00:32:14.798081+00:00",
+      "actualizado_at": "2026-11-24T01:33:51.427967+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -16466,7 +16502,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20BER%20from%20EZE%20on%202027-06-04%20through%202027-06-17&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ber/2027-06-04/2027-06-17?affilid=flightbot",
       "fechas_texto": "04 Jun - 17 Jun 2027",
-      "actualizado_at": "2026-11-24T00:32:15.026749+00:00",
+      "actualizado_at": "2026-11-24T01:33:51.635614+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-20T00:34:02",
       "antiguedad_hs": 119.4
@@ -16474,7 +16510,7 @@
     "salidas_reales_cazadas": {
       "iata": "BER",
       "ciudad": "Berlín & Cultura Vanguardista",
-      "actualizado_at": "2026-11-24T00:32:15.026749+00:00",
+      "actualizado_at": "2026-11-24T01:33:51.635614+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -16977,7 +17013,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20FRA%20from%20EZE%20on%202027-05-05%20through%202027-05-19&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/fra/2027-05-05/2027-05-19?affilid=flightbot",
       "fechas_texto": "05 May - 19 May 2027",
-      "actualizado_at": "2026-11-24T00:32:15.233412+00:00",
+      "actualizado_at": "2026-11-24T01:33:51.846398+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T02:30:53",
       "antiguedad_hs": 69.5
@@ -16985,7 +17021,7 @@
     "salidas_reales_cazadas": {
       "iata": "FRA",
       "ciudad": "Frankfurt (Hub Alemania)",
-      "actualizado_at": "2026-11-24T00:32:15.233412+00:00",
+      "actualizado_at": "2026-11-24T01:33:51.846398+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -17460,7 +17496,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20AMS%20from%20EZE%20on%202026-11-30%20through%202026-12-06&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ams/2026-11-30/2026-12-06?affilid=flightbot",
       "fechas_texto": "30 Nov - 06 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:15.434746+00:00",
+      "actualizado_at": "2026-11-24T01:33:52.041095+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T22:09:34",
       "antiguedad_hs": 49.8
@@ -17468,7 +17504,7 @@
     "salidas_reales_cazadas": {
       "iata": "AMS",
       "ciudad": "Ámsterdam",
-      "actualizado_at": "2026-11-24T00:32:15.434746+00:00",
+      "actualizado_at": "2026-11-24T01:33:52.041095+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -17860,7 +17896,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20ATH%20from%20EZE%20on%202027-07-09%20through%202027-08-02&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ath/2027-07-09/2027-08-02?affilid=flightbot",
       "fechas_texto": "09 Jul - 02 Ago 2027",
-      "actualizado_at": "2026-11-24T00:32:15.632390+00:00",
+      "actualizado_at": "2026-11-24T01:33:52.245555+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T01:31:48",
       "antiguedad_hs": 70.5
@@ -17868,7 +17904,7 @@
     "salidas_reales_cazadas": {
       "iata": "ATH",
       "ciudad": "Atenas & Islas Griegas",
-      "actualizado_at": "2026-11-24T00:32:15.632390+00:00",
+      "actualizado_at": "2026-11-24T01:33:52.245555+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -18263,7 +18299,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20OSL%20from%20EZE%20on%202027-02-11%20through%202027-02-25&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/osl/2027-02-11/2027-02-25?affilid=flightbot",
       "fechas_texto": "11 Feb - 25 Feb 2027",
-      "actualizado_at": "2026-11-24T00:32:15.821842+00:00",
+      "actualizado_at": "2026-11-24T01:33:52.437427+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-21T10:14:04",
       "antiguedad_hs": 85.8
@@ -18271,7 +18307,7 @@
     "salidas_reales_cazadas": {
       "iata": "OSL",
       "ciudad": "Oslo & Fiordos Noruegos",
-      "actualizado_at": "2026-11-24T00:32:15.821842+00:00",
+      "actualizado_at": "2026-11-24T01:33:52.437427+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -18666,7 +18702,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20KEF%20from%20EZE%20on%202026-11-30%20through%202026-12-16&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/kef/2026-11-30/2026-12-16?affilid=flightbot",
       "fechas_texto": "30 Nov - 16 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:16.041395+00:00",
+      "actualizado_at": "2026-11-24T01:33:52.815580+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -18674,7 +18710,7 @@
     "salidas_reales_cazadas": {
       "iata": "KEF",
       "ciudad": "Reikiavik & Auroras Boreales",
-      "actualizado_at": "2026-11-24T00:32:16.041395+00:00",
+      "actualizado_at": "2026-11-24T01:33:52.815580+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -19038,7 +19074,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20IST%20from%20EZE%20on%202027-02-03%20through%202027-02-18&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ist/2027-02-03/2027-02-18?affilid=flightbot",
       "fechas_texto": "03 Feb - 18 Feb 2027",
-      "actualizado_at": "2026-11-24T00:32:16.378016+00:00",
+      "actualizado_at": "2026-11-24T01:33:53.155089+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T10:03:25",
       "antiguedad_hs": 37.9
@@ -19046,7 +19082,7 @@
     "salidas_reales_cazadas": {
       "iata": "IST",
       "ciudad": "Estambul",
-      "actualizado_at": "2026-11-24T00:32:16.378016+00:00",
+      "actualizado_at": "2026-11-24T01:33:53.155089+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -19515,7 +19551,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20DXB%20from%20EZE%20on%202027-02-14%20through%202027-02-27&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/dxb/2027-02-14/2027-02-27?affilid=flightbot",
       "fechas_texto": "14 Feb - 27 Feb 2027",
-      "actualizado_at": "2026-11-24T00:32:16.752006+00:00",
+      "actualizado_at": "2026-11-24T01:33:53.492095+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T20:55:59",
       "antiguedad_hs": 27.1
@@ -19523,7 +19559,7 @@
     "salidas_reales_cazadas": {
       "iata": "DXB",
       "ciudad": "Dubái",
-      "actualizado_at": "2026-11-24T00:32:16.752006+00:00",
+      "actualizado_at": "2026-11-24T01:33:53.492095+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -19589,9 +19625,9 @@
               "fechas_texto": "05 Dic - 11 Dic 2026",
               "noches": 6,
               "dias_restantes": 11,
-              "precio_usd": 1626,
-              "precio_ars": 2834300,
-              "precio_texto": "US$ 1626",
+              "precio_usd": 1627,
+              "precio_ars": 2836000,
+              "precio_texto": "US$ 1627",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20DXB%20from%20EZE%20on%202026-12-05%20through%202026-12-11&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/dxb/2026-12-05/2026-12-11?affilid=flightbot",
               "aerolinea_gate": "City.Travel",
@@ -19760,9 +19796,9 @@
               "fechas_texto": "05 Dic - 11 Dic 2026",
               "noches": 6,
               "dias_restantes": 11,
-              "precio_usd": 1626,
-              "precio_ars": 2834300,
-              "precio_texto": "US$ 1626",
+              "precio_usd": 1627,
+              "precio_ars": 2836000,
+              "precio_texto": "US$ 1627",
               "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20DXB%20from%20EZE%20on%202026-12-05%20through%202026-12-11&hl=es",
               "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/dxb/2026-12-05/2026-12-11?affilid=flightbot",
               "aerolinea_gate": "City.Travel",
@@ -20004,7 +20040,7 @@
     "salidas_reales_cazadas": {
       "iata": "MLE",
       "ciudad": "Islas Maldivas & Atolones de Coral",
-      "actualizado_at": "2026-11-24T00:32:16.978386+00:00",
+      "actualizado_at": "2026-11-24T01:33:53.698223+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -20257,7 +20293,7 @@
       "precio_usd": "aprox. $ 2.440.300 ARS",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20MLE%20from%20EZE%20on%202026-11-30%20through%202026-12-14&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/mle/2026-11-30/2026-12-14?affilid=flightbot",
-      "actualizado_at": "2026-11-24T00:32:16.978386+00:00",
+      "actualizado_at": "2026-11-24T01:33:53.698223+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -20387,7 +20423,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20BKK%20from%20EZE%20on%202026-11-30%20through%202026-12-14&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/bkk/2026-11-30/2026-12-14?affilid=flightbot",
       "fechas_texto": "30 Nov - 14 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:17.288223+00:00",
+      "actualizado_at": "2026-11-24T01:33:53.893683+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -20395,7 +20431,7 @@
     "salidas_reales_cazadas": {
       "iata": "BKK",
       "ciudad": "Bangkok",
-      "actualizado_at": "2026-11-24T00:32:17.288223+00:00",
+      "actualizado_at": "2026-11-24T01:33:53.893683+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -20784,7 +20820,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20NRT%20from%20EZE%20on%202027-01-24%20through%202027-02-07&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/nrt/2027-01-24/2027-02-07?affilid=flightbot",
       "fechas_texto": "24 Ene - 07 Feb 2027",
-      "actualizado_at": "2026-11-24T00:32:17.892269+00:00",
+      "actualizado_at": "2026-11-24T01:33:54.553223+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-22T16:34:54",
       "antiguedad_hs": 55.4,
@@ -20795,7 +20831,7 @@
     "salidas_reales_cazadas": {
       "iata": "NRT",
       "ciudad": "Tokio (Narita / Haneda)",
-      "actualizado_at": "2026-11-24T00:32:17.892269+00:00",
+      "actualizado_at": "2026-11-24T01:33:54.553223+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -21204,7 +21240,7 @@
     "salidas_reales_cazadas": {
       "iata": "ICN",
       "ciudad": "Seúl, Palacios Joseon & Isla de Jeju",
-      "actualizado_at": "2026-11-24T00:32:18.307220+00:00",
+      "actualizado_at": "2026-11-24T01:33:55.029435+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -21457,7 +21493,7 @@
       "precio_usd": "aprox. $ 2.353.200 ARS",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20ICN%20from%20EZE%20on%202026-11-30%20through%202026-12-20&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/icn/2026-11-30/2026-12-20?affilid=flightbot",
-      "actualizado_at": "2026-11-24T00:32:18.307220+00:00",
+      "actualizado_at": "2026-11-24T01:33:55.029435+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -21615,7 +21651,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20PEK%20from%20EZE%20on%202026-11-29%20through%202026-12-17&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/pek/2026-11-29/2026-12-17?affilid=flightbot",
       "fechas_texto": "29 Nov - 17 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:19.007261+00:00",
+      "actualizado_at": "2026-11-24T01:33:55.627637+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T15:11:41",
       "antiguedad_hs": 32.8
@@ -21623,7 +21659,7 @@
     "salidas_reales_cazadas": {
       "iata": "PEK / PKX",
       "ciudad": "Pekín (Ciudad Prohibida & Gran Muralla)",
-      "actualizado_at": "2026-11-24T00:32:19.007261+00:00",
+      "actualizado_at": "2026-11-24T01:33:55.627637+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -21996,7 +22032,7 @@
     "salidas_reales_cazadas": {
       "iata": "SYD",
       "ciudad": "Sídney, Melbourne & Gran Barrera de Coral",
-      "actualizado_at": "2026-11-24T00:32:19.411316+00:00",
+      "actualizado_at": "2026-11-24T01:33:56.034378+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -22249,7 +22285,7 @@
       "precio_usd": "aprox. $ 2.527.500 ARS",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20SYD%20from%20EZE%20on%202026-11-30%20through%202026-12-20&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/syd/2026-11-30/2026-12-20?affilid=flightbot",
-      "actualizado_at": "2026-11-24T00:32:19.411316+00:00",
+      "actualizado_at": "2026-11-24T01:33:56.034378+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -22391,7 +22427,7 @@
     "salidas_reales_cazadas": {
       "iata": "AKL",
       "ciudad": "Nueva Zelanda: Auckland, Hobbiton & Queenstown",
-      "actualizado_at": "2026-11-24T00:32:19.817758+00:00",
+      "actualizado_at": "2026-11-24T01:33:56.429620+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -22644,7 +22680,7 @@
       "precio_usd": "aprox. $ 1.920.900 ARS",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20AKL%20from%20EZE%20on%202027-04-05%20through%202027-05-03&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/akl/2027-04-05/2027-05-03?affilid=flightbot",
-      "actualizado_at": "2026-11-24T00:32:19.817758+00:00",
+      "actualizado_at": "2026-11-24T01:33:56.429620+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T13:24:26",
       "antiguedad_hs": 34.6,
@@ -22789,7 +22825,7 @@
     "salidas_reales_cazadas": {
       "iata": "PPT",
       "ciudad": "Polinesia Francesa: Tahití, Moorea & Bora Bora",
-      "actualizado_at": "2026-11-24T00:32:20.209816+00:00",
+      "actualizado_at": "2026-11-24T01:33:56.809168+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -23042,7 +23078,7 @@
       "precio_usd": "aprox. $ 2.876.100 ARS",
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20PPT%20from%20EZE%20on%202026-11-30%20through%202026-12-20&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/ppt/2026-11-30/2026-12-20?affilid=flightbot",
-      "actualizado_at": "2026-11-24T00:32:20.209816+00:00",
+      "actualizado_at": "2026-11-24T01:33:56.809168+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -23200,7 +23236,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CAI%20from%20EZE%20on%202026-11-30%20through%202026-12-15&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/cai/2026-11-30/2026-12-15?affilid=flightbot",
       "fechas_texto": "30 Nov - 15 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:20.434139+00:00",
+      "actualizado_at": "2026-11-24T01:33:57.008837+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -23208,7 +23244,7 @@
     "salidas_reales_cazadas": {
       "iata": "CAI",
       "ciudad": "El Cairo & Pirámides de Giza",
-      "actualizado_at": "2026-11-24T00:32:20.434139+00:00",
+      "actualizado_at": "2026-11-24T01:33:57.008837+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -23597,7 +23633,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20RAK%20from%20EZE%20on%202026-11-30%20through%202026-12-09&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/rak/2026-11-30/2026-12-09?affilid=flightbot",
       "fechas_texto": "30 Nov - 09 Dic 2026",
-      "actualizado_at": "2026-11-24T00:32:20.634693+00:00",
+      "actualizado_at": "2026-11-24T01:33:57.226363+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": null,
       "antiguedad_hs": null
@@ -23605,7 +23641,7 @@
     "salidas_reales_cazadas": {
       "iata": "RAK",
       "ciudad": "Marrakech & Atlas",
-      "actualizado_at": "2026-11-24T00:32:20.634693+00:00",
+      "actualizado_at": "2026-11-24T01:33:57.226363+00:00",
       "meses": [
         {
           "key": "mes1",
@@ -23994,7 +24030,7 @@
       "google_flights_url": "https://www.google.com/travel/flights?q=Flights%20to%20CPT%20from%20EZE%20on%202027-04-01%20through%202027-04-22&hl=es",
       "kiwi_url": "https://www.kiwi.com/es/search/results/buenos-aires-argentina/cpt/2027-04-01/2027-04-22?affilid=flightbot",
       "fechas_texto": "01 Abr - 22 Abr 2027",
-      "actualizado_at": "2026-11-24T00:32:20.827866+00:00",
+      "actualizado_at": "2026-11-24T01:33:57.446171+00:00",
       "fuente": "Aviasales Radar 3h",
       "found_at": "2026-11-23T09:52:21",
       "antiguedad_hs": 38.1
@@ -24002,7 +24038,7 @@
     "salidas_reales_cazadas": {
       "iata": "CPT",
       "ciudad": "Ciudad del Cabo (Cape Town)",
-      "actualizado_at": "2026-11-24T00:32:20.827866+00:00",
+      "actualizado_at": "2026-11-24T01:33:57.446171+00:00",
       "meses": [
         {
           "key": "mes1",
