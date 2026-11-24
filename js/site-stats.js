@@ -9,6 +9,6 @@
   "resorts": 31,
   "escapadas": 24,
   "cupones": 5,
-  "actualizado_utc": "2026-11-23T18:26:30Z"
+  "actualizado_utc": "2026-11-24T00:32:21Z"
 };
 })();
