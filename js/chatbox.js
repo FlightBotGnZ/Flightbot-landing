@@ -361,6 +361,7 @@
     const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !isOpen;
 
     if (shouldOpen) {
+      ensureGuiasKbLoaded();
       win.classList.remove('hidden');
       void win.offsetWidth;
       win.classList.add('fb-chat-open');
@@ -413,6 +414,22 @@
     const pills = window.FB_INITIAL_PILLS || FB_INITIAL_PILLS;
     renderPills(pills);
   };
+
+  // Carga diferida de guias-kb.js (~248 KB) solo cuando el usuario abre el chat
+  let guiasKbLoadingPromise = null;
+  function ensureGuiasKbLoaded() {
+    if (window.FB_GUIAS_KB) return Promise.resolve(window.FB_GUIAS_KB);
+    if (guiasKbLoadingPromise) return guiasKbLoadingPromise;
+    guiasKbLoadingPromise = new Promise((resolve) => {
+      const s = document.createElement('script');
+      s.src = 'js/guias-kb.js?v=20261122';
+      s.async = true;
+      s.onload = () => resolve(window.FB_GUIAS_KB || {});
+      s.onerror = () => resolve({});
+      document.head.appendChild(s);
+    });
+    return guiasKbLoadingPromise;
+  }
 
   // Base de Conocimiento de Destinos
   function getKB() {

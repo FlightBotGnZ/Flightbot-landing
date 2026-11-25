@@ -92,7 +92,7 @@
 
       const posPct = typeof term.posicion_pct === 'number' ? term.posicion_pct : 50;
       const firstHotel = Array.isArray(dest.hoteles) && dest.hoteles[0] ? dest.hoteles[0] : {};
-      const foto = String(firstHotel.foto || '').trim();
+      const foto = String(dest.imagen_unsplash || firstHotel.foto || '').trim();
       const safeFoto = resolveDestinationImage(String(dest.id), foto);
 
       const codeCountry = String(dest.codigo_pais || 'ar').toLowerCase().replace(/[^a-z]/g, '').slice(0, 2) || 'ar';
