@@ -49,13 +49,65 @@ function normalizarCategoriaRegion(dest) {
   return dest.es_cabotaje ? 'cabotaje' : 'europa_mundo';
 }
 
+function recolectarSalidasCatalogo(dest, hoy) {
+  const pool = [];
+  if (!dest || typeof dest !== 'object') return pool;
+  const hoyIso = hoy.toISOString().slice(0, 10);
+
+  const agregar = (s) => {
+    if (!s || !s.fecha_ida || String(s.fecha_ida) < hoyIso) return;
+    if (s.es_real_aviasales === false) return;
+    let antHs = s.antiguedad_hs;
+    if (s.found_at) {
+      const rawFound = String(s.found_at).trim();
+      const isoUtc = /(?:Z|[+-]\d{2}:?\d{2})$/.test(rawFound) ? rawFound : `${rawFound}Z`;
+      const ms = Date.parse(isoUtc);
+      if (Number.isFinite(ms)) {
+        antHs = Math.max(0, Math.round(((Date.now() - ms) / 3600000) * 10) / 10);
+      }
+    }
+    if (antHs !== null && antHs !== undefined && Number(antHs) > 72) return;
+
+    const depDate = new Date(`${s.fecha_ida}T00:00:00`);
+    const diasRestantes = Number.isNaN(depDate.getTime())
+      ? Number(s.dias_restantes || 0)
+      : Math.max(0, Math.round((depDate - hoy) / 86400000));
+
+    pool.push({
+      ...s,
+      dias_restantes: diasRestantes,
+      antiguedad_hs: antHs !== undefined ? antHs : s.antiguedad_hs,
+      es_real_aviasales: true
+    });
+  };
+
+  if (Array.isArray(dest.salidas_reales)) {
+    dest.salidas_reales.forEach(agregar);
+  }
+  const caz = dest.salidas_reales_cazadas;
+  if (caz && typeof caz === 'object') {
+    if (caz.esquema === 'multi_horizonte_v2') {
+      ((caz.proximos_3_meses && caz.proximos_3_meses.salidas) || []).forEach(agregar);
+      ((caz.para_planificar && caz.para_planificar.salidas) || []).forEach(agregar);
+    } else {
+      if (Array.isArray(caz.meses)) {
+        caz.meses.forEach(m => (m.salidas || []).forEach(agregar));
+      }
+      if (caz.early_bird && Array.isArray(caz.early_bird.salidas)) {
+        caz.early_bird.salidas.forEach(agregar);
+      }
+    }
+  }
+  return pool;
+}
+
 function construirSalidasRelampagoEnVivo(dest, ofertasValidas, esCabotaje, exchangeRateArs, hoy) {
   const ahoraIso = new Date().toISOString();
   const iata = String(dest.iata || '').toUpperCase();
   const originIata = esCabotaje ? 'AEP' : 'EZE';
   const formatArsLocal = (n) => '$ ' + Math.round(n).toLocaleString('es-AR') + ' ARS';
 
-  const salidas = ofertasValidas.slice(0, 6).map((oferta, idx) => {
+  const salidasVivas = ofertasValidas.slice(0, 6).map((oferta, idx) => {
     const depDate = new Date(oferta.depart_date + 'T00:00:00');
     const retDate = new Date(oferta.return_date + 'T00:00:00');
     const noches = Math.max(1, Math.round((retDate - depDate) / 86400000));
@@ -91,30 +143,58 @@ function construirSalidasRelampagoEnVivo(dest, ofertasValidas, esCabotaje, excha
     };
   });
 
+  // Combinar salidas frescas (<= 72h) del catálogo local con las vivas de Travelpayouts sin pisar horizontes
+  const salidasVivasFrescas = salidasVivas.filter(s => s.antiguedad_hs <= 72);
+  const salidasBaseFrescas = recolectarSalidasCatalogo(dest, hoy);
+
+  const mapaCombinado = new Map();
+  for (const s of [...salidasBaseFrescas, ...salidasVivasFrescas]) {
+    const clave = `${s.fecha_ida}_${s.fecha_vuelta || ''}`;
+    const prev = mapaCombinado.get(clave);
+    if (!prev || Number(s.antiguedad_hs || 999) < Number(prev.antiguedad_hs || 999)) {
+      mapaCombinado.set(clave, s);
+    }
+  }
+
+  const salidas = Array.from(mapaCombinado.values()).sort((a, b) => {
+    const pa = esCabotaje ? Number(a.precio_ars || 0) : Number(a.precio_usd || 0);
+    const pb = esCabotaje ? Number(b.precio_ars || 0) : Number(b.precio_usd || 0);
+    return pa - pb;
+  });
+
   if (salidas.length === 0) return null;
 
   const mejor = salidas[0];
-  const [y0, m0] = String(mejor.fecha_ida).split('-');
-  const mesIdx = parseInt(m0, 10) || 1;
   const baseRel = (dest.oportunidad_relampago && typeof dest.oportunidad_relampago === 'object') ? dest.oportunidad_relampago : {};
   const ahorroStr = baseRel.ahorro_porcentaje || '20% OFF';
+  const ahorroNum = parseInt(ahorroStr, 10) || 20;
+
+  const salidas3m = salidas.filter(s => Number(s.dias_restantes || 0) <= 90).slice(0, 3);
+  const salidasPlanificar = salidas.filter(s => Number(s.dias_restantes || 0) > 90).slice(0, 3);
 
   const salidasRealesCazadas = {
     iata,
     ciudad: dest.ciudad || iata,
     actualizado_at: ahoraIso,
-    meses: [
-      {
-        key: 'mes1',
-        nombre: `${MESES_LARGO[mesIdx] || 'Próximo'} ${y0}`,
-        nombre_mes: `${MESES_LARGO[mesIdx] || 'Próximo'} ${y0}`,
-        nombre_corto: MESES_ABR[mesIdx] || 'Prox',
-        año: Number(y0) || new Date().getFullYear(),
-        ahorro_porcentaje: ahorroStr,
-        ahorro_pct_num: parseInt(ahorroStr, 10) || 20,
-        salidas
-      }
-    ]
+    esquema: 'multi_horizonte_v2',
+    proximos_3_meses: {
+      key: 'proximos_3m',
+      nombre: 'Próximos 3 meses',
+      nombre_mes: 'Próximos 3 meses',
+      nombre_corto: '3 Meses',
+      ahorro_porcentaje: ahorroStr,
+      ahorro_pct_num: ahorroNum,
+      salidas: salidas3m
+    },
+    para_planificar: {
+      key: 'planificar_6m',
+      nombre: 'Para planificar (+3 meses)',
+      nombre_mes: 'Para planificar (+3 meses)',
+      nombre_corto: '+3 Meses',
+      ahorro_porcentaje: ahorroStr,
+      ahorro_pct_num: ahorroNum,
+      salidas: salidasPlanificar
+    }
   };
 
   const oportunidadRelampago = {
@@ -137,7 +217,7 @@ function construirSalidasRelampagoEnVivo(dest, ofertasValidas, esCabotaje, excha
     google_flights_url: mejor.google_flights_url,
     kiwi_url: mejor.kiwi_url,
     actualizado_at: ahoraIso,
-    fuente: 'Travelpayouts Live',
+    fuente: 'Travelpayouts Live + Radar',
     found_at: mejor.found_at,
     antiguedad_hs: mejor.antiguedad_hs
   };

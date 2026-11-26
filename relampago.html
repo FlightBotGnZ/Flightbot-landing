@@ -485,7 +485,7 @@
               ⚡ Próximos 3 meses
             </button>
             <button type="button" onclick="filtrarHorizonte('planificar_6m')" id="chip-horiz-planificar_6m" class="chip-horizonte px-3 py-1.5 rounded-xl font-bold whitespace-nowrap dark:bg-[#0b0c16]/40 bg-slate-100 dark:text-slate-300 text-slate-700 border dark:border-slate-800 border-slate-200 hover:dark:bg-slate-800">
-              🗓️ Para planificar (6+ meses)
+              🗓️ Para planificar (+3 meses)
             </button>
           </div>
         </div>
@@ -922,13 +922,23 @@
         });
       }
 
-      // 2. Para planificar (6+ meses): mejor oferta real >= 150 días (priorizando >= 180 días), sin inventar
-      const candidatas180 = poolOrdenado.filter(s => (s.dias_restantes || 0) >= 180);
-      const candidatas150 = poolOrdenado.filter(s => (s.dias_restantes || 0) >= 150);
-      const poolPlanificar = candidatas180.length ? candidatas180 : candidatas150;
-      const salidas6m = poolPlanificar.length
-        ? [{ ...poolPlanificar[0], opcion: 1, etiqueta_opcion: '🗓️ Para planificar' }]
-        : [];
+      // 2. Para planificar (+3 meses / > 90 días): hasta 3 ofertas reales con >= 5 días de separación, cerrando el hueco 91-149d
+      const candidatasMas3m = poolOrdenado.filter(s => (s.dias_restantes || 0) > 90);
+      const salidas6m = [];
+      for (const cand of candidatasMas3m) {
+        if (salidas6m.length >= 3) break;
+        const dCand = new Date(`${cand.fecha_ida}T00:00:00`).getTime();
+        const muyCerca = salidas6m.some(e => {
+          const dEl = new Date(`${e.fecha_ida}T00:00:00`).getTime();
+          return Math.abs(dCand - dEl) < (5 * 24 * 60 * 60 * 1000);
+        });
+        if (muyCerca) continue;
+        salidas6m.push({
+          ...cand,
+          opcion: salidas6m.length + 1,
+          etiqueta_opcion: salidas6m.length === 0 ? '🗓️ Para planificar' : `🗓️ Opción ${salidas6m.length + 1}`
+        });
+      }
 
       const bloque3m = {
         key: 'proximos_3m',
@@ -941,8 +951,8 @@
 
       const bloque6m = {
         key: 'planificar_6m',
-        nombre: 'Para planificar (6+ meses)',
-        nombre_corto: '6+ Meses',
+        nombre: 'Para planificar (+3 meses)',
+        nombre_corto: '+3 Meses',
         ahorro_porcentaje: `${ahorroEbNum}% OFF`,
         ahorro_pct_num: ahorroEbNum,
         salidas: salidas6m
@@ -1216,15 +1226,39 @@
         return;
       }
 
+      // Ordenar: primero destinos con ofertas vigentes en la pestaña activa, luego con ofertas en otro horizonte, al final sin ofertas
+      const horizontesPorId = new Map();
+      lista.forEach(d => horizontesPorId.set(d.id, calcularHorizontesDestino(d)));
+
+      lista.sort((a, b) => {
+        const ha = horizontesPorId.get(a.id);
+        const hb = horizontesPorId.get(b.id);
+        const c3a = (ha.proximos_3_meses.salidas || []).length;
+        const c6a = (ha.para_planificar.salidas || []).length;
+        const c3b = (hb.proximos_3_meses.salidas || []).length;
+        const c6b = (hb.para_planificar.salidas || []).length;
+
+        const tabA = cardPestanasActivas[a.id] || (currentHorizonte !== 'todos' ? currentHorizonte : (c3a > 0 ? 'proximos_3m' : (c6a > 0 ? 'planificar_6m' : 'proximos_3m')));
+        const tabB = cardPestanasActivas[b.id] || (currentHorizonte !== 'todos' ? currentHorizonte : (c3b > 0 ? 'proximos_3m' : (c6b > 0 ? 'planificar_6m' : 'proximos_3m')));
+
+        const actA = (ha.mapa_tabs[tabA] && ha.mapa_tabs[tabA].salidas ? ha.mapa_tabs[tabA].salidas.length : 0) > 0 ? 2 : ((c3a + c6a) > 0 ? 1 : 0);
+        const actB = (hb.mapa_tabs[tabB] && hb.mapa_tabs[tabB].salidas ? hb.mapa_tabs[tabB].salidas.length : 0) > 0 ? 2 : ((c3b + c6b) > 0 ? 1 : 0);
+        return actB - actA;
+      });
+
       container.innerHTML = lista.map(dest => {
-        const horizontes = calcularHorizontesDestino(dest);
-        const tabActiva = cardPestanasActivas[dest.id] || (currentHorizonte === 'todos' ? 'proximos_3m' : currentHorizonte);
+        const horizontes = horizontesPorId.get(dest.id) || calcularHorizontesDestino(dest);
+        const count3m = (horizontes.proximos_3_meses && horizontes.proximos_3_meses.salidas || []).length;
+        const count6m = (horizontes.para_planificar && horizontes.para_planificar.salidas || []).length;
+        const tabDefault = (currentHorizonte === 'todos' && count3m === 0 && count6m > 0) ? 'planificar_6m' : (currentHorizonte === 'todos' ? 'proximos_3m' : currentHorizonte);
+        const tabActiva = cardPestanasActivas[dest.id] || tabDefault;
         const paqueteTab = horizontes.mapa_tabs[tabActiva] || horizontes.proximos_3_meses;
         const salidasMostradas = paqueteTab.salidas || [];
         const totalSlides = salidasMostradas.length;
         const slideKey = `${dest.id}:${tabActiva}`;
         const slideIdx = totalSlides > 0 ? Math.min(Math.max(0, Number(cardSlideActivos[slideKey] || 0)), totalSlides - 1) : 0;
         const salidaActiva = totalSlides > 0 ? salidasMostradas[slideIdx] : null;
+        const tieneOfertaVigente = Boolean(salidaActiva);
 
         const nombreCiudad = dest.ciudad.split(' (')[0].split(' &')[0].trim();
         const subtituloPais = obtenerSubtituloPais(dest);
@@ -1371,7 +1405,7 @@
           `;
         } else {
           const msgVacio = tabActiva === 'planificar_6m'
-            ? 'Sin ofertas relámpago detectadas a 6+ meses todavía para esta ruta.'
+            ? 'Sin ofertas relámpago detectadas a +3 meses todavía para esta ruta.'
             : 'Sin ofertas relámpago vigentes en los próximos 3 meses.';
           salidasHtml = `
             <div class="p-4 rounded-2xl dark:bg-[#0b0c16]/70 bg-slate-50 border border-dashed dark:border-slate-700 border-slate-300 text-center space-y-2.5 mb-3 text-xs">
@@ -1384,8 +1418,41 @@
           `;
         }
 
-        const count3m = (horizontes.proximos_3_meses && horizontes.proximos_3_meses.salidas || []).length;
-        const count6m = (horizontes.para_planificar && horizontes.para_planificar.salidas || []).length;
+        const badgeCabeceraHtml = tieneOfertaVigente
+          ? `<span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-full border bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800 shadow-sm flex items-center gap-1 transition-all duration-300">
+               <span>🔥</span>
+               <span>${ahorroPctLimpio}% OFF</span>
+             </span>`
+          : `<span class="text-[10px] font-bold uppercase px-2.5 py-1 rounded-full border bg-slate-100 text-slate-500 border-slate-200 dark:bg-slate-800/70 dark:text-slate-400 dark:border-slate-700 flex items-center gap-1">
+               <span>📡</span>
+               <span>En monitoreo</span>
+             </span>`;
+
+        const escasezHtml = tieneOfertaVigente
+          ? `<div class="mb-3 p-2.5 rounded-2xl dark:bg-[#0b0c16]/50 bg-slate-50/80 border dark:border-slate-800/80 border-slate-200/80">
+               <div class="flex items-center justify-between text-[11px] font-semibold mb-1.5">
+                 <span class="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-extrabold">
+                   <span>🔥</span> ${cuposRestantes} cupos a esta tarifa
+                 </span>
+                 <span class="text-[10px] dark:text-slate-400 text-slate-500 font-mono font-bold">${pctReservado}% reservado</span>
+               </div>
+               <div class="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                 <div class="h-full rounded-full transition-all duration-500" style="width: ${pctReservado}%; background: var(--brand-gradient);"></div>
+               </div>
+             </div>
+             <div class="flex items-center justify-between text-[11px] dark:text-slate-400 text-slate-500">
+               <span class="flex items-center gap-1.5 font-semibold text-emerald-600 dark:text-emerald-400">
+                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                 <span>${ahorroMontoTexto}</span>
+               </span>
+               <span class="deal-countdown card-countdown font-mono text-blue-600 font-bold flex items-center gap-1" data-expire="${targetMs}">⏱️ ${tiempoInicial}</span>
+             </div>`
+          : `<div class="flex items-center justify-between text-[11px] dark:text-slate-400 text-slate-500 pt-1">
+               <span class="flex items-center gap-1.5 font-medium">
+                 <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                 <span>Radar activo 24/7 · Sin tarifa récord hoy</span>
+               </span>
+             </div>`;
 
         return `
           <div class="rounded-3xl dark:bg-slate-900/80 bg-white border dark:border-slate-800 border-slate-200 shadow-sm hover:border-blue-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group">
@@ -1399,10 +1466,7 @@
                   <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-lg dark:bg-slate-800 bg-slate-100 dark:text-slate-200 text-slate-700 border dark:border-slate-700 border-slate-200">${iata}</span>
                 </div>
                 <div class="flex items-center gap-1.5 flex-shrink-0">
-                  <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-full border bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800 shadow-sm flex items-center gap-1 transition-all duration-300">
-                    <span>🔥</span>
-                    <span>${ahorroPctLimpio}% OFF</span>
-                  </span>
+                  ${badgeCabeceraHtml}
                 </div>
               </div>
 
@@ -1414,13 +1478,13 @@
                 ${subtituloPais}
               </div>
 
-              <!-- Selector de 2 Horizontes: Próximos 3 meses vs Para planificar (+6M) -->
+              <!-- Selector de 2 Horizontes: Próximos 3 meses vs Para planificar (+3M) -->
               <div class="flex items-center gap-1 p-1 bg-slate-100 dark:bg-[#0b0c16]/80 rounded-xl mb-3.5 border dark:border-slate-800 border-slate-200/80 text-[11px] font-bold">
                 <button type="button" onclick="window.cambiarPestanaCard('${dest.id}', 'proximos_3m')" class="flex-1 py-1.5 px-2 rounded-lg text-center transition-all cursor-pointer ${tabActiva === 'proximos_3m' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}">
                   ⚡ Próx. 3 meses (${count3m})
                 </button>
                 <button type="button" onclick="window.cambiarPestanaCard('${dest.id}', 'planificar_6m')" class="flex-1 py-1.5 px-2 rounded-lg text-center transition-all cursor-pointer ${tabActiva === 'planificar_6m' ? 'bg-amber-500 text-white shadow-xs' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}">
-                  🗓️ Planificar +6M (${count6m})
+                  🗓️ Planificar +3M (${count6m})
                 </button>
               </div>
 
@@ -1429,27 +1493,7 @@
                 ${salidasHtml}
               </div>
 
-              <!-- Barra de Escasez y Cupos -->
-              <div class="mb-3 p-2.5 rounded-2xl dark:bg-[#0b0c16]/50 bg-slate-50/80 border dark:border-slate-800/80 border-slate-200/80">
-                <div class="flex items-center justify-between text-[11px] font-semibold mb-1.5">
-                  <span class="flex items-center gap-1 text-blue-600 dark:text-blue-400 font-extrabold">
-                    <span>🔥</span> ${cuposRestantes} cupos a esta tarifa
-                  </span>
-                  <span class="text-[10px] dark:text-slate-400 text-slate-500 font-mono font-bold">${pctReservado}% reservado</span>
-                </div>
-                <div class="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full transition-all duration-500" style="width: ${pctReservado}%; background: var(--brand-gradient);"></div>
-                </div>
-              </div>
-
-              <!-- Telemetría de ahorro y cuenta regresiva calculada síncronamente -->
-              <div class="flex items-center justify-between text-[11px] dark:text-slate-400 text-slate-500">
-                <span class="flex items-center gap-1.5 font-semibold text-emerald-600 dark:text-emerald-400">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span>${ahorroMontoTexto}</span>
-                </span>
-                <span class="deal-countdown card-countdown font-mono text-blue-600 font-bold flex items-center gap-1" data-expire="${targetMs}">⏱️ ${tiempoInicial}</span>
-              </div>
+              ${escasezHtml}
 
             </div>
 
