@@ -338,7 +338,7 @@
     'Horizonte:': 'Horizon:',
     '🌟 Todos': '🌟 All',
     '⚡ Próximos 3 meses': '⚡ Next 3 months',
-    '🗓️ Para planificar (6+ meses)': '🗓️ Plan ahead (6+ months)',
+    '🗓️ Para planificar (+3 meses)': '🗓️ Plan ahead (+3 months)',
     'Transparencia Impositiva & Ahorro en Vuelos Internacionales:': 'Tax Transparency & International Flight Savings:',
     'Las tarifas en': 'Fares in',
     'para rutas fuera de Argentina incluyen la estimación de percepciones impositivas argentinas (aprox. 30%-40% de percepciones / Dólar Tarjeta).': 'for international routes from Argentina include estimated local tax withholdings (~30%-40% Card Dollar).',
