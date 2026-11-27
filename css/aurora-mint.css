@@ -276,3 +276,38 @@ html.dark[data-color="aurora-mint"] .dark\:bg-blue-950\/30,
 html.dark[data-color="aurora-mint"] .dark\:bg-blue-950\/20 {
   background-color: rgba(30, 27, 75, 0.50);
 }
+
+/* ==========================================================================
+   5. VIEW TRANSITIONS ENTRE PÁGINAS (NAVBAR FIJA SIN PARPADEO)
+   ========================================================================== */
+@view-transition {
+  navigation: auto;
+}
+
+body > header.sticky {
+  view-transition-name: fb-main-navbar;
+}
+
+::view-transition-group(fb-main-navbar) {
+  z-index: 100;
+  animation-duration: 0s;
+}
+
+::view-transition-old(fb-main-navbar),
+::view-transition-new(fb-main-navbar) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 140ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 1ms;
+  }
+}

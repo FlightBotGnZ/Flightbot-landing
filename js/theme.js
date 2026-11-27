@@ -465,12 +465,63 @@
 
   window.hidratarEstadisticasSitio = hidratarEstadisticasSitio;
 
-  // 5. Inicialización al cargar el DOM
+  // 5. Speculation Rules (Prerender / Prefetch al pasar el cursor sobre la navbar)
+  function initNavigationSpeculationRules() {
+    try {
+      if (
+        typeof HTMLScriptElement === 'undefined' ||
+        typeof HTMLScriptElement.supports !== 'function' ||
+        !HTMLScriptElement.supports('speculationrules')
+      ) {
+        return;
+      }
+      if (document.getElementById('fb-speculation-rules')) return;
+
+      const rules = {
+        prerender: [
+          {
+            source: 'document',
+            where: {
+              and: [
+                { selector_matches: 'header nav a[href^="/"], header a[href="/"]' },
+                { not: { selector_matches: '[target="_blank"]' } }
+              ]
+            },
+            eagerness: 'moderate'
+          }
+        ],
+        prefetch: [
+          {
+            source: 'document',
+            where: {
+              and: [
+                { href_matches: '/*' },
+                { not: { href_matches: '/api/*' } },
+                { not: { selector_matches: '[target="_blank"]' } }
+              ]
+            },
+            eagerness: 'moderate'
+          }
+        ]
+      };
+
+      const script = document.createElement('script');
+      script.id = 'fb-speculation-rules';
+      script.type = 'speculationrules';
+      script.textContent = JSON.stringify(rules);
+      (document.head || document.documentElement).appendChild(script);
+    } catch (_) {
+      // Silencioso en navegadores sin soporte o con políticas restrictivas
+    }
+  }
+
+  // 6. Inicialización al cargar el DOM
   document.addEventListener('DOMContentLoaded', function () {
     updateThemeControls();
     updateCurrencyControls();
     hidratarEstadisticasSitio();
     sincronizarTextosCotizacionFooter();
     actualizarDivisasEnVivo();
+    initNavigationSpeculationRules();
   });
 })();

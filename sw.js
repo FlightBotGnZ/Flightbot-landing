@@ -4,7 +4,7 @@
  * No cachea mutaciones ni respuestas de /api/ para preservar frescura y seguridad.
  */
 
-const CACHE_VERSION = 'flightbot-pwa-v7';
+const CACHE_VERSION = 'flightbot-pwa-v8';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 
@@ -15,6 +15,8 @@ const PRECACHE_URLS = [
   '/',
   '/index.html',
   '/css/styles.css',
+  '/css/aurora-mint.css',
+  '/js/theme.js',
   '/manifest.json',
   '/js/wallet-crypto.js',
   '/img/rolli-head.svg',
